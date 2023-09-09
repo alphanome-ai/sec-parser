@@ -4,6 +4,7 @@
 .vscode/
 .DS_Store
 lcov.info
+.ruff_cache/
 
 ##############################################
 ### General .gitignore for Python projects ###
