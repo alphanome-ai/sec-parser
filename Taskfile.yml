@@ -4,14 +4,15 @@ tasks:
   lint:
     desc: Lint the code
     cmds:
-      - ruff check --fix sec_ai/
-      - mypy sec_ai/
+      - ruff check --fix sec_parser/
+      - mypy sec_parser/
 
   test:
     desc: Run tests and check code coverage
     cmds:
-      - coverage run -m pytest tests/
-      - coverage report --fail-under=80 --skip-covered
+      # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
+      - pytest --cov --cov-report=lcov:lcov.info tests/
+      - coverage report --skip-covered --fail-under=100
 
   prepare: 
     desc: Lint the code and run all checks

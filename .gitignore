@@ -3,6 +3,7 @@
 ###################################
 .vscode/
 .DS_Store
+lcov.info
 
 ##############################################
 ### General .gitignore for Python projects ###
