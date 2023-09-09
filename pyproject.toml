@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sec-parser"
-version = "0.3.0"
+version = "0.4.0"
 description = "A robust and efficient parser for SEC filings, designed to extract and analyze financial data with ease."
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "README.md"
