@@ -4,9 +4,7 @@ tasks:
   lint:
     desc: Lint the code
     cmds:
-      - black sec_parser/
-      - flake8 sec_parser/
-      - isort sec_parser/
+      - ruff check --fix sec_ai/
       - mypy sec_parser/
 
   test:

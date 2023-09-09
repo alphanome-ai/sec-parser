@@ -5,17 +5,20 @@ description = "A robust and efficient parser for SEC filings, designed to extrac
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "README.md"
 
+
 [tool.poetry.dependencies]
 python = "^3.11"
 
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
-flake8-black = "^0.3.6"
 isort = "^5.12.0"
 mypy = "^1.5.1"
 coverage = "^7.3.1"
 commitizen = "^3.8.1"
 pre-commit = "^3.4.0"
+ruff = "^0.0.287"
+
 
 [tool.commitizen]
 name = "cz_conventional_commits"
@@ -25,6 +28,62 @@ version_provider = "poetry"
 update_changelog_on_bump = true
 major_version_zero = true
 
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = ["ALL"]
+ignore = [
+    "D104", # Missing docstring in public package
+    "D100", # Missing docstring in public module
+    "D103", # Missing docstring in public function
+    "D211", # No blank lines allowed before class docstring
+    "D212", # Multi-line docstring summary should start at the first line
+]
+
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+# Python 3.7 is the minimum supported version.
+target-version = "py37"
+
+
+[tool.ruff.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 10
