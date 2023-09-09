@@ -5,7 +5,7 @@ tasks:
     desc: Lint the code
     cmds:
       - ruff check --fix sec_ai/
-      - mypy sec_parser/
+      - mypy sec_ai/
 
   test:
     desc: Run tests and check code coverage
