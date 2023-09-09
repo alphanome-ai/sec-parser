@@ -1,7 +1,8 @@
 ###################################
 ### Project-specific .gitignore ###
 ###################################
-
+.vscode/
+.DS_Store
 
 ##############################################
 ### General .gitignore for Python projects ###
