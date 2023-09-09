@@ -1,0 +1,20 @@
+version: '3'
+
+tasks:
+  lint:
+    desc: Lint the code
+    cmds:
+      - black sec_parser/
+      - flake8 sec_parser/
+      - isort sec_parser/
+      - mypy sec_parser/
+
+  test:
+    desc: Run tests and check code coverage
+    cmds:
+      - coverage run -m pytest tests/
+      - coverage report --fail-under=80 --skip-covered
+
+  prepare: 
+    desc: Lint the code and run all checks
+    deps: [lint, test]
