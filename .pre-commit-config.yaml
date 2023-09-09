@@ -1,13 +1,14 @@
 repos:
-- hooks:
-  - id: commitizen
-  repo: https://github.com/commitizen-tools/commitizen
-  rev: v3.8.1
-- repo: local
-  hooks:
-    - id: task-prepare
-      name: Run task prepare
-      entry: task prepare
-      language: system
-      pass_filenames: false
-      stages: [commit]
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.8.1
+    hooks:
+      - id: commitizen
+
+  - repo: local
+    hooks:
+      - id: task-prepare
+        name: Run task prepare
+        entry: task prepare
+        language: system
+        pass_filenames: false
+        stages: [commit]
