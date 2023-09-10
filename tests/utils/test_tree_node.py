@@ -1,4 +1,4 @@
-from sec_parser.utils import TreeNode
+from sec_parser._utils import TreeNode
 
 
 def test_create_node():

@@ -2,13 +2,13 @@ from unittest.mock import patch
 
 import pytest
 
-from sec_parser.data_retrievers._sec_api_io_retriever import (
+from sec_parser._data_retrievers.sec_api_io_retriever import (
     APIKeyNotSetError,
     DocumentTypeNotSupportedError,
     InvalidSecEdgarURLError,
     SecApiIoRetriever,
 )
-from sec_parser.data_retrievers._abstract_sec_data_retriever import DocumentType, SectionType
+from sec_parser._data_retrievers.abstract_sec_data_retriever import DocumentType, SectionType
 
 
 def test_api_key_not_set():

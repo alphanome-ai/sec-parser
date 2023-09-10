@@ -1,9 +1,9 @@
-from ._abstract_sec_data_retriever import (
+from .abstract_sec_data_retriever import (
     AbstractSECDataRetriever,
     DocumentType,
     SectionType,
 )
-from ._sec_api_io_retriever import (
+from .sec_api_io_retriever import (
     APIKeyNotSetError,
     DocumentTypeNotSupportedError,
     InvalidSecEdgarURLError,

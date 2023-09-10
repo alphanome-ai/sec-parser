@@ -7,7 +7,7 @@ from typing import Iterable
 import requests
 from frozendict import frozendict
 
-from sec_parser.data_retrievers._abstract_sec_data_retriever import (
+from sec_parser._data_retrievers.abstract_sec_data_retriever import (
     AbstractSECDataRetriever,
     DocumentType,
     SectionType,

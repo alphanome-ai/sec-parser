@@ -5,7 +5,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from sec_parser.data_retrievers import (
+from sec_parser._data_retrievers import (
     AbstractSECDataRetriever,
     DocumentType,
     SectionType,
