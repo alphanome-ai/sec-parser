@@ -27,7 +27,7 @@ class SectionType(Enum):
     FORM_10Q_PART2ITEM6 = "part2item6"
 
 
-class SECDataRetriever(ABC):
+class AbstractSECDataRetriever(ABC):
     _doc_type_to_section_type = frozendict(
         {
             DocumentType.FORM_10Q: [
@@ -47,7 +47,7 @@ class SECDataRetriever(ABC):
     )
 
     def download_document(
-        self: SECDataRetriever,
+        self: AbstractSECDataRetriever,
         *,
         doc_type: DocumentType | str,
         url: str,
@@ -77,7 +77,7 @@ class SECDataRetriever(ABC):
 
     @abstractmethod
     def _download_document_impl(
-        self: SECDataRetriever,
+        self: AbstractSECDataRetriever,
         *,
         doc_type: DocumentType,
         url: str,
@@ -87,7 +87,7 @@ class SECDataRetriever(ABC):
         raise NotImplementedError  # pragma: no cover
 
     def _validate_sections(
-        self: SECDataRetriever,
+        self: AbstractSECDataRetriever,
         *,
         doc_type: DocumentType,
         sections: Iterable[SectionType | str],

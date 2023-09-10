@@ -7,9 +7,9 @@ from typing import Iterable
 import requests
 from frozendict import frozendict
 
-from sec_parser.data_retrievers.sec_data_retriever import (
+from sec_parser.data_retrievers._abstract_sec_data_retriever import (
+    AbstractSECDataRetriever,
     DocumentType,
-    SECDataRetriever,
     SectionType,
 )
 
@@ -26,7 +26,7 @@ class DocumentTypeNotSupportedError(ValueError):
     pass
 
 
-class SecApiIoRetriever(SECDataRetriever):
+class SecApiIoRetriever(AbstractSECDataRetriever):
     _TIMEOUT_S = 10
     _ACCESSION_NUMBER_LEN = 18
     _SUPPORTED_DOC_TYPES = frozenset({DocumentType.FORM_10Q})

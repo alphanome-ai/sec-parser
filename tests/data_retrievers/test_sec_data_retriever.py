@@ -5,10 +5,14 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from sec_parser.data_retrievers import DocumentType, SECDataRetriever, SectionType
+from sec_parser.data_retrievers import (
+    AbstractSECDataRetriever,
+    DocumentType,
+    SectionType,
+)
 
 
-class MockSECDataRetriever(SECDataRetriever):
+class MockSECDataRetriever(AbstractSECDataRetriever):
     def _download_document_impl(
         self,
         *,

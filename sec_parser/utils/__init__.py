@@ -1,3 +1,3 @@
-from .tree_node import TreeNode
+from ._tree_node import TreeNode
 
 __all__ = ["TreeNode"]
