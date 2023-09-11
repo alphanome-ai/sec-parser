@@ -1,3 +1,15 @@
+## 0.6.0 (2023-09-11)
+
+### Feat
+
+- implement passthrough parser and refactor codebase
+
+### Refactor
+
+- make internal packages private
+
+## 0.5.0 (2023-09-10)
+
 ## 0.4.0 (2023-09-10)
 
 ### Feat
