@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from typing import TYPE_CHECKING
 
 import httpx
@@ -14,7 +13,7 @@ from sec_parser.data_retrievers._sec_edgar_types import (
     SECTION_NAMES,
     DocumentType,
 )
-from sec_parser.exceptions._base_exceptions import SecParserValueError
+from sec_parser.utils._env_utils import get_value_or_env_var
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -22,10 +21,6 @@ if TYPE_CHECKING:
     from sec_parser.data_retrievers._sec_edgar_types import (
         SectionType,
     )
-
-
-class SecApiIoApiKeyNotSetError(SecParserValueError):
-    pass
 
 
 class SecApiIoRetriever(AbstractSECDataRetriever):
@@ -38,17 +33,7 @@ class SecApiIoRetriever(AbstractSECDataRetriever):
         api_key: str | None = None,
         timeout_s: int | None = None,
     ) -> None:
-        if api_key:
-            self._api_key = api_key.strip()
-        else:
-            self._api_key = os.environ.get(self.API_KEY_ENV_VAR_NAME, "").strip()
-        if not self._api_key:
-            msg = (
-                "sec-api.io api key not set. "
-                "Please set it via api_key argument or environment variable."
-            )
-            raise SecApiIoApiKeyNotSetError(msg)
-
+        self._api_key = get_value_or_env_var(api_key, self.API_KEY_ENV_VAR_NAME)
         self._timeout_s = timeout_s or 10
 
     def _get_html_from_url(

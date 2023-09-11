@@ -5,7 +5,6 @@ from sec_parser.data_retrievers._abstract_sec_data_retriever import (
     InvalidURLError,
 )
 from sec_parser.data_retrievers._sec_api_io_retriever import (
-    SecApiIoApiKeyNotSetError,
     SecApiIoRetriever,
 )
 from sec_parser.data_retrievers._sec_edgar_types import (
@@ -56,7 +55,6 @@ __all__ = [
     "InvalidURLError",
     "InvalidTickerError",
     "DocumentTypeNotSupportedError",
-    "SecApiIoApiKeyNotSetError",
     "InvalidDocumentTypeError",
     "InvalidSectionTypeError",
     "InvalidLevelError",

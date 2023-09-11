@@ -9,8 +9,11 @@ from sec_parser.entities._html_tag import HtmlTag
 
 
 class HtmlParser(AbstractHtmlParser):
+    def __init__(self, parser_backend: str | None = None) -> None:
+        self._parser_backend = (parser_backend or "lxml").lower().strip()
+
     def get_root_tags(self, html: str) -> list[HtmlTag]:
-        soup = bs4.BeautifulSoup(html, "lxml")
+        soup = bs4.BeautifulSoup(html, self._parser_backend)
         if soup.body is None:
             return []
 
