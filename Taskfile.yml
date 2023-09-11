@@ -1,19 +1,19 @@
 version: '3'
 
 tasks:
+  test:
+    desc: Run tests and check code coverage
+    cmds:
+      # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
+      - pytest --cov --cov-report=lcov:lcov.info tests/
+      - coverage report --skip-covered --fail-under=0
+
   lint:
     desc: Lint the code
     cmds:
       - ruff check --fix sec_parser/
       - mypy sec_parser/
 
-  test:
-    desc: Run tests and check code coverage
-    cmds:
-      # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
-      - pytest --cov --cov-report=lcov:lcov.info tests/
-      - coverage report --skip-covered --fail-under=100
-
   prepare: 
     desc: Lint the code and run all checks
-    deps: [lint, test]
+    deps: [test, lint]

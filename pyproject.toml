@@ -9,7 +9,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 frozendict = "^2.3.8"
-requests = "^2.31.0"
+beautifulsoup4 = "^4.12.2"
+lxml = "^4.9.3"
+httpx = "^0.24.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -20,6 +22,7 @@ pre-commit = "^3.4.0"
 ruff = "^0.0.287"
 pytest-cov = "^4.1.0"
 types-requests = "^2.31.0.2"
+types-beautifulsoup4 = "^4.12.0.6"
 
 
 [tool.commitizen]
@@ -44,16 +47,17 @@ source = ["sec_parser"]
 # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
 select = ["ALL"]
 ignore = [
-    "D100",  # Missing docstring in public module
-    "D101",  # Missing docstring in public class
-    "D102",  # Missing docstring in public method
-    "D103",  # Missing docstring in public function
-    "D104",  # Missing docstring in public package
-    "D105",  # Missing docstring in magic method
-    "D107",  # Missing docstring in __init__
-    "D203",  # 1 blank line required before class docstring
-    "D205",  # 1 blank line required between summary line and description
-    "D212",  # Multi-line docstring summary should start at the first line
+    "D100",    # Missing docstring in public module
+    "D101",    # Missing docstring in public class
+    "D102",    # Missing docstring in public method
+    "D103",    # Missing docstring in public function
+    "D104",    # Missing docstring in public package
+    "D105",    # Missing docstring in magic method
+    "D107",    # Missing docstring in __init__
+    "D203",    # 1 blank line required before class docstring
+    "D205",    # 1 blank line required between summary line and description
+    "D212",    # Multi-line docstring summary should start at the first line
+    "ANN101",  # Missing type annotation for self in method
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
@@ -91,8 +95,8 @@ line-length = 88
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
-# Python 3.7 is the minimum supported version.
-target-version = "py37"
+# Python 3.9 is the minimum supported version.
+target-version = "py39"
 
 
 [tool.ruff.mccabe]

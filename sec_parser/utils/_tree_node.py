@@ -1,17 +1,22 @@
 from __future__ import annotations
 
-from typing import Iterable
+from typing import TYPE_CHECKING, Generic, TypeVar
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+T = TypeVar("T")
 
 
-class TreeNode:
-    """A class to represent a node in a tree data structure."""
-
+class TreeNode(Generic[T]):
     def __init__(
         self: TreeNode,
+        data: T,
         *,
         parent: TreeNode | None = None,
         children: Iterable[TreeNode] | None = None,
     ) -> None:
+        self.data = data
         self._parent = None
         self._children: list[TreeNode] = []
         self.parent = parent
