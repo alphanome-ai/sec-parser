@@ -2,42 +2,47 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.engine._html_parser import AbstractHtmlParser, HtmlParser
-from sec_parser.entities._elements import UnclaimedElement
-from sec_parser.exceptions._base_exceptions import SecParserRuntimeError
-from sec_parser.plugins._plugin_factory import PluginFactory
-from sec_parser.plugins._root_section_plugin import RootSectionPlugin
-from sec_parser.plugins._text_plugin import TextPlugin
-from sec_parser.plugins._title_plugin import TitlePlugin
+from sec_parser.exceptions.core_exceptions import SecParserRuntimeError
+from sec_parser.parsing_engine.html_parser import AbstractHtmlParser, HtmlParser
+from sec_parser.parsing_plugins.parsing_plugin_factory import ParsingPluginFactory
+from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
+from sec_parser.parsing_plugins.text_plugin import TextPlugin
+from sec_parser.parsing_plugins.title_plugin import TitlePlugin
+from sec_parser.semantic_elements.semantic_elements import UnclaimedElement
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
+
+    from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
+    from sec_parser.semantic_elements.abstract_semantic_elements import (
+        AbstractSemanticElement,
+    )
 
 
 class MaxIterationsReachedError(SecParserRuntimeError):
     pass
 
 
-if TYPE_CHECKING:
-    from collections.abc import Iterable
-
-    from sec_parser.entities._abstract_elements import AbstractSemanticElement
-    from sec_parser.plugins._abstract_parsing_plugin import AbstractParsingPlugin
-
-
 class SecParser:
     def __init__(
         self,
         *,
-        plugins: Iterable[type[AbstractParsingPlugin] | PluginFactory] | None = None,
+        plugins: Iterable[type[AbstractParsingPlugin] | ParsingPluginFactory]
+        | None = None,
         html_parser: AbstractHtmlParser | None = None,
         max_iterations: int | None = None,
     ) -> None:
         plugins = plugins or self.get_default_plugins()
         self._plugin_factories = [
-            f if isinstance(f, PluginFactory) else PluginFactory(f) for f in plugins
+            f if isinstance(f, ParsingPluginFactory) else ParsingPluginFactory(f)
+            for f in plugins
         ]
         self._html_parser = html_parser or HtmlParser()
         self._max_iterations = max_iterations or 10
 
-    def get_default_plugins(self) -> list[type[AbstractParsingPlugin] | PluginFactory]:
+    def get_default_plugins(
+        self,
+    ) -> list[type[AbstractParsingPlugin] | ParsingPluginFactory]:
         return [RootSectionPlugin, TitlePlugin, TextPlugin]
 
     def parse(self, html: str) -> list[AbstractSemanticElement]:

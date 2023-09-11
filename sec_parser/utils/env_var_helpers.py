@@ -8,7 +8,9 @@ class ValueNotSetError(ValueError):
 
 
 def get_value_or_env_var(
-    value: str | None, env_var: str, default: str | None = None,
+    value: str | None,
+    env_var: str,
+    default: str | None = None,
 ) -> str:
     value = (value or "").strip()
     if value:

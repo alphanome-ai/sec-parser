@@ -3,12 +3,12 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from sec_parser.data_retrievers._sec_edgar_types import (
+from sec_parser.data_sources.sec_edgar_types import (
     DocumentType,
     SectionType,
     validate_sections,
 )
-from sec_parser.exceptions._base_exceptions import SecParserValueError
+from sec_parser.exceptions.core_exceptions import SecParserValueError
 
 if TYPE_CHECKING:
     from collections.abc import Iterable

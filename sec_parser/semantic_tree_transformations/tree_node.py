@@ -1,22 +1,24 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Generic, TypeVar
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-T = TypeVar("T")
+    from sec_parser.semantic_elements.abstract_semantic_elements import (
+        AbstractSemanticElement,
+    )
 
 
-class TreeNode(Generic[T]):
+class TreeNode:
     def __init__(
         self: TreeNode,
-        data: T,
+        semantic_element: AbstractSemanticElement,
         *,
         parent: TreeNode | None = None,
         children: Iterable[TreeNode] | None = None,
     ) -> None:
-        self.data = data
+        self.semantic_element = semantic_element
         self._parent = None
         self._children: list[TreeNode] = []
         self.parent = parent

@@ -1,6 +1,9 @@
-from sec_parser.exceptions._base_exceptions import (
+from sec_parser.exceptions.core_exceptions import (
     SecParserRuntimeError,
     SecParserValueError,
 )
 
-__all__ = ["SecParserValueError", "SecParserRuntimeError"]
+__all__ = [
+    "SecParserValueError",
+    "SecParserRuntimeError",
+]

@@ -4,8 +4,8 @@ import warnings
 
 import bs4
 
-from sec_parser.engine._abstract_html_parser import AbstractHtmlParser
-from sec_parser.entities._html_tag import HtmlTag
+from sec_parser.parsing_engine.abstract_html_parser import AbstractHtmlParser
+from sec_parser.parsing_engine.html_tag import HtmlTag
 
 
 class HtmlParser(AbstractHtmlParser):

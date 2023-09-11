@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 from frozendict import frozendict
 
-from sec_parser.exceptions._base_exceptions import SecParserValueError
+from sec_parser.exceptions.core_exceptions import SecParserValueError
 
 if TYPE_CHECKING:
     from collections.abc import Iterable

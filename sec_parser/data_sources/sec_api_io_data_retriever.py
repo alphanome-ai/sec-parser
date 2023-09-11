@@ -4,31 +4,31 @@ from typing import TYPE_CHECKING
 
 import httpx
 
-from sec_parser.data_retrievers._abstract_sec_data_retriever import (
+from sec_parser.data_sources.abstract_sec_data_retriever import (
     AbstractSECDataRetriever,
     DocumentNotFoundError,
 )
-from sec_parser.data_retrievers._sec_edgar_types import (
+from sec_parser.data_sources.sec_edgar_types import (
     FORM_SECTIONS,
     SECTION_NAMES,
     DocumentType,
 )
-from sec_parser.utils._env_utils import get_value_or_env_var
+from sec_parser.utils.env_var_helpers import get_value_or_env_var
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    from sec_parser.data_retrievers._sec_edgar_types import (
+    from sec_parser.data_sources.sec_edgar_types import (
         SectionType,
     )
 
 
-class SecApiIoRetriever(AbstractSECDataRetriever):
+class SecApiIoDataRetriever(AbstractSECDataRetriever):
     SUPPORTED_DOCUMENT_TYPES = frozenset({DocumentType.FORM_10Q})
     API_KEY_ENV_VAR_NAME = "SEC_API_IO_API_KEY"
 
     def __init__(
-        self: SecApiIoRetriever,
+        self: SecApiIoDataRetriever,
         *,
         api_key: str | None = None,
         timeout_s: int | None = None,
@@ -37,7 +37,7 @@ class SecApiIoRetriever(AbstractSECDataRetriever):
         self._timeout_s = timeout_s or 10
 
     def _get_html_from_url(
-        self: SecApiIoRetriever,
+        self: SecApiIoDataRetriever,
         doc_type: DocumentType,
         *,
         url: str,
@@ -46,7 +46,7 @@ class SecApiIoRetriever(AbstractSECDataRetriever):
         return self._get_sections_html(doc_type, url, sections)
 
     def _get_latest_html_from_ticker(
-        self: SecApiIoRetriever,
+        self: SecApiIoDataRetriever,
         doc_type: DocumentType,
         *,
         ticker: str,
@@ -61,7 +61,7 @@ class SecApiIoRetriever(AbstractSECDataRetriever):
         return self._get_sections_html(doc_type, url, sections)
 
     def _get_sections_html(
-        self: SecApiIoRetriever,
+        self: SecApiIoDataRetriever,
         doc_type: DocumentType,
         url: str,
         sections: Iterable[SectionType] | None = None,
@@ -82,7 +82,7 @@ class SecApiIoRetriever(AbstractSECDataRetriever):
         return "\n".join(html_parts)
 
     def _call_sections_extractor_api(
-        self: SecApiIoRetriever,
+        self: SecApiIoDataRetriever,
         url: str,
         section: SectionType,
     ) -> str:
@@ -101,7 +101,7 @@ class SecApiIoRetriever(AbstractSECDataRetriever):
         return response.text
 
     def _call_latest_report_metadata_api(
-        self: SecApiIoRetriever,
+        self: SecApiIoDataRetriever,
         doc_type: DocumentType,
         *,
         key: str,
