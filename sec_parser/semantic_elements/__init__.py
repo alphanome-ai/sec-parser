@@ -1,8 +1,10 @@
+
 from sec_parser.semantic_elements.abstract_semantic_elements import (
     AbstractContainerElement,
     AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    ContentlessElement,
     InvalidTitleLevelError,
     RootSectionElement,
     TextElement,
@@ -18,4 +20,5 @@ __all__ = [
     "TextElement",
     "TitleElement",
     "InvalidTitleLevelError",
+    "ContentlessElement",
 ]

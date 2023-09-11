@@ -24,6 +24,7 @@ from sec_parser.parsing_engine.html_parser import AbstractHtmlParser, HtmlParser
 from sec_parser.parsing_engine.html_tag import HtmlTag
 from sec_parser.parsing_engine.sec_parser import MaxIterationsReachedError, SecParser
 from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
+from sec_parser.parsing_plugins.contentless_plugin import ContentlessPlugin
 from sec_parser.parsing_plugins.parsing_plugin_factory import ParsingPluginFactory
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.text_plugin import TextPlugin
@@ -33,6 +34,7 @@ from sec_parser.semantic_elements.abstract_semantic_elements import (
     AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    ContentlessElement,
     InvalidTitleLevelError,
     RootSectionElement,
     TextElement,
@@ -59,6 +61,8 @@ __all__ = [
     "AbstractSECDataRetriever",
     "AbstractSemanticElement",
     "BaseFactory",
+    "ContentlessPlugin",
+    "ContentlessElement",
     "DocumentNotFoundError",
     "DocumentType",
     "DocumentTypeNotSupportedError",

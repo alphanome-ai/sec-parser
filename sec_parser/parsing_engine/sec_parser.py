@@ -4,11 +4,14 @@ from typing import TYPE_CHECKING
 
 from sec_parser.exceptions.core_exceptions import SecParserRuntimeError
 from sec_parser.parsing_engine.html_parser import AbstractHtmlParser, HtmlParser
+from sec_parser.parsing_plugins.contentless_plugin import ContentlessPlugin
 from sec_parser.parsing_plugins.parsing_plugin_factory import ParsingPluginFactory
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.text_plugin import TextPlugin
 from sec_parser.parsing_plugins.title_plugin import TitlePlugin
-from sec_parser.semantic_elements.semantic_elements import UnclaimedElement
+from sec_parser.semantic_elements.semantic_elements import (
+    UnclaimedElement,
+)
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -43,11 +46,12 @@ class SecParser:
     def get_default_plugins(
         self,
     ) -> list[type[AbstractParsingPlugin] | ParsingPluginFactory]:
-        return [RootSectionPlugin, TitlePlugin, TextPlugin]
+        return [RootSectionPlugin, TitlePlugin, TextPlugin, ContentlessPlugin]
 
     def parse(self, html: str) -> list[AbstractSemanticElement]:
         plugins = [factory.create() for factory in self._plugin_factories]
         root_tags = self._html_parser.get_root_tags(html)
+
         elements: list[AbstractSemanticElement] = [
             UnclaimedElement(tag) for tag in root_tags
         ]

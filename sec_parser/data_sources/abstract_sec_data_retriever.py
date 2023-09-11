@@ -42,7 +42,7 @@ class AbstractSECDataRetriever(ABC):
 
     def get_html_from_url(
         self: AbstractSECDataRetriever,
-        doc_type: DocumentType,
+        doc_type: DocumentType | str,
         *,
         url: str,
         sections: Iterable[SectionType | str] | None = None,
@@ -56,7 +56,7 @@ class AbstractSECDataRetriever(ABC):
 
     def get_latest_html_from_ticker(
         self: AbstractSECDataRetriever,
-        doc_type: DocumentType,
+        doc_type: DocumentType | str,
         *,
         ticker: str,
         sections: Iterable[SectionType | str] | None = None,

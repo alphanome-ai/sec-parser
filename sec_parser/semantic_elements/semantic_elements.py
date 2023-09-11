@@ -29,5 +29,9 @@ class TextElement(AbstractSemanticElement):
     pass
 
 
+class ContentlessElement(AbstractSemanticElement):
+    pass
+
+
 class InvalidTitleLevelError(SecParserValueError):
     pass
