@@ -1,3 +1,10 @@
+## 0.6.1 (2023-09-11)
+
+### Refactor
+
+- make the library well-structured
+- improve config values handling
+
 ## 0.6.0 (2023-09-11)
 
 ### Feat
