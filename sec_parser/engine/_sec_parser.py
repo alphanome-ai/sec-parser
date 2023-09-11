@@ -28,14 +28,14 @@ class SecParser:
         *,
         plugins: Iterable[type[AbstractParsingPlugin] | PluginFactory] | None = None,
         html_parser: AbstractHtmlParser | None = None,
-        max_iterations: int = 10,
+        max_iterations: int | None = None,
     ) -> None:
         plugins = plugins or self.get_default_plugins()
         self._plugin_factories = [
             f if isinstance(f, PluginFactory) else PluginFactory(f) for f in plugins
         ]
         self._html_parser = html_parser or HtmlParser()
-        self._max_iterations = max_iterations
+        self._max_iterations = max_iterations or 10
 
     def get_default_plugins(self) -> list[type[AbstractParsingPlugin] | PluginFactory]:
         return [RootSectionPlugin, TitlePlugin, TextPlugin]
@@ -48,11 +48,17 @@ class SecParser:
         ]
 
         for _ in range(self._max_iterations):
-            modifications = [plugin.apply(elements) for plugin in plugins]
+            modifications: list[bool] = []
+            for plugin in plugins:
+                modification = plugin.apply(elements)
+                modifications.append(modification)
             if not any(modifications):
                 break
         else:
-            msg = f"Maximum iterations ({self._max_iterations}) reached."
+            msg = (
+                f"Parser could not converge after {self._max_iterations}"
+                " iterations, possible infinite loop."
+            )
             raise MaxIterationsReachedError(msg)
 
         return elements
