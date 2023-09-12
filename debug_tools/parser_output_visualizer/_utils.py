@@ -69,3 +69,7 @@ def remove_ix_tags(html):
     for tag in ix_tags:
         tag.unwrap()
     return str(soup)
+
+
+def add_spaces(text):
+    return re.sub(r"(\w)([A-Z0-9])", r"\1 \2", text)

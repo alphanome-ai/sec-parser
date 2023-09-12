@@ -43,3 +43,17 @@ class SecApiIoApiKeyGetter:
 def st_radio(label: str, options: list[str], *args, **kwargs) -> str:
     selected_value = st.radio(label=label, options=options, *args, **kwargs)
     return generate_bool_list(options.index(selected_value), len(options))
+
+
+def st_multiselect_allow_long_titles():
+    st.markdown(  # Make the multiselect fit long text options
+        """
+        <style>
+            .stMultiSelect [data-baseweb=select] span{
+                max-width: 500px;
+                font-size: 1rem;
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )

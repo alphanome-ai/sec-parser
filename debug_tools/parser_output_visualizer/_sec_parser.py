@@ -32,3 +32,14 @@ def download_html_from_url(
 ) -> str:
     retriever = sp.SecApiIoDataRetriever(api_key=api_key_getter.get())
     return retriever.get_html_from_url(doc, url=url, sections=sections)
+
+
+def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
+    parser = sp.SecParser()
+    elements = parser.parse(html)
+    return elements
+
+
+def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
+    tree_builder = sp.TreeBuilder()
+    return tree_builder.build(elements)

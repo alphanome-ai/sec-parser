@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 import httpx
@@ -69,10 +70,14 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         html_parts = []
         sections = sections or FORM_SECTIONS[doc_type]
         for section in sections:
+            title = SECTION_NAMES[section]
+            title = re.sub(r"[^a-zA-Z0-9' ]+", "", title)
             separator_html = (
-                f"""<document-root-section id="{section.value}" """
-                """style="display: none;">"""
-                f"""{SECTION_NAMES[section]}</document-root-section>"""
+                "<document-root-section"
+                f' id="{section.value}"'
+                ' style="display: none;"'
+                f' title="{title}">'
+                "</document-root-section>"
             )
             html_parts.append(separator_html)
             section_html = self._call_sections_extractor_api(
