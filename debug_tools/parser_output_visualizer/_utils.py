@@ -12,7 +12,7 @@ def _generate_filename(selected_kwargs: Dict[str, Any], args_hash: str) -> str:
     str_elements = [
         value for key, value in selected_kwargs.items() if isinstance(value, str)
     ] + [
-        f"{key}={','.join(str(v) for v in value)}"
+        f"{key}={'-'.join(str(v) for v in value)}"
         for key, value in selected_kwargs.items()
         if isinstance(value, list) and value
     ]
