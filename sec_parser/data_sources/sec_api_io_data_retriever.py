@@ -70,7 +70,8 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         sections = sections or FORM_SECTIONS[doc_type]
         for section in sections:
             separator_html = (
-                f"""<document-root-section id="{section.value}">"""
+                f"""<document-root-section id="{section.value}" """
+                """style="display: none;">"""
                 f"""{SECTION_NAMES[section]}</document-root-section>"""
             )
             html_parts.append(separator_html)

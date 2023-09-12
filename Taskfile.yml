@@ -17,3 +17,8 @@ tasks:
   prepare: 
     desc: Lint the code and run all checks
     deps: [test, lint]
+
+  visualize-output:
+    desc: Run the parser output visualizer
+    cmds:
+      - streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true

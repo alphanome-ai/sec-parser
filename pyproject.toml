@@ -7,7 +7,7 @@ readme = "README.md"
 
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
 frozendict = "^2.3.8"
 beautifulsoup4 = "^4.12.2"
 lxml = "^4.9.3"
@@ -23,6 +23,9 @@ ruff = "^0.0.287"
 pytest-cov = "^4.1.0"
 types-requests = "^2.31.0.2"
 types-beautifulsoup4 = "^4.12.0.6"
+streamlit = "^1.26.0"
+python-dotenv = "^1.0.0"
+watchdog = "^3.0.0"
 
 
 [tool.commitizen]

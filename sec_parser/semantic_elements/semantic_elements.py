@@ -22,7 +22,7 @@ class TitleElement(AbstractSemanticElement):
         if level < self.MIN_LEVEL:
             msg = f"Level must be equal or greater than {self.MIN_LEVEL}"
             raise InvalidTitleLevelError(msg)
-        self.level = self.MIN_LEVEL
+        self.level = level
 
 
 class TextElement(AbstractSemanticElement):
