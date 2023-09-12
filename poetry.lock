@@ -1721,6 +1721,19 @@ watchdog = {version = ">=2.1.5", markers = "platform_system != \"Darwin\""}
 snowflake = ["snowflake-snowpark-python"]
 
 [[package]]
+name = "streamlit-antd-components"
+version = "0.1.21"
+description = "streamlit components of antd design"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "streamlit_antd_components-0.1.21-py3-none-any.whl", hash = "sha256:dcc545aab7e781aa9a31658fcea491cf0512b3b26a44cd30ba98ceac255a3591"},
+]
+
+[package.dependencies]
+streamlit = ">=1.12.0"
+
+[[package]]
 name = "tenacity"
 version = "8.2.3"
 description = "Retry code until it succeeds"
@@ -2029,4 +2042,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "9cd7a98b93ef8b574a88afed392ecb49eb1cd9ac8477d4d7eb65b64e6b220c04"
+content-hash = "8366fe8cea846735512d581ea7422f21a9ad302eb965a9def2d6c322c422fa12"

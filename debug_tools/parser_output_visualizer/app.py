@@ -10,6 +10,7 @@ from _sec_parser import (
 )
 from _utils import remove_ix_tags
 from dotenv import load_dotenv
+import streamlit_antd_components as sac
 
 load_dotenv()
 
@@ -17,7 +18,7 @@ load_dotenv()
 st.set_page_config(
     page_icon="🏦",
     page_title="SEC Parser Output Visualizer",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="expanded",
 )
 st_hide_streamlit_element("class", "stDeployButton")
@@ -27,18 +28,27 @@ with st.sidebar:
     sec_api_io_key_getter = SecApiIoApiKeyGetter(st.container())
 
     data_source_options = [
-        "Find Latest by Ticker",
+        "Select Ticker to Find Latest",
+        "Enter Ticker to Find Latest",
         "Enter SEC EDGAR URL",
     ]
-    ticker, url = st_radio("Select 10-Q Report Data Source", data_source_options)
-    if ticker:
+    select_ticker, find_ticker, url = st_radio(
+        "Select 10-Q Report Data Source", data_source_options
+    )
+    ticker, url = None, None
+    if select_ticker:
+        ticker = st.selectbox(
+            label="Select Ticker",
+            options=["AAPL", "GOOG"],
+        )
+    elif find_ticker:
         ticker = st.text_input(
-            label="Find Latest by Ticker",
+            label="Enter Ticker",
             value="AAPL",
         )
     else:
         url = st.text_input(
-            label="Enter SEC EDGAR URL",
+            label="Enter URL",
             value="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm",
         )
 
@@ -60,9 +70,27 @@ else:
         sec_api_io_key_getter, doc="10-Q", url=url, sections=sections
     )
 
-
-with st.expander("Hello World", expanded=True):
-    st.write("Hello world!")
-
-
-st.markdown(remove_ix_tags(html), unsafe_allow_html=True)
+view_step_options = [
+    "Original From SEC EDGAR",
+    "Parsed Semantic Elements",
+    "Nested Semantic Tree",
+]
+selected_step = 1 + sac.steps(
+    [
+        sac.StepsItem(
+            title=k.partition(" ")[0],
+            description=k.partition(" ")[2],
+        )
+        for k in view_step_options
+    ],
+    index=0,
+    format_func=None,
+    placement="horizontal",
+    size="default",
+    direction="horizontal",
+    type="default",  # default, navigation
+    dot=False,
+    return_index=True,
+)
+if selected_step == 1:
+    st.markdown(remove_ix_tags(html), unsafe_allow_html=True)

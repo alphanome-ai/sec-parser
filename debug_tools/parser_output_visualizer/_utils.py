@@ -3,6 +3,7 @@ import hashlib
 import os
 import pickle
 from functools import wraps
+import re
 from typing import Any, Callable, Dict
 
 import bs4
@@ -10,7 +11,9 @@ import bs4
 
 def _generate_filename(selected_kwargs: Dict[str, Any], args_hash: str) -> str:
     str_elements = [
-        value for key, value in selected_kwargs.items() if isinstance(value, str)
+        v
+        for key, value in selected_kwargs.items()
+        if isinstance(value, str) and len(v := re.sub(r"[^a-zA-Z0-9]+", "", value)) < 10
     ] + [
         f"{key}={'-'.join(str(v) for v in value)}"
         for key, value in selected_kwargs.items()

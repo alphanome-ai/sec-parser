@@ -21,7 +21,7 @@ def download_html_from_ticker(
     return retriever.get_latest_html_from_ticker(doc, ticker=ticker, sections=sections)
 
 
-@cache_to_file(cache_by_keys={"doc", "sections"}, cache_dir=".cache")
+@cache_to_file(cache_by_keys={"url", "doc", "sections"}, cache_dir=".cache")
 @st.cache_resource(hash_funcs={SecApiIoApiKeyGetter: lambda _: None})
 def download_html_from_url(
     api_key_getter: SecApiIoApiKeyGetter,
