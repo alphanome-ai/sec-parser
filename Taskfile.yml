@@ -21,4 +21,5 @@ tasks:
   visualize-output:
     desc: Run the parser output visualizer
     cmds:
-      - streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
+      # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
+      - PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
