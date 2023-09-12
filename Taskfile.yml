@@ -1,11 +1,11 @@
 version: '3'
 
 tasks:
-  test:
-    desc: Run tests and check code coverage
+  unit:
+    desc: Run unit tests and check code coverage
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
-      - pytest --cov --cov-report=lcov:lcov.info tests/
+      - pytest --cov --cov-report=lcov:lcov.info tests/unit/
       - coverage report --skip-covered --fail-under=0
 
   lint:
@@ -16,10 +16,15 @@ tasks:
 
   prepare: 
     desc: Lint the code and run all checks
-    deps: [test, lint]
+    deps: [unit, lint]
 
   visualize-output:
     desc: Run the parser output visualizer
     cmds:
       # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
       - PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
+
+  speed:
+    desc: Run speed tests
+    cmds:
+      - python -m tests.e2e.speed.parse
