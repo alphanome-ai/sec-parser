@@ -6,7 +6,10 @@ from _ui import (
     SecApiIoApiKeyGetter,
     st_radio,
     st_multiselect_allow_long_titles,
+    st_expander_allow_nested,
 )
+
+st_expander_allow_nested()
 from _sec_parser import (
     download_html_from_ticker,
     download_html_from_url,
@@ -31,7 +34,7 @@ st_hide_streamlit_element("class", "stDeployButton")
 st_multiselect_allow_long_titles()
 
 with st.sidebar:
-    st.write("# Download Report")
+    st.write("# Select Report")
     sec_api_io_key_getter = SecApiIoApiKeyGetter(st.container())
 
     data_source_options = [
@@ -90,7 +93,7 @@ selected_step = 1 + sac.steps(
         )
         for k in view_step_options
     ],
-    index=1,
+    index=2,
     format_func=None,
     placement="horizontal",
     size="default",
@@ -119,9 +122,14 @@ def get_pretty_class_name(element_cls, element=None):
 if selected_step > 1:
     elements = get_semantic_elements(html)
     with st.sidebar:
-        st.write("# Semantic Elements")
-        do_element_render_html = st.checkbox("Render HTML", value=True)
-        do_expand_all = st.checkbox("Expand All", value=False)
+        st.write("# Adjust View")
+        left, right = st.columns(2)
+        with left:
+            do_element_render_html = st.checkbox("Render HTML", value=True)
+        with right:
+            do_expand_all = False
+            if selected_step == 2:
+                do_expand_all = st.checkbox("Expand All", value=False)
 
         counted_element_types = Counter(element.__class__ for element in elements)
         selected_types = st.multiselect(
@@ -134,18 +142,39 @@ if selected_step > 1:
 
 if selected_step > 2:
     tree = get_semantic_tree(elements)
+    with right:
+        expand_depth = st.number_input("Expand Depth", min_value=0, value=0)
 
 if selected_step == 1:
     st.markdown(remove_ix_tags(html), unsafe_allow_html=True)
 
+
+def render_semantic_element(
+    element: sp.AbstractSemanticElement,
+):
+    bs4_tag = element.html_tag.bs4
+    if do_element_render_html:
+        element_html = remove_ix_tags(str(bs4_tag))
+        st.markdown(element_html, unsafe_allow_html=True)
+    else:
+        st.code(bs4_tag.prettify(), language="html")
+
+
+def render_tree_node(tree_node: sp.TreeNode, _current_depth=0):
+    element = tree_node.semantic_element
+    expander_title = get_pretty_class_name(element.__class__, element)
+    with st.expander(expander_title, expanded=expand_depth > _current_depth):
+        render_semantic_element(element)
+        for child in tree_node.children:
+            render_tree_node(child, _current_depth=_current_depth + 1)
+
+
 if selected_step == 2:
     for element in elements:
-        with st.expander(
-            get_pretty_class_name(element.__class__, element), expanded=do_expand_all
-        ):
-            bs4_tag = element.html_tag.bs4
-            if do_element_render_html:
-                element_html = remove_ix_tags(str(bs4_tag))
-                st.markdown(element_html, unsafe_allow_html=True)
-            else:
-                st.code(bs4_tag.prettify(), language="html")
+        expander_title = get_pretty_class_name(element.__class__, element)
+        with st.expander(expander_title, expanded=do_expand_all):
+            render_semantic_element(element)
+
+if selected_step == 3:
+    for root_node in tree.root_nodes:
+        render_tree_node(root_node)

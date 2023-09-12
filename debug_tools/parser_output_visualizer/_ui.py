@@ -57,3 +57,7 @@ def st_multiselect_allow_long_titles():
         """,
         unsafe_allow_html=True,
     )
+
+
+def st_expander_allow_nested():
+    import streamlit_nested_layout
