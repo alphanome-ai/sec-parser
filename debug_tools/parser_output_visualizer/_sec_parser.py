@@ -9,7 +9,9 @@ import streamlit as st
 
 
 @cache_to_file(cache_by_keys={"ticker", "doc", "sections"}, cache_dir=".cache")
-@st.cache_resource(hash_funcs={SecApiIoApiKeyGetter: lambda _: None})
+@st.cache_resource(
+    hash_funcs={SecApiIoApiKeyGetter: lambda _: None}, experimental_allow_widgets=True
+)
 def download_html_from_ticker(
     api_key_getter: SecApiIoApiKeyGetter,
     *,
@@ -22,7 +24,9 @@ def download_html_from_ticker(
 
 
 @cache_to_file(cache_by_keys={"url", "doc", "sections"}, cache_dir=".cache")
-@st.cache_resource(hash_funcs={SecApiIoApiKeyGetter: lambda _: None})
+@st.cache_resource(
+    hash_funcs={SecApiIoApiKeyGetter: lambda _: None}, experimental_allow_widgets=True
+)
 def download_html_from_url(
     api_key_getter: SecApiIoApiKeyGetter,
     *,
