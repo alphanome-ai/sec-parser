@@ -2,13 +2,13 @@ import streamlit as st
 from _ui import (
     st_hide_streamlit_element,
     SecApiIoApiKeyGetter,
-    st_display_html,
     st_radio,
 )
 from _sec_parser import (
     download_html_from_ticker,
     download_html_from_url,
 )
+from _utils import remove_ix_tags
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -64,4 +64,5 @@ else:
 with st.expander("Hello World", expanded=True):
     st.write("Hello world!")
 
-st_display_html(html)
+
+st.markdown(remove_ix_tags(html), unsafe_allow_html=True)

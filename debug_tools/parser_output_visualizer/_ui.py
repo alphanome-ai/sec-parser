@@ -40,14 +40,6 @@ class SecApiIoApiKeyGetter:
             return self.api_key
 
 
-def escape_markdown(text: str) -> str:
-    return text.replace("$", "\$")
-
-
-def st_display_html(html: str) -> None:
-    st.markdown(escape_markdown(html), unsafe_allow_html=True)
-
-
 def st_radio(label: str, options: list[str], *args, **kwargs) -> str:
     selected_value = st.radio(label=label, options=options, *args, **kwargs)
     return generate_bool_list(options.index(selected_value), len(options))
