@@ -74,6 +74,8 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
             title = re.sub(r"[^a-zA-Z0-9' ]+", "", title)
             separator_html = (
                 "<document-root-section"
+                ' comment="This tag was added by '
+                'SecApiIoDataRetriever class based on sec-api.io API"'
                 f' id="{section.value}"'
                 ' style="display: none;"'
                 f' title="{title}">'

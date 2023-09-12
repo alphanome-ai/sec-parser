@@ -117,7 +117,6 @@ if __name__ == "__main__":
             None,
         )
         char_count = len(example_doc)
-        print(char_count)
         threshold = char_count * ALLOWED_MICROSECONDS_PER_CHAR / 1_000_000
 
         p95_percentage = (p95_time / threshold) * 100

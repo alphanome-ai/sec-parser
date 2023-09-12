@@ -57,11 +57,16 @@ class SecParser:
         ]
 
         for _ in range(self._max_iterations):
-            modifications: list[bool] = []
+            modified = False
             for plugin in plugins:
-                modification = plugin.apply(elements)
-                modifications.append(modification)
-            if not any(modifications):
+                # Caution: The "elements" list can be modified
+                # in-place without any safeguards in the plugin.
+                # This is intentional to allow for more efficient parsing.
+                result = plugin.apply(elements)
+                if result is not None:
+                    modified = True
+                    elements = result
+            if not modified:
                 break
         else:
             msg = (
