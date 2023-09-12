@@ -43,7 +43,13 @@ def cache_to_file(cache_by_keys: set[str], cache_dir: str) -> Callable:
 
             if os.path.exists(cache_file_path):
                 with open(cache_file_path, "rb") as f:
-                    return pickle.load(f)
+                    result = pickle.load(f)
+                    if isinstance(result, str) and not os.path.exists(
+                        cache_file_path.replace(".pkl", ".txt")
+                    ):
+                        with open(cache_file_path.replace(".pkl", ".txt"), "w") as f:
+                            f.write(func(*args, **kwargs))
+                    return result
 
             result = func(*args, **kwargs)
             if isinstance(result, str):
