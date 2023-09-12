@@ -101,16 +101,17 @@ selected_step = 1 + sac.steps(
 )
 
 
-def get_pretty_class_name(element_cls):
+def get_pretty_class_name(element_cls, element=None):
     def get_emoji(cls):
         return {
             sp.UnclaimedElement: "🍃",
-        }.get(
-            cls, "✨"
-        )  # star
+        }.get(cls, "✨")
 
     emoji = get_emoji(element_cls)
-    class_name = f"**{add_spaces(element_cls.__name__)}**"
+    level = ""
+    if element and hasattr(element, "level") and element.level > 1:
+        level = f" (Level {element.level})"
+    class_name = f"**{add_spaces(element_cls.__name__)}{level}**"
     pretty_name = f"{emoji} {class_name}"
     return pretty_name
 
@@ -131,17 +132,16 @@ if selected_step > 1:
         )
         elements = [e for e in elements if e.__class__ in selected_types]
 
-
 if selected_step > 2:
     tree = get_semantic_tree(elements)
 
-
 if selected_step == 1:
     st.markdown(remove_ix_tags(html), unsafe_allow_html=True)
+
 if selected_step == 2:
     for element in elements:
         with st.expander(
-            get_pretty_class_name(element.__class__), expanded=do_expand_all
+            get_pretty_class_name(element.__class__, element), expanded=do_expand_all
         ):
             bs4_tag = element.html_tag.bs4
             if do_element_render_html:
