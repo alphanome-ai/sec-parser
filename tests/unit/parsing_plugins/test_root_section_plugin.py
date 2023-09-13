@@ -7,12 +7,12 @@ from tests.unit.parsing_plugins._utils import get_elements_from_html
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 
 
-# Main Test Function
 @pytest.mark.parametrize(
     "html_str, expected_types, expected_tags",
     [
         (
-            """<document-root-section></document-root-section>
+            """
+               <document-root-section></document-root-section>
                <b>0</b>
                <p>1</p>
                <div>

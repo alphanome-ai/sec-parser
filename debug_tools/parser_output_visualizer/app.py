@@ -28,6 +28,12 @@ def streamlit_app(
     run_page_config=True,
     extra_steps: list["ProcessStep"] | None = None,
 ) -> "StreamlitAppReturn":
+    # Returned values
+    html = None
+    elements = None
+    tree = None
+    selected_step = None
+
     if run_page_config:
         st.set_page_config(
             page_icon="🏦",
