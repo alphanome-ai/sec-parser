@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.data_sources.sec_api_io_data_retriever import SecApiIoDataRetriever
+from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
 from sec_parser.parsing_engine.sec_parser import SecParser
 from sec_parser.semantic_tree_transformations.tree_builder import TreeBuilder
 
@@ -12,9 +12,13 @@ if TYPE_CHECKING:
 
 
 def parse_latest(
-    doc_type: DocumentType, /, *, ticker: str, sec_api_io_api_key: str | None = None,
+    doc_type: DocumentType,
+    /,
+    *,
+    ticker: str,
+    secapio_api_key: str | None = None, # sec-api.io API key
 ) -> SemanticTree:
-    retriever = SecApiIoDataRetriever(api_key=sec_api_io_api_key)
+    retriever = SecapioDataRetriever(api_key=secapio_api_key)
     html = retriever.get_latest_html_from_ticker(doc_type, ticker=ticker)
 
     parser = SecParser()

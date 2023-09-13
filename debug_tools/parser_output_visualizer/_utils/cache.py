@@ -1,12 +1,11 @@
 from __future__ import annotations
+
 import hashlib
 import os
 import pickle
-from functools import wraps
 import re
+from functools import wraps
 from typing import Any, Callable, Dict
-
-import bs4
 
 
 def _generate_filename(selected_kwargs: Dict[str, Any], args_hash: str) -> str:
@@ -63,19 +62,3 @@ def cache_to_file(cache_by_keys: set[str], cache_dir: str) -> Callable:
         return wrapper
 
     return actual_decorator
-
-
-def generate_bool_list(idx, length):
-    return [i == idx for i in range(length)]
-
-
-def remove_ix_tags(html):
-    soup = bs4.BeautifulSoup(html, "lxml")
-    ix_tags = soup.find_all(name=lambda tag: tag and tag.name.startswith("ix:"))
-    for tag in ix_tags:
-        tag.unwrap()
-    return str(soup)
-
-
-def add_spaces(text):
-    return re.sub(r"(\w)([A-Z0-9])", r"\1 \2", text)

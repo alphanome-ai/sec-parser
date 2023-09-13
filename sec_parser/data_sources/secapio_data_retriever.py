@@ -24,12 +24,14 @@ if TYPE_CHECKING:
     )
 
 
-class SecApiIoDataRetriever(AbstractSECDataRetriever):
+class SecapioDataRetriever(AbstractSECDataRetriever):
+    """Retrieves data from sec-api.io API."""
+
     SUPPORTED_DOCUMENT_TYPES = frozenset({DocumentType.FORM_10Q})
-    API_KEY_ENV_VAR_NAME = "SEC_API_IO_API_KEY"
+    API_KEY_ENV_VAR_NAME = "SECAPIIO_API_KEY"
 
     def __init__(
-        self: SecApiIoDataRetriever,
+        self: SecapioDataRetriever,
         *,
         api_key: str | None = None,
         timeout_s: int | None = None,
@@ -38,7 +40,7 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         self._timeout_s = timeout_s or 10
 
     def _get_html_from_url(
-        self: SecApiIoDataRetriever,
+        self: SecapioDataRetriever,
         doc_type: DocumentType,
         *,
         url: str,
@@ -47,7 +49,7 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         return self._get_sections_html(doc_type, url, sections)
 
     def _get_latest_html_from_ticker(
-        self: SecApiIoDataRetriever,
+        self: SecapioDataRetriever,
         doc_type: DocumentType,
         *,
         ticker: str,
@@ -62,7 +64,7 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         return self._get_sections_html(doc_type, url, sections)
 
     def _get_sections_html(
-        self: SecApiIoDataRetriever,
+        self: SecapioDataRetriever,
         doc_type: DocumentType,
         url: str,
         sections: Iterable[SectionType] | None = None,
@@ -90,7 +92,7 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         return "\n".join(html_parts)
 
     def _call_sections_extractor_api(
-        self: SecApiIoDataRetriever,
+        self: SecapioDataRetriever,
         url: str,
         section: SectionType,
     ) -> str:
@@ -109,7 +111,7 @@ class SecApiIoDataRetriever(AbstractSECDataRetriever):
         return response.text
 
     def _call_latest_report_metadata_api(
-        self: SecApiIoDataRetriever,
+        self: SecapioDataRetriever,
         doc_type: DocumentType,
         *,
         key: str,

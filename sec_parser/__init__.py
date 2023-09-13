@@ -5,7 +5,6 @@ from sec_parser.data_sources.abstract_sec_data_retriever import (
     InvalidTickerError,
     InvalidURLError,
 )
-from sec_parser.data_sources.sec_api_io_data_retriever import SecApiIoDataRetriever
 from sec_parser.data_sources.sec_edgar_types import (
     FORM_SECTIONS,
     SECTION_NAMES,
@@ -15,6 +14,7 @@ from sec_parser.data_sources.sec_edgar_types import (
     SectionType,
     validate_sections,
 )
+from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
 from sec_parser.entry_facades import parse_latest
 from sec_parser.exceptions.core_exceptions import (
     SecParserRuntimeError,
@@ -81,7 +81,7 @@ __all__ = [
     "RootSectionRule",
     "RuleFactory",
     "SECTION_NAMES",
-    "SecApiIoDataRetriever",
+    "SecapioDataRetriever",
     "SecParser",
     "SecParserRuntimeError",
     "SecParserValueError",
