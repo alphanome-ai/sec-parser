@@ -54,6 +54,9 @@ class SecParser(AbstractSecParser):
 
     def parse(self, html: str) -> list[AbstractSemanticElement]:
         plugins = [factory.create() for factory in self._plugin_factories]
+        # The parsing process is designed to handle the primarily
+        # flat structure of SEC filings. Hence, our focus is on
+        # the root tags of the HTML document.
         root_tags = self._root_tag_parser.parse(html)
 
         elements: list[AbstractSemanticElement] = [
