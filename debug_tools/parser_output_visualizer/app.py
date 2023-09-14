@@ -1,10 +1,10 @@
 from collections import Counter
 from dataclasses import dataclass
+from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 
 import sec_parser as sp
 import streamlit as st
 import streamlit_antd_components as sac
-from _secapio_api_key_getter import SecapioApiKeyGetter
 from _sec_parser_library_facade import (
     download_html_from_ticker,
     download_html_from_url,
@@ -45,8 +45,17 @@ def streamlit_app(
     st_hide_streamlit_element("class", "stDeployButton")
     st_multiselect_allow_long_titles()
 
-    sec_api_io_key_getter = SecapioApiKeyGetter(st.container())
     with st.sidebar:
+        st.write(
+            "We're currently using *sec-api.io* to handle the removal of the title 10-Q page and to download 10-Q Section HTML files. In the future, we aim to download these HTML files directly from the SEC EDGAR. For now, you can get a free API key from [sec-api.io](https://sec-api.io) and input it below."
+        )
+        secapio_api_key = st.text_input(
+            type="password",
+            label="Enter your API key here:",
+        )
+        msg = "**Note:** We suggest setting the `SECAPIO_API_KEY` environment variable, possibly in an `.env` file. This method allows you to utilize the API key without the need for manual entry each time."
+        st.note(msg)
+
         st.write("# Select Report")
         data_source_options = [
             "Select Ticker to Find Latest",
@@ -83,11 +92,11 @@ def streamlit_app(
 
     if ticker:
         html = download_html_from_ticker(
-            sec_api_io_key_getter, doc="10-Q", ticker=ticker, sections=sections
+            NotHashed(secapio_api_key), doc="10-Q", ticker=ticker, sections=sections
         )
     else:
         html = download_html_from_url(
-            sec_api_io_key_getter, doc="10-Q", url=url, sections=sections
+            NotHashed(secapio_api_key), doc="10-Q", url=url, sections=sections
         )
 
     process_steps = [
