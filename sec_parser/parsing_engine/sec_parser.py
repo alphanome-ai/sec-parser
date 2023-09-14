@@ -3,7 +3,11 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.exceptions.core_exceptions import SecParserRuntimeError
-from sec_parser.parsing_engine.html_parser import AbstractHtmlParser, HtmlParser
+from sec_parser.parsing_engine.abstract_sec_parser import AbstractSecParser
+from sec_parser.parsing_engine.root_tag_parser import (
+    AbstractRootTagParser,
+    RootTagParser,
+)
 from sec_parser.parsing_plugins.contentless_plugin import ContentlessPlugin
 from sec_parser.parsing_plugins.parsing_plugin_factory import ParsingPluginFactory
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
@@ -26,13 +30,13 @@ class MaxIterationsReachedError(SecParserRuntimeError):
     pass
 
 
-class SecParser:
+class SecParser(AbstractSecParser):
     def __init__(
         self,
         *,
         plugins: Iterable[type[AbstractParsingPlugin] | ParsingPluginFactory]
         | None = None,
-        html_parser: AbstractHtmlParser | None = None,
+        root_tag_parser: AbstractRootTagParser | None = None,
         max_iterations: int | None = None,
     ) -> None:
         plugins = plugins or self.get_default_plugins()
@@ -40,7 +44,7 @@ class SecParser:
             f if isinstance(f, ParsingPluginFactory) else ParsingPluginFactory(f)
             for f in plugins
         ]
-        self._html_parser = html_parser or HtmlParser()
+        self._root_tag_parser = root_tag_parser or RootTagParser()
         self._max_iterations = max_iterations or 10
 
     def get_default_plugins(
@@ -50,7 +54,7 @@ class SecParser:
 
     def parse(self, html: str) -> list[AbstractSemanticElement]:
         plugins = [factory.create() for factory in self._plugin_factories]
-        root_tags = self._html_parser.get_root_tags(html)
+        root_tags = self._root_tag_parser.parse(html)
 
         elements: list[AbstractSemanticElement] = [
             UnclaimedElement(tag) for tag in root_tags

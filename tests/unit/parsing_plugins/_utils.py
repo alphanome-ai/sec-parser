@@ -1,6 +1,6 @@
 import pytest
 
-from sec_parser.parsing_engine.html_parser import HtmlParser
+from sec_parser.parsing_engine.root_tag_parser import RootTagParser
 from sec_parser.semantic_elements.abstract_semantic_elements import (
     AbstractSemanticElement,
 )
@@ -8,8 +8,8 @@ from sec_parser.semantic_elements.semantic_elements import UnclaimedElement
 
 
 def get_elements_from_html(html: str) -> list[AbstractSemanticElement]:
-    html_parser = HtmlParser()
-    root_tags = html_parser.get_root_tags(html)
+    html_parser = RootTagParser()
+    root_tags = html_parser.parse(html)
     elements: list[AbstractSemanticElement] = [
         UnclaimedElement(tag) for tag in root_tags
     ]

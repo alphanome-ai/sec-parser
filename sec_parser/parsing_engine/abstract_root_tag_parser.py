@@ -7,7 +7,7 @@ if TYPE_CHECKING:
     from sec_parser.parsing_engine.html_tag import HtmlTag
 
 
-class AbstractHtmlParser(ABC):
+class AbstractRootTagParser(ABC):
     @abstractmethod
-    def get_root_tags(self, html: str) -> list[HtmlTag]:
+    def parse(self, html: str) -> list[HtmlTag]:
         raise NotImplementedError

@@ -20,8 +20,11 @@ from sec_parser.exceptions.core_exceptions import (
     SecParserRuntimeError,
     SecParserValueError,
 )
-from sec_parser.parsing_engine.html_parser import AbstractHtmlParser, HtmlParser
 from sec_parser.parsing_engine.html_tag import HtmlTag
+from sec_parser.parsing_engine.root_tag_parser import (
+    AbstractRootTagParser,
+    RootTagParser,
+)
 from sec_parser.parsing_engine.sec_parser import MaxIterationsReachedError, SecParser
 from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
 from sec_parser.parsing_plugins.contentless_plugin import ContentlessPlugin
@@ -55,7 +58,7 @@ from sec_parser.utils.env_var_helpers import ValueNotSetError, get_value_or_env_
 
 __all__ = [
     "AbstractContainerElement",
-    "AbstractHtmlParser",
+    "AbstractRootTagParser",
     "AbstractParsingPlugin",
     "AbstractRule",
     "AbstractSECDataRetriever",
@@ -67,7 +70,7 @@ __all__ = [
     "DocumentType",
     "DocumentTypeNotSupportedError",
     "FORM_SECTIONS",
-    "HtmlParser",
+    "RootTagParser",
     "HtmlTag",
     "InvalidDocumentTypeError",
     "InvalidSectionTypeError",

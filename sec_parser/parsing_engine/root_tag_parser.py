@@ -4,15 +4,15 @@ import warnings
 
 import bs4
 
-from sec_parser.parsing_engine.abstract_html_parser import AbstractHtmlParser
+from sec_parser.parsing_engine.abstract_root_tag_parser import AbstractRootTagParser
 from sec_parser.parsing_engine.html_tag import HtmlTag
 
 
-class HtmlParser(AbstractHtmlParser):
+class RootTagParser(AbstractRootTagParser):
     def __init__(self, parser_backend: str | None = None) -> None:
         self._parser_backend = (parser_backend or "lxml").lower().strip()
 
-    def get_root_tags(self, html: str) -> list[HtmlTag]:
+    def parse(self, html: str) -> list[HtmlTag]:
         soup = bs4.BeautifulSoup(html, self._parser_backend)
         if soup.body is None:
             return []
