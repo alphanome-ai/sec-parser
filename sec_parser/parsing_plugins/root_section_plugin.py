@@ -54,9 +54,11 @@ class RootSectionPlugin(AbstractParsingPlugin):
         elements: list[AbstractSemanticElement],
         index: int,
     ) -> tuple[AbstractSemanticElement, bool]:
+        # Handle the case where the document root section is the last element
         if index + 1 >= len(elements):
             msg = "Document root section tag found but no following element."
             raise RuntimeError(msg)
+
         return RootSectionElement(elements[index + 1].html_tag), True
 
     def _remove_inner_document_root_section(
