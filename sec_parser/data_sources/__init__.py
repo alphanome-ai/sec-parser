@@ -14,7 +14,12 @@ from sec_parser.data_sources.sec_edgar_types import (
     SectionType,
     validate_sections,
 )
-from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
+from sec_parser.data_sources.secapio_data_retriever import (
+    SecapioApiKeyInvalidError,
+    SecapioApiKeyNotSetError,
+    SecapioDataRetriever,
+    SecapioRequestError,
+)
 
 __all__ = [
     "SecapioDataRetriever",
@@ -30,4 +35,7 @@ __all__ = [
     "FORM_SECTIONS",
     "SECTION_NAMES",
     "validate_sections",
+    "SecapioApiKeyNotSetError",
+    "SecapioApiKeyInvalidError",
+    "SecapioRequestError",
 ]
