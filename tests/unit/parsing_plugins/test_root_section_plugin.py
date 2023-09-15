@@ -1,7 +1,7 @@
 import pytest
 from sec_parser.semantic_elements.semantic_elements import (
     RootSectionElement,
-    UnclaimedElement,
+    UndeterminedElement,
 )
 from tests.unit.parsing_plugins._utils import get_elements_from_html
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
@@ -23,9 +23,9 @@ from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
             """,
             [
                 RootSectionElement,
-                UnclaimedElement,
+                UndeterminedElement,
                 RootSectionElement,
-                UnclaimedElement,
+                UndeterminedElement,
             ],
             ["b", "p", "div", "span"],
         )
@@ -37,12 +37,9 @@ def test_root_section_plugin(html_str, expected_types, expected_tags):
     plugin = RootSectionPlugin()
 
     # Act
-    processed_elements = plugin.apply(elements)
-    second_run = plugin.apply(processed_elements)
+    processed_elements = plugin.transform(elements)
 
     # Assert
-    assert second_run is None  # Plugin should only run once
-
     assert len(processed_elements) == len(expected_types)
     for ele, expected_type, expected_tag in zip(
         processed_elements, expected_types, expected_tags

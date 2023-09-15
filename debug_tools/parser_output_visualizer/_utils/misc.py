@@ -31,7 +31,7 @@ def add_spaces(text):
 def get_pretty_class_name(element_cls, element=None):
     def get_emoji(cls):
         return {
-            sp.UnclaimedElement: "🍃",
+            sp.UndeterminedElement: "🍃",
         }.get(cls, "✨")
 
     emoji = get_emoji(element_cls)

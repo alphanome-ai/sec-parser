@@ -11,7 +11,13 @@ if TYPE_CHECKING:
 
 class AbstractParsingPlugin(ABC):
     @abstractmethod
-    def apply(
-        self, elements: list[AbstractSemanticElement],
-    ) -> list[AbstractSemanticElement] | None:
+    def transform(
+        self,
+        elements: list[AbstractSemanticElement],
+    ) -> list[AbstractSemanticElement]:
+        """
+        Transform the list of semantic elements.
+
+        Note that the elements argument can be mutated.
+        """
         raise NotImplementedError

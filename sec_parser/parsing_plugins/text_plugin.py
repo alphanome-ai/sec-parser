@@ -11,7 +11,12 @@ if TYPE_CHECKING:
 
 
 class TextPlugin(AbstractParsingPlugin):
-    def apply(
-        self, _: list[AbstractSemanticElement],
-    ) -> list[AbstractSemanticElement] | None:
-        return None
+    def transform(
+        self,
+        elements: list[AbstractSemanticElement],
+    ) -> list[AbstractSemanticElement]:
+        """
+        TextPlugin replaces matching elements with
+        TextElement class instances.
+        """
+        return elements

@@ -1,6 +1,10 @@
-class SecParserValueError(ValueError):
+class SecParserError(Exception):
     pass
 
 
-class SecParserRuntimeError(RuntimeError):
+class SecParserValueError(SecParserError, ValueError):
+    pass
+
+
+class SecParserRuntimeError(SecParserError, RuntimeError):
     pass

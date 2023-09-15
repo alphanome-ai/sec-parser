@@ -10,13 +10,13 @@ if TYPE_CHECKING:
     )
 
 
-class TitlePlugin(AbstractParsingPlugin):
+class IrrelevantElementPlugin(AbstractParsingPlugin):
     def transform(
         self,
         elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
         """
-        TitlePlugin replaces matching elements with
-        TitleElement class instances.
+        IrrelevantElementPlugin replace matching elements with
+        IrrelevantElement class instances.
         """
         return elements

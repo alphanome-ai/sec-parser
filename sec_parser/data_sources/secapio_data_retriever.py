@@ -7,21 +7,17 @@ import httpx
 
 from sec_parser.data_sources.abstract_sec_data_retriever import (
     AbstractSECDataRetriever,
-    DocumentNotFoundError,
 )
-from sec_parser.data_sources.sec_edgar_types import (
+from sec_parser.data_sources.sec_edgar_enums import (
     FORM_SECTIONS,
     SECTION_NAMES,
     DocumentType,
+    SectionType,
 )
 from sec_parser.utils.env_var_helpers import get_value_or_env_var
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
-
-    from sec_parser.data_sources.sec_edgar_types import (
-        SectionType,
-    )
 
 
 class SecapioApiKeyNotSetError(Exception):
@@ -166,5 +162,5 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
         filings = res.json()["filings"]
         if len(filings) == 0:
             msg = f'no {doc_type.value} found for {key}="{value}"'
-            raise DocumentNotFoundError(msg)
+            raise SecapioRequestError(msg)
         return filings[0]

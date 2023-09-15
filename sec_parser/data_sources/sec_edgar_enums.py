@@ -1,24 +1,10 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import TYPE_CHECKING
 
 from frozendict import frozendict
 
 from sec_parser.exceptions.core_exceptions import SecParserValueError
-
-if TYPE_CHECKING:
-    from collections.abc import Iterable
-
-URL_ACCESSION_NUMBER_LEN = 18
-
-
-class InvalidDocumentTypeError(SecParserValueError):
-    pass
-
-
-class InvalidSectionTypeError(SecParserValueError):
-    pass
 
 
 class DocumentType(Enum):
@@ -60,6 +46,18 @@ class SectionType(Enum):
             msg = f"Invalid section {s}"
             raise InvalidSectionTypeError(msg) from e
 
+    @property
+    def name(self) -> str:
+        return SECTION_NAMES.get(self, "Unknown Section")
+
+
+class InvalidDocumentTypeError(SecParserValueError):
+    pass
+
+
+class InvalidSectionTypeError(SecParserValueError):
+    pass
+
 
 FORM_SECTIONS = frozendict(
     {
@@ -94,20 +92,3 @@ SECTION_NAMES = frozendict(
         SectionType.FORM_10Q_PART2ITEM6: "Exhibits",
     },
 )
-
-
-def validate_sections(
-    doc_type: DocumentType,
-    sections: Iterable[SectionType] | None,
-) -> None:
-    if sections is None:
-        return
-
-    if doc_type not in FORM_SECTIONS:
-        msg = f"Unsupported document type: {doc_type}"
-        raise InvalidDocumentTypeError(msg)
-
-    for section in sections:
-        if section not in FORM_SECTIONS[doc_type]:
-            msg = f"Unsupported section: {section}"
-            raise InvalidSectionTypeError(msg)

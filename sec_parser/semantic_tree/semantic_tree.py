@@ -1,4 +1,4 @@
-from sec_parser.semantic_tree_transformations.tree_node import TreeNode
+from sec_parser.semantic_tree.tree_node import TreeNode
 
 
 class SemanticTree:

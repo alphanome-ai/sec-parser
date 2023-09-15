@@ -1,14 +1,19 @@
+"""
+sec_parsing_entry provides high-level abstractions for parsing SEC documents.
+It also serves as library usage examples.
+"""
+
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
 from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
 from sec_parser.parsing_engine.sec_parser import SecParser
-from sec_parser.semantic_tree_transformations.tree_builder import TreeBuilder
+from sec_parser.semantic_tree.tree_builder import TreeBuilder
 
 if TYPE_CHECKING:
-    from sec_parser.data_sources.sec_edgar_types import DocumentType
-    from sec_parser.semantic_tree_transformations.semantic_tree import SemanticTree
+    from sec_parser.data_sources.sec_edgar_enums import DocumentType
+    from sec_parser.semantic_tree.semantic_tree import SemanticTree
 
 
 def parse_latest(
@@ -16,7 +21,7 @@ def parse_latest(
     /,
     *,
     ticker: str,
-    secapio_api_key: str | None = None, # sec-api.io API key
+    secapio_api_key: str | None = None,  # sec-api.io API key
 ) -> SemanticTree:
     retriever = SecapioDataRetriever(api_key=secapio_api_key)
     html = retriever.get_latest_html_from_ticker(doc_type, ticker=ticker)

@@ -3,30 +3,18 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from sec_parser.data_sources.sec_edgar_types import (
+from sec_parser.data_sources.sec_edgar_enums import (
     DocumentType,
     SectionType,
-    validate_sections,
 )
+from sec_parser.data_sources.sec_edgar_utils import validate_sections
 from sec_parser.exceptions.core_exceptions import SecParserValueError
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
 
-class InvalidURLError(SecParserValueError):
-    pass
-
-
-class InvalidTickerError(SecParserValueError):
-    pass
-
-
 class DocumentTypeNotSupportedError(SecParserValueError):
-    pass
-
-
-class DocumentNotFoundError(SecParserValueError):
     pass
 
 
@@ -48,6 +36,11 @@ class AbstractSECDataRetriever(ABC):
         sections: Iterable[SectionType | str] | None = None,
     ) -> str:
         doc_type, sections = self._validate_and_convert(doc_type, sections)
+
+        # Using the Template Method Pattern here to ensure all necessary
+        # validations are performed before calling the actual implementation.
+        # Subclasses are expected to implement _get_html_from_url for the
+        # core functionality.
         return self._get_html_from_url(
             doc_type,
             url=url,
@@ -62,6 +55,11 @@ class AbstractSECDataRetriever(ABC):
         sections: Iterable[SectionType | str] | None = None,
     ) -> str:
         doc_type, sections = self._validate_and_convert(doc_type, sections)
+
+        # Using the Template Method Pattern here to ensure all necessary
+        # validations are performed before calling the actual implementation.
+        # Subclasses are expected to implement _get_html_from_url for the
+        # core functionality.
         return self._get_latest_html_from_ticker(
             doc_type,
             ticker=ticker,

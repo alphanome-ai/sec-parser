@@ -10,17 +10,14 @@ from sec_parser.semantic_elements.semantic_elements import (
 
 
 class RootSectionPlugin(AbstractParsingPlugin):
-    def __init__(self) -> None:
-        self._already_ran = False
-
-    def apply(
+    def transform(
         self,
         elements: list[AbstractSemanticElement],
-    ) -> list[AbstractSemanticElement] | None:
-        if self._already_ran:
-            return None
-        self._already_ran = True
-
+    ) -> list[AbstractSemanticElement]:
+        """
+        RootSectionPlugin replaces matching elements with
+        RootSection class instances.
+        """
         to_be_returned: list[AbstractSemanticElement] = []
         skip_next_element = False
 
@@ -30,11 +27,12 @@ class RootSectionPlugin(AbstractParsingPlugin):
                 continue
 
             if self._is_document_root_section(element.html_tag.bs4):
-                root_section_element, should_skip = self._handle_document_root_section(
-                    elements, i,
+                root_section_element = self._handle_document_root_section(
+                    elements,
+                    i,
                 )
                 to_be_returned.append(root_section_element)
-                skip_next_element = should_skip
+                skip_next_element = True
             elif self._contains_document_root_section(element.html_tag.bs4):
                 modified_element = self._remove_inner_document_root_section(element)
                 to_be_returned.append(modified_element)
@@ -47,19 +45,19 @@ class RootSectionPlugin(AbstractParsingPlugin):
         return tag.name == "document-root-section"
 
     def _contains_document_root_section(self, tag: bs4.Tag) -> bool:
-        return "<document-root-section" in str(tag)
+        return tag.find("document-root-section") is not None
 
     def _handle_document_root_section(
         self,
         elements: list[AbstractSemanticElement],
         index: int,
-    ) -> tuple[AbstractSemanticElement, bool]:
+    ) -> AbstractSemanticElement:
         # Handle the case where the document root section is the last element
         if index + 1 >= len(elements):
             msg = "Document root section tag found but no following element."
             raise RuntimeError(msg)
 
-        return RootSectionElement(elements[index + 1].html_tag), True
+        return RootSectionElement(elements[index + 1].html_tag)
 
     def _remove_inner_document_root_section(
         self,

@@ -1,24 +1,31 @@
+"""
+The semantic_elements subpackage provides abstractions
+for meaningful units in SEC EDGAR documents. It converts
+raw HTML elements into representations that carry
+semantic significance.
+"""
+
 
 from sec_parser.semantic_elements.abstract_semantic_elements import (
     AbstractContainerElement,
     AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
-    ContentlessElement,
     InvalidTitleLevelError,
+    IrrelevantElement,
     RootSectionElement,
     TextElement,
     TitleElement,
-    UnclaimedElement,
+    UndeterminedElement,
 )
 
 __all__ = [
     "AbstractSemanticElement",
     "AbstractContainerElement",
-    "UnclaimedElement",
+    "UndeterminedElement",
     "RootSectionElement",
     "TextElement",
     "TitleElement",
     "InvalidTitleLevelError",
-    "ContentlessElement",
+    "IrrelevantElement",
 ]
