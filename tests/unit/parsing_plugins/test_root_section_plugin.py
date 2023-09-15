@@ -1,9 +1,8 @@
 import pytest
 from sec_parser import (
     RootSectionElement,
-    UndeterminedElement,
 )
-from tests.unit.parsing_plugins._utils import get_elements_from_html
+from tests.unit.parsing_plugins._utils import get_elements_from_html, SomeElement
 from sec_parser.parsing_plugins import RootSectionPlugin
 
 
@@ -23,9 +22,9 @@ from sec_parser.parsing_plugins import RootSectionPlugin
             """,
             [
                 RootSectionElement,
-                UndeterminedElement,
+                SomeElement,
                 RootSectionElement,
-                UndeterminedElement,
+                SomeElement,
             ],
             ["b", "p", "div", "span"],
         )
