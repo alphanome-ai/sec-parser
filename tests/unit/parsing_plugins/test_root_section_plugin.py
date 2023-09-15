@@ -1,10 +1,10 @@
 import pytest
-from sec_parser.semantic_elements.semantic_elements import (
+from sec_parser import (
     RootSectionElement,
     UndeterminedElement,
 )
 from tests.unit.parsing_plugins._utils import get_elements_from_html
-from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
+from sec_parser.parsing_plugins import RootSectionPlugin
 
 
 @pytest.mark.parametrize(

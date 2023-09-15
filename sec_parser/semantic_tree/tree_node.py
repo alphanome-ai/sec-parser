@@ -26,7 +26,7 @@ class TreeNode:
             self.add_children(list(children))
 
     @property
-    def children(self: TreeNode) -> Iterable[TreeNode]:
+    def children(self: TreeNode) -> list[TreeNode]:
         return self._children.copy()
 
     @property

@@ -41,7 +41,7 @@ class TreeBuilder:
         # When a node is done (it has no more 'children'), it's removed from the stack.
         stack: list[TreeNode] = []
 
-        root_elements: list[TreeNode] = []
+        root_nodes: list[TreeNode] = []
 
         for element in elements:
             new_node = TreeNode(element)
@@ -51,10 +51,10 @@ class TreeBuilder:
                 parent_node.add_child(new_node)
                 stack.append(new_node)
             else:
-                root_elements.append(new_node)
+                root_nodes.append(new_node)
                 stack.append(new_node)
 
-        return SemanticTree(root_elements)
+        return SemanticTree(root_nodes)
 
     def _find_parent_node(
         self,

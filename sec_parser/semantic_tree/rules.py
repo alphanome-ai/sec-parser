@@ -26,7 +26,7 @@ class RootSectionRule(AbstractNestingRule):
         child: AbstractSemanticElement,
     ) -> bool:
         is_parent_root = isinstance(parent, RootSectionElement)
-        is_child_not_root = isinstance(child, RootSectionElement)
+        is_child_not_root = not isinstance(child, RootSectionElement)
         return is_parent_root and is_child_not_root
 
 

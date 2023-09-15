@@ -2,7 +2,6 @@
 # commonly used classes, and general exceptions
 # for easy access.
 
-
 from sec_parser.data_sources.sec_edgar_enums import DocumentType, SectionType
 from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
 from sec_parser.exceptions.core_exceptions import (
@@ -10,14 +9,20 @@ from sec_parser.exceptions.core_exceptions import (
     SecParserRuntimeError,
     SecParserValueError,
 )
+from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.parsing_engine.sec_parser import SecParser
 from sec_parser.sec_parsing_entry import parse_latest
 from sec_parser.semantic_elements.semantic_elements import (
+    AbstractSemanticElement,
     IrrelevantElement,
     RootSectionElement,
     TitleElement,
     UndeterminedElement,
 )
+from sec_parser.semantic_tree.rules import AbstractNestingRule
+from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_builder import TreeBuilder
+from sec_parser.semantic_tree.tree_node import TreeNode
 
 __all__ = [
     # High-level functionalities
@@ -27,6 +32,7 @@ __all__ = [
     "SecParser",
     "TreeBuilder",
     # Common semantic elements
+    "AbstractSemanticElement",
     "UndeterminedElement",
     "RootSectionElement",
     "TitleElement",
@@ -37,6 +43,10 @@ __all__ = [
     "SecParserRuntimeError",
     "SecParserValueError",
     # Common types
+    "AbstractNestingRule",
     "DocumentType",
     "SectionType",
+    "SemanticTree",
+    "TreeNode",
+    "HtmlTag",
 ]
