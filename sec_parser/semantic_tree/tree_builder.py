@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
-from sec_parser.semantic_tree.rules import (
+from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
     RootSectionRule,
     TitleLevelRule,

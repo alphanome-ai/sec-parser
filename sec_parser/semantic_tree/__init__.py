@@ -2,9 +2,8 @@
 The semantic_tree subpackage focuses on storing and
 manipulating Semantic Elements in a tree data structure.
 """
-
-from sec_parser.semantic_tree.rules import (
-    AbstractNestingRule,
+from sec_parser.semantic_tree.abstract_nesting_rule import AbstractNestingRule
+from sec_parser.semantic_tree.nesting_rules import (
     RootSectionRule,
     TitleLevelRule,
 )
