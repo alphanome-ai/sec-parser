@@ -24,6 +24,18 @@ if TYPE_CHECKING:
     )
 
 
+class SecapioApiKeyNotSetError(Exception):
+    pass
+
+
+class SecapioApiKeyInvalidError(Exception):
+    pass
+
+
+class SecapioRequestError(Exception):
+    pass
+
+
 class SecapioDataRetriever(AbstractSECDataRetriever):
     """Retrieves data from sec-api.io API."""
 
@@ -36,7 +48,11 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
         api_key: str | None = None,
         timeout_s: int | None = None,
     ) -> None:
-        self._api_key = get_value_or_env_var(api_key, self.API_KEY_ENV_VAR_NAME)
+        self._api_key = get_value_or_env_var(
+            api_key,
+            self.API_KEY_ENV_VAR_NAME,
+            exc=SecapioApiKeyNotSetError,
+        )
         self._timeout_s = timeout_s or 10
 
     def _get_html_from_url(
@@ -129,9 +145,24 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
             "size": "1",
             "sort": [{"filedAt": {"order": "desc"}}],
         }
+
         client = httpx.Client()
-        res = client.post(f"https://api.sec-api.io?token={self._api_key}", json=query)
-        res.raise_for_status()
+        try:
+            res = client.post(
+                f"https://api.sec-api.io?token={self._api_key}",
+                json=query,
+            )
+            res.raise_for_status()
+        except httpx.HTTPStatusError as e:
+            if e.response.status_code == httpx.codes.FORBIDDEN:
+                msg = "Invalid API key."
+                raise SecapioApiKeyInvalidError(msg) from e
+            msg = f"HTTP Status Error occurred while making the request: {e!s}"
+            raise SecapioRequestError(msg) from e
+        except httpx.RequestError as e:
+            msg = f"An unexpected error occurred while making the request: {e!s}"
+            raise SecapioRequestError(msg) from e
+
         filings = res.json()["filings"]
         if len(filings) == 0:
             msg = f'no {doc_type.value} found for {key}="{value}"'

@@ -11,6 +11,7 @@ def get_value_or_env_var(
     value: str | None,
     env_var: str,
     default: str | None = None,
+    exc: type[Exception] = ValueNotSetError,
 ) -> str:
     value = (value or "").strip()
     if value:
@@ -23,5 +24,5 @@ def get_value_or_env_var(
     if default is not None:
         return default
 
-    msg = f"Value for {env_var} not set."
-    raise ValueNotSetError(msg)
+    msg = f"No value provided and the environment variable '{env_var}' is also not set."
+    raise exc(msg)

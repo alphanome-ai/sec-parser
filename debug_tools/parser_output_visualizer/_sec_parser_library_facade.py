@@ -1,7 +1,7 @@
-from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 import sec_parser as sp
 import streamlit as st
 from _utils.cache import cache_to_file
+from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 
 
 @cache_to_file(cache_by_keys={"ticker", "doc", "sections"}, cache_dir=".cache")

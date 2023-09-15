@@ -1,27 +1,23 @@
+import os
 from collections import Counter
 from dataclasses import dataclass
-import os
-
-from httpx import HTTPStatusError
-from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 
 import sec_parser as sp
 import streamlit as st
 import streamlit_antd_components as sac
-from _sec_parser_library_facade import (
-    download_html_from_ticker,
-    download_html_from_url,
-    get_semantic_elements,
-    get_semantic_tree,
-)
-from _utils.streamlit_ import (
-    st_expander_allow_nested,
-    st_hide_streamlit_element,
-    st_multiselect_allow_long_titles,
-    st_radio,
-)
+from _sec_parser_library_facade import (download_html_from_ticker,
+                                        download_html_from_url,
+                                        get_semantic_elements,
+                                        get_semantic_tree)
 from _utils.misc import get_pretty_class_name, remove_ix_tags
+from _utils.streamlit_ import (st_expander_allow_nested,
+                               st_hide_streamlit_element,
+                               st_multiselect_allow_long_titles, st_radio)
+from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 from dotenv import load_dotenv
+from httpx import HTTPStatusError
+from sec_parser.data_sources.secapio_data_retriever import (
+    SecapioApiKeyInvalidError, SecapioApiKeyNotSetError, SecapioDataRetriever)
 
 load_dotenv()
 
@@ -48,10 +44,11 @@ def streamlit_app(
     st_hide_streamlit_element("class", "stDeployButton")
     st_multiselect_allow_long_titles()
 
-    secapio_api_key = os.environ.get("SECAPIO_API_KEY", "")
-    secapio_api_key = st.session_state.get("SECAPIO_API_KEY", "")
-    if "SECAPIO_API_KEY" not in os.environ:
-        with st.sidebar.expander("API Key",expanded=False):
+    secapio_api_key_name = SecapioDataRetriever.API_KEY_ENV_VAR_NAME
+    secapio_api_key = os.environ.get(secapio_api_key_name, "")
+    secapio_api_key = st.session_state.get(secapio_api_key_name, "")
+    if secapio_api_key_name not in os.environ:
+        with st.sidebar.expander("API Key", expanded=not bool(secapio_api_key)):
             st.write(
                 "The API key is required for parsing files that haven't been pre-downloaded. You can obtain a free one from [sec-api.io](https://sec-api.io)."
             )
@@ -64,8 +61,8 @@ def streamlit_app(
                 st.write(
                     "We're currently using *sec-api.io* to handle the removal of the title 10-Q page and to download 10-Q Section HTML files. In the future, we aim to download these HTML files directly from the SEC EDGAR. For now, you can get a free API key from [sec-api.io](https://sec-api.io) and input it below."
                 )
-            st.session_state["SECAPIO_API_KEY"] = secapio_api_key
-            msg = "**Note:** Key will be deleted upon page refresh. We suggest setting the `SECAPIO_API_KEY` environment variable, possibly in an `.env` file. This method allows you to utilize the API key without the need for manual entry each time."
+            st.session_state[secapio_api_key_name] = secapio_api_key
+            msg = f"**Note:** Key will be deleted upon page refresh. We suggest setting the `{secapio_api_key_name}` environment variable, possibly in an `.env` file. This method allows you to utilize the API key without the need for manual entry each time."
             st.info(msg)
 
     with st.sidebar:
@@ -88,7 +85,10 @@ def streamlit_app(
             ticker = st.text_input(
                 label="Enter Ticker",
                 value="AAPL",
+                placeholder="AAPL",
             )
+            if not ticker:
+                st.stop()
         else:
             url = st.text_input(
                 label="Enter URL",
@@ -112,14 +112,16 @@ def streamlit_app(
             html = download_html_from_url(
                 NotHashed(secapio_api_key), doc="10-Q", url=url, sections=sections
             )
-    except HTTPStatusError as e:
-        if e.response.status_code == 403:
-            st.error(
-                "**Error**: Unable to download HTML. Received a 403 Forbidden error. Please verify your API key."
-            )
-            st.stop()
-        else:
-            raise e
+    except SecapioApiKeyNotSetError:
+        st.error(
+            "**Error**: API key not set. Please provide a valid API key."
+        )
+        st.stop()
+    except SecapioApiKeyInvalidError:
+        st.error(
+            "**Error**: Invalid API key. Please check your API key and try again."
+        )
+        st.stop()
 
     process_steps = [
         ProcessStep(
@@ -173,10 +175,11 @@ def streamlit_app(
                 counted_element_types = Counter(
                     element.__class__ for element in elements
                 )
+                available_element_types = counted_element_types.keys()
                 selected_types = st.multiselect(
                     "Filter Element Types",
-                    counted_element_types.keys(),
-                    counted_element_types.keys(),
+                    available_element_types,
+                    available_element_types,
                     format_func=lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}',
                 )
                 elements = [e for e in elements if e.__class__ in selected_types]
