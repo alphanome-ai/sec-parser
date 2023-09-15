@@ -12,6 +12,7 @@ tasks:
     desc: Lint the code
     cmds:
       - ruff check --fix sec_parser/
+      # mirrors mypy.ini config of keeping all checked files in a single folder
       - mypy sec_parser/
 
   prepare: 
