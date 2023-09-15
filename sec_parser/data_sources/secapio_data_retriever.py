@@ -164,9 +164,6 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
             msg = f'no {doc_type.value} found for {key}="{value}"'
             raise SecapioRequestError(msg)
         if not isinstance(filings[0], dict):
-            msg = (
-                f"Unexpected response from sec-api.io API: "
-                f"expected a dict, got {type(filings[0])}"
-            )
+            msg = f"expected a dict, got {type(filings[0])}"
             raise SecapioRequestError(msg)
         return filings[0]
