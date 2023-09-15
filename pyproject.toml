@@ -49,7 +49,6 @@ source = ["sec_parser"]
 
 
 [tool.ruff]
-# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
 select = ["ALL"]
 ignore = [
     "D100",    # Missing docstring in public module
