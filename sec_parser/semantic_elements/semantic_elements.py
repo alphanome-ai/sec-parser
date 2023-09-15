@@ -1,5 +1,5 @@
 from sec_parser.exceptions.core_exceptions import SecParserValueError
-from sec_parser.parsing_engine.html_tag import HtmlTag
+from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_elements import (
     AbstractSemanticElement,
 )

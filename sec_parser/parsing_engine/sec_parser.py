@@ -2,9 +2,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
-from sec_parser.parsing_engine.abstract_sec_parser import AbstractSecParser
-from sec_parser.parsing_engine.root_tag_parser import (
-    AbstractRootTagParser,
+from sec_parser.parsing_engine.abstract_parser import (
+    AbstractSemanticElementParser,
+)
+from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
+    AbstractHtmlTagParser,
     RootTagParser,
 )
 from sec_parser.parsing_plugins.irrelevant_element_plugin import IrrelevantElementPlugin
@@ -22,12 +24,12 @@ if TYPE_CHECKING:
     )
 
 
-class SecParser(AbstractSecParser):
+class SecParser(AbstractSemanticElementParser):
     def __init__(
         self,
         create_plugins: Callable[[], list[AbstractParsingPlugin]] | None = None,
         *,
-        root_tag_parser: AbstractRootTagParser | None = None,
+        root_tag_parser: AbstractHtmlTagParser | None = None,
         max_iterations: int | None = None,
     ) -> None:
         self.create_plugins: Callable = create_plugins or self.create_default_plugins

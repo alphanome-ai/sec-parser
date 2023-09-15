@@ -1,6 +1,4 @@
-import pytest
-
-from sec_parser.parsing_engine.root_tag_parser import RootTagParser
+from sec_parser.parsing_engine.html_parsers.root_tag_parser import RootTagParser
 from sec_parser.semantic_elements.abstract_semantic_elements import (
     AbstractSemanticElement,
 )

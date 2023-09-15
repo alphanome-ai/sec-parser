@@ -6,17 +6,19 @@ subpackage to perform tasks like section
 identification, title parsing, and text extraction.
 """
 
-from sec_parser.parsing_engine.abstract_sec_parser import AbstractSecParser
-from sec_parser.parsing_engine.html_tag import HtmlTag
-from sec_parser.parsing_engine.root_tag_parser import (
-    AbstractRootTagParser,
+from sec_parser.parsing_engine.abstract_parser import (
+    AbstractSemanticElementParser,
+)
+from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
+    AbstractHtmlTagParser,
     RootTagParser,
 )
 
 __all__ = [
-    "AbstractRootTagParser",
+    "AbstractHtmlTagParser",
     "RootTagParser",
-    "AbstractSecParser",
+    "AbstractSemanticElementParser",
     "SecParser",
     "HtmlTag",
 ]

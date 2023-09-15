@@ -4,11 +4,13 @@ import warnings
 
 import bs4
 
-from sec_parser.parsing_engine.abstract_root_tag_parser import AbstractRootTagParser
-from sec_parser.parsing_engine.html_tag import HtmlTag
+from sec_parser.parsing_engine.html_parsers.abstract_html_tag_parser import (
+    AbstractHtmlTagParser,
+)
+from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 
 
-class RootTagParser(AbstractRootTagParser):
+class RootTagParser(AbstractHtmlTagParser):
     def __init__(self, parser_backend: str | None = None) -> None:
         self._parser_backend = (parser_backend or "lxml").lower().strip()
 
