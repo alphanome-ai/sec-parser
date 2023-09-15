@@ -1,4 +1,3 @@
-from debug_tools.parser_output_visualizer._utils.misc import SecapioApiKey
 from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 import sec_parser as sp
 import streamlit as st
@@ -12,7 +11,7 @@ from _utils.cache import cache_to_file
     show_spinner="Retrieving SEC EDGAR document...",
 )
 def download_html_from_ticker(
-    secapi_api_key: NotHashed[str],
+    secapi_api_key: NotHashed,
     *,
     doc: sp.DocumentType | str,
     ticker: str,
@@ -24,12 +23,12 @@ def download_html_from_ticker(
 
 @cache_to_file(cache_by_keys={"url", "doc", "sections"}, cache_dir=".cache")
 @st.cache_resource(
-    hash_funcs={SecapioApiKey: lambda _: None},
+    hash_funcs={NotHashed: lambda _: None},
     experimental_allow_widgets=True,
     show_spinner="Retrieving SEC EDGAR document...",
 )
 def download_html_from_url(
-    secapi_api_key: NotHashed[str],
+    secapi_api_key: NotHashed,
     *,
     doc: sp.DocumentType | str,
     url: str,

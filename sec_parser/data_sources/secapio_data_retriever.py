@@ -28,7 +28,7 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
     """Retrieves data from sec-api.io API."""
 
     SUPPORTED_DOCUMENT_TYPES = frozenset({DocumentType.FORM_10Q})
-    API_KEY_ENV_VAR_NAME = "SECAPIIO_API_KEY"
+    API_KEY_ENV_VAR_NAME = "SECAPIO_API_KEY"
 
     def __init__(
         self: SecapioDataRetriever,

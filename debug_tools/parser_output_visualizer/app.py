@@ -1,5 +1,8 @@
 from collections import Counter
 from dataclasses import dataclass
+import os
+
+from httpx import HTTPStatusError
 from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
 
 import sec_parser as sp
@@ -45,17 +48,27 @@ def streamlit_app(
     st_hide_streamlit_element("class", "stDeployButton")
     st_multiselect_allow_long_titles()
 
-    with st.sidebar:
-        st.write(
-            "We're currently using *sec-api.io* to handle the removal of the title 10-Q page and to download 10-Q Section HTML files. In the future, we aim to download these HTML files directly from the SEC EDGAR. For now, you can get a free API key from [sec-api.io](https://sec-api.io) and input it below."
-        )
-        secapio_api_key = st.text_input(
-            type="password",
-            label="Enter your API key here:",
-        )
-        msg = "**Note:** We suggest setting the `SECAPIO_API_KEY` environment variable, possibly in an `.env` file. This method allows you to utilize the API key without the need for manual entry each time."
-        st.note(msg)
+    secapio_api_key = os.environ.get("SECAPIO_API_KEY", "")
+    secapio_api_key = st.session_state.get("SECAPIO_API_KEY", "")
+    if "SECAPIO_API_KEY" not in os.environ:
+        with st.sidebar.expander("API Key",expanded=False):
+            st.write(
+                "The API key is required for parsing files that haven't been pre-downloaded. You can obtain a free one from [sec-api.io](https://sec-api.io)."
+            )
+            secapio_api_key = st.text_input(
+                type="password",
+                label="Enter your API key:",
+                value=secapio_api_key,
+            )
+            with st.expander("Why do I need an API key?"):
+                st.write(
+                    "We're currently using *sec-api.io* to handle the removal of the title 10-Q page and to download 10-Q Section HTML files. In the future, we aim to download these HTML files directly from the SEC EDGAR. For now, you can get a free API key from [sec-api.io](https://sec-api.io) and input it below."
+                )
+            st.session_state["SECAPIO_API_KEY"] = secapio_api_key
+            msg = "**Note:** Key will be deleted upon page refresh. We suggest setting the `SECAPIO_API_KEY` environment variable, possibly in an `.env` file. This method allows you to utilize the API key without the need for manual entry each time."
+            st.info(msg)
 
+    with st.sidebar:
         st.write("# Select Report")
         data_source_options = [
             "Select Ticker to Find Latest",
@@ -90,14 +103,23 @@ def streamlit_app(
         else:
             sections = None
 
-    if ticker:
-        html = download_html_from_ticker(
-            NotHashed(secapio_api_key), doc="10-Q", ticker=ticker, sections=sections
-        )
-    else:
-        html = download_html_from_url(
-            NotHashed(secapio_api_key), doc="10-Q", url=url, sections=sections
-        )
+    try:
+        if ticker:
+            html = download_html_from_ticker(
+                NotHashed(secapio_api_key), doc="10-Q", ticker=ticker, sections=sections
+            )
+        else:
+            html = download_html_from_url(
+                NotHashed(secapio_api_key), doc="10-Q", url=url, sections=sections
+            )
+    except HTTPStatusError as e:
+        if e.response.status_code == 403:
+            st.error(
+                "**Error**: Unable to download HTML. Received a 403 Forbidden error. Please verify your API key."
+            )
+            st.stop()
+        else:
+            raise e
 
     process_steps = [
         ProcessStep(
@@ -222,4 +244,8 @@ if __name__ == "__main__":
     # ai_step = ProcessStep(title="Value Added", caption="AI Applications")
     # r = streamlit_app(extra_steps=[ai_step])
     # if r.selected_step == 4:
+    #     st.write("🚧 Work in progress...")
+    #     st.write("🚧 Work in progress...")
+    #     st.write("🚧 Work in progress...")
+    #     st.write("🚧 Work in progress...")
     #     st.write("🚧 Work in progress...")
