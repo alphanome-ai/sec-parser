@@ -50,7 +50,8 @@ def streamlit_app(
     if secapio_api_key_name not in os.environ:
         with st.sidebar.expander("API Key", expanded=not bool(secapio_api_key)):
             st.write(
-                "The API key is required for parsing files that haven't been pre-downloaded. You can obtain a free one from [sec-api.io](https://sec-api.io)."
+                "The API key is required for parsing files that haven't been pre-downloaded."
+                "You can obtain a free one from [sec-api.io](https://sec-api.io)."
             )
             secapio_api_key = st.text_input(
                 type="password",
@@ -59,10 +60,20 @@ def streamlit_app(
             )
             with st.expander("Why do I need an API key?"):
                 st.write(
-                    "We're currently using *sec-api.io* to handle the removal of the title 10-Q page and to download 10-Q Section HTML files. In the future, we aim to download these HTML files directly from the SEC EDGAR. For now, you can get a free API key from [sec-api.io](https://sec-api.io) and input it below."
+                    "We're currently using *sec-api.io* to handle the removal of the"
+                    "title 10-Q page and to download 10-Q Section HTML files. In the"
+                    "future, we aim to download these HTML files directly from the"
+                    "SEC EDGAR. For now, you can get a free API key from"
+                    "[sec-api.io](https://sec-api.io) and input it below."
                 )
             st.session_state[secapio_api_key_name] = secapio_api_key
-            msg = f"**Note:** Key will be deleted upon page refresh. We suggest setting the `{secapio_api_key_name}` environment variable, possibly in an `.env` file. This method allows you to utilize the API key without the need for manual entry each time."
+            msg = (
+                "**Note:** Key will be deleted upon page refresh. We suggest"
+                f"setting the `{secapio_api_key_name}` environment variable, possibly"
+                "by creating an `.env` file at the root of the project. This method"
+                "allows you to utilize the API key without the need for manual"
+                "entry each time."
+            )
             st.info(msg)
 
     with st.sidebar:
