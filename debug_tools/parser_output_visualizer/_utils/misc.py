@@ -32,6 +32,7 @@ def get_pretty_class_name(element_cls, element=None):
     emoji = {
         se.UndeterminedElement: "🍃",
         se.TextElement: "📝",
+        se.RootSectionElement: "📚",
     }.get(element_cls, "✨")
     level = ""
     if element and hasattr(element, "level") and element.level > 1:

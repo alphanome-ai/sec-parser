@@ -25,6 +25,7 @@ from sec_parser.data_sources.secapio_data_retriever import (
     SecapioApiKeyNotSetError,
     SecapioDataRetriever,
 )
+from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
 load_dotenv()
 
@@ -189,14 +190,27 @@ def streamlit_app(
                 counted_element_types = Counter(
                     element.__class__ for element in elements
                 )
+                format_cls = (
+                    lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}'
+                )
                 available_element_types = {
-                    f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}': cls
-                    for cls in counted_element_types.keys()
+                    format_cls(cls): cls
+                    for cls in sorted(
+                        counted_element_types.keys(),
+                        key=lambda x: counted_element_types[x],
+                        reverse=True,
+                    )
                 }
+                available_values = list(available_element_types.keys())
+                preselected_types = [
+                    format_cls(cls)
+                    for cls in available_element_types.values()
+                    if cls != IrrelevantElement
+                ]
                 selected_types = st.multiselect(
                     "Filter Element Types",
-                    available_element_types.keys(),
-                    available_element_types.keys(),
+                    available_values,
+                    preselected_types,
                 )
                 selected_types = [available_element_types[k] for k in selected_types]
                 elements = [e for e in elements if e.__class__ in selected_types]

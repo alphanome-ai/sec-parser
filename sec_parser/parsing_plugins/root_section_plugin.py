@@ -17,11 +17,15 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
 
     This plugin scans through a list of semantic elements and replaces
     suitable candidates with RootSection instances.
+
+    Note: We're currently using *sec-api.io* to handle the removal of the
+    title 10-Q page and to download 10-Q Section HTML files. The sections
+    are then joined by inserting a <document-root-section> separator. In the
+    future, we aim to download these HTML files directly from the SEC EDGAR.
     """
 
     def __init__(self) -> None:
         self.next_element_is_root_section = False
-        pass
 
     def transform_element(
         self,
