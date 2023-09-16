@@ -1,11 +1,11 @@
 from sec_parser.exceptions.core_exceptions import SecParserValueError
 from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
-from sec_parser.semantic_elements.abstract_semantic_elements import (
-    AbstractSemanticElement,
+from sec_parser.semantic_elements.base_semantic_element import (
+    BaseSemanticElement,
 )
 
 
-class UndeterminedElement(AbstractSemanticElement):
+class UndeterminedElement(BaseSemanticElement):
     """
     The UndeterminedElement class represents an element whose type
     has not yet been determined. The parsing process aims to
@@ -14,7 +14,7 @@ class UndeterminedElement(AbstractSemanticElement):
     """
 
 
-class RootSectionElement(AbstractSemanticElement):
+class RootSectionElement(BaseSemanticElement):
     """
     The RootSectionElement class represents the top-level section of a document.
     For instance, in SEC 10-Q reports, a RootSection could be "Part I, Item 3.
@@ -22,7 +22,7 @@ class RootSectionElement(AbstractSemanticElement):
     """
 
 
-class TitleElement(AbstractSemanticElement):
+class TitleElement(BaseSemanticElement):
     """
     The TitleElement class represents the title of a paragraph or other content object.
     It serves as a semantic marker, providing context and structure to the document.
@@ -43,11 +43,11 @@ class InvalidTitleLevelError(SecParserValueError):
     pass
 
 
-class TextElement(AbstractSemanticElement):
+class TextElement(BaseSemanticElement):
     """The TextElement class represents a standard text paragraph within a document."""
 
 
-class IrrelevantElement(AbstractSemanticElement):
+class IrrelevantElement(BaseSemanticElement):
     """
     The IrrelevantElement class identifies elements in the parsed HTML that do not
     contribute to the content. These elements often include page separators, page

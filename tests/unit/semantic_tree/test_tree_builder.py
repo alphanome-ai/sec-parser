@@ -1,28 +1,24 @@
-# test_tree_builder.py
-
-import bs4
-import pytest
 from sec_parser import (
     AbstractNestingRule,
-    AbstractSemanticElement,
+    BaseSemanticElement,
     HtmlTag,
     TreeBuilder,
 )
 
 
-class ParentElement(AbstractSemanticElement):
+class ParentElement(BaseSemanticElement):
     pass
 
 
-class ChildElement(AbstractSemanticElement):
+class ChildElement(BaseSemanticElement):
     pass
 
 
 class ParentChildNestingRule(AbstractNestingRule):
     def should_be_nested_under(
         self,
-        parent: AbstractSemanticElement,
-        child: AbstractSemanticElement,
+        parent: BaseSemanticElement,
+        child: BaseSemanticElement,
     ) -> bool:
         return isinstance(parent, ParentElement) and isinstance(child, ChildElement)
 

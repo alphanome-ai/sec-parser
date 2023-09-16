@@ -6,9 +6,8 @@ semantic significance.
 """
 
 
-from sec_parser.semantic_elements.abstract_semantic_elements import (
-    AbstractContainerElement,
-    AbstractSemanticElement,
+from sec_parser.semantic_elements.base_semantic_element import (
+    BaseSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
     InvalidTitleLevelError,
@@ -20,8 +19,7 @@ from sec_parser.semantic_elements.semantic_elements import (
 )
 
 __all__ = [
-    "AbstractSemanticElement",
-    "AbstractContainerElement",
+    "BaseSemanticElement",
     "UndeterminedElement",
     "RootSectionElement",
     "TextElement",

@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 
 import bs4
-import sec_parser as sp
+import sec_parser.semantic_elements as se
 
 
 def generate_bool_list(idx, length):
@@ -29,12 +29,10 @@ def add_spaces(text):
 
 
 def get_pretty_class_name(element_cls, element=None):
-    def get_emoji(cls):
-        return {
-            sp.UndeterminedElement: "🍃",
-        }.get(cls, "✨")
-
-    emoji = get_emoji(element_cls)
+    emoji = {
+        se.UndeterminedElement: "🍃",
+        se.TextElement: "📝",
+    }.get(element_cls, "✨")
     level = ""
     if element and hasattr(element, "level") and element.level > 1:
         level = f" (Level {element.level})"

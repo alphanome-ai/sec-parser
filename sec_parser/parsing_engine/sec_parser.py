@@ -14,13 +14,14 @@ from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.text_plugin import TextPlugin
 from sec_parser.parsing_plugins.title_plugin import TitlePlugin
 from sec_parser.semantic_elements.semantic_elements import (
+    RootSectionElement,
     UndeterminedElement,
 )
 
 if TYPE_CHECKING:
     from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
-    from sec_parser.semantic_elements.abstract_semantic_elements import (
-        AbstractSemanticElement,
+    from sec_parser.semantic_elements.base_semantic_element import (
+        BaseSemanticElement,
     )
 
 
@@ -42,19 +43,19 @@ class SecParser(AbstractSemanticElementParser):
         return [
             RootSectionPlugin(),
             TitlePlugin(),
-            TextPlugin(),
+            TextPlugin(dont_convert_from={RootSectionElement}),
             IrrelevantElementPlugin(),
         ]
 
-    def parse(self, html: str) -> list[AbstractSemanticElement]:
+    def parse(self, html: str) -> list[BaseSemanticElement]:
         plugins = self.create_plugins()
 
         # The parsing process is designed to handle the primarily
-        # flat structure of SEC filings. Hence, our focus is on
+        # flat HTML structure of SEC filings. Hence, our focus is on
         # the root tags of the HTML document.
         root_tags = self._root_tag_parser.parse(html)
 
-        elements: list[AbstractSemanticElement] = [
+        elements: list[BaseSemanticElement] = [
             UndeterminedElement(tag) for tag in root_tags
         ]
 

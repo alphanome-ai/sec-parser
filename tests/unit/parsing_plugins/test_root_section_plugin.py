@@ -1,13 +1,18 @@
 import pytest
+from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from tests.unit.parsing_plugins._utils import (
+    get_elements_from_html,
+    DummyElement,
+    assert_elements,
+)
+from sec_parser.parsing_plugins import RootSectionPlugin
 from sec_parser import (
     RootSectionElement,
 )
-from tests.unit.parsing_plugins._utils import get_elements_from_html, SomeElement
-from sec_parser.parsing_plugins import RootSectionPlugin
 
 
 @pytest.mark.parametrize(
-    "html_str, expected_types, expected_tags",
+    "html_str, expected_elements",
     [
         (
             """
@@ -21,16 +26,23 @@ from sec_parser.parsing_plugins import RootSectionPlugin
                <span>3</span>
             """,
             [
-                RootSectionElement,
-                SomeElement,
-                RootSectionElement,
-                SomeElement,
+                {"type": IrrelevantElement, "tag": "document-root-section"},
+                {"type": RootSectionElement, "tag": "b"},
+                {"type": DummyElement, "tag": "p"},
+                {
+                    "type": RootSectionElement,
+                    "tag": "div",
+                    "children": [
+                        {"type": IrrelevantElement, "tag": "document-root-section"},
+                        {"type": DummyElement, "tag": "i"},
+                    ],
+                },
+                {"type": DummyElement, "tag": "span"},
             ],
-            ["b", "p", "div", "span"],
         )
     ],
 )
-def test_root_section_plugin(html_str, expected_types, expected_tags):
+def test_root_section_plugin(html_str, expected_elements):
     # Arrange
     elements = get_elements_from_html(html_str)
     plugin = RootSectionPlugin()
@@ -39,9 +51,4 @@ def test_root_section_plugin(html_str, expected_types, expected_tags):
     processed_elements = plugin.transform(elements)
 
     # Assert
-    assert len(processed_elements) == len(expected_types)
-    for ele, expected_type, expected_tag in zip(
-        processed_elements, expected_types, expected_tags
-    ):
-        assert isinstance(ele, expected_type)
-        assert ele.html_tag.bs4.name == expected_tag
+    assert_elements(processed_elements, expected_elements)

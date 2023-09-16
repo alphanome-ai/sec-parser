@@ -2,7 +2,7 @@ import sec_parser as sp
 import streamlit as st
 from _utils.cache import cache_to_file
 
-from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
+from _utils.streamlit_ import NotHashed
 
 
 @cache_to_file(cache_by_keys={"ticker", "doc", "sections"}, cache_dir=".cache")
@@ -39,12 +39,12 @@ def download_html_from_url(
     return retriever.get_html_from_url(doc, url=url, sections=sections)
 
 
-def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
+def get_semantic_elements(html: str) -> list[sp.BaseSemanticElement]:
     parser = sp.SecParser()
     elements = parser.parse(html)
     return elements
 
 
-def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
+def get_semantic_tree(elements: list[sp.BaseSemanticElement]) -> sp.SemanticTree:
     tree_builder = sp.TreeBuilder()
     return tree_builder.build(elements)

@@ -1,7 +1,3 @@
-# This file contains high-level functionalities,
-# commonly used classes, and general exceptions
-# for easy access.
-
 from sec_parser.data_sources.sec_edgar_enums import DocumentType, SectionType
 from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
 from sec_parser.exceptions.core_exceptions import (
@@ -13,9 +9,10 @@ from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 from sec_parser.parsing_engine.sec_parser import SecParser
 from sec_parser.sec_parsing_entry import parse_latest
 from sec_parser.semantic_elements.semantic_elements import (
-    AbstractSemanticElement,
+    BaseSemanticElement,
     IrrelevantElement,
     RootSectionElement,
+    TextElement,
     TitleElement,
     UndeterminedElement,
 )
@@ -32,7 +29,7 @@ __all__ = [
     "SecParser",
     "TreeBuilder",
     # Common semantic elements
-    "AbstractSemanticElement",
+    "BaseSemanticElement",
     "UndeterminedElement",
     "RootSectionElement",
     "TitleElement",

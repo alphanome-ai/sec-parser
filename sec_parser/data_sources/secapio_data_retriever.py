@@ -14,21 +14,25 @@ from sec_parser.data_sources.sec_edgar_enums import (
     DocumentType,
     SectionType,
 )
+from sec_parser.exceptions.core_exceptions import (
+    SecParserRuntimeError,
+    SecParserValueError,
+)
 from sec_parser.utils.env_var_helpers import get_value_or_env_var
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
 
-class SecapioApiKeyNotSetError(Exception):
+class SecapioApiKeyNotSetError(SecParserValueError):
     pass
 
 
-class SecapioApiKeyInvalidError(Exception):
+class SecapioApiKeyInvalidError(SecParserValueError):
     pass
 
 
-class SecapioRequestError(Exception):
+class SecapioRequestError(SecParserRuntimeError):
     pass
 
 

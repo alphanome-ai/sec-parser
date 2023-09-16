@@ -5,19 +5,26 @@ from dataclasses import dataclass
 import sec_parser as sp
 import streamlit as st
 import streamlit_antd_components as sac
-from _sec_parser_library_facade import (download_html_from_ticker,
-                                        download_html_from_url,
-                                        get_semantic_elements,
-                                        get_semantic_tree)
+from _sec_parser_library_facade import (
+    download_html_from_ticker,
+    download_html_from_url,
+    get_semantic_elements,
+    get_semantic_tree,
+)
 from _utils.misc import get_pretty_class_name, remove_ix_tags
-from _utils.streamlit_ import (st_expander_allow_nested,
-                               st_hide_streamlit_element,
-                               st_multiselect_allow_long_titles, st_radio)
-from debug_tools.parser_output_visualizer._utils.streamlit_ import NotHashed
+from _utils.streamlit_ import (
+    st_expander_allow_nested,
+    st_hide_streamlit_element,
+    st_multiselect_allow_long_titles,
+    st_radio,
+)
+from _utils.streamlit_ import NotHashed
 from dotenv import load_dotenv
-from httpx import HTTPStatusError
 from sec_parser.data_sources.secapio_data_retriever import (
-    SecapioApiKeyInvalidError, SecapioApiKeyNotSetError, SecapioDataRetriever)
+    SecapioApiKeyInvalidError,
+    SecapioApiKeyNotSetError,
+    SecapioDataRetriever,
+)
 
 load_dotenv()
 
@@ -124,14 +131,10 @@ def streamlit_app(
                 NotHashed(secapio_api_key), doc="10-Q", url=url, sections=sections
             )
     except SecapioApiKeyNotSetError:
-        st.error(
-            "**Error**: API key not set. Please provide a valid API key."
-        )
+        st.error("**Error**: API key not set. Please provide a valid API key.")
         st.stop()
     except SecapioApiKeyInvalidError:
-        st.error(
-            "**Error**: Invalid API key. Please check your API key and try again."
-        )
+        st.error("**Error**: Invalid API key. Please check your API key and try again.")
         st.stop()
 
     process_steps = [
@@ -186,13 +189,16 @@ def streamlit_app(
                 counted_element_types = Counter(
                     element.__class__ for element in elements
                 )
-                available_element_types = counted_element_types.keys()
+                available_element_types = {
+                    f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}': cls
+                    for cls in counted_element_types.keys()
+                }
                 selected_types = st.multiselect(
                     "Filter Element Types",
-                    available_element_types,
-                    available_element_types,
-                    format_func=lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}',
+                    available_element_types.keys(),
+                    available_element_types.keys(),
                 )
+                selected_types = [available_element_types[k] for k in selected_types]
                 elements = [e for e in elements if e.__class__ in selected_types]
 
     if selected_step >= 3:
@@ -203,9 +209,9 @@ def streamlit_app(
             expand_depth = st.number_input("Expand Depth", min_value=0, value=0)
 
     def render_semantic_element(
-        element: sp.AbstractSemanticElement,
+        element: sp.BaseSemanticElement,
     ):
-        bs4_tag = element.html_tag.bs4
+        bs4_tag = element.html_tag._bs4
         if do_element_render_html:
             element_html = remove_ix_tags(str(bs4_tag))
             st.markdown(element_html, unsafe_allow_html=True)
@@ -241,7 +247,7 @@ def streamlit_app(
 @dataclass
 class StreamlitAppReturn:
     html: str
-    elements: list[sp.AbstractSemanticElement]
+    elements: list[sp.BaseSemanticElement]
     tree: sp.SemanticTree
     selected_step: int
 
@@ -258,8 +264,4 @@ if __name__ == "__main__":
     # ai_step = ProcessStep(title="Value Added", caption="AI Applications")
     # r = streamlit_app(extra_steps=[ai_step])
     # if r.selected_step == 4:
-    #     st.write("🚧 Work in progress...")
-    #     st.write("🚧 Work in progress...")
-    #     st.write("🚧 Work in progress...")
-    #     st.write("🚧 Work in progress...")
     #     st.write("🚧 Work in progress...")
