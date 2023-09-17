@@ -6,7 +6,7 @@ from _utils.streamlit_ import NotHashed
 
 
 @cache_to_file(cache_by_keys={"ticker", "doc", "sections"}, cache_dir=".cache")
-@st.cache_resource(
+@st.cache_data(
     hash_funcs={NotHashed: lambda _: None},
     experimental_allow_widgets=True,
     show_spinner="Retrieving SEC EDGAR document...",
@@ -23,7 +23,7 @@ def download_html_from_ticker(
 
 
 @cache_to_file(cache_by_keys={"url", "doc", "sections"}, cache_dir=".cache")
-@st.cache_resource(
+@st.cache_data(
     hash_funcs={NotHashed: lambda _: None},
     experimental_allow_widgets=True,
     show_spinner="Retrieving SEC EDGAR document...",
