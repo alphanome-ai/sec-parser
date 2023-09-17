@@ -3,6 +3,7 @@ from collections import Counter
 from dataclasses import dataclass
 from itertools import zip_longest
 from _utils.misc import interleave_lists
+from _utils.misc import circular_zip
 
 import sec_parser as sp
 import streamlit as st
@@ -38,6 +39,7 @@ from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 load_dotenv()
 
 USE_METADATA = True
+PAGE_SIZE = 200
 
 
 def streamlit_app(
@@ -55,8 +57,8 @@ def streamlit_app(
         st.set_page_config(
             page_icon="🏦",
             page_title="SEC Parser Output Visualizer",
-            layout="centered",
             initial_sidebar_state="expanded",
+            layout="wide",
         )
     st_expander_allow_nested()
     st_hide_streamlit_element("class", "stDeployButton")
@@ -236,23 +238,34 @@ def streamlit_app(
         if selected_step >= 2:
             elements = get_semantic_elements(html)
             elements_lists.append(elements)
-        if selected_step >= 3:
-            tree = get_semantic_tree(elements)
-            trees.append(tree)
 
+    do_expand_all = False
     do_interleave = False
+    element_column_count = 1 if len(htmls) != 2 else 2
     if selected_step >= 2 and selected_step <= 3:
         with st.sidebar:
             st.write("# Adjust View")
             left, right = st.columns(2)
             with left:
-                do_element_render_html = st.checkbox("Render HTML", value=True)
-                if selected_step == 2 and len(htmls) == 2:
-                    do_interleave = st.checkbox("Interleave", value=True)
-            with right:
-                do_expand_all = False
+                do_element_render_html = st.checkbox(
+                    "Render HTML",
+                    value=True,
+                )
                 if selected_step == 2:
-                    do_expand_all = st.checkbox("Expand All", value=False)
+                    do_expand_all = st.checkbox(
+                        "Expand All",
+                        value=False,
+                    )
+                if selected_step == 2 and len(htmls) >= 2:
+                    do_interleave = st.checkbox(
+                        "Interleave",
+                        value=True,
+                    )
+            with right:
+                if selected_step == 2:
+                    element_column_count = st.number_input(
+                        "Columns", min_value=1, value=element_column_count
+                    )
 
             counted_element_types = Counter(
                 element.__class__ for elements in elements_lists for element in elements
@@ -281,8 +294,15 @@ def streamlit_app(
             )
             selected_types = [available_element_types[k] for k in selected_types]
 
+            sidebar_left, sidebar_right = st.columns(2)
+
             for elements in elements_lists:
                 elements[:] = [e for e in elements if e.__class__ in selected_types]
+
+    for html in htmls:
+        if selected_step >= 3:
+            tree = get_semantic_tree(elements)
+            trees.append(tree)
 
     if selected_step == 3:
         with right:
@@ -410,9 +430,40 @@ def streamlit_app(
             titles_and_elements = interleave_lists(titles_and_elements_per_report)
         else:
             titles_and_elements = [j for k in titles_and_elements_per_report for j in k]
-        for expander_title, element in titles_and_elements:
-            with st.expander(expander_title, expanded=do_expand_all):
-                render_semantic_element(element, do_element_render_html)
+
+        with sidebar_left:
+            pagination_size = st.number_input(
+                "Page Size",
+                min_value=0,
+                value=PAGE_SIZE if len(titles_and_elements) > PAGE_SIZE else 0,
+                help="Set to 0 to turn off pagination",
+            )
+        if pagination_size:
+            selected_page = sac.pagination(
+                total=len(titles_and_elements),
+                index=1,
+                page_size=pagination_size,
+                align="center",
+                circle=False,
+                disabled=False,
+                jump=True,
+                simple=True,
+                show_total=True,
+            )
+            pagination_start_idx = (selected_page - 1) * pagination_size
+            pagination_end_idx = selected_page * pagination_size
+            titles_and_elements = titles_and_elements[
+                pagination_start_idx:pagination_end_idx
+            ]
+
+        cols = st.columns(element_column_count)
+        for i_col, col in enumerate(cols):
+            for expander_title, element in titles_and_elements[
+                i_col::element_column_count
+            ]:
+                with col:
+                    with st.expander(expander_title, expanded=do_expand_all):
+                        render_semantic_element(element, do_element_render_html)
 
     parsed_reports = []
     for url, html, elements, tree in zip(htmls_urls, htmls, elements_lists, trees):

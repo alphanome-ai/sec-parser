@@ -5,9 +5,6 @@ from typing import TYPE_CHECKING
 
 import httpx
 
-from debug_tools.parser_output_visualizer._utils.misc import (
-    get_accession_number_from_url,
-)
 from sec_parser.data_sources.abstract_sec_data_retriever import (
     AbstractSECDataRetriever,
     DocumentTypeNotSupportedError,
@@ -26,6 +23,8 @@ from sec_parser.utils.env_var_helpers import get_value_or_env_var
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
+
+ACCESSION_NUMBER_LENGTH = 18
 
 
 class SecapioApiKeyNotSetError(SecParserValueError):
@@ -90,19 +89,23 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
             raise DocumentTypeNotSupportedError(msg)
 
         # Retrieve metadata
+        metadata = None
         if latest_from_ticker:
             metadata = self._call_latest_report_metadata_api(
                 new_doc_type,
                 key="ticker",
                 value=latest_from_ticker,
             )
-        else:
-            accession_number = get_accession_number_from_url(url)
+        if url:
+            accession_number = _get_accession_number_from_url(url)
             metadata = self._call_latest_report_metadata_api(
                 new_doc_type,
                 key="accessionNo",
                 value=accession_number,
             )
+        if not metadata:
+            msg = "metadata is None"
+            raise SecParserRuntimeError(msg)
         return metadata
 
     def _get_sections_html(
@@ -198,3 +201,16 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
             msg = f"expected a dict, got {type(filings[0])}"
             raise SecapioRequestError(msg)
         return filings[0]
+
+
+def _get_accession_number_from_url(url: str) -> str:
+    numbers = re.findall(r"\d+", url)
+    s = max(numbers, key=len)
+    if len(s) != ACCESSION_NUMBER_LENGTH:
+        msg = "Input string must be 18 characters long"
+        raise ValueError(msg)
+    result = s[:10] + "-" + s[10:12] + "-" + s[12:]
+    if not isinstance(result, str):
+        msg = f"expected a str, got {type(result)}"
+        raise TypeError(msg)
+    return result

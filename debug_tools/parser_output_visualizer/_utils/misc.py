@@ -1,4 +1,5 @@
 from __future__ import annotations
+import itertools
 
 import re
 
@@ -104,3 +105,35 @@ def interleave_lists(lists):
                 interleaved.append(lst[i])
 
     return interleaved
+
+
+def circular_zip(*args: List) -> List[Tuple]:
+    """
+    Zip elements of multiple lists together in a circular fashion.
+
+    If the lengths of the lists are unequal, items from the shorter lists are repeated.
+
+    Args:
+        *args: Lists to zip. Each argument should be a list.
+
+    Returns:
+        A list of tuples, each containing one element from each list.
+
+    Doctests:
+    >>> circular_zip([1, 2, 3], ['a', 'b'])
+    [(1, 'a'), (2, 'b'), (3, 'a')]
+
+    >>> circular_zip([1, 2], ['a', 'b', 'c'], ['x', 'y', 'z', 'w'])
+    [(1, 'a', 'x'), (2, 'b', 'y'), (1, 'c', 'z'), (2, 'a', 'w')]
+    """
+
+    # create a list of cyclic iterators
+    cyclic_iters = [
+        itertools.cycle(lst) if lst else itertools.repeat(None) for lst in args
+    ]
+
+    # get the length of the longest list
+    max_length = max(len(lst) for lst in args)
+
+    # zip the arguments and slice the results
+    return list(itertools.islice(zip(*cyclic_iters), max_length))
