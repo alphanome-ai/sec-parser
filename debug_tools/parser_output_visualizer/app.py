@@ -225,12 +225,11 @@ def streamlit_app(
     def render_semantic_element(
         element: sp.BaseSemanticElement,
     ):
-        bs4_tag = element.html_tag._bs4
         if do_element_render_html:
-            element_html = remove_ix_tags(str(bs4_tag))
+            element_html = remove_ix_tags(str(element.html_tag._bs4))
             st.markdown(element_html, unsafe_allow_html=True)
         else:
-            st.code(bs4_tag.prettify(), language="html")
+            st.code(element.html_tag._bs4.prettify(), language="markup")
 
     def render_tree_node(tree_node: sp.TreeNode, _current_depth=0):
         element = tree_node.semantic_element
