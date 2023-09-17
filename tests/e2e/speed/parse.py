@@ -4,14 +4,94 @@ import sys
 import time
 from multiprocessing import Manager, Pool
 from pathlib import Path
-from statistics import mean, median
-import sec_parser as sp
+from statistics import mean, median, stdev
+from rich import print
+
 import numpy as np
+import sec_parser as sp
+from millify import millify
 from rich.console import Console
 from rich.table import Table
 
 ALLOWED_MICROSECONDS_PER_CHAR = 3
 TESTS_PER_CORE = 5
+
+
+class Metric:
+    def __init__(self, name, style, justify="right"):
+        self.name = name
+        self.style = style
+        self.justify = justify
+
+    def calculate(self, times, char_count):
+        raise NotImplementedError
+
+    def visualize(self, value):
+        return f"{value:.3f}"
+
+
+class MinTime(Metric):
+    def calculate(self, times, char_count):
+        return min(times)
+
+
+class MaxTime(Metric):
+    def calculate(self, times, char_count):
+        return max(times)
+
+
+class Average(Metric):
+    def calculate(self, times, char_count):
+        return mean(times)
+
+
+class Median(Metric):
+    def calculate(self, times, char_count):
+        return median(times)
+
+
+class P95(Metric):
+    def calculate(self, times, char_count):
+        return np.percentile(times, 95)
+
+
+class StdDev(Metric):
+    def calculate(self, times, char_count):
+        return stdev(times)
+
+
+class Threshold(Metric):
+    def calculate(self, times, char_count):
+        return char_count * ALLOWED_MICROSECONDS_PER_CHAR / 1_000_000
+
+
+class P95Threshold(Metric):
+    def calculate(self, times, char_count, p95_time, threshold):
+        return (p95_time / threshold) * 100
+
+    def visualize(self, value):
+        return f"{value:.0f} %"
+
+
+class Size(Metric):
+    def calculate(self, times, char_count):
+        return char_count
+
+    def visualize(self, value):
+        return millify(value)
+
+
+METRICS = [
+    MinTime("Min Time", "green"),
+    MaxTime("Max Time", "green"),
+    Average("Average", "green"),
+    Median("Median", "green"),
+    P95("P95", "green"),
+    StdDev("Std Dev", "green"),
+    Size("Size", "dim"),
+    Threshold("Threshold", "blue"),
+    P95Threshold("P95/Threshold", "green"),
+]
 
 
 def get_document_name(document_hash, hash_to_filename):
@@ -39,25 +119,18 @@ def render_table(metrics, hash_to_filename):
 
     # Initialize table with headers
     table = Table(show_header=True, header_style="bold magenta")
-    table.add_column("Document", style="dim", width=64)
-    table.add_column("Avg Time, s", style="green", justify="right", width=15)
-    table.add_column("Median Time, s", style="green", justify="right", width=15)
-    table.add_column("P95 Time, s", style="green", justify="right", width=15)
-    table.add_column("Threshold, s", style="green", justify="right", width=15)
-    table.add_column("P95 % of Threshold", style="green", justify="right", width=20)
+    table.add_column("Document", style="dim", justify="right")
+    for metric in METRICS:
+        table.add_column(metric.name, style=metric.style, justify=metric.justify)
 
     # Populate table with rows
-    for document_hash, metric in metrics.items():
-        avg_time, median_time, p95_time, threshold, p95_percentage = metric
+    for document_hash, metric_values in metrics.items():
         document_name = get_document_name(document_hash, hash_to_filename)
-        table.add_row(
-            document_name,
-            f"{avg_time:.2f}",
-            f"{median_time:.2f}",
-            f"{p95_time:.2f}",
-            f"{threshold:.2f}",
-            f"{p95_percentage:.0f} %",
-        )
+        row_data = [document_name]
+        for metric in METRICS:
+            value = metric_values[metric.name]
+            row_data.append(metric.visualize(value))
+        table.add_row(*row_data)
 
     # Display the table in the terminal
     console.print(table)
@@ -69,16 +142,24 @@ if __name__ == "__main__":
     test_data_htmls = {}
     test_data_path = Path(__file__).parent / "../test_data"
     hash_to_filename = {}
+    file_counter = 0
     for html_file in test_data_path.glob("10q_*.html"):
         with open(html_file, "r") as file:
             file_content = file.read()
             test_data_htmls[html_file.name] = file_content
             hash_key = hashlib.sha256(file_content.encode()).hexdigest()
             hash_to_filename[hash_key] = html_file.name  # Populate the mapping
+            file_counter += 1
 
     tests_per_file = core_count * TESTS_PER_CORE
-    print(f"Running {tests_per_file} tests per file on {core_count} cores")
-    print(f"Allowing {ALLOWED_MICROSECONDS_PER_CHAR} microseconds per HTML character")
+    total_tests_ran = tests_per_file * file_counter
+    print(
+        f"- Each document underwent [bold]{tests_per_file}[/bold] tests, totaling [bold]{total_tests_ran}[/bold] tests across [bold]{core_count}[/bold] cores.",
+        f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
+        f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
+        f"- Performance metrics ('Average', 'Median', 'P95') are measured in seconds, while 'Size' is measured in HTML characters.",
+        sep="\n",
+    )
     example_htmls = list(test_data_htmls.values()) * tests_per_file
 
     manager = Manager()
@@ -104,9 +185,6 @@ if __name__ == "__main__":
         times = list(times)
         if not times:
             continue  # Skip if no timing data collected
-        avg_time = mean(times)
-        median_time = median(times)
-        p95_time = np.percentile(times, 95)
 
         example_doc = next(
             (
@@ -117,20 +195,22 @@ if __name__ == "__main__":
             None,
         )
         char_count = len(example_doc)
-        threshold = char_count * ALLOWED_MICROSECONDS_PER_CHAR / 1_000_000
 
-        p95_percentage = (p95_time / threshold) * 100
+        metrics[document_hash] = {}
+        for metric in METRICS:
+            if isinstance(metric, P95Threshold):
+                p95_time = metrics[document_hash]["P95"]
+                threshold = metrics[document_hash]["Threshold"]
+                metrics[document_hash][metric.name] = metric.calculate(
+                    times, char_count, p95_time, threshold
+                )
+            else:
+                metrics[document_hash][metric.name] = metric.calculate(
+                    times, char_count
+                )
 
-        if p95_time > threshold:
+        if metrics[document_hash]["P95/Threshold"] > 100:
             failed_documents.append(document_hash)
-
-        metrics[document_hash] = (
-            avg_time,
-            median_time,
-            p95_time,
-            threshold,
-            p95_percentage,
-        )
 
     render_table(metrics, hash_to_filename)
 

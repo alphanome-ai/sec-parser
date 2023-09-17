@@ -28,6 +28,7 @@ python-dotenv = "^1.0.0"
 watchdog = "^3.0.0"
 streamlit-antd-components = "^0.1.21"
 streamlit-nested-layout = "^0.1.1"
+millify = "^0.1.1"
 
 
 [tool.commitizen]
