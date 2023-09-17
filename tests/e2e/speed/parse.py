@@ -4,100 +4,52 @@ import sys
 import time
 from multiprocessing import Manager, Pool
 from pathlib import Path
-from statistics import mean, median, stdev
-from rich import print
 
-import numpy as np
 import sec_parser as sp
-from millify import millify
+from rich import print
 from rich.console import Console
 from rich.table import Table
+from tests.e2e.speed._metrics import (
+    P99,
+    Average,
+    MaxTime,
+    Median,
+    RatioMetric,
+    Size,
+    Threshold,
+)
 
-ALLOWED_MICROSECONDS_PER_CHAR = 3
+# Specify the metric that determines the test outcome
+# A test will pass or fail based on this metric
+TEST_METRIC = "Average/Threshold"
+
+ALLOWED_MICROSECONDS_PER_CHAR = 1
+
 TESTS_PER_CORE = 5
 
-
-class Metric:
-    def __init__(self, name, style, justify="right"):
-        self.name = name
-        self.style = style
-        self.justify = justify
-
-    def calculate(self, times, char_count):
-        raise NotImplementedError
-
-    def visualize(self, value):
-        return f"{value:.3f}"
-
-
-class MinTime(Metric):
-    def calculate(self, times, char_count):
-        return min(times)
-
-
-class MaxTime(Metric):
-    def calculate(self, times, char_count):
-        return max(times)
-
-
-class Average(Metric):
-    def calculate(self, times, char_count):
-        return mean(times)
-
-
-class Median(Metric):
-    def calculate(self, times, char_count):
-        return median(times)
-
-
-class P95(Metric):
-    def calculate(self, times, char_count):
-        return np.percentile(times, 95)
-
-
-class StdDev(Metric):
-    def calculate(self, times, char_count):
-        return stdev(times)
-
-
-class Threshold(Metric):
-    def calculate(self, times, char_count):
-        return char_count * ALLOWED_MICROSECONDS_PER_CHAR / 1_000_000
-
-
-class P95Threshold(Metric):
-    def calculate(self, times, char_count, p95_time, threshold):
-        return (p95_time / threshold) * 100
-
-    def visualize(self, value):
-        return f"{value:.0f} %"
-
-
-class Size(Metric):
-    def calculate(self, times, char_count):
-        return char_count
-
-    def visualize(self, value):
-        return millify(value)
-
-
+# Define metrics to be used
 METRICS = [
-    MinTime("Min Time", "green"),
-    MaxTime("Max Time", "green"),
-    Average("Average", "green"),
-    Median("Median", "green"),
-    P95("P95", "green"),
-    StdDev("Std Dev", "green"),
+    Average("Average", "blue"),
+    Threshold(ALLOWED_MICROSECONDS_PER_CHAR, "Threshold", "blue"),
+    RatioMetric(
+        Average("Average"),
+        Threshold(ALLOWED_MICROSECONDS_PER_CHAR, "Threshold"),
+        "Average/Threshold",
+        "blue",
+    ),
+    Median("Median", "dim"),
+    P99("P99", "dim"),
+    MaxTime("Max Time", "dim"),
     Size("Size", "dim"),
-    Threshold("Threshold", "blue"),
-    P95Threshold("P95/Threshold", "green"),
 ]
 
 
+# Function to get document name from hash
 def get_document_name(document_hash, hash_to_filename):
     return hash_to_filename.get(document_hash, document_hash)
 
 
+# Function to execute a single test
 def execute_test(html_input, execution_times):
     start_time = time.time()
     elements = sp.SecParser().parse(html_input)
@@ -109,11 +61,13 @@ def execute_test(html_input, execution_times):
     execution_times[html_hash].append(elapsed_time)
 
 
+# Function to execute multiple tests
 def execute_multiple_tests(html_inputs, execution_times):
     for html_input in html_inputs:
         execute_test(html_input, execution_times)
 
 
+# Function to render the results table
 def render_table(metrics, hash_to_filename):
     console = Console()
 
@@ -136,9 +90,11 @@ def render_table(metrics, hash_to_filename):
     console.print(table)
 
 
+# Main execution
 if __name__ == "__main__":
     core_count = multiprocessing.cpu_count()
 
+    # Load test data
     test_data_htmls = {}
     test_data_path = Path(__file__).parent / "../test_data"
     hash_to_filename = {}
@@ -151,17 +107,23 @@ if __name__ == "__main__":
             hash_to_filename[hash_key] = html_file.name  # Populate the mapping
             file_counter += 1
 
+    # Calculate number of tests
     tests_per_file = core_count * TESTS_PER_CORE
     total_tests_ran = tests_per_file * file_counter
+
+    # Print initial information
     print(
         f"- Each document underwent [bold]{tests_per_file}[/bold] tests, totaling [bold]{total_tests_ran}[/bold] tests across [bold]{core_count}[/bold] cores.",
         f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
         f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
-        f"- Performance metrics ('Average', 'Median', 'P95') are measured in seconds, while 'Size' is measured in HTML characters.",
+        f"- Performance metrics (e.g. 'Average', 'Median', 'P99') are measured in seconds, while 'Size' is measured in HTML characters.",
         sep="\n",
     )
+
+    # Prepare test data
     example_htmls = list(test_data_htmls.values()) * tests_per_file
 
+    # Initialize shared data structures
     manager = Manager()
     execution_times = manager.dict(
         {
@@ -170,6 +132,7 @@ if __name__ == "__main__":
         }
     )
 
+    # Execute tests in parallel
     with Pool(processes=core_count) as pool:
         pool.starmap(
             execute_multiple_tests,
@@ -179,13 +142,17 @@ if __name__ == "__main__":
             ],
         )
 
+    # Initialize metrics and failed documents list
     metrics = {}
     failed_documents = []
+
+    # Calculate metrics for each document
     for document_hash, times in execution_times.items():
         times = list(times)
         if not times:
             continue  # Skip if no timing data collected
 
+        # Find the document corresponding to the hash
         example_doc = next(
             (
                 doc
@@ -196,24 +163,26 @@ if __name__ == "__main__":
         )
         char_count = len(example_doc)
 
+        # Calculate each metric for the document
         metrics[document_hash] = {}
         for metric in METRICS:
-            if isinstance(metric, P95Threshold):
-                p95_time = metrics[document_hash]["P95"]
-                threshold = metrics[document_hash]["Threshold"]
+            if isinstance(metric, RatioMetric):
                 metrics[document_hash][metric.name] = metric.calculate(
-                    times, char_count, p95_time, threshold
+                    times, char_count, metrics[document_hash]
                 )
             else:
                 metrics[document_hash][metric.name] = metric.calculate(
                     times, char_count
                 )
 
-        if metrics[document_hash]["P95/Threshold"] > 100:
+        # Check if the document failed the threshold
+        if metrics[document_hash][TEST_METRIC] > 100:
             failed_documents.append(document_hash)
 
+    # Render the results table
     render_table(metrics, hash_to_filename)
 
+    # Print the documents that failed the threshold
     if failed_documents:
         print("\nDocuments that failed the threshold:")
         for doc in failed_documents:
