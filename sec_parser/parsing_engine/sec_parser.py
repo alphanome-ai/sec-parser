@@ -42,8 +42,8 @@ class SecParser(AbstractSemanticElementParser):
     ) -> list[AbstractParsingPlugin]:
         return [
             RootSectionPlugin(),
-            TitlePlugin(),
             TextPlugin(dont_convert_from={RootSectionElement}),
+            TitlePlugin(),
             IrrelevantElementPlugin(),
         ]
 

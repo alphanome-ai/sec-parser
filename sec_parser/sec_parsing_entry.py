@@ -17,14 +17,16 @@ if TYPE_CHECKING:
 
 
 def parse_latest(
-    doc_type: DocumentType,
+    doc_type: DocumentType | str,
     /,
     *,
     ticker: str,
     secapio_api_key: str | None = None,  # sec-api.io API key
 ) -> SemanticTree:
     retriever = SecapioDataRetriever(api_key=secapio_api_key)
-    html = retriever.get_latest_html_from_ticker(doc_type, ticker=ticker)
+    metadata = retriever.retrieve_report_metadata(doc_type, latest_from_ticker=ticker)
+    url = metadata["linkToFilingDetails"]
+    html = retriever.get_report_html(doc_type, url=url)
 
     parser = SecParser()
     elements = parser.parse(html)

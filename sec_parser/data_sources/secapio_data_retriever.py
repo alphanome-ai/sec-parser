@@ -5,8 +5,12 @@ from typing import TYPE_CHECKING
 
 import httpx
 
+from debug_tools.parser_output_visualizer._utils.misc import (
+    get_accession_number_from_url,
+)
 from sec_parser.data_sources.abstract_sec_data_retriever import (
     AbstractSECDataRetriever,
+    DocumentTypeNotSupportedError,
 )
 from sec_parser.data_sources.sec_edgar_enums import (
     FORM_SECTIONS,
@@ -44,8 +48,8 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
 
     def __init__(
         self: SecapioDataRetriever,
-        *,
         api_key: str | None = None,
+        *,
         timeout_s: int | None = None,
     ) -> None:
         self._api_key = get_value_or_env_var(
@@ -55,34 +59,57 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
         )
         self._timeout_s = timeout_s or 10
 
-    def _get_html_from_url(
+    def _get_report_html(
         self: SecapioDataRetriever,
         doc_type: DocumentType,
-        *,
         url: str,
-        sections: Iterable[SectionType] | None = None,
-    ) -> str:
-        return self._get_sections_html(doc_type, url, sections)
-
-    def _get_latest_html_from_ticker(
-        self: SecapioDataRetriever,
-        doc_type: DocumentType,
         *,
-        ticker: str,
         sections: Iterable[SectionType] | None = None,
     ) -> str:
-        metadata = self._call_latest_report_metadata_api(
-            doc_type,
-            key="ticker",
-            value=ticker,
+        return self._get_sections_html(doc_type, url, sections=sections)
+
+    def retrieve_report_metadata(
+        self: SecapioDataRetriever,
+        doc_type: DocumentType | str,
+        *,
+        url: str | None = None,
+        latest_from_ticker: str | None = None,
+    ) -> dict:
+        # Validate arguments
+        if not url and not latest_from_ticker:
+            msg = "either url or ticker must be provided"
+            raise SecParserValueError(msg)
+        if url and latest_from_ticker:
+            msg = "only one of url or ticker must be provided"
+            raise SecParserValueError(msg)
+        new_doc_type = (
+            DocumentType.from_str(doc_type) if isinstance(doc_type, str) else doc_type
         )
-        url = metadata["linkToFilingDetails"]
-        return self._get_sections_html(doc_type, url, sections)
+        if new_doc_type not in self.SUPPORTED_DOCUMENT_TYPES:
+            msg = f"Document type {doc_type} not supported."
+            raise DocumentTypeNotSupportedError(msg)
+
+        # Retrieve metadata
+        if latest_from_ticker:
+            metadata = self._call_latest_report_metadata_api(
+                new_doc_type,
+                key="ticker",
+                value=latest_from_ticker,
+            )
+        else:
+            accession_number = get_accession_number_from_url(url)
+            metadata = self._call_latest_report_metadata_api(
+                new_doc_type,
+                key="accessionNo",
+                value=accession_number,
+            )
+        return metadata
 
     def _get_sections_html(
         self: SecapioDataRetriever,
         doc_type: DocumentType,
         url: str,
+        *,
         sections: Iterable[SectionType] | None = None,
     ) -> str:
         html_parts = []
@@ -133,8 +160,8 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
         key: str,
         value: str,
     ) -> dict:
-        key = key.strip().lower()
-        value = value.strip().lower()
+        key = key.strip()
+        value = value.strip()
         query = {
             "query": {
                 "query_string": {

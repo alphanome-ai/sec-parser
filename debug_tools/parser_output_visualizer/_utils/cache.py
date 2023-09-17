@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import pickle
 import re
@@ -31,7 +32,11 @@ def cache_to_file(cache_by_keys: set[str], cache_dir: str) -> Callable:
                 selected_kwargs = {k: kwargs[k] for k in cache_by_keys if k in kwargs}
             else:
                 selected_kwargs = kwargs
-            selected_kwargs = {k: selected_kwargs[k] for k in sorted(selected_kwargs)}
+            selected_kwargs = {
+                k: selected_kwargs[k]
+                for k in sorted(selected_kwargs)
+                if selected_kwargs[k]
+            }
             args_hash = hashlib.md5(str(selected_kwargs).encode()).hexdigest()[:10]
 
             cache_dir_ = os.path.join(os.path.dirname(__file__), cache_dir)
@@ -48,12 +53,20 @@ def cache_to_file(cache_by_keys: set[str], cache_dir: str) -> Callable:
                     ):
                         with open(cache_file_path.replace(".pkl", ".txt"), "w") as f:
                             f.write(func(*args, **kwargs))
+                    if isinstance(result, dict) and not os.path.exists(
+                        cache_file_path.replace(".pkl", ".json")
+                    ):
+                        with open(cache_file_path.replace(".pkl", ".json"), "w") as f:
+                            json.dump(result, f, indent=4)
                     return result
 
             result = func(*args, **kwargs)
             if isinstance(result, str):
                 with open(cache_file_path.replace(".pkl", ".txt"), "w") as f:
                     f.write(result)
+            if isinstance(result, dict):
+                with open(cache_file_path.replace(".pkl", ".json"), "w") as f:
+                    json.dump(result, f, indent=4)
             with open(cache_file_path, "wb") as f:
                 pickle.dump(result, f)
 

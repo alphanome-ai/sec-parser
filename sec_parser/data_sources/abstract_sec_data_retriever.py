@@ -28,11 +28,11 @@ class AbstractSECDataRetriever(ABC):
                 msg,
             )
 
-    def get_html_from_url(
+    def get_report_html(
         self: AbstractSECDataRetriever,
         doc_type: DocumentType | str,
-        *,
         url: str,
+        *,
         sections: Iterable[SectionType | str] | None = None,
     ) -> str:
         doc_type, sections = self._validate_and_convert(doc_type, sections)
@@ -41,47 +41,18 @@ class AbstractSECDataRetriever(ABC):
         # validations are performed before calling the actual implementation.
         # Subclasses are expected to implement _get_html_from_url for the
         # core functionality.
-        return self._get_html_from_url(
+        return self._get_report_html(
             doc_type,
             url=url,
             sections=sections,
         )
 
-    def get_latest_html_from_ticker(
-        self: AbstractSECDataRetriever,
-        doc_type: DocumentType | str,
-        *,
-        ticker: str,
-        sections: Iterable[SectionType | str] | None = None,
-    ) -> str:
-        doc_type, sections = self._validate_and_convert(doc_type, sections)
-
-        # Using the Template Method Pattern here to ensure all necessary
-        # validations are performed before calling the actual implementation.
-        # Subclasses are expected to implement _get_html_from_url for the
-        # core functionality.
-        return self._get_latest_html_from_ticker(
-            doc_type,
-            ticker=ticker,
-            sections=sections,
-        )
-
     @abstractmethod
-    def _get_html_from_url(
+    def _get_report_html(
         self: AbstractSECDataRetriever,
         doc_type: DocumentType,
-        *,
         url: str,
-        sections: Iterable[SectionType] | None = None,
-    ) -> str:
-        raise NotImplementedError  # pragma: no cover
-
-    @abstractmethod
-    def _get_latest_html_from_ticker(
-        self: AbstractSECDataRetriever,
-        doc_type: DocumentType,
         *,
-        ticker: str,
         sections: Iterable[SectionType] | None = None,
     ) -> str:
         raise NotImplementedError  # pragma: no cover
