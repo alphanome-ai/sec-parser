@@ -1,24 +1,24 @@
 from sec_parser import (
     AbstractNestingRule,
-    BaseSemanticElement,
+    AbstractSemanticElement,
     HtmlTag,
     TreeBuilder,
 )
 
 
-class ParentElement(BaseSemanticElement):
+class ParentElement(AbstractSemanticElement):
     pass
 
 
-class ChildElement(BaseSemanticElement):
+class ChildElement(AbstractSemanticElement):
     pass
 
 
 class ParentChildNestingRule(AbstractNestingRule):
     def should_be_nested_under(
         self,
-        parent: BaseSemanticElement,
-        child: BaseSemanticElement,
+        parent: AbstractSemanticElement,
+        child: AbstractSemanticElement,
     ) -> bool:
         return isinstance(parent, ParentElement) and isinstance(child, ChildElement)
 

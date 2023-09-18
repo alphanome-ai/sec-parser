@@ -11,8 +11,8 @@ from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
 
 if TYPE_CHECKING:
-    from sec_parser.semantic_elements.base_semantic_element import (
-        BaseSemanticElement,
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
     )
 
 
@@ -30,7 +30,7 @@ class TreeBuilder:
             TitleLevelRule(),
         ]
 
-    def build(self, elements: list[BaseSemanticElement]) -> SemanticTree:
+    def build(self, elements: list[AbstractSemanticElement]) -> SemanticTree:
         rules = self.create_rules()
 
         # The 'stack' is a list used to remember the nodes (sections or elements)

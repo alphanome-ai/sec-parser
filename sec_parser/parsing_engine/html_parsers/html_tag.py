@@ -35,7 +35,7 @@ class HtmlTag:
         expensive, hence the result is cached as the underlying data
         doesn't change.
         """
-        return self._bs4.text
+        return self._bs4.text.strip()
 
     @property
     def name(self) -> str:

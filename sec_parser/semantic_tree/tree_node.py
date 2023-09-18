@@ -5,15 +5,15 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    from sec_parser.semantic_elements.base_semantic_element import (
-        BaseSemanticElement,
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
     )
 
 
 class TreeNode:
     def __init__(
         self: TreeNode,
-        semantic_element: BaseSemanticElement,
+        semantic_element: AbstractSemanticElement,
         *,
         parent: TreeNode | None = None,
         children: Iterable[TreeNode] | None = None,

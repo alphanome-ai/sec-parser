@@ -4,8 +4,8 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from sec_parser.semantic_elements.base_semantic_element import (
-        BaseSemanticElement,
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
     )
 
 
@@ -17,5 +17,5 @@ class AbstractSemanticElementParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def parse(self, html: str) -> list[BaseSemanticElement]:
+    def parse(self, html: str) -> list[AbstractSemanticElement]:
         raise NotImplementedError

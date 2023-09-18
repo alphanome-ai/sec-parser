@@ -4,11 +4,11 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Callable
 
-from sec_parser.semantic_elements.base_semantic_element import (
-    BaseSemanticElement,
+from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractSemanticElement,
 )
 
-ElementTransformer = Callable[[BaseSemanticElement], BaseSemanticElement]
+ElementTransformer = Callable[[AbstractSemanticElement], AbstractSemanticElement]
 
 
 class AbstractParsingPlugin(ABC):
@@ -21,8 +21,8 @@ class AbstractParsingPlugin(ABC):
     @abstractmethod
     def transform(
         self,
-        elements: list[BaseSemanticElement],
-    ) -> list[BaseSemanticElement]:
+        elements: list[AbstractSemanticElement],
+    ) -> list[AbstractSemanticElement]:
         """
         Transform the list of semantic elements.
 
@@ -39,7 +39,8 @@ class ElementwiseParsingContext:
     to elementwise parsing plugins.
     """
 
-    # Whether the element is the root element of the document.
+    # is_root tells the plugin whether the given semantic element has
+    # an HTML tag which is at the root level of the HTML document.
     is_root: bool
 
 
@@ -53,9 +54,9 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
 
     def transform(
         self,
-        elements: list[BaseSemanticElement],
+        elements: list[AbstractSemanticElement],
         _context: ElementwiseParsingContext | None = None,
-    ) -> list[BaseSemanticElement]:
+    ) -> list[AbstractSemanticElement]:
         context = _context or ElementwiseParsingContext(is_root=True)
         for i in range(len(elements)):
             element = self.transform_element(elements[i], context)
@@ -71,9 +72,9 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
     @abstractmethod
     def transform_element(
         self,
-        element: BaseSemanticElement,
+        element: AbstractSemanticElement,
         context: ElementwiseParsingContext,
-    ) -> BaseSemanticElement:
+    ) -> AbstractSemanticElement:
         """
         `transform_element` method is responsible for transforming a
         single semantic element into another.

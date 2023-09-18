@@ -46,12 +46,12 @@ def download_html(
     return retriever.get_report_html(doc, url, sections=sections)
 
 
-def get_semantic_elements(html: str) -> list[sp.BaseSemanticElement]:
+def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
     parser = sp.SecParser()
     elements = parser.parse(html)
     return elements
 
 
-def get_semantic_tree(elements: list[sp.BaseSemanticElement]) -> sp.SemanticTree:
+def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
     tree_builder = sp.TreeBuilder()
     return tree_builder.build(elements)

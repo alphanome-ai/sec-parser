@@ -2,15 +2,19 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
+from sec_parser.parsing_plugins.abstract_parsing_plugin import (
+    AbstractElementwiseParsingPlugin,
+    ElementwiseParsingContext,
+)
+from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
 if TYPE_CHECKING:
-    from sec_parser.semantic_elements.base_semantic_element import (
-        BaseSemanticElement,
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
     )
 
 
-class IrrelevantElementPlugin(AbstractParsingPlugin):
+class IrrelevantElementPlugin(AbstractElementwiseParsingPlugin):
     """
     IrrelevantElementPlugin class for transforming elements into
     IrrelevantElement instances.
@@ -19,8 +23,12 @@ class IrrelevantElementPlugin(AbstractParsingPlugin):
     replaces suitable candidates with IrrelevantElement instances.
     """
 
-    def transform(
+    def transform_element(
         self,
-        elements: list[BaseSemanticElement],
-    ) -> list[BaseSemanticElement]:
-        return elements
+        element: AbstractSemanticElement,
+        _: ElementwiseParsingContext,
+    ) -> AbstractSemanticElement:
+        if element.html_tag.text.strip() == "":
+            return IrrelevantElement.convert_from(element)
+
+        return element

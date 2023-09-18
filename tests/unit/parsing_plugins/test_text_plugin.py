@@ -15,7 +15,7 @@ from sec_parser.semantic_elements.semantic_elements import TextElement
     [
         (
             """
-               <special>0</special>
+               <special></special>
                <p>1</p>
                <div>
                    <i>2</i>
@@ -42,7 +42,7 @@ from sec_parser.semantic_elements.semantic_elements import TextElement
 def test_text_plugin(html_str, expected_elements):
     # Arrange
     elements = get_elements_from_html(html_str)
-    plugin = TextPlugin(dont_convert_from={SpecialElement})
+    plugin = TextPlugin()
 
     # Act
     processed_elements = plugin.transform(elements)

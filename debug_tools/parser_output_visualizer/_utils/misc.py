@@ -9,6 +9,13 @@ import sec_parser.semantic_elements as se
 import collections
 
 
+def normalize_company_name(name):
+    name = name.title()
+    name = name.replace("Inc.", "Inc").replace("Corp.", "Corp")
+    name = name.replace("Inc", "Inc.").replace("Corp", "Corp.")
+    return name
+
+
 def generate_bool_list(idx, length):
     """
     >>> generate_bool_list(1, 3)
@@ -31,17 +38,37 @@ def add_spaces(text):
     return re.sub(r"(\w)([A-Z0-9])", r"\1 \2", text)
 
 
-def get_pretty_class_name(element_cls, element=None, *, source: str = ""):
+def get_pretty_class_name(element_cls, element=None, *, source: str = "", base=False):
+    root_subclass = element_cls.get_direct_abstract_semantic_subclass()
     emoji = {
-        se.UndeterminedElement: "🍃",
         se.TextElement: "📝",
+        se.TitleElement: "🏷️",
         se.RootSectionElement: "📚",
-    }.get(element_cls, "✨")
+        se.TableElement: "📊",
+        se.ImageElement: "🖼️",
+        se.UndeterminedElement: "❓",
+        se.IrrelevantElement: "🚮",
+        se.RootSectionSeparatorElement: "⏸️",
+        se.HighlightedElement: "🌟",
+    }.get(element_cls if not base else root_subclass, "❓")
+
+    name = add_spaces(element_cls.__name__).replace("Element", "").strip()
+    root_subclass_name = (
+        add_spaces(root_subclass.__name__).replace("Element", "").strip()
+    )
+    if base:
+        name = root_subclass_name
+
     level = ""
     if element and hasattr(element, "level") and element.level > 1:
         level = f" (Level {element.level})"
-    type_name = add_spaces(element_cls.__name__).replace("Element", "").strip()
-    pretty_name = f"{emoji} **{type_name}{level}**"
+
+    base_name = ""
+    if not base and name != root_subclass_name:
+        base_name = f" (type **{root_subclass_name}**)"
+
+    pretty_name = f"{emoji} **{name}{level}**{base_name}"
+
     if source:
         pretty_name += f" | {source}"
     return pretty_name
@@ -60,6 +87,24 @@ def remove_duplicates_retain_order(input_list):
     This function removes duplicates from a list while retaining the order of elements.
     """
     return list(dict.fromkeys(input_list))
+
+
+def clean_user_input(input_list, split_char=None, split_lines=False):
+    if split_char and split_lines:
+        raise ValueError("Only one of split_char and split_lines can be set.")
+
+    if split_char:
+        input_list = input_list.split(split_char)
+    elif split_lines:
+        input_list = input_list.splitlines()
+
+    cleaned_list = []
+    for k in input_list:
+        stripped_k = k.strip()
+        if stripped_k:
+            cleaned_list.append(stripped_k)
+
+    return remove_duplicates_retain_order(cleaned_list)
 
 
 def get_accession_number_from_url(url):
@@ -105,35 +150,3 @@ def interleave_lists(lists):
                 interleaved.append(lst[i])
 
     return interleaved
-
-
-def circular_zip(*args: List) -> List[Tuple]:
-    """
-    Zip elements of multiple lists together in a circular fashion.
-
-    If the lengths of the lists are unequal, items from the shorter lists are repeated.
-
-    Args:
-        *args: Lists to zip. Each argument should be a list.
-
-    Returns:
-        A list of tuples, each containing one element from each list.
-
-    Doctests:
-    >>> circular_zip([1, 2, 3], ['a', 'b'])
-    [(1, 'a'), (2, 'b'), (3, 'a')]
-
-    >>> circular_zip([1, 2], ['a', 'b', 'c'], ['x', 'y', 'z', 'w'])
-    [(1, 'a', 'x'), (2, 'b', 'y'), (1, 'c', 'z'), (2, 'a', 'w')]
-    """
-
-    # create a list of cyclic iterators
-    cyclic_iters = [
-        itertools.cycle(lst) if lst else itertools.repeat(None) for lst in args
-    ]
-
-    # get the length of the longest list
-    max_length = max(len(lst) for lst in args)
-
-    # zip the arguments and slice the results
-    return list(itertools.islice(zip(*cyclic_iters), max_length))

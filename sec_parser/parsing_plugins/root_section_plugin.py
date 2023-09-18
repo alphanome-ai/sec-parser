@@ -5,9 +5,9 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
     ElementwiseParsingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import (
-    BaseSemanticElement,
-    IrrelevantElement,
+    AbstractSemanticElement,
     RootSectionElement,
+    RootSectionSeparatorElement,
 )
 
 
@@ -29,18 +29,19 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
 
     def transform_element(
         self,
-        element: BaseSemanticElement,
+        element: AbstractSemanticElement,
         context: ElementwiseParsingContext,
-    ) -> BaseSemanticElement:
-        if self.next_element_is_root_section:
+    ) -> AbstractSemanticElement:
+        if context.is_root and self.next_element_is_root_section:
             self.next_element_is_root_section = False
             return RootSectionElement.convert_from(element)
 
         if element.html_tag.name == "document-root-section":
-            self.next_element_is_root_section = context.is_root
-            return IrrelevantElement.convert_from(element)
+            if context.is_root:
+                self.next_element_is_root_section = True
+            return RootSectionSeparatorElement.convert_from(element)
 
-        if element.html_tag.contains_tag("document-root-section"):
+        if context.is_root and element.html_tag.contains_tag("document-root-section"):
             return RootSectionElement.convert_from(element)
 
         return element

@@ -6,24 +6,32 @@ semantic significance.
 """
 
 
-from sec_parser.semantic_elements.base_semantic_element import (
-    BaseSemanticElement,
+from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    HighlightedElement,
+    ImageElement,
     InvalidTitleLevelError,
     IrrelevantElement,
     RootSectionElement,
+    RootSectionSeparatorElement,
+    TableElement,
     TextElement,
     TitleElement,
     UndeterminedElement,
 )
 
 __all__ = [
-    "BaseSemanticElement",
+    "AbstractSemanticElement",
     "UndeterminedElement",
     "RootSectionElement",
     "TextElement",
     "TitleElement",
     "InvalidTitleLevelError",
     "IrrelevantElement",
+    "ImageElement",
+    "TableElement",
+    "RootSectionSeparatorElement",
+    "HighlightedElement",
 ]

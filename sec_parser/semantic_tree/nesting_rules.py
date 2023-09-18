@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from sec_parser.semantic_elements.base_semantic_element import (
-    BaseSemanticElement,
+from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
     RootSectionElement,
@@ -13,8 +13,8 @@ class AbstractNestingRule(ABC):
     @abstractmethod
     def should_be_nested_under(
         self,
-        parent: BaseSemanticElement,
-        child: BaseSemanticElement,
+        parent: AbstractSemanticElement,
+        child: AbstractSemanticElement,
     ) -> bool:
         pass
 
@@ -22,8 +22,8 @@ class AbstractNestingRule(ABC):
 class RootSectionRule(AbstractNestingRule):
     def should_be_nested_under(
         self,
-        parent: BaseSemanticElement,
-        child: BaseSemanticElement,
+        parent: AbstractSemanticElement,
+        child: AbstractSemanticElement,
     ) -> bool:
         is_parent_root = isinstance(parent, RootSectionElement)
         is_child_not_root = not isinstance(child, RootSectionElement)
@@ -33,8 +33,8 @@ class RootSectionRule(AbstractNestingRule):
 class TitleLevelRule(AbstractNestingRule):
     def should_be_nested_under(
         self,
-        parent: BaseSemanticElement,
-        child: BaseSemanticElement,
+        parent: AbstractSemanticElement,
+        child: AbstractSemanticElement,
     ) -> bool:
         if isinstance(parent, RootSectionElement):
             return False

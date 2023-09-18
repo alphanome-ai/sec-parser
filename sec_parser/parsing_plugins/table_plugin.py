@@ -13,13 +13,16 @@ if TYPE_CHECKING:
     )
 
 
-class TitlePlugin(AbstractElementwiseParsingPlugin):
+class TablePlugin(AbstractElementwiseParsingPlugin):
     """
-    TitlePlugin class for transforming elements into TitleElement instances.
+    TablePlugin class for transforming elements into TableElement instances.
 
     This plugin scans through a list of semantic elements and replaces
-    suitable candidates with TitleElement instances.
+    suitable candidates with TableElement instances.
     """
+
+    def __init__(self) -> None:
+        pass
 
     def transform_element(
         self,

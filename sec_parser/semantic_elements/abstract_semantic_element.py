@@ -1,12 +1,13 @@
 from __future__ import annotations
 
+from abc import ABC
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 
 
-class BaseSemanticElement:
+class AbstractSemanticElement(ABC):  # noqa: B024
     """
     In the domain of HTML parsing, especially in the context of SEC EDGAR documents,
     a semantic element refers to a meaningful unit within the document that serves a
@@ -21,9 +22,9 @@ class BaseSemanticElement:
     """
 
     def __init__(
-        self: BaseSemanticElement,
+        self: AbstractSemanticElement,
         html_tag: HtmlTag,
-        inner_elements: list[BaseSemanticElement] | None = None,
+        inner_elements: list[AbstractSemanticElement] | None = None,
     ) -> None:
         self.html_tag = html_tag
 
@@ -45,8 +46,32 @@ class BaseSemanticElement:
 
     @classmethod
     def convert_from(
-        cls: type[BaseSemanticElement],
-        source: BaseSemanticElement,
-    ) -> BaseSemanticElement:
+        cls: type[AbstractSemanticElement],
+        source: AbstractSemanticElement,
+    ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
         return cls(source.html_tag, inner_elements=source.inner_elements)
+
+    @classmethod
+    def get_direct_abstract_semantic_subclass(
+        cls: type[AbstractSemanticElement],
+    ) -> type[AbstractSemanticElement]:
+        """
+        Given a class, find the class that is one step below
+        AbstractSemanticElement in its inheritance hierarchy.
+        """
+        if not issubclass(cls, AbstractSemanticElement):
+            msg = "Argument must be a subclass of AbstractSemanticElement."
+            raise TypeError(msg)
+
+        root_child = None
+        for ancestor in cls.mro():
+            if ancestor is AbstractSemanticElement:
+                break
+            root_child = ancestor
+
+        if root_child is None:
+            msg = "Could not find a root child class for the given class."
+            raise ValueError(msg)
+
+        return root_child

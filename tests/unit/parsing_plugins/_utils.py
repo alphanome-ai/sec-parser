@@ -1,27 +1,27 @@
 from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 from sec_parser.parsing_engine.html_parsers.root_tag_parser import RootTagParser
-from sec_parser.semantic_elements.base_semantic_element import (
-    BaseSemanticElement,
+from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractSemanticElement,
 )
 from typing import List, Union
 
 
-class DummyElement(BaseSemanticElement):
+class DummyElement(AbstractSemanticElement):
     pass
 
 
-class SpecialElement(BaseSemanticElement):
+class SpecialElement(AbstractSemanticElement):
     pass
 
 
-def create_element(tag) -> BaseSemanticElement:
+def create_element(tag) -> AbstractSemanticElement:
     if tag.name == "special":
         return SpecialElement(tag)
     return DummyElement(tag)
 
 
-def parse_elements(root_tags: List[HtmlTag]) -> List[BaseSemanticElement]:
-    elements: List[BaseSemanticElement] = [create_element(tag) for tag in root_tags]
+def parse_elements(root_tags: List[HtmlTag]) -> List[AbstractSemanticElement]:
+    elements: List[AbstractSemanticElement] = [create_element(tag) for tag in root_tags]
     for element in elements:
         if element.html_tag.name == "div":
             inner_tags = element.html_tag.get_children()
@@ -30,7 +30,7 @@ def parse_elements(root_tags: List[HtmlTag]) -> List[BaseSemanticElement]:
     return elements
 
 
-def get_elements_from_html(html: str) -> List[BaseSemanticElement]:
+def get_elements_from_html(html: str) -> List[AbstractSemanticElement]:
     html_parser = RootTagParser()
     root_tags = html_parser.parse(html)
     elements = parse_elements(root_tags)
@@ -38,7 +38,7 @@ def get_elements_from_html(html: str) -> List[BaseSemanticElement]:
 
 
 def assert_elements(
-    elements: List[BaseSemanticElement],
+    elements: List[AbstractSemanticElement],
     expected_elements,
     path: Union[str, List[str]] = "root",
 ):

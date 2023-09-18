@@ -6,8 +6,10 @@ section identification, title parsing, and text extraction, etc.
 """
 
 from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
+from sec_parser.parsing_plugins.image_plugin import ImagePlugin
 from sec_parser.parsing_plugins.irrelevant_element_plugin import IrrelevantElementPlugin
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
+from sec_parser.parsing_plugins.table_plugin import TablePlugin
 from sec_parser.parsing_plugins.text_plugin import TextPlugin
 from sec_parser.parsing_plugins.title_plugin import TitlePlugin
 
@@ -17,4 +19,6 @@ __all__ = [
     "TextPlugin",
     "TitlePlugin",
     "IrrelevantElementPlugin",
+    "ImagePlugin",
+    "TablePlugin",
 ]

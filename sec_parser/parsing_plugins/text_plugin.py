@@ -9,8 +9,8 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
 from sec_parser.semantic_elements.semantic_elements import TextElement
 
 if TYPE_CHECKING:
-    from sec_parser.semantic_elements.base_semantic_element import (
-        BaseSemanticElement,
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
     )
 
 
@@ -24,22 +24,18 @@ class TextPlugin(AbstractElementwiseParsingPlugin):
 
     def __init__(
         self,
-        dont_convert_from: set[type[BaseSemanticElement]] | None = None,
     ) -> None:
-        self._ignored_types = dont_convert_from or set()
+        pass
 
     def transform_element(
         self,
-        element: BaseSemanticElement,
+        element: AbstractSemanticElement,
         _: ElementwiseParsingContext,
-    ) -> BaseSemanticElement:
+    ) -> AbstractSemanticElement:
         """
         Transform a single semantic element
         into a TextElement if applicable.
         """
-        for ignored_type in self._ignored_types:
-            if isinstance(element, ignored_type):
-                return element
-        if element.html_tag.text.strip() == "":
+        if element.html_tag.text == "":
             return element
         return TextElement.convert_from(element)

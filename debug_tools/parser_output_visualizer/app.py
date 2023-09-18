@@ -3,7 +3,9 @@ from collections import Counter
 from dataclasses import dataclass
 from itertools import zip_longest
 from _utils.misc import interleave_lists
-from _utils.misc import circular_zip
+from _utils.misc import normalize_company_name
+from debug_tools.parser_output_visualizer._utils.misc import clean_user_input
+from streamlit_extras.add_vertical_space import add_vertical_space
 
 import sec_parser as sp
 import streamlit as st
@@ -39,7 +41,7 @@ from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 load_dotenv()
 
 USE_METADATA = True
-PAGE_SIZE = 200
+DEFAULT_PAGE_SIZE = 50
 
 
 def streamlit_app(
@@ -51,7 +53,6 @@ def streamlit_app(
     html = None
     elements = None
     tree = None
-    selected_step = None
 
     if run_page_config:
         st.set_page_config(
@@ -63,6 +64,24 @@ def streamlit_app(
     st_expander_allow_nested()
     st_hide_streamlit_element("class", "stDeployButton")
     st_multiselect_allow_long_titles()
+
+    HIDE_UI_ELEMENTS = False
+    # Default values to avoid errors when HIDE_UI_ELEMENTS is True
+    input_urls = []
+    sections = ["part1item2"]
+    htmls = []
+    metadatas = []
+    htmls_urls = []
+    elements_lists = []
+    trees = []
+    tickers = ["AAPL", "GOOG"]
+    left, right = st.columns(2)
+    sidebar_left, sidebar_right = st.columns(2)
+    element_column_count = 2
+    do_expand_all = False
+    do_element_render_html = True
+    selected_step = 2
+    do_interleave = False
 
     secapio_api_key_name = SecapioDataRetriever.API_KEY_ENV_VAR_NAME
     secapio_api_key = os.environ.get(secapio_api_key_name, "")
@@ -96,74 +115,75 @@ def streamlit_app(
             )
             st.info(msg)
 
-    tickers = []
-    input_urls = []
-    sections = None
-    with st.sidebar:
-        st.write("# Select Report")
-        data_source_options = [
-            "Use Ticker to Find Latest",
-            "Enter SEC EDGAR URL",
-        ]
-        selected_ticker, selected_url = st_radio(
-            "Select 10-Q Report Data Source", data_source_options
-        )
-        if selected_ticker:
-            select_ticker, find_ticker = st_radio(
-                "How will you select the ticker?",
-                ["Choose", "Enter my own"],
-                horizontal=True,
-            )
-            if select_ticker:
-                tickers = st.selectbox(
-                    label="Select Ticker",
-                    options=["AAPL", "GOOG", "AAPL, GOOG"],
-                ).split(",")
-            elif find_ticker:
-                tickers = st.text_input(
-                    label="Enter Ticker(s)",
-                    value="AAPL,GOOG",
-                    placeholder="AAPL",
-                ).split(",")
-
-            tickers = remove_duplicates_retain_order(
-                k.strip() for k in tickers if k.strip()
-            )
-            if not tickers:
-                st.stop()
-        if selected_url:
-            selected_one_url, selected_multi_urls = st_radio(
-                "How many URLs?", ["One", "Multiple"], horizontal=True
-            )
-            if selected_one_url:
-                input_urls = [
-                    st.text_input(
-                        label="Enter URL",
-                        value="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm",
-                        placeholder="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm",
+    if not HIDE_UI_ELEMENTS:
+        tickers = []
+        with st.sidebar:
+            st.write("# Choose Reports")
+            with PassthroughContext():  # replace with st.expander("") if needed
+                FIND_BY_TICKER = "Ticker symbols"
+                ENTER_URL_DIRECTLY = "URLs"
+                data_source_option = sac.segmented(
+                    items=[
+                        sac.SegmentedItem(label=FIND_BY_TICKER),
+                        sac.SegmentedItem(label=ENTER_URL_DIRECTLY),
+                    ],
+                    size="xs",
+                    grow=True,
+                )
+                selected_ticker = data_source_option == FIND_BY_TICKER
+                selected_url = data_source_option == ENTER_URL_DIRECTLY
+                if selected_ticker:
+                    CHOOSE_FROM_LIST = "Choose from list"
+                    selected_ticker_selection_option = st.radio(
+                        "Method to choose the ticker symbols",
+                        [CHOOSE_FROM_LIST, "Enter manually"],
+                        horizontal=True,
+                        help="Select the method to choose the ticker symbols. The latest reports will be downloaded based on the tickers you choose.",
                     )
-                ]
-            elif selected_multi_urls:
-                input_urls = st.text_area(
-                    "Enter URLs (one per line)",
-                    height=160,
-                    placeholder="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm\nhttps://www.sec.gov/Archives/edgar/data/320193/000032019323000064/aapl-20230401.htm",
-                    value="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm\nhttps://www.sec.gov/Archives/edgar/data/320193/000032019323000064/aapl-20230401.htm",
-                ).splitlines()
-            input_urls = remove_duplicates_retain_order(
-                [u.strip() for u in input_urls if u.strip()]
-            )
-            if not input_urls:
-                st.stop()
-        section_1_2, all_sections = st_radio(
-            "Select 10-Q Sections", ["Only MD&A", "All Sections"], horizontal=True
-        )
-        if section_1_2:
-            sections = ["part1item2"]
+                    select_ticker = selected_ticker_selection_option == CHOOSE_FROM_LIST
+                    if select_ticker:
+                        tickers = st.multiselect(
+                            label="Tickers:",
+                            options=["AAPL", "GOOG"],
+                            default=["AAPL", "GOOG"],
+                        )
+                    else:
+                        tickers = clean_user_input(
+                            st.text_input(
+                                label="Tickers:",
+                                value="AAPL,GOOG",
+                                placeholder="AAPL",
+                                help="Enter one or more ticker symbols, separated by commas.",
+                            ),
+                            split_char=",",
+                        )
+                    if not tickers:
+                        st.info("Please select or enter at least one ticker.")
+                        st.stop()
+                if selected_url:
+                    input_urls = clean_user_input(
+                        st.text_area(
+                            "Enter URLs (one per line)",
+                            height=160,
+                            placeholder="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm",
+                            value="https://www.sec.gov/Archives/edgar/data/320193/000032019323000077/aapl-20230701.htm\nhttps://www.sec.gov/Archives/edgar/data/320193/000032019323000064/aapl-20230401.htm",
+                        ),
+                        split_lines=True,
+                    )
+                    if not input_urls:
+                        st.info("Please enter at least one URL.")
+                        st.stop()
+                section_1_2, all_sections = st_radio(
+                    "Select Report Sections",
+                    ["Only MD&A", "All Report Sections"],
+                    horizontal=True,
+                    help="MD&A stands for Management Discussion and Analysis. It's a section of a company's annual report in which management discusses numerous aspects of the company, such as market dynamics, operating results, risk factors, and more.",
+                )
+                if section_1_2:
+                    sections = ["part1item2"]
+                elif all_sections:
+                    sections = None
 
-    htmls = []
-    metadatas = []
-    htmls_urls = []
     try:
         assert tickers or input_urls
         for ticker in tickers:
@@ -200,104 +220,134 @@ def streamlit_app(
         st.error("**Error**: Invalid API key. Please check your API key and try again.")
         st.stop()
 
-    process_steps = [
-        ProcessStep(
-            title="Original",
-            caption="From SEC EDGAR",
-        ),
-        ProcessStep(
-            title="Parsed",
-            caption="Semantic Elements",
-        ),
-        ProcessStep(
-            title="Structured",
-            caption="Semantic Tree",
-        ),
-        *(extra_steps or []),
-    ]
-    selected_step = 1 + sac.steps(
-        [
-            sac.StepsItem(
-                title=k.title,
-                description=k.caption,
-            )
-            for k in process_steps
-        ],
-        index=2,
-        format_func=None,
-        placement="horizontal",
-        size="default",
-        direction="horizontal",
-        type="default",  # default, navigation
-        dot=False,
-        return_index=True,
-    )
-    elements_lists = []
-    trees = []
+    if not HIDE_UI_ELEMENTS:
+        process_steps = [
+            ProcessStep(
+                title="Original",
+                caption="From SEC EDGAR",
+            ),
+            ProcessStep(
+                title="Parsed",
+                caption="Semantic Elements",
+            ),
+            ProcessStep(
+                title="Structured",
+                caption="Semantic Tree",
+            ),
+            *(extra_steps or []),
+        ]
+        selected_step = 1 + sac.steps(
+            [
+                sac.StepsItem(
+                    title=k.title,
+                    description=k.caption,
+                )
+                for k in process_steps
+            ],
+            index=2,
+            format_func=None,
+            placement="horizontal",
+            size="default",
+            direction="horizontal",
+            type="default",  # default, navigation
+            dot=False,
+            return_index=True,
+        )
+
     for html in htmls:
         if selected_step >= 2:
             elements = get_semantic_elements(html)
             elements_lists.append(elements)
 
-    do_expand_all = False
-    do_interleave = False
-    element_column_count = 1 if len(htmls) != 2 else 2
-    if selected_step >= 2 and selected_step <= 3:
-        with st.sidebar:
-            st.write("# Adjust View")
-            left, right = st.columns(2)
-            with left:
-                do_element_render_html = st.checkbox(
-                    "Render HTML",
-                    value=True,
-                )
-                if selected_step == 2:
-                    do_expand_all = st.checkbox(
-                        "Expand All",
-                        value=False,
+    if not HIDE_UI_ELEMENTS:
+        do_expand_all = False
+        do_interleave = False
+        do_element_render_html = False
+        element_column_count = 1 if len(htmls) != 2 else 2
+        if selected_step >= 2 and selected_step <= 3:
+            with st.sidebar:
+                add_vertical_space(2)
+                st.write("# View Options")
+                with PassthroughContext():  # replace with st.expander("") if needed
+                    counted_element_types = Counter(
+                        element.get_direct_abstract_semantic_subclass()
+                        for elements in elements_lists
+                        for element in elements
                     )
-                if selected_step == 2 and len(htmls) >= 2:
-                    do_interleave = st.checkbox(
-                        "Interleave",
-                        value=True,
+                    format_cls = (
+                        lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls, base=True).replace("*","")}'
                     )
-            with right:
-                if selected_step == 2:
-                    element_column_count = st.number_input(
-                        "Columns", min_value=1, value=element_column_count
+                    available_element_types = {
+                        format_cls(cls): cls
+                        for cls in sorted(
+                            counted_element_types.keys(),
+                            key=lambda x: counted_element_types[x],
+                            reverse=True,
+                        )
+                    }
+                    available_values = list(available_element_types.keys())
+                    preselected_types = [
+                        format_cls(cls)
+                        for cls in available_element_types.values()
+                        if cls != IrrelevantElement
+                    ]
+                    selected_types = st.multiselect(
+                        "Filter Semantic Element types",
+                        available_values,
+                        preselected_types,
+                        help=(
+                            "**Semantic Elements** correspond to the semantic elements in SEC EDGAR documents."
+                            " A semantic element refers to a meaningful unit within the document that serves a"
+                            " specific purpose, such as a paragraph or a table. Unlike syntactic elements,"
+                            " which structure the HTML, semantic elements carry vital information for"
+                            " understanding the document's content."
+                        ),
                     )
+                    selected_types = [
+                        available_element_types[k] for k in selected_types
+                    ]
 
-            counted_element_types = Counter(
-                element.__class__ for elements in elements_lists for element in elements
-            )
-            format_cls = (
-                lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}'
-            )
-            available_element_types = {
-                format_cls(cls): cls
-                for cls in sorted(
-                    counted_element_types.keys(),
-                    key=lambda x: counted_element_types[x],
-                    reverse=True,
-                )
-            }
-            available_values = list(available_element_types.keys())
-            preselected_types = [
-                format_cls(cls)
-                for cls in available_element_types.values()
-                if cls != IrrelevantElement
-            ]
-            selected_types = st.multiselect(
-                "Filter Element Types",
-                available_values,
-                preselected_types,
-            )
-            selected_types = [available_element_types[k] for k in selected_types]
+                    for elements in elements_lists:
+                        elements[:] = [
+                            e
+                            for e in elements
+                            if any(isinstance(e, t) for t in selected_types)
+                        ]
 
-            sidebar_left, sidebar_right = st.columns(2)
+                    left, right = st.columns(2)
+                    with left:
+                        RENDER_HTML = "Original"
+                        selected_contents_option = st.selectbox(
+                            label="Show Contents",
+                            options=[RENDER_HTML, "Raw HTML"],
+                            index=0,
+                        )
+                        do_element_render_html = selected_contents_option == RENDER_HTML
+                        if selected_step == 2:
+                            do_expand_all = st.checkbox(
+                                "Show Contents",
+                                value=False,
+                            )
 
-            for elements in elements_lists:
-                elements[:] = [e for e in elements if e.__class__ in selected_types]
+                    with right:
+                        if selected_step == 2:
+                            element_column_count = st.number_input(
+                                "Number of Columns",
+                                min_value=1,
+                                value=element_column_count,
+                            )
+                        if selected_step == 2 and len(htmls) >= 2:
+                            do_interleave = st.checkbox(
+                                "Interleave",
+                                value=True,
+                                help=(
+                                    "When enabled, elements from multiple reports are displayed "
+                                    "in an interleaved manner for easier comparison. The first "
+                                    "element from the first report will be followed by the first "
+                                    "element from the second report, and so on."
+                                ),
+                            )
+                    sidebar_left, sidebar_right = st.columns(2)
 
     for html in htmls:
         if selected_step >= 3:
@@ -309,7 +359,7 @@ def streamlit_app(
             expand_depth = st.number_input("Expand Depth", min_value=-1, value=0)
 
     def render_semantic_element(
-        element: sp.BaseSemanticElement,
+        element: sp.AbstractSemanticElement,
         do_element_render_html: bool,
     ):
         if do_element_render_html:
@@ -326,7 +376,7 @@ def streamlit_app(
         ):
 
             def get_label():
-                company_name = metadata["companyName"]
+                company_name = normalize_company_name(metadata["companyName"])
                 form_type = metadata["formType"]
                 filed_at = (
                     parse(metadata["filedAt"]).astimezone(tzutc()).strftime("%b %d, %Y")
@@ -403,9 +453,13 @@ def streamlit_app(
             element_source = ""
             if len(htmls_urls) > 1:
                 if metadata:
-                    company_name = metadata["companyName"]
+                    company_name = normalize_company_name(metadata["companyName"])
                     if (
-                        sum(1 for m in metadatas if m["companyName"] == company_name)
+                        sum(
+                            1
+                            for m in metadatas
+                            if normalize_company_name(m["companyName"]) == company_name
+                        )
                         > 1
                     ):
                         period_of_report = (
@@ -433,10 +487,16 @@ def streamlit_app(
 
         with sidebar_left:
             pagination_size = st.number_input(
-                "Page Size",
+                "Set Page Size",
                 min_value=0,
-                value=PAGE_SIZE if len(titles_and_elements) > PAGE_SIZE else 0,
-                help="Set to 0 to turn off pagination",
+                value=DEFAULT_PAGE_SIZE
+                if len(titles_and_elements) > DEFAULT_PAGE_SIZE
+                else 0,
+                help=(
+                    "Set the number of elements displayed per page. "
+                    "Use this to manage the amount of information on the screen. "
+                    "Set to 0 to disable pagination and show all elements at once."
+                ),
             )
         if pagination_size:
             selected_page = sac.pagination(
@@ -484,7 +544,7 @@ def streamlit_app(
 class ParsedReport:
     url: str
     html: str
-    elements: list[sp.BaseSemanticElement]
+    elements: list[sp.AbstractSemanticElement]
     tree: sp.SemanticTree
 
 

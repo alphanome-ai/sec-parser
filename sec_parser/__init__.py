@@ -9,7 +9,7 @@ from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 from sec_parser.parsing_engine.sec_parser import SecParser
 from sec_parser.sec_parsing_entry import parse_latest
 from sec_parser.semantic_elements.semantic_elements import (
-    BaseSemanticElement,
+    AbstractSemanticElement,
     IrrelevantElement,
     RootSectionElement,
     TextElement,
@@ -29,7 +29,7 @@ __all__ = [
     "SecParser",
     "TreeBuilder",
     # Common semantic elements
-    "BaseSemanticElement",
+    "AbstractSemanticElement",
     "UndeterminedElement",
     "RootSectionElement",
     "TitleElement",
