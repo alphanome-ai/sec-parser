@@ -319,7 +319,7 @@ def streamlit_app(
                         RENDER_HTML = "Original"
                         selected_contents_option = st.selectbox(
                             label="Show Contents",
-                            options=[RENDER_HTML, "Raw HTML"],
+                            options=[RENDER_HTML, "HTML Code"],
                             index=0,
                         )
                         do_element_render_html = selected_contents_option == RENDER_HTML
@@ -349,7 +349,7 @@ def streamlit_app(
                             )
                     sidebar_left, sidebar_right = st.columns(2)
 
-    for html in htmls:
+    for elements in elements_lists:
         if selected_step >= 3:
             tree = get_semantic_tree(elements)
             trees.append(tree)
@@ -507,7 +507,7 @@ def streamlit_app(
                 circle=False,
                 disabled=False,
                 jump=True,
-                simple=True,
+                simple=False,
                 show_total=True,
             )
             pagination_start_idx = (selected_page - 1) * pagination_size
