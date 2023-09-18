@@ -25,23 +25,26 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
     """
 
     def __init__(self) -> None:
+        super().__init__()
         self.next_element_is_root_section = False
 
-    def transform_element(
+    def _transform_element(
         self,
         element: AbstractSemanticElement,
         context: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
-        if context.is_root and self.next_element_is_root_section:
+        if context.is_root_element and self.next_element_is_root_section:
             self.next_element_is_root_section = False
             return RootSectionElement.convert_from(element)
 
         if element.html_tag.name == "document-root-section":
-            if context.is_root:
+            if context.is_root_element:
                 self.next_element_is_root_section = True
             return RootSectionSeparatorElement.convert_from(element)
 
-        if context.is_root and element.html_tag.contains_tag("document-root-section"):
+        if context.is_root_element and element.html_tag.contains_tag(
+            "document-root-section",
+        ):
             return RootSectionElement.convert_from(element)
 
         return element

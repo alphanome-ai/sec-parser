@@ -32,6 +32,14 @@ class IrrelevantElement(AbstractSemanticElement):
     """
 
 
+class EmptyElement(IrrelevantElement):
+    """
+    The EmptyElement class represents an HTML element that does not contain any content.
+    It is a subclass of the IrrelevantElement class and is used to identify and handle
+    empty HTML tags in the document.
+    """
+
+
 class RootSectionSeparatorElement(IrrelevantElement):
     """
     The RootSectionSeparatorElement class represents a tag <document-root-section>,

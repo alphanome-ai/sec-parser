@@ -21,10 +21,7 @@ class ImagePlugin(AbstractElementwiseParsingPlugin):
     suitable candidates with ImageElement instances.
     """
 
-    def __init__(self) -> None:
-        pass
-
-    def transform_element(
+    def _transform_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,

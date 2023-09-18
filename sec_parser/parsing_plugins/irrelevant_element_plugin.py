@@ -6,7 +6,9 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
     AbstractElementwiseParsingPlugin,
     ElementwiseParsingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from sec_parser.semantic_elements.semantic_elements import (
+    EmptyElement,
+)
 
 if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -23,12 +25,12 @@ class IrrelevantElementPlugin(AbstractElementwiseParsingPlugin):
     replaces suitable candidates with IrrelevantElement instances.
     """
 
-    def transform_element(
+    def _transform_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
         if element.html_tag.text.strip() == "":
-            return IrrelevantElement.convert_from(element)
+            return EmptyElement.convert_from(element)
 
         return element

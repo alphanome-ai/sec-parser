@@ -22,12 +22,7 @@ class TextPlugin(AbstractElementwiseParsingPlugin):
     suitable candidates with TextElement instances.
     """
 
-    def __init__(
-        self,
-    ) -> None:
-        pass
-
-    def transform_element(
+    def _transform_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,

@@ -10,6 +10,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    EmptyElement,
     HighlightedElement,
     ImageElement,
     InvalidTitleLevelError,
@@ -34,4 +35,5 @@ __all__ = [
     "TableElement",
     "RootSectionSeparatorElement",
     "HighlightedElement",
+    "EmptyElement",
 ]

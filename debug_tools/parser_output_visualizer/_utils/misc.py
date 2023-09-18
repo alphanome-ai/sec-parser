@@ -44,12 +44,13 @@ def get_pretty_class_name(element_cls, element=None, *, source: str = "", base=F
         se.TextElement: "📝",
         se.TitleElement: "🏷️",
         se.RootSectionElement: "📚",
+        se.HighlightedElement: "🌟",
         se.TableElement: "📊",
         se.ImageElement: "🖼️",
         se.UndeterminedElement: "❓",
         se.IrrelevantElement: "🚮",
         se.RootSectionSeparatorElement: "⏸️",
-        se.HighlightedElement: "🌟",
+        se.EmptyElement: "0️⃣",
     }.get(element_cls if not base else root_subclass, "❓")
 
     name = add_spaces(element_cls.__name__).replace("Element", "").strip()
