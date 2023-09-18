@@ -1,8 +1,10 @@
 import pytest
-from sec_parser.semantic_elements.semantic_elements import RootSectionSeparatorElement
+from sec_parser.semantic_elements.semantic_elements import (
+    RootSectionSeparatorElement,
+    UndeterminedElement,
+)
 from tests.unit.parsing_plugins._utils import (
     get_elements_from_html,
-    DummyElement,
     assert_elements,
 )
 from sec_parser.parsing_plugins import RootSectionPlugin
@@ -28,16 +30,19 @@ from sec_parser import (
             [
                 {"type": RootSectionSeparatorElement, "tag": "document-root-section"},
                 {"type": RootSectionElement, "tag": "b"},
-                {"type": DummyElement, "tag": "p"},
+                {"type": UndeterminedElement, "tag": "p"},
                 {
                     "type": RootSectionElement,
                     "tag": "div",
                     "children": [
-                        {"type": RootSectionSeparatorElement, "tag": "document-root-section"},
-                        {"type": DummyElement, "tag": "i"},
+                        {
+                            "type": RootSectionSeparatorElement,
+                            "tag": "document-root-section",
+                        },
+                        {"type": UndeterminedElement, "tag": "i"},
                     ],
                 },
-                {"type": DummyElement, "tag": "span"},
+                {"type": UndeterminedElement, "tag": "span"},
             ],
         )
     ],

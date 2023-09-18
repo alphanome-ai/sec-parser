@@ -15,8 +15,8 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
     """
     RootSectionPlugin class for transforming elements into RootSection instances.
 
-    This plugin scans through a list of semantic elements and replaces
-    suitable candidates with RootSection instances.
+    This plugin scans through a list of semantic elements and changes it,
+    primarily by replacing suitable candidates with RootSection instances.
 
     Note: We're currently using *sec-api.io* to handle the removal of the
     title 10-Q page and to download 10-Q Section HTML files. The sections
@@ -42,9 +42,11 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
                 self.next_element_is_root_section = True
             return RootSectionSeparatorElement.convert_from(element)
 
-        if context.is_root_element and element.html_tag.contains_tag(
+        contains_root_section = element.html_tag.contains_tag(
             "document-root-section",
-        ):
+            include_self=False,
+        )
+        if context.is_root_element and contains_root_section:
             return RootSectionElement.convert_from(element)
 
         return element

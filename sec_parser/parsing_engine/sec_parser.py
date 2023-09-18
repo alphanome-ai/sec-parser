@@ -10,7 +10,6 @@ from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
     RootTagParser,
 )
 from sec_parser.parsing_plugins.image_plugin import ImagePlugin
-from sec_parser.parsing_plugins.irrelevant_element_plugin import IrrelevantElementPlugin
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.table_plugin import TablePlugin
 from sec_parser.parsing_plugins.text_plugin import TextPlugin
@@ -42,9 +41,8 @@ class SecParser(AbstractSemanticElementParser):
         self,
     ) -> list[AbstractParsingPlugin]:
         return [
-            IrrelevantElementPlugin(),
-            TablePlugin(),
             ImagePlugin(),
+            TablePlugin(),
             TextPlugin(),
             TitlePlugin(),
             RootSectionPlugin(),

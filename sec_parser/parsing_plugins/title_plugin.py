@@ -7,6 +7,10 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
     AlreadyTransformedError,
     ElementwiseParsingContext,
 )
+from sec_parser.semantic_elements.semantic_elements import (
+    HighlightedElement,
+    TextElement,
+)
 
 if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -18,8 +22,8 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
     """
     TitlePlugin class for transforming elements into TitleElement instances.
 
-    This plugin scans through a list of semantic elements and replaces
-    suitable candidates with TitleElement instances.
+    This plugin scans through a list of semantic elements and changes it,
+    primarily by replacing suitable candidates with TitleElement instances.
     """
 
     iteration_count = 2
@@ -29,24 +33,29 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
         element: AbstractSemanticElement,
         context: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
-        if context.current_iteration >= self.iteration_count:
-            msg = (
-                "This Plugin instance has already processed a document. "
-                "Each plugin instance is designed for a single "
-                "transformation operation. Please create a new "
-                "instance of the Plugin to process another document."
-            )
-            raise AlreadyTransformedError(msg)
+        if not isinstance(element, TextElement):
+            return element
 
         if context.current_iteration == 0:
             return self._transform_to_highlighted_element(element, context)
-        return self._transform_to_title_element(element, context)
+        if context.current_iteration == 1:
+            return self._transform_to_title_element(element, context)
+
+        msg = (
+            "This Plugin instance has already processed a document. "
+            "Each plugin instance is designed for a single "
+            "transformation operation. Please create a new "
+            "instance of the Plugin to process another document."
+        )
+        raise AlreadyTransformedError(msg)
 
     def _transform_to_highlighted_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
+        if element.html_tag.is_unary_tree():
+            return HighlightedElement.convert_from(element)
         return element
 
     def _transform_to_title_element(

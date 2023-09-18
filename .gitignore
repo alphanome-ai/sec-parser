@@ -5,6 +5,7 @@
 .DS_Store
 lcov.info
 .ruff_cache/
+.notebooks/
 
 ##############################################
 ### General .gitignore for Python projects ###

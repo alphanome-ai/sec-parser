@@ -5,9 +5,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 )
 from typing import List, Union
 
-
-class DummyElement(AbstractSemanticElement):
-    pass
+from sec_parser.semantic_elements.semantic_elements import UndeterminedElement
 
 
 class SpecialElement(AbstractSemanticElement):
@@ -17,7 +15,7 @@ class SpecialElement(AbstractSemanticElement):
 def create_element(tag) -> AbstractSemanticElement:
     if tag.name == "special":
         return SpecialElement(tag)
-    return DummyElement(tag)
+    return UndeterminedElement(tag)
 
 
 def parse_elements(root_tags: List[HtmlTag]) -> List[AbstractSemanticElement]:
