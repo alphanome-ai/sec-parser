@@ -289,7 +289,7 @@ def streamlit_app(
                     preselected_types = [
                         format_cls(cls)
                         for cls in available_element_types.values()
-                        if cls != IrrelevantElement
+                        if not issubclass(cls, IrrelevantElement)
                     ]
                     selected_types = st.multiselect(
                         "Filter Semantic Element types",
@@ -311,7 +311,7 @@ def streamlit_app(
                         elements[:] = [
                             e
                             for e in elements
-                            if any(isinstance(e, t) for t in selected_types)
+                            if any(type(e) == t for t in selected_types)
                         ]
 
                     left, right = st.columns(2)
