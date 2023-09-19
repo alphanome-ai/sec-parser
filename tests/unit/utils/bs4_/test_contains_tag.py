@@ -6,10 +6,10 @@ from sec_parser.utils.bs4_.contains_tag import contains_tag
 def test_contains_tag_with_self_included():
     # Arrange
     html = "<div><p><b>text</b></p></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     tag = soup.div
 
-    # Act
+    # Acts
     result = contains_tag(tag, "div", include_self=True)
 
     # Assert
@@ -19,7 +19,7 @@ def test_contains_tag_with_self_included():
 def test_contains_tag_with_self_excluded():
     # Arrange
     html = "<div><p><b>text</b></p></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     tag = soup.div
 
     # Act
@@ -32,7 +32,7 @@ def test_contains_tag_with_self_excluded():
 def test_contains_tag_with_descendant_tag():
     # Arrange
     html = "<div><p><b>text</b></p></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     tag = soup.div
 
     # Act
@@ -45,7 +45,7 @@ def test_contains_tag_with_descendant_tag():
 def test_contains_tag_without_descendant_tag():
     # Arrange
     html = "<div><p><b>text</b></p></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     tag = soup.div
 
     # Act
@@ -58,7 +58,7 @@ def test_contains_tag_without_descendant_tag():
 def test_contains_tag_with_empty_tag():
     # Arrange
     html = "<div></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     tag = soup.div
 
     # Act
@@ -71,7 +71,7 @@ def test_contains_tag_with_empty_tag():
 def test_contains_tag_with_nonexistent_tag():
     # Arrange
     html = "<div><p><b>text</b></p></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     tag = soup.div
 
     # Act

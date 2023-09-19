@@ -4,7 +4,10 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Callable
 
-from sec_parser.exceptions.core_exceptions import SecParserRuntimeError
+from sec_parser.exceptions.core_exceptions import (
+    SecParserRuntimeError,
+    SecParserValueError,
+)
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -100,6 +103,19 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
     # passes over the elements for more complex transformations.
     iteration_count: int = 1
 
+    def __init__(
+        self,
+        *,
+        process_only: set[type[AbstractSemanticElement]] | None = None,
+        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+    ) -> None:
+        super().__init__()
+        self._processed_types = process_only or set()
+        self._then_excluded_types = except_dont_process or set()
+        if self._processed_types & self._then_excluded_types:
+            msg = "Processed types and ignored types should not overlap."
+            raise SecParserValueError(msg)
+
     def _transform(
         self,
         elements: list[AbstractSemanticElement],
@@ -113,8 +129,16 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
                 current_iteration=current_iteration,
             )
 
-            for i in range(len(elements)):
-                element = self._transform_element(elements[i], context)
+            for i, input_element in enumerate(elements):
+                if self._processed_types and not any(
+                    isinstance(input_element, t) for t in self._processed_types
+                ):
+                    continue
+                if any(isinstance(input_element, t) for t in self._then_excluded_types):
+                    continue
+
+                element = self._transform_element(input_element, context)
+
                 if element.inner_elements:
                     child_context = ElementwiseParsingContext(
                         is_root_element=False,
@@ -124,6 +148,7 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
                         element.inner_elements,
                         _context=child_context,
                     )
+
                 elements[i] = element
 
         return elements

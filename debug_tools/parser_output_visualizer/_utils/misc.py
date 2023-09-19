@@ -1,4 +1,5 @@
 from __future__ import annotations
+from abc import ABC, ABCMeta
 import itertools
 
 import re
@@ -7,6 +8,7 @@ import bs4
 import sec_parser.semantic_elements as se
 
 import collections
+import inspect
 
 
 def normalize_company_name(name):
@@ -38,40 +40,56 @@ def add_spaces(text):
     return re.sub(r"(\w)([A-Z0-9])", r"\1 \2", text)
 
 
-def get_pretty_class_name(element_cls, element=None, *, source: str = "", base=False):
-    root_subclass = element_cls.get_direct_abstract_semantic_subclass()
-    emoji = {
-        se.TextElement: "📝",
-        se.TitleElement: "🏷️",
-        se.RootSectionElement: "📚",
-        se.HighlightedElement: "🌟",
-        se.TableElement: "📊",
-        se.ImageElement: "🖼️",
-        se.UndeterminedElement: "❓",
-        se.IrrelevantElement: "🚮",
-        se.RootSectionSeparatorElement: "⏸️",
-        se.EmptyElement: "0️⃣",
-    }.get(element_cls if not base else root_subclass, "❓")
+def get_emoji_chain(cls: type):
+    """
+    Walk up the inheritance chain to collect emojis for each parent class.
+    Stop when reaching AbstractSemanticElement and only include other
+    AbstractSemanticElement parents.
+    """
+    emojis = []
+    for ancestor in cls.mro():
+        if ancestor is se.AbstractSemanticElement:
+            break  # Stop when reaching AbstractSemanticElement
+        if not issubclass(ancestor, se.AbstractSemanticElement):
+            continue  # Skip classes that are not descendants of AbstractSemanticElement
+        if ancestor is se.AbstractLevelElement:
+            continue
 
-    name = add_spaces(element_cls.__name__).replace("Element", "").strip()
-    root_subclass_name = (
-        add_spaces(root_subclass.__name__).replace("Element", "").strip()
-    )
-    if base:
-        name = root_subclass_name
+        emoji = {
+            se.TextElement: "📝",
+            se.TitleElement: "🏷️",
+            se.RootSectionElement: "📚",
+            se.HighlightedElement: "🌟",
+            se.TableElement: "📊",
+            se.ImageElement: "🖼️",
+            se.UndeterminedElement: "🛸",
+            se.IrrelevantElement: "🚮",
+            se.RootSectionSeparatorElement: "⏸️",
+            se.EmptyElement: "0️⃣",
+            se.BulletpointTextElement: "✏️",
+            se.FootnoteTextElement: "↙️",
+        }.get(ancestor, "❓")
+
+        emojis.append(emoji)
+
+    return "".join(reversed(emojis))  # Reverse to start from the root parent
+
+
+def get_pretty_class_name(
+    element_cls: type[se.AbstractSemanticElement], element=None, *, source: str = ""
+):
+    emoji_chain = get_emoji_chain(element_cls)
+    name = element_cls.__name__.replace("Element", "").strip()
 
     level = ""
     if element and hasattr(element, "level") and element.level > 1:
         level = f" (Level {element.level})"
 
-    base_name = ""
-    if not base and name != root_subclass_name:
-        base_name = f" (type **{root_subclass_name}**)"
-
-    pretty_name = f"{emoji} **{name}{level}**{base_name}"
+    pretty_name = f"{emoji_chain} **{name}{level}**"
 
     if source:
         pretty_name += f" | {source}"
+
     return pretty_name
 
 

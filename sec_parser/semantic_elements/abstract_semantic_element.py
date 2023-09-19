@@ -3,6 +3,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import TYPE_CHECKING
 
+from sec_parser.exceptions.core_exceptions import SecParserValueError
+
 if TYPE_CHECKING:
     from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
 
@@ -75,3 +77,41 @@ class AbstractSemanticElement(ABC):  # noqa: B024
             raise ValueError(msg)
 
         return root_child
+
+
+class AbstractLevelElement(AbstractSemanticElement, ABC):
+    """
+    The AbstractLevelElement class provides a level attribute to semantic elements.
+    It represents hierarchical levels in the document structure. For instance,
+    a main section title might be at level 1, a subsection at level 2, etc.
+    """
+
+    MIN_LEVEL = 1
+
+    def __init__(
+        self,
+        html_tag: HtmlTag,
+        *,
+        inner_elements: list[AbstractSemanticElement] | None = None,
+        level: int | None = None,
+    ) -> None:
+        super().__init__(html_tag, inner_elements=inner_elements)
+        level = level or self.MIN_LEVEL
+
+        if level < self.MIN_LEVEL:
+            msg = f"Level must be equal or greater than {self.MIN_LEVEL}"
+            raise InvalidLevelError(msg)
+        self.level = level
+
+    @classmethod
+    def convert_from(
+        cls: type[AbstractLevelElement],
+        source: AbstractSemanticElement,
+        *,
+        level: int | None = None,
+    ) -> AbstractLevelElement:
+        return cls(source.html_tag, inner_elements=source.inner_elements, level=level)
+
+
+class InvalidLevelError(SecParserValueError):
+    pass

@@ -9,7 +9,6 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
 )
 from sec_parser.semantic_elements.semantic_elements import (
     HighlightedElement,
-    TextElement,
 )
 
 if TYPE_CHECKING:
@@ -33,9 +32,6 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
         element: AbstractSemanticElement,
         context: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
-        if not isinstance(element, TextElement):
-            return element
-
         if context.current_iteration == 0:
             return self._transform_to_highlighted_element(element, context)
         if context.current_iteration == 1:

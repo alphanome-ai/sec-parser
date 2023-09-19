@@ -10,6 +10,7 @@ from sec_parser.parsing_engine.sec_parser import SecParser
 from sec_parser.sec_parsing_entry import parse_latest
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
+    BulletpointTextElement,
     EmptyElement,
     HighlightedElement,
     ImageElement,
@@ -46,6 +47,8 @@ __all__ = [
     "RootSectionSeparatorElement",
     "HighlightedElement",
     "EmptyElement",
+    "BulletpointTextElement",
+    "FootnoteElement",
     # Common exceptions
     "SecParserError",
     "SecParserRuntimeError",

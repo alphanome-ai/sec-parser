@@ -17,16 +17,14 @@ from sec_parser import (
     "html_str, expected_elements",
     [
         (
-            """
-               <document-root-section></document-root-section>
+            """<document-root-section></document-root-section>
                <b>0</b>
                <p>1</p>
                <div>
                    <document-root-section></document-root-section>
                    <i>2</i>
                </div>
-               <span>3</span>
-            """,
+               <span>3</span>""",
             [
                 {"type": RootSectionSeparatorElement, "tag": "document-root-section"},
                 {"type": RootSectionElement, "tag": "b"},

@@ -30,7 +30,7 @@ def parse_elements(root_tags: List[HtmlTag]) -> List[AbstractSemanticElement]:
 
 def get_elements_from_html(html: str) -> List[AbstractSemanticElement]:
     html_parser = RootTagParser()
-    root_tags = html_parser.parse(html)
+    root_tags = html_parser.parse(html.strip())
     elements = parse_elements(root_tags)
     return elements
 
@@ -54,6 +54,12 @@ def assert_elements(
         assert (
             ele.html_tag.name == expected["tag"]
         ), f"Element at index {i} has tag '{ele.html_tag.name}', but expected tag '{expected['tag']}'. Path: {current_path}"
+
+        if "fields" in expected:
+            for field, expected_value in expected["fields"].items():
+                assert (
+                    getattr(ele, field) == expected_value
+                ), f"Element at index {i} has field '{field}' with value '{getattr(ele, field)}', but expected value '{expected_value}'. Path: {current_path}"
 
         # Recursively check all descendants
         if "children" in expected:

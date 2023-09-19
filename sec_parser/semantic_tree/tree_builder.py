@@ -4,8 +4,9 @@ from typing import TYPE_CHECKING, Callable
 
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
+    BulletpointRule,
+    LevelsRule,
     RootSectionRule,
-    TitleLevelRule,
 )
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
@@ -27,7 +28,8 @@ class TreeBuilder:
     def create_default_rules() -> list[AbstractNestingRule]:
         return [
             RootSectionRule(),
-            TitleLevelRule(),
+            LevelsRule(),
+            BulletpointRule(),
         ]
 
     def build(self, elements: list[AbstractSemanticElement]) -> SemanticTree:

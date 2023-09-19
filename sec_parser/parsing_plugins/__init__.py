@@ -6,6 +6,9 @@ section identification, title parsing, and text extraction, etc.
 """
 
 from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
+from sec_parser.parsing_plugins.footnote_and_bulletpoint_plugin import (
+    FootnoteAndBulletpointPlugin,
+)
 from sec_parser.parsing_plugins.image_plugin import ImagePlugin
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.table_plugin import TablePlugin
@@ -19,4 +22,6 @@ __all__ = [
     "TitlePlugin",
     "ImagePlugin",
     "TablePlugin",
+    "FootnoteAndBulletpointPlugin",
+    "FootnotePlugin",
 ]

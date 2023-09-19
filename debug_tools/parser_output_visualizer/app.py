@@ -69,11 +69,11 @@ def streamlit_app(
     # Default values to avoid errors when HIDE_UI_ELEMENTS is True
     input_urls = []
     sections = ["part1item2"]
-    htmls = []
-    metadatas = []
-    htmls_urls = []
-    elements_lists = []
-    trees = []
+    htmls: list[str] = []
+    metadatas: list[dict] = []
+    htmls_urls: list[str] = []
+    elements_lists: list[list[sp.AbstractSemanticElement]] = []
+    trees: list[sp.SemanticTree] = []
     tickers = ["AAPL", "GOOG"]
     left, right = st.columns(2)
     sidebar_left, sidebar_right = st.columns(2)
@@ -270,12 +270,12 @@ def streamlit_app(
                 st.write("# View Options")
                 with PassthroughContext():  # replace with st.expander("") if needed
                     counted_element_types = Counter(
-                        element.get_direct_abstract_semantic_subclass()
+                        element.__class__
                         for elements in elements_lists
                         for element in elements
                     )
                     format_cls = (
-                        lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls, base=True).replace("*","")}'
+                        lambda cls: f'{counted_element_types[cls]}x {get_pretty_class_name(cls).replace("*","")}'
                     )
                     available_element_types = {
                         format_cls(cls): cls

@@ -9,12 +9,16 @@ from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
     AbstractHtmlTagParser,
     RootTagParser,
 )
+from sec_parser.parsing_plugins.footnote_and_bulletpoint_plugin import (
+    FootnoteAndBulletpointPlugin,
+)
 from sec_parser.parsing_plugins.image_plugin import ImagePlugin
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.table_plugin import TablePlugin
 from sec_parser.parsing_plugins.text_plugin import TextPlugin
 from sec_parser.parsing_plugins.title_plugin import TitlePlugin
 from sec_parser.semantic_elements.semantic_elements import (
+    TextElement,
     UndeterminedElement,
 )
 
@@ -31,20 +35,19 @@ class SecParser(AbstractSemanticElementParser):
         create_plugins: Callable[[], list[AbstractParsingPlugin]] | None = None,
         *,
         root_tag_parser: AbstractHtmlTagParser | None = None,
-        max_iterations: int | None = None,
     ) -> None:
         self.create_plugins: Callable = create_plugins or self.create_default_plugins
         self._root_tag_parser = root_tag_parser or RootTagParser()
-        self._max_iterations = max_iterations or 10
 
     def create_default_plugins(
         self,
     ) -> list[AbstractParsingPlugin]:
         return [
             ImagePlugin(),
-            TablePlugin(),
-            TextPlugin(),
-            TitlePlugin(),
+            TablePlugin(process_only={UndeterminedElement}),
+            TextPlugin(process_only={UndeterminedElement}),
+            FootnoteAndBulletpointPlugin(process_only={TextElement}),
+            TitlePlugin(process_only={TextElement}),
             RootSectionPlugin(),
         ]
 

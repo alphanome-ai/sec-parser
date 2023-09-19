@@ -4,8 +4,10 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    AbstractLevelElement,
+    BulletpointTextElement,
     RootSectionElement,
-    TitleElement,
+    TextElement,
 )
 
 
@@ -30,18 +32,28 @@ class RootSectionRule(AbstractNestingRule):
         return is_parent_root and is_child_not_root
 
 
-class TitleLevelRule(AbstractNestingRule):
+class LevelsRule(AbstractNestingRule):
     def should_be_nested_under(
         self,
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        if isinstance(parent, RootSectionElement):
-            return False
+        return (
+            parent.__class__ == child.__class__
+            and isinstance(parent, AbstractLevelElement)
+            and isinstance(child, AbstractLevelElement)
+            and parent.level < child.level
+        )
 
-        if isinstance(parent, TitleElement):
-            if isinstance(child, TitleElement):
-                return parent.level < child.level
-            return True
 
-        return False
+class BulletpointRule(AbstractNestingRule):
+    def should_be_nested_under(
+        self,
+        parent: AbstractSemanticElement,
+        child: AbstractSemanticElement,
+    ) -> bool:
+        return (
+            isinstance(parent, TextElement)
+            and not isinstance(parent, BulletpointTextElement)
+            and isinstance(child, BulletpointTextElement)
+        )

@@ -6,6 +6,7 @@ import bs4
 
 from sec_parser.exceptions.core_exceptions import SecParserValueError
 from sec_parser.utils.bs4_.contains_tag import contains_tag
+from sec_parser.utils.bs4_.get_first_deepest_tag import get_first_deepest_tag
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 
 
@@ -32,12 +33,13 @@ class HtmlTag:
         self._text: str | None = None
         self._children: list[HtmlTag] | None = None
         self._is_unary_tree: bool | None = None
+        self._first_deepest_tag: HtmlTag | None | NotSetType = NotSet
 
     def get_text(self) -> str:
         """
-        `text` is a cached property. The text is extracted recursively
-        from the children elements. This operation can be computationally
-        expensive, hence the result is cached as the underlying data
+        `get_text` method extracts text from child elements.
+        This operation is recursive and can be computationally expensive
+        if repeated. Hence, the result is cached as the underlying data
         doesn't change.
         """
         self._text = self._bs4.get_text().strip() if self._text is None else self._text
@@ -50,7 +52,7 @@ class HtmlTag:
     def get_children(self) -> list[HtmlTag]:
         self._children = (
             [
-                HtmlTag(self._to_tag(child))
+                HtmlTag(child)
                 for child in self._bs4.children
                 if not (isinstance(child, bs4.NavigableString) and child.strip() == "")
             ]
@@ -87,6 +89,23 @@ class HtmlTag:
         )
         return self._is_unary_tree
 
+    def get_first_deepest_tag(self) -> HtmlTag | None:
+        """
+        `get_first_deepest_tag` returns the first deepest tag within the current tag.
+
+        For example, if we have the following HTML structure:
+        <div><p>Test</p><span>Another Test</span></div>
+        and we pass the 'div' tag to this function, it will return the 'p' tag,
+        which is the first deepest tag within the 'html' tag.
+        """
+        if self._first_deepest_tag is NotSet:
+            tag = get_first_deepest_tag(self._bs4)
+            self._first_deepest_tag = HtmlTag(tag) if tag is not None else None
+        if isinstance(self._first_deepest_tag, NotSetType):
+            msg = "self._first_deepest_tag is NotSet"
+            raise SecParserValueError(msg)
+        return self._first_deepest_tag
+
     @staticmethod
     def _to_tag(element: bs4.PageElement) -> bs4.Tag:
         if isinstance(element, bs4.Tag):
@@ -107,3 +126,10 @@ class HtmlTag:
 
 class EmptyNavigableStringError(SecParserValueError):
     pass
+
+
+class NotSetType:
+    pass
+
+
+NotSet = NotSetType()

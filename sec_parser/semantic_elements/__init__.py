@@ -7,13 +7,16 @@ semantic significance.
 
 
 from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractLevelElement,
     AbstractSemanticElement,
+    InvalidLevelError,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    BulletpointTextElement,
     EmptyElement,
+    FootnoteTextElement,
     HighlightedElement,
     ImageElement,
-    InvalidTitleLevelError,
     IrrelevantElement,
     RootSectionElement,
     RootSectionSeparatorElement,
@@ -25,15 +28,18 @@ from sec_parser.semantic_elements.semantic_elements import (
 
 __all__ = [
     "AbstractSemanticElement",
+    "AbstractLevelElement",
     "UndeterminedElement",
     "RootSectionElement",
     "TextElement",
     "TitleElement",
-    "InvalidTitleLevelError",
+    "InvalidLevelError",
     "IrrelevantElement",
     "ImageElement",
     "TableElement",
     "RootSectionSeparatorElement",
     "HighlightedElement",
     "EmptyElement",
+    "BulletpointTextElement",
+    "FootnoteTextElement",
 ]

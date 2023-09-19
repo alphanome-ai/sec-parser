@@ -1,6 +1,7 @@
-from sec_parser.exceptions.core_exceptions import SecParserValueError
-from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
+from __future__ import annotations
+
 from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractLevelElement,
     AbstractSemanticElement,
 )
 
@@ -60,29 +61,23 @@ class HighlightedElement(AbstractSemanticElement):
     """
 
 
-class TitleElement(AbstractSemanticElement):
+class TitleElement(AbstractLevelElement):
     """
     The TitleElement class represents the title of a paragraph or other content object.
     It serves as a semantic marker, providing context and structure to the document.
     """
 
-    MIN_LEVEL = 1
-
-    def __init__(self, html_tag: HtmlTag, *, level: int = MIN_LEVEL) -> None:
-        super().__init__(html_tag)
-
-        if level < self.MIN_LEVEL:
-            msg = f"Level must be equal or greater than {self.MIN_LEVEL}"
-            raise InvalidTitleLevelError(msg)
-        self.level = level
-
-
-class InvalidTitleLevelError(SecParserValueError):
-    pass
-
 
 class TextElement(AbstractSemanticElement):
     """The TextElement class represents a standard text paragraph within a document."""
+
+
+class BulletpointTextElement(AbstractLevelElement, TextElement):
+    """The BulletpointElement class represents a bulletpoint within a document."""
+
+
+class FootnoteTextElement(TextElement):
+    """The FootnoteElement class represents a footnote within a document."""
 
 
 class TableElement(AbstractSemanticElement):

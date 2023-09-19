@@ -12,7 +12,7 @@ def test_is_unary_tree_with_only_tags():
       </p>
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -31,7 +31,7 @@ def test_is_unary_tree_with_leaf_text():
       </p>
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -51,7 +51,7 @@ def test_is_not_unary_tree():
       <p></p>
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -70,7 +70,7 @@ def test_is_unary_tree_with_non_leaf_text_before():
       </p>
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -91,7 +91,7 @@ def test_is_unary_tree_with_non_leaf_text_after():
       </p>Text
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -106,7 +106,7 @@ def test_is_unary_tree_with_non_leaf_text_after():
 def test_is_unary_tree_with_empty_tag():
     # Arrange
     html = "<div></div>"
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -127,7 +127,7 @@ def test_is_unary_tree_with_table_as_child():
       </table>
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
@@ -148,7 +148,7 @@ def test_is_unary_tree_with_table_as_root():
       </tr>
     </table>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("table")
 
     # Act
@@ -174,7 +174,7 @@ def test_is_not_unary_tree_with_multiple_tables():
       </table>
     </div>
     """
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(html, "lxml")
     root = soup.find("div")
 
     # Act
