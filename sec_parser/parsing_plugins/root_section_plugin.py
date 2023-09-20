@@ -24,8 +24,15 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
     future, we aim to download these HTML files directly from the SEC EDGAR.
     """
 
-    def __init__(self) -> None:
-        super().__init__()
+    def __init__(
+        self,
+        process_only: set[type[AbstractSemanticElement]] | None = None,
+        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+    ) -> None:
+        super().__init__(
+            process_only=process_only,
+            except_dont_process=except_dont_process,
+        )
         self.next_element_is_root_section = False
 
     def _transform_element(

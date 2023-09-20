@@ -27,6 +27,31 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
 
     iteration_count = 2
 
+    def __init__(
+        self,
+        process_only: set[type[AbstractSemanticElement]] | None = None,
+        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+    ) -> None:
+        super().__init__(
+            process_only=process_only,
+            except_dont_process=except_dont_process,
+        )
+
+        # _styles track unique styles in the document.
+        # Stored in a tuple as an ordered set, preserving insertion order.
+        # This order is used to determine a style's level.
+        # It is based on the observation that "highlight" styles that appear first
+        # typically mark higher level paragraph/section headings.
+        # _styles is effectively used as an ordered set:
+        self._styles: tuple[str, ...] = ()
+
+    def _found_style(self, symbol: str) -> None:
+        if symbol not in self._styles:
+            # _styles is effectively updated as an ordered set:
+            self._styles = tuple(
+                dict.fromkeys([*self._styles, symbol]).keys(),
+            )
+
     def _transform_element(
         self,
         element: AbstractSemanticElement,
@@ -41,7 +66,7 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
             "This Plugin instance has already processed a document. "
             "Each plugin instance is designed for a single "
             "transformation operation. Please create a new "
-            "instance of t`he Plugin to process another document."
+            "instance of the Plugin to process another document."
         )
         raise AlreadyTransformedError(msg)
 
@@ -62,6 +87,40 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
         _: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
         return element
+
+
+class HighlightedElement(AbstractSemanticElement):
+    """
+    The HighlightedElement class used for detecting title elements.
+    The process begins with the detection of highlighted elements,
+    which are then further classified into title elements.
+    """
+
+    def __init__(
+        self,
+        html_tag: HtmlTag,
+        inner_elements: list[AbstractSemanticElement],
+        *,
+        styles: TextStyles | None = None,
+    ) -> None:
+        super().__init__(html_tag, inner_elements)
+        if styles is None:
+            msg = "styles must be specified for HighlightedElement"
+            raise ValueError(msg)
+        self._styles = styles
+
+    @classmethod
+    def convert_from(
+        cls,
+        source: AbstractSemanticElement,
+        *,
+        styles: TextStyles| None = None,
+    ) -> HighlightedElement:
+        return cls(
+            source.html_tag,
+            source.inner_elements,
+            styles=styles,
+        )
 
 
 @dataclass(frozen=True)
@@ -98,36 +157,3 @@ class TextStyles:
             return False
         return font_weight >= cls.BOLD_THRESHOLD
 
-
-class HighlightedElement(AbstractSemanticElement):
-    """
-    The HighlightedElement class used for detecting title elements.
-    The process begins with the detection of highlighted elements,
-    which are then further classified into title elements.
-    """
-
-    def __init__(
-        self,
-        html_tag: HtmlTag,
-        inner_elements: list[AbstractSemanticElement],
-        *,
-        styles: TextStyles | None = None,
-    ) -> None:
-        super().__init__(html_tag, inner_elements)
-        if styles is None:
-            msg = "styles must be specified for HighlightedElement"
-            raise ValueError(msg)
-        self._styles = styles
-
-    @classmethod
-    def convert_from(
-        cls,
-        source: AbstractSemanticElement,
-        *,
-        styles: TextStyles| None = None,
-    ) -> HighlightedElement:
-        return cls(
-            source.html_tag,
-            source.inner_elements,
-            styles=styles,
-        )

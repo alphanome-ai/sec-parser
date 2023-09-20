@@ -43,11 +43,12 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
         # This order is used to determine a bulletpoint's level.
         # It makes use of the fact that "higher level" markers appear
         # first in the document.
+        # _marker_symbols is effectively used as an ordered set:
         self._marker_symbols: tuple[str, ...] = ()
 
     def _found_marker(self, symbol: str) -> None:
         if symbol not in self._marker_symbols:
-            # Ordered set:
+            # _marker_symbols is effectively updated as an ordered set:
             self._marker_symbols = tuple(
                 dict.fromkeys([*self._marker_symbols, symbol]).keys(),
             )
