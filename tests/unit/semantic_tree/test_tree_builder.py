@@ -59,7 +59,6 @@ def test_nesting_of_leveled_elements():
 def test_nesting_of_parent_and_child():
     # Arrange
     mock_elements = [
-        # This is how elements are usually created in the parsing process:
         ParentElement(HtmlTag(bs4.Tag(name='p')), []),
         ChildElement(HtmlTag(bs4.Tag(name='p')), []),
     ]
