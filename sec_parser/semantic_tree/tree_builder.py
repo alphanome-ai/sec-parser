@@ -7,6 +7,7 @@ from sec_parser.semantic_tree.nesting_rules import (
     BulletpointRule,
     LevelsRule,
     RootSectionRule,
+    TitleRule,
 )
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
@@ -28,6 +29,7 @@ class TreeBuilder:
     def create_default_rules() -> list[AbstractNestingRule]:
         return [
             RootSectionRule(),
+            TitleRule(exclude_children={RootSectionRule}),
             LevelsRule(),
             BulletpointRule(),
         ]
@@ -79,10 +81,11 @@ class TreeBuilder:
         parent_node: TreeNode,
         rules: list[AbstractNestingRule],
     ) -> bool:
-        return any(
+        results = tuple(
             rule.should_be_nested_under(
                 child=child_node.semantic_element,
                 parent=parent_node.semantic_element,
             )
             for rule in rules
         )
+        return any(results)

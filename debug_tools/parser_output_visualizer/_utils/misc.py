@@ -76,7 +76,7 @@ def get_emoji_chain(cls: type):
 
 def get_pretty_class_name(element_cls, element=None, *, source: str = ""):
     emoji_chain = get_emoji_chain(element_cls)
-    name = element_cls.__name__.replace("Element", "").strip()
+    name = add_spaces(element_cls.__name__.replace("Element", "").strip())
 
     level = ""
     if element and hasattr(element, "level") and element.level > 1:

@@ -11,6 +11,7 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
+from sec_parser.semantic_elements.semantic_elements import TitleElement
 
 if TYPE_CHECKING:
     from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
@@ -78,6 +79,7 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
         styles_metrics = element.html_tag.get_text_styles_metrics()
         styles: TextStyles = TextStyles.from_style_string(styles_metrics)
         if styles.bold_with_font_weight:
+            return TitleElement.convert_from(element, level=1)
             return HighlightedElement.convert_from(element, styles=styles)
         return element
 
@@ -86,6 +88,10 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
+        import streamlit as st
+        if isinstance(element, HighlightedElement):
+            st.write("A")
+            st.stop()
         return element
 
 
@@ -114,7 +120,7 @@ class HighlightedElement(AbstractSemanticElement):
         cls,
         source: AbstractSemanticElement,
         *,
-        styles: TextStyles| None = None,
+        styles: TextStyles | None = None,
     ) -> HighlightedElement:
         return cls(
             source.html_tag,
