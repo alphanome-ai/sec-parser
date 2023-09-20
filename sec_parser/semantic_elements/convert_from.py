@@ -21,8 +21,5 @@ def convert_from(
     if issubclass(cls, AbstractLevelElement):
         return cls.convert_from(source, level=level)
     if issubclass(cls, HighlightedElement):
-        if styles is None:
-            msg = "styles must be specified for HighlightedElement"
-            raise ValueError(msg)
         return cls.convert_from(source, styles=styles)
     return cls.convert_from(source)
