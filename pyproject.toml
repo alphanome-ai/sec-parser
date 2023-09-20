@@ -73,7 +73,8 @@ ignore = [
     "D212",    # Multi-line docstring summary should start at the first line
     "ANN101",  # Missing type annotation for self in method
     "ANN102",  # Missing type annotation for cls in classmethod
-]
+    ]
+
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["ALL"]
@@ -102,7 +103,7 @@ exclude = [
     "dist",
     "node_modules",
     "venv",
-]
+    ]
 
 # Same as Black.
 line-length = 88
