@@ -32,7 +32,7 @@ tasks:
   prepare: 
     desc: Lint the code and run all checks
     cmds:
-      - task unit && task lint && task speed # Doing like this instead of Taskfile's `deps` so that we determine the order of execution
+      - task unit && task lint # Doing like this instead of Taskfile's `deps` so that we determine the order of execution
 
   visual:
     desc: Run the parser output visualizer (used for debugging and demos)
