@@ -29,7 +29,7 @@ def compute_text_styles_metrics(tag: Tag) -> dict[tuple[str, str], float]:
     total_chars: int = 0
     style_metrics: dict[tuple[str, str], float] = defaultdict(float)
 
-    for text_node in tag.find_all(text=True, recursive=True):
+    for text_node in tag.find_all(string=True, recursive=True):
         text: str = text_node.strip()
         char_count: int = len(text)
         if char_count == 0:
