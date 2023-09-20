@@ -19,25 +19,25 @@ tasks:
       - ruff check --fix sec_parser/
       - mypy
 
-  speed:
-    desc: Run comprehensive speed tests.
+  e2e:
+    desc: Run repeated end-to-end tests.
     cmds:
-      - python -m tests.e2e.speed.parse
+      - python -m tests.e2e.sec_parser
 
-  speed-smoke:
-    desc: Run a single speed test per document. This is a useful way to verify if the parser is functioning (a so-called "smoke" test).
+  e2e-smoke:
+    desc: Run a single end-to-end test per document. This is a useful way to verify if the parser is functioning (a so-called "smoke" test).
     cmds:
-      - python -m tests.e2e.speed.parse --tests-per-core=1 --cores=1
+      - python -m tests.e2e.sec_parser --tests-per-core=1 --cores=1
 
-  speed-watch:
-    desc: Run comprehensive speed tests every 10 minutes.
+  e2e-watch:
+    desc: Run repeated end-to-end tests every 10 minutes.
     cmds:
-      - watch -n 600 task speed
+      - watch -n 600 task e2e
 
   prepare: 
     desc: Lint the code and run all quick checks.
     cmds:
-      - task unit && task lint && task speed-smoke # Executing in this order instead of using Taskfile's `deps` to control the order of execution
+      - task unit && task lint && task e2e-smoke # Executing in this order instead of using Taskfile's `deps` to control the order of execution
 
   p:
     desc: Shortcut for `task prepare`.

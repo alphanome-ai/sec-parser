@@ -10,12 +10,13 @@ from rich.console import Console
 from rich.table import Table
 
 import sec_parser as sp
-from tests.e2e.speed._metrics import (P99, Average, MaxTime, Median,
-                                      RatioMetric, Size, Threshold)
+from tests.e2e._metrics import (P99, Average, MaxTime, Median, RatioMetric,
+                                Size, Threshold)
 
 # Specify the metric that determines the test outcome
 # A test will pass or fail based on this metric
 TEST_METRIC = "Average/Threshold"
+TEST_METRIC_SINGLE_RUN = "Time/Threshold"
 
 ALLOWED_MICROSECONDS_PER_CHAR = 1
 
@@ -34,6 +35,18 @@ METRICS = [
     Median("Median", "dim"),
     P99("P99", "dim"),
     MaxTime("Max Time", "dim"),
+    Size("Size", "dim"),
+]
+
+METRICS_SINGLE_RUN = [
+    Average("Time", "blue"),
+    Threshold(ALLOWED_MICROSECONDS_PER_CHAR, "Threshold", "blue"),
+    RatioMetric(
+        Average("Time"),
+        Threshold(ALLOWED_MICROSECONDS_PER_CHAR, "Threshold"),
+        "Time/Threshold",
+        "blue",
+    ),
     Size("Size", "dim"),
 ]
 
@@ -62,7 +75,7 @@ def execute_multiple_tests(html_inputs, execution_times):
 
 
 # Function to render the results table
-def render_table(metrics, hash_to_filename):
+def render_table(METRICS, metrics, hash_to_filename):
     console = Console()
 
     # Initialize table with headers
@@ -98,9 +111,13 @@ if __name__ == "__main__":
     if core_count is None:
         core_count = multiprocessing.cpu_count()
 
+    if core_count == 1 and tests_per_core == 1:
+        METRICS = METRICS_SINGLE_RUN
+        TEST_METRIC = TEST_METRIC_SINGLE_RUN
+
     # Load test data
     test_data_htmls = {}
-    test_data_path = Path(__file__).parent / "../test_data"
+    test_data_path = Path(__file__).parent / "test_data"
     hash_to_filename = {}
     file_counter = 0
     for html_file in test_data_path.glob("10q_*.html"):
@@ -114,15 +131,6 @@ if __name__ == "__main__":
     # Calculate number of tests
     tests_per_file = core_count * tests_per_core
     total_tests_ran = tests_per_file * file_counter
-
-    # Print initial information
-    print(
-        f"- Each document underwent [bold]{tests_per_file}[/bold] tests, totaling [bold]{total_tests_ran}[/bold] tests across [bold]{core_count}[/bold] cores.",
-        f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
-        f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
-        f"- Performance metrics (e.g. 'Average', 'Median', 'P99') are measured in seconds, while 'Size' is measured in HTML characters.",
-        sep="\n",
-    )
 
     # Prepare test data
     example_htmls = list(test_data_htmls.values()) * tests_per_file
@@ -183,8 +191,26 @@ if __name__ == "__main__":
         if metrics[document_hash][TEST_METRIC] > 100:
             failed_documents.append(document_hash)
 
+
+    # Print initial information
+    if METRICS != METRICS_SINGLE_RUN:
+        print(
+            f"- Each document underwent [bold]{tests_per_file}[/bold] tests, totaling [bold]{total_tests_ran}[/bold] tests across [bold]{core_count}[/bold] cores.",
+            f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
+            f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
+            f"- Duration metrics (e.g. 'Average', 'Median', 'P99') are measured in seconds, while 'Size' is measured in HTML characters.",
+            sep="\n",
+        )
+    else:
+        print(
+            f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
+            f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
+            f"- Duration metrics (e.g. 'Time') are measured in seconds, while 'Size' is measured in HTML characters.",
+            sep="\n",
+        )
+
     # Render the results table
-    render_table(metrics, hash_to_filename)
+    render_table(METRICS, metrics, hash_to_filename)
 
     # Print the documents that failed the threshold
     if failed_documents:

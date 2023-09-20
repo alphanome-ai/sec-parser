@@ -27,6 +27,8 @@ class MaxTime(Metric):
         return max(times)
 
 
+
+
 class Average(Metric):
     def calculate(self, times, char_count):
         return mean(times)
