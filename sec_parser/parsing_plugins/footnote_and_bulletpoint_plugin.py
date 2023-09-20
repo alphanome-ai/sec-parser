@@ -37,6 +37,12 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
             process_only=process_only,
             except_dont_process=except_dont_process,
         )
+
+        # _marker_symbols track unique symbols in the document.
+        # Stored in a tuple as an ordered set, preserving insertion order.
+        # This order is used to determine a bulletpoint's level.
+        # It makes use of the fact that "higher level" markers appear
+        # first in the document.
         self._marker_symbols: tuple[str, ...] = ()
 
     def _found_marker(self, symbol: str) -> None:
