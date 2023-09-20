@@ -59,7 +59,6 @@ def get_emoji_chain(cls: type):
             se.TextElement: "📝",
             se.TitleElement: "🏷️",
             se.RootSectionElement: "📚",
-            se.HighlightedElement: "🌟",
             se.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.UndeterminedElement: "🛸",

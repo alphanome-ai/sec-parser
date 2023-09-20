@@ -60,7 +60,7 @@ class SecParser(AbstractSemanticElementParser):
         root_tags = self._root_tag_parser.parse(html)
 
         elements: list[AbstractSemanticElement] = [
-            UndeterminedElement(tag) for tag in root_tags
+            UndeterminedElement(tag, inner_elements=[]) for tag in root_tags
         ]
 
         for plugin in plugins:

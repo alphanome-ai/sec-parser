@@ -4,7 +4,6 @@ from sec_parser import (
     HtmlTag,
     TreeBuilder,
 )
-from sec_parser.semantic_elements.convert_from import convert_from
 from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
 from sec_parser.semantic_tree.nesting_rules import LevelsRule
 
@@ -38,9 +37,9 @@ def test_nesting_of_leveled_elements():
     # Arrange
     mock_elements = [
         # This is how elements are usually created in the parsing process:
-        convert_from(BaseElement(None), to=LeveledElement, level=1),
-        convert_from(BaseElement(None), to=LeveledElement, level=2),
-        convert_from(BaseElement(None), to=LeveledElement, level=2),
+        LeveledElement.convert_from(BaseElement(None, []), level=1),
+        LeveledElement.convert_from(BaseElement(None, []), level=2),
+        LeveledElement.convert_from(BaseElement(None, []), level=2),
     ]
     rules = [LevelsRule()]
     tree_builder = TreeBuilder(create_default_rules=lambda: rules)
@@ -62,8 +61,8 @@ def test_nesting_of_parent_and_child():
     # Arrange
     mock_elements = [
         # This is how elements are usually created in the parsing process:
-        convert_from(BaseElement(None), to=ParentElement),
-        convert_from(BaseElement(None), to=ChildElement),
+        ParentElement.convert_from(BaseElement(None, [])),
+        ChildElement.convert_from(BaseElement(None, [])),
     ]
     rules = [ParentChildNestingRule()]
     tree_builder = TreeBuilder(create_default_rules=lambda: rules)

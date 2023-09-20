@@ -14,8 +14,8 @@ class SpecialElement(AbstractSemanticElement):
 
 def create_element(tag) -> AbstractSemanticElement:
     if tag.name == "special":
-        return SpecialElement(tag)
-    return UndeterminedElement(tag)
+        return SpecialElement(tag, [])
+    return UndeterminedElement(tag, [])
 
 
 def parse_elements(root_tags: List[HtmlTag]) -> List[AbstractSemanticElement]:

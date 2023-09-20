@@ -26,8 +26,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     def __init__(
         self,
         html_tag: HtmlTag,
-        *,
-        inner_elements: list[AbstractSemanticElement] | None = None,
+        inner_elements: list[AbstractSemanticElement],
     ) -> None:
         self.html_tag = html_tag
 
@@ -53,7 +52,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         source: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
-        return cls(source.html_tag, inner_elements=source.inner_elements)
+        return cls(source.html_tag, source.inner_elements)
 
     @classmethod
     def get_direct_abstract_semantic_subclass(
@@ -92,11 +91,10 @@ class AbstractLevelElement(AbstractSemanticElement, ABC):
     def __init__(
         self,
         html_tag: HtmlTag,
-        *,
-        inner_elements: list[AbstractSemanticElement] | None = None,
+        inner_elements: list[AbstractSemanticElement],
         level: int | None = None,
     ) -> None:
-        super().__init__(html_tag, inner_elements=inner_elements)
+        super().__init__(html_tag, inner_elements)
         level = level or self.MIN_LEVEL
 
         if level < self.MIN_LEVEL:
@@ -111,7 +109,7 @@ class AbstractLevelElement(AbstractSemanticElement, ABC):
         *,
         level: int | None = None,
     ) -> AbstractLevelElement:
-        return cls(source.html_tag, inner_elements=source.inner_elements, level=level)
+        return cls(source.html_tag, source.inner_elements, level=level)
 
 
 class InvalidLevelError(SecParserValueError):

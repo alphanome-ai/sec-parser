@@ -6,7 +6,6 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
     AbstractElementwiseParsingPlugin,
     ElementwiseParsingContext,
 )
-from sec_parser.semantic_elements.convert_from import convert_from
 from sec_parser.semantic_elements.semantic_elements import (
     BulletpointTextElement,
     FootnoteTextElement,
@@ -66,6 +65,9 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
         if len(marker) == 1:
             self._found_marker(marker)
             level = 1 + self._marker_symbols.index(marker)
-            return convert_from(element, to=BulletpointTextElement, level=level)
+            return BulletpointTextElement(
+                element.html_tag,
+                element.inner_elements, level=level,
+            )
 
         return element
