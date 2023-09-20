@@ -19,17 +19,6 @@ tasks:
       - ruff check --fix sec_parser/
       - mypy
 
-  prepare: 
-    desc: Lint the code and run all checks
-    cmds:
-      - task unit && task lint # Doing like this instead of Taskfile's `deps` so that we determine the order of execution
-
-  visual:
-    desc: Run the parser output visualizer
-    cmds:
-      # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
-      - PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
-
   speed:
     desc: Run speed tests
     cmds:
@@ -39,3 +28,14 @@ tasks:
     desc: Run speed tests every 10 minutes
     cmds:
       - watch -n 600 task speed
+
+  prepare: 
+    desc: Lint the code and run all checks
+    cmds:
+      - task unit && task lint && task speed # Doing like this instead of Taskfile's `deps` so that we determine the order of execution
+
+  visual:
+    desc: Run the parser output visualizer (used for debugging and demos)
+    cmds:
+      # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
+      - PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
