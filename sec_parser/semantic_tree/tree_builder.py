@@ -2,12 +2,16 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
+from sec_parser.semantic_elements.semantic_elements import (
+    BulletpointTextElement,
+    RootSectionElement,
+    TitleElement,
+)
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
-    BulletpointRule,
-    LevelsRule,
-    RootSectionRule,
-    TitleRule,
+    AlwaysNestAsChildRule,
+    AlwaysNestAsParentRule,
+    NestSameTypeDependingOnLevelRule,
 )
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
@@ -28,10 +32,15 @@ class TreeBuilder:
     @staticmethod
     def create_default_rules() -> list[AbstractNestingRule]:
         return [
-            RootSectionRule(),
-            TitleRule(exclude_children={RootSectionRule}),
-            LevelsRule(),
-            BulletpointRule(),
+            AlwaysNestAsParentRule(RootSectionElement),
+
+            # Both RootSectionRule and TitleRule nest all elements under them,
+            # leading to a conflict where a decision between RootSection and
+            # TitleRule is needed. This conflict is resolved by excluding
+            # RootSectionElement from the rule for TitleElements.
+            AlwaysNestAsParentRule(TitleElement, exclude_children={RootSectionElement}),
+            AlwaysNestAsChildRule(BulletpointTextElement),
+            NestSameTypeDependingOnLevelRule(),
         ]
 
     def build(self, elements: list[AbstractSemanticElement]) -> SemanticTree:

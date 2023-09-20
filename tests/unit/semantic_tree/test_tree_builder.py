@@ -1,11 +1,12 @@
-from sec_parser import (
-    AbstractNestingRule,
-    AbstractSemanticElement,
-    HtmlTag,
-    TreeBuilder,
-)
-from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
-from sec_parser.semantic_tree.nesting_rules import LevelsRule
+from typing import Callable
+
+import bs4
+
+from sec_parser import AbstractSemanticElement, HtmlTag, TreeBuilder
+from sec_parser.semantic_elements.abstract_semantic_element import \
+    AbstractLevelElement
+from sec_parser.semantic_tree.nesting_rules import (
+    AbstractNestingRule, NestSameTypeDependingOnLevelRule)
 
 
 class BaseElement(AbstractSemanticElement):
@@ -25,9 +26,8 @@ class LeveledElement(AbstractLevelElement):
 
 
 class ParentChildNestingRule(AbstractNestingRule):
-    def should_be_nested_under(
-        self,
-        parent: AbstractSemanticElement,
+    def _should_be_nested_under(
+        self, parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
         return isinstance(parent, ParentElement) and isinstance(child, ChildElement)
@@ -36,12 +36,11 @@ class ParentChildNestingRule(AbstractNestingRule):
 def test_nesting_of_leveled_elements():
     # Arrange
     mock_elements = [
-        # This is how elements are usually created in the parsing process:
-        LeveledElement.convert_from(BaseElement(None, []), level=1),
-        LeveledElement.convert_from(BaseElement(None, []), level=2),
-        LeveledElement.convert_from(BaseElement(None, []), level=2),
+        LeveledElement(HtmlTag(bs4.Tag(name='p')), [], level=1),
+        LeveledElement(HtmlTag(bs4.Tag(name='p')), [], level=2),
+        LeveledElement(HtmlTag(bs4.Tag(name='p')), [], level=2),
     ]
-    rules = [LevelsRule()]
+    rules = [NestSameTypeDependingOnLevelRule()]
     tree_builder = TreeBuilder(create_default_rules=lambda: rules)
 
     # Act
@@ -61,11 +60,11 @@ def test_nesting_of_parent_and_child():
     # Arrange
     mock_elements = [
         # This is how elements are usually created in the parsing process:
-        ParentElement.convert_from(BaseElement(None, [])),
-        ChildElement.convert_from(BaseElement(None, [])),
+        ParentElement(HtmlTag(bs4.Tag(name='p')), []),
+        ChildElement(HtmlTag(bs4.Tag(name='p')), []),
     ]
-    rules = [ParentChildNestingRule()]
-    tree_builder = TreeBuilder(create_default_rules=lambda: rules)
+    rules: Callable[[], list[AbstractNestingRule]] | None = lambda: [ParentChildNestingRule()]
+    tree_builder = TreeBuilder(create_default_rules=rules)
 
     # Act
     tree = tree_builder.build(mock_elements)
