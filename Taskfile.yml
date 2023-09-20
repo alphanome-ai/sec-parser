@@ -39,6 +39,11 @@ tasks:
     cmds:
       - task unit && task lint && task speed-smoke # Executing in this order instead of using Taskfile's `deps` to control the order of execution
 
+  p:
+    desc: Shortcut for `task prepare`.
+    deps:
+      - prepare
+
   visual:
     desc: Run the parser output visualizer (used for debugging and demos).
     cmds:
