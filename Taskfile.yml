@@ -2,40 +2,45 @@ version: '3'
 
 tasks:
   unit:
-    desc: Run unit tests and check code coverage
+    desc: Run unit tests and check code coverage.
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       - pytest
 
   unit-watch:
-    desc: Run unit tests and check code coverage on file changes
+    desc: Run unit tests and check code coverage when files change.
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       - ptw
 
   lint:
-    desc: Lint the code
+    desc: Lint the code.
     cmds:
       - ruff check --fix sec_parser/
       - mypy
 
   speed:
-    desc: Run speed tests
+    desc: Run comprehensive speed tests.
     cmds:
       - python -m tests.e2e.speed.parse
 
+  speed-smoke:
+    desc: Run a single speed test per document. This is a useful way to verify if the parser is functioning (a so-called "smoke" test).
+    cmds:
+      - python -m tests.e2e.speed.parse --tests-per-core=1 --cores=1
+
   speed-watch:
-    desc: Run speed tests every 10 minutes
+    desc: Run comprehensive speed tests every 10 minutes.
     cmds:
       - watch -n 600 task speed
 
   prepare: 
-    desc: Lint the code and run all checks
+    desc: Lint the code and run all quick checks.
     cmds:
-      - task unit && task lint # Doing like this instead of Taskfile's `deps` so that we determine the order of execution
+      - task unit && task lint && task speed-smoke # Executing in this order instead of using Taskfile's `deps` to control the order of execution
 
   visual:
-    desc: Run the parser output visualizer (used for debugging and demos)
+    desc: Run the parser output visualizer (used for debugging and demos).
     cmds:
       # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
       - PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true

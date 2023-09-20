@@ -5,19 +5,13 @@ import time
 from multiprocessing import Manager, Pool
 from pathlib import Path
 
-import sec_parser as sp
 from rich import print
 from rich.console import Console
 from rich.table import Table
-from tests.e2e.speed._metrics import (
-    P99,
-    Average,
-    MaxTime,
-    Median,
-    RatioMetric,
-    Size,
-    Threshold,
-)
+
+import sec_parser as sp
+from tests.e2e.speed._metrics import (P99, Average, MaxTime, Median,
+                                      RatioMetric, Size, Threshold)
 
 # Specify the metric that determines the test outcome
 # A test will pass or fail based on this metric
@@ -25,7 +19,7 @@ TEST_METRIC = "Average/Threshold"
 
 ALLOWED_MICROSECONDS_PER_CHAR = 1
 
-TESTS_PER_CORE = 5
+DEFAULT_TESTS_PER_CORE = 5
 
 # Define metrics to be used
 METRICS = [
@@ -92,7 +86,17 @@ def render_table(metrics, hash_to_filename):
 
 # Main execution
 if __name__ == "__main__":
-    core_count = multiprocessing.cpu_count()
+    tests_per_core = DEFAULT_TESTS_PER_CORE
+    core_count = None
+
+    for arg in sys.argv[1:]:
+        if arg.startswith("--tests-per-core="):
+            tests_per_core = int(arg.partition("=")[2])
+        elif arg.startswith("--cores="):
+            core_count = int(arg.partition("=")[2])
+
+    if core_count is None:
+        core_count = multiprocessing.cpu_count()
 
     # Load test data
     test_data_htmls = {}
@@ -108,7 +112,7 @@ if __name__ == "__main__":
             file_counter += 1
 
     # Calculate number of tests
-    tests_per_file = core_count * TESTS_PER_CORE
+    tests_per_file = core_count * tests_per_core
     total_tests_ran = tests_per_file * file_counter
 
     # Print initial information
