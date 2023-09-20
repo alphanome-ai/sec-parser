@@ -7,14 +7,17 @@ from sec_parser.parsing_plugins.abstract_parsing_plugin import (
     AlreadyTransformedError,
     ElementwiseParsingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import (
+from sec_parser.semantic_elements.highlighted_element import (
     HighlightedElement,
+    TextStyles,
 )
 
 if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
+
+from sec_parser.semantic_elements.convert_from import convert_from
 
 
 class TitlePlugin(AbstractElementwiseParsingPlugin):
@@ -41,7 +44,7 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
             "This Plugin instance has already processed a document. "
             "Each plugin instance is designed for a single "
             "transformation operation. Please create a new "
-            "instance of the Plugin to process another document."
+            "instance of t`he Plugin to process another document."
         )
         raise AlreadyTransformedError(msg)
 
@@ -50,8 +53,10 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
-        if element.html_tag.is_unary_tree():
-            return HighlightedElement.convert_from(element)
+        styles_metrics = element.html_tag.get_text_styles_metrics()
+        styles: TextStyles = TextStyles.from_style_string(styles_metrics)
+        if styles.bold_with_font_weight:
+            return convert_from(element, to=HighlightedElement, styles=styles)
         return element
 
     def _transform_to_title_element(

@@ -24,8 +24,9 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     """
 
     def __init__(
-        self: AbstractSemanticElement,
+        self,
         html_tag: HtmlTag,
+        *,
         inner_elements: list[AbstractSemanticElement] | None = None,
     ) -> None:
         self.html_tag = html_tag
@@ -48,7 +49,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
     @classmethod
     def convert_from(
-        cls: type[AbstractSemanticElement],
+        cls,
         source: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
@@ -56,7 +57,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
     @classmethod
     def get_direct_abstract_semantic_subclass(
-        cls: type[AbstractSemanticElement],
+        cls,
     ) -> type[AbstractSemanticElement]:
         """
         Given a class, find the class that is one step below
@@ -105,7 +106,7 @@ class AbstractLevelElement(AbstractSemanticElement, ABC):
 
     @classmethod
     def convert_from(
-        cls: type[AbstractLevelElement],
+        cls,
         source: AbstractSemanticElement,
         *,
         level: int | None = None,

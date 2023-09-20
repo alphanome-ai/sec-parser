@@ -75,9 +75,7 @@ def get_emoji_chain(cls: type):
     return "".join(reversed(emojis))  # Reverse to start from the root parent
 
 
-def get_pretty_class_name(
-    element_cls: type[se.AbstractSemanticElement], element=None, *, source: str = ""
-):
+def get_pretty_class_name(element_cls, element=None, *, source: str = ""):
     emoji_chain = get_emoji_chain(element_cls)
     name = element_cls.__name__.replace("Element", "").strip()
 

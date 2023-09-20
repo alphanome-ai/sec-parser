@@ -11,11 +11,14 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
     InvalidLevelError,
 )
+from sec_parser.semantic_elements.highlighted_element import (
+    HighlightedElement,
+    TextStyles,
+)
 from sec_parser.semantic_elements.semantic_elements import (
     BulletpointTextElement,
     EmptyElement,
     FootnoteTextElement,
-    HighlightedElement,
     ImageElement,
     IrrelevantElement,
     RootSectionElement,
@@ -42,4 +45,5 @@ __all__ = [
     "EmptyElement",
     "BulletpointTextElement",
     "FootnoteTextElement",
+    "TextStyles",
 ]

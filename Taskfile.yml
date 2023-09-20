@@ -17,7 +17,8 @@ tasks:
 
   prepare: 
     desc: Lint the code and run all checks
-    deps: [unit, lint]
+    cmds:
+      - task unit && task lint # Doing like this instead of `deps` to determine order of execution
 
   visual:
     desc: Run the parser output visualizer

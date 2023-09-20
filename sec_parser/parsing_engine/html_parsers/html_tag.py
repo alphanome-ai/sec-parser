@@ -8,6 +8,7 @@ from sec_parser.exceptions.core_exceptions import SecParserValueError
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.get_first_deepest_tag import get_first_deepest_tag
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
+from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 
 
 class HtmlTag:
@@ -29,11 +30,12 @@ class HtmlTag:
     ) -> None:
         self._bs4: bs4.Tag = self._to_tag(bs4_element)
 
-        # Cached properties
+        # Cached properties, some decorator to be used instead would be better
         self._text: str | None = None
         self._children: list[HtmlTag] | None = None
         self._is_unary_tree: bool | None = None
         self._first_deepest_tag: HtmlTag | None | NotSetType = NotSet
+        self._text_styles_metrics: dict[tuple[str, str], float] | None = None
 
     def get_text(self) -> str:
         """
@@ -42,7 +44,8 @@ class HtmlTag:
         if repeated. Hence, the result is cached as the underlying data
         doesn't change.
         """
-        self._text = self._bs4.get_text().strip() if self._text is None else self._text
+        if self._text is None:
+            self._text = self._bs4.get_text().strip()
         return self._text
 
     @property
@@ -105,6 +108,29 @@ class HtmlTag:
             msg = "self._first_deepest_tag is NotSet"
             raise SecParserValueError(msg)
         return self._first_deepest_tag
+
+    def get_text_styles_metrics(self) -> dict[tuple[str, str], float]:
+        """
+        Compute the percentage distribution of various CSS styles within the text
+        content of a given HTML tag and its descendants.
+
+        This function iterates through all the text nodes within the tag, recursively
+        includes text from child elements, and calculates the effective styles applied
+        to each text segment.
+
+        It aggregates these styles and computes their percentage distribution based
+        on the length of text they apply to.
+
+        The function uses BeautifulSoup's recursive text search and parent traversal
+        features. It returns a dictionary containing the aggregated style metrics
+        (the percentage distribution of styles).
+
+        Each dictionary entry corresponds to a unique style, (property, value) and
+        the percentage of text it affects.
+        """
+        if self._text_styles_metrics is None:
+            self._text_styles_metrics = compute_text_styles_metrics(self._bs4)
+        return self._text_styles_metrics
 
     @staticmethod
     def _to_tag(element: bs4.PageElement) -> bs4.Tag:

@@ -12,7 +12,6 @@ from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
     BulletpointTextElement,
     EmptyElement,
-    HighlightedElement,
     ImageElement,
     IrrelevantElement,
     RootSectionElement,

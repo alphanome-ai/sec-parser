@@ -53,12 +53,8 @@ class RootSectionSeparatorElement(IrrelevantElement):
     """
 
 
-class HighlightedElement(AbstractSemanticElement):
-    """
-    The HighlightedElement class used for detecting title elements.
-    The process begins with the detection of highlighted elements,
-    which are then further classified into title elements.
-    """
+
+
 
 
 class TitleElement(AbstractLevelElement):

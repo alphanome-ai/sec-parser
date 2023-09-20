@@ -12,6 +12,7 @@ frozendict = "^2.3.8"
 beautifulsoup4 = "^4.12.2"
 lxml = "^4.9.3"
 httpx = "^0.24.1"
+cssutils = "^2.7.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -66,6 +67,7 @@ ignore = [
     "D205",    # 1 blank line required between summary line and description
     "D212",    # Multi-line docstring summary should start at the first line
     "ANN101",  # Missing type annotation for self in method
+    "ANN102",  # Missing type annotation for cls in classmethod
 ]
 
 # Allow autofix for all enabled rules (when `--fix`) is provided.

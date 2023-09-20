@@ -1,8 +1,5 @@
 import pytest
 from sec_parser import TextElement
-from sec_parser.parsing_plugins.footnote_and_bulletpoint_plugin import (
-    FootnoteAndBulletpointPlugin,
-)
 from tests.unit.parsing_plugins._utils import (
     get_elements_from_html,
     SpecialElement,
@@ -10,7 +7,6 @@ from tests.unit.parsing_plugins._utils import (
 )
 from sec_parser.parsing_plugins import TextPlugin
 from sec_parser.semantic_elements.semantic_elements import (
-    BulletpointTextElement,
     IrrelevantElement,
     TextElement,
 )
