@@ -5,20 +5,24 @@ tasks:
     desc: Run unit tests and check code coverage
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
-      - pytest -s --cov --cov-report=lcov:lcov.info tests/unit/
-      - coverage report --skip-covered --fail-under=0
+      - pytest
+
+  unit-watch:
+    desc: Run unit tests and check code coverage on file changes
+    cmds:
+      # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
+      - ptw
 
   lint:
     desc: Lint the code
     cmds:
       - ruff check --fix sec_parser/
-      # mirrors mypy.ini config of keeping all checked files in a single folder
-      - mypy sec_parser/
+      - mypy
 
   prepare: 
     desc: Lint the code and run all checks
     cmds:
-      - task unit && task lint # Doing like this instead of `deps` to determine order of execution
+      - task unit && task lint # Doing like this instead of Taskfile's `deps` so that we determine the order of execution
 
   visual:
     desc: Run the parser output visualizer
@@ -30,3 +34,8 @@ tasks:
     desc: Run speed tests
     cmds:
       - python -m tests.e2e.speed.parse
+
+  speed-watch:
+    desc: Run speed tests every 10 minutes
+    cmds:
+      - watch -n 600 task speed

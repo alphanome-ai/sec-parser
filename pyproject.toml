@@ -33,6 +33,7 @@ millify = "^0.1.1"
 streamlit-extras = "^0.3.2"
 ipykernel = "^6.25.2"
 jupyter = "^1.0.0"
+pytest-watch = "^4.2.0"
 
 
 [tool.commitizen]
@@ -51,6 +52,10 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.coverage.run]
 source = ["sec_parser"]
+
+
+[tool.pytest.ini_options]
+addopts = "-s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/"
 
 
 [tool.ruff]
