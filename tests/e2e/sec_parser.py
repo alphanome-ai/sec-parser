@@ -133,7 +133,7 @@ if __name__ == "__main__":
     total_tests_ran = tests_per_file * file_counter
 
     # Prepare test data
-    example_htmls = list(test_data_htmls.values()) * tests_per_file
+    example_htmls: list[str] = list(test_data_htmls.values()) * tests_per_file
 
     # Initialize shared data structures
     manager = Manager()
@@ -173,6 +173,8 @@ if __name__ == "__main__":
             ),
             None,
         )
+        if example_doc is None:
+            raise Exception(f"Could not find document with hash {document_hash}")
         char_count = len(example_doc)
 
         # Calculate each metric for the document
