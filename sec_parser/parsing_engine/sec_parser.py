@@ -2,9 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
-from sec_parser.parsing_engine.abstract_parser import (
-    AbstractSemanticElementParser,
-)
+from sec_parser.parsing_engine.abstract_parser import AbstractSemanticElementParser
 from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
     AbstractHtmlTagParser,
     RootTagParser,
@@ -12,6 +10,7 @@ from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
 from sec_parser.parsing_plugins.footnote_and_bulletpoint_plugin import (
     FootnoteAndBulletpointPlugin,
 )
+from sec_parser.parsing_plugins.highlighted_text_plugin import HighlightedTextPlugin
 from sec_parser.parsing_plugins.image_plugin import ImagePlugin
 from sec_parser.parsing_plugins.root_section_plugin import RootSectionPlugin
 from sec_parser.parsing_plugins.table_plugin import TablePlugin
@@ -47,7 +46,8 @@ class SecParser(AbstractSemanticElementParser):
             TablePlugin(process_only={UndeterminedElement}),
             TextPlugin(process_only={UndeterminedElement}),
             FootnoteAndBulletpointPlugin(process_only={TextElement}),
-            TitlePlugin(process_only={TextElement}),
+            HighlightedTextPlugin(process_only={TextElement}),
+            TitlePlugin(),
             RootSectionPlugin(),
         ]
 

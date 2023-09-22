@@ -2,47 +2,33 @@ import os
 from collections import Counter
 from dataclasses import dataclass
 from itertools import zip_longest
-from _utils.misc import interleave_lists
-from _utils.misc import normalize_company_name
-from debug_tools.parser_output_visualizer._utils.misc import clean_user_input
-from streamlit_extras.add_vertical_space import add_vertical_space
 
-import sec_parser as sp
 import streamlit as st
 import streamlit_antd_components as sac
-from _sec_parser import (
-    download_html,
-    get_metadata,
-    get_semantic_elements,
-    get_semantic_tree,
-)
-from _utils.misc import (
-    PassthroughContext,
-    get_pretty_class_name,
-    remove_ix_tags,
-    remove_duplicates_retain_order,
-)
-from _utils.streamlit_ import (
-    st_expander_allow_nested,
-    st_hide_streamlit_element,
-    st_multiselect_allow_long_titles,
-    st_radio,
-)
+from _sec_parser import (download_html, get_metadata, get_semantic_elements,
+                         get_semantic_tree)
+from _utils.misc import (PassthroughContext, get_pretty_class_name,
+                         interleave_lists, normalize_company_name,
+                         remove_duplicates_retain_order, remove_ix_tags)
+from _utils.streamlit_ import (st_expander_allow_nested,
+                               st_hide_streamlit_element,
+                               st_multiselect_allow_long_titles, st_radio)
 from dateutil.parser import parse
 from dateutil.tz import tzutc
 from dotenv import load_dotenv
+from streamlit_extras.add_vertical_space import add_vertical_space
+
+import sec_parser as sp
+from debug_tools.parser_output_visualizer._utils.misc import clean_user_input
 from sec_parser.data_sources.secapio_data_retriever import (
-    SecapioApiKeyInvalidError,
-    SecapioApiKeyNotSetError,
-    SecapioDataRetriever,
-)
+    SecapioApiKeyInvalidError, SecapioApiKeyNotSetError, SecapioDataRetriever)
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
 load_dotenv()
 
 USE_METADATA = True
 DEFAULT_PAGE_SIZE = 50
-
+USE_TREE_VIEW = False
 
 def streamlit_app(
     *,
@@ -354,7 +340,9 @@ def streamlit_app(
             tree = get_semantic_tree(elements)
             trees.append(tree)
 
-    if selected_step == 3:
+    expand_depth = 0
+
+    if selected_step == 3 and not USE_TREE_VIEW:
         with right:
             expand_depth = st.number_input("Expand Depth", min_value=-1, value=0)
 
@@ -370,7 +358,7 @@ def streamlit_app(
 
     if not USE_METADATA:
         metadatas = []
-    if selected_step == 1 or selected_step == 3:
+    if selected_step == 1 or (selected_step == 3 and not USE_TREE_VIEW):
         for url, html, elements, tree, metadata in zip_longest(
             htmls_urls, htmls, elements_lists, trees, metadatas, fillvalue=None
         ):
@@ -524,6 +512,29 @@ def streamlit_app(
                 with col:
                     with st.expander(expander_title, expanded=do_expand_all):
                         render_semantic_element(element, do_element_render_html)
+
+    def to_tree_item(tree_node: sp.TreeNode):
+        element = tree_node.semantic_element
+        children = []
+        for child in tree_node.children:
+            children.append(to_tree_item(child))
+        return sac.TreeItem(
+            element.__class__.__name__,
+            children=children,
+        )
+
+    if selected_step == 3 and USE_TREE_VIEW:
+        left, right = st.columns([1, 2])
+        tree_items = [to_tree_item(k) for k in tree.root_nodes]
+        with left, st.expander("Browser", expanded=True):
+            selected_tree_items = sac.tree(items=tree_items, icon='table', open_all=True, return_index=True)
+            assert len(selected_tree_items) == 1
+            selected_tree_item = selected_tree_items[0]
+        with right, st.expander("Viewer", expanded=True):
+            st.write(selected_tree_item)
+            st.write(elements_lists[0][selected_tree_item].html_tag.get_text())
+            st.write('a')
+            
 
     parsed_reports = []
     for url, html, elements, tree in zip(htmls_urls, htmls, elements_lists, trees):

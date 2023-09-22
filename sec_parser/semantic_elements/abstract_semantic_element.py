@@ -78,6 +78,8 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
         return root_child
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}<{self.html_tag.name}>"
 
 class AbstractLevelElement(AbstractSemanticElement, ABC):
     """

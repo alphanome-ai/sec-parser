@@ -42,6 +42,6 @@ class HighlightedTextPlugin(AbstractElementwiseParsingPlugin):
     ) -> AbstractSemanticElement:
         styles_metrics = element.html_tag.get_text_styles_metrics()
         style: TextStyle = TextStyle.from_style_string(styles_metrics)
-        if style is None:
+        if not style:
             return element
         return HighlightedTextElement.convert_from(element, style=style)

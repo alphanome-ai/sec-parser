@@ -5,7 +5,7 @@ tasks:
     desc: Run unit tests and check code coverage.
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
-      - pytest
+      - pytest -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/
 
   unit-watch:
     desc: Run unit tests and check code coverage when files change.

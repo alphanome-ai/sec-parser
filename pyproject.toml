@@ -54,10 +54,6 @@ build-backend = "poetry.core.masonry.api"
 source = ["sec_parser"]
 
 
-[tool.pytest.ini_options]
-addopts = "-s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/"
-
-
 [tool.ruff]
 select = ["ALL"]
 ignore = [
