@@ -1,15 +1,11 @@
 import pytest
+
 from sec_parser import TextElement
-from tests.unit.parsing_plugins._utils import (
-    get_elements_from_html,
-    SpecialElement,
-    assert_elements,
-)
 from sec_parser.parsing_plugins import TextPlugin
-from sec_parser.semantic_elements.semantic_elements import (
-    IrrelevantElement,
-    TextElement,
-)
+from sec_parser.semantic_elements.semantic_elements import (IrrelevantElement,
+                                                            TextElement)
+from tests.unit.parsing_plugins._utils import (SpecialElement, assert_elements,
+                                               get_elements_from_html)
 
 
 @pytest.mark.parametrize(
@@ -42,6 +38,12 @@ from sec_parser.semantic_elements.semantic_elements import (
     ],
 )
 def test_text_plugin(html_str, expected_elements):
+    """
+    This test checks that the TextPlugin can successfully transform a list of 
+    semantic elements returned by `get_elements_from_html`. These elements can be 
+    of type `UndeterminedElement` or `SpecialElement`.
+    """
+
     # Arrange
     elements = get_elements_from_html(html_str)
     plugin = TextPlugin(except_dont_process={SpecialElement})

@@ -23,5 +23,4 @@ __all__ = [
     "ImagePlugin",
     "TablePlugin",
     "FootnoteAndBulletpointPlugin",
-    "FootnotePlugin",
 ]

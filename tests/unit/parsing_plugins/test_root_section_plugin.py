@@ -1,16 +1,11 @@
 import pytest
-from sec_parser.semantic_elements.semantic_elements import (
-    RootSectionSeparatorElement,
-    UndeterminedElement,
-)
-from tests.unit.parsing_plugins._utils import (
-    get_elements_from_html,
-    assert_elements,
-)
+
+from sec_parser import RootSectionElement
 from sec_parser.parsing_plugins import RootSectionPlugin
-from sec_parser import (
-    RootSectionElement,
-)
+from sec_parser.semantic_elements.semantic_elements import (
+    RootSectionSeparatorElement, UndeterminedElement)
+from tests.unit.parsing_plugins._utils import (assert_elements,
+                                               get_elements_from_html)
 
 
 @pytest.mark.parametrize(
@@ -46,6 +41,12 @@ from sec_parser import (
     ],
 )
 def test_root_section_plugin(html_str, expected_elements):
+    """
+    This test checks that the RootSectionPlugin can successfully transform a list of 
+    semantic elements returned by `get_elements_from_html`. These elements can be 
+    of type `UndeterminedElement` or `SpecialElement`.
+    """
+
     # Arrange
     elements = get_elements_from_html(html_str)
     plugin = RootSectionPlugin()
