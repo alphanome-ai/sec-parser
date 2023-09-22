@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.parsing_plugins.abstract_parsing_plugin import (
+from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
     AbstractElementwiseParsingPlugin,
     ElementwiseParsingContext,
 )

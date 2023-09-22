@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from sec_parser.parsing_plugins.abstract_parsing_plugin import (
+from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
     AbstractElementwiseParsingPlugin,
     ElementwiseParsingContext,
 )

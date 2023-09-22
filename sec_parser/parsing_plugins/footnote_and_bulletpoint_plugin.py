@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.parsing_plugins.abstract_parsing_plugin import (
+from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
     AbstractElementwiseParsingPlugin,
     ElementwiseParsingContext,
 )
@@ -38,19 +38,19 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
             except_dont_process=except_dont_process,
         )
 
-        # _marker_symbols track unique symbols in the document.
+        # _unique_markers_by_order track unique symbols in the document.
         # Stored in a tuple as an ordered set, preserving insertion order.
         # This order is used to determine a bulletpoint's level.
         # It makes use of the fact that "higher level" markers appear
         # first in the document.
-        # _marker_symbols is effectively used as an ordered set:
-        self._marker_symbols: tuple[str, ...] = ()
+        # _unique_markers_by_order is effectively used as an ordered set:
+        self._unique_markers_by_order: tuple[str, ...] = ()
 
-    def _found_marker(self, symbol: str) -> None:
-        if symbol not in self._marker_symbols:
-            # _marker_symbols is effectively updated as an ordered set:
-            self._marker_symbols = tuple(
-                dict.fromkeys([*self._marker_symbols, symbol]).keys(),
+    def _add_unique_marker(self, symbol: str) -> None:
+        if symbol not in self._unique_markers_by_order:
+            # _unique_markers_by_order is effectively updated as an ordered set:
+            self._unique_markers_by_order = tuple(
+                dict.fromkeys([*self._unique_markers_by_order, symbol]).keys(),
             )
 
     def _transform_element(
@@ -70,8 +70,8 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
             return FootnoteTextElement.convert_from(element)
 
         if len(marker) == 1:
-            self._found_marker(marker)
-            level = 1 + self._marker_symbols.index(marker)
+            self._add_unique_marker(marker)
+            level = 1 + self._unique_markers_by_order.index(marker)
             return BulletpointTextElement(
                 element.html_tag,
                 element.inner_elements, level=level,

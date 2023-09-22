@@ -6,9 +6,9 @@ from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
     AbstractElementwiseParsingPlugin,
     ElementwiseParsingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import (
-    EmptyElement,
-    TextElement,
+from sec_parser.semantic_elements.highlighted_text_element import (
+    HighlightedTextElement,
+    TextStyle,
 )
 
 if TYPE_CHECKING:
@@ -17,17 +17,16 @@ if TYPE_CHECKING:
     )
 
 
-class TextPlugin(AbstractElementwiseParsingPlugin):
+class HighlightedTextPlugin(AbstractElementwiseParsingPlugin):
     """
-    TextPlugin class for transforming elements into TextElement instances.
+    HighlightedText class for transforming elements into HighlightedText instances.
 
     This plugin scans through a list of semantic elements and changes it,
-    primarily by replacing suitable candidates with TextElement instances.
+    primarily by replacing suitable candidates with HighlightedText instances.
     """
 
     def __init__(
         self,
-        *,
         process_only: set[type[AbstractSemanticElement]] | None = None,
         except_dont_process: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
@@ -35,24 +34,14 @@ class TextPlugin(AbstractElementwiseParsingPlugin):
             process_only=process_only,
             except_dont_process=except_dont_process,
         )
-        self._unique_markers_by_order: list[str] = []
-
-    def _found_marker(self, symbol: str) -> None:
-        if symbol not in self._unique_markers_by_order:
-            # Ordered set:
-            self._unique_markers_by_order = list(
-                dict.fromkeys([*self._unique_markers_by_order, symbol]).keys(),
-            )
 
     def _transform_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseParsingContext,
     ) -> AbstractSemanticElement:
-        """
-        Transform a single semantic element
-        into a TextElement if applicable.
-        """
-        if element.html_tag.get_text() == "":
-            return EmptyElement.convert_from(element)
-        return TextElement.convert_from(element)
+        styles_metrics = element.html_tag.get_text_styles_metrics()
+        style: TextStyle = TextStyle.from_style_string(styles_metrics)
+        if style is None:
+            return element
+        return HighlightedTextElement.convert_from(element, style=style)
