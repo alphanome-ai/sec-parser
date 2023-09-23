@@ -19,7 +19,8 @@ from dotenv import load_dotenv
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 import sec_parser as sp
-from debug_tools.parser_output_visualizer._utils.misc import clean_user_input
+import sec_parser.semantic_elements as se
+from debug_tools.parser_output_visualizer._utils.misc import add_spaces, clean_user_input
 from sec_parser.data_sources.secapio_data_retriever import (
     SecapioApiKeyInvalidError, SecapioApiKeyNotSetError, SecapioDataRetriever)
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
@@ -28,7 +29,6 @@ load_dotenv()
 
 USE_METADATA = True
 DEFAULT_PAGE_SIZE = 50
-USE_TREE_VIEW = False
 
 def streamlit_app(
     *,
@@ -68,6 +68,8 @@ def streamlit_app(
     do_element_render_html = True
     selected_step = 2
     do_interleave = False
+    use_tree_view = False
+    show_text_length = False
 
     secapio_api_key_name = SecapioDataRetriever.API_KEY_ENV_VAR_NAME
     secapio_api_key = os.environ.get(secapio_api_key_name, "")
@@ -300,6 +302,7 @@ def streamlit_app(
                             if any(type(e) == t for t in selected_types)
                         ]
 
+                    
                     left, right = st.columns(2)
                     with left:
                         RENDER_HTML = "Original"
@@ -314,7 +317,11 @@ def streamlit_app(
                                 "Show Contents",
                                 value=False,
                             )
-
+                        if selected_step == 3:
+                            use_tree_view = st.checkbox(
+                                "Use Tree View",
+                                value=False,
+                            )
                     with right:
                         if selected_step == 2:
                             element_column_count = st.number_input(
@@ -333,7 +340,17 @@ def streamlit_app(
                                     "element from the second report, and so on."
                                 ),
                             )
-                    sidebar_left, sidebar_right = st.columns(2)
+                        if selected_step == 3 and use_tree_view:
+                            show_text_length = "Text Length" == st.selectbox(
+                                "Label contents",
+                                ["Text Length", "Index"],
+                            )
+                            do_expand_all = st.checkbox(
+                                "Expand All",
+                                value=True,
+                            )
+                    sidebar_left, sidebar_right = st.columns(2)        
+                    
 
     for elements in elements_lists:
         if selected_step >= 3:
@@ -342,9 +359,25 @@ def streamlit_app(
 
     expand_depth = 0
 
-    if selected_step == 3 and not USE_TREE_VIEW:
+    if selected_step == 3 and not use_tree_view:
         with right:
             expand_depth = st.number_input("Expand Depth", min_value=-1, value=0)
+
+
+    def get_label(metadata, url):
+        if not metadata:
+            return url.split("/")[-1]
+        company_name = normalize_company_name(metadata["companyName"])
+        form_type = metadata["formType"]
+        filed_at = (
+            parse(metadata["filedAt"]).astimezone(tzutc()).strftime("%b %d, %Y")
+        )
+        period_of_report = (
+            parse(metadata["periodOfReport"])
+            .astimezone(tzutc())
+            .strftime("%b %d, %Y")
+        )
+        return f"**{company_name}** | {form_type} filed on {filed_at} for the period ended {period_of_report}"
 
     def render_semantic_element(
         element: sp.AbstractSemanticElement,
@@ -358,26 +391,12 @@ def streamlit_app(
 
     if not USE_METADATA:
         metadatas = []
-    if selected_step == 1 or (selected_step == 3 and not USE_TREE_VIEW):
+    if selected_step == 1 or (selected_step == 3 and not use_tree_view):
         for url, html, elements, tree, metadata in zip_longest(
             htmls_urls, htmls, elements_lists, trees, metadatas, fillvalue=None
         ):
-
-            def get_label():
-                company_name = normalize_company_name(metadata["companyName"])
-                form_type = metadata["formType"]
-                filed_at = (
-                    parse(metadata["filedAt"]).astimezone(tzutc()).strftime("%b %d, %Y")
-                )
-                period_of_report = (
-                    parse(metadata["periodOfReport"])
-                    .astimezone(tzutc())
-                    .strftime("%b %d, %Y")
-                )
-                return f"**{company_name}** | {form_type} filed on {filed_at} for the period ended {period_of_report}"
-
             with PassthroughContext() if len(htmls) == 1 else st.expander(
-                get_label() if metadata else url.split("/")[-1],
+                get_label(metadata, url),
                 expanded=selected_step == 3 and expand_depth >= 0,
             ):
                 if metadata:
@@ -513,27 +532,67 @@ def streamlit_app(
                     with st.expander(expander_title, expanded=do_expand_all):
                         render_semantic_element(element, do_element_render_html)
 
-    def to_tree_item(tree_node: sp.TreeNode):
+    def to_tree_item(tree_node: sp.TreeNode, indexer):
         element = tree_node.semantic_element
         children = []
+        index = indexer.i()
         for child in tree_node.children:
-            children.append(to_tree_item(child))
+            children.append(to_tree_item(child, indexer))
+        icon = {
+            se.TextElement: "text-paragraph",
+            se.TitleElement: "bookmark",
+            se.RootSectionElement: "journal-bookmark",
+            se.TableElement: "table",
+            se.ImageElement: "card-image",
+            se.UndeterminedElement: "question-square",
+            se.IrrelevantElement: "trash",
+            se.RootSectionSeparatorElement: "pause",
+            se.EmptyElement: "trash",
+            se.BulletpointTextElement: "blockquote-left",
+            se.FootnoteTextElement: "braces-asterisk",
+        }.get(element.__class__, "box")
         return sac.TreeItem(
-            element.__class__.__name__,
+            f"{add_spaces(element.__class__.__name__.replace('Element',''))}",
             children=children,
+            icon=icon,
+            tag=f"{len(element.html_tag.get_text())}" if show_text_length else str(index),
         )
 
-    if selected_step == 3 and USE_TREE_VIEW:
+    class Indexer:
+        def __init__(self):
+            self._i = -1
+        def i(self):
+            self._i += 1
+            return self._i
+            
+    if selected_step == 3 and use_tree_view:
+
         left, right = st.columns([1, 2])
-        tree_items = [to_tree_item(k) for k in tree.root_nodes]
-        with left, st.expander("Browser", expanded=True):
-            selected_tree_items = sac.tree(items=tree_items, icon='table', open_all=True, return_index=True)
-            assert len(selected_tree_items) == 1
-            selected_tree_item = selected_tree_items[0]
+
+        with left:
+            documents = tuple(k for k in zip_longest(elements_lists, htmls_urls, metadatas, fillvalue=None))
+            options = [get_label(d[2], d[1]).replace("*","") for d in documents]
+            selected_option = st.selectbox("Select Report", options)
+            if not selected_option:
+                st.error("Please select a report.")
+                st.stop()
+            selected_index = options.index(selected_option)
+            with st.expander("Browser", expanded=True):
+                tree = trees[selected_index]
+                elements = elements_lists[selected_index]
+                indexer = Indexer()
+                tree_items = [to_tree_item(k, indexer) for k in tree.root_nodes]
+                
+                selected_tree_item_ids = sac.tree(items=tree_items, open_all=do_expand_all, return_index=True)
+                if selected_tree_item_ids is not None:
+                    assert len(selected_tree_item_ids) == 1
+                    selected_tree_item_id = selected_tree_item_ids[0]
         with right, st.expander("Viewer", expanded=True):
-            st.write(selected_tree_item)
-            st.write(elements_lists[0][selected_tree_item].html_tag.get_text())
-            st.write('a')
+            if selected_tree_item_ids is not None:
+                selected_item = elements[selected_tree_item_id]
+                render_semantic_element(selected_item, do_element_render_html)
+            else:
+                st.write("Select an element from the browser to view it here.")
             
 
     parsed_reports = []
