@@ -41,11 +41,11 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    - name: Install Task
-      uses: arduino/setup-task@v1
-      with:
-        version: 3.x`
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Install Task
+    #   uses: arduino/setup-task@v1
+    #   with:
+    #     version: 3.x`
+    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Run task "ci-cd-checks" from Taskfile.yml
       run: poetry run task ci-cd-checks
