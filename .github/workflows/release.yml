@@ -18,8 +18,7 @@ jobs:
         python-version: '3.11'
 
     - name: Install Poetry
-      run: |
-        curl -sSL https://install.python-poetry.org | python3 -
+      uses: snok/install-poetry@v1
 
     - name: Cache Poetry dependencies
       uses: actions/cache@v2
