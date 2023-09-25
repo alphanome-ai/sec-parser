@@ -40,8 +40,8 @@ jobs:
     - name: Install Poetry
       if: steps.cached-tools.outputs.cache-hit != 'true'
       uses: snok/install-poetry@v1
-      with:
-        virtualenvs-create: true
+    - name: Check Poetry location
+      run: which poetry
 
     # Dependency Installation
     - name: Load cached venv
