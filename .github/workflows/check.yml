@@ -41,11 +41,9 @@ jobs:
     - name: Install dependencies
       run: poetry install
 
-    # - name: Install Task
-    #   uses: arduino/setup-task@v1
-    #   with:
-    #     version: 3.x`
-    #     repo-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install Task
+      run: |
+        sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
 
     - name: Run task "ci-cd-checks" from Taskfile.yml
       run: poetry run task ci-cd-checks
