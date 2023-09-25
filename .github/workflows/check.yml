@@ -3,10 +3,13 @@ name: CI/CD Checks
 on:
   push:
     branches:
-      - main
+      - "*"
   pull_request:
     branches:
-      - main
+      - "*"
+  schedule:
+    - cron: '0 0 * * 1'  # Runs at 00:00 UTC every Monday
+  workflow_dispatch:
 
 env:
   PRIMARY_PYTHON_VERSION: '3.11'
@@ -21,44 +24,21 @@ jobs:
 
     steps:
     
-    # Environment Setup
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
+    - uses: ./.github/actions/setup-python-poetry
       with:
-        python-version: ${{ matrix.python-version }}
-
-    # Tool Installation
-    - name: Load cached poetry installation
-      id: cached-poetry
-      uses: actions/cache@v3
-      with:
-        path: ~/.local  # the path depends on the OS
-        key: poetry-${{ matrix.python-version }}-2  # Increment cache key to clear cache
-    - name: Install Poetry
-      if: steps.cached-poetry.outputs.cache-hit != 'true'
-      uses: snok/install-poetry@v1
+        python-version: "${{ matrix.python-version }}"
+        poetry-version: "1.6.1"
     - name: Install Task
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
-
-    # Dependency Installation
-    - name: Load cached venv
-      id: cached-poetry-dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pypoetry
-        key: venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}-1
     - name: Install dependencies
-      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-      run: poetry install --no-interaction --no-root
-    - name: Install the library
-      run: poetry install --no-interaction --only-root
+      run: poetry install --no-interaction
 
-    # CI/CD Checks
     - name: Run CI-CD-checks
       run: poetry run task ci-cd-checks
+
     - name: Upload coverage reports to Codecov
       if: matrix.python-version == env.PRIMARY_PYTHON_VERSION
       uses: codecov/codecov-action@v3
