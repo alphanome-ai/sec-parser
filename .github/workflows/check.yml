@@ -26,15 +26,14 @@ jobs:
     
     - name: Checkout code
       uses: actions/checkout@v3
-    - uses: ./.github/actions/setup-python-poetry
+    - name: "Setup Python, Poetry and Dependencies"
+      uses: packetcoders/action-setup-cache-python-poetry@main
       with:
         python-version: "${{ matrix.python-version }}"
         poetry-version: "1.6.1"
     - name: Install Task
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
-    - name: Install dependencies
-      run: poetry install --no-interaction
 
     - name: Run CI-CD-checks
       run: poetry run task ci-cd-checks
