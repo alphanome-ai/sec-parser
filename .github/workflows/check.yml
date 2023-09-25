@@ -10,10 +10,6 @@ on:
   schedule:
     - cron: '0 0 * * 1'  # Runs at 00:00 UTC every Monday
   workflow_dispatch:
-
-env:
-  PRIMARY_PYTHON_VERSION: '3.11'
-  POETRY_VERSION: '1.6.1'
   
 jobs:
   build:
@@ -30,7 +26,7 @@ jobs:
       uses: packetcoders/action-setup-cache-python-poetry@main
       with:
         python-version: "${{ matrix.python-version }}"
-        poetry-version: "${{ env.POETRY_VERSION }}"
+        poetry-version: "${{ vars.POETRY_VERSION }}"
     - name: Install Task
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
@@ -41,7 +37,7 @@ jobs:
       run: poetry run task ci-cd-checks
 
     - name: Upload coverage reports to Codecov
-      if: matrix.python-version == env.PRIMARY_PYTHON_VERSION
+      if: matrix.python-version == vars.PRIMARY_PYTHON_VERSION
       uses: codecov/codecov-action@v3
       env:
         fail_ci_if_error: true

@@ -4,52 +4,29 @@ on:
   push:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
-      
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
+    - name: "Setup Python, Poetry and Dependencies"
+      uses: packetcoders/action-setup-cache-python-poetry@main
       with:
-        python-version: '3.11'
-
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-
-    - name: Cache Poetry dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-poetry-3.11-${{ hashFiles('**/pyproject.toml') }}
-        restore-keys: |
-          ${{ runner.os }}-poetry-3.11-
-          ${{ runner.os }}-poetry-
-          ${{ runner.os }}-
-
-    - name: Install dependencies
-      run: poetry install
-
+        python-version: "${{ vars.PRIMARY_PYTHON_VERSION }}"
+        poetry-version: "${{ vars.POETRY_VERSION }}"
     - name: Install Task
-      uses: arduino/setup-task@v1
-      with:
-        version: 3.x
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
 
-    - name: Run task "ci-cd-checks" from Taskfile.yml
+    - name: Install the library
+      run: poetry install --no-interaction --only-root
+    - name: Run CI-CD-checks
       run: poetry run task ci-cd-checks
-
-    - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@v3
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Build package
       run: poetry build
-
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
