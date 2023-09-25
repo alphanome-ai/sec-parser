@@ -27,18 +27,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     # Tool Installation
-    - name: Load cached tool installations
-      id: cached-tools
-      uses: actions/cache@v3
-      with:
-        path: ~/.local/bin  # the path depends on the OS
-        key: tools-${{ runner.os }}-${{ matrix.python-version }}-1  # Increment cache key to clear cache
     - name: Install Task
-      if: steps.cached-tools.outputs.cache-hit != 'true'
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
     - name: Install Poetry
-      if: steps.cached-tools.outputs.cache-hit != 'true'
       uses: snok/install-poetry@v1
     - name: Check Poetry location
       run: which poetry
