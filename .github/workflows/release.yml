@@ -30,11 +30,10 @@ jobs:
       run: poetry build
     - name: Publish package
       run: |
-        # Use the build number to create a pre-release or post-release version identifier
-        if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-          BUILD_NUMBER=${{ github.event.inputs.build_number }}
+        # Use GitHub's run_number as a post-release version identifier
+        if [[ "${{ github.event_name }}" == "workflow_dispatch" || "${{ github.ref }}" == 'refs/heads/main' ]]; then
           POETRY_VERSION=$(poetry version | awk '{print $2}')
-          NEW_VERSION="${POETRY_VERSION}.post${BUILD_NUMBER}"
+          NEW_VERSION="${POETRY_VERSION}.post${{ github.run_number }}"
           poetry version "${NEW_VERSION}"
         fi
         poetry build
