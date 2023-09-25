@@ -6,9 +6,9 @@ repos:
 
   - repo: local
     hooks:
-      - id: task-prepare
-        name: Run task prepare
-        entry: task prepare
+      - id: pre-commit-tasks
+        name: Run pre-commit tasks
+        entry: task pre-commit
         language: system
         pass_filenames: false
         stages: [commit]

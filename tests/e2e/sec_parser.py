@@ -20,7 +20,7 @@ TEST_METRIC_SINGLE_RUN = "Time/Threshold"
 
 ALLOWED_MICROSECONDS_PER_CHAR = 1
 
-DEFAULT_TESTS_PER_CORE = 5
+DEFAULT_TESTS_PER_CORE = 2
 
 # Define metrics to be used
 METRICS = [
@@ -100,13 +100,19 @@ def render_table(METRICS, metrics, hash_to_filename):
 # Main execution
 if __name__ == "__main__":
     tests_per_core = DEFAULT_TESTS_PER_CORE
-    core_count = None
+    core_count: int | None = None
+    
+    # Integer variable to limit the number of documents to test. 
+    # For example, set to 1 for a quick smoke test.
+    limit_documents: int | None = None
 
     for arg in sys.argv[1:]:
         if arg.startswith("--tests-per-core="):
             tests_per_core = int(arg.partition("=")[2])
         elif arg.startswith("--cores="):
             core_count = int(arg.partition("=")[2])
+        elif arg.startswith("--limit-documents="):
+            limit_documents = int(arg.partition("=")[2])
 
     if core_count is None:
         core_count = multiprocessing.cpu_count()
@@ -127,6 +133,10 @@ if __name__ == "__main__":
             hash_key = hashlib.sha256(file_content.encode()).hexdigest()
             hash_to_filename[hash_key] = html_file.name  # Populate the mapping
             file_counter += 1
+            if limit_documents is not None and file_counter >= limit_documents:
+                break
+    if file_counter == 0:
+        raise ValueError("No test data found")
 
     # Calculate number of tests
     tests_per_file = core_count * tests_per_core

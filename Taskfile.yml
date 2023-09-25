@@ -1,6 +1,34 @@
 version: '3'
 
 tasks:
+
+#####################################
+### Composite Tasks and Shortcuts ###
+#####################################
+
+  pre-commit: 
+    desc: Composite task to run all quick checks.
+    cmds:
+      - task unit
+      - task lint-fix
+      - task e2e-smoke
+
+  p:
+    desc: Shortcut for `task pre-commit`.
+    deps:
+      - pre-commit
+
+  ci-cd-checks:
+    desc: Composite task to run all CI/CD checks.
+    cmds:
+      - task unit
+      - task lint
+      - task e2e
+
+######################
+### Run Unit Tests ###
+######################
+
   unit:
     desc: Run unit tests and check code coverage.
     cmds:
@@ -8,44 +36,51 @@ tasks:
       - pytest -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/
 
   unit-watch:
-    desc: Run unit tests and check code coverage when files change.
+    desc: Run unit tests and check code coverage immediately when files change.
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
-      - ptw
+      - ptw -- -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/
+
+
+###############################
+### Code Quality Checks ###
+###############################
 
   lint:
-    desc: Lint the code.
+    desc: Lint the code without auto-fixing issues.
+    cmds:
+      - ruff check sec_parser/
+      - mypy
+
+  lint-fix:
+    desc: Lint the code and auto-fix issues.
     cmds:
       - ruff check --fix sec_parser/
       - mypy
 
+############################
+### Run End-to-end Tests ###
+############################
+
   e2e:
     desc: Run repeated end-to-end tests.
     cmds:
-      - python -m tests.e2e.sec_parser
+      # The CLI_ARGS variable allows passing custom arguments to the end-to-end test after "--". 
+      # For instance, to run the test with specific parameters, use the command: 
+      # task e2e -- --tests-per-core=5 --cores=2 --limit_documents=2
+      - python -m tests.e2e.sec_parser {{.CLI_ARGS}}
 
   e2e-smoke:
-    desc: Run a single end-to-end test per document. This is a useful way to verify if the parser is functioning (a so-called "smoke" test).
+    desc: Run a single end-to-end test for a single document. This is a useful way to verify if the parser is functioning (a so-called "smoke" test).
     cmds:
-      - python -m tests.e2e.sec_parser --tests-per-core=1 --cores=1
+      - python -m tests.e2e.sec_parser --tests-per-core=1 --cores=1 --limit_documents=1
 
-  e2e-watch:
-    desc: Run repeated end-to-end tests every 10 minutes.
-    cmds:
-      - watch -n 600 task e2e
-
-  prepare: 
-    desc: Lint the code and run all quick checks.
-    cmds:
-      - task unit && task lint && task e2e-smoke # Executing in this order instead of using Taskfile's `deps` to control the order of execution
-
-  p:
-    desc: Shortcut for `task prepare`.
-    deps:
-      - prepare
+#######################
+### Developer Tools ###
+#######################
 
   visual:
-    desc: Run the parser output visualizer (used for debugging and demos).
+    desc: Run the parser output visualizer (used for debugging and demos). This will open a browser window with the user interface.
     cmds:
       # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
       - PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
