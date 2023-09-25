@@ -34,8 +34,8 @@ jobs:
       id: cached-poetry
       uses: actions/cache@v3
       with:
-        path: ~/.local/bin  # the path depends on the OS
-        key: poetry-${{ matrix.python-version }}-1  # Increment cache key to clear cache
+        path: ~/.local  # the path depends on the OS
+        key: poetry-${{ matrix.python-version }}-2  # Increment cache key to clear cache
     - name: Install Poetry
       if: steps.cached-poetry.outputs.cache-hit != 'true'
       uses: snok/install-poetry@v1
