@@ -11,6 +11,8 @@ The `sec-parser` project simplifies the process of extracting meaningful informa
 
 This tool is especially beneficial for Artificial Intelligence (AI) and Large Language Models (LLM) applications. It significantly improves the efficiency of data extraction and analysis in these fields.
 
+[**View Demo**](https://sec-parser-output-visualizer.app.alphanome.dev/)
+
 ## Installation
 
 You can install `sec-parser` using pip:
@@ -22,18 +24,21 @@ pip install sec-parser
 ## Usage
 
 ```python
-from sec_parser import parse_latest
+import sec_parser as sp
 
-tree = parse_latest("10-K", ticker="AAPL")
+tree = sp.parse_latest("10-K", ticker="AAPL")
 
+# Show the general structure of the tree
 print(tree.render())
-# RootSectionElement: PART I — FINANCIAL INFORMATION
-# ├── TitleElement: Item 1. Financial Statements
-# ├── TitleElement: Apple Inc.
-# ├── TitleElement: CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (U...
-# │   ├── TextElement: (In millions, except number of shares which are re...
-# │   ├── TableElement: ...
-# │   ...
+```
+Console output:
+```
+RootSectionElement: PART I — FINANCIAL INFORMATION
+├── TitleElement: Item 1. Financial Statements
+│   ├── TitleElement: CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (U...
+│   │   ├── TextElement: (In millions, except number of shares which are re...
+│   │   ├── TableElement: ...
+│   ...
 ```
 
 # License
