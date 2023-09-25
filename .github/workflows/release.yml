@@ -30,13 +30,12 @@ jobs:
       run: poetry build
     - name: Publish package
       run: |
-        # Use the build number to create a local version identifier
+        # Use the build number to create a pre-release or post-release version identifier
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
           BUILD_NUMBER=${{ github.event.inputs.build_number }}
           POETRY_VERSION=$(poetry version | awk '{print $2}')
-          NEW_VERSION="${POETRY_VERSION}+build${BUILD_NUMBER}"
+          NEW_VERSION="${POETRY_VERSION}.post${BUILD_NUMBER}"
           poetry version "${NEW_VERSION}"
         fi
         poetry build
         poetry publish --username __token__ --password ${{ secrets.PUBLIC_PYPI_API_TOKEN }}
-    
