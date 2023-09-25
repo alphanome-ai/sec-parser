@@ -17,38 +17,51 @@ jobs:
         python-version: ['3.9', '3.10', '3.11']
 
     steps:
+    
+    # Environment Setup
     - name: Checkout code
       uses: actions/checkout@v3
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install Poetry
-      uses: snok/install-poetry@v1
-
-    - name: Cache Poetry dependencies
+    # Tool Installation
+    - name: Load cached tool installations
+      id: cached-tools
       uses: actions/cache@v3
       with:
-        path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-poetry-${{ matrix.python-version }}-${{ hashFiles('**/pyproject.toml') }}
-        restore-keys: |
-          ${{ runner.os }}-poetry-${{ matrix.python-version }}-
-          ${{ runner.os }}-poetry-
-          ${{ runner.os }}-
-
-    - name: Install dependencies
-      run: poetry install
-
+        path: ~/.local/bin  # the path depends on the OS
+        key: tools-${{ runner.os }}-${{ matrix.python-version }}-1  # Increment cache key to clear cache
     - name: Install Task
+      if: steps.cached-tools.outputs.cache-hit != 'true'
       run: |
-        sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+        sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b ~/.local/bin
+    - name: Install Poetry
+      if: steps.cached-tools.outputs.cache-hit != 'true'
+      uses: snok/install-poetry@v1
+      with:
+        virtualenvs-create: true
+        virtualenvs-in-project: true
 
-    - name: Run task "ci-cd-checks" from Taskfile.yml
+    # Dependency Installation
+    - name: Load cached venv
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: .venv
+        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+    - name: Install dependencies
+      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+      run: poetry install --no-interaction --no-root
+    - name: Install library
+      run: poetry install --no-interaction
+
+    # CI/CD Checks
+    - name: Run CI-CD-checks
       run: poetry run task ci-cd-checks
-
     - name: Upload coverage reports to Codecov
+      if: matrix.python-version == '3.11' 
       uses: codecov/codecov-action@v3
       env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: true
