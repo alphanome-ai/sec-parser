@@ -17,7 +17,14 @@ runs:
       with:
         python-version: ${{ inputs.python-version }}
       id: setup_python
+    - name: Cache Poetry cache
+      id: cached-poetry-installation
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: poetry-cache-${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-${{ inputs.poetry-version }}
     - name: Install Poetry ${{ inputs.poetry-version }}
+      if: steps.cached-poetry-installation.outputs.cache-hit != 'true'
       run: |
         curl -sSL ${{ env.POETRY_URL }} | \
           python - --version ${{ inputs.poetry-version }}
@@ -25,11 +32,6 @@ runs:
       shell: bash
       env:
         POETRY_URL: https://install.python-poetry.org
-    - name: Cache Poetry cache
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pypoetry
-        key: poetry-cache-${{ runner.os }}-${{ steps.setup_python.outputs.python-version }}-${{ inputs.poetry-version }}
     - name: Cache Packages
       uses: actions/cache@v3
       with:
