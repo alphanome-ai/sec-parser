@@ -13,6 +13,7 @@ on:
 
 env:
   PRIMARY_PYTHON_VERSION: '3.11'
+  POETRY_VERSION: '1.6.1'
   
 jobs:
   build:
@@ -23,14 +24,13 @@ jobs:
         python-version: ['3.9', '3.10', '3.11']
 
     steps:
-    
     - name: Checkout code
       uses: actions/checkout@v3
     - name: "Setup Python, Poetry and Dependencies"
       uses: packetcoders/action-setup-cache-python-poetry@main
       with:
         python-version: "${{ matrix.python-version }}"
-        poetry-version: "1.6.1"
+        poetry-version: "${{ env.POETRY_VERSION }}"
     - name: Install Task
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
