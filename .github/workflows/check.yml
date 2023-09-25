@@ -21,12 +21,6 @@ jobs:
     # Environment Setup
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
-        cache: poetry
-        cache-dependency-path: poetry.lock
 
     # Tool Installation
     - name: Load cached tool installations
@@ -52,6 +46,12 @@ jobs:
     # - name: Install dependencies
     #   if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
     #   run: poetry install --no-interaction --no-root
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: poetry
+        cache-dependency-path: poetry.lock
     - name: Install library
       run: poetry install --no-interaction --no-root
 
