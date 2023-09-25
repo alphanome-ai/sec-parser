@@ -44,8 +44,13 @@ jobs:
     - name: Install Task
       uses: arduino/setup-task@v1
       with:
-        version: 3.x
+        version: 3.x`
         repo-token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Run Taskfile "ci-cd-checks"
+    - name: Run task "ci-cd-checks" from Taskfile.yml
       run: poetry run task ci-cd-checks
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
