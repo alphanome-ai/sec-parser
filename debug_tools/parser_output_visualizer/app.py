@@ -66,9 +66,9 @@ def streamlit_app(
     element_column_count = 2
     do_expand_all = False
     do_element_render_html = True
-    selected_step = 2
+    selected_step = 0
     do_interleave = False
-    use_tree_view = False
+    use_tree_view = True
     show_text_length = False
 
     secapio_api_key_name = SecapioDataRetriever.API_KEY_ENV_VAR_NAME
@@ -224,6 +224,7 @@ def streamlit_app(
             ),
             *(extra_steps or []),
         ]
+        above_step_selector = st.container()
         selected_step = 1 + sac.steps(
             [
                 sac.StepsItem(
@@ -232,7 +233,7 @@ def streamlit_app(
                 )
                 for k in process_steps
             ],
-            index=2,
+            index=0,
             format_func=None,
             placement="horizontal",
             size="default",
@@ -241,6 +242,9 @@ def streamlit_app(
             dot=False,
             return_index=True,
         )
+        if selected_step == 1:
+            with above_step_selector:
+                st.success("Welcome! The original, unprocessed SEC EDGAR document is displayed below.\n\nTo start processing, please select a parsing step:")
 
     for html in htmls:
         if selected_step >= 2:
@@ -315,13 +319,14 @@ def streamlit_app(
                         if selected_step == 2:
                             do_expand_all = st.checkbox(
                                 "Show Contents",
-                                value=False,
+                                value=True,
                             )
                         if selected_step == 3:
-                            use_tree_view = st.checkbox(
-                                "Use Tree View",
-                                value=False,
+                            use_expanders = st.checkbox(
+                                "Merged view",
+                                value=not use_tree_view,
                             )
+                            use_tree_view = not use_expanders
                     with right:
                         if selected_step == 2:
                             element_column_count = st.number_input(
@@ -361,7 +366,7 @@ def streamlit_app(
 
     if selected_step == 3 and not use_tree_view:
         with right:
-            expand_depth = st.number_input("Expand Depth", min_value=-1, value=0)
+            expand_depth = st.number_input("Expand Depth", min_value=-1, value=-1)
 
 
     def get_label(metadata, url):
@@ -378,6 +383,42 @@ def streamlit_app(
             .strftime("%b %d, %Y")
         )
         return f"**{company_name}** | {form_type} filed on {filed_at} for the period ended {period_of_report}"
+    
+    def get_buttons(metadata,url,*,align="end"):
+        if metadata:
+            url_buttons = [
+                dict(
+                    label="sec.gov",
+                    href=metadata["linkToHtml"],
+                    icon="link",
+                ),
+                dict(
+                    label="Full HTML",
+                    href=metadata["linkToFilingDetails"],
+                    icon="link",
+                ),
+            ]
+        else:
+            url_buttons = [
+                dict(
+                    label="sec.gov",
+                    href=url,
+                    icon="link",
+                ),
+            ]
+        sac.buttons(
+            url_buttons,
+            label=None,
+            index=None,
+            format_func=None,
+            align=align,
+            position="top",
+            size="default",
+            direction="horizontal",
+            shape="default",
+            compact=True,
+            return_index=False,
+        )
 
     def render_semantic_element(
         element: sp.AbstractSemanticElement,
@@ -397,42 +438,9 @@ def streamlit_app(
         ):
             with PassthroughContext() if len(htmls) == 1 else st.expander(
                 get_label(metadata, url),
-                expanded=selected_step == 3 and expand_depth >= 0,
+                expanded=selected_step == 1 or selected_step == 3 and expand_depth >= 0,
             ):
-                if metadata:
-                    url_buttons = [
-                        dict(
-                            label="sec.gov",
-                            href=metadata["linkToHtml"],
-                            icon="link",
-                        ),
-                        dict(
-                            label="Full HTML",
-                            href=metadata["linkToFilingDetails"],
-                            icon="link",
-                        ),
-                    ]
-                else:
-                    url_buttons = [
-                        dict(
-                            label="sec.gov",
-                            href=url,
-                            icon="link",
-                        ),
-                    ]
-                sac.buttons(
-                    url_buttons,
-                    label=None,
-                    index=None,
-                    format_func=None,
-                    align="end",
-                    position="top",
-                    size="default",
-                    direction="horizontal",
-                    shape="default",
-                    compact=True,
-                    return_index=False,
-                )
+                get_buttons(metadata,url)
 
                 def render_tree_node(tree_node: sp.TreeNode, _current_depth=0):
                     element = tree_node.semantic_element
@@ -506,15 +514,16 @@ def streamlit_app(
                 ),
             )
         if pagination_size:
+            # selected_page = st.number_input("Page", min_value=1)
             selected_page = sac.pagination(
                 total=len(titles_and_elements),
-                index=1,
+                # index=1,
                 page_size=pagination_size,
                 align="center",
-                circle=False,
+                circle=True,
                 disabled=False,
                 jump=True,
-                simple=False,
+                simple=True,
                 show_total=True,
             )
             pagination_start_idx = (selected_page - 1) * pagination_size
@@ -566,33 +575,39 @@ def streamlit_app(
             return self._i
             
     if selected_step == 3 and use_tree_view:
-
-        left, right = st.columns([1, 2])
-
-        with left:
-            documents = tuple(k for k in zip_longest(elements_lists, htmls_urls, metadatas, fillvalue=None))
+        documents = tuple(k for k in zip_longest(elements_lists, htmls_urls, metadatas, fillvalue=None))
+        if len(documents) > 1:
             options = [get_label(d[2], d[1]).replace("*","") for d in documents]
             selected_option = st.selectbox("Select Report", options)
             if not selected_option:
                 st.error("Please select a report.")
                 st.stop()
             selected_index = options.index(selected_option)
-            with st.expander("Browser", expanded=True):
-                tree = trees[selected_index]
-                elements = elements_lists[selected_index]
-                indexer = Indexer()
-                tree_items = [to_tree_item(k, indexer) for k in tree.root_nodes]
-                
-                selected_tree_item_ids = sac.tree(items=tree_items, open_all=do_expand_all, return_index=True)
-                if selected_tree_item_ids is not None:
-                    assert len(selected_tree_item_ids) == 1
-                    selected_tree_item_id = selected_tree_item_ids[0]
-        with right, st.expander("Viewer", expanded=True):
+        else:
+            selected_index = 0
+        metadata = documents[selected_index][2]
+        url = documents[selected_index][1]
+        get_buttons(metadata, url, align="start")
+            
+        left, right = st.columns([1, 2])
+        with left, st.expander("Browser", expanded=True):
+            tree = trees[selected_index]
+            elements = elements_lists[selected_index]
+            indexer = Indexer()
+            tree_items = [to_tree_item(k, indexer) for k in tree.root_nodes]
+            
+            selected_tree_item_ids = sac.tree(items=tree_items, open_all=do_expand_all, return_index=True)
             if selected_tree_item_ids is not None:
-                selected_item = elements[selected_tree_item_id]
-                render_semantic_element(selected_item, do_element_render_html)
-            else:
-                st.write("Select an element from the browser to view it here.")
+                assert len(selected_tree_item_ids) == 1
+                selected_tree_item_id = selected_tree_item_ids[0]
+        with right:
+
+            with st.expander("Viewer", expanded=True):
+                if selected_tree_item_ids is not None:
+                    selected_item = elements[selected_tree_item_id]
+                    render_semantic_element(selected_item, do_element_render_html)
+                else:
+                    st.write("Select an element from the browser to view it here.")
             
 
     parsed_reports = []

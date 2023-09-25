@@ -45,12 +45,11 @@ def download_html(
     retriever = sp.SecapioDataRetriever(api_key=_secapi_api_key)
     return retriever.get_report_html(doc, url, sections=sections)
 
-
+@st.cache_resource
 def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
     parser = sp.SecParser()
     elements = parser.parse(html)
     return elements
-
 
 def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
     tree_builder = sp.TreeBuilder()
