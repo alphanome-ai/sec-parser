@@ -1,3 +1,10 @@
+## 0.8.0 (2023-09-26)
+
+### Feat
+
+- **debug_tools**: set more user friendly defaults
+- **semantic_tree**: implement getting textual representation of a tree
+
 ## 0.7.0 (2023-09-25)
 
 ### Feat
