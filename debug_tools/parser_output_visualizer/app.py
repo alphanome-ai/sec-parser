@@ -244,7 +244,7 @@ def streamlit_app(
         )
         if selected_step == 1:
             with above_step_selector:
-                st.success("Welcome! The original, unprocessed SEC EDGAR document is displayed below.\n\nTo start processing, please select a parsing step:")
+                st.success("Welcome! The original, unprocessed SEC EDGAR document is displayed below.\n\nTo start processing, please select a step:")
 
     for html in htmls:
         if selected_step >= 2:
