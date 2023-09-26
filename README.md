@@ -1,4 +1,6 @@
 # sec-parser
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Falphanome-ai%2Fsec-parser.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Falphanome-ai%2Fsec-parser?ref=badge_shield)
+
 
 <a href="https://project-types.github.io/#federation">
   <img src="https://img.shields.io/badge/project%20type-federation-brightgreen" alt="Federation Badge"/>
@@ -43,3 +45,6 @@ RootSectionElement: PART I — FINANCIAL INFORMATION
 
 # License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Falphanome-ai%2Fsec-parser.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Falphanome-ai%2Fsec-parser?ref=badge_large)
