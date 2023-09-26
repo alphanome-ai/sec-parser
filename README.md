@@ -1,5 +1,5 @@
 <p>
-  <img src="docs/title.png" alt="sec-parser logo" height="40"/>
+  <br/><img src="docs/title.png" alt="sec-parser logo" height="40"/>
 </p>
 <p>
   <a href="https://github.com/alphanome-ai/sec-parser/actions/workflows/check.yml"><img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/alphanome-ai/sec-parser/check.yml"></a>
