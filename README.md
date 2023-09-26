@@ -16,8 +16,8 @@
 <div align="center">
   <b>
   <a href="https://sec-parser-output-visualizer.app.alphanome.dev">Demo</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/issues">Issues</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/discussions">Discussions</a>
+  <a href="https://github.com/alphanome-ai/sec-parser/discussions">Discussions</a> |
+  <a href="https://github.com/alphanome-ai/sec-parser/issues">Issues</a>
   </b>
 </div>
 
