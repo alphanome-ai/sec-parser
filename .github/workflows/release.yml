@@ -26,8 +26,6 @@ jobs:
     - name: Run CI-CD-checks
       run: poetry run task ci-cd-checks
 
-    - name: Build package
-      run: poetry build
     - name: Publish package
       run: |
         # Use GitHub's run_number as a post-release version identifier
