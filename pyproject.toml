@@ -5,6 +5,21 @@ description = "Parse SEC EDGAR HTML documents into a tree of elements that corre
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "docs/README-pypi.md"
 repository = "https://github.com/alphanome-ai/sec-parser"
+license = "MIT"
+classifiers = [
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Development Status :: 4 - Beta",
+    "Natural Language :: English",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Operating System :: OS Independent",
+]
 
 
 [tool.poetry.dependencies]
