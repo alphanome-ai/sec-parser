@@ -34,6 +34,5 @@ jobs:
           NEW_VERSION="${POETRY_VERSION}.post${{ github.run_number }}"
           poetry version "${NEW_VERSION}"
         fi
-        poetry run task generate-pypi-readme
         poetry build
         poetry publish --username __token__ --password ${{ secrets.PUBLIC_PYPI_API_TOKEN }}
