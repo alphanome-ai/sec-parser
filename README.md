@@ -1,6 +1,6 @@
 <p align="center">&nbsp;</p>
 <p align="center">
-  <h1 align="center">sec-parser</h1>
+  <h1 align="center"><b>sec-parser</b></h1>
 </p>
 <p align="left">
   <!-- Using &nbsp; for alignment due to GitHub README limitations -->
