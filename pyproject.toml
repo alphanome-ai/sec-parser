@@ -9,7 +9,6 @@ license = "MIT"
 classifiers = [
     "Topic :: Text Processing :: Markup :: HTML",
     "Topic :: Office/Business :: Financial",
-    "Topic :: Artificial Intelligence",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Software Development :: Libraries :: Python Modules",
