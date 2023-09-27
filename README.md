@@ -35,6 +35,7 @@
 <div align="left">
   Parse SEC EDGAR HTML documents into a tree of elements that correspond to the visual structure of the document.
 </div>
+<br>
 <div align="center">
   <b>
   <a href="https://sec-parser-output-visualizer.app.alphanome.dev">Demo</a> |
