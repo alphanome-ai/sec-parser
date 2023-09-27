@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "sec-parser"
 version = "0.8.0"
-description = "A robust and efficient parser for SEC filings, designed to extract and analyze financial data with ease."
+description = "Parse SEC EDGAR HTML documents into a tree of elements that correspond to the visual structure of the document."
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "docs/README-pypi.md"
 repository = "https://github.com/alphanome-ai/sec-parser"
