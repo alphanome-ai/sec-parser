@@ -45,7 +45,7 @@
 </div>
 <br>
 
-## Overview
+# Overview
 
 The `sec-parser` project simplifies the process of extracting meaningful information from SEC EDGAR HTML documents. It organizes the document's source code into a list or tree of elements that correspond to the visual structure of the document. This includes distinct elements for section titles, paragraphs, and tables, making the data easier to analyze and understand. 
 
@@ -53,7 +53,7 @@ This tool is especially beneficial for Artificial Intelligence (AI) and Large La
 
 [**Explore the Demo!**](https://sec-parser-output-visualizer.app.alphanome.dev/)
 
-## Installation
+# Installation
 
 You can install `sec-parser` using pip:
 
@@ -61,7 +61,7 @@ You can install `sec-parser` using pip:
 pip install sec-parser
 ```
 
-## Usage
+# Usage
 
 ```python
 import sec_parser as sp
