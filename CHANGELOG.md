@@ -1,3 +1,13 @@
+## 0.9.0 (2023-09-27)
+
+### Feat
+
+- **ci**: use GitHub run_number for post-release versioning
+
+### Fix
+
+- **packaging**: use post-release versions for PyPI compatibility
+
 ## 0.8.0 (2023-09-26)
 
 ### Feat
