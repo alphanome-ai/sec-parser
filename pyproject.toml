@@ -4,6 +4,7 @@ version = "0.8.0"
 description = "A robust and efficient parser for SEC filings, designed to extract and analyze financial data with ease."
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "README.md"
+repository = "https://github.com/alphanome-ai/sec-parser"
 
 
 [tool.poetry.dependencies]

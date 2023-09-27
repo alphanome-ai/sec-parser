@@ -84,3 +84,27 @@ tasks:
     cmds:
       # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
       - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser; poetry run streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
+
+########################
+### CI/CD Automation ###
+########################
+
+  generate-pypi-readme:
+    desc: Generate the README file for PyPI.
+    cmds:
+      # Copy the main README.md to docs/README-pypi.md for PyPI.
+      - cp README.md docs/README-pypi.md
+      
+      # Check for the existence of the image tag in the newly copied README. Exit with error if not found.
+      # This will make sure the CI/CD fails, drawing attention to the problem.
+      - grep -q '<img src=\"docs/title.png\" alt=\"sec-parser logo\" height=\"40\"/>' docs/README-pypi.md || { echo "String not found!"; exit 1; }
+
+      # Replace the image tag with 'SEC-PARSER' text. 
+      # Output the result to a temporary file, avoiding in-place issues between macOS and Linux.
+      - sed 's/<img src=\"docs\/title.png\" alt=\"sec-parser logo\" height=\"40\"\/>/SEC-PARSER/g' docs/README-pypi.md > docs/README-pypi.md.tmp
+
+      # Replace repeating occurrences of &nbsp; with a single &nbsp;. This command is compatible with both macOS and Linux.
+      - if [[ "$OSTYPE" == "darwin"* ]]; then sed -E 's/(&nbsp;)+/\1/g' docs/README-pypi.md.tmp > docs/README-pypi.md; else sed -r 's/(&nbsp;)+/\1/g' docs/README-pypi.md.tmp > docs/README-pypi.md; fi
+
+      # Remove the temporary file, as it's no longer needed.
+      - rm docs/README-pypi.md.tmp
