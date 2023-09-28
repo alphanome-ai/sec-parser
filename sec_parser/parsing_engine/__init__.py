@@ -14,6 +14,7 @@ from sec_parser.parsing_engine.html_parsers.root_tag_parser import (
     AbstractHtmlTagParser,
     RootTagParser,
 )
+from sec_parser.parsing_engine.sec_parser import SecParser
 
 __all__ = [
     "AbstractHtmlTagParser",
