@@ -5,7 +5,6 @@ class SecParserError(Exception):
     """
 
 
-
 class SecParserValueError(SecParserError, ValueError):
     pass
 

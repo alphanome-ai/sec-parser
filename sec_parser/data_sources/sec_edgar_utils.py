@@ -11,10 +11,7 @@ from sec_parser.data_sources.sec_edgar_enums import (
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-    from sec_parser.data_sources.sec_edgar_enums import (
-        DocumentType,
-        SectionType,
-    )
+    from sec_parser.data_sources.sec_edgar_enums import DocumentType, SectionType
 
 
 def validate_sections(

@@ -50,7 +50,7 @@ def streamlit_app(
     st_expander_allow_nested()
     st_hide_streamlit_element("class", "stDeployButton")
     st_multiselect_allow_long_titles()
-
+    
     HIDE_UI_ELEMENTS = False
     # Default values to avoid errors when HIDE_UI_ELEMENTS is True
     input_urls = []
