@@ -1,3 +1,10 @@
+## 0.9.1 (2023-10-07)
+
+### Fix
+
+- codecov and other small issues
+- missing imports in __init__.py
+
 ## 0.9.0 (2023-09-27)
 
 ### Feat
