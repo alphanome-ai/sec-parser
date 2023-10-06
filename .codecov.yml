@@ -1,0 +1,6 @@
+coverage:
+  status:
+    patch:
+      default:
+        # Note: also update Taskfile.yml when changing the target coverage.
+        target: 60%

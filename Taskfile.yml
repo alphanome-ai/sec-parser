@@ -28,6 +28,7 @@ tasks:
 ######################
 ### Run Unit Tests ###
 ######################
+# Note: also update .codecov.yml when changing the target coverage.
 
   unit:
     desc: Run unit tests and check code coverage.

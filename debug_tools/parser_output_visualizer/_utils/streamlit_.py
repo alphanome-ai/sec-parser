@@ -37,4 +37,8 @@ def st_multiselect_allow_long_titles():
 
 
 def st_expander_allow_nested():
-    import streamlit_nested_layout
+    # just import the module to enable the functionality
+    import streamlit_nested_layout as _
+
+    # use the imported module to prevent linters from removing the import
+    _  # noqa: B018
