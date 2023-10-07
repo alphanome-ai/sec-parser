@@ -1,3 +1,9 @@
+## 0.11.0 (2023-10-07)
+
+### Feat
+
+- **pyproject.toml**: remove redundant include
+
 ## 0.10.0 (2023-10-07)
 
 ### Feat
