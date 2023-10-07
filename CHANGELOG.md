@@ -1,3 +1,9 @@
+## 0.10.0 (2023-10-07)
+
+### Feat
+
+- add py.typed for type checking
+
 ## 0.9.1 (2023-10-07)
 
 ### Fix
