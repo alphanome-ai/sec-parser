@@ -85,7 +85,7 @@ def streamlit_app(
     do_expand_all = False
     do_element_render_html = True
     selected_step = 0
-    do_interleave = False``
+    do_interleave = False
     use_tree_view = True
     show_text_length = False
 
