@@ -2,6 +2,7 @@
 name = "sec-parser"
 version = "0.9.1"
 description = "Parse SEC EDGAR HTML documents into a tree of elements that correspond to the visual structure of the document."
+include = ["sec_parser/py.typed"]
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "README.md"
 repository = "https://github.com/alphanome-ai/sec-parser"
