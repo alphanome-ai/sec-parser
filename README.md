@@ -50,14 +50,6 @@
 </div>
 <be>
 
-## Table of Contents
-- [Overview](#overview)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [Best Practices](#best-practices)
-- [License](#license)
-
 # Overview
 
 The `sec-parser` project simplifies extracting meaningful information from SEC EDGAR HTML documents by organizing them into semantic elements and a tree structure. Semantic elements might include section titles, paragraphs, and tables, each classified for easier data manipulation. This forms a semantic tree that corresponds to the visual and informational structure of the document.
