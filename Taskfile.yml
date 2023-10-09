@@ -85,3 +85,14 @@ tasks:
     cmds:
       # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
       - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser; poetry run streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
+
+  docs:
+    desc: Run the documentation server.
+    cmds:
+      - poetry run sphinx-autobuild docs/source docs/build/html
+
+  poetry:
+    desc: "Run any poetry command that modifies dependencies. Example: task poetry -- add requests"
+    cmds:
+      - poetry {{.CLI_ARGS}}  
+      - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
