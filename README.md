@@ -74,9 +74,10 @@ pip install sec-parser
 ```python
 import sec_parser as sp
 
+# Fetch and parse the latest 10-K report for AAPL
 tree = sp.parse_latest("10-K", ticker="AAPL")
 
-# Show the general structure of the tree
+# Display the tree structure of the parsed document
 print(tree.render())
 ```
 Console output:
