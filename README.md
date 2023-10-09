@@ -113,7 +113,7 @@ Alternatively, you can run the notebooks directly in your browser using Google C
 1. Submodule: `from sec_parser import semantic_tree`
 1. Submodule-Level: `from sec_parser.semantic_tree import SomeClass`
 
-> **Warning** <br>
+> **Warning**
 Avoid deep or chained imports like from `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
 
 # License
