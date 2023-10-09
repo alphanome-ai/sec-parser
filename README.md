@@ -92,16 +92,6 @@ RootSectionElement: PART I — FINANCIAL INFORMATION
 
 For more examples and advanced usage, you can continue learning how to use sec-parser by referring to the [Quickstart User Guide](https://sec-parser.readthedocs.io/en/latest/notebooks/quickstart_user_guide.html).
 
-# Best Practices
-
-### Importing Modules
-
-- For general package use: `import sec_parser as sp`
-- When importing specific functionalities: `from sec_parser import abc`
-
-> **Note**
-To maintain backward compatibility, avoid deep imports like `from sec_parser.x.y.z import abc`
-
 # Contributing
 
 Contributing to `sec-parser` is a rewarding way to improve this open-source project. Whether you are a user interested in expanding your knowledge or a developer who wants to dive deeper into the codebase, we have comprehensive guides to get you started.
@@ -113,6 +103,18 @@ Contributing to `sec-parser` is a rewarding way to improve this open-source proj
 Both guides are interactive and allow you to engage with the code and concepts as you learn. You can run and modify all the code examples for yourself by cloning the repository and running the respective notebooks in a Jupyter environment.
 
 Alternatively, you can run the notebooks directly in your browser using Google Colab.
+
+# Best Practices
+
+### Importing modules
+
+1. Standard: `import sec_parser as sp`
+1. Package-Level: `from sec_parser import SomeClass`
+1. Submodule: `from sec_parser import semantic_tree`
+1. Submodule-Level: `from sec_parser.semantic_tree import SomeClass`
+
+> **Warning** <br>
+Avoid deep or chained imports like from `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
 
 # License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
