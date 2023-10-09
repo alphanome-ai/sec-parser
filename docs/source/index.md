@@ -3,17 +3,28 @@
 % You can adapt this file completely to your liking, but it should at least
 % contain the root `toctree` directive.
 
-# Welcome to sec-parser's documentation!
+```{include} ../../README.md
+```
+
+<hr>
 
 ```{toctree}
 :caption: 'Contents:'
 :maxdepth: 2
 
-notebooks/usage
+notebooks/quickstart_user_guide
+notebooks/comprehensive_developer_guide
 ```
 
-# Indices and tables
+<hr>
+
+## Documentation Indices and Tables:
 
 - {ref}`genindex`
 - {ref}`modindex`
-- {ref}`search`
+<!-- 
+# Hiding search due to a Read the Docs theme bug.
+# See https://github.com/readthedocs/sphinx_rtd_theme/issues/998 for more details.
+
+- {ref}`search` 
+-->
