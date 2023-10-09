@@ -42,8 +42,8 @@
 <br>
 <div align="center">
   <b>
-  <a href="https://sec-parser.rtfd.io">Read Docs</a> |
   <a href="https://parser.app.alphanome.dev">See Demo</a> |
+  <a href="https://sec-parser.rtfd.io">Read Docs</a> |
   <a href="https://github.com/alphanome-ai/sec-parser/discussions">Ask Questions</a> |
   <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
   </b>
