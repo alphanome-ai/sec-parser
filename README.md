@@ -48,7 +48,15 @@
   <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
   </b>
 </div>
-<br>
+<be>
+
+## Table of Contents
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Best Practices](#best-practices)
+- [License](#license)
 
 # Overview
 
