@@ -52,9 +52,9 @@
 
 # Overview
 
-The `sec-parser` project simplifies extracting meaningful information from SEC EDGAR HTML documents. It organizes the document's source code into a list or tree of elements that correspond to the visual structure of the document. This includes distinct elements for section titles, paragraphs, and tables, making the data easier to analyze and understand.
+The `sec-parser` project simplifies extracting meaningful information from SEC EDGAR HTML documents by organizing them into semantic elements and a tree structure. Semantic elements might include section titles, paragraphs, and tables, each classified for easier data manipulation. This forms a semantic tree that corresponds to the visual and informational structure of the document.
 
-This tool is especially beneficial for Artificial Intelligence (AI) and Large Language Models (LLM) applications. It significantly improves the efficiency of data extraction and analysis in these fields.
+This tool is especially beneficial for Artificial Intelligence (AI) and Large Language Models (LLM) applications by streamlining data pre-processing and feature extraction.
 
 - Explore the [**Demo**](https://parser.app.alphanome.dev/)
 - Read the [**Documentation**](https://sec-parser.rtfd.io)
@@ -63,7 +63,7 @@ This tool is especially beneficial for Artificial Intelligence (AI) and Large La
 
 # Installation
 
-You can install `sec-parser` using pip:
+Open a terminal and run the following command to install `sec-parser`:
 
 ```bash
 pip install sec-parser
@@ -91,6 +91,24 @@ RootSectionElement: PART I — FINANCIAL INFORMATION
 ```
 
 For more examples and advanced usage, you can continue learning how to use sec-parser by referring to the [Quickstart User Guide](https://sec-parser.readthedocs.io/en/latest/notebooks/quickstart_user_guide.html).
+
+# Best Practices
+
+### Importing Modules
+
+To ensure backward compatibility and code readability, please adhere to the following guidelines for importing modules:
+
+- For general package use: `import sec_parser as sp`
+- When importing specific functionalities: `from sec_parser import x`
+
+> **Note**
+To maintain backward compatibility, avoid deep imports like `from sec_parser.x.y.z import b`.
+
+> **Note**
+Your note text here
+
+> **Warning**
+Your warning text here
 
 # Contributing
 
