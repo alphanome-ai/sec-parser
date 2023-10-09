@@ -96,19 +96,11 @@ For more examples and advanced usage, you can continue learning how to use sec-p
 
 ### Importing Modules
 
-To ensure backward compatibility and code readability, please adhere to the following guidelines for importing modules:
-
 - For general package use: `import sec_parser as sp`
-- When importing specific functionalities: `from sec_parser import x`
+- When importing specific functionalities: `from sec_parser import abc`
 
 > **Note**
-To maintain backward compatibility, avoid deep imports like `from sec_parser.x.y.z import b`.
-
-> **Note**
-Your note text here
-
-> **Warning**
-Your warning text here
+To maintain backward compatibility, avoid deep imports like `from sec_parser.x.y.z import abc`
 
 # Contributing
 
