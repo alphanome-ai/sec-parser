@@ -1,3 +1,9 @@
+## 0.14.0 (2023-10-09)
+
+### Feat
+
+- change order of mypy.ini lines to trigger build
+
 ## 0.13.0 (2023-10-09)
 
 ### Feat
