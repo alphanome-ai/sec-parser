@@ -52,7 +52,6 @@ autoapi_dirs = [f"{Path(__file__).parents[2]}/sec_parser"]
 templates_path = ["_templates"]
 exclude_patterns = []
 
-
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
