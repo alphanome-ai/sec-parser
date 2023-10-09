@@ -117,7 +117,7 @@ Alternatively, you can run the notebooks directly in your browser using Google C
 The root-level package `sec_parser` contains only the most common symbols. For more specialized functionalities, you should use submodule or submodule-level imports.
 
 > **Warning**
-Avoid deep or chained imports like from `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
+To facilitate internal structure refactoring and maintain backward compatibility, avoid deep or chained imports such as `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
 
 # License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
