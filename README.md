@@ -42,10 +42,10 @@
 <br>
 <div align="center">
   <b>
-  <a href="https://sec-parser.rtfd.io">Docs</a> |
-  <a href="https://parser.app.alphanome.dev">Demo</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/discussions">Discussions</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/issues">Issues</a>
+  <a href="https://sec-parser.rtfd.io">Read Docs</a> |
+  <a href="https://parser.app.alphanome.dev">See Demo</a> |
+  <a href="https://github.com/alphanome-ai/sec-parser/discussions">Ask Questions</a> |
+  <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
   </b>
 </div>
 <br>
@@ -56,7 +56,10 @@ The `sec-parser` project simplifies the process of extracting meaningful informa
 
 This tool is especially beneficial for Artificial Intelligence (AI) and Large Language Models (LLM) applications. It significantly improves the efficiency of data extraction and analysis in these fields.
 
-[**Explore the Demo!**](https://parser.app.alphanome.dev/)
+- Explore the [**Demo**](https://parser.app.alphanome.dev/)
+- Read the [**Documentation**](https://sec-parser.rtfd.io)
+- Ask questions in [**Discussions**](https://github.com/alphanome-ai/sec-parser/discussions)
+- Report bugs in [**Issues**](https://github.com/alphanome-ai/sec-parser/issues)
 
 # Installation
 
