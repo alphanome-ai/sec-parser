@@ -100,6 +100,9 @@ Contributing to `sec-parser` is a rewarding way to improve this open-source proj
   
 - **Developer Guide**: For those interested in contributing to `sec-parser`, the [**Comprehensive Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/comprehensive_developer_guide.html) provides an in-depth walkthrough of the codebase and offers examples to help you contribute effectively.
 
+> **Note**
+Before contributing, we highly recommend familiarizing yourself with these guides. They will help you understand the structure and style of our codebase, enabling you to make effective contributions.
+
 Both guides are interactive and allow you to engage with the code and concepts as you learn. You can run and modify all the code examples for yourself by cloning the repository and running the respective notebooks in a Jupyter environment.
 
 Alternatively, you can run the notebooks directly in your browser using Google Colab.
