@@ -1,3 +1,9 @@
+## 0.13.0 (2023-10-09)
+
+### Feat
+
+- implement the infrastructure for documentation
+
 ## 0.12.0 (2023-10-07)
 
 ### Feat
