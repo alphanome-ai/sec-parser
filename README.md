@@ -113,6 +113,8 @@ Alternatively, you can run the notebooks directly in your browser using Google C
 1. Submodule: `from sec_parser import semantic_tree`
 1. Submodule-Level: `from sec_parser.semantic_tree import SomeClass`
 
+> **Note**: The root-level package `sec_parser` contains only the most common symbols. For more specialized functionalities, you should use submodule or submodule-level imports.
+
 > **Warning**
 Avoid deep or chained imports like from `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
 
