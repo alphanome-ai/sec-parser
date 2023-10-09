@@ -5,6 +5,9 @@
 <p align="left">
   <!-- Using &nbsp; for alignment due to GitHub README limitations -->
   <b>Essentials ➔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+  <a href='https://sec-parser.readthedocs.io/en/latest/?badge=latest'>
+  <img src='https://readthedocs.org/projects/sec-parser/badge/?version=latest' alt='Documentation Status' />
+  </a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/alphanome-ai/sec-parser.svg" alt="Licence"></a>
   <a href="https://project-types.github.io/#federation"><img src="https://img.shields.io/badge/project%20type-federation-brightgreen" alt="Project Type: Federation"></a>
   <a href="https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta"><img src="https://img.shields.io/badge/stability-beta-33bbff.svg" alt="Beta"></a>
