@@ -68,7 +68,27 @@ Open a terminal and run the following command to install `sec-parser`:
 pip install sec-parser
 ```
 
+If you are a developer and you want to install and make changes to the package in-place, use the below command (editable mode).
+
+```bash
+pip install -e .
+```
+
+This command assumes that you are in the main directory of repository source code. If not, use the below commands
+
+```bash
+git clone https://github.com/alphanome-ai/sec-parser
+cd sec-parser
+pip install -e .
+```
+
 # Usage
+
+Before using the parser, you will need to create an account at https://sec-api.io/ (first 100 API calls are free) and get your API key. Add it to your environment variables.
+
+```bash
+export SECAPIO_API_KEY="Your API Key must be pasted here"
+```
 
 ```python
 import sec_parser as sp
