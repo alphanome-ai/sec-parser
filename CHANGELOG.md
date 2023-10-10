@@ -1,3 +1,13 @@
+## 0.15.0 (2023-10-10)
+
+### Feat
+
+- **debug_tools**: change theme
+
+### Refactor
+
+- **dev_tools**: standardize naming
+
 ## 0.14.0 (2023-10-09)
 
 ### Feat
