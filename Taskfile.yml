@@ -81,11 +81,12 @@ tasks:
 ### Developer Tools ###
 #######################
 
-  visual:
-    desc: Run the parser output visualizer (used for debugging and demos). This will open a browser window with the user interface.
+  dash:
+    desc: Launch the debug dashboard for debugging and demos.
     cmds:
-      # PYTHONPATH is added to make streamlit watch file changes. Read more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
-      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser; poetry run streamlit run debug_tools/parser_output_visualizer/app.py --server.runOnSave=true
+      # Extend PYTHONPATH to allow Streamlit to watch for file changes.
+      # Learn more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
+      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser && poetry run streamlit run dev_utils/debug_dashboard/app.py --server.runOnSave=true
 
   docs:
     desc: Run the documentation server.

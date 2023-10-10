@@ -1,14 +1,14 @@
 from __future__ import annotations
-from abc import ABC, ABCMeta
-import itertools
-
-import re
-
-import bs4
-import sec_parser.semantic_elements as se
 
 import collections
 import inspect
+import itertools
+import re
+from abc import ABC, ABCMeta
+
+import bs4
+
+import sec_parser.semantic_elements as se
 
 
 def normalize_company_name(name):
@@ -130,39 +130,3 @@ def get_accession_number_from_url(url):
         raise ValueError("Input string must be 18 characters long")
     return s[:10] + "-" + s[10:12] + "-" + s[12:]
 
-
-def interleave_lists(lists):
-    """
-    Interleave elements from a list of lists.
-
-    Parameters:
-        lists (list): A list of lists to interleave.
-
-    Returns:
-        list: A list containing interleaved elements from the input lists.
-
-    Examples:
-        >>> interleave_lists([['a', 'b', 'c'], [1, 2], ['q']])
-        ['a', 1, 'q', 'b', 2, 'c']
-
-        >>> interleave_lists([[1, 2, 3], ['a', 'b']])
-        [1, 'a', 2, 'b', 3]
-
-        >>> interleave_lists([[]])
-        []
-
-        >>> interleave_lists([])
-        []
-
-        >>> interleave_lists([['a'], ['b'], ['c']])
-        ['a', 'b', 'c']
-    """
-    interleaved = []
-    max_length = max(len(lst) for lst in lists) if lists else 0
-
-    for i in range(max_length):
-        for lst in lists:
-            if i < len(lst):
-                interleaved.append(lst[i])
-
-    return interleaved

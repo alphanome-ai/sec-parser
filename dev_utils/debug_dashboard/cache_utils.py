@@ -6,10 +6,10 @@ import os
 import pickle
 import re
 from functools import wraps
-from typing import Any, Callable, Dict
+from typing import Any, Callable
 
 
-def _generate_filename(selected_kwargs: Dict[str, Any], args_hash: str) -> str:
+def _generate_filename(selected_kwargs: dict[str, Any], args_hash: str) -> str:
     str_elements = [
         v
         for key, value in selected_kwargs.items()

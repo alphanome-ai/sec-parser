@@ -5,25 +5,6 @@ from itertools import zip_longest
 
 import streamlit as st
 import streamlit_antd_components as sac
-from _sec_parser import (
-    download_html,
-    get_metadata,
-    get_semantic_elements,
-    get_semantic_tree,
-)
-from _utils.misc import (
-    PassthroughContext,
-    get_pretty_class_name,
-    interleave_lists,
-    normalize_company_name,
-    remove_ix_tags,
-)
-from _utils.streamlit_ import (
-    st_expander_allow_nested,
-    st_hide_streamlit_element,
-    st_multiselect_allow_long_titles,
-    st_radio,
-)
 from dateutil.parser import parse
 from dateutil.tz import tzutc
 from dotenv import load_dotenv
@@ -31,9 +12,26 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 
 import sec_parser as sp
 import sec_parser.semantic_elements as se
-from debug_tools.parser_output_visualizer._utils.misc import (
+from dev_utils.debug_dashboard.general_utils import interleave_lists
+from dev_utils.debug_dashboard.sec_data_retrieval import (
+    download_html,
+    get_metadata,
+    get_semantic_elements,
+    get_semantic_tree,
+)
+from dev_utils.debug_dashboard.sec_utils import (
+    PassthroughContext,
     add_spaces,
     clean_user_input,
+    get_pretty_class_name,
+    normalize_company_name,
+    remove_ix_tags,
+)
+from dev_utils.debug_dashboard.streamlit_utils import (
+    st_expander_allow_nested,
+    st_hide_streamlit_element,
+    st_multiselect_allow_long_titles,
+    st_radio,
 )
 from sec_parser.data_sources.secapio_data_retriever import (
     SecapioApiKeyInvalidError,
@@ -682,4 +680,5 @@ class ProcessStep:
 if __name__ == "__main__":
     streamlit_app()
 
+    # if r.selected_step == 4:
     # if r.selected_step == 4:

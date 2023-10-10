@@ -1,6 +1,7 @@
-import sec_parser as sp
 import streamlit as st
-from _utils.cache import cache_to_file
+
+import sec_parser as sp
+from dev_utils.debug_dashboard.cache_utils import cache_to_file
 
 
 @st.cache_data(
@@ -45,12 +46,15 @@ def download_html(
     retriever = sp.SecapioDataRetriever(api_key=_secapi_api_key)
     return retriever.get_report_html(doc, url, sections=sections)
 
+
 @st.cache_resource
 def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
     parser = sp.SecParser()
     elements = parser.parse(html)
     return elements
 
+
 def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
     tree_builder = sp.TreeBuilder()
+    return tree_builder.build(elements)
     return tree_builder.build(elements)

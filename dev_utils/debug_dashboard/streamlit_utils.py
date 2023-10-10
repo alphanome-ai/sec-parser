@@ -1,5 +1,6 @@
 import streamlit as st
-from _utils.misc import generate_bool_list
+
+from dev_utils.debug_dashboard.sec_utils import generate_bool_list
 
 
 def st_hide_streamlit_element(key: str, value: str):
