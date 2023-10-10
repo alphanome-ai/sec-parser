@@ -68,27 +68,23 @@ Open a terminal and run the following command to install `sec-parser`:
 pip install sec-parser
 ```
 
-If you are a developer and you want to install and make changes to the package in-place, use the below command (editable mode).
-
-```bash
-pip install -e .
-```
-
-This command assumes that you are in the main directory of repository source code. If not, use the below commands
-
-```bash
-git clone https://github.com/alphanome-ai/sec-parser
-cd sec-parser
-pip install -e .
-```
-
 # Usage
 
-Before using the parser, you will need to create an account at https://sec-api.io/ (first 100 API calls are free) and get your API key. Add it to your environment variables.
+Before using the parser, you need to create an account at https://sec-api.io/. The first 100 API calls are free. After creating an account, you will receive an API key. This key should be added to your environment variables. You can do this using the following *bash* command:
 
 ```bash
-export SECAPIO_API_KEY="Your API Key must be pasted here"
+# Replace "your key here" with your actual key. 
+# An example key might look like "aef7f2f22c8b3456de55"
+export SECAPIO_API_KEY="your key here"
 ```
+
+> **Note**
+sec-api.io is a third-party service that is not affiliated with `sec-parser`. We are planning to move away from this service in the near future and download the documents directly from the SEC EDGAR website. 
+
+> **Note**
+The parser utilizes caching, so multiple calls to retrieve the same data will not consume your API calls limit.
+
+Once you have set up your API key, you can start using the parser in your *Python* code. Start by importing the `sec_parser` module as shown below:
 
 ```python
 import sec_parser as sp
@@ -99,7 +95,7 @@ tree = sp.parse_latest("10-Q", ticker="AAPL")
 # Display the tree structure of the parsed document
 print(tree.render())
 ```
-Console output:
+Here is an example of the output you can expect:
 ```
 RootSectionElement: PART I — FINANCIAL INFORMATION
 ├── TitleElement: Item 1. Financial Statements
