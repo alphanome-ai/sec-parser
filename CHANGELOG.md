@@ -1,3 +1,10 @@
+## 0.15.1 (2023-10-10)
+
+### Refactor
+
+- use better naming and structure
+- remove redundant call
+
 ## 0.15.0 (2023-10-10)
 
 ### Feat
