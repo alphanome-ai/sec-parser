@@ -49,7 +49,7 @@ class AbstractNestingRule(ABC):
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
 
 class AlwaysNestAsParentRule(AbstractNestingRule):
     def __init__(

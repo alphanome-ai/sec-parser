@@ -13,7 +13,7 @@ class Metric:
         self.justify = justify
 
     def calculate(self, times, char_count):
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
 
     def visualize(self, value):
         return f"{value:.3f}"
@@ -27,8 +27,6 @@ class MinTime(Metric):
 class MaxTime(Metric):
     def calculate(self, times, char_count):
         return max(times)
-
-
 
 
 class Average(Metric):
@@ -55,7 +53,9 @@ class StdDev(Metric):
 
 
 class Threshold(Metric):
-    def __init__(self, microsecond_threshold, name="Undefined", style="dim", justify="right") -> None:
+    def __init__(
+        self, microsecond_threshold, name="Undefined", style="dim", justify="right"
+    ) -> None:
         super().__init__(name, style, justify)
         self.microsecond_threshold = microsecond_threshold
 

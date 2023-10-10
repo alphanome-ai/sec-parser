@@ -3,10 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from sec_parser.data_sources.sec_edgar_enums import (
-    DocumentType,
-    SectionType,
-)
+from sec_parser.data_sources.sec_edgar_enums import DocumentType, SectionType
 from sec_parser.data_sources.sec_edgar_utils import validate_sections
 from sec_parser.exceptions.core_exceptions import SecParserValueError
 
@@ -24,7 +21,7 @@ class AbstractSECDataRetriever(ABC):
     def __init__(self) -> None:
         if self.SUPPORTED_DOCUMENT_TYPES is None:
             msg = "SUPPORTED_DOCUMENT_TYPES must be set in subclass"
-            raise NotImplementedError(
+            raise NotImplementedError(  # pragma: no cover
                 msg,
             )
 

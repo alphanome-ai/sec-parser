@@ -93,4 +93,4 @@ class AbstractElementwiseTransformStep(AbstractTransformStep):
         It can also be utilized to simply iterate over all
         elements without applying any transformations.
         """
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover

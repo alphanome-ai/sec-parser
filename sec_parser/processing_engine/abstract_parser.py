@@ -14,8 +14,8 @@ class AbstractSemanticElementParser(ABC):
     def __init__(
         self,
     ) -> None:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
 
     @abstractmethod
     def parse(self, html: str) -> list[AbstractSemanticElement]:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover

@@ -67,4 +67,4 @@ class AbstractTransformStep(ABC):
         This method is intended to be overridden by child classes to provide specific
         transformation logic.
         """
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover

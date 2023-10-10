@@ -10,4 +10,4 @@ if TYPE_CHECKING:
 class AbstractHtmlTagParser(ABC):
     @abstractmethod
     def parse(self, html: str) -> list[HtmlTag]:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
