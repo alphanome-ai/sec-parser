@@ -43,7 +43,7 @@
   <b>
   <a href="https://parser.app.alphanome.dev">See Demo</a> |
   <a href="https://sec-parser.rtfd.io">Read Docs</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/discussions">Ask Questions</a> |
+  <a href="https://github.com/orgs/alphanome-ai/discussions">Ask Questions</a> |
   <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a> |
   <a href="https://github.com/orgs/alphanome-ai/projects/3">Roadmap</a>
   </b>
@@ -58,7 +58,7 @@ This tool is especially beneficial for Artificial Intelligence (AI) and Large La
 
 - Explore the [**Demo**](https://parser.app.alphanome.dev/)
 - Read the [**Documentation**](https://sec-parser.rtfd.io)
-- Ask questions in [**Discussions**](https://github.com/alphanome-ai/sec-parser/discussions)
+- Ask questions in [**Discussions**](https://github.com/orgs/alphanome-ai/discussions)
 - Report bugs in [**Issues**](https://github.com/alphanome-ai/sec-parser/issues)
 - Check out the [**Roadmap**](https://github.com/orgs/alphanome-ai/projects/3)
 
