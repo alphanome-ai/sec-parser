@@ -2050,9 +2050,9 @@ benchmarking = ["psutil", "pytest", "pytest-benchmark"]
 code-style = ["pre-commit (>=3.0,<4.0)"]
 compare = ["commonmark (>=0.9,<1.0)", "markdown (>=3.4,<4.0)", "mistletoe (>=1.0,<2.0)", "mistune (>=2.0,<3.0)", "panflute (>=2.3,<3.0)"]
 linkify = ["linkify-it-py (>=1,<3)"]
-steps = ["mdit-py-plugin"]
+steps = ["mdit-py-plugins"]
 profiling = ["gprof2dot"]
-rtd = ["jupyter_sphinx", "mdit-py-plugin", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx_book_theme"]
+rtd = ["jupyter_sphinx", "mdit-py-plugins", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx_book_theme"]
 testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
 
 [[package]]
@@ -2209,7 +2209,7 @@ files = [
 traitlets = "*"
 
 [[package]]
-name = "mdit-py-plugin"
+name = "mdit-py-plugins"
 version = "0.4.0"
 description = "Collection of steps for markdown-it-py"
 optional = false
@@ -2342,7 +2342,7 @@ files = [
 docutils = ">=0.16,<0.21"
 jinja2 = "*"
 markdown-it-py = ">=3.0,<4.0"
-mdit-py-plugin = ">=0.4,<1.0"
+mdit-py-plugins = ">=0.4,<1.0"
 pyyaml = "*"
 sphinx = ">=6,<8"
 
