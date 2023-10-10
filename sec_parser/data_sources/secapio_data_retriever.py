@@ -58,15 +58,6 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
         )
         self._timeout_s = timeout_s or 10
 
-    def _get_report_html(
-        self: SecapioDataRetriever,
-        doc_type: DocumentType,
-        url: str,
-        *,
-        sections: Iterable[SectionType] | None = None,
-    ) -> str:
-        return self._get_sections_html(doc_type, url, sections=sections)
-
     def retrieve_report_metadata(
         self: SecapioDataRetriever,
         doc_type: DocumentType | str,
@@ -108,7 +99,7 @@ class SecapioDataRetriever(AbstractSECDataRetriever):
             raise SecParserRuntimeError(msg)
         return metadata
 
-    def _get_sections_html(
+    def _get_report_html(
         self: SecapioDataRetriever,
         doc_type: DocumentType,
         url: str,
