@@ -1,21 +1,21 @@
 import pytest
 
-from sec_parser import TextElement
-from sec_parser.parsing_plugins import TextPlugin
-from sec_parser.parsing_plugins.highlighted_text_plugin import \
-    HighlightedTextPlugin
-from sec_parser.parsing_plugins.title_plugin import TitlePlugin
+from sec_parser.processing_steps.highlighted_text_parsing_step import (
+    HighlightedTextParsingStep,
+)
+from sec_parser.processing_steps.title_parsing_step import TitleParsingStep
 from sec_parser.semantic_elements.semantic_elements import (
-    IrrelevantElement, TextElement, TitleElement, UndeterminedElement)
-from tests.unit.parsing_plugins._utils import (SpecialElement, assert_elements,
-                                               get_elements_from_html)
+    TitleElement,
+    UndeterminedElement,
+)
+from tests.unit.processing_steps._utils import assert_elements, get_elements_from_html
 
 
 @pytest.mark.parametrize(
-    "html_str, expected_elements",
+    ("html_str", "expected_elements"),
     [
-        (   # From Apple 10-Q
-            """ 
+        (  # From Apple 10-Q
+            """
                 <div style="margin-top:18pt;text-align:justify">
                     <span style="color:#000000;font-family:'Helvetica',sans-serif;font-size:9pt;font-weight:700;line-height:120%">
                         Available Information
@@ -34,23 +34,24 @@ from tests.unit.parsing_plugins._utils import (SpecialElement, assert_elements,
         ),
     ],
 )
-def test_title_plugin(html_str, expected_elements):
+def test_title_step(html_str, expected_elements):
     """
-    This test checks that the HighlightedTextPlugin and TitlePlugin
-    can successfully transform a list of semantic elements returned by 
-    `get_elements_from_html`. These elements can be of type 
+    This test checks that the HighlightedTextParsingStep and TitleParsingStep
+    can successfully transform a list of semantic elements returned by
+    `get_elements_from_html`. These elements can be of type
     `UndeterminedElement` or `SpecialElement`.
     """
-
     # Arrange
     elements = get_elements_from_html(html_str)
-    
-    highlighter_plugin = HighlightedTextPlugin()
-    title_plugin = TitlePlugin()
+
+    highlighter_step = HighlightedTextParsingStep()
+    title_step = TitleParsingStep()
 
     # Act
-    elements = highlighter_plugin.transform(elements)
-    elements = title_plugin.transform(elements)
+    elements = highlighter_step.process(elements)
+    elements = title_step.process(elements)
 
+    # Assert
+    assert_elements(elements, expected_elements)
     # Assert
     assert_elements(elements, expected_elements)

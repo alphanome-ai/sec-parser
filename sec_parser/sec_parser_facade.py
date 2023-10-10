@@ -1,6 +1,6 @@
 """
-sec_parsing_entry provides high-level abstractions for parsing SEC documents.
-It also serves as library usage examples.
+sec_parser_facade offers simplified, high-level functions for parsing SEC filings,
+while also serving as an example of library usage.
 """
 
 from __future__ import annotations
@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
-from sec_parser.parsing_engine.sec_parser import SecParser
+from sec_parser.processing_engine.sec_parser import SecParser
 from sec_parser.semantic_tree.tree_builder import TreeBuilder
 
 if TYPE_CHECKING:
@@ -25,8 +25,7 @@ def parse_latest(
 ) -> SemanticTree:
     retriever = SecapioDataRetriever(api_key=secapio_api_key)
     metadata = retriever.retrieve_report_metadata(doc_type, latest_from_ticker=ticker)
-    url = metadata["linkToFilingDetails"]
-    html = retriever.get_report_html(doc_type, url=url)
+    html = retriever.get_report_html(doc_type, url=metadata["linkToFilingDetails"])
 
     parser = SecParser()
     elements = parser.parse(html)

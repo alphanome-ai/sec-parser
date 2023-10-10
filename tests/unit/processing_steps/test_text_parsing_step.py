@@ -1,15 +1,20 @@
 import pytest
 
 from sec_parser import TextElement
-from sec_parser.parsing_plugins import TextPlugin
-from sec_parser.semantic_elements.semantic_elements import (IrrelevantElement,
-                                                            TextElement)
-from tests.unit.parsing_plugins._utils import (SpecialElement, assert_elements,
-                                               get_elements_from_html)
+from sec_parser.processing_steps import TextParsingStep
+from sec_parser.semantic_elements.semantic_elements import (
+    IrrelevantElement,
+    TextElement,
+)
+from tests.unit.processing_steps._utils import (
+    SpecialElement,
+    assert_elements,
+    get_elements_from_html,
+)
 
 
 @pytest.mark.parametrize(
-    "html_str, expected_elements",
+    ("html_str", "expected_elements"),
     [
         (
             """
@@ -37,19 +42,18 @@ from tests.unit.parsing_plugins._utils import (SpecialElement, assert_elements,
         ),
     ],
 )
-def test_text_plugin(html_str, expected_elements):
+def test_text_step(html_str, expected_elements):
     """
-    This test checks that the TextPlugin can successfully transform a list of 
-    semantic elements returned by `get_elements_from_html`. These elements can be 
+    This test checks that the TextParsingStep can successfully transform a list of
+    semantic elements returned by `get_elements_from_html`. These elements can be
     of type `UndeterminedElement` or `SpecialElement`.
     """
-
     # Arrange
     elements = get_elements_from_html(html_str)
-    plugin = TextPlugin(except_dont_process={SpecialElement})
+    step = TextParsingStep(except_dont_process={SpecialElement})
 
     # Act
-    processed_elements = plugin.transform(elements)
+    processed_elements = step.process(elements)
 
     # Assert
     assert_elements(processed_elements, expected_elements)

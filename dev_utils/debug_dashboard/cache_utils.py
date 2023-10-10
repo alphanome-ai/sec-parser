@@ -49,12 +49,12 @@ def cache_to_file(cache_by_keys: set[str], cache_dir: str) -> Callable:
                 with open(cache_file_path, "rb") as f:
                     result = pickle.load(f)
                     if isinstance(result, str) and not os.path.exists(
-                        cache_file_path.replace(".pkl", ".txt")
+                        cache_file_path.replace(".pkl", ".txt"),
                     ):
                         with open(cache_file_path.replace(".pkl", ".txt"), "w") as f:
                             f.write(func(*args, **kwargs))
                     if isinstance(result, dict) and not os.path.exists(
-                        cache_file_path.replace(".pkl", ".json")
+                        cache_file_path.replace(".pkl", ".json"),
                     ):
                         with open(cache_file_path.replace(".pkl", ".json"), "w") as f:
                             json.dump(result, f, indent=4)

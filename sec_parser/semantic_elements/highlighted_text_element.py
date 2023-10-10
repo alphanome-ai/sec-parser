@@ -8,7 +8,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 )
 
 if TYPE_CHECKING:
-    from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
+    from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
 
 
 class HighlightedTextElement(AbstractSemanticElement):

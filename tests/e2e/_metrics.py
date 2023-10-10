@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from statistics import mean, median, stdev
 
 import numpy as np
@@ -6,7 +7,7 @@ from millify import millify
 
 
 class Metric:
-    def __init__(self, name="Undefined", style='dim', justify="right"):
+    def __init__(self, name="Undefined", style="dim", justify="right") -> None:
         self.name = name
         self.style = style
         self.justify = justify
@@ -54,7 +55,7 @@ class StdDev(Metric):
 
 
 class Threshold(Metric):
-    def __init__(self, microsecond_threshold, name="Undefined", style="dim", justify="right"):
+    def __init__(self, microsecond_threshold, name="Undefined", style="dim", justify="right") -> None:
         super().__init__(name, style, justify)
         self.microsecond_threshold = microsecond_threshold
 
@@ -63,7 +64,7 @@ class Threshold(Metric):
 
 
 class RatioMetric(Metric):
-    def __init__(self, metric1, metric2, name, style="dim", justify="right"):
+    def __init__(self, metric1, metric2, name, style="dim", justify="right") -> None:
         super().__init__(name, style, justify)
         self.metric1 = metric1
         self.metric2 = metric2

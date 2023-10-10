@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
-    AbstractElementwiseParsingPlugin,
-    ElementwiseParsingContext,
+from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+    AbstractElementwiseTransformStep,
+    ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
@@ -18,11 +18,11 @@ if TYPE_CHECKING:
     )
 
 
-class TitlePlugin(AbstractElementwiseParsingPlugin):
+class TitleParsingStep(AbstractElementwiseTransformStep):
     """
-    TitlePlugin class for transforming elements into TitleElement instances.
+    TitleParsingStep class for transforming elements into TitleElement instances.
 
-    This plugin scans through a list of semantic elements and changes it,
+    This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with TitleElement instances.
     """
 
@@ -54,7 +54,7 @@ class TitlePlugin(AbstractElementwiseParsingPlugin):
     def _transform_element(
         self,
         element: AbstractSemanticElement,
-        _: ElementwiseParsingContext,
+        _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         if not isinstance(element, HighlightedTextElement):
             return element

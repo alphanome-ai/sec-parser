@@ -1,21 +1,15 @@
 import pytest
 
-from sec_parser import TextElement
-from sec_parser.parsing_plugins import TextPlugin
-from sec_parser.parsing_plugins.footnote_and_bulletpoint_plugin import \
-    FootnoteAndBulletpointPlugin
-from sec_parser.semantic_elements.semantic_elements import (
-    BulletpointTextElement, IrrelevantElement, TextElement)
-from tests.unit.parsing_plugins._utils import (SpecialElement,
-                                               UndeterminedElement,
-                                               assert_elements,
-                                               get_elements_from_html)
+from sec_parser.processing_steps.footnote_and_bulletpoint_parsing_step import (
+    FootnoteAndBulletpointParsingStep,
+)
+from sec_parser.semantic_elements.semantic_elements import BulletpointTextElement
+from tests.unit.processing_steps._utils import assert_elements, get_elements_from_html
 
 
 @pytest.mark.parametrize(
-    "html_str, expected_elements",
+    ("html_str", "expected_elements"),
     [
-
         (
             """
             <div style="margin-top:6pt;padding-left:36pt;text-align:justify;text-indent:-18pt">
@@ -50,19 +44,18 @@ from tests.unit.parsing_plugins._utils import (SpecialElement,
         ),
     ],
 )
-def test_footnote_and_bulletpoint_plugin(html_str, expected_elements):
+def test_footnote_and_bulletpoint_step(html_str, expected_elements):
     """
-    This test checks that the FootnoteAndBulletpointPlugin can successfully transform a list of 
-    semantic elements returned by `get_elements_from_html`. These elements can be 
+    This test checks that the FootnoteAndBulletpointParsingStep can successfully transform a list of
+    semantic elements returned by `get_elements_from_html`. These elements can be
     of type `UndeterminedElement` or `SpecialElement`.
     """
-        
     # Arrange
     elements = get_elements_from_html(html_str)
-    plugin = FootnoteAndBulletpointPlugin()
+    step = FootnoteAndBulletpointParsingStep()
 
     # Act
-    processed_elements = plugin.transform(elements)
+    processed_elements = step.process(elements)
 
     # Assert
     assert_elements(processed_elements, expected_elements)

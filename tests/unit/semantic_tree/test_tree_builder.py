@@ -1,12 +1,12 @@
-from typing import Callable
 
 import bs4
 
 from sec_parser import AbstractSemanticElement, HtmlTag, TreeBuilder
-from sec_parser.semantic_elements.abstract_semantic_element import \
-    AbstractLevelElement
+from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
 from sec_parser.semantic_tree.nesting_rules import (
-    AbstractNestingRule, NestSameTypeDependingOnLevelRule)
+    AbstractNestingRule,
+    NestSameTypeDependingOnLevelRule,
+)
 
 
 class BaseElement(AbstractSemanticElement):
@@ -36,9 +36,9 @@ class ParentChildNestingRule(AbstractNestingRule):
 def test_nesting_of_leveled_elements():
     # Arrange
     mock_elements = [
-        LeveledElement(HtmlTag(bs4.Tag(name='p')), [], level=1),
-        LeveledElement(HtmlTag(bs4.Tag(name='p')), [], level=2),
-        LeveledElement(HtmlTag(bs4.Tag(name='p')), [], level=2),
+        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=1),
+        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
+        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
     ]
     rules = [NestSameTypeDependingOnLevelRule()]
     tree_builder = TreeBuilder(create_default_rules=lambda: rules)
@@ -59,10 +59,11 @@ def test_nesting_of_leveled_elements():
 def test_nesting_of_parent_and_child():
     # Arrange
     mock_elements = [
-        ParentElement(HtmlTag(bs4.Tag(name='p')), []),
-        ChildElement(HtmlTag(bs4.Tag(name='p')), []),
+        ParentElement(HtmlTag(bs4.Tag(name="p")), []),
+        ChildElement(HtmlTag(bs4.Tag(name="p")), []),
     ]
-    rules: Callable[[], list[AbstractNestingRule]] | None = lambda: [ParentChildNestingRule()]
+    def rules():
+        return [ParentChildNestingRule()]
     tree_builder = TreeBuilder(create_default_rules=rules)
 
     # Act

@@ -1,5 +1,5 @@
-import pytest
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup
+
 from sec_parser.utils.bs4_.get_first_deepest_tag import get_first_deepest_tag
 
 

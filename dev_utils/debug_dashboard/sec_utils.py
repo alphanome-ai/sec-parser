@@ -1,10 +1,6 @@
 from __future__ import annotations
 
-import collections
-import inspect
-import itertools
 import re
-from abc import ABC, ABCMeta
 
 import bs4
 
@@ -14,8 +10,7 @@ import sec_parser.semantic_elements as se
 def normalize_company_name(name):
     name = name.title()
     name = name.replace("Inc.", "Inc").replace("Corp.", "Corp")
-    name = name.replace("Inc", "Inc.").replace("Corp", "Corp.")
-    return name
+    return name.replace("Inc", "Inc.").replace("Corp", "Corp.")
 
 
 def generate_bool_list(idx, length):
@@ -23,7 +18,7 @@ def generate_bool_list(idx, length):
     >>> generate_bool_list(1, 3)
     [False, True, False]
     >>> generate_bool_list(0, 4)
-    [True, False, False, False]
+    [True, False, False, False].
     """
     return [i == idx for i in range(length)]
 
@@ -99,15 +94,14 @@ class PassthroughContext:
 
 
 def remove_duplicates_retain_order(input_list):
-    """
-    This function removes duplicates from a list while retaining the order of elements.
-    """
+    """This function removes duplicates from a list while retaining the order of elements."""
     return list(dict.fromkeys(input_list))
 
 
 def clean_user_input(input_list, split_char=None, split_lines=False):
     if split_char and split_lines:
-        raise ValueError("Only one of split_char and split_lines can be set.")
+        msg = "Only one of split_char and split_lines can be set."
+        raise ValueError(msg)
 
     if split_char:
         input_list = input_list.split(split_char)
@@ -127,6 +121,7 @@ def get_accession_number_from_url(url):
     numbers = re.findall(r"\d+", url)
     s = max(numbers, key=len)
     if len(s) != 18:
-        raise ValueError("Input string must be 18 characters long")
+        msg = "Input string must be 18 characters long"
+        raise ValueError(msg)
     return s[:10] + "-" + s[10:12] + "-" + s[12:]
 

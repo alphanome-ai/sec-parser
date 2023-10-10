@@ -3,9 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Callable
 
-from sec_parser.exceptions.core_exceptions import (
-    SecParserRuntimeError,
-)
+from sec_parser.exceptions.core_exceptions import SecParserRuntimeError
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -17,13 +15,13 @@ class AlreadyTransformedError(SecParserRuntimeError):
     pass
 
 
-class AbstractParsingPlugin(ABC):
+class AbstractTransformStep(ABC):
     """
-    AbstractParsingPlugin class for transforming a list of elements.
-    Chaining multiple plugins together allows for complex transformations
+    AbstractTransformStep class for transforming a list of elements.
+    Chaining multiple steps together allows for complex transformations
     while keeping the code modular.
 
-    Each instance of a plugin is designed to be used for a single
+    Each instance of a step is designed to be used for a single
     transformation operation. This ensures that any internal state
     maintained during a transformation is isolated to the processing
     of a single document.
@@ -31,12 +29,12 @@ class AbstractParsingPlugin(ABC):
 
     def __init__(self) -> None:
         """
-        Initialize the plugin. Sets `_transformed` to False to ensure
+        Initialize the step. Sets `_transformed` to False to ensure
         that each instance is used for exactly one transformation operation.
         """
         self._transformed = False
 
-    def transform(
+    def process(
         self,
         elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
@@ -48,18 +46,18 @@ class AbstractParsingPlugin(ABC):
         """
         if self._transformed:
             msg = (
-                "This Plugin instance has already processed a document. "
-                "Each plugin instance is designed for a single "
+                "This Step instance has already processed a document. "
+                "Each Step instance is designed for a single "
                 "transformation operation. Please create a new instance "
-                "of the Plugin to process another document."
+                "of the Step to process another document."
             )
             raise AlreadyTransformedError(msg)
 
         self._transformed = True
-        return self._transform(elements)
+        return self._process(elements)
 
     @abstractmethod
-    def _transform(
+    def _process(
         self,
         elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
@@ -70,4 +68,3 @@ class AbstractParsingPlugin(ABC):
         transformation logic.
         """
         raise NotImplementedError
-

@@ -1,3 +1,5 @@
+from typing import Optional
+
 import streamlit as st
 
 import sec_parser as sp
@@ -41,7 +43,7 @@ def download_html(
     ticker: str,  # added just to make the cache write ticker as part of the filename
     doc: sp.DocumentType | str,
     url: str,
-    sections: list[sp.SectionType | str] = None,
+    sections: Optional[list[sp.SectionType | str]] = None,
 ) -> str:
     retriever = sp.SecapioDataRetriever(api_key=_secapi_api_key)
     return retriever.get_report_html(doc, url, sections=sections)
@@ -50,8 +52,7 @@ def download_html(
 @st.cache_resource
 def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
     parser = sp.SecParser()
-    elements = parser.parse(html)
-    return elements
+    return parser.parse(html)
 
 
 def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:

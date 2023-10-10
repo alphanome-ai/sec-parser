@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
-    AbstractElementwiseParsingPlugin,
-    ElementwiseParsingContext,
+from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+    AbstractElementwiseTransformStep,
+    ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
@@ -17,11 +17,11 @@ if TYPE_CHECKING:
     )
 
 
-class HighlightedTextPlugin(AbstractElementwiseParsingPlugin):
+class HighlightedTextParsingStep(AbstractElementwiseTransformStep):
     """
     HighlightedText class for transforming elements into HighlightedText instances.
 
-    This plugin scans through a list of semantic elements and changes it,
+    This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with HighlightedText instances.
     """
 
@@ -38,7 +38,7 @@ class HighlightedTextPlugin(AbstractElementwiseParsingPlugin):
     def _transform_element(
         self,
         element: AbstractSemanticElement,
-        _: ElementwiseParsingContext,
+        _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         styles_metrics = element.html_tag.get_text_styles_metrics()
         style: TextStyle = TextStyle.from_style_string(styles_metrics)

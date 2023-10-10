@@ -75,17 +75,17 @@
 - **debug_tools**: Add Tree View
 - **build**: add speed test that finished the check fast
 - **TitlePlugin**: implement TitleElement detection
-- **title_plugin**: add an ordered set to hold found title styles
+- **title_step**: add an ordered set to hold found title styles
 - parse all-bolded text as HighlightedElement
 - add bulletpoint parsing
-- **plugins**: implement rudimentary versions of all plugins
-- add new types of plugins (not yet the implementations of them)
+- **steps**: implement rudimentary versions of all steps
+- add new types of steps (not yet the implementations of them)
 - simplify user interface, improve parsing
 - **debug_tools**: add pagination and columnization to visualizer
 - **debug_tools**: add support to viewing multiple reports at the same time
 - **test/speed**: update readabilty of speed test output
 - **tests/speed**: improve speed benchmark output
-- implement Text parser plugin
+- implement Text parser step
 - **parsing_engine**: refactor class hierarchy and naming for extensibility and clarity
 - **debug_tools**: add cached downloaded documents for default values to the repository
 - **RootSectionPlugin**: implement parsing of RootSectionElement
@@ -107,7 +107,7 @@
 - **ci-cd**: poetry install
 - **TitlePlugin**: not finding elements
 - **e2e**: handle not found document condition
-- **title_plugin**: replace deprecated 'text' with 'string'
+- **title_step**: replace deprecated 'text' with 'string'
 - **debug_tools**: filter element type counts
 - **debug_tools**: trees for different documents being built from one documents elements
 - **debug_tools**: use appropriate caching decorator (one that does not allow mutation)

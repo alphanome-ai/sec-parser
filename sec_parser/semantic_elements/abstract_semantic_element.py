@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 from sec_parser.exceptions.core_exceptions import SecParserValueError
 
 if TYPE_CHECKING:
-    from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
+    from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
 
 
 class AbstractSemanticElement(ABC):  # noqa: B024

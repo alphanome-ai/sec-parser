@@ -1,15 +1,16 @@
 import pytest
 
 from sec_parser import RootSectionElement
-from sec_parser.parsing_plugins import RootSectionPlugin
+from sec_parser.processing_steps import RootSectionParsingStep
 from sec_parser.semantic_elements.semantic_elements import (
-    RootSectionSeparatorElement, UndeterminedElement)
-from tests.unit.parsing_plugins._utils import (assert_elements,
-                                               get_elements_from_html)
+    RootSectionSeparatorElement,
+    UndeterminedElement,
+)
+from tests.unit.processing_steps._utils import assert_elements, get_elements_from_html
 
 
 @pytest.mark.parametrize(
-    "html_str, expected_elements",
+    ("html_str", "expected_elements"),
     [
         (
             """<document-root-section></document-root-section>
@@ -37,22 +38,21 @@ from tests.unit.parsing_plugins._utils import (assert_elements,
                 },
                 {"type": UndeterminedElement, "tag": "span"},
             ],
-        )
+        ),
     ],
 )
-def test_root_section_plugin(html_str, expected_elements):
+def test_root_section_step(html_str, expected_elements):
     """
-    This test checks that the RootSectionPlugin can successfully transform a list of 
-    semantic elements returned by `get_elements_from_html`. These elements can be 
+    This test checks that the RootSectionParsingStep can successfully transform a list of
+    semantic elements returned by `get_elements_from_html`. These elements can be
     of type `UndeterminedElement` or `SpecialElement`.
     """
-
     # Arrange
     elements = get_elements_from_html(html_str)
-    plugin = RootSectionPlugin()
+    step = RootSectionParsingStep()
 
     # Act
-    processed_elements = plugin.transform(elements)
+    processed_elements = step.process(elements)
 
     # Assert
     assert_elements(processed_elements, expected_elements)

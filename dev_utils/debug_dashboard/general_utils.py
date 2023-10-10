@@ -2,13 +2,16 @@ def interleave_lists(lists):
     """
     Interleave elements from a list of lists.
 
-    Parameters:
+    Parameters
+    ----------
         lists (list): A list of lists to interleave.
 
-    Returns:
+    Returns
+    -------
         list: A list containing interleaved elements from the input lists.
 
-    Examples:
+    Examples
+    --------
         >>> interleave_lists([['a', 'b', 'c'], [1, 2], ['q']])
         ['a', 1, 'q', 'b', 2, 'c']
 

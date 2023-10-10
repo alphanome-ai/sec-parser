@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import bs4
 
-from sec_parser.parsing_engine.html_parsers.abstract_html_tag_parser import (
+from sec_parser.processing_engine.html_parsers.abstract_html_tag_parser import (
     AbstractHtmlTagParser,
 )
-from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
 
 
 class RootTagParser(AbstractHtmlTagParser):

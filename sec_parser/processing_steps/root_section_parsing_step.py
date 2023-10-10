@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
-    AbstractElementwiseParsingPlugin,
-    ElementwiseParsingContext,
+from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+    AbstractElementwiseTransformStep,
+    ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
@@ -11,11 +11,11 @@ from sec_parser.semantic_elements.semantic_elements import (
 )
 
 
-class RootSectionPlugin(AbstractElementwiseParsingPlugin):
+class RootSectionParsingStep(AbstractElementwiseTransformStep):
     """
-    RootSectionPlugin class for transforming elements into RootSection instances.
+    RootSectionParsingStep class for transforming elements into RootSection instances.
 
-    This plugin scans through a list of semantic elements and changes it,
+    This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with RootSection instances.
 
     Note: We're currently using *sec-api.io* to handle the removal of the
@@ -38,7 +38,7 @@ class RootSectionPlugin(AbstractElementwiseParsingPlugin):
     def _transform_element(
         self,
         element: AbstractSemanticElement,
-        context: ElementwiseParsingContext,
+        context: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         if context.is_root_element and self.next_element_is_root_section:
             self.next_element_is_root_section = False

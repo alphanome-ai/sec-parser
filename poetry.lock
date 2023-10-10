@@ -229,7 +229,7 @@ cov = ["attrs[tests]", "coverage[toml] (>=5.3)"]
 dev = ["attrs[docs,tests]", "pre-commit"]
 docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope-interface"]
 tests = ["attrs[tests-no-zope]", "zope-interface"]
-tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-xdist[psutil]"]
+tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-steps", "pytest-xdist[psutil]"]
 
 [[package]]
 name = "babel"
@@ -2050,9 +2050,9 @@ benchmarking = ["psutil", "pytest", "pytest-benchmark"]
 code-style = ["pre-commit (>=3.0,<4.0)"]
 compare = ["commonmark (>=0.9,<1.0)", "markdown (>=3.4,<4.0)", "mistletoe (>=1.0,<2.0)", "mistune (>=2.0,<3.0)", "panflute (>=2.3,<3.0)"]
 linkify = ["linkify-it-py (>=1,<3)"]
-plugins = ["mdit-py-plugins"]
+steps = ["mdit-py-steps"]
 profiling = ["gprof2dot"]
-rtd = ["jupyter_sphinx", "mdit-py-plugins", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx_book_theme"]
+rtd = ["jupyter_sphinx", "mdit-py-steps", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx_book_theme"]
 testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
 
 [[package]]
@@ -2209,14 +2209,14 @@ files = [
 traitlets = "*"
 
 [[package]]
-name = "mdit-py-plugins"
+name = "mdit-py-steps"
 version = "0.4.0"
-description = "Collection of plugins for markdown-it-py"
+description = "Collection of steps for markdown-it-py"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "mdit_py_plugins-0.4.0-py3-none-any.whl", hash = "sha256:b51b3bb70691f57f974e257e367107857a93b36f322a9e6d44ca5bf28ec2def9"},
-    {file = "mdit_py_plugins-0.4.0.tar.gz", hash = "sha256:d8ab27e9aed6c38aa716819fedfde15ca275715955f8a185a8e1cf90fb1d2c1b"},
+    {file = "mdit_py_steps-0.4.0-py3-none-any.whl", hash = "sha256:b51b3bb70691f57f974e257e367107857a93b36f322a9e6d44ca5bf28ec2def9"},
+    {file = "mdit_py_steps-0.4.0.tar.gz", hash = "sha256:d8ab27e9aed6c38aa716819fedfde15ca275715955f8a185a8e1cf90fb1d2c1b"},
 ]
 
 [package.dependencies]
@@ -2251,7 +2251,7 @@ files = [
 [[package]]
 name = "mistune"
 version = "3.0.2"
-description = "A sane and fast Markdown parser with useful plugins and renderers"
+description = "A sane and fast Markdown parser with useful steps and renderers"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2342,7 +2342,7 @@ files = [
 docutils = ">=0.16,<0.21"
 jinja2 = "*"
 markdown-it-py = ">=3.0,<4.0"
-mdit-py-plugins = ">=0.4,<1.0"
+mdit-py-steps = ">=0.4,<1.0"
 pyyaml = "*"
 sphinx = ">=6,<8"
 
@@ -2835,7 +2835,7 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4)", "pytest-co
 [[package]]
 name = "pluggy"
 version = "1.3.0"
-description = "plugin and hook calling mechanisms for python"
+description = "step and hook calling mechanisms for python"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -3049,7 +3049,7 @@ files = [
 ]
 
 [package.extras]
-plugins = ["importlib-metadata"]
+steps = ["importlib-metadata"]
 
 [[package]]
 name = "pymdown-extensions"
@@ -3108,7 +3108,7 @@ testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "no
 [[package]]
 name = "pytest-cov"
 version = "4.1.0"
-description = "Pytest plugin for measuring coverage."
+description = "Pytest step for measuring coverage."
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -3714,7 +3714,7 @@ tomli = {version = ">=1", markers = "python_version < \"3.11\""}
 typing-extensions = "*"
 
 [package.extras]
-docs = ["entangled-cli[rich]", "mkdocs", "mkdocs-entangled-plugin", "mkdocs-material", "mkdocstrings[python]", "pygments"]
+docs = ["entangled-cli[rich]", "mkdocs", "mkdocs-entangled-step", "mkdocs-material", "mkdocstrings[python]", "pygments"]
 rich = ["rich"]
 test = ["build", "pytest", "rich", "wheel"]
 
@@ -4509,7 +4509,7 @@ files = [
 
 [package.extras]
 docs-offline = ["myst-parser (>=2.0.0)", "pypandoc-binary (>=1.11)", "sphinx (>=7.1.1)"]
-docs-online = ["mkdocs (>=1.5.2)", "mkdocs-git-revision-date-localized-plugin (>=1.2.0)", "mkdocs-material (>=9.2.6)", "mkdocstrings[python] (>=0.22.0)", "pyaml (>=23.7.0)"]
+docs-online = ["mkdocs (>=1.5.2)", "mkdocs-git-revision-date-localized-step (>=1.2.0)", "mkdocs-material (>=9.2.6)", "mkdocstrings[python] (>=0.22.0)", "pyaml (>=23.7.0)"]
 hooks = ["pre-commit (>=3.3.3)"]
 package = ["build (>=1.0.0)", "twine (>=4.0.2)"]
 runner = ["tox (>=4.11.1)"]

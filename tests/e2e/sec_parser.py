@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import hashlib
 import multiprocessing
 import sys
@@ -11,8 +12,15 @@ from rich.console import Console
 from rich.table import Table
 
 import sec_parser as sp
-from tests.e2e._metrics import (P99, Average, MaxTime, Median, RatioMetric,
-                                Size, Threshold)
+from tests.e2e._metrics import (
+    P99,
+    Average,
+    MaxTime,
+    Median,
+    RatioMetric,
+    Size,
+    Threshold,
+)
 
 # Specify the metric that determines the test outcome
 # A test will pass or fail based on this metric
@@ -102,8 +110,8 @@ def render_table(METRICS, metrics, hash_to_filename):
 if __name__ == "__main__":
     tests_per_core = DEFAULT_TESTS_PER_CORE
     core_count: int | None = None
-    
-    # Integer variable to limit the number of documents to test. 
+
+    # Integer variable to limit the number of documents to test.
     # For example, set to 1 for a quick smoke test.
     limit_documents: int | None = None
 
@@ -128,7 +136,7 @@ if __name__ == "__main__":
     hash_to_filename = {}
     file_counter = 0
     for html_file in test_data_path.glob("10q_*.html"):
-        with open(html_file, "r") as file:
+        with open(html_file) as file:
             file_content = file.read()
             test_data_htmls[html_file.name] = file_content
             hash_key = hashlib.sha256(file_content.encode()).hexdigest()
@@ -137,7 +145,8 @@ if __name__ == "__main__":
             if limit_documents is not None and file_counter >= limit_documents:
                 break
     if file_counter == 0:
-        raise ValueError("No test data found")
+        msg = "No test data found"
+        raise ValueError(msg)
 
     # Calculate number of tests
     tests_per_file = core_count * tests_per_core
@@ -152,7 +161,7 @@ if __name__ == "__main__":
         {
             hashlib.sha256(doc.encode()).hexdigest(): manager.list()
             for doc in example_htmls
-        }
+        },
     )
 
     # Execute tests in parallel
@@ -185,7 +194,8 @@ if __name__ == "__main__":
             None,
         )
         if example_doc is None:
-            raise Exception(f"Could not find document with hash {document_hash}")
+            msg = f"Could not find document with hash {document_hash}"
+            raise Exception(msg)
         char_count = len(example_doc)
 
         # Calculate each metric for the document
@@ -193,11 +203,11 @@ if __name__ == "__main__":
         for metric in METRICS:
             if isinstance(metric, RatioMetric):
                 metrics[document_hash][metric.name] = metric.calculate(
-                    times, char_count, metrics[document_hash]
+                    times, char_count, metrics[document_hash],
                 )
             else:
                 metrics[document_hash][metric.name] = metric.calculate(
-                    times, char_count
+                    times, char_count,
                 )
 
         # Check if the document failed the threshold
@@ -209,16 +219,16 @@ if __name__ == "__main__":
     if METRICS != METRICS_SINGLE_RUN:
         print(
             f"- Each document underwent [bold]{tests_per_file}[/bold] tests, totaling [bold]{total_tests_ran}[/bold] tests across [bold]{core_count}[/bold] cores.",
-            f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
+            "- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
             f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
-            f"- Duration metrics (e.g. 'Average', 'Median', 'P99') are measured in seconds, while 'Size' is measured in HTML characters.",
+            "- Duration metrics (e.g. 'Average', 'Median', 'P99') are measured in seconds, while 'Size' is measured in HTML characters.",
             sep="\n",
         )
     else:
         print(
-            f"- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
+            "- The 'Threshold' in the table signifies the maximum allowable parsing time (in seconds) per document.",
             f"- This threshold was determined based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character.",
-            f"- Duration metrics (e.g. 'Time') are measured in seconds, while 'Size' is measured in HTML characters.",
+            "- Duration metrics (e.g. 'Time') are measured in seconds, while 'Size' is measured in HTML characters.",
             sep="\n",
         )
 

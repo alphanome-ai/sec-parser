@@ -1,4 +1,3 @@
-import pytest
 from bs4 import BeautifulSoup
 
 from sec_parser.utils.bs4_.text_styles_metrics import (

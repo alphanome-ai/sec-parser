@@ -1,10 +1,10 @@
-from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
-from sec_parser.parsing_engine.html_parsers.root_tag_parser import RootTagParser
+from typing import Union
+
+from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.processing_engine.html_parsers.root_tag_parser import RootTagParser
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
-from typing import List, Union
-
 from sec_parser.semantic_elements.semantic_elements import UndeterminedElement
 
 
@@ -18,8 +18,8 @@ def create_element(tag) -> AbstractSemanticElement:
     return UndeterminedElement(tag, [])
 
 
-def parse_elements(root_tags: List[HtmlTag]) -> List[AbstractSemanticElement]:
-    elements: List[AbstractSemanticElement] = [create_element(tag) for tag in root_tags]
+def parse_elements(root_tags: list[HtmlTag]) -> list[AbstractSemanticElement]:
+    elements: list[AbstractSemanticElement] = [create_element(tag) for tag in root_tags]
     for element in elements:
         if element.html_tag.name == "div":
             inner_tags = element.html_tag.get_children()
@@ -28,27 +28,26 @@ def parse_elements(root_tags: List[HtmlTag]) -> List[AbstractSemanticElement]:
     return elements
 
 
-def get_elements_from_html(html: str) -> List[AbstractSemanticElement]:
+def get_elements_from_html(html: str) -> list[AbstractSemanticElement]:
     html_parser = RootTagParser()
     root_tags = html_parser.parse(html.strip())
-    elements = parse_elements(root_tags)
-    return elements
+    return parse_elements(root_tags)
 
 
 def assert_elements(
-    elements: List[AbstractSemanticElement],
+    elements: list[AbstractSemanticElement],
     expected_elements,
-    path: Union[str, List[str]] = "root",
+    path: Union[str, list[str]] = "root",
 ):
     assert len(elements) == len(
-        expected_elements
+        expected_elements,
     ), f"Expected {len(expected_elements)} elements, but got {len(elements)}. Path: {path}"
 
     for i, (ele, expected) in enumerate(zip(elements, expected_elements)):
         current_path = f"{path} -> Element {i} (type: {expected['type'].__name__}, tag: {expected['tag']})"
 
         assert isinstance(
-            ele, expected["type"]
+            ele, expected["type"],
         ), f"Element at index {i} has type {type(ele).__name__}, but expected type {expected['type'].__name__}. Path: {current_path}"
 
         assert (

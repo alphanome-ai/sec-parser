@@ -5,9 +5,9 @@ from sec_parser.exceptions.core_exceptions import (
     SecParserRuntimeError,
     SecParserValueError,
 )
-from sec_parser.parsing_engine.html_parsers.html_tag import HtmlTag
-from sec_parser.parsing_engine.sec_parser import SecParser
-from sec_parser.sec_parsing_entry import parse_latest
+from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.processing_engine.sec_parser import SecParser
+from sec_parser.sec_parser_facade import parse_latest
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
     BulletpointTextElement,

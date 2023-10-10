@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.parsing_plugins.abstract_elementwise_plugin import (
-    AbstractElementwiseParsingPlugin,
-    ElementwiseParsingContext,
+from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+    AbstractElementwiseTransformStep,
+    ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import (
     BulletpointTextElement,
@@ -17,12 +17,12 @@ if TYPE_CHECKING:
     )
 
 
-class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
+class FootnoteAndBulletpointParsingStep(AbstractElementwiseTransformStep):
     """
-    FootnoteAndBulletpointPlugin class for transforming elements into
+    FootnoteAndBulletpointParsingStep class for transforming elements into
     BulletpointTextElement and FootnoteTextElement instances.
 
-    This plugin scans through a list of semantic elements and changes it,
+    This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with
     BulletpointElement and FootnoteTextElement instances.
     """
@@ -56,7 +56,7 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
     def _transform_element(
         self,
         element: AbstractSemanticElement,
-        _: ElementwiseParsingContext,
+        _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         deepest_tag = element.html_tag.get_first_deepest_tag()
         if not deepest_tag:
@@ -74,7 +74,8 @@ class FootnoteAndBulletpointPlugin(AbstractElementwiseParsingPlugin):
             level = 1 + self._unique_markers_by_order.index(marker)
             return BulletpointTextElement(
                 element.html_tag,
-                element.inner_elements, level=level,
+                element.inner_elements,
+                level=level,
             )
 
         return element

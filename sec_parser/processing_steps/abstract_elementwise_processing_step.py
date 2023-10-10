@@ -4,10 +4,8 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from typing import Callable
 
-from sec_parser.exceptions.core_exceptions import (
-    SecParserValueError,
-)
-from sec_parser.parsing_plugins.abstract_parsing_plugin import AbstractParsingPlugin
+from sec_parser.exceptions.core_exceptions import SecParserValueError
+from sec_parser.processing_steps.abstract_processing_step import AbstractTransformStep
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -16,20 +14,21 @@ ElementTransformer = Callable[[AbstractSemanticElement], AbstractSemanticElement
 
 
 @dataclass
-class ElementwiseParsingContext:
+class ElementwiseProcessingContext:
     """
-    ElementwiseParsingContext class for passing context information
-    to elementwise parsing plugins.
+    ElementwiseProcessingContext class for passing context information
+    to elementwise processing steps.
     """
 
-    # is_root tells the plugin whether the given semantic element has
-    # an HTML tag which is at the root level of the HTML document.
+    # The is_root variable informs the processing step whether the given
+    # semantic element has an HTML tag that is at the root level of the
+    # HTML document.
     is_root_element: bool
 
 
-class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
+class AbstractElementwiseTransformStep(AbstractTransformStep):
     """
-    `AbstractElementwiseParsingPlugin` class applies transformations
+    `AbstractElementwiseTransformStep` class applies transformations
     to a list of semantic and container elements. Transformations are
     applied recursively, element by element. The class can also be
     used to iterate over all elements without applying transformations.
@@ -48,13 +47,13 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
             msg = "Processed types and ignored types should not overlap."
             raise SecParserValueError(msg)
 
-    def _transform(
+    def _process(
         self,
         elements: list[AbstractSemanticElement],
         *,
-        _context: ElementwiseParsingContext | None = None,
+        _context: ElementwiseProcessingContext | None = None,
     ) -> list[AbstractSemanticElement]:
-        context = _context or ElementwiseParsingContext(
+        context = _context or ElementwiseProcessingContext(
             is_root_element=True,
         )
 
@@ -69,10 +68,10 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
             element = self._transform_element(input_element, context)
 
             if element.inner_elements:
-                child_context = ElementwiseParsingContext(
+                child_context = ElementwiseProcessingContext(
                     is_root_element=False,
                 )
-                element.inner_elements = self._transform(
+                element.inner_elements = self._process(
                     element.inner_elements,
                     _context=child_context,
                 )
@@ -85,7 +84,7 @@ class AbstractElementwiseParsingPlugin(AbstractParsingPlugin):
     def _transform_element(
         self,
         element: AbstractSemanticElement,
-        context: ElementwiseParsingContext,
+        context: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         """
         `transform_element` method is responsible for transforming a

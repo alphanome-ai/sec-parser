@@ -19,7 +19,7 @@ def test_is_unary_tree_with_only_tags():
     result = is_unary_tree(root)
 
     # Assert
-    assert result == True, "Expected a unary tree with only tags to return True"
+    assert result is True, "Expected a unary tree with only tags to return True"
 
 
 def test_is_unary_tree_with_leaf_text():
@@ -39,7 +39,7 @@ def test_is_unary_tree_with_leaf_text():
 
     # Assert
     assert (
-        result == True
+        result is True
     ), "Expected a unary tree with non-empty leaf NavigableString to return True"
 
 
@@ -58,7 +58,7 @@ def test_is_not_unary_tree():
     result = is_unary_tree(root)
 
     # Assert
-    assert result == False, "Expected a non-unary tree to return False"
+    assert result is False, "Expected a non-unary tree to return False"
 
 
 def test_is_unary_tree_with_non_leaf_text_before():
@@ -78,7 +78,7 @@ def test_is_unary_tree_with_non_leaf_text_before():
 
     # Assert
     assert (
-        result == False
+        result is False
     ), "Expected a unary tree with non-empty NavigableString at a non-leaf node to return False"
 
 
@@ -99,7 +99,7 @@ def test_is_unary_tree_with_non_leaf_text_after():
 
     # Assert
     assert (
-        result == False
+        result is False
     ), "Expected a unary tree with non-empty NavigableString at a non-leaf node to return False"
 
 
@@ -113,7 +113,7 @@ def test_is_unary_tree_with_empty_tag():
     result = is_unary_tree(root)
 
     # Assert
-    assert result == True, "Expected a tag with no children to return True"
+    assert result is True, "Expected a tag with no children to return True"
 
 
 def test_is_unary_tree_with_table_as_child():
@@ -135,7 +135,7 @@ def test_is_unary_tree_with_table_as_child():
 
     # Assert
     assert (
-        result == True
+        result is True
     ), "Expected a unary tree with a table as a child to return True"
 
 
@@ -155,7 +155,7 @@ def test_is_unary_tree_with_table_as_root():
     result = is_unary_tree(root)
 
     # Assert
-    assert result == True, "Expected a table as root to return True"
+    assert result is True, "Expected a table as root to return True"
 
 
 def test_is_not_unary_tree_with_multiple_tables():
@@ -181,4 +181,4 @@ def test_is_not_unary_tree_with_multiple_tables():
     result = is_unary_tree(root)
 
     # Assert
-    assert result == False, "Expected a tree with multiple tables to return False"
+    assert result is False, "Expected a tree with multiple tables to return False"
