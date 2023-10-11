@@ -4,7 +4,7 @@ import warnings
 
 import bs4
 
-from sec_parser.exceptions.core_exceptions import SecParserValueError
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.get_first_deepest_tag import get_first_deepest_tag
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
@@ -13,15 +13,21 @@ from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metric
 
 class HtmlTag:
     """
-    HtmlTag class serves as a wrapper around native BeautifulSoup4 Tag objects. The
-    primary motivation for introducing this wrapper is to decouple our application
-    logic from the underlying library. This abstraction makes it easier to make
-    modifications or even switch to a different HTML parsing library in the future
-    without requiring extensive changes throughout the codebase.
+    The HtmlTag class is a wrapper for BeautifulSoup4 Tag objects.
 
-    The HtmlTag class can also serve as a location to add any extension methods or
-    additional properties that are not provided by the native BeautifulSoup4 Tag class,
-    thereby further enhancing maintainability and extensibility.
+    It serves three main purposes:
+
+    1. Decoupling: By abstracting the underlying BeautifulSoup4 library, we
+       can isolate our application logic from the library specifics. This
+       makes it easier to modify or even replace the HTML parsing library in
+       the future without extensive codebase changes.
+
+    2. Usability: The HtmlTag class provides a convenient location to add
+       extension methods or additional properties not offered by the native
+       BeautifulSoup4 Tag class. This enhances the usability of the class.
+
+    3. Caching: The HtmlTag class also caches processing results, improving
+       performance by avoiding unnecessary re-computation.
     """
 
     def __init__(
@@ -30,7 +36,7 @@ class HtmlTag:
     ) -> None:
         self._bs4: bs4.Tag = self._to_tag(bs4_element)
 
-        # Cached properties, some decorator to be used instead would be better
+        # Cached properties
         self._text: str | None = None
         self._children: list[HtmlTag] | None = None
         self._is_unary_tree: bool | None = None
@@ -50,18 +56,16 @@ class HtmlTag:
 
     @property
     def name(self) -> str:
+        """Returns tag name, e.g. for <div> return 'div'."""
         return self._bs4.name
 
     def get_children(self) -> list[HtmlTag]:
-        self._children = (
-            [
+        if self._children is None:
+            self._children = [
                 HtmlTag(child)
                 for child in self._bs4.children
                 if not (isinstance(child, bs4.NavigableString) and child.strip() == "")
             ]
-            if self._children is None
-            else self._children
-        )
         return self._children
 
     def contains_tag(self, name: str, *, include_self: bool = False) -> bool:

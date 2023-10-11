@@ -4,7 +4,7 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from typing import Callable
 
-from sec_parser.exceptions.core_exceptions import SecParserValueError
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.processing_steps.abstract_processing_step import AbstractTransformStep
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,

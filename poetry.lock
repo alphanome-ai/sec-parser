@@ -229,7 +229,7 @@ cov = ["attrs[tests]", "coverage[toml] (>=5.3)"]
 dev = ["attrs[docs,tests]", "pre-commit"]
 docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope-interface"]
 tests = ["attrs[tests-no-zope]", "zope-interface"]
-tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-steps", "pytest-xdist[psutil]"]
+tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest (>=4.3.0)", "pytest-mypy-plugins", "pytest-xdist[psutil]"]
 
 [[package]]
 name = "babel"
@@ -2050,7 +2050,7 @@ benchmarking = ["psutil", "pytest", "pytest-benchmark"]
 code-style = ["pre-commit (>=3.0,<4.0)"]
 compare = ["commonmark (>=0.9,<1.0)", "markdown (>=3.4,<4.0)", "mistletoe (>=1.0,<2.0)", "mistune (>=2.0,<3.0)", "panflute (>=2.3,<3.0)"]
 linkify = ["linkify-it-py (>=1,<3)"]
-steps = ["mdit-py-plugins"]
+plugins = ["mdit-py-plugins"]
 profiling = ["gprof2dot"]
 rtd = ["jupyter_sphinx", "mdit-py-plugins", "myst-parser", "pyyaml", "sphinx", "sphinx-copybutton", "sphinx-design", "sphinx_book_theme"]
 testing = ["coverage", "pytest", "pytest-cov", "pytest-regressions"]
@@ -2211,12 +2211,12 @@ traitlets = "*"
 [[package]]
 name = "mdit-py-plugins"
 version = "0.4.0"
-description = "Collection of steps for markdown-it-py"
+description = "Collection of plugins for markdown-it-py"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "mdit_py_steps-0.4.0-py3-none-any.whl", hash = "sha256:b51b3bb70691f57f974e257e367107857a93b36f322a9e6d44ca5bf28ec2def9"},
-    {file = "mdit_py_steps-0.4.0.tar.gz", hash = "sha256:d8ab27e9aed6c38aa716819fedfde15ca275715955f8a185a8e1cf90fb1d2c1b"},
+    {file = "mdit_py_plugins-0.4.0-py3-none-any.whl", hash = "sha256:b51b3bb70691f57f974e257e367107857a93b36f322a9e6d44ca5bf28ec2def9"},
+    {file = "mdit_py_plugins-0.4.0.tar.gz", hash = "sha256:d8ab27e9aed6c38aa716819fedfde15ca275715955f8a185a8e1cf90fb1d2c1b"},
 ]
 
 [package.dependencies]
@@ -2251,7 +2251,7 @@ files = [
 [[package]]
 name = "mistune"
 version = "3.0.2"
-description = "A sane and fast Markdown parser with useful steps and renderers"
+description = "A sane and fast Markdown parser with useful plugins and renderers"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2835,7 +2835,7 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4)", "pytest-co
 [[package]]
 name = "pluggy"
 version = "1.3.0"
-description = "step and hook calling mechanisms for python"
+description = "plugin and hook calling mechanisms for python"
 optional = false
 python-versions = ">=3.8"
 files = [
@@ -3049,7 +3049,7 @@ files = [
 ]
 
 [package.extras]
-steps = ["importlib-metadata"]
+plugins = ["importlib-metadata"]
 
 [[package]]
 name = "pymdown-extensions"
@@ -3084,6 +3084,21 @@ files = [
 diagrams = ["jinja2", "railroad-diagrams"]
 
 [[package]]
+name = "pyrate-limiter"
+version = "3.1.0"
+description = "Python Rate-Limiter using Leaky-Bucket Algorithm"
+optional = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "pyrate_limiter-3.1.0-py3-none-any.whl", hash = "sha256:a4b21e7a0e99bee328d8f01b23addf664931e693b83212b0fc0059d66ed143b4"},
+    {file = "pyrate_limiter-3.1.0.tar.gz", hash = "sha256:6e9ebc756cf6c7afdacb666c182990fb4499d71a542f19b90a05347904b5f8b0"},
+]
+
+[package.extras]
+all = ["filelock (>=3.0)", "redis (>=4.0.0,<5.0.0)"]
+docs = ["furo (>=2022.3.4,<2023.0.0)", "myst-parser (>=0.17)", "sphinx (>=4.3.0,<5.0.0)", "sphinx-autodoc-typehints (>=1.17,<2.0)", "sphinx-copybutton (>=0.5)", "sphinxcontrib-apidoc (>=0.3,<0.4)"]
+
+[[package]]
 name = "pytest"
 version = "7.4.2"
 description = "pytest: simple powerful testing with Python"
@@ -3108,7 +3123,7 @@ testing = ["argcomplete", "attrs (>=19.2.0)", "hypothesis (>=3.56)", "mock", "no
 [[package]]
 name = "pytest-cov"
 version = "4.1.0"
-description = "Pytest step for measuring coverage."
+description = "Pytest plugin for measuring coverage."
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -3665,6 +3680,25 @@ files = [
 ]
 
 [[package]]
+name = "sec-edgar-downloader"
+version = "5.0.2"
+description = "Download SEC filings from the EDGAR database using Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "sec_edgar_downloader-5.0.2-py3-none-any.whl", hash = "sha256:cab5ed1de1fce59722b609567f4c1790b2bf96308f7e6c74671e83b27dde7316"},
+    {file = "sec_edgar_downloader-5.0.2.tar.gz", hash = "sha256:65135b673c8ff1c4f2c400ae6828b8720ba5af3bc7c58729000ef741e3403e56"},
+]
+
+[package.dependencies]
+pyrate-limiter = ">=3.1.0"
+requests = "*"
+
+[package.extras]
+doc = ["doc8", "sphinx", "sphinx-autobuild", "sphinx-autodoc-typehints"]
+test = ["pre-commit", "pytest", "pytest-cov"]
+
+[[package]]
 name = "send2trash"
 version = "1.8.2"
 description = "Send file to trash natively under Mac OS X, Windows and Linux"
@@ -3714,7 +3748,7 @@ tomli = {version = ">=1", markers = "python_version < \"3.11\""}
 typing-extensions = "*"
 
 [package.extras]
-docs = ["entangled-cli[rich]", "mkdocs", "mkdocs-entangled-step", "mkdocs-material", "mkdocstrings[python]", "pygments"]
+docs = ["entangled-cli[rich]", "mkdocs", "mkdocs-entangled-plugin", "mkdocs-material", "mkdocstrings[python]", "pygments"]
 rich = ["rich"]
 test = ["build", "pytest", "rich", "wheel"]
 
@@ -4509,7 +4543,7 @@ files = [
 
 [package.extras]
 docs-offline = ["myst-parser (>=2.0.0)", "pypandoc-binary (>=1.11)", "sphinx (>=7.1.1)"]
-docs-online = ["mkdocs (>=1.5.2)", "mkdocs-git-revision-date-localized-step (>=1.2.0)", "mkdocs-material (>=9.2.6)", "mkdocstrings[python] (>=0.22.0)", "pyaml (>=23.7.0)"]
+docs-online = ["mkdocs (>=1.5.2)", "mkdocs-git-revision-date-localized-plugin (>=1.2.0)", "mkdocs-material (>=9.2.6)", "mkdocstrings[python] (>=0.22.0)", "pyaml (>=23.7.0)"]
 hooks = ["pre-commit (>=3.3.3)"]
 package = ["build (>=1.0.0)", "twine (>=4.0.2)"]
 runner = ["tox (>=4.11.1)"]
@@ -4659,4 +4693,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "66dd10f9062337bd38fb67fd4771cbd9108e657153e2d81b6db3b9f38f28f6d7"
+content-hash = "5d724aabd3424965de433d5a1140acd059df422336e234d8068c4e9bdb1bd589"

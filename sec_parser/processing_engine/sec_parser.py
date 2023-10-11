@@ -1,11 +1,11 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Callable
 
-from sec_parser.processing_engine.abstract_parser import AbstractSemanticElementParser
-from sec_parser.processing_engine.html_parsers.root_tag_parser import (
+from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
-    RootTagParser,
+    HtmlTagParser,
 )
 from sec_parser.processing_steps.footnote_and_bulletpoint_parsing_step import (
     FootnoteAndBulletpointParsingStep,
@@ -32,6 +32,18 @@ if TYPE_CHECKING:
     )
 
 
+class AbstractSemanticElementParser(ABC):
+    @abstractmethod
+    def __init__(
+        self,
+    ) -> None:
+        raise NotImplementedError  # pragma: no cover
+
+    @abstractmethod
+    def parse(self, html: str) -> list[AbstractSemanticElement]:
+        raise NotImplementedError  # pragma: no cover
+
+
 class SecParser(AbstractSemanticElementParser):
     def __init__(
         self,
@@ -40,7 +52,7 @@ class SecParser(AbstractSemanticElementParser):
         root_tag_parser: AbstractHtmlTagParser | None = None,
     ) -> None:
         self.get_steps: Callable = get_steps or self.get_default_steps
-        self._root_tag_parser = root_tag_parser or RootTagParser()
+        self._root_tag_parser = root_tag_parser or HtmlTagParser()
 
     def get_default_steps(
         self,

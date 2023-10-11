@@ -1,13 +1,11 @@
-from sec_parser.data_sources.sec_edgar_enums import DocumentType, SectionType
-from sec_parser.data_sources.secapio_data_retriever import SecapioDataRetriever
-from sec_parser.exceptions.core_exceptions import (
+from sec_parser.exceptions import (
     SecParserError,
     SecParserRuntimeError,
     SecParserValueError,
 )
-from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_engine.sec_parser import SecParser
-from sec_parser.sec_parser_facade import parse_latest
+from sec_parser.sec_parser_facade import parse_10q_from_html
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
     BulletpointTextElement,
@@ -28,7 +26,7 @@ from sec_parser.semantic_tree.tree_node import TreeNode
 
 __all__ = [
     # High-level functionalities
-    "parse_latest",
+    "parse_10q_from_html",
     # Main parser classes
     "SecapioDataRetriever",
     "SecParser",
@@ -51,8 +49,6 @@ __all__ = [
     "SecParserValueError",
     # Common types
     "AbstractNestingRule",
-    "DocumentType",
-    "SectionType",
     "SemanticTree",
     "TreeNode",
     "HtmlTag",

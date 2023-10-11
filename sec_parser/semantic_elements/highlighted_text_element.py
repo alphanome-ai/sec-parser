@@ -8,7 +8,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 )
 
 if TYPE_CHECKING:
-    from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+    from sec_parser.processing_engine.html_tag import HtmlTag
 
 
 class HighlightedTextElement(AbstractSemanticElement):
@@ -64,19 +64,16 @@ class TextStyle:
         style_string: dict[tuple[str, str], float],
     ) -> TextStyle:
         filtered_styles = {
-            (k, v): p for (k, v), p in style_string.items()
+            (k, v): p
+            for (k, v), p in style_string.items()
             if p >= cls.PERCENTAGE_THRESHOLD
         }
 
         bold_with_font_weight = any(
-            cls._is_bold_with_font_weight(k, v)
-            for (k, v) in filtered_styles
+            cls._is_bold_with_font_weight(k, v) for (k, v) in filtered_styles
         )
 
-        italic = any(
-            k == "font-style" and v == "italic"
-            for (k, v) in filtered_styles
-        )
+        italic = any(k == "font-style" and v == "italic" for (k, v) in filtered_styles)
 
         return cls(
             bold_with_font_weight=bold_with_font_weight,

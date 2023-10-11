@@ -50,6 +50,7 @@ streamlit-extras = "^0.3.2"
 ipykernel = "^6.25.2"
 jupyter = "^1.0.0"
 pytest-watch = "^4.2.0"
+sec-edgar-downloader = "^5.0.2"
 
 
 

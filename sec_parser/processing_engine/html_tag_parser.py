@@ -1,17 +1,22 @@
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
+
 import bs4
 
-from sec_parser.processing_engine.html_parsers.abstract_html_tag_parser import (
-    AbstractHtmlTagParser,
-)
-from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+from sec_parser.processing_engine.html_tag import HtmlTag
 
 
-class RootTagParser(AbstractHtmlTagParser):
+class AbstractHtmlTagParser(ABC):
+    @abstractmethod
+    def parse(self, html: str) -> list[HtmlTag]:
+        raise NotImplementedError  # pragma: no cover
+
+
+class HtmlTagParser(AbstractHtmlTagParser):
     """
-    RootTagParser is a class designed to handle the primarily
-    flat HTML structure of SEC filings.
+    The HtmlTagParser parses an HTML document using BeautifulSoup4.
+    It then wraps the parsed bs4.Tag objects into HtmlTag objects.
     """
 
     def __init__(self, parser_backend: str | None = None) -> None:

@@ -21,6 +21,7 @@ def get_metadata(
     url: str | None = None,
     latest_from_ticker: str | None = None,
 ) -> str:
+    from sec_edgar_downloader import Downloader
     retriever = sp.SecapioDataRetriever(api_key=_secapi_api_key)
     return retriever.retrieve_report_metadata(
         doc,
@@ -57,5 +58,4 @@ def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
 
 def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
     tree_builder = sp.TreeBuilder()
-    return tree_builder.build(elements)
     return tree_builder.build(elements)

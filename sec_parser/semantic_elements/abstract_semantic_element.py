@@ -3,10 +3,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import TYPE_CHECKING
 
-from sec_parser.exceptions.core_exceptions import SecParserValueError
+from sec_parser.exceptions import SecParserValueError
 
 if TYPE_CHECKING:
-    from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+    from sec_parser.processing_engine.html_tag import HtmlTag
 
 
 class AbstractSemanticElement(ABC):  # noqa: B024
@@ -80,6 +80,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}<{self.html_tag.name}>"
+
 
 class AbstractLevelElement(AbstractSemanticElement, ABC):
     """

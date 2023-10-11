@@ -33,11 +33,6 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_multiselect_allow_long_titles,
     st_radio,
 )
-from sec_parser.data_sources.secapio_data_retriever import (
-    SecapioApiKeyInvalidError,
-    SecapioApiKeyNotSetError,
-    SecapioDataRetriever,
-)
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
 load_dotenv()
@@ -86,38 +81,6 @@ def streamlit_app(
     do_interleave = False
     use_tree_view = True
     show_text_length = False
-
-    secapio_api_key_name = SecapioDataRetriever.API_KEY_ENV_VAR_NAME
-    secapio_api_key = os.environ.get(secapio_api_key_name, "")
-    secapio_api_key = st.session_state.get(secapio_api_key_name, "")
-    if secapio_api_key_name not in os.environ:
-        with st.sidebar.expander("API Key", expanded=not bool(secapio_api_key)):
-            st.write(
-                "The API key is required for parsing files that haven't been pre-downloaded."
-                "You can obtain a free one from [sec-api.io](https://sec-api.io).",
-            )
-            secapio_api_key = st.text_input(
-                type="password",
-                label="Enter your API key:",
-                value=secapio_api_key,
-            )
-            with st.expander("Why do I need an API key?"):
-                st.write(
-                    "We're currently using *sec-api.io* to handle the removal of the"
-                    "title 10-Q page and to download 10-Q Section HTML files. In the"
-                    "future, we aim to download these HTML files directly from the"
-                    "SEC EDGAR. For now, you can get a free API key from"
-                    "[sec-api.io](https://sec-api.io) and input it below.",
-                )
-            st.session_state[secapio_api_key_name] = secapio_api_key
-            msg = (
-                "**Note:** Key will be deleted upon page refresh. We suggest"
-                f"setting the `{secapio_api_key_name}` environment variable, possibly"
-                "by creating an `.env` file at the root of the project. This method"
-                "allows you to utilize the API key without the need for manual"
-                "entry each time."
-            )
-            st.info(msg)
 
     if not HIDE_UI_ELEMENTS:
         tickers = []
@@ -188,43 +151,33 @@ def streamlit_app(
                 elif all_sections:
                     sections = None
 
-    try:
-        assert tickers or input_urls
-        for ticker in tickers:
-            metadata = get_metadata(
-                secapio_api_key,
-                doc="10-Q",
-                latest_from_ticker=ticker,
-            )
-            metadatas.append(metadata)
-            url = metadata["linkToFilingDetails"]
-            html = download_html(
-                secapio_api_key,
-                doc="10-Q",
-                url=url,
-                sections=sections,
-                ticker=ticker,
-            )
-            htmls_urls.append(url)
-            htmls.append(html)
-        for url in input_urls:
-            html = download_html(
-                secapio_api_key,
-                doc="10-Q",
-                url=url,
-                sections=sections,
-                ticker=None,
-            )
-            metadata = get_metadata(secapio_api_key, doc="10-Q", url=url)
-            metadatas.append(metadata)
-            htmls_urls.append(url)
-            htmls.append(html)
-    except SecapioApiKeyNotSetError:
-        st.error("**Error**: API key not set. Please provide a valid API key.")
-        st.stop()
-    except SecapioApiKeyInvalidError:
-        st.error("**Error**: Invalid API key. Please check your API key and try again.")
-        st.stop()
+    assert tickers or input_urls
+    for ticker in tickers:
+        metadata = get_metadata(
+            doc="10-Q",
+            latest_from_ticker=ticker,
+        )
+        metadatas.append(metadata)
+        url = metadata["linkToFilingDetails"]
+        html = download_html(
+            doc="10-Q",
+            url=url,
+            sections=sections,
+            ticker=ticker,
+        )
+        htmls_urls.append(url)
+        htmls.append(html)
+    for url in input_urls:
+        html = download_html(
+            doc="10-Q",
+            url=url,
+            sections=sections,
+            ticker=None,
+        )
+        metadata = get_metadata(doc="10-Q", url=url)
+        metadatas.append(metadata)
+        htmls_urls.append(url)
+        htmls.append(html)
 
     if not HIDE_UI_ELEMENTS:
         process_steps = [

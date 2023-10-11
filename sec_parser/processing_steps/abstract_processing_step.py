@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Callable
 
-from sec_parser.exceptions.core_exceptions import SecParserRuntimeError
+from sec_parser.exceptions import SecParserRuntimeError
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )

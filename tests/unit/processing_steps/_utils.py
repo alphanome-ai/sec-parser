@@ -1,7 +1,7 @@
 from typing import Union
 
-from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
-from sec_parser.processing_engine.html_parsers.root_tag_parser import RootTagParser
+from sec_parser.processing_engine.html_tag import HtmlTag
+from sec_parser.processing_engine.html_tag_parser import HtmlTagParser
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -29,7 +29,7 @@ def parse_elements(root_tags: list[HtmlTag]) -> list[AbstractSemanticElement]:
 
 
 def get_elements_from_html(html: str) -> list[AbstractSemanticElement]:
-    html_parser = RootTagParser()
+    html_parser = HtmlTagParser()
     root_tags = html_parser.parse(html.strip())
     return parse_elements(root_tags)
 
@@ -47,7 +47,8 @@ def assert_elements(
         current_path = f"{path} -> Element {i} (type: {expected['type'].__name__}, tag: {expected['tag']})"
 
         assert isinstance(
-            ele, expected["type"],
+            ele,
+            expected["type"],
         ), f"Element at index {i} has type {type(ele).__name__}, but expected type {expected['type'].__name__}. Path: {current_path}"
 
         assert (
