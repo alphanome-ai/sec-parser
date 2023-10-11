@@ -1,4 +1,3 @@
-
 import bs4
 
 from sec_parser import AbstractSemanticElement, HtmlTag, TreeBuilder
@@ -27,7 +26,8 @@ class LeveledElement(AbstractLevelElement):
 
 class ParentChildNestingRule(AbstractNestingRule):
     def _should_be_nested_under(
-        self, parent: AbstractSemanticElement,
+        self,
+        parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
         return isinstance(parent, ParentElement) and isinstance(child, ChildElement)
@@ -41,7 +41,7 @@ def test_nesting_of_leveled_elements():
         LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
     ]
     rules = [NestSameTypeDependingOnLevelRule()]
-    tree_builder = TreeBuilder(create_default_rules=lambda: rules)
+    tree_builder = TreeBuilder(get_rules=lambda: rules)
 
     # Act
     tree = tree_builder.build(mock_elements)
@@ -62,9 +62,11 @@ def test_nesting_of_parent_and_child():
         ParentElement(HtmlTag(bs4.Tag(name="p")), []),
         ChildElement(HtmlTag(bs4.Tag(name="p")), []),
     ]
+
     def rules():
         return [ParentChildNestingRule()]
-    tree_builder = TreeBuilder(create_default_rules=rules)
+
+    tree_builder = TreeBuilder(get_rules=rules)
 
     # Act
     tree = tree_builder.build(mock_elements)

@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import (
@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     )
 
 
-class FootnoteAndBulletpointParsingStep(AbstractElementwiseTransformStep):
+class FootnoteAndBulletpointParsingStep(AbstractElementwiseProcessStep):
     """
     FootnoteAndBulletpointParsingStep class for transforming elements into
     BulletpointTextElement and FootnoteTextElement instances.
@@ -30,12 +30,12 @@ class FootnoteAndBulletpointParsingStep(AbstractElementwiseTransformStep):
     def __init__(
         self,
         *,
-        process_only: set[type[AbstractSemanticElement]] | None = None,
-        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
         super().__init__(
-            process_only=process_only,
-            except_dont_process=except_dont_process,
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
         )
 
         # _unique_markers_by_order track unique symbols in the document.
@@ -53,7 +53,7 @@ class FootnoteAndBulletpointParsingStep(AbstractElementwiseTransformStep):
                 dict.fromkeys([*self._unique_markers_by_order, symbol]).keys(),
             )
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,

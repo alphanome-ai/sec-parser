@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import ImageElement
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     )
 
 
-class ImageParsingStep(AbstractElementwiseTransformStep):
+class ImageParsingStep(AbstractElementwiseProcessStep):
     """
     ImageParsingStep class for transforming elements into ImageElement instances.
 
@@ -22,7 +22,7 @@ class ImageParsingStep(AbstractElementwiseTransformStep):
     primarily by replacing suitable candidates with ImageElement instances.
     """
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,

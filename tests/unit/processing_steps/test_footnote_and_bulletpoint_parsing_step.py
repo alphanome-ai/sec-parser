@@ -46,7 +46,7 @@ from tests.unit.processing_steps._utils import assert_elements, get_elements_fro
 )
 def test_footnote_and_bulletpoint_step(html_str, expected_elements):
     """
-    This test checks that the FootnoteAndBulletpointParsingStep can successfully transform a list of
+    test_footnote_and_bulletpoint_step test checks that the FootnoteAndBulletpointParsingStep can successfully transform a list of
     semantic elements returned by `get_elements_from_html`. These elements can be
     of type `UndeterminedElement` or `SpecialElement`.
     """

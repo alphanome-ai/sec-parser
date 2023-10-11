@@ -12,11 +12,10 @@ from sec_parser.semantic_elements.semantic_elements import (
     EmptyElement,
     ImageElement,
     IrrelevantElement,
-    RootSectionElement,
-    RootSectionSeparatorElement,
     TableElement,
     TextElement,
     TitleElement,
+    TopLevelSectionStartMarker,
     UndeterminedElement,
 )
 from sec_parser.semantic_tree.abstract_nesting_rule import AbstractNestingRule
@@ -34,13 +33,12 @@ __all__ = [
     # Common semantic elements
     "AbstractSemanticElement",
     "UndeterminedElement",
-    "RootSectionElement",
+    "TopLevelSectionStartMarker",
     "TextElement",
     "TitleElement",
     "IrrelevantElement",
     "ImageElement",
     "TableElement",
-    "RootSectionSeparatorElement",
     "EmptyElement",
     "BulletpointTextElement",
     # Common exceptions

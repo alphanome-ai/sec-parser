@@ -2,9 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.semantic_elements.semantic_elements import (
-    IrrelevantElement,
-)
+from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
 if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -13,6 +11,7 @@ if TYPE_CHECKING:
     from sec_parser.semantic_tree.tree_node import TreeNode
 
 DEFAULT_MAX_LINE_LENGTH = 50
+
 
 class SemanticTree:
     def __init__(self, root_nodes: list[TreeNode]) -> None:
@@ -23,16 +22,21 @@ class SemanticTree:
         *,
         pretty: bool | None = True,
         ignored_types: tuple[type[AbstractSemanticElement], ...] | None = None,
-        max_line_length: int|None = None,
+        max_line_length: int | None = None,
         _nodes: list[TreeNode] | None = None,
         _level: int = 0,
         _prefix: str = "",
-        _is_root: bool= True,
+        _is_root: bool = True,
     ) -> str:
+        """
+        render function is used to visualize the structure of the semantic tree.
+        It is primarily used for debugging purposes.
+        """
         pretty = pretty if pretty is not None else True
-        ignored_types = ignored_types or (IrrelevantElement, )
+        ignored_types = ignored_types or (IrrelevantElement,)
         max_line_length = (
-            max_line_length if max_line_length and max_line_length > 0
+            max_line_length
+            if max_line_length and max_line_length > 0
             else DEFAULT_MAX_LINE_LENGTH
         )
 

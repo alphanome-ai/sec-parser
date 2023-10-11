@@ -4,8 +4,8 @@ from typing import TYPE_CHECKING, Callable
 
 from sec_parser.semantic_elements.semantic_elements import (
     BulletpointTextElement,
-    RootSectionElement,
     TitleElement,
+    TopLevelSectionStartMarker,
 )
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
@@ -23,28 +23,56 @@ if TYPE_CHECKING:
 
 
 class TreeBuilder:
+    """
+    Builds a semantic tree from a list of semantic elements.
+
+    Why Use a Tree Structure?
+    =========================
+    Using a tree data structure allows for easier and more robust filtering of sections.
+    With a tree, you can select specific branches to filter, making it straightforward
+    to identify section boundaries. This approach is more maintainable and robust
+    compared to attempting the same operations on a flat list of elements.
+
+    Overview:
+    =========
+    1. Takes a list of semantic elements.
+    2. Applies nesting rules to these elements.
+
+    Customization:
+    ==============
+    The nesting process is customizable through a list of rules. These rules determine
+    how new elements should be nested under existing ones.
+
+    Advanced Customization:
+    =======================
+    You can supply your own set of rules by providing a callable to `get_rules`, which
+    should return a list of `AbstractNestingRule` instances.
+    """
+
     def __init__(
         self,
-        create_default_rules: Callable[[], list[AbstractNestingRule]] | None = None,
+        get_rules: Callable[[], list[AbstractNestingRule]] | None = None,
     ) -> None:
-        self.create_rules: Callable = create_default_rules or self.create_default_rules
+        self.get_rules = get_rules or self.get_default_rules
 
     @staticmethod
-    def create_default_rules() -> list[AbstractNestingRule]:
+    def get_default_rules() -> list[AbstractNestingRule]:
         return [
-            AlwaysNestAsParentRule(RootSectionElement),
-
+            AlwaysNestAsParentRule(TopLevelSectionStartMarker),
             # Both RootSectionRule and TitleRule nest all elements under them,
-            # leading to a conflict where a decision between RootSection and
-            # TitleRule is needed. This conflict is resolved by excluding
-            # RootSectionElement from the rule for TitleElements.
-            AlwaysNestAsParentRule(TitleElement, exclude_children={RootSectionElement}),
+            # leading to a conflict where a decision between TopLevelSectionStartMarker
+            # and TitleRule is needed. This conflict is resolved by excluding
+            # TopLevelSectionStartMarker from the rule for TitleElements.
+            AlwaysNestAsParentRule(
+                TitleElement,
+                exclude_children={TopLevelSectionStartMarker},
+            ),
             AlwaysNestAsChildRule(BulletpointTextElement),
             NestSameTypeDependingOnLevelRule(),
         ]
 
     def build(self, elements: list[AbstractSemanticElement]) -> SemanticTree:
-        rules = self.create_rules()
+        rules = self.get_rules()
 
         # The 'stack' is a list used to remember the nodes (sections or elements)
         # we're currently looking at as we go through the document.

@@ -36,7 +36,7 @@ from tests.unit.processing_steps._utils import assert_elements, get_elements_fro
 )
 def test_title_step(html_str, expected_elements):
     """
-    This test checks that the HighlightedTextParsingStep and TitleParsingStep
+    test_title_step test checks that the HighlightedTextParsingStep and TitleParsingStep
     can successfully transform a list of semantic elements returned by
     `get_elements_from_html`. These elements can be of type
     `UndeterminedElement` or `SpecialElement`.

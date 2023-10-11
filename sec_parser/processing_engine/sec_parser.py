@@ -14,7 +14,6 @@ from sec_parser.processing_steps.highlighted_text_parsing_step import (
     HighlightedTextParsingStep,
 )
 from sec_parser.processing_steps.image_parsing_step import ImageParsingStep
-from sec_parser.processing_steps.root_section_parsing_step import RootSectionParsingStep
 from sec_parser.processing_steps.table_parsing_step import TableParsingStep
 from sec_parser.processing_steps.text_parsing_step import TextParsingStep
 from sec_parser.processing_steps.title_parsing_step import TitleParsingStep
@@ -25,7 +24,7 @@ from sec_parser.semantic_elements.semantic_elements import (
 
 if TYPE_CHECKING:
     from sec_parser.processing_steps.abstract_processing_step import (
-        AbstractTransformStep,
+        AbstractProcessingStep,
     )
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
@@ -33,47 +32,51 @@ if TYPE_CHECKING:
 
 
 class AbstractSemanticElementParser(ABC):
-    @abstractmethod
+    """
+    Responsible for parsing semantic elements from HTML documents.
+    It takes raw HTML and returns a list of objects representing semantic elements.
+
+    At a High Level:
+    ==================
+    1. Extract top-level HTML tags from the document.
+    2. Convert them into a list of more specific semantic elements step-by-step.
+
+    Why Focus on Top-Level Tags?
+    ============================
+    SEC filings typically have a flat HTML structure. This simplifies the
+    parsing process, as each top-level HTML tag often directly corresponds
+    to a single semantic element. This is different from many websites,
+    where HTML tags are usually nested deeply, requiring more complex parsing.
+
+    For Advanced Users:
+    ====================
+    The parsing process is implemented as a sequence of steps (Pipeline Pattern)
+    and allows customization of each step (Strategy Pattern).
+
+    - Pipeline Pattern: Raw HTML tags are processed in a sequential, step-by-step manner
+    - Strategy Pattern: You can either replace, remove, or extend any of the existing
+      steps with your own or inherited implementation, or you can replace the entire
+      pipeline with your own implementation.
+    """
+
     def __init__(
         self,
-    ) -> None:
-        raise NotImplementedError  # pragma: no cover
-
-    @abstractmethod
-    def parse(self, html: str) -> list[AbstractSemanticElement]:
-        raise NotImplementedError  # pragma: no cover
-
-
-class SecParser(AbstractSemanticElementParser):
-    def __init__(
-        self,
-        get_steps: Callable[[], list[AbstractTransformStep]] | None = None,
+        get_steps: Callable[[], list[AbstractProcessingStep]] | None = None,
         *,
-        root_tag_parser: AbstractHtmlTagParser | None = None,
+        html_tag_parser: AbstractHtmlTagParser | None = None,
     ) -> None:
-        self.get_steps: Callable = get_steps or self.get_default_steps
-        self._root_tag_parser = root_tag_parser or HtmlTagParser()
+        self._get_steps = get_steps or self.get_default_steps
+        self._html_tag_parser = html_tag_parser or HtmlTagParser()
 
-    def get_default_steps(
-        self,
-    ) -> list[AbstractTransformStep]:
-        return [
-            ImageParsingStep(),
-            TableParsingStep(process_only={UndeterminedElement}),
-            TextParsingStep(process_only={UndeterminedElement}),
-            FootnoteAndBulletpointParsingStep(process_only={TextElement}),
-            HighlightedTextParsingStep(process_only={TextElement}),
-            TitleParsingStep(),
-            RootSectionParsingStep(),
-        ]
+    @classmethod
+    @abstractmethod
+    def get_default_steps(cls) -> list[AbstractProcessingStep]:
+        raise NotImplementedError  # pragma: no cover
 
     def parse(self, html: str) -> list[AbstractSemanticElement]:
-        steps = self.get_steps()
+        steps = self._get_steps()
 
-        # The parsing process is designed to handle the primarily
-        # flat HTML structure of SEC filings. Hence, our focus is on
-        # the root tags of the HTML document.
-        root_tags = self._root_tag_parser.parse(html)
+        root_tags = self._html_tag_parser.parse(html)
 
         elements: list[AbstractSemanticElement] = [
             UndeterminedElement(tag, inner_elements=[]) for tag in root_tags
@@ -83,3 +86,21 @@ class SecParser(AbstractSemanticElementParser):
             elements = step.process(elements)
 
         return elements
+
+
+class SecParser(AbstractSemanticElementParser):
+    """
+    SecParser parses SEC EDGAR HTML documents into a list of elements
+    that correspond to the visual structure of the document.
+    """
+
+    @classmethod
+    def get_default_steps(cls) -> list[AbstractProcessingStep]:
+        return [
+            ImageParsingStep(),
+            TableParsingStep(types_to_process={UndeterminedElement}),
+            TextParsingStep(types_to_process={UndeterminedElement}),
+            FootnoteAndBulletpointParsingStep(types_to_process={TextElement}),
+            HighlightedTextParsingStep(types_to_process={TextElement}),
+            TitleParsingStep(),
+        ]

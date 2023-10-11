@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.highlighted_text_element import (
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     )
 
 
-class TitleParsingStep(AbstractElementwiseTransformStep):
+class TitleParsingStep(AbstractElementwiseProcessStep):
     """
     TitleParsingStep class for transforming elements into TitleElement instances.
 
@@ -28,12 +28,12 @@ class TitleParsingStep(AbstractElementwiseTransformStep):
 
     def __init__(
         self,
-        process_only: set[type[AbstractSemanticElement]] | None = None,
-        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
         super().__init__(
-            process_only=process_only,
-            except_dont_process=except_dont_process,
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
         )
 
         # _unique_styles_by_order track unique styles in the document.
@@ -51,7 +51,7 @@ class TitleParsingStep(AbstractElementwiseTransformStep):
                 dict.fromkeys([*self._unique_styles_by_order, style]).keys(),
             )
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,

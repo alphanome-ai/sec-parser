@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import TableElement
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     )
 
 
-class TableParsingStep(AbstractElementwiseTransformStep):
+class TableParsingStep(AbstractElementwiseProcessStep):
     """
     TableParsingStep class for transforming elements into TableElement instances.
 
@@ -22,7 +22,7 @@ class TableParsingStep(AbstractElementwiseTransformStep):
     primarily by replacing suitable candidates with TableElement instances.
     """
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,

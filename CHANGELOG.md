@@ -95,7 +95,7 @@
 - implement Text parser step
 - **parsing_engine**: refactor class hierarchy and naming for extensibility and clarity
 - **debug_tools**: add cached downloaded documents for default values to the repository
-- **RootSectionPlugin**: implement parsing of RootSectionElement
+- **RootSectionPlugin**: implement parsing of TopLevelSectionStartMarker
 - **tests/speed**: implement speed benchmark for parsing
 - **debug_tools**: add page to view nested semantic tree
 - **debug_tools**: add pretty formatting for TitleElement elements
@@ -118,7 +118,7 @@
 - **debug_tools**: filter element type counts
 - **debug_tools**: trees for different documents being built from one documents elements
 - **debug_tools**: use appropriate caching decorator (one that does not allow mutation)
-- **SemanticTree**: not nesting RootSectionElement as parents
+- **SemanticTree**: not nesting TopLevelSectionStartMarker as parents
 - **secapio_data_retriever**: error message
 - **data_sources**: export exceptions
 - **debug_tools**: setting api key

@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import EmptyElement, TextElement
@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     )
 
 
-class TextParsingStep(AbstractElementwiseTransformStep):
+class TextParsingStep(AbstractElementwiseProcessStep):
     """
     TextParsingStep class for transforming elements into TextElement instances.
 
@@ -25,12 +25,12 @@ class TextParsingStep(AbstractElementwiseTransformStep):
     def __init__(
         self,
         *,
-        process_only: set[type[AbstractSemanticElement]] | None = None,
-        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
         super().__init__(
-            process_only=process_only,
-            except_dont_process=except_dont_process,
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
         )
         self._unique_markers_by_order: list[str] = []
 
@@ -41,7 +41,7 @@ class TextParsingStep(AbstractElementwiseTransformStep):
                 dict.fromkeys([*self._unique_markers_by_order, symbol]).keys(),
             )
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,

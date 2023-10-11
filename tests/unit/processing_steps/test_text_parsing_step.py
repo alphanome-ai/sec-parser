@@ -3,6 +3,7 @@ import pytest
 from sec_parser import TextElement
 from sec_parser.processing_steps import TextParsingStep
 from sec_parser.semantic_elements.semantic_elements import (
+    EmptyElement,
     IrrelevantElement,
     TextElement,
 )
@@ -34,7 +35,7 @@ from tests.unit.processing_steps._utils import (
                     "tag": "div",
                     "children": [
                         {"type": TextElement, "tag": "i"},
-                        {"type": IrrelevantElement, "tag": "p"},
+                        {"type": EmptyElement, "tag": "p"},
                     ],
                 },
                 {"type": TextElement, "tag": "span"},
@@ -50,7 +51,7 @@ def test_text_step(html_str, expected_elements):
     """
     # Arrange
     elements = get_elements_from_html(html_str)
-    step = TextParsingStep(except_dont_process={SpecialElement})
+    step = TextParsingStep(types_to_exclude={SpecialElement})
 
     # Act
     processed_elements = step.process(elements)

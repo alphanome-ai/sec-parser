@@ -95,7 +95,7 @@ print(tree.render())
 ```
 Here is an example of the output you can expect:
 ```
-RootSectionElement: PART I — FINANCIAL INFORMATION
+TopLevelSectionStartMarker: PART I — FINANCIAL INFORMATION
 ├── TitleElement: Item 1. Financial Statements
 │   ├── TitleElement: CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (U...
 │   │   ├── TextElement: (In millions, except number of shares which are re...

@@ -89,11 +89,8 @@ class HtmlTag:
         regardless of its children. This is because in the context of this application,
         'table' tags are always considered unary.
         """
-        self._is_unary_tree = (
-            is_unary_tree(self._bs4)
-            if self._is_unary_tree is None
-            else self._is_unary_tree
-        )
+        if self._is_unary_tree is None:
+            self._is_unary_tree = is_unary_tree(self._bs4)
         return self._is_unary_tree
 
     def get_first_deepest_tag(self) -> HtmlTag | None:
@@ -105,13 +102,13 @@ class HtmlTag:
         and we pass the 'div' tag to this function, it will return the 'p' tag,
         which is the first deepest tag within the 'html' tag.
         """
+        result: HtmlTag | None = None
         if self._first_deepest_tag is NotSet:
             tag = get_first_deepest_tag(self._bs4)
-            self._first_deepest_tag = HtmlTag(tag) if tag is not None else None
-        if isinstance(self._first_deepest_tag, NotSetType):
-            msg = "self._first_deepest_tag is NotSet"
-            raise SecParserValueError(msg)
-        return self._first_deepest_tag
+            if tag is not None:
+                result = HtmlTag(tag)
+                self._first_deepest_tag = result
+        return result
 
     def get_text_styles_metrics(self) -> dict[tuple[str, str], float]:
         """
