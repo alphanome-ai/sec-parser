@@ -53,7 +53,10 @@ class SemanticTree:
             indent = "├── " if not is_last else "└── "
             new_prefix = "│   " if not is_last else "    "
 
-            level = f"[L{node.level}]" if hasattr(node, "level") else ""
+            level = ""
+            lvl = getattr(node, "level", "")
+            if lvl:
+                level = f"[L{lvl}]"
             class_name = f"{element.__class__.__name__}{level}:"
             title = element.html_tag.get_text()
             if len(title) > max_line_length:

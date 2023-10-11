@@ -21,11 +21,10 @@ class HighlightedTextElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        inner_elements: list[AbstractSemanticElement],
         *,
         style: TextStyle | None = None,
     ) -> None:
-        super().__init__(html_tag, inner_elements)
+        super().__init__(html_tag)
         if style is None:
             msg = "styles must be specified for HighlightedElement"
             raise ValueError(msg)
@@ -40,7 +39,6 @@ class HighlightedTextElement(AbstractSemanticElement):
     ) -> HighlightedTextElement:
         return cls(
             source.html_tag,
-            source.inner_elements,
             style=style,
         )
 

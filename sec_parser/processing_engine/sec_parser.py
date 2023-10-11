@@ -26,6 +26,8 @@ if TYPE_CHECKING:
     from sec_parser.processing_steps.abstract_processing_step import (
         AbstractProcessingStep,
     )
+
+    # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -79,7 +81,7 @@ class AbstractSemanticElementParser(ABC):
         root_tags = self._html_tag_parser.parse(html)
 
         elements: list[AbstractSemanticElement] = [
-            UndeterminedElement(tag, inner_elements=[]) for tag in root_tags
+            UndeterminedElement(tag) for tag in root_tags
         ]
 
         for step in steps:

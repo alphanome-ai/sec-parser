@@ -4,7 +4,8 @@ from sec_parser.processing_steps.footnote_and_bulletpoint_parsing_step import (
     FootnoteAndBulletpointParsingStep,
 )
 from sec_parser.semantic_elements.semantic_elements import BulletpointTextElement
-from tests.unit.processing_steps._utils import assert_elements, get_elements_from_html
+from tests.unit._utils import assert_elements
+from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
 
 @pytest.mark.parametrize(
@@ -46,12 +47,12 @@ from tests.unit.processing_steps._utils import assert_elements, get_elements_fro
 )
 def test_footnote_and_bulletpoint_step(html_str, expected_elements):
     """
-    test_footnote_and_bulletpoint_step test checks that the FootnoteAndBulletpointParsingStep can successfully transform a list of
-    semantic elements returned by `get_elements_from_html`. These elements can be
-    of type `UndeterminedElement` or `SpecialElement`.
+    test_footnote_and_bulletpoint_step test checks that the
+    FootnoteAndBulletpointParsingStep can successfully transform a list of
+    semantic elements returned by `parse_initial_semantic_elements`.
     """
     # Arrange
-    elements = get_elements_from_html(html_str)
+    elements = parse_initial_semantic_elements(html_str)
     step = FootnoteAndBulletpointParsingStep()
 
     # Act

@@ -8,7 +8,8 @@ from sec_parser.semantic_elements.semantic_elements import (
     TitleElement,
     UndeterminedElement,
 )
-from tests.unit.processing_steps._utils import assert_elements, get_elements_from_html
+from tests.unit._utils import assert_elements
+from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
 
 @pytest.mark.parametrize(
@@ -38,11 +39,10 @@ def test_title_step(html_str, expected_elements):
     """
     test_title_step test checks that the HighlightedTextParsingStep and TitleParsingStep
     can successfully transform a list of semantic elements returned by
-    `get_elements_from_html`. These elements can be of type
-    `UndeterminedElement` or `SpecialElement`.
+    `parse_initial_semantic_elements`.
     """
     # Arrange
-    elements = get_elements_from_html(html_str)
+    elements = parse_initial_semantic_elements(html_str)
 
     highlighter_step = HighlightedTextParsingStep()
     title_step = TitleParsingStep()
@@ -51,7 +51,5 @@ def test_title_step(html_str, expected_elements):
     elements = highlighter_step.process(elements)
     elements = title_step.process(elements)
 
-    # Assert
-    assert_elements(elements, expected_elements)
     # Assert
     assert_elements(elements, expected_elements)

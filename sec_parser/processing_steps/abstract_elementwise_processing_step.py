@@ -4,10 +4,12 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from typing import Callable
 
-from sec_parser.exceptions import SecParserValueError
 from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
+)
+from sec_parser.semantic_elements.composite_semantic_element import (
+    CompositeSemanticElement,
 )
 
 ElementTransformer = Callable[[AbstractSemanticElement], AbstractSemanticElement]
@@ -26,7 +28,7 @@ class ElementwiseProcessingContext:
     is_root_element: bool
 
 
-class AbstractElementwiseProcessStep(AbstractProcessingStep):
+class AbstractElementwiseProcessingStep(AbstractProcessingStep):
     """
     `AbstractElementwiseTransformStep` class is used to iterate over
     all Semantic Elements with or without applying transformations.
@@ -41,9 +43,6 @@ class AbstractElementwiseProcessStep(AbstractProcessingStep):
         super().__init__()
         self._types_to_process = types_to_process or set()
         self._types_to_exclude = types_to_exclude or set()
-        if self._types_to_process & self._types_to_exclude:
-            msg = "Processed types and excluded types should not overlap."
-            raise SecParserValueError(msg)
 
     def _process(
         self,
@@ -55,17 +54,18 @@ class AbstractElementwiseProcessStep(AbstractProcessingStep):
             is_root_element=True,
         )
 
-        for i, input_element in enumerate(elements):
+        for i, e in enumerate(elements):
+            # avoids lint error "`element` overwritten by assignment target"
+            element = e
+
             if self._types_to_process and not any(
-                isinstance(input_element, t) for t in self._types_to_process
+                isinstance(element, t) for t in self._types_to_process
             ):
                 continue
-            if any(isinstance(input_element, t) for t in self._types_to_exclude):
+            if any(isinstance(element, t) for t in self._types_to_exclude):
                 continue
 
-            element = self._process_element(input_element, context)
-
-            if element.inner_elements:
+            if isinstance(element, CompositeSemanticElement):
                 child_context = ElementwiseProcessingContext(
                     is_root_element=False,
                 )
@@ -73,6 +73,8 @@ class AbstractElementwiseProcessStep(AbstractProcessingStep):
                     element.inner_elements,
                     _context=child_context,
                 )
+            else:
+                element = self._process_element(element, context)
 
             elements[i] = element
 

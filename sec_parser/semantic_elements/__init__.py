@@ -11,6 +11,9 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
     InvalidLevelError,
 )
+from sec_parser.semantic_elements.composite_semantic_element import (
+    CompositeSemanticElement,
+)
 from sec_parser.semantic_elements.semantic_elements import (
     BulletpointTextElement,
     EmptyElement,
@@ -38,4 +41,5 @@ __all__ = [
     "EmptyElement",
     "BulletpointTextElement",
     "FootnoteTextElement",
+    "CompositeSemanticElement",
 ]

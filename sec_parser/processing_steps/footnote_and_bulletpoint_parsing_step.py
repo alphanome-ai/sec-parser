@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseProcessStep,
+    AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import (
@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     )
 
 
-class FootnoteAndBulletpointParsingStep(AbstractElementwiseProcessStep):
+class FootnoteAndBulletpointParsingStep(AbstractElementwiseProcessingStep):
     """
     FootnoteAndBulletpointParsingStep class for transforming elements into
     BulletpointTextElement and FootnoteTextElement instances.
@@ -74,7 +74,6 @@ class FootnoteAndBulletpointParsingStep(AbstractElementwiseProcessStep):
             level = 1 + self._unique_markers_by_order.index(marker)
             return BulletpointTextElement(
                 element.html_tag,
-                element.inner_elements,
                 level=level,
             )
 

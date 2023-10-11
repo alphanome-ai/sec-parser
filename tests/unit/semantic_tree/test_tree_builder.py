@@ -36,9 +36,9 @@ class ParentChildNestingRule(AbstractNestingRule):
 def test_nesting_of_leveled_elements():
     # Arrange
     mock_elements = [
-        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=1),
-        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
-        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
+        LeveledElement(HtmlTag(bs4.Tag(name="p")), level=1),
+        LeveledElement(HtmlTag(bs4.Tag(name="p")), level=2),
+        LeveledElement(HtmlTag(bs4.Tag(name="p")), level=2),
     ]
     rules = [NestSameTypeDependingOnLevelRule()]
     tree_builder = TreeBuilder(get_rules=lambda: rules)
@@ -59,8 +59,8 @@ def test_nesting_of_leveled_elements():
 def test_nesting_of_parent_and_child():
     # Arrange
     mock_elements = [
-        ParentElement(HtmlTag(bs4.Tag(name="p")), []),
-        ChildElement(HtmlTag(bs4.Tag(name="p")), []),
+        ParentElement(HtmlTag(bs4.Tag(name="p"))),
+        ChildElement(HtmlTag(bs4.Tag(name="p"))),
     ]
 
     def rules():

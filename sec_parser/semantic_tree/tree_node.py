@@ -31,9 +31,9 @@ class TreeNode:
         children: Iterable[TreeNode] | None = None,
     ) -> None:
         self.semantic_element = semantic_element
-        self._parent = None
         self._children: list[TreeNode] = []
-        self.parent = parent
+        self._parent: TreeNode | None = None
+        self.parent = parent  # call 'parent` setter
         if children is not None:
             self.add_children(list(children))
 
