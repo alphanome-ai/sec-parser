@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING
 from sec_parser.processing_engine.sec_parser import SecParser
 from sec_parser.semantic_tree.tree_builder import TreeBuilder
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_tree.semantic_tree import SemanticTree
 
 

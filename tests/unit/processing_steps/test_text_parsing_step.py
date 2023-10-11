@@ -5,11 +5,7 @@ from sec_parser.processing_steps import TextParsingStep
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
-from sec_parser.semantic_elements.semantic_elements import (
-    EmptyElement,
-    IrrelevantElement,
-    TextElement,
-)
+from sec_parser.semantic_elements.semantic_elements import EmptyElement
 from tests.unit._utils import assert_elements
 from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 

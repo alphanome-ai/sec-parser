@@ -7,9 +7,6 @@ from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
 )
-from sec_parser.processing_steps.footnote_and_bulletpoint_parsing_step import (
-    FootnoteAndBulletpointParsingStep,
-)
 from sec_parser.processing_steps.highlighted_text_parsing_step import (
     HighlightedTextParsingStep,
 )
@@ -22,12 +19,10 @@ from sec_parser.semantic_elements.semantic_elements import (
     UndeterminedElement,
 )
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_steps.abstract_processing_step import (
         AbstractProcessingStep,
     )
-
-    # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -102,7 +97,6 @@ class SecParser(AbstractSemanticElementParser):
             ImageParsingStep(),
             TableParsingStep(types_to_process={UndeterminedElement}),
             TextParsingStep(types_to_process={UndeterminedElement}),
-            FootnoteAndBulletpointParsingStep(types_to_process={TextElement}),
             HighlightedTextParsingStep(types_to_process={TextElement}),
             TitleParsingStep(),
         ]

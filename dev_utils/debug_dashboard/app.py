@@ -535,8 +535,6 @@ def streamlit_app(
             se.IrrelevantElement: "trash",
             se.TopLevelSectionStartMarker: "pause",
             se.EmptyElement: "trash",
-            se.BulletpointTextElement: "blockquote-left",
-            se.FootnoteTextElement: "braces-asterisk",
         }.get(element.__class__, "box")
         return sac.TreeItem(
             f"{add_spaces(element.__class__.__name__.replace('Element',''))}",

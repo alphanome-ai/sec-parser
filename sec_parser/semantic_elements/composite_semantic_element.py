@@ -6,7 +6,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
 
 

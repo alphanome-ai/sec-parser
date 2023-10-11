@@ -3,20 +3,18 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable
 
 from sec_parser.semantic_elements.semantic_elements import (
-    BulletpointTextElement,
     TitleElement,
     TopLevelSectionStartMarker,
 )
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
-    AlwaysNestAsChildRule,
     AlwaysNestAsParentRule,
     NestSameTypeDependingOnLevelRule,
 )
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -67,7 +65,6 @@ class TreeBuilder:
                 TitleElement,
                 exclude_children={TopLevelSectionStartMarker},
             ),
-            AlwaysNestAsChildRule(BulletpointTextElement),
             NestSameTypeDependingOnLevelRule(),
         ]
 

@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 from sec_parser.exceptions import SecParserValueError
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
 
 

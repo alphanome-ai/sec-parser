@@ -15,9 +15,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
-    BulletpointTextElement,
     EmptyElement,
-    FootnoteTextElement,
     ImageElement,
     IrrelevantElement,
     TableElement,
@@ -39,7 +37,5 @@ __all__ = [
     "ImageElement",
     "TableElement",
     "EmptyElement",
-    "BulletpointTextElement",
-    "FootnoteTextElement",
     "CompositeSemanticElement",
 ]

@@ -12,7 +12,7 @@ from sec_parser.semantic_elements.highlighted_text_element import (
 )
 from sec_parser.semantic_elements.semantic_elements import TitleElement
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )

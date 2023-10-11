@@ -2,7 +2,6 @@ import pytest
 
 from sec_parser import TextElement
 from sec_parser.processing_engine.sec_parser import SecParser
-from sec_parser.processing_steps import TextParsingStep
 from tests.unit._utils import assert_elements
 
 

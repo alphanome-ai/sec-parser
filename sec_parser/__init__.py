@@ -8,7 +8,6 @@ from sec_parser.processing_engine.sec_parser import SecParser
 from sec_parser.sec_parser_facade import parse_10q_from_html
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
-    BulletpointTextElement,
     EmptyElement,
     ImageElement,
     IrrelevantElement,
@@ -27,7 +26,6 @@ __all__ = [
     # High-level functionalities
     "parse_10q_from_html",
     # Main parser classes
-    "SecapioDataRetriever",
     "SecParser",
     "TreeBuilder",
     # Common semantic elements
@@ -40,7 +38,6 @@ __all__ = [
     "ImageElement",
     "TableElement",
     "EmptyElement",
-    "BulletpointTextElement",
     # Common exceptions
     "SecParserError",
     "SecParserRuntimeError",

@@ -53,14 +53,6 @@ class TextElement(AbstractSemanticElement):
     """The TextElement class represents a standard text paragraph within a document."""
 
 
-class BulletpointTextElement(AbstractLevelElement, TextElement):
-    """The BulletpointElement class represents a bulletpoint within a document."""
-
-
-class FootnoteTextElement(TextElement):
-    """The FootnoteElement class represents a footnote within a document."""
-
-
 class TableElement(AbstractSemanticElement):
     """The TableElement class represents a standard table within a document."""
 

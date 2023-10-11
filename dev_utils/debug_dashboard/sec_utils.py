@@ -59,8 +59,6 @@ def get_emoji_chain(cls: type):
             se.UndeterminedElement: "🛸",
             se.IrrelevantElement: "🚮",
             se.EmptyElement: "0️⃣",
-            se.BulletpointTextElement: "✏️",
-            se.FootnoteTextElement: "↙️",
         }.get(ancestor, "❓")
 
         emojis.append(emoji)

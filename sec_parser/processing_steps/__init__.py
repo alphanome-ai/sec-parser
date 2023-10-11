@@ -6,9 +6,6 @@ section identification, title parsing, and text extraction, etc.
 """
 
 from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
-from sec_parser.processing_steps.footnote_and_bulletpoint_parsing_step import (
-    FootnoteAndBulletpointParsingStep,
-)
 from sec_parser.processing_steps.image_parsing_step import ImageParsingStep
 from sec_parser.processing_steps.table_parsing_step import TableParsingStep
 from sec_parser.processing_steps.text_parsing_step import TextParsingStep
@@ -21,5 +18,4 @@ __all__ = [
     "TitleParsingStep",
     "ImageParsingStep",
     "TableParsingStep",
-    "FootnoteAndBulletpointParsingStep",
 ]
