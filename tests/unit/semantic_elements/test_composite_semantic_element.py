@@ -9,7 +9,6 @@ from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 
-# Create a mock for HtmlTag
 MockHtmlTag = Mock()
 
 
