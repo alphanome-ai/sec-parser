@@ -102,14 +102,14 @@ class HtmlTag:
             ]
         return self._children
 
-    def contains_tag(self, name: str, *, include_self: bool = False) -> bool:
+    def contains_tag(self, name: str, *, include_containers: bool = False) -> bool:
         """
         `contains_tag` method checks if the current HTML tag contains a descendant tag
         with the specified name. For example, calling contains_tag("b") on an
         HtmlTag instance representing "<div><p><b>text</b></p></div>" would
         return True, as there is a 'b' tag within the descendants of the 'div' tag.
         """
-        return contains_tag(self._bs4, name, include_self=include_self)
+        return contains_tag(self._bs4, name, include_containers=include_containers)
 
     def is_unary_tree(self) -> bool:
         """

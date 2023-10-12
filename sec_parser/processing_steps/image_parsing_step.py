@@ -28,7 +28,7 @@ class ImageParsingStep(AbstractElementwiseProcessingStep):
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         is_unary = element.html_tag.is_unary_tree()
-        contains_image = element.html_tag.contains_tag("img", include_self=True)
+        contains_image = element.html_tag.contains_tag("img", include_containers=True)
         if is_unary and contains_image:
             return ImageElement.convert_from(element)
 

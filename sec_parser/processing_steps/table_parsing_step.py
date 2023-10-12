@@ -28,7 +28,7 @@ class TableParsingStep(AbstractElementwiseProcessingStep):
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         is_unary = element.html_tag.is_unary_tree()
-        contains_table = element.html_tag.contains_tag("table", include_self=True)
+        contains_table = element.html_tag.contains_tag("table", include_containers=True)
         if is_unary and contains_table:
             return TableElement.convert_from(element)
 

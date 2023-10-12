@@ -53,6 +53,7 @@ jupyter = "^1.0.0"
 pytest-watch = "^4.2.0"
 sec-edgar-downloader = "^5.0.2"
 sec-downloader = "^0.1.6"
+click = "^8.1.7"
 
 
 

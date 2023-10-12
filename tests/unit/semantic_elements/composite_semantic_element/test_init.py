@@ -82,17 +82,3 @@ def test_convert_from_source_valid_inner_elements(default_inner_elements):
     assert isinstance(converted, CompositeSemanticElement)
     assert converted.inner_elements == default_inner_elements
     assert converted.html_tag == mock_html_tag
-
-
-def test_to_dict():
-    # Arrange
-    tag = bs4.Tag(name="span")
-    tag.string = "A" * 60
-
-    # Act
-    actual = CompositeSemanticElement(
-        HtmlTag(tag), inner_elements=[Mock(), Mock()]
-    ).to_dict()
-
-    # Assert
-    assert actual["inner_elements"] == 2

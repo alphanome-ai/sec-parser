@@ -71,3 +71,33 @@ class CompositeSemanticElement(AbstractSemanticElement):
             **super().to_dict(),
             "inner_elements": len(self.inner_elements),
         }
+
+    @classmethod
+    def unwrap_elements(
+        cls,
+        elements: list[AbstractSemanticElement],
+        *,
+        include_containers: bool | None = None,
+    ) -> list[AbstractSemanticElement]:
+        """
+        Recursively flatten a list of AbstractSemanticElement objects.
+        For each CompositeSemanticElement encountered, its inner_elements
+        are also recursively flattened. The 'include_containers' parameter controls
+        whether the CompositeSemanticElement itself is included in the flattened list.
+        """
+        include_containers = False if include_containers is None else include_containers
+        flattened_elements = []
+        for e in elements:
+            if not isinstance(e, CompositeSemanticElement):
+                flattened_elements.append(e)
+                continue
+
+            if include_containers:
+                flattened_elements.append(e)
+            flattened_elements.extend(
+                cls.unwrap_elements(
+                    e.inner_elements,
+                    include_containers=include_containers,
+                ),
+            )
+        return flattened_elements

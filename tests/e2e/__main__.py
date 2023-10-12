@@ -1,13 +1,11 @@
-import json
 from pathlib import Path
 
 import click
 
-from sec_parser import Edgar10QParser
-from tests.e2e.snapshot import write_snapshot as run_update
+from tests.e2e import snapshot as snapshot_module
 
 DEFAULT_E2E_DATA_DIR = (
-    Path(__file__).resolve().parent.parent.parent / "sec-parser-e2e-data"
+    Path(__file__).resolve().parent.parent.parent.parent / "sec-parser-e2e-data"
 )
 
 
@@ -22,14 +20,14 @@ UPDATE_HELP = (
 
 
 @click.command()
-@click.option("--dir", default=DEFAULT_E2E_DATA_DIR, help=UPDATE_HELP)
-def update(path: str) -> None:
+@click.option("--data_dir", default=DEFAULT_E2E_DATA_DIR, help=UPDATE_HELP)
+def snapshot(data_dir: str) -> None:
+    print(f"Updating {data_dir}")
     """Update or create semantic-elements-list.json for each primary-document.html."""
-    run_update(path)
+    snapshot_module.write_snapshot(data_dir)
 
 
-cli.add_command(update)
+cli.add_command(snapshot)
 
 if __name__ == "__main__":
-    cli()
     cli()

@@ -14,6 +14,9 @@ from sec_parser.processing_steps.image_parsing_step import ImageParsingStep
 from sec_parser.processing_steps.table_parsing_step import TableParsingStep
 from sec_parser.processing_steps.text_parsing_step import TextParsingStep
 from sec_parser.processing_steps.title_parsing_step import TitleParsingStep
+from sec_parser.semantic_elements.composite_semantic_element import (
+    CompositeSemanticElement,
+)
 from sec_parser.semantic_elements.semantic_elements import (
     TextElement,
     UndeterminedElement,
@@ -70,7 +73,13 @@ class AbstractSemanticElementParser(ABC):
     def get_default_steps(cls) -> list[AbstractProcessingStep]:
         raise NotImplementedError  # pragma: no cover
 
-    def parse(self, html: str) -> list[AbstractSemanticElement]:
+    def parse(
+        self,
+        html: str,
+        *,
+        unwrap_elements: bool | None = None,
+        include_containers: bool | None = None,
+    ) -> list[AbstractSemanticElement]:
         steps = self._get_steps()
 
         root_tags = self._html_tag_parser.parse(html)
@@ -82,7 +91,12 @@ class AbstractSemanticElementParser(ABC):
         for step in steps:
             elements = step.process(elements)
 
-        return elements
+        if unwrap_elements is False:
+            return elements
+        return CompositeSemanticElement.unwrap_elements(
+            elements,
+            include_containers=include_containers,
+        )
 
 
 class Edgar10QParser(AbstractSemanticElementParser):
