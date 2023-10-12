@@ -38,7 +38,7 @@ def test_basic_render():
     # Assert
     assert (
         result
-        == "Element\n├── ElementWithLevel[L2]: Child 1 of node1\n├── Element: Child 2 of node1, with its own child\n│   └── Element: Grandchild of node1 (Child of node5)\n└── Element: Another child for node1\nElement: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..."
+        == "Element\n├── ElementWithLevel[L2]: Child 1 of node1\n├── Element: Child 2 of node1, with its own child\n│   └── Element: Grandchild of node1 (Child of node5)\n└── Element: Another child for node1\nElement: AAAAAAAAAAAAAAAAAAAAAAAAA...AAAAAAAAAAAAAAAAAAAAAAAAAA"
     )
 
 
@@ -52,7 +52,7 @@ def test_render_with_pretty_option():
     # Assert
     assert (
         result
-        == "\x1b[1;34mElement\x1b[0m\n├── \x1b[1;34mElementWithLevel\x1b[1;92m[L2]\x1b[0m\x1b[0m: Child 1 of node1\n├── \x1b[1;34mElement\x1b[0m: Child 2 of node1, with its own child\n│   └── \x1b[1;34mElement\x1b[0m: Grandchild of node1 (Child of node5)\n└── \x1b[1;34mElement\x1b[0m: Another child for node1\n\x1b[1;34mElement\x1b[0m: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..."
+        == "\x1b[1;34mElement\x1b[0m\n├── \x1b[1;34mElementWithLevel\x1b[1;92m[L2]\x1b[0m\x1b[0m: Child 1 of node1\n├── \x1b[1;34mElement\x1b[0m: Child 2 of node1, with its own child\n│   └── \x1b[1;34mElement\x1b[0m: Grandchild of node1 (Child of node5)\n└── \x1b[1;34mElement\x1b[0m: Another child for node1\n\x1b[1;34mElement\x1b[0m: AAAAAAAAAAAAAAAAAAAAAAAAA...AAAAAAAAAAAAAAAAAAAAAAAAAA"
     )
 
 
@@ -64,7 +64,7 @@ def new_node(name, text, cls: Callable = Element):
 
 def get_tree():
     node1 = new_node("p", "")  # A regular node
-    node2 = new_node("p", "A" * 51)  # A node with title longer than max_line_length
+    node2 = new_node("p", "A" * 51)  # A node with title longer than show_chars
     node3 = new_node(
         "p",
         "This is an ignored type",

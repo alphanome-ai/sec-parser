@@ -10,7 +10,7 @@ if TYPE_CHECKING:  # pragma: no cover
     )
     from sec_parser.semantic_tree.tree_node import TreeNode
 
-DEFAULT_MAX_LINE_LENGTH = 50
+DEFAULT_show_chars = 50
 
 
 class SemanticTree:
@@ -22,7 +22,7 @@ class SemanticTree:
         *,
         pretty: bool | None = True,
         ignored_types: tuple[type[AbstractSemanticElement], ...] | None = None,
-        max_line_length: int | None = None,
+        show_chars: int | None = None,
         _nodes: list[TreeNode] | None = None,
         _level: int = 0,
         _prefix: str = "",
@@ -34,11 +34,7 @@ class SemanticTree:
         """
         pretty = pretty if pretty is not None else True
         ignored_types = ignored_types or (IrrelevantElement,)
-        max_line_length = (
-            max_line_length
-            if max_line_length and max_line_length > 0
-            else DEFAULT_MAX_LINE_LENGTH
-        )
+        show_chars = show_chars if show_chars and show_chars > 0 else DEFAULT_show_chars
 
         tree_strings = []
         _nodes = _nodes if _nodes is not None else self.root_nodes
@@ -61,8 +57,8 @@ class SemanticTree:
                     level = f"\033[1;92m{level}\033[0m"
             class_name = f"{element.__class__.__name__}{level}"
             contents = element.html_tag.get_text().strip()
-            if len(contents) > max_line_length:
-                contents = f"{contents[:max_line_length]}..."
+            if len(contents) > show_chars:
+                contents = f"{contents[:show_chars//2]}...{contents[show_chars//2:]}"
             if pretty:
                 class_name = f"\033[1;34m{class_name}\033[0m"
 
