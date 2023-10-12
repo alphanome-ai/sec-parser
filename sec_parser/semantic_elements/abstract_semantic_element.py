@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from sec_parser.exceptions import SecParserValueError
 
@@ -37,8 +37,14 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         """Convert the semantic element into another semantic element type."""
         return cls(source.html_tag)
 
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "cls_name": self.__class__.__name__,
+            **self.html_tag.to_dict(),
+        }
 
-class AbstractLevelElement(AbstractSemanticElement, ABC):
+
+class AbstractLevelElement(AbstractSemanticElement):
     """
     The AbstractLevelElement class provides a level attribute to semantic elements.
     It represents hierarchical levels in the document structure. For instance,
@@ -68,6 +74,12 @@ class AbstractLevelElement(AbstractSemanticElement, ABC):
         level: int | None = None,
     ) -> AbstractLevelElement:
         return cls(source.html_tag, level=level)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **super().to_dict(),
+            "level": self.level,
+        }
 
 
 class InvalidLevelError(SecParserValueError):

@@ -3,11 +3,15 @@ from __future__ import annotations
 import warnings
 
 import bs4
+import xxhash
+from frozendict import frozendict
 
 from sec_parser.exceptions import SecParserValueError
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
+
+TEXT_PREVIEW_LENGTH = 40
 
 
 class HtmlTag:
@@ -41,6 +45,37 @@ class HtmlTag:
         self._is_unary_tree: bool | None = None
         self._first_deepest_tag: HtmlTag | None | NotSetType = NotSet
         self._text_styles_metrics: dict[tuple[str, str], float] | None = None
+        self._frozen_dict: frozendict | None = None
+        self._source_code: str | None = None
+
+    def get_source_code(self) -> str:
+        if self._source_code is None:
+            self._source_code = str(self._bs4)
+        return self._source_code
+
+    def _generate_preview(self, text: str) -> str:
+        """Generate a preview of the text with a specified length."""
+        text = text.replace("\n", " ").strip()
+        return (
+            text[: TEXT_PREVIEW_LENGTH // 2]
+            + f"...[{len(text) - TEXT_PREVIEW_LENGTH}]..."
+            + text[-TEXT_PREVIEW_LENGTH // 2 :]
+            if len(text) > TEXT_PREVIEW_LENGTH
+            else text
+        )
+
+    def to_dict(self) -> frozendict:
+        """Compute the hash of the HTML tag."""
+        if self._frozen_dict is None:
+            self._frozen_dict = frozendict(
+                {
+                    "tag_name": self._bs4.name,
+                    "text_preview": self._generate_preview(self.get_text()),
+                    "html_preview": self._generate_preview(self.get_source_code()),
+                    "html_hash": xxhash.xxh32(self.get_source_code()).hexdigest(),
+                },
+            )
+        return self._frozen_dict
 
     def get_text(self) -> str:
         """

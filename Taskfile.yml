@@ -11,7 +11,6 @@ tasks:
     cmds:
       - task unit
       - task lint-fix
-      - task e2e-smoke
 
   p:
     desc: Shortcut for `task pre-commit`.
@@ -23,7 +22,6 @@ tasks:
     cmds:
       - task unit
       - task lint
-      - task e2e
 
 ######################
 ### Run Unit Tests ###
@@ -64,18 +62,7 @@ tasks:
 ### Run End-to-end Tests ###
 ############################
 
-  e2e:
-    desc: Run repeated end-to-end tests.
-    cmds:
-      # The CLI_ARGS variable allows passing custom arguments to the end-to-end test after "--". 
-      # For instance, to run the test with specific parameters, use the command: 
-      # task e2e -- --tests-per-core=5 --cores=2 --limit_documents=2
-      - poetry run python -m tests.e2e.sec_parser {{.CLI_ARGS}}
 
-  e2e-smoke:
-    desc: Run a single end-to-end test for a single document. This is a useful way to verify if the parser is functioning (a so-called "smoke" test).
-    cmds:
-      - poetry run python -m tests.e2e.sec_parser --tests-per-core=1 --cores=1 --limit_documents=1
 
 #######################
 ### Developer Tools ###

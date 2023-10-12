@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
@@ -41,6 +41,12 @@ class HighlightedTextElement(AbstractSemanticElement):
             source.html_tag,
             style=style,
         )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **super().to_dict(),
+            "text_style": asdict(self.style),
+        }
 
 
 @dataclass(frozen=True)

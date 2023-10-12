@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
@@ -65,3 +65,9 @@ class CompositeSemanticElement(AbstractSemanticElement):
             html_tag=source.html_tag,
             inner_elements=inner_elements,
         )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **super().to_dict(),
+            "inner_elements": len(self.inner_elements),
+        }

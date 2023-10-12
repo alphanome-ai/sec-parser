@@ -7,7 +7,6 @@ from bs4 import NavigableString
 from sec_parser.processing_engine.html_tag import EmptyNavigableStringError, HtmlTag
 
 
-# Test when input is a non-empty bs4.NavigableString object
 def test_init_with_non_empty_navigable_string():
     # Arrange
     nav_string = NavigableString("Hello")
@@ -24,7 +23,6 @@ def test_init_with_non_empty_navigable_string():
     assert tag.string == "Hello"
 
 
-# Test when input is an empty bs4.NavigableString object
 def test_init_with_empty_navigable_string():
     # Arrange
     nav_string = NavigableString("")
@@ -34,7 +32,6 @@ def test_init_with_empty_navigable_string():
         HtmlTag(nav_string)
 
 
-# Test when input is neither bs4.Tag nor bs4.NavigableString
 def test_init_with_unsupported_type():
     # Arrange
     unsupported_element = 42  # an integer
@@ -42,3 +39,20 @@ def test_init_with_unsupported_type():
     # Act & Assert
     with pytest.raises(TypeError):
         HtmlTag(unsupported_element)
+
+
+def test_to_dict():
+    # Arrange
+    tag = bs4.Tag(name="span")
+    tag.string = "A" * 60
+
+    # Act
+    actual = HtmlTag(tag).to_dict()
+
+    # Assert
+    assert actual == {
+        "tag_name": "span",
+        "text_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
+        "html_preview": "<span>AAAAAAAAAAAAAA...[33]...AAAAAAAAAAAAA</span>",
+        "html_hash": "3836a62b",
+    }
