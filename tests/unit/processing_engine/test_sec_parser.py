@@ -1,7 +1,7 @@
 import pytest
 
 from sec_parser import TextElement
-from sec_parser.processing_engine.sec_parser import SecParser
+from sec_parser.processing_engine.core import Edgar10QParser
 from tests.unit._utils import assert_elements
 
 
@@ -20,7 +20,7 @@ from tests.unit._utils import assert_elements
 )
 def test_smoke_test(html_str, expected_elements):
     # Arrange
-    sec_parser = SecParser()
+    sec_parser = Edgar10QParser()
 
     # Act
     processed_elements = sec_parser.parse(html_str)

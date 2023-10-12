@@ -29,7 +29,7 @@ def get_latest_10q_html(
 
 @st.cache_resource
 def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
-    parser = sp.SecParser()
+    parser = sp.Edgar10QParser()
     return parser.parse(html)
 
 

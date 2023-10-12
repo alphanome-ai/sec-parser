@@ -6,16 +6,16 @@ subpackage to perform tasks like section
 identification, title parsing, and text extraction.
 """
 
+from sec_parser.processing_engine.core import (
+    AbstractSemanticElementParser,
+    Edgar10QParser,
+)
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_engine.html_tag_parser import HtmlTagParser
-from sec_parser.processing_engine.sec_parser import (
-    AbstractSemanticElementParser,
-    SecParser,
-)
 
 __all__ = [
     "HtmlTagParser",
     "AbstractSemanticElementParser",
-    "SecParser",
+    "Edgar10QParser",
     "HtmlTag",
 ]

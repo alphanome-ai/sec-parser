@@ -85,10 +85,12 @@ class AbstractSemanticElementParser(ABC):
         return elements
 
 
-class SecParser(AbstractSemanticElementParser):
+class Edgar10QParser(AbstractSemanticElementParser):
     """
-    SecParser parses SEC EDGAR HTML documents into a list of elements
-    that correspond to the visual structure of the document.
+    The Edgar10QParser class is responsible for parsing SEC EDGAR 10-Q
+    quarterly reports. It transforms the HTML documents into a list
+    of elements. Each element in this list represents a part of
+    the visual structure of the original document.
     """
 
     @classmethod
