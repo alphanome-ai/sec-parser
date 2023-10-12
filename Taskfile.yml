@@ -68,7 +68,7 @@ tasks:
       # Check if the sec-parser-e2e-data directory exists.
       - if [ ! -d "{{.ROOT_DIR}}/../sec-parser-e2e-data" ]; then echo "Directory ../sec-parser-e2e-data does not exist. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-e2e-data. Aborting."; exit 1; fi
       # Abort if there are any changes in the working tree or index.
-      - if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then echo 1; else echo "Changes detected in the working tree or index. Please commit or stash them before proceeding."; exit 1; fi
+      - if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index. Please commit or stash them before proceeding."; exit 1; fi
       # Generate snapshots.
       - poetry run python -m tests.e2e generate {{.CLI_ARGS}}
       # Print a message for manual review of the snapshot.
@@ -82,7 +82,7 @@ tasks:
       # Check if the sec-parser-e2e-data directory exists.
       - if [ ! -d "{{.ROOT_DIR}}/../sec-parser-e2e-data" ]; then echo "Directory ../sec-parser-e2e-data does not exist. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-e2e-data. Aborting."; exit 1; fi
       # Abort if there are any changes in the working tree or index of the sec-parser-e2e-data repository. 
-      - if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then echo 1; else echo "Changes detected in the working tree or index of the sec-parser-e2e-data repository. Please commit or stash them before proceeding."; exit 1; fi
+      - if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-e2e-data repository. Please commit or stash them before proceeding."; exit 1; fi
       # Verify the snapshots.
       - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
       # Print a message indicating the verification was successful.
