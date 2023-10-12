@@ -37,33 +37,6 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         """Convert the semantic element into another semantic element type."""
         return cls(source.html_tag)
 
-    @classmethod
-    def get_direct_abstract_semantic_subclass(
-        cls,
-    ) -> type[AbstractSemanticElement]:
-        """
-        Given a class, find the class that is one step below
-        AbstractSemanticElement in its inheritance hierarchy.
-        """
-        if not issubclass(cls, AbstractSemanticElement):
-            msg = "Argument must be a subclass of AbstractSemanticElement."
-            raise TypeError(msg)
-
-        root_child = None
-        for ancestor in cls.mro():
-            if ancestor is AbstractSemanticElement:
-                break
-            root_child = ancestor
-
-        if root_child is None:
-            msg = "Could not find a root child class for the given class."
-            raise ValueError(msg)
-
-        return root_child
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}<{self.html_tag.name}>"
-
 
 class AbstractLevelElement(AbstractSemanticElement, ABC):
     """
@@ -72,7 +45,7 @@ class AbstractLevelElement(AbstractSemanticElement, ABC):
     a main section title might be at level 1, a subsection at level 2, etc.
     """
 
-    MIN_LEVEL = 1
+    MIN_LEVEL = 0
 
     def __init__(
         self,

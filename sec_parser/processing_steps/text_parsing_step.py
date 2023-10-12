@@ -34,13 +34,6 @@ class TextParsingStep(AbstractElementwiseProcessingStep):
         )
         self._unique_markers_by_order: list[str] = []
 
-    def _found_marker(self, symbol: str) -> None:
-        if symbol not in self._unique_markers_by_order:
-            # Ordered set:
-            self._unique_markers_by_order = list(
-                dict.fromkeys([*self._unique_markers_by_order, symbol]).keys(),
-            )
-
     def _process_element(
         self,
         element: AbstractSemanticElement,

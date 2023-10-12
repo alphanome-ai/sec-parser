@@ -34,14 +34,14 @@ tasks:
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run pytest -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/
+      - poetry run pytest -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
   unit-watch:
     desc: Run unit tests and check code coverage immediately when files change.
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run ptw -- -- -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=60 tests/unit/
+      - poetry run ptw -- -- -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
 
 ###########################

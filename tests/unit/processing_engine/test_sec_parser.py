@@ -18,7 +18,7 @@ from tests.unit._utils import assert_elements
         ),
     ],
 )
-def test_sec_parser(html_str, expected_elements):
+def test_smoke_test(html_str, expected_elements):
     # Arrange
     sec_parser = SecParser()
 

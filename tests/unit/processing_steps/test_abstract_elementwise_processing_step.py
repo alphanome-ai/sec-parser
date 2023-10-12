@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from unittest.mock import Mock
+
 import bs4
 import pytest
 
@@ -49,8 +51,8 @@ def test_process_skip_due_to_types_to_process():
     # Arrange
     types_to_process: set[type[AbstractSemanticElement]] = {MockSemanticElement}
     step = ProcessingStep(types_to_process=types_to_process)
-    element1 = MockSemanticElement(html_tag=HtmlTag(bs4.Tag(name="p")))
-    element2 = AnotherMockSemanticElement(html_tag=HtmlTag(bs4.Tag(name="p")))
+    element1 = MockSemanticElement(Mock())
+    element2 = AnotherMockSemanticElement(Mock())
     input_elements = [element1, element2]
 
     # Act
@@ -66,8 +68,8 @@ def test_process_skip_due_to_types_to_exclude():
     # Arrange
     types_to_exclude: set[type[AbstractSemanticElement]] = {MockSemanticElement}
     step = ProcessingStep(types_to_exclude=types_to_exclude)
-    element1 = MockSemanticElement(html_tag=HtmlTag(bs4.Tag(name="p")))
-    element2 = AnotherMockSemanticElement(html_tag=HtmlTag(bs4.Tag(name="p")))
+    element1 = MockSemanticElement(Mock())
+    element2 = AnotherMockSemanticElement(Mock())
     input_elements = [element1, element2]
 
     # Act
@@ -94,8 +96,8 @@ def test_process_skip_due_to_both_types_to_process_and_types_to_exclude():
         types_to_process=types_to_process,
         types_to_exclude=types_to_exclude,
     )
-    element1 = MockSemanticElement(html_tag=HtmlTag(bs4.Tag(name="p")))
-    element2 = AnotherMockSemanticElement(html_tag=HtmlTag(bs4.Tag(name="p")))
+    element1 = MockSemanticElement(Mock())
+    element2 = AnotherMockSemanticElement(Mock())
     input_elements = [element1, element2]
 
     # Act
@@ -103,4 +105,5 @@ def test_process_skip_due_to_both_types_to_process_and_types_to_exclude():
 
     # Assert
     assert step.seen_elements == [element1]
+    assert processed_elements == input_elements
     assert processed_elements == input_elements

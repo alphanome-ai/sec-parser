@@ -33,6 +33,25 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
                 {"type": UndeterminedElement, "tag": "div"},
             ],
         ),
+        (
+            """
+                <div>
+                    <span style="font-weight:bold">
+                        foo
+                    </span>
+                    <span style="font-weight:bold">
+                        bar
+                    </span>
+                </div>
+                <span style="font-weight:unknown">
+                    baz
+                </span>
+            """,
+            [
+                {"type": TitleElement, "tag": "div"},
+                {"type": UndeterminedElement, "tag": "span"},
+            ],
+        ),
     ],
 )
 def test_title_step(html_str, expected_elements):

@@ -61,7 +61,9 @@ def _compute_effective_style(tag: Tag) -> dict[str, str]:
     while found_tag:
         if "style" in found_tag.attrs:
             found_styles = found_tag["style"]
-            if isinstance(found_styles, list):
+            if isinstance(found_styles, list):  # pragma: no cover
+                # this should never happen, can't even construct a
+                # scenario where this would occur
                 msg = "Expected a string, got a list"
                 raise ValueError(msg)
             styles = found_styles.split(";")

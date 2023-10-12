@@ -20,10 +20,16 @@ if TYPE_CHECKING:  # pragma: no cover
 
 class TitleParsingStep(AbstractElementwiseProcessingStep):
     """
-    TitleParsingStep class for transforming elements into TitleElement instances.
+    TitleParsingStep elements into TitleElement instances by scanning a list
+    of semantic elements and replacing suitable candidates.
 
-    This step scans through a list of semantic elements and changes it,
-    primarily by replacing suitable candidates with TitleElement instances.
+    The "_unique_styles_by_order" tuple:
+    ====================================
+    - Represents an ordered set of unique styles found in the document.
+    - Preserves the order of insertion, which determines the hierarchical
+      level of each style.
+    - Assumes that earlier "highlight" styles correspond to higher level paragraph
+      or section headings.
     """
 
     def __init__(
@@ -36,17 +42,11 @@ class TitleParsingStep(AbstractElementwiseProcessingStep):
             types_to_exclude=types_to_exclude,
         )
 
-        # _unique_styles_by_order track unique styles in the document.
-        # Stored in a tuple as an ordered set, preserving insertion order.
-        # This order is used to determine a style's level.
-        # It is based on the observation that "highlight" styles that appear first
-        # typically mark higher level paragraph/section headings.
-        # _unique_styles_by_order is effectively used as an ordered set:
         self._unique_styles_by_order: tuple[TextStyle, ...] = ()
 
     def _add_unique_style(self, style: TextStyle) -> None:
+        """Add a new unique style if not already present."""
         if style not in self._unique_styles_by_order:
-            # _styles is effectively updated as an ordered set:
             self._unique_styles_by_order = tuple(
                 dict.fromkeys([*self._unique_styles_by_order, style]).keys(),
             )
@@ -56,8 +56,12 @@ class TitleParsingStep(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
+        """Process each element and convert to TitleElement if necessary."""
         if not isinstance(element, HighlightedTextElement):
             return element
+
+        # Ensure the style is tracked
         self._add_unique_style(element.style)
+
         level = self._unique_styles_by_order.index(element.style)
         return TitleElement.convert_from(element, level=level)

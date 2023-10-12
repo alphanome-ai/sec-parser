@@ -1,8 +1,7 @@
+import pytest
 from bs4 import BeautifulSoup
 
-from sec_parser.utils.bs4_.text_styles_metrics import (
-    compute_text_styles_metrics,
-)
+from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 
 
 # Test: Normal case with multiple styles

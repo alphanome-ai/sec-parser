@@ -6,7 +6,6 @@ import bs4
 
 from sec_parser.exceptions import SecParserValueError
 from sec_parser.utils.bs4_.contains_tag import contains_tag
-from sec_parser.utils.bs4_.get_first_deepest_tag import get_first_deepest_tag
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 
@@ -92,23 +91,6 @@ class HtmlTag:
         if self._is_unary_tree is None:
             self._is_unary_tree = is_unary_tree(self._bs4)
         return self._is_unary_tree
-
-    def get_first_deepest_tag(self) -> HtmlTag | None:
-        """
-        `get_first_deepest_tag` returns the first deepest tag within the current tag.
-
-        For example, if we have the following HTML structure:
-        <div><p>Test</p><span>Another Test</span></div>
-        and we pass the 'div' tag to this function, it will return the 'p' tag,
-        which is the first deepest tag within the 'html' tag.
-        """
-        result: HtmlTag | None = None
-        if self._first_deepest_tag is NotSet:
-            tag = get_first_deepest_tag(self._bs4)
-            if tag is not None:
-                result = HtmlTag(tag)
-                self._first_deepest_tag = result
-        return result
 
     def get_text_styles_metrics(self) -> dict[tuple[str, str], float]:
         """

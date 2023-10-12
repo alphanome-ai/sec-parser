@@ -54,23 +54,22 @@ class SemanticTree:
             new_prefix = "│   " if not is_last else "    "
 
             level = ""
-            lvl = getattr(node, "level", "")
+            lvl = getattr(node.semantic_element, "level", "")
             if lvl:
                 level = f"[L{lvl}]"
-            class_name = f"{element.__class__.__name__}{level}:"
-            title = element.html_tag.get_text()
-            if len(title) > max_line_length:
-                title = f"{title[:max_line_length]}..."
+                if pretty:
+                    level = f"\033[1;92m{level}\033[0m"
+            class_name = f"{element.__class__.__name__}{level}"
+            contents = element.html_tag.get_text().strip()
+            if len(contents) > max_line_length:
+                contents = f"{contents[:max_line_length]}..."
             if pretty:
                 class_name = f"\033[1;34m{class_name}\033[0m"
-                title = f"\033[1;32m{title}\033[0m"
 
             # Fix the alignment for root elements
-            line = (
-                f"{_prefix}{indent}{class_name} {title}"
-                if not _is_root
-                else f"{class_name} {title}"
-            )
+            line = f"{_prefix}{indent}{class_name}" if not _is_root else f"{class_name}"
+            if contents:
+                line = f"{line}: {contents}"
             tree_strings.append(line)
 
             # Recursive call: Always set _is_root to False for non-root elements
