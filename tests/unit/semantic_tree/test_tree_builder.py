@@ -9,6 +9,7 @@ from sec_parser.semantic_tree.nesting_rules import (
     AlwaysNestAsParentRule,
     NestSameTypeDependingOnLevelRule,
 )
+from sec_parser.semantic_tree.render_ import render
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
 
@@ -55,4 +56,4 @@ def test_smoke_test():
     actual_tree = tree_builder.build([element])
 
     # Assert
-    assert actual_tree.render() == expected_tree.render()
+    assert render(actual_tree.root_nodes) == render(expected_tree.root_nodes)

@@ -12,6 +12,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from sec_parser.semantic_tree.render_ import render
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
 
@@ -33,7 +34,7 @@ def test_basic_render():
     tree = get_tree()
 
     # Act
-    result = tree.render(pretty=False)
+    result = render(tree.root_nodes, pretty=False)
 
     # Assert
     assert (
@@ -47,7 +48,7 @@ def test_render_with_pretty_option():
     tree = get_tree()
 
     # Act
-    result = tree.render(pretty=True)
+    result = render(tree.root_nodes, pretty=True)
 
     # Assert
     assert (
@@ -64,7 +65,7 @@ def new_node(name, text, cls: Callable = Element):
 
 def get_tree():
     node1 = new_node("p", "")  # A regular node
-    node2 = new_node("p", "A" * 51)  # A node with title longer than show_chars
+    node2 = new_node("p", "A" * 51)  # A node with title longer than char_display_limit
     node3 = new_node(
         "p",
         "This is an ignored type",

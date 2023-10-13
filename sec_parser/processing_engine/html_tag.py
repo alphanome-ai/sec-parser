@@ -39,7 +39,9 @@ class HtmlTag:
     ) -> None:
         self._bs4: bs4.Tag = self._to_tag(bs4_element)
 
-        # Cached properties
+        # We use cached properties to prevent performance issues in intensive loops.
+        # As the source code is immutable, we can afford to use some extra memory
+        # for caching. A decorator might be a cleaner solution here.
         self._text: str | None = None
         self._children: list[HtmlTag] | None = None
         self._is_unary_tree: bool | None = None
@@ -47,8 +49,13 @@ class HtmlTag:
         self._text_styles_metrics: dict[tuple[str, str], float] | None = None
         self._frozen_dict: frozendict | None = None
         self._source_code: str | None = None
+        self._pretty_source_code: str | None = None
 
-    def get_source_code(self) -> str:
+    def get_source_code(self, *, pretty: bool = False) -> str:
+        if pretty:
+            if self._pretty_source_code is None:
+                self._pretty_source_code = self._bs4.prettify()
+            return self._pretty_source_code
         if self._source_code is None:
             self._source_code = str(self._bs4)
         return self._source_code
