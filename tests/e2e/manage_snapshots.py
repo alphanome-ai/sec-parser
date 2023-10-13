@@ -92,7 +92,7 @@ def print_verification_result_table(
         "Accuracy",
         justify="center",
     )
-    table.add_column("Speed\n(Limit, %Limit, Size)", justify="center")
+    table.add_column("Execution Time\n(Limit, %Limit, Size)", justify="center")
 
     for result in results:
         if result.missing_count and result.unexpected_count:
@@ -125,6 +125,9 @@ def print_verification_result_table(
         )
 
     console.print(table)
+    print(
+        f"[dim]Note: Execution Time Limit is based on a set rate of [bold]{ALLOWED_MICROSECONDS_PER_CHAR}[/bold] microseconds per HTML character (Size).[/dim]\n",
+    )
 
 
 def manage_snapshots(action: Literal["generate", "verify"], data_dir: str) -> None:
