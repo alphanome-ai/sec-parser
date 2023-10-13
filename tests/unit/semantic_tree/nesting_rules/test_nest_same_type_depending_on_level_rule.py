@@ -43,16 +43,27 @@ class LeveledElement(AbstractLevelElement):
     pass
 
 
-def test_smoke_test():
+def test_nesting_of_leveled_elements():
     # Arrange
-    tag = bs4.Tag(name="p")
-    tag.string = "Hello, world!"
-    element = BaseElement(HtmlTag(tag))
-    expected_tree = SemanticTree([TreeNode(element)])
-    tree_builder = TreeBuilder()
+    mock_elements = [
+        LeveledElement(html_tag("tag1", "text1"), level=1),
+        LeveledElement(html_tag("tag2", "text2"), level=2),
+        LeveledElement(html_tag("tag3", "text3"), level=2),
+    ]
+
+    def get_rules() -> list[AbstractNestingRule]:
+        return [NestSameTypeDependingOnLevelRule()]
+
+    tree_builder = TreeBuilder(get_rules)
 
     # Act
-    actual_tree = tree_builder.build([element])
+    tree = tree_builder.build(mock_elements)
 
     # Assert
-    assert actual_tree.render() == expected_tree.render()
+    assert len(tree.root_nodes) == 1
+    assert isinstance(tree.root_nodes[0].semantic_element, LeveledElement)
+    assert tree.root_nodes[0].semantic_element.level == 1
+    assert len(tree.root_nodes[0].children) == 2
+    for child in tree.root_nodes[0].children:
+        assert isinstance(child.semantic_element, LeveledElement)
+        assert child.semantic_element.level == 2
