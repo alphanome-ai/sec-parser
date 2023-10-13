@@ -94,15 +94,15 @@ TopLevelSectionStartMarker: PART I — FINANCIAL INFORMATION
 │   ...
 ```
 
-For more examples and advanced usage, you can continue learning how to use sec-parser by referring to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/quickstart_user_guide.html).
+For more examples and advanced usage, you can continue learning how to use sec-parser by referring to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html).
 
 # Contributing
 
 Contributing to `sec-parser` is a rewarding way to improve this open-source project. Whether you are a user interested in expanding your knowledge or a developer who wants to dive deeper into the codebase, we have comprehensive guides to get you started.
 
-- **User Guide**: If you are new to `sec-parser` and would like to get started, please refer to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/quickstart_user_guide.html).
+- **User Guide**: If you are new to `sec-parser` and would like to get started, please refer to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html).
   
-- **Developer Guide**: For those interested in contributing to `sec-parser`, the [**Comprehensive Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/comprehensive_developer_guide.html) provides an in-depth walkthrough of the codebase and offers examples to help you contribute effectively.
+- **Developer Guide**: For those interested in contributing to `sec-parser`, the [**Comprehensive Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html) provides an in-depth walkthrough of the codebase and offers examples to help you contribute effectively.
 
 Both guides are interactive and allow you to engage with the code and concepts as you learn. You can run and modify all the code examples for yourself by cloning the repository and running the respective notebooks in a Jupyter environment.
 

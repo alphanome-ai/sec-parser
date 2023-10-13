@@ -12,8 +12,8 @@
 :caption: 'Contents:'
 :maxdepth: 2
 
-notebooks/quickstart_user_guide
-notebooks/comprehensive_developer_guide
+notebooks/user_guide
+notebooks/developer_guide
 ```
 
 <hr>
