@@ -31,8 +31,6 @@
   <a href="http://hits.dwyl.com/alphanome-ai/sec-parser"><img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fhits.dwyl.com%2Falphanome-ai%2Fsec-parser.json%3Fshow%3Dunique" alt="HitCount" /></a>
   <a href="https://twitter.com/alphanomeai"><img alt="X (formerly Twitter) Follow" src="https://img.shields.io/twitter/follow/alphanomeai"></a>
   <a href="https://github.com/alphanome-ai/sec-parser"><img src="https://img.shields.io/github/stars/alphanome-ai/sec-parser.svg?style=social&label=Star us on GitHub!" alt="GitHub stars"></a>
-
-
 </p>
 
 <div align="left">
@@ -72,34 +70,23 @@ pip install sec-parser
 
 # Usage
 
-Before using the parser, you need to create an account at https://sec-api.io/. The first 100 API calls are free. After creating an account, you will receive an API key. This key should be added to your environment variables. You can do this using the following *bash* command:
+To retrieve the most recent 10-Q SEC EDGAR document in HTML format for Apple, follow these steps:
 
-```bash
-# Replace "your key here" with your actual key. 
-# An example key might look like "aef7f2f22c8b3456de55"
-export SECAPIO_API_KEY="your key here"
+```
 ```
 
-> **Note**
-sec-api.io is a third-party service that is not affiliated with `sec-parser`. We are planning to move away from this service in the near future and download the documents directly from the SEC EDGAR website. 
+report into a collection of semantic elements extracted from the document. 
 
-> **Note**
-The parser utilizes caching, so multiple calls to retrieve the same data will not consume your API calls limit.
-
-Once you have set up your API key, you can start using the parser in your *Python* code. Start by importing the `sec_parser` module as shown below:
+The following code snippet demonstrates how to do this:
 
 ```python
 import sec_parser as sp
 
-# Fetch and parse the latest Apple 10-Q report
-tree = sp.parse_latest("10-Q", ticker="AAPL")
-
-# Display the tree structure of the parsed document
-print(tree.render())
+elements = sp.SecParser().parse(html)
 ```
 Here is an example of the output you can expect:
 ```
-RootSectionElement: PART I — FINANCIAL INFORMATION
+TopLevelSectionStartMarker: PART I — FINANCIAL INFORMATION
 ├── TitleElement: Item 1. Financial Statements
 │   ├── TitleElement: CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (U...
 │   │   ├── TextElement: (In millions, except number of shares which are re...

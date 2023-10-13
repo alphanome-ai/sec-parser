@@ -1,4 +1,3 @@
-import os
 from collections import Counter
 from dataclasses import dataclass
 from itertools import zip_longest
@@ -14,8 +13,7 @@ import sec_parser as sp
 import sec_parser.semantic_elements as se
 from dev_utils.debug_dashboard.general_utils import interleave_lists
 from dev_utils.debug_dashboard.sec_data_retrieval import (
-    download_html,
-    get_metadata,
+    get_latest_10q_html,
     get_semantic_elements,
     get_semantic_tree,
 )
@@ -32,11 +30,6 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_hide_streamlit_element,
     st_multiselect_allow_long_titles,
     st_radio,
-)
-from sec_parser.data_sources.secapio_data_retriever import (
-    SecapioApiKeyInvalidError,
-    SecapioApiKeyNotSetError,
-    SecapioDataRetriever,
 )
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
@@ -84,40 +77,8 @@ def streamlit_app(
     do_element_render_html = True
     selected_step = 0
     do_interleave = False
-    use_tree_view = True
+    use_tree_view = False
     show_text_length = False
-
-    secapio_api_key_name = SecapioDataRetriever.API_KEY_ENV_VAR_NAME
-    secapio_api_key = os.environ.get(secapio_api_key_name, "")
-    secapio_api_key = st.session_state.get(secapio_api_key_name, "")
-    if secapio_api_key_name not in os.environ:
-        with st.sidebar.expander("API Key", expanded=not bool(secapio_api_key)):
-            st.write(
-                "The API key is required for parsing files that haven't been pre-downloaded."
-                "You can obtain a free one from [sec-api.io](https://sec-api.io).",
-            )
-            secapio_api_key = st.text_input(
-                type="password",
-                label="Enter your API key:",
-                value=secapio_api_key,
-            )
-            with st.expander("Why do I need an API key?"):
-                st.write(
-                    "We're currently using *sec-api.io* to handle the removal of the"
-                    "title 10-Q page and to download 10-Q Section HTML files. In the"
-                    "future, we aim to download these HTML files directly from the"
-                    "SEC EDGAR. For now, you can get a free API key from"
-                    "[sec-api.io](https://sec-api.io) and input it below.",
-                )
-            st.session_state[secapio_api_key_name] = secapio_api_key
-            msg = (
-                "**Note:** Key will be deleted upon page refresh. We suggest"
-                f"setting the `{secapio_api_key_name}` environment variable, possibly"
-                "by creating an `.env` file at the root of the project. This method"
-                "allows you to utilize the API key without the need for manual"
-                "entry each time."
-            )
-            st.info(msg)
 
     if not HIDE_UI_ELEMENTS:
         tickers = []
@@ -126,14 +87,15 @@ def streamlit_app(
             with PassthroughContext():  # replace with st.expander("") if needed
                 FIND_BY_TICKER = "Ticker symbols"
                 ENTER_URL_DIRECTLY = "URLs"
-                data_source_option = sac.segmented(
-                    items=[
-                        sac.SegmentedItem(label=FIND_BY_TICKER),
-                        sac.SegmentedItem(label=ENTER_URL_DIRECTLY),
-                    ],
-                    size="xs",
-                    grow=True,
-                )
+                # data_source_option = sac.segmented(
+                #     items=[
+                #         sac.SegmentedItem(label=FIND_BY_TICKER),
+                #         sac.SegmentedItem(label=ENTER_URL_DIRECTLY),
+                #     ],
+                #     size="xs",
+                #     grow=True,
+                # )
+                data_source_option = FIND_BY_TICKER
                 selected_ticker = data_source_option == FIND_BY_TICKER
                 selected_url = data_source_option == ENTER_URL_DIRECTLY
                 if selected_ticker:
@@ -177,54 +139,38 @@ def streamlit_app(
                     if not input_urls:
                         st.info("Please enter at least one URL.")
                         st.stop()
-                section_1_2, all_sections = st_radio(
-                    "Select Report Sections",
-                    ["Only MD&A", "All Report Sections"],
-                    horizontal=True,
-                    help="MD&A stands for Management Discussion and Analysis. It's a section of a company's annual report in which management discusses numerous aspects of the company, such as market dynamics, operating results, risk factors, and more.",
-                )
-                if section_1_2:
-                    sections = ["part1item2"]
-                elif all_sections:
-                    sections = None
+                section_1_2 = False
+                all_sections = True
+                # section_1_2, all_sections = st_radio(
+                #     "Select Report Sections",
+                #     ["Only MD&A", "All Report Sections"],
+                #     horizontal=True,
+                #     help="MD&A stands for Management Discussion and Analysis. It's a section of a company's annual report in which management discusses numerous aspects of the company, such as market dynamics, operating results, risk factors, and more.",
+                # )
+                # if section_1_2:
+                #     sections = ["part1item2"]
+                # elif all_sections:
+                #     sections = None
 
-    try:
-        assert tickers or input_urls
-        for ticker in tickers:
-            metadata = get_metadata(
-                secapio_api_key,
-                doc="10-Q",
-                latest_from_ticker=ticker,
-            )
-            metadatas.append(metadata)
-            url = metadata["linkToFilingDetails"]
-            html = download_html(
-                secapio_api_key,
-                doc="10-Q",
-                url=url,
-                sections=sections,
-                ticker=ticker,
-            )
-            htmls_urls.append(url)
-            htmls.append(html)
-        for url in input_urls:
-            html = download_html(
-                secapio_api_key,
-                doc="10-Q",
-                url=url,
-                sections=sections,
-                ticker=None,
-            )
-            metadata = get_metadata(secapio_api_key, doc="10-Q", url=url)
-            metadatas.append(metadata)
-            htmls_urls.append(url)
-            htmls.append(html)
-    except SecapioApiKeyNotSetError:
-        st.error("**Error**: API key not set. Please provide a valid API key.")
-        st.stop()
-    except SecapioApiKeyInvalidError:
-        st.error("**Error**: Invalid API key. Please check your API key and try again.")
-        st.stop()
+    assert tickers or input_urls
+    for ticker in tickers:
+        metadata = None
+        metadatas.append(metadata)
+        # url = metadata["linkToFilingDetails"]
+        html = get_latest_10q_html(ticker=ticker)
+        htmls_urls.append(ticker)
+        htmls.append(html)
+    for url in input_urls:
+        html = download_html(
+            doc="10-Q",
+            url=url,
+            sections=sections,
+            ticker=None,
+        )
+        metadata = None
+        metadatas.append(metadata)
+        htmls_urls.append(url)
+        htmls.append(html)
 
     if not HIDE_UI_ELEMENTS:
         process_steps = [
@@ -342,11 +288,10 @@ def streamlit_app(
                                 value=True,
                             )
                         if selected_step == 3:
-                            use_expanders = st.checkbox(
-                                "Merged view",
-                                value=not use_tree_view,
+                            use_tree_view = st.checkbox(
+                                "Tree view",
+                                value=use_tree_view,
                             )
-                            use_tree_view = not use_expanders
                     with right:
                         if selected_step == 2:
                             element_column_count = st.number_input(
@@ -392,7 +337,10 @@ def streamlit_app(
 
     def get_label(metadata, url):
         if not metadata:
-            return url.split("/")[-1]
+            if url and "/" in url:
+                return url.split("/")[-1]
+            else:
+                return url
         company_name = normalize_company_name(metadata["companyName"])
         form_type = metadata["formType"]
         filed_at = parse(metadata["filedAt"]).astimezone(tzutc()).strftime("%b %d, %Y")
@@ -402,6 +350,8 @@ def streamlit_app(
         return f"**{company_name}** | {form_type} filed on {filed_at} for the period ended {period_of_report}"
 
     def get_buttons(metadata, url, *, align="end"):
+        if "/" not in url:
+            return
         if metadata:
             url_buttons = [
                 {
@@ -575,15 +525,13 @@ def streamlit_app(
         icon = {
             se.TextElement: "text-paragraph",
             se.TitleElement: "bookmark",
-            se.RootSectionElement: "journal-bookmark",
+            se.TopLevelSectionStartMarker: "journal-bookmark",
             se.TableElement: "table",
             se.ImageElement: "card-image",
             se.UndeterminedElement: "question-square",
             se.IrrelevantElement: "trash",
-            se.RootSectionSeparatorElement: "pause",
+            se.TopLevelSectionStartMarker: "pause",
             se.EmptyElement: "trash",
-            se.BulletpointTextElement: "blockquote-left",
-            se.FootnoteTextElement: "braces-asterisk",
         }.get(element.__class__, "box")
         return sac.TreeItem(
             f"{add_spaces(element.__class__.__name__.replace('Element',''))}",

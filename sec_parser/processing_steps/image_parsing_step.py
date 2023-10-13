@@ -3,18 +3,18 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import ImageElement
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
 
 
-class ImageParsingStep(AbstractElementwiseTransformStep):
+class ImageParsingStep(AbstractElementwiseProcessingStep):
     """
     ImageParsingStep class for transforming elements into ImageElement instances.
 
@@ -22,13 +22,13 @@ class ImageParsingStep(AbstractElementwiseTransformStep):
     primarily by replacing suitable candidates with ImageElement instances.
     """
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         is_unary = element.html_tag.is_unary_tree()
-        contains_image = element.html_tag.contains_tag("img", include_self=True)
+        contains_image = element.html_tag.contains_tag("img", include_containers=True)
         if is_unary and contains_image:
             return ImageElement.convert_from(element)
 

@@ -10,7 +10,7 @@ def test_contains_tag_with_self_included():
     tag = soup.div
 
     # Acts
-    result = contains_tag(tag, "div", include_self=True)
+    result = contains_tag(tag, "div", include_containers=True)
 
     # Assert
     assert result is True, "Expected True when tag is included in search"
@@ -23,7 +23,7 @@ def test_contains_tag_with_self_excluded():
     tag = soup.div
 
     # Act
-    result = contains_tag(tag, "div", include_self=False)
+    result = contains_tag(tag, "div", include_containers=False)
 
     # Assert
     assert result is False, "Expected False when tag is excluded from search"

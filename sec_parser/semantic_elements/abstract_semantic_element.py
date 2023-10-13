@@ -1,12 +1,12 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
-from sec_parser.exceptions.core_exceptions import SecParserValueError
+from sec_parser.exceptions import SecParserValueError
 
-if TYPE_CHECKING:
-    from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+if TYPE_CHECKING:  # pragma: no cover
+    from sec_parser.processing_engine.html_tag import HtmlTag
 
 
 class AbstractSemanticElement(ABC):  # noqa: B024
@@ -26,25 +26,8 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     def __init__(
         self,
         html_tag: HtmlTag,
-        inner_elements: list[AbstractSemanticElement],
     ) -> None:
         self.html_tag = html_tag
-
-        # inner_elements allows for a Semantic Element to act as a container
-        # container that can encapsulate other semantic elements.
-        # This is used for handling special cases where a single HTML root
-        # tag wraps multiple semantic elements. This maintains structural integrity
-        # and allows for seamless reconstitution of the original HTML document.
-        # Why is this useful:
-        # 1. Some semantic elements, like XBRL tags (<ix>), may wrap multiple semantic
-        # elements. The container ensures that these relationships are not broken
-        # during parsing.
-        # 2. Enables the parser to fully reconstruct the original HTML document, which
-        # opens up possibilities for features like semantic segmentation visualization
-        # (e.g. recreate the original document but put semi-transparent colored boxes
-        # on top, based on semantic meaning), serialization of parsed documents into
-        # an augmented HTML, and debugging by comparing to the original document.
-        self.inner_elements = inner_elements or []
 
     @classmethod
     def convert_from(
@@ -52,51 +35,30 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         source: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
-        return cls(source.html_tag, source.inner_elements)
+        return cls(source.html_tag)
 
-    @classmethod
-    def get_direct_abstract_semantic_subclass(
-        cls,
-    ) -> type[AbstractSemanticElement]:
-        """
-        Given a class, find the class that is one step below
-        AbstractSemanticElement in its inheritance hierarchy.
-        """
-        if not issubclass(cls, AbstractSemanticElement):
-            msg = "Argument must be a subclass of AbstractSemanticElement."
-            raise TypeError(msg)
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "cls_name": self.__class__.__name__,
+            **self.html_tag.to_dict(),
+        }
 
-        root_child = None
-        for ancestor in cls.mro():
-            if ancestor is AbstractSemanticElement:
-                break
-            root_child = ancestor
 
-        if root_child is None:
-            msg = "Could not find a root child class for the given class."
-            raise ValueError(msg)
-
-        return root_child
-
-    def __repr__(self) -> str:
-        return f"{self.__class__.__name__}<{self.html_tag.name}>"
-
-class AbstractLevelElement(AbstractSemanticElement, ABC):
+class AbstractLevelElement(AbstractSemanticElement):
     """
     The AbstractLevelElement class provides a level attribute to semantic elements.
     It represents hierarchical levels in the document structure. For instance,
     a main section title might be at level 1, a subsection at level 2, etc.
     """
 
-    MIN_LEVEL = 1
+    MIN_LEVEL = 0
 
     def __init__(
         self,
         html_tag: HtmlTag,
-        inner_elements: list[AbstractSemanticElement],
         level: int | None = None,
     ) -> None:
-        super().__init__(html_tag, inner_elements)
+        super().__init__(html_tag)
         level = level or self.MIN_LEVEL
 
         if level < self.MIN_LEVEL:
@@ -111,7 +73,13 @@ class AbstractLevelElement(AbstractSemanticElement, ABC):
         *,
         level: int | None = None,
     ) -> AbstractLevelElement:
-        return cls(source.html_tag, source.inner_elements, level=level)
+        return cls(source.html_tag, level=level)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **super().to_dict(),
+            "level": self.level,
+        }
 
 
 class InvalidLevelError(SecParserValueError):

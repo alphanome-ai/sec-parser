@@ -1,14 +1,14 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
 
-if TYPE_CHECKING:
-    from sec_parser.processing_engine.html_parsers.html_tag import HtmlTag
+if TYPE_CHECKING:  # pragma: no cover
+    from sec_parser.processing_engine.html_tag import HtmlTag
 
 
 class HighlightedTextElement(AbstractSemanticElement):
@@ -21,11 +21,10 @@ class HighlightedTextElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        inner_elements: list[AbstractSemanticElement],
         *,
         style: TextStyle | None = None,
     ) -> None:
-        super().__init__(html_tag, inner_elements)
+        super().__init__(html_tag)
         if style is None:
             msg = "styles must be specified for HighlightedElement"
             raise ValueError(msg)
@@ -40,9 +39,14 @@ class HighlightedTextElement(AbstractSemanticElement):
     ) -> HighlightedTextElement:
         return cls(
             source.html_tag,
-            source.inner_elements,
             style=style,
         )
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            **super().to_dict(),
+            "text_style": asdict(self.style),
+        }
 
 
 @dataclass(frozen=True)
@@ -64,19 +68,16 @@ class TextStyle:
         style_string: dict[tuple[str, str], float],
     ) -> TextStyle:
         filtered_styles = {
-            (k, v): p for (k, v), p in style_string.items()
+            (k, v): p
+            for (k, v), p in style_string.items()
             if p >= cls.PERCENTAGE_THRESHOLD
         }
 
         bold_with_font_weight = any(
-            cls._is_bold_with_font_weight(k, v)
-            for (k, v) in filtered_styles
+            cls._is_bold_with_font_weight(k, v) for (k, v) in filtered_styles
         )
 
-        italic = any(
-            k == "font-style" and v == "italic"
-            for (k, v) in filtered_styles
-        )
+        italic = any(k == "font-style" and v == "italic" for (k, v) in filtered_styles)
 
         return cls(
             bold_with_font_weight=bold_with_font_weight,

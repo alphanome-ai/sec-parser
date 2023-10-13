@@ -2,17 +2,16 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.semantic_elements.semantic_elements import (
-    IrrelevantElement,
-)
+from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
     from sec_parser.semantic_tree.tree_node import TreeNode
 
-DEFAULT_MAX_LINE_LENGTH = 50
+DEFAULT_show_chars = 50
+
 
 class SemanticTree:
     def __init__(self, root_nodes: list[TreeNode]) -> None:
@@ -23,18 +22,19 @@ class SemanticTree:
         *,
         pretty: bool | None = True,
         ignored_types: tuple[type[AbstractSemanticElement], ...] | None = None,
-        max_line_length: int|None = None,
+        show_chars: int | None = None,
         _nodes: list[TreeNode] | None = None,
         _level: int = 0,
         _prefix: str = "",
-        _is_root: bool= True,
+        _is_root: bool = True,
     ) -> str:
+        """
+        render function is used to visualize the structure of the semantic tree.
+        It is primarily used for debugging purposes.
+        """
         pretty = pretty if pretty is not None else True
-        ignored_types = ignored_types or (IrrelevantElement, )
-        max_line_length = (
-            max_line_length if max_line_length and max_line_length > 0
-            else DEFAULT_MAX_LINE_LENGTH
-        )
+        ignored_types = ignored_types or (IrrelevantElement,)
+        show_chars = show_chars if show_chars and show_chars > 0 else DEFAULT_show_chars
 
         tree_strings = []
         _nodes = _nodes if _nodes is not None else self.root_nodes
@@ -49,21 +49,23 @@ class SemanticTree:
             indent = "├── " if not is_last else "└── "
             new_prefix = "│   " if not is_last else "    "
 
-            level = f"[L{node.level}]" if hasattr(node, "level") else ""
-            class_name = f"{element.__class__.__name__}{level}:"
-            title = element.html_tag.get_text()
-            if len(title) > max_line_length:
-                title = f"{title[:max_line_length]}..."
+            level = ""
+            lvl = getattr(node.semantic_element, "level", "")
+            if lvl:
+                level = f"[L{lvl}]"
+                if pretty:
+                    level = f"\033[1;92m{level}\033[0m"
+            class_name = f"{element.__class__.__name__}{level}"
+            contents = element.html_tag.get_text().strip()
+            if len(contents) > show_chars:
+                contents = f"{contents[:show_chars//2]}...{contents[show_chars//2:]}"
             if pretty:
                 class_name = f"\033[1;34m{class_name}\033[0m"
-                title = f"\033[1;32m{title}\033[0m"
 
             # Fix the alignment for root elements
-            line = (
-                f"{_prefix}{indent}{class_name} {title}"
-                if not _is_root
-                else f"{class_name} {title}"
-            )
+            line = f"{_prefix}{indent}{class_name}" if not _is_root else f"{class_name}"
+            if contents:
+                line = f"{line}: {contents}"
             tree_strings.append(line)
 
             # Recursive call: Always set _is_root to False for non-root elements

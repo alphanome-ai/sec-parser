@@ -53,15 +53,12 @@ def get_emoji_chain(cls: type):
         emoji = {
             se.TextElement: "📝",
             se.TitleElement: "🏷️",
-            se.RootSectionElement: "📚",
+            se.TopLevelSectionStartMarker: "📚",
             se.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.UndeterminedElement: "🛸",
             se.IrrelevantElement: "🚮",
-            se.RootSectionSeparatorElement: "⏸️",
             se.EmptyElement: "0️⃣",
-            se.BulletpointTextElement: "✏️",
-            se.FootnoteTextElement: "↙️",
         }.get(ancestor, "❓")
 
         emojis.append(emoji)
@@ -124,4 +121,3 @@ def get_accession_number_from_url(url):
         msg = "Input string must be 18 characters long"
         raise ValueError(msg)
     return s[:10] + "-" + s[10:12] + "-" + s[12:]
-

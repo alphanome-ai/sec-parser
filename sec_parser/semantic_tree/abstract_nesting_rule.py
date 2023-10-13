@@ -12,4 +12,4 @@ class AbstractNestingRule(ABC):
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        pass
+        raise NotImplementedError  # pragma: no cover

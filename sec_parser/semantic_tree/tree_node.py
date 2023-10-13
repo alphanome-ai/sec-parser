@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import Iterable
 
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -11,6 +11,18 @@ if TYPE_CHECKING:
 
 
 class TreeNode:
+    """
+    The TreeNode class is a fundamental part of the semantic tree structure.
+    Each TreeNode represents a node in the tree. It holds a reference to a semantic
+    element, maintains a list of its child nodes, and a reference to its parent node.
+    This class provides methods for managing the tree structure, such as adding and
+    removing child nodes.
+    Importantly, these methods ensure logical consistency as children/parents are
+    being changed.
+    For example, if a parent is removed from a child, the child is automatically
+    removed from the parent.
+    """
+
     def __init__(
         self: TreeNode,
         semantic_element: AbstractSemanticElement,
@@ -19,9 +31,9 @@ class TreeNode:
         children: Iterable[TreeNode] | None = None,
     ) -> None:
         self.semantic_element = semantic_element
-        self._parent = None
         self._children: list[TreeNode] = []
-        self.parent = parent
+        self._parent: TreeNode | None = None
+        self.parent = parent  # call 'parent` setter
         if children is not None:
             self.add_children(list(children))
 

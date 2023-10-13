@@ -11,17 +11,17 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
     InvalidLevelError,
 )
+from sec_parser.semantic_elements.composite_semantic_element import (
+    CompositeSemanticElement,
+)
 from sec_parser.semantic_elements.semantic_elements import (
-    BulletpointTextElement,
     EmptyElement,
-    FootnoteTextElement,
     ImageElement,
     IrrelevantElement,
-    RootSectionElement,
-    RootSectionSeparatorElement,
     TableElement,
     TextElement,
     TitleElement,
+    TopLevelSectionStartMarker,
     UndeterminedElement,
 )
 
@@ -29,15 +29,13 @@ __all__ = [
     "AbstractSemanticElement",
     "AbstractLevelElement",
     "UndeterminedElement",
-    "RootSectionElement",
+    "TopLevelSectionStartMarker",
     "TextElement",
     "TitleElement",
     "InvalidLevelError",
     "IrrelevantElement",
     "ImageElement",
     "TableElement",
-    "RootSectionSeparatorElement",
     "EmptyElement",
-    "BulletpointTextElement",
-    "FootnoteTextElement",
+    "CompositeSemanticElement",
 ]

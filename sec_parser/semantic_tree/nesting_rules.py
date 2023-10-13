@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 from sec_parser.semantic_elements.semantic_elements import AbstractLevelElement
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -21,11 +21,12 @@ class AbstractNestingRule(ABC):
     parameters like exclude_parents and exclude_children.
     """
 
-    def __init__(self,
-                 *,
-                 exclude_parents: set[type[AbstractSemanticElement]]|None = None,
-                 exclude_children: set[type[AbstractSemanticElement]]|None = None,
-                 ) -> None:
+    def __init__(
+        self,
+        *,
+        exclude_parents: set[type[AbstractSemanticElement]] | None = None,
+        exclude_children: set[type[AbstractSemanticElement]] | None = None,
+    ) -> None:
         super().__init__()
         self._exclude_parents = exclude_parents
         self._exclude_children = exclude_children
@@ -35,11 +36,13 @@ class AbstractNestingRule(ABC):
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        if (self._exclude_parents
-            and any(isinstance(parent, t) for t in self._exclude_parents)):
+        if self._exclude_parents and any(
+            isinstance(parent, t) for t in self._exclude_parents
+        ):
             return False
-        if (self._exclude_children
-            and any(isinstance(child, t) for t in self._exclude_children)):
+        if self._exclude_children and any(
+            isinstance(child, t) for t in self._exclude_children
+        ):
             return False
         return self._should_be_nested_under(parent, child)
 
@@ -49,7 +52,8 @@ class AbstractNestingRule(ABC):
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
+
 
 class AlwaysNestAsParentRule(AbstractNestingRule):
     def __init__(
@@ -71,8 +75,8 @@ class AlwaysNestAsParentRule(AbstractNestingRule):
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        return (isinstance(parent, self._cls)
-            and not isinstance(child, self._cls))
+        return isinstance(parent, self._cls) and not isinstance(child, self._cls)
+
 
 class AlwaysNestAsChildRule(AbstractNestingRule):
     def __init__(
@@ -94,8 +98,7 @@ class AlwaysNestAsChildRule(AbstractNestingRule):
         parent: AbstractSemanticElement,
         child: AbstractSemanticElement,
     ) -> bool:
-        return (not isinstance(parent, self._cls)
-            and isinstance(child, self._cls))
+        return not isinstance(parent, self._cls) and isinstance(child, self._cls)
 
 
 class NestSameTypeDependingOnLevelRule(AbstractNestingRule):

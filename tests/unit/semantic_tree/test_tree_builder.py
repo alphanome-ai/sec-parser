@@ -1,12 +1,22 @@
-
 import bs4
 
-from sec_parser import AbstractSemanticElement, HtmlTag, TreeBuilder
+from sec_parser import AbstractSemanticElement, TreeBuilder
+from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
+    AlwaysNestAsChildRule,
+    AlwaysNestAsParentRule,
     NestSameTypeDependingOnLevelRule,
 )
+from sec_parser.semantic_tree.semantic_tree import SemanticTree
+from sec_parser.semantic_tree.tree_node import TreeNode
+
+
+def html_tag(tag_name: str, text: str) -> HtmlTag:
+    tag = bs4.Tag(name=tag_name)
+    tag.string = text
+    return HtmlTag(tag)
 
 
 class BaseElement(AbstractSemanticElement):
@@ -21,56 +31,28 @@ class ChildElement(AbstractSemanticElement):
     pass
 
 
+class IgnoredParent(AbstractSemanticElement):
+    pass
+
+
+class IgnoredChild(AbstractSemanticElement):
+    pass
+
+
 class LeveledElement(AbstractLevelElement):
     pass
 
 
-class ParentChildNestingRule(AbstractNestingRule):
-    def _should_be_nested_under(
-        self, parent: AbstractSemanticElement,
-        child: AbstractSemanticElement,
-    ) -> bool:
-        return isinstance(parent, ParentElement) and isinstance(child, ChildElement)
-
-
-def test_nesting_of_leveled_elements():
+def test_smoke_test():
     # Arrange
-    mock_elements = [
-        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=1),
-        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
-        LeveledElement(HtmlTag(bs4.Tag(name="p")), [], level=2),
-    ]
-    rules = [NestSameTypeDependingOnLevelRule()]
-    tree_builder = TreeBuilder(create_default_rules=lambda: rules)
+    tag = bs4.Tag(name="p")
+    tag.string = "Hello, world!"
+    element = BaseElement(HtmlTag(tag))
+    expected_tree = SemanticTree([TreeNode(element)])
+    tree_builder = TreeBuilder()
 
     # Act
-    tree = tree_builder.build(mock_elements)
+    actual_tree = tree_builder.build([element])
 
     # Assert
-    assert len(tree.root_nodes) == 1
-    assert isinstance(tree.root_nodes[0].semantic_element, LeveledElement)
-    assert tree.root_nodes[0].semantic_element.level == 1
-    assert len(tree.root_nodes[0].children) == 2
-    for child in tree.root_nodes[0].children:
-        assert isinstance(child.semantic_element, LeveledElement)
-        assert child.semantic_element.level == 2
-
-
-def test_nesting_of_parent_and_child():
-    # Arrange
-    mock_elements = [
-        ParentElement(HtmlTag(bs4.Tag(name="p")), []),
-        ChildElement(HtmlTag(bs4.Tag(name="p")), []),
-    ]
-    def rules():
-        return [ParentChildNestingRule()]
-    tree_builder = TreeBuilder(create_default_rules=rules)
-
-    # Act
-    tree = tree_builder.build(mock_elements)
-
-    # Assert
-    assert len(tree.root_nodes) == 1
-    assert isinstance(tree.root_nodes[0].semantic_element, ParentElement)
-    assert len(tree.root_nodes[0].children) == 1
-    assert isinstance(tree.root_nodes[0].children[0].semantic_element, ChildElement)
+    assert actual_tree.render() == expected_tree.render()

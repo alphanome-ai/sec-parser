@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    AbstractElementwiseTransformStep,
+    AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
 from sec_parser.semantic_elements.highlighted_text_element import (
@@ -11,13 +11,13 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     TextStyle,
 )
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
 
 
-class HighlightedTextParsingStep(AbstractElementwiseTransformStep):
+class HighlightedTextParsingStep(AbstractElementwiseProcessingStep):
     """
     HighlightedText class for transforming elements into HighlightedText instances.
 
@@ -27,15 +27,15 @@ class HighlightedTextParsingStep(AbstractElementwiseTransformStep):
 
     def __init__(
         self,
-        process_only: set[type[AbstractSemanticElement]] | None = None,
-        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
         super().__init__(
-            process_only=process_only,
-            except_dont_process=except_dont_process,
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
         )
 
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,

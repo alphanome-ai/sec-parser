@@ -4,10 +4,12 @@ from abc import abstractmethod
 from dataclasses import dataclass
 from typing import Callable
 
-from sec_parser.exceptions.core_exceptions import SecParserValueError
-from sec_parser.processing_steps.abstract_processing_step import AbstractTransformStep
+from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
+)
+from sec_parser.semantic_elements.composite_semantic_element import (
+    CompositeSemanticElement,
 )
 
 ElementTransformer = Callable[[AbstractSemanticElement], AbstractSemanticElement]
@@ -21,31 +23,26 @@ class ElementwiseProcessingContext:
     """
 
     # The is_root variable informs the processing step whether the given
-    # semantic element has an HTML tag that is at the root level of the
+    # semantic element wraps an HTML tag that is at the top level of the
     # HTML document.
     is_root_element: bool
 
 
-class AbstractElementwiseTransformStep(AbstractTransformStep):
+class AbstractElementwiseProcessingStep(AbstractProcessingStep):
     """
-    `AbstractElementwiseTransformStep` class applies transformations
-    to a list of semantic and container elements. Transformations are
-    applied recursively, element by element. The class can also be
-    used to iterate over all elements without applying transformations.
+    `AbstractElementwiseTransformStep` class is used to iterate over
+    all Semantic Elements with or without applying transformations.
     """
 
     def __init__(
         self,
         *,
-        process_only: set[type[AbstractSemanticElement]] | None = None,
-        except_dont_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
         super().__init__()
-        self._processed_types = process_only or set()
-        self._then_excluded_types = except_dont_process or set()
-        if self._processed_types & self._then_excluded_types:
-            msg = "Processed types and ignored types should not overlap."
-            raise SecParserValueError(msg)
+        self._types_to_process = types_to_process or set()
+        self._types_to_exclude = types_to_exclude or set()
 
     def _process(
         self,
@@ -57,17 +54,18 @@ class AbstractElementwiseTransformStep(AbstractTransformStep):
             is_root_element=True,
         )
 
-        for i, input_element in enumerate(elements):
-            if self._processed_types and not any(
-                isinstance(input_element, t) for t in self._processed_types
+        for i, e in enumerate(elements):
+            # avoids lint error "`element` overwritten by assignment target"
+            element = e
+
+            if self._types_to_process and not any(
+                isinstance(element, t) for t in self._types_to_process
             ):
                 continue
-            if any(isinstance(input_element, t) for t in self._then_excluded_types):
+            if any(isinstance(element, t) for t in self._types_to_exclude):
                 continue
 
-            element = self._transform_element(input_element, context)
-
-            if element.inner_elements:
+            if isinstance(element, CompositeSemanticElement):
                 child_context = ElementwiseProcessingContext(
                     is_root_element=False,
                 )
@@ -75,22 +73,24 @@ class AbstractElementwiseTransformStep(AbstractTransformStep):
                     element.inner_elements,
                     _context=child_context,
                 )
+            else:
+                element = self._process_element(element, context)
 
             elements[i] = element
 
         return elements
 
     @abstractmethod
-    def _transform_element(
+    def _process_element(
         self,
         element: AbstractSemanticElement,
         context: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         """
-        `transform_element` method is responsible for transforming a
+        `_process_element` method is responsible for transforming a
         single semantic element into another.
 
         It can also be utilized to simply iterate over all
         elements without applying any transformations.
         """
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
