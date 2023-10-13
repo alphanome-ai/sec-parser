@@ -126,6 +126,11 @@ tasks:
 ### Developer Tools ###
 #######################
 
+  bump:
+    desc: Bump the version number.
+    cmds:
+      - poetry run cz bump {{.CLI_ARGS}}
+
   dash:
     desc: Launch the debug dashboard for debugging and demos.
     cmds:

@@ -1,3 +1,34 @@
+## 0.16.0 (2023-10-13)
+
+### Feat
+
+- implement developer guide
+- **SemanticElement**: implement __repr__
+- **taskfile**: auto-download e2e-data repository
+- **e2e**: implement end-to-end testing infrastructure
+- **e2e**: implement end-to-end testing infrastructure
+- add e2e test initial implementation
+- **CompositeSemanticElement**: add unwrap_elements method
+- rename SecParser to Edgar10QParser
+- add to_dict() methods and remove e2e tests
+- **semantic_element/render**: add preview of the end of text
+- **dev_utils**: remove sec-api.io integration from Debug Dashboard
+- remove facade
+- remove bulletpoint and footnote parsing
+- remove sec-api.io integration
+- implement initial version of v2
+
+### Fix
+
+- **Taskfile**: fix check printing error msg without error (2)
+- **Taskfile**: fix check printing error msg without error
+- erroneous replacement (2)
+- erroneous replacement
+
+### Refactor
+
+- **tests/semantic_tree**: split into different files
+
 ## 0.15.1 (2023-10-10)
 
 ### Refactor
