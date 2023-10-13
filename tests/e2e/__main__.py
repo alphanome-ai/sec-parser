@@ -2,7 +2,7 @@ from pathlib import Path
 
 import click
 
-from tests.e2e.main import manage_snapshot
+from tests.e2e.manage_snapshots import VerificationFailedError, manage_snapshots
 
 DEFAULT_E2E_DATA_DIR = (
     Path(__file__).resolve().parent.parent.parent.parent / "sec-parser-e2e-data"
@@ -30,7 +30,7 @@ def generate(data_dir: str) -> None:
 
     :param data_dir: Directory where the generated snapshot will be saved.
     """
-    manage_snapshot("generate", data_dir)
+    manage_snapshots("generate", data_dir)
 
 
 @click.command()
@@ -46,7 +46,11 @@ def verify(data_dir: str) -> None:
 
     :param data_dir: Directory where the snapshot to be verified is located.
     """
-    manage_snapshot("verify", data_dir)
+    try:
+        manage_snapshots("verify", data_dir)
+    except VerificationFailedError as e:
+        print(e)
+        exit(1)
 
 
 cli.add_command(generate)
