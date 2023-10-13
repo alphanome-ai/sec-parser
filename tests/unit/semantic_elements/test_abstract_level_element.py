@@ -33,3 +33,15 @@ def test_to_dict():
 
     # Assert
     assert actual["cls_name"] == "DummyElement"
+
+
+def test_repr():
+    # Arrange
+    tag = bs4.Tag(name="div")
+    element = DummyElement(HtmlTag(tag))
+
+    # Act
+    repr_string = repr(element)
+
+    # Assert
+    assert repr_string == "DummyElement<div>"

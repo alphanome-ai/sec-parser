@@ -43,6 +43,9 @@ class AbstractSemanticElement(ABC):  # noqa: B024
             **self.html_tag.to_dict(),
         }
 
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}<{self.html_tag.name}>"
+
 
 class AbstractLevelElement(AbstractSemanticElement):
     """
