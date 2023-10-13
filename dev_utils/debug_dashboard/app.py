@@ -6,7 +6,6 @@ import streamlit as st
 import streamlit_antd_components as sac
 from dateutil.parser import parse
 from dateutil.tz import tzutc
-from dotenv import load_dotenv
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 import sec_parser as sp
@@ -32,8 +31,6 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_radio,
 )
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
-
-load_dotenv()
 
 USE_METADATA = True
 DEFAULT_PAGE_SIZE = 50
