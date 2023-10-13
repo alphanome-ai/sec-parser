@@ -56,3 +56,16 @@ def test_to_dict():
         "html_preview": "<span>AAAAAAAAAAAAAA...[33]...AAAAAAAAAAAAA</span>",
         "html_hash": "3836a62b",
     }
+
+
+def test_get_pretty_source_code():
+    # Arrange
+    tag = bs4.Tag(name="div")
+    tag.string = "Hello, world!"
+    html_tag = HtmlTag(tag)
+
+    # Act
+    pretty_source_code = html_tag.get_source_code(pretty=True)
+
+    # Assert
+    assert pretty_source_code == "<div>\n Hello, world!\n</div>\n"
