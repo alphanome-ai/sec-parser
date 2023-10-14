@@ -47,7 +47,7 @@ tasks:
       - task: unit-tests
       - task: lint-without-autofix
       - task: verify-docs-integrity
-      - task: e2e-verify
+      - task: e2e-verify-dataset
 
 ####################################
 ### Additional Development Tools ###
@@ -113,3 +113,32 @@ tasks:
     silent: true
     cmds:
       - if [ -d "{{.ROOT_DIR}}/../sec-parser-e2e-data" ]; then :; else echo "Repository does not exist. Cloning from GitHub..."; git clone https://github.com/alphanome-ai/sec-parser-e2e-data "{{.ROOT_DIR}}/../sec-parser-e2e-data" || { echo "Directory ../sec-parser-e2e-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-e2e-data. Aborting."; exit 1; }; fi
+
+  check-and-push:
+    cmds:
+      - task: pre-push-checks
+      - git push
+
+######################################
+### Shorthand Tasks for Efficiency ###
+######################################
+
+  c: # You can just run `task c` instead of `task pre-commit-checks`.
+    deps:
+      - pre-commit-checks
+
+  p: # You can just run `task pp` instead of `task pre-push-checks`.
+    deps:
+      - pre-push-checks
+
+  pp: # You can just run `task pp` instead of `task check-and-push`.
+    deps:
+      - check-and-push
+
+  d: # You can just run `task d` instead of `task launch-debug-dashboard`.
+    deps:
+      - launch-debug-dashboard
+
+  m: # You can just run `task m` instead of `task monitor-unit-tests`.
+    deps:
+      - monitor-unit-tests
