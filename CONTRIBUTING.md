@@ -2,11 +2,11 @@
 
 Contributing to `sec-parser` is a rewarding way to learn and improve this open-source project. Whether you are a user looking to expand your knowledge or a developer eager to delve into the codebase, this guide is here to help you get started.
 
-## Learning Workflows
+## Understanding the Workflows
 
 Before diving into the codebase guides, we recommend setting up your environment and understanding our contribution workflow. Please visit [**Common Contributing Guidelines**](https://github.com/alphanome-ai/common-contributing-guidelines) for information on environment setup, coding standards, and contribution workflows that are common across our repositories.
 
-## Learning Codebase
+## Exploring the Codebase
 
 If you are new to `sec-parser` and would like to get started, please refer to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html).
   
