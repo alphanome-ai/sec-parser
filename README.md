@@ -45,7 +45,7 @@
   <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
   </b>
 </div>
-<be>
+<br>
 
 # Overview
 
