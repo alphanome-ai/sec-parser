@@ -63,7 +63,7 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 
 This guide will walk you through the process of installing the `sec-parser` package and using it to extract the "Segment Operating Performance" section as a semantic tree from the latest Apple 10-Q filing.
 
-### Installation
+## Installation
 
 First, install the `sec-parser` package using pip:
 
@@ -77,7 +77,7 @@ In order to run the example code in this README, you'll also need the `sec_downl
 pip install sec-downloader
 ```
 
-### Usage
+## Usage
 
 Once you've installed the necessary packages, you can start by downloading the filing from the SEC EDGAR website. Here's how you can do it:
 
@@ -130,7 +130,7 @@ print("\n".join(sp.render(section).split("\n")[:13]) + "...")
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
-### What's Next?
+## What's Next?
 
 You've successfully parsed an SEC document into semantic elements and arranged them into a tree structure. To further analyze this data with analytics or AI, you can use any tool of your choice.
 
@@ -144,7 +144,7 @@ pip install sec-ai
 
 # Best Practices
 
-### Importing modules
+## Importing modules
 
 1. Standard: `import sec_parser as sp`
 1. Package-Level: `from sec_parser import SomeClass`
