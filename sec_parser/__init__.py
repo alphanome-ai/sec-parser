@@ -10,12 +10,14 @@ from sec_parser.semantic_elements.semantic_elements import (
     EmptyElement,
     ImageElement,
     IrrelevantElement,
-    TableElement,
     TextElement,
     TitleElement,
     TopLevelSectionStartMarker,
     UndeterminedElement,
 )
+from sec_parser.semantic_elements.table_element import TableElement
+from sec_parser.semantic_tree.nesting_rules import AbstractNestingRule
+from sec_parser.semantic_tree.render_ import render
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_builder import TreeBuilder
 from sec_parser.semantic_tree.tree_node import TreeNode
@@ -43,4 +45,6 @@ __all__ = [
     "SemanticTree",
     "TreeNode",
     "HtmlTag",
+    # Misc
+    "render",
 ]

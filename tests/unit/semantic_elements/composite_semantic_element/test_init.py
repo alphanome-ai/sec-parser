@@ -69,16 +69,16 @@ def test_convert_from_source_valid_inner_elements(default_inner_elements):
     with valid inner elements.
     """
     # Arrange
-    mock_html_tag = MockHtmlTag()
-    source = Mock(spec=AbstractSemanticElement)
-    source.html_tag = mock_html_tag
+    shared_mock = Mock()
+    other = AbstractSemanticElement(shared_mock)
 
     # Act
     converted = CompositeSemanticElement.convert_from(
-        source, inner_elements=default_inner_elements
+        other,
+        inner_elements=default_inner_elements,
     )
 
     # Assert
     assert isinstance(converted, CompositeSemanticElement)
     assert converted.inner_elements == default_inner_elements
-    assert converted.html_tag == mock_html_tag
+    assert converted.html_tag == shared_mock

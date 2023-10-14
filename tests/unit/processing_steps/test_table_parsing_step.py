@@ -1,7 +1,8 @@
 import pytest
 
 from sec_parser.processing_steps.table_parsing_step import TableParsingStep
-from sec_parser.semantic_elements.semantic_elements import ImageElement, TableElement
+from sec_parser.semantic_elements.semantic_elements import ImageElement
+from sec_parser.semantic_elements.table_element import TableElement
 from tests.unit._utils import assert_elements
 from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 

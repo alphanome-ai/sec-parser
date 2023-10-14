@@ -27,7 +27,11 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         self,
         html_tag: HtmlTag,
     ) -> None:
-        self.html_tag = html_tag
+        self._html_tag = html_tag
+
+    @property
+    def html_tag(self) -> HtmlTag:
+        return self._html_tag
 
     @classmethod
     def convert_from(
@@ -35,16 +39,38 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         source: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
-        return cls(source.html_tag)
+        return cls(source._html_tag)  # noqa: SLF001
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "cls_name": self.__class__.__name__,
-            **self.html_tag.to_dict(),
+            **self._html_tag.to_dict(),
         }
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}<{self.html_tag.name}>"
+        return f"{self.__class__.__name__}<{self._html_tag.name}>"
+
+    @property
+    def text(self) -> str:
+        """Property text is a passthrough to the HtmlTag text property."""
+        return self._html_tag.text
+
+    def get_source_code(self, *, pretty: bool = False) -> str:
+        """get_source_code is a passthrough to the HtmlTag method."""
+        return self._html_tag.get_source_code(pretty=pretty)
+
+    def get_summary(self) -> str:
+        """
+        Return a human-readable summary of the semantic element.
+
+        This method aims to provide a simplified, human-friendly representation of
+        the underlying HtmlTag. In this base implementation, it is a passthrough
+        to the HtmlTag's get_text() method.
+
+        Note: Subclasses may override this method to provide a more specific summary
+        based on the type of element.
+        """
+        return self.text
 
 
 class AbstractLevelElement(AbstractSemanticElement):
@@ -76,7 +102,7 @@ class AbstractLevelElement(AbstractSemanticElement):
         *,
         level: int | None = None,
     ) -> AbstractLevelElement:
-        return cls(source.html_tag, level=level)
+        return cls(source._html_tag, level=level)  # noqa: SLF001
 
     def to_dict(self) -> dict[str, Any]:
         return {

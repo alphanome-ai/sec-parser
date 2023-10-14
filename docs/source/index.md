@@ -14,6 +14,7 @@
 
 notebooks/user_guide
 notebooks/developer_guide
+notebooks/a
 ```
 
 <hr>

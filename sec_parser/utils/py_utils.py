@@ -1,3 +1,6 @@
+import re
+
+
 def get_direct_subclass_of_base_class(cls: type, base_class: type) -> type:
     """
     Given a class, find the class that is one step below
@@ -21,3 +24,8 @@ def get_direct_subclass_of_base_class(cls: type, base_class: type) -> type:
         raise ValueError(msg)
 
     return root_child
+
+
+def clean_whitespace(input_str: str) -> str:
+    """Replace newlines and any following spaces with a single space."""
+    return re.sub(r"\s+", " ", input_str).strip()

@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:  # pragma: no cover
-    from collections.abc import Iterable
+    from collections.abc import Iterable, Iterator
 
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
@@ -30,12 +30,16 @@ class TreeNode:
         parent: TreeNode | None = None,
         children: Iterable[TreeNode] | None = None,
     ) -> None:
-        self.semantic_element = semantic_element
+        self._semantic_element = semantic_element
         self._children: list[TreeNode] = []
         self._parent: TreeNode | None = None
         self.parent = parent  # call 'parent` setter
         if children is not None:
             self.add_children(list(children))
+
+    @property
+    def semantic_element(self) -> AbstractSemanticElement:
+        return self._semantic_element
 
     @property
     def children(self: TreeNode) -> list[TreeNode]:
@@ -72,5 +76,19 @@ class TreeNode:
     def has_child(self: TreeNode, child: TreeNode) -> bool:
         return child in self._children
 
+    def get_descendants(self: TreeNode) -> Iterator[TreeNode]:
+        for child in self._children:
+            yield child
+            yield from child.get_descendants()
+
     def __repr__(self: TreeNode) -> str:
         return f"TreeNode(parent={self.parent}, children={len(self._children)})"
+
+    @property
+    def text(self) -> str:
+        """Property text is a passthrough to the SemanticElement text property."""
+        return self._semantic_element.text
+
+    def get_source_code(self, *, pretty: bool = False) -> str:
+        """get_source_code is a passthrough to the SemanticElement method."""
+        return self._semantic_element.get_source_code(pretty=pretty)

@@ -10,7 +10,8 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
-from sec_parser.semantic_elements.semantic_elements import TableElement, TitleElement
+from sec_parser.semantic_elements.semantic_elements import TitleElement
+from sec_parser.semantic_elements.table_element import TableElement
 from tests.unit._utils import assert_elements
 from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 

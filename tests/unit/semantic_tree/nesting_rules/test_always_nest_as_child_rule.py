@@ -43,7 +43,6 @@ class LeveledElement(AbstractLevelElement):
     pass
 
 
-
 def test_always_nest_as_child():
     # Arrange
     mock_elements = [
@@ -63,12 +62,11 @@ def test_always_nest_as_child():
     tree = tree_builder.build(mock_elements)
 
     # Assert
-    assert len(tree.root_nodes) == 3
-    assert isinstance(tree.root_nodes[0].semantic_element, ChildElement)
-    assert isinstance(tree.root_nodes[1].semantic_element, ParentElement)
-    assert isinstance(tree.root_nodes[2].semantic_element, ParentElement)
-    assert len(tree.root_nodes[1].children) == 1
-    assert isinstance(tree.root_nodes[1].children[0].semantic_element, ChildElement)
-    assert len(tree.root_nodes[2].children) == 1
-    assert isinstance(tree.root_nodes[1].children[0].semantic_element, ChildElement)
-
+    assert len(list(tree)) == 3
+    assert isinstance(list(tree)[0].semantic_element, ChildElement)
+    assert isinstance(list(tree)[1].semantic_element, ParentElement)
+    assert isinstance(list(tree)[2].semantic_element, ParentElement)
+    assert len(list(tree)[1].children) == 1
+    assert isinstance(list(tree)[1].children[0].semantic_element, ChildElement)
+    assert len(list(tree)[2].children) == 1
+    assert isinstance(list(tree)[1].children[0].semantic_element, ChildElement)

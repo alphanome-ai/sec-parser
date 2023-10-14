@@ -3,16 +3,16 @@ import streamlit as st
 from dev_utils.debug_dashboard.sec_utils import generate_bool_list
 
 
-def st_hide_streamlit_element(key: str, value: str):
+def st_hide_page_element(*, tag_name: str, key: str, value: str) -> None:
     st.markdown(
         f"""
-            <style>
-                div[{key}="{value}"] {{
-                    visibility: hidden;
-                    height: 0%;
-                    position: fixed;
-                }}
-            </style>
+        <style>
+            {tag_name}[{key}="{value}"] {{
+                visibility: hidden;
+                height: 0%;
+                position: fixed;
+            }}
+        </style>
         """,
         unsafe_allow_html=True,
     )

@@ -41,9 +41,8 @@
   <b>
   <a href="https://parser.app.alphanome.dev">See Demo</a> |
   <a href="https://sec-parser.rtfd.io">Read Docs</a> |
-  <a href="https://github.com/orgs/alphanome-ai/discussions">Ask Questions</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a> |
-  <a href="https://github.com/orgs/alphanome-ai/projects/3">Roadmap</a>
+  <a href="https://github.com/orgs/alphanome-ai/discussions">Join Discussions</a> |
+  <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
   </b>
 </div>
 <be>
@@ -52,64 +51,72 @@
 
 The `sec-parser` project simplifies extracting meaningful information from SEC EDGAR HTML documents by organizing them into semantic elements and a tree structure. Semantic elements might include section titles, paragraphs, and tables, each classified for easier data manipulation. This forms a semantic tree that corresponds to the visual and informational structure of the document.
 
-This tool is especially beneficial for Artificial Intelligence (AI) and Large Language Models (LLM) applications by streamlining data pre-processing and feature extraction.
+This tool is especially beneficial for Artificial Intelligence (AI), Machine Learning (ML), and Large Language Models (LLM) applications by streamlining data pre-processing and feature extraction.
 
 - Explore the [**Demo**](https://parser.app.alphanome.dev/)
 - Read the [**Documentation**](https://sec-parser.rtfd.io)
-- Ask questions in [**Discussions**](https://github.com/orgs/alphanome-ai/discussions)
+- Join the [**Discussions**](https://github.com/orgs/alphanome-ai/discussions) to get help, propose ideas, or chat with the community
 - Report bugs in [**Issues**](https://github.com/alphanome-ai/sec-parser/issues)
-- Check out the [**Roadmap**](https://github.com/orgs/alphanome-ai/projects/3)
+- Stay updated and contribute to our project's direction in [**Announcements**](https://github.com/orgs/alphanome-ai/discussions/categories/announcements) and [**Roadmap**](https://github.com/orgs/alphanome-ai/discussions/categories/roadmap-future-plans)
 
-# Installation
+# Getting Started
 
-Open a terminal and run the following command to install `sec-parser`:
+To get started, first install the `sec-parser` package:
 
 ```bash
 pip install sec-parser
 ```
 
-# Usage
+As an example, let's extract the "Segment Operating Performance" section as a semantic tree from the latest Apple 10-Q filing.
 
-To retrieve the most recent 10-Q SEC EDGAR document in HTML format for Apple, follow these steps:
+First, we'll need to download the filing from the SEC EDGAR website.
 
+```python
+# pip install sec-downloader
+from sec_downloader import Downloader  
+
+dl = Downloader("MyCompanyName", "email@example.com")
+html = dl.get_latest_html("10-Q", "AAPL")
 ```
-```
 
-report into a collection of semantic elements extracted from the document. 
+> **Note**
+The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
 
-The following code snippet demonstrates how to do this:
+Now, we can parse the filing into semantic elements and arrange them into a tree structure:
 
 ```python
 import sec_parser as sp
 
-elements = sp.SecParser().parse(html)
+# Parse the HTML into a list of semantic elements
+elements = sp.Edgar10QParser().parse(html)
+
+# Construct a semantic tree to allow for easy filtering by section
+tree = sp.TreeBuilder().build(elements)
+
+# Find section "Segment Operating Performance"
+section = [n for n in tree.nodes if n.text.startswith("Segment")][0]
+
+# Preview the tree
+print("\n".join(sp.render(section).split("\n")[:13]) + "...")
 ```
-Here is an example of the output you can expect:
-```
-TopLevelSectionStartMarker: PART I — FINANCIAL INFORMATION
-├── TitleElement: Item 1. Financial Statements
-│   ├── TitleElement: CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (U...
-│   │   ├── TextElement: (In millions, except number of shares which are re...
-│   │   ├── TableElement: ...
-│   ...
-```
 
-For more examples and advanced usage, you can continue learning how to use sec-parser by referring to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html).
+<pre>
+<b><font color="navy">TitleElement:</font></b> Segment Operating Performance
+├── <b><font color="navy">TextElement:</font></b> The following table sho... (dollars in millions):
+├── <b><font color="navy">TableElement:</font></b> 414 characters.
+├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Americas
+│   └── <b><font color="navy">TextElement:</font></b> Americas net sales decr... net sales of Services.
+├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Europe
+│   └── <b><font color="navy">TextElement:</font></b> The weakness in foreign...er net sales of iPhone.
+├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Greater China
+│   └── <b><font color="navy">TextElement:</font></b> The weakness in the ren...er net sales of iPhone.
+├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Japan
+│   └── <b><font color="navy">TextElement:</font></b> The weakness in the yen..., Home and Accessories.
+└── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Rest of Asia Pacific
+    ├── <b><font color="navy">TextElement:</font></b> The weakness in foreign...lower net sales of Mac....
+</pre>
 
-# Contributing
-
-Contributing to `sec-parser` is a rewarding way to improve this open-source project. Whether you are a user interested in expanding your knowledge or a developer who wants to dive deeper into the codebase, we have comprehensive guides to get you started.
-
-- **User Guide**: If you are new to `sec-parser` and would like to get started, please refer to the [**Quickstart User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html).
-  
-- **Developer Guide**: For those interested in contributing to `sec-parser`, the [**Comprehensive Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html) provides an in-depth walkthrough of the codebase and offers examples to help you contribute effectively.
-
-Both guides are interactive and allow you to engage with the code and concepts as you learn. You can run and modify all the code examples for yourself by cloning the repository and running the respective notebooks in a Jupyter environment.
-
-Alternatively, you can run the notebooks directly in your browser using Google Colab.
-
-> **Note**
-Before contributing, we highly recommend familiarizing yourself with these guides. They will help you understand the structure and style of our codebase, enabling you to make effective contributions.
+For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
 # Best Practices
 
@@ -126,5 +133,8 @@ The root-level package `sec_parser` contains only the most common symbols. For m
 > **Warning**
 To allow us to maintain backward compatibility with your code during internal structure refactoring for `sec-parser`, avoid deep or chained imports such as `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
 
+# Contributing
+For information about setting up the development environment, coding standards, and contribution workflows, please refer to our [CONTRIBUTING.md](https://github.com/alphanome-ai/sec-parser/blob/main/CONTRIBUTING.md) guide.
+
 # License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/alphanome-ai/sec-parser/blob/main/LICENSE) file for details.

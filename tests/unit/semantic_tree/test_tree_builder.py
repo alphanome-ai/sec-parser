@@ -56,4 +56,4 @@ def test_smoke_test():
     actual_tree = tree_builder.build([element])
 
     # Assert
-    assert render(actual_tree.root_nodes) == render(expected_tree.root_nodes)
+    assert render(actual_tree) == render(expected_tree)

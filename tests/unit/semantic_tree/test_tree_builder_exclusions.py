@@ -3,14 +3,7 @@ import bs4
 from sec_parser import AbstractSemanticElement, TreeBuilder
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
-from sec_parser.semantic_tree.nesting_rules import (
-    AbstractNestingRule,
-    AlwaysNestAsChildRule,
-    AlwaysNestAsParentRule,
-    NestSameTypeDependingOnLevelRule,
-)
-from sec_parser.semantic_tree.semantic_tree import SemanticTree
-from sec_parser.semantic_tree.tree_node import TreeNode
+from sec_parser.semantic_tree.nesting_rules import AlwaysNestAsChildRule
 
 
 def html_tag(tag_name: str, text: str) -> HtmlTag:
@@ -61,10 +54,10 @@ def test_exclude_ignored_parent():
     tree = tree_builder.build(mock_elements)
 
     # Assert
-    assert len(tree.root_nodes) == 3
-    assert isinstance(tree.root_nodes[0].semantic_element, IgnoredParent)
-    assert isinstance(tree.root_nodes[1].semantic_element, ChildElement)
-    assert isinstance(tree.root_nodes[2].semantic_element, ParentElement)
+    assert len(list(tree)) == 3
+    assert isinstance(list(tree)[0].semantic_element, IgnoredParent)
+    assert isinstance(list(tree)[1].semantic_element, ChildElement)
+    assert isinstance(list(tree)[2].semantic_element, ParentElement)
 
 
 def test_exclude_ignored_child():
@@ -85,10 +78,10 @@ def test_exclude_ignored_child():
     tree = tree_builder.build(mock_elements)
 
     # Assert
-    assert len(tree.root_nodes) == 3
-    assert isinstance(tree.root_nodes[0].semantic_element, ParentElement)
-    assert isinstance(tree.root_nodes[1].semantic_element, IgnoredChild)
-    assert isinstance(tree.root_nodes[2].semantic_element, ParentElement)
+    assert len(list(tree)) == 3
+    assert isinstance(list(tree)[0].semantic_element, ParentElement)
+    assert isinstance(list(tree)[1].semantic_element, IgnoredChild)
+    assert isinstance(list(tree)[2].semantic_element, ParentElement)
 
 
 def test_exclude_both_ignored_parent_and_child():
@@ -117,9 +110,9 @@ def test_exclude_both_ignored_parent_and_child():
     tree = tree_builder.build(mock_elements)
 
     # Assert
-    assert len(tree.root_nodes) == 5
-    assert isinstance(tree.root_nodes[0].semantic_element, ParentElement)
-    assert isinstance(tree.root_nodes[1].semantic_element, ParentElement)
-    assert isinstance(tree.root_nodes[2].semantic_element, IgnoredChild)
-    assert isinstance(tree.root_nodes[3].semantic_element, IgnoredParent)
-    assert isinstance(tree.root_nodes[4].semantic_element, ChildElement)
+    assert len(list(tree)) == 5
+    assert isinstance(list(tree)[0].semantic_element, ParentElement)
+    assert isinstance(list(tree)[1].semantic_element, ParentElement)
+    assert isinstance(list(tree)[2].semantic_element, IgnoredChild)
+    assert isinstance(list(tree)[3].semantic_element, IgnoredParent)
+    assert isinstance(list(tree)[4].semantic_element, ChildElement)

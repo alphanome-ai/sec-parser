@@ -77,22 +77,21 @@ class HtmlTag:
             self._frozen_dict = frozendict(
                 {
                     "tag_name": self._bs4.name,
-                    "text_preview": self._generate_preview(self.get_text()),
+                    "text_preview": self._generate_preview(self.text),
                     "html_preview": self._generate_preview(self.get_source_code()),
                     "html_hash": xxhash.xxh32(self.get_source_code()).hexdigest(),
                 },
             )
         return self._frozen_dict
 
-    def get_text(self) -> str:
+    @property
+    def text(self) -> str:
         """
-        `get_text` method extracts text from child elements.
-        This operation is recursive and can be computationally expensive
-        if repeated. Hence, the result is cached as the underlying data
-        doesn't change.
+        `text` property recursively extracts text from the child tags.
+        The result is cached as the underlying data doesn't change.
         """
         if self._text is None:
-            self._text = self._bs4.get_text().strip()
+            self._text = self._bs4.text.strip()
         return self._text
 
     @property

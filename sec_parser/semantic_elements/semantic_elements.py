@@ -53,9 +53,5 @@ class TextElement(AbstractSemanticElement):
     """The TextElement class represents a standard text paragraph within a document."""
 
 
-class TableElement(AbstractSemanticElement):
-    """The TableElement class represents a standard table within a document."""
-
-
 class ImageElement(AbstractSemanticElement):
     """The ImageElement class represents a standard image within a document."""

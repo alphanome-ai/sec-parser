@@ -29,17 +29,33 @@ class IgnoredElement(AbstractSemanticElement):
     pass
 
 
+def test_tree_argument_overloading():
+    # Arrange
+    tree1 = new_node("p", "")
+    tree2 = [tree1]
+    tree3 = SemanticTree(tree2)
+
+    # Act
+    result1 = render(tree1, pretty=False)
+    result2 = render(tree2, pretty=False)
+    result3 = render(tree3, pretty=False)
+
+    # Assert
+    assert result1.strip()
+    assert result1 == result2 == result3
+
+
 def test_basic_render():
     # Arrange
     tree = get_tree()
 
     # Act
-    result = render(tree.root_nodes, pretty=False)
+    result = render(list(tree), pretty=False)
 
     # Assert
     assert (
         result
-        == "Element\n├── ElementWithLevel[L2]: Child 1 of node1\n├── Element: Child 2 of node1, with its own child\n│   └── Element: Grandchild of node1 (Child of node5)\n└── Element: Another child for node1\nElement: AAAAAAAAAAAAAAAAAAAAAAAAA...AAAAAAAAAAAAAAAAAAAAAAAAAA"
+        == "Element\n├── ElementWithLevel[L2]: Child 1 of node1\n├── Element: Child 2 of node1, with its own child\n│   └── Element: Grandchild of node1 (Child of node5)\n└── Element: Another child for node1\nElement: AAAAAAAAAAAAAAAAAAAAAAA...AAAAAAAAAAAAAAAAAAAAAAA"
     )
 
 
@@ -48,12 +64,12 @@ def test_render_with_pretty_option():
     tree = get_tree()
 
     # Act
-    result = render(tree.root_nodes, pretty=True)
+    result = render(list(tree), pretty=True)
 
     # Assert
     assert (
         result
-        == "\x1b[1;34mElement\x1b[0m\n├── \x1b[1;34mElementWithLevel\x1b[1;92m[L2]\x1b[0m\x1b[0m: Child 1 of node1\n├── \x1b[1;34mElement\x1b[0m: Child 2 of node1, with its own child\n│   └── \x1b[1;34mElement\x1b[0m: Grandchild of node1 (Child of node5)\n└── \x1b[1;34mElement\x1b[0m: Another child for node1\n\x1b[1;34mElement\x1b[0m: AAAAAAAAAAAAAAAAAAAAAAAAA...AAAAAAAAAAAAAAAAAAAAAAAAAA"
+        == "\x1b[1;34mElement\x1b[0m\n├── \x1b[1;34mElementWithLevel\x1b[1;92m[L2]\x1b[0m\x1b[0m: Child 1 of node1\n├── \x1b[1;34mElement\x1b[0m: Child 2 of node1, with its own child\n│   └── \x1b[1;34mElement\x1b[0m: Grandchild of node1 (Child of node5)\n└── \x1b[1;34mElement\x1b[0m: Another child for node1\n\x1b[1;34mElement\x1b[0m: AAAAAAAAAAAAAAAAAAAAAAA...AAAAAAAAAAAAAAAAAAAAAAA"
     )
 
 

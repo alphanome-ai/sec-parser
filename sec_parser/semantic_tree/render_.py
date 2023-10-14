@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -10,11 +11,12 @@ if TYPE_CHECKING:  # pragma: no cover
         AbstractSemanticElement,
     )
 
+
 DEFAULT_CHAR_DISPLAY_LIMIT = 50
 
 
 def render(
-    root_nodes: list[TreeNode] | TreeNode,
+    tree: list[TreeNode] | TreeNode | SemanticTree,
     *,
     pretty: bool | None = True,
     ignored_types: tuple[type[AbstractSemanticElement], ...] | None = None,
@@ -28,7 +30,12 @@ def render(
     render function is used to visualize the structure of the semantic tree.
     It is primarily used for debugging purposes.
     """
-    root_nodes = [root_nodes] if isinstance(root_nodes, TreeNode) else root_nodes
+    if isinstance(tree, TreeNode):
+        root_nodes = [tree]
+    elif isinstance(tree, SemanticTree):
+        root_nodes = list(tree)
+    else:
+        root_nodes = tree
     pretty = pretty if pretty is not None else True
     ignored_types = ignored_types or (IrrelevantElement,)
     char_display_limit = (
@@ -57,13 +64,10 @@ def render(
             if pretty:
                 level = f"\033[1;92m{level}\033[0m"
         class_name = f"{element.__class__.__name__}{level}"
-        contents = element.html_tag.get_text().strip()
+        contents = element.get_summary().strip()
         if len(contents) > char_display_limit:
-            contents = (
-                f"{contents[:char_display_limit//2]}"
-                "..."
-                f"{contents[char_display_limit//2:]}"
-            )
+            half_limit = (char_display_limit - 3) // 2  # Subtract 3 for the "..."
+            contents = f"{contents[:half_limit]}...{contents[-half_limit:]}"
         if pretty:
             class_name = f"\033[1;34m{class_name}\033[0m"
 
@@ -76,7 +80,7 @@ def render(
         # Recursive call: Always set _is_root to False for non-root elements
         tree_strings.append(
             render(
-                root_nodes=root_nodes,
+                root_nodes,
                 pretty=pretty,
                 ignored_types=ignored_types,
                 char_display_limit=char_display_limit,
@@ -87,5 +91,4 @@ def render(
             ),
         )
 
-    return "\n".join(filter(None, tree_strings))
     return "\n".join(filter(None, tree_strings))

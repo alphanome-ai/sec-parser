@@ -5,6 +5,7 @@ import re
 import bs4
 
 import sec_parser.semantic_elements as se
+import sec_parser.semantic_elements.table_element
 
 
 def normalize_company_name(name):
@@ -54,7 +55,7 @@ def get_emoji_chain(cls: type):
             se.TextElement: "📝",
             se.TitleElement: "🏷️",
             se.TopLevelSectionStartMarker: "📚",
-            se.TableElement: "📊",
+            sec_parser.semantic_elements.table_element.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.UndeterminedElement: "🛸",
             se.IrrelevantElement: "🚮",

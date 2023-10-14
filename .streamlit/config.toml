@@ -1,4 +1,7 @@
 [theme]
 base="light"
-textColor="#39414e"
-primaryColor="#3274dc"
+primaryColor="#767FA6"
+
+[client]
+showErrorDetails = false
+toolbarMode = "minimal"

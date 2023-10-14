@@ -204,9 +204,9 @@ click==8.1.7 ; python_version >= "3.9" and python_full_version != "3.9.7" and py
 colorama==0.4.6 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
     --hash=sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44 \
     --hash=sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6
-cssutils==2.7.1 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
-    --hash=sha256:1e92e0d9dab2ec8af9f38d715393964ba533dc3beacab9b072511dfc241db775 \
-    --hash=sha256:340ecfd9835d21df8f98500f0dfcea0aee41cb4e19ecbc2cf94f0a6d36d7cb6c
+cssutils==2.9.0 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
+    --hash=sha256:89477b3d17d790e97b9fb4def708767061055795aae6f7c82ae32e967c9be4cd \
+    --hash=sha256:f8b013169e281c0c6083207366c5005f5dd4549055f7aba840384fb06a78745c
 decorator==5.1.1 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
     --hash=sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330 \
     --hash=sha256:b8c3f85900b9dc423225913c5aace94729fe1fa9763b38939a95226f02d37186
@@ -510,9 +510,9 @@ pickleshare==0.7.5 ; python_version >= "3.9" and python_full_version != "3.9.7" 
 platformdirs==3.11.0 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
     --hash=sha256:cf8ee52a3afdb965072dcc652433e0c7e3e40cf5ea1477cd4b3b1d2eb75495b3 \
     --hash=sha256:e9d171d00af68be50e9202731309c4e658fd8bc76f55c11c7dd760d023bda68e
-prompt-toolkit==3.0.39 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
-    --hash=sha256:04505ade687dc26dc4284b1ad19a83be2f2afe83e7a828ace0c72f3a1df72aac \
-    --hash=sha256:9dffbe1d8acf91e3de75f3b544e4842382fc06c6babe903ac9acb74dc6e08d88
+prompt-toolkit==3.0.36 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
+    --hash=sha256:3e163f254bef5a03b146397d7c1963bd3e2812f0964bb9a24e6ec761fd28db63 \
+    --hash=sha256:aa64ad242a462c5ff0363a7b9cfe696c20d55d9fc60c11fd8e632d064804d305
 ptyprocess==0.7.0 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" and sys_platform != "win32" \
     --hash=sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35 \
     --hash=sha256:5c5d0a3b48ceee0b48485e0c26037c0acd7d29765ca3fbb5cb3831d347423220

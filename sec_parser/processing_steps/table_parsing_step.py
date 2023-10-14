@@ -6,7 +6,7 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import TableElement
+from sec_parser.semantic_elements.table_element import TableElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (

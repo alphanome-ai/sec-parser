@@ -43,6 +43,6 @@ class TextParsingStep(AbstractElementwiseProcessingStep):
         Transform a single semantic element
         into a TextElement if applicable.
         """
-        if element.html_tag.get_text() == "":
+        if element.text == "":
             return EmptyElement.convert_from(element)
         return TextElement.convert_from(element)

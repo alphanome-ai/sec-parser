@@ -2,56 +2,65 @@ version: '3'
 
 tasks:
 
-#####################################
-### Composite Tasks and Shortcuts ###
-#####################################
+##############################################
+### Developer Tools: Application Launchers ###
+##############################################
 
-  pre-commit: 
-    desc: Composite task to run all quick checks.
+  dash:
+    desc: Launch a local debugging dashboard in your browser.
     cmds:
-      - task unit
-      - task lint-fix
+      # Using PYTHONPATH to allow Streamlit to monitor file changes. Learn more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
+      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/debug_dashboard/app.py --server.runOnSave=true
 
-  p:
-    desc: Shortcut for `task pre-commit`.
-    deps:
-      - pre-commit
+  unit-watch:
+    desc: "Launch unit tests and monitor for changes, rerunning tests immediately when files are modified."
+    cmds:
+      # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
+      # Note: also update .codecov.yml when changing the target coverage.
+      - poetry run ptw -- -- -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 {{.CLI_ARGS}} tests/unit/
+
+  docs:
+    desc: Launch a local documentation server to preview documentation in your browser, rebuilding the documentation when files are modified.
+    cmds:
+      - poetry run sphinx-autobuild docs/source docs/build/html
+      
+###################################
+### Automated Testing Pipelines ###
+###################################
+
+  p: 
+    desc: Run all pre-commit checks. Execute this before committing code.
+    cmds:
+      - task: unit
+      - task: lint-fix
+
+  pp:
+    desc: Run all pre-push checks. Execute this before pushing code (or creating a PR).
+    cmds:
+      - task: lint-fix
+      - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
+      - task: check-changes
+      - task: ci-cd-checks
+      - task: check-changes
 
   ci-cd-checks:
-    desc: Composite task to run all CI/CD checks.
+    desc: Run all CI/CD checks. Execute this to debug a failing CI/CD pipeline.
     cmds:
-      - task unit
-      - task lint
-      - task e2e-verify
+      - task: unit
+      - task: lint
+      - task: e2e-verify
+      - task: docs-verify
 
-######################
-### Run Unit Tests ###
-######################
+#######################
+### Developer Tools ###
+#######################
 
   unit:
     desc: Run unit tests and check code coverage.
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run pytest -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
-
-  unit-watch:
-    desc: Run unit tests and check code coverage immediately when files change.
-    cmds:
-      # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
-      # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run ptw -- -- -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
-
-
-###########################
-### Code Quality Checks ###
-###########################
-
-  lint:
-    desc: Lint the code without auto-fixing issues.
-    cmds:
-      - poetry run ruff check sec_parser/
-      - poetry run mypy
+      - poetry run pytest -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 {{.CLI_ARGS}} tests/unit/
 
   lint-fix:
     desc: Lint the code and auto-fix issues.
@@ -59,92 +68,51 @@ tasks:
       - poetry run ruff check --fix sec_parser/
       - poetry run mypy
 
-############################
-### Run End-to-end Tests ###
-############################
+  e2e-verify:
+    desc: Verify the end-to-end dataset snapshots against the latest parser results.
+    silent: true
+    cmds:
+      - task: clone-sec-parser-e2e-data
+      # Checking if the sec-parser-e2e-data directory has any changes in the working tree or index. If it does, aborting.
+      - cd "{{.ROOT_DIR}}/../sec-parser-e2e-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-e2e-data repository. Please commit or stash them before proceeding."; exit 1; fi
+      - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
 
   e2e-generate:
     desc: Generate the end-to-end dataset snapshots with the latest parser results.
     silent: true
     cmds:
-      # Check if the sec-parser-e2e-data directory exists. If not, download it.
-      - >
-        [ -d "{{.ROOT_DIR}}/../sec-parser-e2e-data" ] || {
-          git clone https://github.com/alphanome-ai/sec-parser-e2e-data "{{.ROOT_DIR}}/../sec-parser-e2e-data" || {
-            echo "Directory ../sec-parser-e2e-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-e2e-data. Aborting.";
-            exit 1;
-          }
-        }
-      # Abort if there are any changes in the working tree or index.
-      - >
-        if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; 
-        then :; 
-        else 
-          echo "Changes detected in the working tree or index. Please commit or stash them before proceeding."; 
-          exit 1; 
-        fi
-      # Generate snapshots.
+      - task: clone-sec-parser-e2e-data
+      - task: check-changes
       - poetry run python -m tests.e2e generate {{.CLI_ARGS}}
-      # Print a message for manual review of the snapshot and get the current commit hash of the repository.
-      - >
-        echo "Success!" && 
-        echo && 
-        echo "Now, please manually review the generated snapshot in sec-parser-e2e-data." && 
-        echo "If it appears correct, commit it to the sec-parser-e2e-data repository." && 
-        echo "Remember to include the sec-parser hash in the commit message:" && 
-        echo && 
-        echo "Generated by sec-parser, commit hash $(git rev-parse HEAD)"
+      - echo -e "Success!\n\nNow, please manually review the generated snapshot in sec-parser-e2e-data.\nIf it appears correct, commit it to the sec-parser-e2e-data repository.\nRemember to include the sec-parser hash in the commit message:\n\nGenerated by sec-parser, commit hash $(git rev-parse HEAD)"
 
-  e2e-verify:
-    desc: Verify the end-to-end dataset snapshots against the latest parser results.
+######################################################################################
+### Hidden: Too rarely used on their own, meant to be used as part of other tasks. ###
+######################################################################################
+
+  lint: # Lint the code without auto-fixing issues.
+    cmds:
+      - poetry run ruff check sec_parser/
+      - poetry run mypy
+
+  docs-verify:
     silent: true
     cmds:
-      # Check if the sec-parser-e2e-data directory exists. If not, download it.
-      - >
-        if [ -d "{{.ROOT_DIR}}/../sec-parser-e2e-data" ]; then
-          :
-        else
-          git clone https://github.com/alphanome-ai/sec-parser-e2e-data "{{.ROOT_DIR}}/../sec-parser-e2e-data" || {
-            echo "Directory ../sec-parser-e2e-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-e2e-data. Aborting.";
-            exit 1;
-          }
-        fi
-      # Abort if there are any changes in the working tree (or index) of the sec-parser-e2e-data repository. 
-      - >
-        cd "{{.ROOT_DIR}}/../sec-parser-e2e-data" && 
-        if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; 
-        then 
-          :; 
-        else 
-          echo "Changes detected in the working tree or index of the sec-parser-e2e-data repository. Please commit or stash them before proceeding."; 
-          exit 1; 
-        fi
-      # Verify the snapshots.
-      - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
+      - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
+      - echo "[Taskfile] Executing notebooks and checking for errors. The output will be saved to the notebook files."
+      - for file in $(find {{.ROOT_DIR}}/docs/source/notebooks -name "*.ipynb"); do echo -n "Processing file \"$file\"... "; poetry run exec_nb --exc_stop $file --dest $file && echo "done!" || { echo "Processing failed for file \"$file\""; exit 1; }; done
 
-#######################
-### Developer Tools ###
-#######################
+  check-changes: # Check for changes in the working tree or index. If there are any, abort.
+    silent: true
+    internal: true
+    cmds:
+      - if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index. Please commit or stash them before proceeding."; exit 1; fi
 
-  bump:
-    desc: Bump the version number.
+  clone-sec-parser-e2e-data: # Clone the sec-parser-e2e-data repository if it does not exist.
+    cmds:
+      - if [ -d "{{.ROOT_DIR}}/../sec-parser-e2e-data" ]; then :; else git clone https://github.com/alphanome-ai/sec-parser-e2e-data "{{.ROOT_DIR}}/../sec-parser-e2e-data" || { echo "Directory ../sec-parser-e2e-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-e2e-data. Aborting."; exit 1; }; fi
+
+  version-bump: # Bump the version number.
     cmds:
       - poetry run cz bump {{.CLI_ARGS}}
-
-  dash:
-    desc: Launch the debug dashboard for debugging and demos.
-    cmds:
-      # Extend PYTHONPATH to allow Streamlit to watch for file changes.
-      # Learn more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
-      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser && poetry run streamlit run dev_utils/debug_dashboard/app.py --server.runOnSave=true
-
-  docs:
-    desc: Run the documentation server.
-    cmds:
-      - poetry run sphinx-autobuild docs/source docs/build/html
-
-  poetry:
-    desc: "Run any poetry command that modifies dependencies. Example: task poetry -- add requests"
-    cmds:
-      - poetry {{.CLI_ARGS}}  
       - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
