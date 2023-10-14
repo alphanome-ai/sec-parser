@@ -33,7 +33,7 @@ jobs:
     - name: Install the library
       run: poetry install --no-interaction --only-root
     - name: Run Continuous Integration checks
-      run: poetry run task ci
+      run: poetry run task ci-checks
     - name: Upload coverage reports to Codecov
       if: matrix.python-version == vars.PRIMARY_PYTHON_VERSION
       uses: codecov/codecov-action@v3

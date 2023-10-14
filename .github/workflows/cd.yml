@@ -26,7 +26,7 @@ jobs:
     - name: Install the library
       run: poetry install --no-interaction --only-root
     - name: Run Continuous Integration checks
-      run: poetry run task ci
+      run: poetry run task ci-checks
     - name: Publish package
       run: |
         # Use GitHub's run_number as a post-release version identifier
