@@ -27,7 +27,7 @@ jobs:
     - name: Install the library
       run: poetry install --no-interaction --only-root
     - name: Run CI-CD-checks
-      run: poetry run task ci-cd-checks
+      run: poetry run task ci
 
     - name: Publish package
       run: |

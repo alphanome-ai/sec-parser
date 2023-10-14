@@ -118,6 +118,18 @@ print("\n".join(sp.render(section).split("\n")[:13]) + "...")
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
+### What's Next?
+
+You've successfully parsed an SEC document into semantic elements and arranged them into a tree structure. To further analyze this data with analytics or AI, you can use any tool of your choice.
+
+For a tailored experience, consider using our free and open-source library for AI-powered financial analysis: 
+
+```bash
+pip install sec-ai
+```
+
+[**Explore `sec-ai` on GitHub**](https://github.com/alphanome-ai/sec-ai)
+
 # Best Practices
 
 ### Importing modules

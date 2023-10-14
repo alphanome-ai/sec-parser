@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        python-version: ['3.9', '3.10', '3.11']
+        python-version: ['3.9', '3.10', '3.11', '3.12']
 
     steps:
     - name: Checkout code
@@ -30,12 +30,10 @@ jobs:
     - name: Install Task
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
-
     - name: Install the library
       run: poetry install --no-interaction --only-root
-    - name: Run CI-CD-checks
-      run: poetry run task ci-cd-checks
-
+    - name: Run Continuous Integration checks
+      run: poetry run task ci
     - name: Upload coverage reports to Codecov
       if: matrix.python-version == vars.PRIMARY_PYTHON_VERSION
       uses: codecov/codecov-action@v3
