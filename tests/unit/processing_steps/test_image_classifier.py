@@ -1,8 +1,7 @@
 import pytest
 
-from sec_parser.processing_steps.table_parsing_step import TableParsingStep
+from sec_parser.processing_steps.image_classifier import ImageClassifier
 from sec_parser.semantic_elements.semantic_elements import ImageElement
-from sec_parser.semantic_elements.table_element import TableElement
 from tests.unit._utils import assert_elements
 from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
@@ -14,24 +13,24 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             """
                 <div>
                 <div>
-                <table></table>
+                <img src="image.jpg" alt="Description of image" width="500" height="600">
                 </div>
                 </div>
             """,
             [
-                {"type": TableElement, "tag": "div"},
+                {"type": ImageElement, "tag": "div"},
             ],
         ),
     ],
 )
-def test_table_parsing_step(html_str, expected_elements):
+def test_image_classifier(html_str, expected_elements):
     """
-    test_table_parsing_step test checks that the TableParsingStep can successfully
+    test_image_classifier test checks that the ImageClassifier can successfully
     transform a list of semantic elements returned by `parse_initial_semantic_elements`.
     """
     # Arrange
     elements = parse_initial_semantic_elements(html_str)
-    step = TableParsingStep()
+    step = ImageClassifier()
 
     # Act
     processed_elements = step.process(elements)

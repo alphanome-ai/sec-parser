@@ -7,19 +7,19 @@ from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
 )
-from sec_parser.processing_steps.highlighted_text_parsing_step import (
-    HighlightedTextParsingStep,
+from sec_parser.processing_steps.highlighted_text_classifier import (
+    HighlightedTextClassifier,
 )
-from sec_parser.processing_steps.image_parsing_step import ImageParsingStep
-from sec_parser.processing_steps.table_parsing_step import TableParsingStep
-from sec_parser.processing_steps.text_parsing_step import TextParsingStep
-from sec_parser.processing_steps.title_parsing_step import TitleParsingStep
+from sec_parser.processing_steps.image_classifier import ImageClassifier
+from sec_parser.processing_steps.table_classifier import TableClassifier
+from sec_parser.processing_steps.text_classifier import TextClassifier
+from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
+    NotYetClassifiedElement,
     TextElement,
-    UndeterminedElement,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -85,7 +85,7 @@ class AbstractSemanticElementParser(ABC):
         root_tags = self._html_tag_parser.parse(html)
 
         elements: list[AbstractSemanticElement] = [
-            UndeterminedElement(tag) for tag in root_tags
+            NotYetClassifiedElement(tag) for tag in root_tags
         ]
 
         for step in steps:
@@ -110,9 +110,9 @@ class Edgar10QParser(AbstractSemanticElementParser):
     @classmethod
     def get_default_steps(cls) -> list[AbstractProcessingStep]:
         return [
-            ImageParsingStep(),
-            TableParsingStep(types_to_process={UndeterminedElement}),
-            TextParsingStep(types_to_process={UndeterminedElement}),
-            HighlightedTextParsingStep(types_to_process={TextElement}),
-            TitleParsingStep(),
+            ImageClassifier(),
+            TableClassifier(types_to_process={NotYetClassifiedElement}),
+            TextClassifier(types_to_process={NotYetClassifiedElement}),
+            HighlightedTextClassifier(types_to_process={TextElement}),
+            TitleClassifier(),
         ]

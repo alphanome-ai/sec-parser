@@ -18,9 +18,9 @@ if TYPE_CHECKING:  # pragma: no cover
     )
 
 
-class TitleParsingStep(AbstractElementwiseProcessingStep):
+class TitleClassifier(AbstractElementwiseProcessingStep):
     """
-    TitleParsingStep elements into TitleElement instances by scanning a list
+    TitleClassifier elements into TitleElement instances by scanning a list
     of semantic elements and replacing suitable candidates.
 
     The "_unique_styles_by_order" tuple:
@@ -64,4 +64,4 @@ class TitleParsingStep(AbstractElementwiseProcessingStep):
         self._add_unique_style(element.style)
 
         level = self._unique_styles_by_order.index(element.style)
-        return TitleElement.convert_from(element, level=level)
+        return TitleElement.create_from_element(element, level=level)

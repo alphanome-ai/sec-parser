@@ -18,17 +18,17 @@ from sec_parser.semantic_elements.semantic_elements import (
     EmptyElement,
     ImageElement,
     IrrelevantElement,
+    NotYetClassifiedElement,
     TextElement,
     TitleElement,
     TopLevelSectionStartMarker,
-    UndeterminedElement,
 )
 from sec_parser.semantic_elements.table_element import TableElement
 
 __all__ = [
     "AbstractSemanticElement",
     "AbstractLevelElement",
-    "UndeterminedElement",
+    "NotYetClassifiedElement",
     "TopLevelSectionStartMarker",
     "TextElement",
     "TitleElement",

@@ -8,14 +8,14 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
-from sec_parser.semantic_elements.semantic_elements import UndeterminedElement
+from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 
 def _create_element(tag) -> AbstractSemanticElement:
     if tag.name == "section":
         inner_tags = tag.get_children()
         return CompositeSemanticElement(tag, inner_elements=_parse_elements(inner_tags))
-    return UndeterminedElement(tag)
+    return NotYetClassifiedElement(tag)
 
 
 def _parse_elements(root_tags: list[HtmlTag]) -> list[AbstractSemanticElement]:

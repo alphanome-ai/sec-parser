@@ -4,8 +4,8 @@ import bs4
 import pytest
 
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.table_parsing_step import TableParsingStep
-from sec_parser.processing_steps.title_parsing_step import TitleParsingStep
+from sec_parser.processing_steps.table_classifier import TableClassifier
+from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
@@ -51,9 +51,9 @@ italic = TextStyle(
         ),
     ],
 )
-def test_title_parsing_step(elements, expected_elements):
+def test_title_classifier(elements, expected_elements):
     # Arrange
-    step = TitleParsingStep()
+    step = TitleClassifier()
 
     # Act
     processed_elements = step.process(elements)

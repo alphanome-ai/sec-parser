@@ -31,7 +31,7 @@ class HighlightedTextElement(AbstractSemanticElement):
         self.style = style
 
     @classmethod
-    def convert_from(
+    def create_from_element(
         cls,
         source: AbstractSemanticElement,
         *,

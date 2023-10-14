@@ -63,9 +63,9 @@ def test_composite_semantic_element_initialization_empty_inner_elements():
         CompositeSemanticElement(mock_html_tag, [])
 
 
-def test_convert_from_source_valid_inner_elements(default_inner_elements):
+def test_create_from_element_source_valid_inner_elements(default_inner_elements):
     """
-    Test if convert_from method can successfully convert from a source object
+    Test if create_from_element method can successfully convert from a source object
     with valid inner elements.
     """
     # Arrange
@@ -73,7 +73,7 @@ def test_convert_from_source_valid_inner_elements(default_inner_elements):
     other = AbstractSemanticElement(shared_mock)
 
     # Act
-    converted = CompositeSemanticElement.convert_from(
+    converted = CompositeSemanticElement.create_from_element(
         other,
         inner_elements=default_inner_elements,
     )

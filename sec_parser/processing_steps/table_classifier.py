@@ -6,7 +6,7 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import ImageElement
+from sec_parser.semantic_elements.table_element import TableElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -14,12 +14,12 @@ if TYPE_CHECKING:  # pragma: no cover
     )
 
 
-class ImageParsingStep(AbstractElementwiseProcessingStep):
+class TableClassifier(AbstractElementwiseProcessingStep):
     """
-    ImageParsingStep class for transforming elements into ImageElement instances.
+    TableClassifier class for converting elements into TableElement instances.
 
     This step scans through a list of semantic elements and changes it,
-    primarily by replacing suitable candidates with ImageElement instances.
+    primarily by replacing suitable candidates with TableElement instances.
     """
 
     def _process_element(
@@ -28,8 +28,8 @@ class ImageParsingStep(AbstractElementwiseProcessingStep):
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
         is_unary = element.html_tag.is_unary_tree()
-        contains_image = element.html_tag.contains_tag("img", include_containers=True)
-        if is_unary and contains_image:
-            return ImageElement.convert_from(element)
+        contains_table = element.html_tag.contains_tag("table", include_containers=True)
+        if is_unary and contains_table:
+            return TableElement.create_from_element(element)
 
         return element

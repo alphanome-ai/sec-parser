@@ -1,7 +1,7 @@
 import pytest
 
 from sec_parser import TextElement
-from sec_parser.processing_steps import TextParsingStep
+from sec_parser.processing_steps import TextClassifier
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
@@ -42,12 +42,12 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 )
 def test_text_step(html_str, expected_elements):
     """
-    test_text_step test checks that the TextParsingStep can successfully transform
+    test_text_step test checks that the TextClassifier can successfully transform
     a list of semantic elements returned by `parse_initial_semantic_elements`.
     """
     # Arrange
     elements = parse_initial_semantic_elements(html_str)
-    step = TextParsingStep()
+    step = TextClassifier()
 
     # Act
     processed_elements = step.process(elements)

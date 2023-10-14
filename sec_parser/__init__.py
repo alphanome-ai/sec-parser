@@ -5,15 +5,16 @@ from sec_parser.exceptions import (
 )
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag import HtmlTag
+from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
     EmptyElement,
     ImageElement,
     IrrelevantElement,
+    NotYetClassifiedElement,
     TextElement,
     TitleElement,
     TopLevelSectionStartMarker,
-    UndeterminedElement,
 )
 from sec_parser.semantic_elements.table_element import TableElement
 from sec_parser.semantic_tree.nesting_rules import AbstractNestingRule
@@ -28,7 +29,7 @@ __all__ = [
     "TreeBuilder",
     # Common semantic elements
     "AbstractSemanticElement",
-    "UndeterminedElement",
+    "NotYetClassifiedElement",
     "TopLevelSectionStartMarker",
     "TextElement",
     "TitleElement",
@@ -42,6 +43,7 @@ __all__ = [
     "SecParserValueError",
     # Common types
     "AbstractNestingRule",
+    "AbstractProcessingStep",
     "SemanticTree",
     "TreeNode",
     "HtmlTag",

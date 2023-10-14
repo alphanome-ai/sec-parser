@@ -1,12 +1,12 @@
 import pytest
 
-from sec_parser.processing_steps.highlighted_text_parsing_step import (
-    HighlightedTextParsingStep,
+from sec_parser.processing_steps.highlighted_text_classifier import (
+    HighlightedTextClassifier,
 )
-from sec_parser.processing_steps.title_parsing_step import TitleParsingStep
+from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.semantic_elements.semantic_elements import (
+    NotYetClassifiedElement,
     TitleElement,
-    UndeterminedElement,
 )
 from tests.unit._utils import assert_elements
 from tests.unit.processing_steps._utils import parse_initial_semantic_elements
@@ -30,7 +30,7 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             """,
             [
                 {"type": TitleElement, "tag": "div"},
-                {"type": UndeterminedElement, "tag": "div"},
+                {"type": NotYetClassifiedElement, "tag": "div"},
             ],
         ),
         (
@@ -49,22 +49,22 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             """,
             [
                 {"type": TitleElement, "tag": "div"},
-                {"type": UndeterminedElement, "tag": "span"},
+                {"type": NotYetClassifiedElement, "tag": "span"},
             ],
         ),
     ],
 )
 def test_title_step(html_str, expected_elements):
     """
-    test_title_step test checks that the HighlightedTextParsingStep and TitleParsingStep
+    test_title_step test checks that the HighlightedTextClassifier and TitleClassifier
     can successfully transform a list of semantic elements returned by
     `parse_initial_semantic_elements`.
     """
     # Arrange
     elements = parse_initial_semantic_elements(html_str)
 
-    highlighter_step = HighlightedTextParsingStep()
-    title_step = TitleParsingStep()
+    highlighter_step = HighlightedTextClassifier()
+    title_step = TitleClassifier()
 
     # Act
     elements = highlighter_step.process(elements)

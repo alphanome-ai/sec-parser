@@ -55,7 +55,7 @@ class CompositeSemanticElement(AbstractSemanticElement):
         self._inner_elements = elements
 
     @classmethod
-    def convert_from(
+    def create_from_element(
         cls,
         source: AbstractSemanticElement,
         *,

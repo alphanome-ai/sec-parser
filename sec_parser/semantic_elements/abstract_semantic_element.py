@@ -34,7 +34,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         return self._html_tag
 
     @classmethod
-    def convert_from(
+    def create_from_element(
         cls,
         source: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
@@ -96,7 +96,7 @@ class AbstractLevelElement(AbstractSemanticElement):
         self.level = level
 
     @classmethod
-    def convert_from(
+    def create_from_element(
         cls,
         source: AbstractSemanticElement,
         *,

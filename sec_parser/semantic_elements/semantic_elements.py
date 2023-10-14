@@ -6,11 +6,11 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 )
 
 
-class UndeterminedElement(AbstractSemanticElement):
+class NotYetClassifiedElement(AbstractSemanticElement):
     """
-    The UndeterminedElement class represents an element whose type
+    The NotYetClassifiedElement class represents an element whose type
     has not yet been determined. The parsing process aims to
-    transform all instances of this class into more specific
+    classify all instances of this class into more specific
     subclasses of AbstractSemanticElement.
     """
 

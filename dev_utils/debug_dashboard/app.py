@@ -538,7 +538,7 @@ def to_tree_item(tree_node: sp.TreeNode, indexer):
         se.TopLevelSectionStartMarker: "journal-bookmark",
         sec_parser.semantic_elements.table_element.TableElement: "table",
         se.ImageElement: "card-image",
-        se.UndeterminedElement: "question-square",
+        se.NotYetClassifiedElement: "question-square",
         se.IrrelevantElement: "trash",
         se.TopLevelSectionStartMarker: "pause",
         se.EmptyElement: "trash",

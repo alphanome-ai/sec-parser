@@ -57,7 +57,7 @@ def get_emoji_chain(cls: type):
             se.TopLevelSectionStartMarker: "📚",
             sec_parser.semantic_elements.table_element.TableElement: "📊",
             se.ImageElement: "🖼️",
-            se.UndeterminedElement: "🛸",
+            se.NotYetClassifiedElement: "🛸",
             se.IrrelevantElement: "🚮",
             se.EmptyElement: "0️⃣",
         }.get(ancestor, "❓")
