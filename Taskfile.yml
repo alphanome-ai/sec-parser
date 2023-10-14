@@ -47,7 +47,7 @@ tasks:
     desc: Run all CI/CD checks. Execute this to debug a failing CI/CD pipeline.
     cmds:
       - task: unit
-      - task: lint
+      - task: lint-only-check
       - task: docs-verify
       - task: e2e-verify
 
@@ -88,7 +88,7 @@ tasks:
       - poetry run ruff check --fix sec_parser/
       - poetry run mypy
 
-  lint-check: # Lint the code without auto-fixing issues.
+  lint-only-check: # Lint the code without auto-fixing issues.
     cmds:
       - poetry run ruff check sec_parser/
       - poetry run mypy
