@@ -23,12 +23,10 @@ jobs:
     - name: Install Task
       run: |
         sudo sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
-
     - name: Install the library
       run: poetry install --no-interaction --only-root
-    - name: Run CI-CD-checks
+    - name: Run Continuous Integration checks
       run: poetry run task ci
-
     - name: Publish package
       run: |
         # Use GitHub's run_number as a post-release version identifier
