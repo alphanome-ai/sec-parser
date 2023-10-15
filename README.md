@@ -59,6 +59,30 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 - Report bugs in [**Issues**](https://github.com/alphanome-ai/sec-parser/issues)
 - Stay updated and contribute to our project's direction in [**Announcements**](https://github.com/orgs/alphanome-ai/discussions/categories/announcements) and [**Roadmap**](https://github.com/orgs/alphanome-ai/discussions/categories/roadmap-future-plans)
 
+# Key Use-Cases
+
+`sec-parser` is versatile and can be applied in various scenarios, including but not limited to:
+
+#### Financial and Regulatory Analysis
+- Financial Analysis: Extract financial data from 10-Q and 10-K filings for quantitative modeling.
+- Risk Assessment: Evaluate risk factors or Management's Discussion and Analysis sections for qualitative analysis.
+- Regulatory Compliance: Assist in automating compliance checks for the legal teams.
+- Flexible Filtering: Easily filter SEC documents by sections and types, giving you precisely the data you need.
+
+#### Analytics and Data Science
+- Academic Research: Facilitate large-scale studies involving public financial disclosures, sentiment analysis, or corporate governance evaluation.
+- Analytics Ready: Integrate parsed data seamlessly into popular analytics tools for further analysis and visualization.
+
+#### AI and Machine Learning
+- Cutting-Edge AI for SEC EDGAR: Apply advanced AI techniques like MemWalker to navigate and extract and transform complex information from SEC documents efficiently. Learn more in our blog post: [Cutting-Edge AI for SEC EDGAR: Introducing MemWalker](https://github.com/orgs/alphanome-ai/discussions/18).
+- AI Applications: Leverage parsed data for various AI tasks such as text summarization, sentiment analysis, and named entity recognition.
+- Data Augmentation: Use authentic financial text to train and test machine learning models.
+
+#### Large Language Models
+- LLM Compatible: Use parsed data to facilitate complex NLU tasks with Large Language Models like ChatGPT, including question-answering, language translation, and information retrieval.
+
+These use-cases demonstrate the flexibility and power of `sec-parser` in handling both traditional data extraction tasks and facilitating more advanced AI-driven analysis.
+
 # Getting Started
 
 This guide will walk you through the process of installing the `sec-parser` package and using it to extract the "Segment Operating Performance" section as a semantic tree from the latest Apple 10-Q filing.
