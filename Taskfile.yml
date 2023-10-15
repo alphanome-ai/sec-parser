@@ -146,3 +146,7 @@ tasks:
   x: # You can just run `task x` instead of `task launch-docs`.
     deps:
       - launch-docs
+
+  xx: # You can just run `task xx` instead of `task verify-docs-integrity`.
+    deps:
+      - verify-docs-integrity
