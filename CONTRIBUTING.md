@@ -76,4 +76,4 @@ Make sure to include the `sec-parser` commit hash in your commit message for ver
 
 ## What Can I Work On?
 
-Check out (Contribution Workflow)[https://github.com/alphanome-ai/common-contributing-guide#contribution-workflow].
+Check out the [Contribution Workflow](https://github.com/alphanome-ai/common-contributing-guide#contribution-workflow).
