@@ -79,6 +79,11 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 - AI Applications: Leverage parsed data for various AI tasks such as text summarization, sentiment analysis, and named entity recognition.
 - Data Augmentation: Use authentic financial text to train and test machine learning models.
 
+#### Causal AI
+- Causal Analysis: Use parsed data to understand cause-effect relationships in financial data, beyond mere correlations.
+- Predictive Modeling: Enhance predictive models by incorporating causal relationships, leading to more robust and reliable predictions.
+- Decision Making: Aid decision-making processes by providing insights into the potential impact of different actions, based on causal relationships identified in the data.
+
 #### Large Language Models
 - LLM Compatible: Use parsed data to facilitate complex NLU tasks with Large Language Models like ChatGPT, including question-answering, language translation, and information retrieval.
 
