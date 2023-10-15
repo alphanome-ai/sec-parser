@@ -73,3 +73,7 @@ To update the e2e dataset in line with any changes you've made to `sec-parser`, 
 task e2e-generate-dataset
 ```
 Make sure to include the `sec-parser` commit hash in your commit message for version tracking.
+
+## What Can I Work On?
+
+Check out (Contribution Workflow)[https://github.com/alphanome-ai/common-contributing-guide#contribution-workflow].
