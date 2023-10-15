@@ -4,7 +4,7 @@ Contributing to `sec-parser` is a rewarding way to learn and improve this open-s
 
 ## Understanding the Workflows
 
-Before diving into the codebase guides, we recommend setting up your environment and understanding our contribution workflow. Please visit [**Common Contributing Guidelines**](https://github.com/alphanome-ai/common-contributing-guidelines) for information on environment setup, coding standards, and contribution workflows that are common across our repositories.
+Before diving into the codebase guides, we recommend setting up your environment and understanding our contribution workflow. Please visit [**Common Contributing Guidelines**](https://github.com/alphanome-ai/common-contributing-guide) for information on environment setup, coding standards, and contribution workflows that are common across our repositories.
 
 ## Exploring the Codebase
 
