@@ -63,7 +63,7 @@ Note that certain performance metrics, such as parsing time, are also tracked. T
 
 ### CI/CD Integration
 
-These e2e tests are part of our Continuous Integration and Continuous Deployment (CI/CD) pipeline and run automatically after each commit to prevent regressions.
+These e2e tests are part of our [Continuous Integration and Continuous Deployment (CI/CD) pipeline](https://github.com/alphanome-ai/sec-parser/actions) and run automatically after each commit to prevent regressions.
 
 ### Updating the e2e Dataset
 
