@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import contextlib
 import difflib
+import fnmatch
 import io
 import json
 import time
@@ -24,6 +25,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 
 AVAILABLE_ACTIONS = ["generate", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1
+DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "e2e_test_data.yaml"
 
 
 class VerificationFailedError(ValueError):
@@ -53,9 +55,9 @@ class VerificationResult:
 
 
 def _generate(json_file: Path, elements: list[AbstractSemanticElement]) -> None:
+    dict_items = [e.to_dict() for e in elements]
     with json_file.open("w") as f:
-        items = [e.to_dict() for e in elements]
-        json.dump(items, f, indent=4)
+        json.dump(dict_items, f, indent=4)
 
 
 def compare_elements(
@@ -130,8 +132,43 @@ def print_verification_result_table(
     )
 
 
-def manage_snapshots(action: Literal["generate", "verify"], data_dir: str) -> None:
-    assert action in AVAILABLE_ACTIONS
+def manage_snapshots(
+    action: Literal["generate", "verify"],
+    data_dir: str,
+    document_types: list[str] | None,
+    company_names: list[str] | None,
+    report_ids: list[str] | None,
+    yaml_path_str: str | None,
+) -> None:
+    if action not in AVAILABLE_ACTIONS:
+        msg = f"Invalid action. Available actions are: {AVAILABLE_ACTIONS}"
+        raise ValueError(msg)
+
+    yaml_path = Path(yaml_path_str) if yaml_path_str else None
+    if (
+        not document_types
+        and not company_names
+        and not report_ids
+        and not yaml_path_str
+    ):
+        if not DEFAULT_YAML_FILTER_PATH.exists():
+            msg = f"No filter arguments provided and {yaml_path} does not exist."
+            raise FileNotFoundError(msg)
+        yaml_path = DEFAULT_YAML_FILTER_PATH
+
+    document_types = list(document_types) if document_types else []
+    company_names = list(company_names) if company_names else []
+    report_ids = list(report_ids) if report_ids else []
+    if yaml_path:
+        filters = load_yaml_filter(yaml_path)
+        document_types.extend(filters.get("document_types", []))
+        company_names.extend(filters.get("company_names", []))
+        report_ids.extend(filters.get("report_ids", []))
+
+    if not document_types and not company_names and not report_ids:
+        msg = "No filters provided in document_types, company_names, or report_ids."
+        raise ValueError(msg)
+
     dir_path = Path(data_dir)
     results: list[VerificationResult] = []
     for document_type_dir in dir_path.iterdir():
@@ -143,6 +180,18 @@ def manage_snapshots(action: Literal["generate", "verify"], data_dir: str) -> No
             if not company_dir.is_dir():
                 continue
             for report_dir in company_dir.iterdir():
+                if (
+                    (document_type_dir.name not in document_types)
+                    and (company_dir.name not in company_names)
+                    and (report_dir.name not in report_ids)
+                ):
+                    print(
+                        f"Skipping {document_type_dir.name}/{company_dir.name}/{report_dir.name}"
+                    )
+                    continue
+                print(
+                    f"Processing {document_type_dir.name}/{company_dir.name}/{report_dir.name}"
+                )
                 html_file = report_dir / "primary-document.html"
                 json_file = report_dir / "semantic-elements-list.json"
                 if not html_file.exists():
@@ -161,8 +210,9 @@ def manage_snapshots(action: Literal["generate", "verify"], data_dir: str) -> No
                 else:
                     with json_file.open("r") as f:
                         expected_contents = f.read()
+                    dict_items = [e.to_dict() for e in elements]
                     actual_contents = json.dumps(
-                        [e.to_dict() for e in elements],
+                        dict_items,
                         indent=4,
                     )
                     with json_file.with_suffix(".actual.json").open("w") as f:
@@ -193,7 +243,8 @@ def manage_snapshots(action: Literal["generate", "verify"], data_dir: str) -> No
     if action == "verify":
         print_verification_result_table(results)
         if any(result.errors_found() for result in results):
-            raise VerificationFailedError("[ERROR] Verification failed.")
+            msg = "[ERROR] Verification failed."
+            raise VerificationFailedError(msg)
         print("Verification of the end-to-end snapshots completed successfully.")
 
 
@@ -224,3 +275,12 @@ def show_diff_with_line_numbers(expected, actual, identifier):
             unexpected_count += 1
             line_number_actual += 1
     return missing_count, unexpected_count
+
+
+def load_yaml_filter(file_path: Path) -> dict:
+    with file_path.open("r") as stream:
+        try:
+            return yaml.safe_load(stream)
+        except yaml.YAMLError as e:
+            print(f"Error reading YAML file: {e}")
+            return {}

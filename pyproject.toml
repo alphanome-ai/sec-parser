@@ -54,6 +54,7 @@ click = "^8.1.7"
 rich = "^13.6.0"
 hypothesis = "^6.87.4"
 execnb = "^0.1.5"
+pyyaml = "^6.0.1"
 
 
 
