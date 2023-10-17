@@ -2,6 +2,7 @@
 <p align="center">
   <h1 align="center"><b>sec-parser</b></h1>
 </p>
+
 <p align="left">
   <!-- Using &nbsp; for alignment due to GitHub README limitations -->
   <b>Essentials ➔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
