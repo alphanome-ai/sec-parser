@@ -1,27 +1,25 @@
 from __future__ import annotations
 
-import contextlib
 import difflib
-import fnmatch
-import io
 import json
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Literal, Tuple
+from typing import TYPE_CHECKING, Literal
 
 import yaml
 from millify import millify
-from rich import console, print
+from rich import print
 from rich.console import Console
 from rich.panel import Panel
-from rich.syntax import Syntax
 from rich.table import Table
 
 from sec_parser import Edgar10QParser
-from sec_parser.semantic_elements.abstract_semantic_element import (
-    AbstractSemanticElement,
-)
+
+if TYPE_CHECKING:
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
+    )
 
 AVAILABLE_ACTIONS = ["generate", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1
@@ -56,21 +54,16 @@ class VerificationResult:
 
 @dataclass
 class GenerationResult:
-    created_files: int
-    modified_files: int
     removed_lines: int
     added_lines: int
-
-    def __str__(self) -> str:
-        return f"Success! Created {self.created_files} files, Modified {self.modified_files} files, with {self.removed_lines} removed lines and {self.added_lines} added lines"
+    created_file: bool
 
 
 def _generate(
     json_file: Path, elements: list[AbstractSemanticElement]
 ) -> GenerationResult:
     dict_items = [e.to_dict() for e in elements]
-    created_files = 0
-    modified_files = 0
+    created_file = None
     removed_lines = 0
     added_lines = 0
 
@@ -86,15 +79,16 @@ def _generate(
                 removed_lines += 1
             elif line.startswith("+"):
                 added_lines += 1
-        modified_files += 1
+        created_file = False
     else:
-        created_files += 1
         added_lines += len(dict_items)
+        created_file = True
 
     with json_file.open("w") as f:
         json.dump(dict_items, f, indent=4)
 
-    return GenerationResult(created_files, modified_files, removed_lines, added_lines)
+    assert created_file is not None
+    return GenerationResult(removed_lines, added_lines, created_file)
 
 
 def compare_elements(
@@ -209,6 +203,8 @@ def manage_snapshots(
     dir_path = Path(data_dir)
     results: list[VerificationResult] = []
     generation_results: list[GenerationResult] = []
+    items_not_matching_filters_count = 0
+    processed_documents = 0
     for document_type_dir in dir_path.iterdir():
         if document_type_dir.name.startswith("."):
             continue
@@ -223,15 +219,13 @@ def manage_snapshots(
                     and (company_dir.name not in company_names)
                     and (report_dir.name not in report_ids)
                 ):
-                    print(
-                        f"Skipping {document_type_dir.name}/{company_dir.name}/{report_dir.name}"
-                    )
+                    items_not_matching_filters_count += 1
                     continue
-                print(
-                    f"Processing {document_type_dir.name}/{company_dir.name}/{report_dir.name}"
-                )
+                processed_documents += 1
+
                 html_file = report_dir / "primary-document.html"
-                json_file = report_dir / "semantic-elements-list.json"
+                expected_json_file = report_dir / "expected-semantic-elements-list.json"
+                actual_json_file = report_dir / "actual-semantic-elements-list.json"
                 if not html_file.exists():
                     msg = f"HTML file not found: {html_file}"
                     raise FileNotFoundError(msg)
@@ -244,17 +238,17 @@ def manage_snapshots(
                 execution_time_in_seconds = time.perf_counter() - execution_time_start
 
                 if action == "generate":
-                    generation_result = _generate(json_file, elements)
+                    generation_result = _generate(expected_json_file, elements)
                     generation_results.append(generation_result)
                 else:
-                    with json_file.open("r") as f:
+                    with expected_json_file.open("r") as f:
                         expected_contents = f.read()
                     dict_items = [e.to_dict() for e in elements]
                     actual_contents = json.dumps(
                         dict_items,
                         indent=4,
                     )
-                    with json_file.with_suffix(".actual.json").open("w") as f:
+                    with actual_json_file.open("w") as f:
                         f.write(actual_contents)
 
                     missing_count, unexpected_count = show_diff_with_line_numbers(
@@ -279,9 +273,44 @@ def manage_snapshots(
                     )
                     results.append(result)
 
+    if not processed_documents:
+        msg = "No files found with the given filters."
+        raise FileNotFoundError(msg)
+
     if action == "generate":
+        removed_lines = 0
+        added_lines = 0
+        created_files = 0
+        modified_files = 0
+        unchanged_files = 0
         for result in generation_results:
-            print(result)
+            if result.created_file:
+                created_files += 1
+            elif result.removed_lines or result.added_lines:
+                modified_files += 1
+                removed_lines += result.removed_lines
+                added_lines += result.added_lines
+            else:
+                unchanged_files += 1
+
+        unchanged_files = len(generation_results) - created_files - modified_files
+        console = Console()
+        summary = "Success! Here's a summary of the changes made:\n"
+        if created_files != 0:
+            summary += f"- [bold green]New files:[/bold green] {created_files}\n"
+        if modified_files != 0:
+            summary += (
+                f"- [bold yellow]Modified files:[/bold yellow] {modified_files}\n"
+            )
+        if unchanged_files != 0:
+            summary += f"- [bold blue]Unchanged files:[/bold blue] {unchanged_files}\n"
+        if removed_lines != 0:
+            summary += f"  - [bold red]Removed lines:[/bold red] {removed_lines}\n"
+        if added_lines != 0:
+            summary += f"  - [bold green]Added lines:[/bold green] {added_lines}\n"
+        if items_not_matching_filters_count != 0:
+            summary += f"- [bold]Filtered out (skipped):[/bold] {items_not_matching_filters_count}\n"
+        console.print(Panel(summary.strip()))
     elif action == "verify":
         print_verification_result_table(results)
         if any(result.errors_found() for result in results):
@@ -325,4 +354,6 @@ def load_yaml_filter(file_path: Path) -> dict:
             return yaml.safe_load(stream)
         except yaml.YAMLError as e:
             print(f"Error reading YAML file: {e}")
+            return {}
+            return {}
             return {}

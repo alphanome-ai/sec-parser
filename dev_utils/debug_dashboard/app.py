@@ -2,6 +2,7 @@ from collections import Counter
 from dataclasses import dataclass
 from itertools import zip_longest
 
+import rich.traceback
 import streamlit as st
 import streamlit_antd_components as sac
 from dateutil.parser import parse
@@ -33,6 +34,7 @@ from dev_utils.debug_dashboard.streamlit_utils import (
 )
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
+rich.traceback.install()
 USE_METADATA = True
 DEFAULT_PAGE_SIZE = 50
 

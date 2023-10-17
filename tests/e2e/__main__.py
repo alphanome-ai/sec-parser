@@ -3,8 +3,11 @@ from __future__ import annotations
 from pathlib import Path
 
 import click
+import rich.traceback
 
 from tests.e2e.manage_snapshots import VerificationFailedError, manage_snapshots
+
+rich.traceback.install()
 
 DEFAULT_E2E_DATA_DIR = (
     Path(__file__).resolve().parent.parent.parent.parent / "sec-parser-validation-data"
@@ -22,15 +25,15 @@ def cli() -> None:
     default=DEFAULT_E2E_DATA_DIR,
     help="Directory containing cloned repository from alphanome-ai/sec-parser-validation-data.",
 )
-@click.option("--document_types", multiple=True, help="Filter by document types")
-@click.option("--company_names", multiple=True, help="Filter by company names")
-@click.option("--report_ids", multiple=True, help="Filter by report IDs")
+@click.option("--document_type", multiple=True, help="Filter by document types")
+@click.option("--company_name", multiple=True, help="Filter by company names")
+@click.option("--report_id", multiple=True, help="Filter by report IDs")
 @click.option("--yaml_path", help="Path to YAML filter file")
 def generate(
     data_dir: str,
-    document_types: list[str],
-    company_names: list[str],
-    report_ids: list[str],
+    document_type: list[str],
+    company_name: list[str],
+    report_id: list[str],
     yaml_path: str,
 ) -> None:
     """
@@ -42,9 +45,9 @@ def generate(
     manage_snapshots(
         "generate",
         data_dir,
-        document_types,
-        company_names,
-        report_ids,
+        document_type,
+        company_name,
+        report_id,
         yaml_path,
     )
 
@@ -55,15 +58,15 @@ def generate(
     default=DEFAULT_E2E_DATA_DIR,
     help="Directory containing cloned repository from alphanome-ai/sec-parser-validation-data.",
 )
-@click.option("--document_types", multiple=True, help="Filter by document types")
-@click.option("--company_names", multiple=True, help="Filter by company names")
-@click.option("--report_ids", multiple=True, help="Filter by report IDs")
+@click.option("--document_type", multiple=True, help="Filter by document types")
+@click.option("--company_name", multiple=True, help="Filter by company names")
+@click.option("--report_id", multiple=True, help="Filter by report IDs")
 @click.option("--yaml_path", help="Path to YAML filter file")
 def verify(
     data_dir: str,
-    document_types: list[str],
-    company_names: list[str],
-    report_ids: list[str],
+    document_type: list[str],
+    company_name: list[str],
+    report_id: list[str],
     yaml_path: str,
 ) -> None:
     """
@@ -78,9 +81,9 @@ def verify(
         manage_snapshots(
             "verify",
             data_dir,
-            document_types,
-            company_names,
-            report_ids,
+            document_type,
+            company_name,
+            report_id,
             yaml_path,
         )
     except VerificationFailedError as e:
@@ -93,4 +96,7 @@ cli.add_command(verify)
 
 
 if __name__ == "__main__":
+    cli()
+    cli()
+    cli()
     cli()
