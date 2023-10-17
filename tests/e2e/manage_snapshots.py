@@ -54,10 +54,47 @@ class VerificationResult:
         )
 
 
-def _generate(json_file: Path, elements: list[AbstractSemanticElement]) -> None:
+@dataclass
+class GenerationResult:
+    created_files: int
+    modified_files: int
+    removed_lines: int
+    added_lines: int
+
+    def __str__(self) -> str:
+        return f"Success! Created {self.created_files} files, Modified {self.modified_files} files, with {self.removed_lines} removed lines and {self.added_lines} added lines"
+
+
+def _generate(
+    json_file: Path, elements: list[AbstractSemanticElement]
+) -> GenerationResult:
     dict_items = [e.to_dict() for e in elements]
+    created_files = 0
+    modified_files = 0
+    removed_lines = 0
+    added_lines = 0
+
+    if json_file.exists():
+        with json_file.open("r") as f:
+            old_content = f.read()
+        new_content = json.dumps(dict_items, indent=4)
+        diff = list(
+            difflib.unified_diff(old_content.splitlines(), new_content.splitlines())
+        )
+        for line in diff:
+            if line.startswith("-"):
+                removed_lines += 1
+            elif line.startswith("+"):
+                added_lines += 1
+        modified_files += 1
+    else:
+        created_files += 1
+        added_lines += len(dict_items)
+
     with json_file.open("w") as f:
         json.dump(dict_items, f, indent=4)
+
+    return GenerationResult(created_files, modified_files, removed_lines, added_lines)
 
 
 def compare_elements(
@@ -171,6 +208,7 @@ def manage_snapshots(
 
     dir_path = Path(data_dir)
     results: list[VerificationResult] = []
+    generation_results: list[GenerationResult] = []
     for document_type_dir in dir_path.iterdir():
         if document_type_dir.name.startswith("."):
             continue
@@ -206,7 +244,8 @@ def manage_snapshots(
                 execution_time_in_seconds = time.perf_counter() - execution_time_start
 
                 if action == "generate":
-                    _generate(json_file, elements)
+                    generation_result = _generate(json_file, elements)
+                    generation_results.append(generation_result)
                 else:
                     with json_file.open("r") as f:
                         expected_contents = f.read()
@@ -240,7 +279,10 @@ def manage_snapshots(
                     )
                     results.append(result)
 
-    if action == "verify":
+    if action == "generate":
+        for result in generation_results:
+            print(result)
+    elif action == "verify":
         print_verification_result_table(results)
         if any(result.errors_found() for result in results):
             msg = "[ERROR] Verification failed."
