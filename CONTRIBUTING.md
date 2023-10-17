@@ -29,7 +29,7 @@ While unit tests focus on individual components, e2e tests ensure the whole syst
 
 ### Prerequisites
 
-The e2e tests pull data from the `sec-parser-e2e-data` repository, a separate repository containing a curated collection of real-world input documents and their expected outputs.
+The e2e tests pull data from the [sec-parser-validation-data](https://github.com/alphanome-ai/sec-parser-validation-data) repository, a separate repository containing a curated collection of real-world input documents and their expected outputs.
 
 - **Automatic Cloning:** You don't need to manually download this dataset; it will be automatically cloned when you run the e2e test command.
 

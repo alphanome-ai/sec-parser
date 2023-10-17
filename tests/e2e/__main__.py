@@ -5,7 +5,7 @@ import click
 from tests.e2e.manage_snapshots import VerificationFailedError, manage_snapshots
 
 DEFAULT_E2E_DATA_DIR = (
-    Path(__file__).resolve().parent.parent.parent.parent / "sec-parser-e2e-data"
+    Path(__file__).resolve().parent.parent.parent.parent / "sec-parser-validation-data"
 )
 
 
@@ -14,9 +14,7 @@ def cli() -> None:
     pass
 
 
-UPDATE_HELP = (
-    "Directory containing cloned repository from alphanome-ai/sec-parser-e2e-data."
-)
+UPDATE_HELP = "Directory containing cloned repository from alphanome-ai/sec-parser-validation-data."
 
 
 @click.command()
