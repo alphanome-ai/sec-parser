@@ -204,7 +204,7 @@ Here are the suggested ways to import modules from `sec-parser`:
 - **Submodule-Level**: Use `from sec_parser.semantic_tree import SomeClass`  
   This imports a specific class `SomeClass` from the `semantic_tree` submodule.
 
-> **Note**:  
+> **Note**
 The main package `sec_parser` contains only the most common functionalities. For specialized tasks, please use submodule or submodule-level imports.
 
 # Contributing
