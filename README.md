@@ -90,6 +90,11 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 
 These use-cases demonstrate the flexibility and power of `sec-parser` in handling both traditional data extraction tasks and facilitating more advanced AI-driven analysis.
 
+# Disclaimer
+
+> **Warning**
+sec-parser is an independent open-source project and has no affiliation, endorsement, or verification by the United States Securities and Exchange Commission (SEC). It utilizes public APIs and data provided by the SEC for research and informational objectives. This tool is not intended for financial advisement. For any financial or investment decisions, it's crucial to consult with qualified financial experts. The project maintainers and contributors are not liable for any financial or legal consequences arising from the use of this tool.
+
 # Getting Started
 
 This guide will walk you through the process of installing the `sec-parser` package and using it to extract the "Segment Operating Performance" section as a semantic tree from the latest Apple 10-Q filing.
