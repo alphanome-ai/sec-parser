@@ -180,18 +180,32 @@ pip install sec-ai
 
 # Best Practices
 
-## Importing modules
+## How to Import Modules In Your Code
 
-1. Standard: `import sec_parser as sp`
-1. Package-Level: `from sec_parser import SomeClass`
-1. Submodule: `from sec_parser import semantic_tree`
-1. Submodule-Level: `from sec_parser.semantic_tree import SomeClass`
+To ensure your code remains functional even when we update `sec-parser`, it's recommended to avoid complex imports. Don't use intricate import statements that go deep into the package, like this:
 
-> **Note**
-The root-level package `sec_parser` contains only the most common symbols. For more specialized functionalities, you should use submodule or submodule-level imports.
+from sec_parser.semantic_tree.internal_utils import SomeInternalClass
 
-> **Warning**
-To allow us to maintain backward compatibility with your code during internal structure refactoring for `sec-parser`, avoid deep or chained imports such as `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
+Here are the suggested ways to import modules from `sec-parser`:
+
+### Basic Import
+- **Standard Way**: Use `import sec_parser as sp`  
+  This imports the main package as `sp`. You can then access its functionalities using `sp.` prefix.
+
+### Specific Import
+- **Package-Level Import**: Use `from sec_parser import SomeClass`  
+  This allows you to directly use `SomeClass` without any prefix.
+
+### Submodule Import
+- **Submodule**: Use `from sec_parser import semantic_tree`  
+  This imports the `semantic_tree` submodule, and you can access its classes and functions using `semantic_tree.` prefix.
+
+### More Specific Submodule Import
+- **Submodule-Level**: Use `from sec_parser.semantic_tree import SomeClass`  
+  This imports a specific class `SomeClass` from the `semantic_tree` submodule.
+
+> **Note**:  
+The main package `sec_parser` contains only the most common functionalities. For specialized tasks, please use submodule or submodule-level imports.
 
 # Contributing
 For information about setting up the development environment, coding standards, and contribution workflows, please refer to our [CONTRIBUTING.md](https://github.com/alphanome-ai/sec-parser/blob/main/CONTRIBUTING.md) guide.
