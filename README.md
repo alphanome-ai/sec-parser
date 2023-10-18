@@ -93,7 +93,7 @@ These use-cases demonstrate the flexibility and power of `sec-parser` in handlin
 # Disclaimer
 
 > **Warning**
-sec-parser is an independent open-source project and has no affiliation, endorsement, or verification by the United States Securities and Exchange Commission (SEC). It utilizes public APIs and data provided by the SEC for research and informational objectives. This tool is not intended for financial advisement. For any financial or investment decisions, it's crucial to consult with qualified financial experts. The project maintainers and contributors are not liable for any financial or legal consequences arising from the use of this tool.
+This project, `sec-parser`, is an independent, open-source initiative and has no affiliation, endorsement, or verification by the United States Securities and Exchange Commission (SEC). It utilizes public APIs and data provided by the SEC solely for research, informational, and educational objectives. This tool is not intended for financial advisement or as a substitute for professional investment advice or compliance with securities regulations. The creators and maintainers make no warranties, expressed or implied, about the accuracy, completeness, or reliability of the data and analyses presented. Use this software at your own risk. For accurate and comprehensive financial analysis, consult with qualified financial professionals and comply with all relevant legal requirements. The project maintainers and contributors are not liable for any financial or legal consequences arising from the use of this tool.
 
 # Getting Started
 
