@@ -23,15 +23,17 @@ def test_top_level_section_title_classifier(
         for element in semantic_elements
         if isinstance(element, TopLevelSectionTitle)
     ]
-
-    assert {title.level for title in top_level_titles}.issubset({0, 1})
-
-    assert top_level_titles[0].level == 0
-
+    assert len(top_level_titles) > 0, "No top level titles found"
     level0_titles = [title for title in top_level_titles if title.level == 0]
-    assert len(level0_titles) == 2
+    assert len(level0_titles) == 2, "Expected two level 0 titles"
+    msg = "Title levels should be 0 or 1"
+    assert {title.level for title in top_level_titles}.issubset({0, 1}), msg
+    assert top_level_titles[0].level == 0, "First title should be level 0"
+
     part1_idx = top_level_titles.index(level0_titles[0])
     part2_idx = top_level_titles.index(level0_titles[1])
 
-    assert 1 <= len(top_level_titles[part1_idx + 1 : part2_idx]) <= 4
-    assert 1 <= len(top_level_titles[part2_idx + 1 :]) <= 7
+    msg = "Expected 1 to 4 titles between level 0 titles"
+    assert 1 <= len(top_level_titles[part1_idx + 1 : part2_idx]) <= 4, msg
+    msg = "Expected 1 to 7 titles after second level 0 title"
+    assert 1 <= len(top_level_titles[part2_idx + 1 :]) <= 7, msg
