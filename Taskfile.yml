@@ -47,14 +47,14 @@ tasks:
       - task: unit-tests
       - task: lint-without-autofix
       - task: verify-docs-integrity
-      - task: e2e-verify-dataset
+      - task: e2e-verify
 
 ####################################
 ### Additional Development Tools ###
 ####################################
 
-  e2e-verify-dataset:
-    desc: Validate the end-to-end dataset snapshots against the latest parser outputs.
+  e2e-verify:
+    desc: Compare the most recent parser output with the saved snapshot of the expected output. Fails if there's a mismatch.
     silent: true
     cmds:
       - task: clone-sec-parser-test-data
@@ -62,14 +62,14 @@ tasks:
       - cd "{{.ROOT_DIR}}/../sec-parser-test-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-test-data repository. Please commit or stash them before proceeding."; exit 1; fi
       - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
 
-  e2e-generate-dataset:
-    desc: Create end-to-end dataset snapshots using the latest parser outputs.
+  e2e-update:
+    desc: Update the expected parser output snapshot with the most recent parser output.
     silent: true
     cmds:
       - task: clone-sec-parser-test-data
       - task: ensure-clean-working-tree
-      - poetry run python -m tests.e2e generate {{.CLI_ARGS}}
-      - "echo -e \"Please review the generated snapshot in sec-parser-test-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
+      - poetry run python -m tests.e2e update {{.CLI_ARGS}}
+      - "echo -e \"Please review the updated snapshot in sec-parser-test-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
 
   generalization-tests:
     desc: Execute generalization tests to assess parser across a large number of reports. It may cross-verify results with 3rd-party services.

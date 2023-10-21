@@ -23,7 +23,7 @@ if TYPE_CHECKING:
         AbstractSemanticElement,
     )
 
-AVAILABLE_ACTIONS = ["generate", "verify"]
+AVAILABLE_ACTIONS = ["update", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1
 DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "e2e_test_data.yaml"
 
@@ -122,7 +122,7 @@ def print_verification_result_table(
 
 
 def manage_snapshots(
-    action: Literal["generate", "verify"],
+    action: Literal["update", "verify"],
     data_dir: str,
     document_types: list[str] | None,
     company_names: list[str] | None,
@@ -187,7 +187,7 @@ def manage_snapshots(
         elements = Edgar10QParser().parse(html_content)
         execution_time_in_seconds = time.perf_counter() - execution_time_start
 
-        if action == "generate":
+        if action == "update":
             generation_result = overwrite_with_change_track(
                 expected_json_file,
                 elements,
@@ -228,7 +228,7 @@ def manage_snapshots(
         msg = "No files found with the given filters."
         raise FileNotFoundError(msg)
 
-    if action == "generate":
+    if action == "update":
         removed_lines = 0
         added_lines = 0
         created_files = 0

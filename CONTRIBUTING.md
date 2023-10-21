@@ -44,7 +44,7 @@ cd path/to/sec-parser
 
 2. **Execute Verification Command:**
 ```bash
-task e2e-verify-dataset
+task e2e-verify
 ```
 
 #### Expected Outcomes
@@ -70,7 +70,7 @@ These e2e tests are part of our [Continuous Integration and Continuous Deploymen
 To update the e2e dataset in line with any changes you've made to `sec-parser`, execute:
 
 ```bash
-task e2e-generate-dataset
+task e2e-generate
 ```
 Make sure to include the `sec-parser` commit hash in your commit message for version tracking.
 

@@ -24,7 +24,7 @@ def cli() -> None:
 @click.option("--company_name", multiple=True, help="Filter by company names")
 @click.option("--report_id", multiple=True, help="Filter by report IDs")
 @click.option("--yaml_path", help="Path to YAML filter file")
-def generate(
+def update(
     data_dir: str,
     document_type: list[str],
     company_name: list[str],
@@ -32,13 +32,13 @@ def generate(
     yaml_path: str,
 ) -> None:
     """
-    Generate a new end-to-end dataset snapshot based on the latest parser results.
+    Update a new end-to-end dataset snapshot based on the latest parser results.
 
     This command will create a new snapshot in the directory specified by `data_dir`.
     The snapshot will contain data based on the current state of the sec-parser.
     """
     manage_snapshots(
-        "generate",
+        "update",
         data_dir,
         document_type,
         company_name,
@@ -86,7 +86,7 @@ def verify(
         exit(1)
 
 
-cli.add_command(generate)
+cli.add_command(update)
 cli.add_command(verify)
 
 
