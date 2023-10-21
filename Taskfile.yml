@@ -57,24 +57,24 @@ tasks:
     desc: Validate the end-to-end dataset snapshots against the latest parser outputs.
     silent: true
     cmds:
-      - task: clone-sec-parser-validation-data
-      # Checking if the sec-parser-validation-data directory has any changes in the working tree or index. If it does, aborting.
-      - cd "{{.ROOT_DIR}}/../sec-parser-validation-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-validation-data repository. Please commit or stash them before proceeding."; exit 1; fi
+      - task: clone-sec-parser-test-data
+      # Checking if the sec-parser-test-data directory has any changes in the working tree or index. If it does, aborting.
+      - cd "{{.ROOT_DIR}}/../sec-parser-test-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-test-data repository. Please commit or stash them before proceeding."; exit 1; fi
       - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
 
   e2e-generate-dataset:
     desc: Create end-to-end dataset snapshots using the latest parser outputs.
     silent: true
     cmds:
-      - task: clone-sec-parser-validation-data
+      - task: clone-sec-parser-test-data
       - task: ensure-clean-working-tree
       - poetry run python -m tests.e2e generate {{.CLI_ARGS}}
-      - "echo -e \"Please review the generated snapshot in sec-parser-validation-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
+      - "echo -e \"Please review the generated snapshot in sec-parser-test-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
 
   generalization-tests:
     desc: Execute generalization tests to assess parser across a large number of reports. It may cross-verify results with 3rd-party services.
     cmds:
-      - task: clone-sec-parser-validation-data    
+      - task: clone-sec-parser-test-data    
       - poetry run pytest -s -vv {{.CLI_ARGS}} tests/generalization/
 
 ################################################################
@@ -120,10 +120,10 @@ tasks:
       - poetry run cz bump {{.CLI_ARGS}}
       - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
 
-  clone-sec-parser-validation-data: # Clone the 'sec-parser-validation-data' repository if it's not already present.
+  clone-sec-parser-test-data: # Clone the 'sec-parser-test-data' repository if it's not already present.
     silent: true
     cmds:
-      - if [ -d "{{.ROOT_DIR}}/../sec-parser-validation-data" ]; then :; else echo "Repository does not exist. Cloning from GitHub..."; git clone https://github.com/alphanome-ai/sec-parser-validation-data "{{.ROOT_DIR}}/../sec-parser-validation-data" || { echo "Directory ../sec-parser-validation-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-validation-data. Aborting."; exit 1; }; fi
+      - if [ -d "{{.ROOT_DIR}}/../sec-parser-test-data" ]; then :; else echo "Repository does not exist. Cloning from GitHub..."; git clone https://github.com/alphanome-ai/sec-parser-test-data "{{.ROOT_DIR}}/../sec-parser-test-data" || { echo "Directory ../sec-parser-test-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-test-data. Aborting."; exit 1; }; fi
 
   check-and-push:
     cmds:

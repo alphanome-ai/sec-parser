@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 DEFAULT_VALIDATION_DATA_DIR = (
-    Path(__file__).resolve().parent.parent.parent / "sec-parser-validation-data"
+    Path(__file__).resolve().parent.parent.parent / "sec-parser-test-data"
 )
 
 

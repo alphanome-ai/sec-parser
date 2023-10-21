@@ -18,7 +18,7 @@ def cli() -> None:
 @click.option(
     "--data_dir",
     default=DEFAULT_VALIDATION_DATA_DIR,
-    help="Directory containing cloned repository from alphanome-ai/sec-parser-validation-data.",
+    help="Directory containing cloned repository from alphanome-ai/sec-parser-test-data.",
 )
 @click.option("--document_type", multiple=True, help="Filter by document types")
 @click.option("--company_name", multiple=True, help="Filter by company names")
@@ -51,7 +51,7 @@ def generate(
 @click.option(
     "--data_dir",
     default=DEFAULT_VALIDATION_DATA_DIR,
-    help="Directory containing cloned repository from alphanome-ai/sec-parser-validation-data.",
+    help="Directory containing cloned repository from alphanome-ai/sec-parser-test-data.",
 )
 @click.option("--document_type", multiple=True, help="Filter by document types")
 @click.option("--company_name", multiple=True, help="Filter by company names")
