@@ -7,9 +7,10 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
 
 @pytest.mark.parametrize(
-    ("html_str", "expected_elements"),
-    [
+    ("name", "html_str", "expected_elements"),
+    values := [
         (
+            "simple",
             """
                 <div>
                 <div>
@@ -22,8 +23,9 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             ],
         ),
     ],
+    ids=[v[0] for v in values],
 )
-def test_image_classifier(html_str, expected_elements):
+def test_image_classifier(name, html_str, expected_elements):
     """
     test_image_classifier test checks that the ImageClassifier can successfully
     transform a list of semantic elements returned by `parse_initial_semantic_elements`.

@@ -7,7 +7,10 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import TopLevelSectionTitle
+from sec_parser.semantic_elements.semantic_elements import (
+    TitleElement,
+    TopLevelSectionTitle,
+)
 
 if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -15,36 +18,24 @@ if TYPE_CHECKING:
     )
 
 
-class TopLevelSectionMarkerInserter(AbstractElementwiseProcessingStep):
+class TopLevelSectionTitleClassifier(AbstractElementwiseProcessingStep):
     """
     TableClassifier class for inserting TopLevelSectionStartMarker elements
     into the list of elements. This step scans through a list of semantic
     elements and changes it.
     """
 
-    def __init__(
-        self,
-        *,
-        types_to_process: set[type[AbstractSemanticElement]] | None = None,
-        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
-    ) -> None:
-        super().__init__(
-            types_to_process=types_to_process,
-            types_to_exclude=types_to_exclude,
-        )
-        self._last_part: str = "?"
-
     def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
+        if not isinstance(element, TitleElement):
+            return element
         text = _normalize_string(element.text)
-        if match := re.search(r"^part (i+)", text):
-            self._last_part = match.group(1)
+        if re.search(r"^part (i+)", text):
             return TopLevelSectionTitle.create_from_element(element, level=0)
-        if match := re.search(r"^item (\d+a?)", text):
-            match.group(1)
+        if re.search(r"^item (\d+a?)", text):
             return TopLevelSectionTitle.create_from_element(element, level=1)
         return element
 

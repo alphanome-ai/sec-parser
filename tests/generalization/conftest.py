@@ -4,7 +4,7 @@ import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag_parser import HtmlTagParser
-from tests.eval.types import ParsedDocumentComponents
+from tests.generalization.types import ParsedDocumentComponents
 
 
 @pytest.fixture(scope="session")

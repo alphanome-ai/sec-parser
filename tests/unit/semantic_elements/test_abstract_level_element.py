@@ -44,4 +44,4 @@ def test_repr():
     repr_string = repr(element)
 
     # Assert
-    assert repr_string == "DummyElement<div>"
+    assert repr_string == "DummyElement[L0]<div>"

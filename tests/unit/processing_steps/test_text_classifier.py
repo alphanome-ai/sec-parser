@@ -11,9 +11,10 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
 
 @pytest.mark.parametrize(
-    ("html_str", "expected_elements"),
-    [
+    ("name", "html_str", "expected_elements"),
+    values := [
         (
+            "1",
             """
                 <p>1</p>
                 <section>
@@ -39,8 +40,9 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             ],
         ),
     ],
+    ids=[v[0] for v in values],
 )
-def test_text_step(html_str, expected_elements):
+def test_text_step(name, html_str, expected_elements):
     """
     test_text_step test checks that the TextClassifier can successfully transform
     a list of semantic elements returned by `parse_initial_semantic_elements`.

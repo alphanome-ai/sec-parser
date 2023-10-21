@@ -1237,6 +1237,17 @@ gitdb = ">=4.0.1,<5"
 test = ["black", "coverage[toml]", "ddt (>=1.1.1,!=1.4.3)", "mypy", "pre-commit", "pytest", "pytest-cov", "pytest-sugar"]
 
 [[package]]
+name = "h11"
+version = "0.14.0"
+description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "h11-0.14.0-py3-none-any.whl", hash = "sha256:e3fe4ac4b851c468cc8363d500db52c2ead036020723024a109d37346efaa761"},
+    {file = "h11-0.14.0.tar.gz", hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"},
+]
+
+[[package]]
 name = "htbuilder"
 version = "0.6.2"
 description = "A purely-functional HTML builder for Python. Think JSX rather than templates."
@@ -1249,6 +1260,50 @@ files = [
 
 [package.dependencies]
 more-itertools = "*"
+
+[[package]]
+name = "httpcore"
+version = "0.18.0"
+description = "A minimal low-level HTTP client."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "httpcore-0.18.0-py3-none-any.whl", hash = "sha256:adc5398ee0a476567bf87467063ee63584a8bce86078bf748e48754f60202ced"},
+    {file = "httpcore-0.18.0.tar.gz", hash = "sha256:13b5e5cd1dca1a6636a6aaea212b19f4f85cd88c366a2b82304181b769aab3c9"},
+]
+
+[package.dependencies]
+anyio = ">=3.0,<5.0"
+certifi = "*"
+h11 = ">=0.13,<0.15"
+sniffio = "==1.*"
+
+[package.extras]
+http2 = ["h2 (>=3,<5)"]
+socks = ["socksio (==1.*)"]
+
+[[package]]
+name = "httpx"
+version = "0.25.0"
+description = "The next generation HTTP client."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "httpx-0.25.0-py3-none-any.whl", hash = "sha256:181ea7f8ba3a82578be86ef4171554dd45fec26a02556a744db029a0a27b7100"},
+    {file = "httpx-0.25.0.tar.gz", hash = "sha256:47ecda285389cb32bb2691cc6e069e3ab0205956f681c5b2ad2325719751d875"},
+]
+
+[package.dependencies]
+certifi = "*"
+httpcore = ">=0.18.0,<0.19.0"
+idna = "*"
+sniffio = "*"
+
+[package.extras]
+brotli = ["brotli", "brotlicffi"]
+cli = ["click (==8.*)", "pygments (==2.*)", "rich (>=10,<14)"]
+http2 = ["h2 (>=3,<5)"]
+socks = ["socksio (==1.*)"]
 
 [[package]]
 name = "hypothesis"
@@ -3798,6 +3853,21 @@ files = [
 ]
 
 [[package]]
+name = "sec-api-io"
+version = "0.0.9"
+description = "Unofficial facade for the sec-api.io, SEC EDGAR 10-Q document downloader"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "sec-api-io-0.0.9.tar.gz", hash = "sha256:cb60619f392c3aacf1dd3d78b40e6474035f927585477e58a1d20e179401a719"},
+    {file = "sec_api_io-0.0.9-py3-none-any.whl", hash = "sha256:ddab38370a7b29da138d3226131c22103116ba9915f69beda302fd31f957687c"},
+]
+
+[package.dependencies]
+frozendict = ">=2.3.8,<3.0"
+httpx = ">=0.24.1,<1.0"
+
+[[package]]
 name = "sec-downloader"
 version = "0.2.3"
 description = "Useful extensions for sec-edgar-downloader."
@@ -4967,4 +5037,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-content-hash = "c86de023b62bb27680802dfe3e015607e0bbc2561a6840b467bcf722d2e19283"
+content-hash = "68fa878684c98b22bd48539aa2479028057b91143d78b68dd869635968b5d243"

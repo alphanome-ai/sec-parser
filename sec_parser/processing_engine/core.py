@@ -11,15 +11,20 @@ from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
 )
 from sec_parser.processing_steps.image_classifier import ImageClassifier
+from sec_parser.processing_steps.pre_top_level_section_pruner import (
+    PreTopLevelSectionPruner,
+)
 from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.title_classifier import TitleClassifier
+from sec_parser.processing_steps.top_level_section_title_classifier import (
+    TopLevelSectionTitleClassifier,
+)
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
     NotYetClassifiedElement,
-    TextElement,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -125,6 +130,8 @@ class Edgar10QParser(AbstractSemanticElementParser):
             ImageClassifier(),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
-            HighlightedTextClassifier(types_to_process={TextElement}),
+            HighlightedTextClassifier(),
             TitleClassifier(),
+            TopLevelSectionTitleClassifier(),
+            PreTopLevelSectionPruner(),
         ]

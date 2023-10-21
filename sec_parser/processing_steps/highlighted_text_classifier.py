@@ -10,6 +10,7 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
+from sec_parser.semantic_elements.semantic_elements import TextElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -40,6 +41,8 @@ class HighlightedTextClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
+        if not isinstance(element, TextElement):
+            return element
         styles_metrics = element.html_tag.get_text_styles_metrics()
         style: TextStyle = TextStyle.from_style_string(styles_metrics)
         if not style:

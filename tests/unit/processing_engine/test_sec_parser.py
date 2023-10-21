@@ -7,29 +7,35 @@ from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
+from sec_parser.semantic_elements.semantic_elements import TopLevelSectionTitle
 from tests.unit._utils import assert_elements
 
 
 @pytest.mark.parametrize(
-    ("html_str", "unwrap_elements", "expected_elements"),
-    [
+    ("name", "html_str", "unwrap_elements", "expected_elements"),
+    values := [
         (
+            "unwrap=false",
             html_str := """
-                <p>Hello world</p>
+                <span style="font-weight:bold">
+                    Item 1
+                </span>
             """,
             False,
             expected_elements := [
-                {"type": TextElement, "tag": "p"},
+                {"type": TopLevelSectionTitle, "tag": "span"},
             ],
         ),
         (
+            "unwrap=true",
             html_str,
             True,
             expected_elements,
         ),
     ],
+    ids=[v[0] for v in values],
 )
-def test_smoke_test(html_str, unwrap_elements, expected_elements):
+def test_smoke_test(name, html_str, unwrap_elements, expected_elements):
     # Arrange
     sec_parser = Edgar10QParser()
 
