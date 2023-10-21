@@ -90,6 +90,11 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 
 These use-cases demonstrate the flexibility and power of `sec-parser` in handling both traditional data extraction tasks and facilitating more advanced AI-driven analysis.
 
+# Disclaimer
+
+> **Warning**
+This project, `sec-parser`, is an independent, open-source initiative and has no affiliation, endorsement, or verification by the United States Securities and Exchange Commission (SEC). It utilizes public APIs and data provided by the SEC solely for research, informational, and educational objectives. This tool is not intended for financial advisement or as a substitute for professional investment advice or compliance with securities regulations. The creators and maintainers make no warranties, expressed or implied, about the accuracy, completeness, or reliability of the data and analyses presented. Use this software at your own risk. For accurate and comprehensive financial analysis, consult with qualified financial professionals and comply with all relevant legal requirements. The project maintainers and contributors are not liable for any financial or legal consequences arising from the use of this tool.
+
 # Getting Started
 
 This guide will walk you through the process of installing the `sec-parser` package and using it to extract the "Segment Operating Performance" section as a semantic tree from the latest Apple 10-Q filing.
@@ -175,18 +180,32 @@ pip install sec-ai
 
 # Best Practices
 
-## Importing modules
+## How to Import Modules In Your Code
 
-1. Standard: `import sec_parser as sp`
-1. Package-Level: `from sec_parser import SomeClass`
-1. Submodule: `from sec_parser import semantic_tree`
-1. Submodule-Level: `from sec_parser.semantic_tree import SomeClass`
+To ensure your code remains functional even when we update `sec-parser`, it's recommended to avoid complex imports. Don't use intricate import statements that go deep into the package, like this:
+
+from sec_parser.semantic_tree.internal_utils import SomeInternalClass
+
+Here are the suggested ways to import modules from `sec-parser`:
+
+### Basic Import
+- **Standard Way**: Use `import sec_parser as sp`  
+  This imports the main package as `sp`. You can then access its functionalities using `sp.` prefix.
+
+### Specific Import
+- **Package-Level Import**: Use `from sec_parser import SomeClass`  
+  This allows you to directly use `SomeClass` without any prefix.
+
+### Submodule Import
+- **Submodule**: Use `from sec_parser import semantic_tree`  
+  This imports the `semantic_tree` submodule, and you can access its classes and functions using `semantic_tree.` prefix.
+
+### More Specific Submodule Import
+- **Submodule-Level**: Use `from sec_parser.semantic_tree import SomeClass`  
+  This imports a specific class `SomeClass` from the `semantic_tree` submodule.
 
 > **Note**
-The root-level package `sec_parser` contains only the most common symbols. For more specialized functionalities, you should use submodule or submodule-level imports.
-
-> **Warning**
-To allow us to maintain backward compatibility with your code during internal structure refactoring for `sec-parser`, avoid deep or chained imports such as `sec_parser.semantic_tree.internal_utils import SomeInternalClass`.
+The main package `sec_parser` contains only the most common functionalities. For specialized tasks, please use submodule or submodule-level imports.
 
 # Contributing
 For information about setting up the development environment, coding standards, and contribution workflows, please refer to our [CONTRIBUTING.md](https://github.com/alphanome-ai/sec-parser/blob/main/CONTRIBUTING.md) guide.
