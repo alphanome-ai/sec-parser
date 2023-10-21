@@ -6,6 +6,7 @@ from sec_parser.processing_steps.highlighted_text_classifier import (
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.semantic_elements.semantic_elements import (
+    EmptyElement,
     NotYetClassifiedElement,
     TextElement,
     TitleElement,
@@ -50,10 +51,12 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
                 <span style="font-weight:unknown">
                     baz
                 </span>
+                <p></p>
             """,
             [
                 {"type": TitleElement, "tag": "div"},
                 {"type": TextElement, "tag": "span"},
+                {"type": EmptyElement, "tag": "p"},
             ],
         ),
     ],

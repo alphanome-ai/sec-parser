@@ -1,19 +1,14 @@
-from unittest.mock import Mock
-
 import bs4
 import pytest
 
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
 from sec_parser.semantic_elements.semantic_elements import TitleElement
-from sec_parser.semantic_elements.table_element import TableElement
 from tests.unit._utils import assert_elements
-from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
 
 def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
