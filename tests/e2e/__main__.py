@@ -1,17 +1,12 @@
 from __future__ import annotations
 
-from pathlib import Path
-
 import click
 import rich.traceback
 
+from tests._sec_parser_validation_data import DEFAULT_VALIDATION_DATA_DIR
 from tests.e2e.manage_snapshots import VerificationFailedError, manage_snapshots
 
 rich.traceback.install()
-
-DEFAULT_E2E_DATA_DIR = (
-    Path(__file__).resolve().parent.parent.parent.parent / "sec-parser-validation-data"
-)
 
 
 @click.group()
@@ -22,7 +17,7 @@ def cli() -> None:
 @click.command()
 @click.option(
     "--data_dir",
-    default=DEFAULT_E2E_DATA_DIR,
+    default=DEFAULT_VALIDATION_DATA_DIR,
     help="Directory containing cloned repository from alphanome-ai/sec-parser-validation-data.",
 )
 @click.option("--document_type", multiple=True, help="Filter by document types")
@@ -55,7 +50,7 @@ def generate(
 @click.command()
 @click.option(
     "--data_dir",
-    default=DEFAULT_E2E_DATA_DIR,
+    default=DEFAULT_VALIDATION_DATA_DIR,
     help="Directory containing cloned repository from alphanome-ai/sec-parser-validation-data.",
 )
 @click.option("--document_type", multiple=True, help="Filter by document types")
@@ -96,7 +91,4 @@ cli.add_command(verify)
 
 
 if __name__ == "__main__":
-    cli()
-    cli()
-    cli()
     cli()

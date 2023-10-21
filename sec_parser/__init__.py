@@ -14,7 +14,7 @@ from sec_parser.semantic_elements.semantic_elements import (
     NotYetClassifiedElement,
     TextElement,
     TitleElement,
-    TopLevelSectionStartMarker,
+    TopLevelSectionTitle,
 )
 from sec_parser.semantic_elements.table_element import TableElement
 from sec_parser.semantic_tree.nesting_rules import AbstractNestingRule
@@ -30,7 +30,7 @@ __all__ = [
     # Common semantic elements
     "AbstractSemanticElement",
     "NotYetClassifiedElement",
-    "TopLevelSectionStartMarker",
+    "TopLevelSectionTitle",
     "TextElement",
     "TitleElement",
     "IrrelevantElement",

@@ -23,6 +23,7 @@ from sec_parser.semantic_elements.semantic_elements import (
 )
 
 if TYPE_CHECKING:  # pragma: no cover
+    from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.processing_steps.abstract_processing_step import (
         AbstractProcessingStep,
     )
@@ -80,10 +81,21 @@ class AbstractSemanticElementParser(ABC):
         unwrap_elements: bool | None = None,
         include_containers: bool | None = None,
     ) -> list[AbstractSemanticElement]:
-        steps = self._get_steps()
-
         root_tags = self._html_tag_parser.parse(html)
+        return self.parse_from_tags(
+            root_tags,
+            unwrap_elements=unwrap_elements,
+            include_containers=include_containers,
+        )
 
+    def parse_from_tags(
+        self,
+        root_tags: list[HtmlTag],
+        *,
+        unwrap_elements: bool | None = None,
+        include_containers: bool | None = None,
+    ) -> list[AbstractSemanticElement]:
+        steps = self._get_steps()
         elements: list[AbstractSemanticElement] = [
             NotYetClassifiedElement(tag) for tag in root_tags
         ]

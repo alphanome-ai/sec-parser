@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import re
+import warnings
 
 import bs4
+from bs4 import XMLParsedAsHTMLWarning
 
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
@@ -25,7 +27,9 @@ def generate_bool_list(idx, length):
 
 
 def remove_ix_tags(html):
-    soup = bs4.BeautifulSoup(html, "lxml")
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+        soup = bs4.BeautifulSoup(html, "lxml")
     ix_tags = soup.find_all(name=lambda tag: tag and tag.name.startswith("ix:"))
     for tag in ix_tags:
         tag.unwrap()
@@ -54,7 +58,7 @@ def get_emoji_chain(cls: type):
         emoji = {
             se.TextElement: "📝",
             se.TitleElement: "🏷️",
-            se.TopLevelSectionStartMarker: "📚",
+            se.TopLevelSectionTitle: "📚",
             sec_parser.semantic_elements.table_element.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.NotYetClassifiedElement: "🛸",

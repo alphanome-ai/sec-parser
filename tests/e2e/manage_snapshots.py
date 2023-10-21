@@ -15,6 +15,8 @@ from rich.panel import Panel
 from rich.table import Table
 
 from sec_parser import Edgar10QParser
+from tests._sec_parser_validation_data import Report, traverse_repository_for_reports
+from tests.e2e._overwrite_file import OverwriteResult, overwrite_with_change_track
 
 if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -30,19 +32,14 @@ class VerificationFailedError(ValueError):
     pass
 
 
-@dataclass
+@dataclass(frozen=True)
 class VerificationResult:
-    document_type: str
-    company_name: str
-    report_name: str
+    report: Report
     execution_time_in_seconds: float
     character_count: int
     unexpected_count: int
     missing_count: int
     allowed_execution_time_in_seconds: float
-
-    def get_report_identifier(self) -> str:
-        return f"{self.document_type}_{self.company_name}_{self.report_name}"
 
     def errors_found(self) -> bool:
         return (
@@ -50,45 +47,6 @@ class VerificationResult:
             or self.unexpected_count > 0
             or self.execution_time_in_seconds > self.allowed_execution_time_in_seconds
         )
-
-
-@dataclass
-class GenerationResult:
-    removed_lines: int
-    added_lines: int
-    created_file: bool
-
-
-def _generate(
-    json_file: Path, elements: list[AbstractSemanticElement]
-) -> GenerationResult:
-    dict_items = [e.to_dict() for e in elements]
-    created_file = None
-    removed_lines = 0
-    added_lines = 0
-
-    if json_file.exists():
-        with json_file.open("r") as f:
-            old_content = f.read()
-        new_content = json.dumps(dict_items, indent=4)
-        diff = list(
-            difflib.unified_diff(old_content.splitlines(), new_content.splitlines())
-        )
-        for line in diff:
-            if line.startswith("-"):
-                removed_lines += 1
-            elif line.startswith("+"):
-                added_lines += 1
-        created_file = False
-    else:
-        added_lines += len(dict_items)
-        created_file = True
-
-    with json_file.open("w") as f:
-        json.dump(dict_items, f, indent=4)
-
-    assert created_file is not None
-    return GenerationResult(removed_lines, added_lines, created_file)
 
 
 def compare_elements(
@@ -150,9 +108,9 @@ def print_verification_result_table(
         )
 
         table.add_row(
-            f"[bold]{result.get_report_identifier()}[/bold]"
+            f"[bold]{result.report.identifier}[/bold]"
             if result.errors_found()
-            else f"{result.get_report_identifier()}",
+            else f"{result.report.identifier}",
             accuracy_str,
             speed_str,
         )
@@ -200,78 +158,71 @@ def manage_snapshots(
         msg = "No filters provided in document_types, company_names, or report_ids."
         raise ValueError(msg)
 
-    dir_path = Path(data_dir)
     results: list[VerificationResult] = []
-    generation_results: list[GenerationResult] = []
+    generation_results: list[OverwriteResult] = []
     items_not_matching_filters_count = 0
     processed_documents = 0
-    for document_type_dir in dir_path.iterdir():
-        if document_type_dir.name.startswith("."):
+    for report_detail in traverse_repository_for_reports(Path(data_dir)):
+        if (
+            (report_detail.document_type not in document_types)
+            and (report_detail.company_name not in company_names)
+            and (report_detail.report_name not in report_ids)
+        ):
+            items_not_matching_filters_count += 1
             continue
-        if not document_type_dir.is_dir():
-            continue
-        for company_dir in document_type_dir.iterdir():
-            if not company_dir.is_dir():
-                continue
-            for report_dir in company_dir.iterdir():
-                if (
-                    (document_type_dir.name not in document_types)
-                    and (company_dir.name not in company_names)
-                    and (report_dir.name not in report_ids)
-                ):
-                    items_not_matching_filters_count += 1
-                    continue
-                processed_documents += 1
+        processed_documents += 1
 
-                html_file = report_dir / "primary-document.html"
-                expected_json_file = report_dir / "expected-semantic-elements-list.json"
-                actual_json_file = report_dir / "actual-semantic-elements-list.json"
-                if not html_file.exists():
-                    msg = f"HTML file not found: {html_file}"
-                    raise FileNotFoundError(msg)
+        html_file = report_detail.primary_doc_html_path
+        expected_json_file = report_detail.expected_elements_json_path
+        actual_json_file = report_detail.actual_elements_json_path
 
-                with html_file.open("r") as f:
-                    html_content = f.read()
+        if not html_file.exists():
+            msg = f"HTML file not found: {html_file}"
+            raise FileNotFoundError(msg)
 
-                execution_time_start = time.perf_counter()
-                elements = Edgar10QParser().parse(html_content)
-                execution_time_in_seconds = time.perf_counter() - execution_time_start
+        with html_file.open("r") as f:
+            html_content = f.read()
 
-                if action == "generate":
-                    generation_result = _generate(expected_json_file, elements)
-                    generation_results.append(generation_result)
-                else:
-                    with expected_json_file.open("r") as f:
-                        expected_contents = f.read()
-                    dict_items = [e.to_dict() for e in elements]
-                    actual_contents = json.dumps(
-                        dict_items,
-                        indent=4,
-                    )
-                    with actual_json_file.open("w") as f:
-                        f.write(actual_contents)
+        execution_time_start = time.perf_counter()
+        elements = Edgar10QParser().parse(html_content)
+        execution_time_in_seconds = time.perf_counter() - execution_time_start
 
-                    missing_count, unexpected_count = show_diff_with_line_numbers(
-                        expected_contents,
-                        actual_contents,
-                        f"[dim]{document_type_dir.name}_{company_dir.name}_{report_dir.name}[/dim]",
-                    )
+        if action == "generate":
+            generation_result = overwrite_with_change_track(
+                expected_json_file,
+                elements,
+            )
+            generation_results.append(generation_result)
+        else:
+            with expected_json_file.open("r") as f:
+                expected_contents = f.read()
+            dict_items = [e.to_dict() for e in elements]
+            actual_contents = json.dumps(
+                dict_items,
+                indent=4,
+            )
+            with actual_json_file.open("w") as f:
+                f.write(actual_contents)
 
-                    character_count = len(html_content)
-                    allowed_execution_time_in_seconds = (
-                        character_count * ALLOWED_MICROSECONDS_PER_CHAR / 1_000_000
-                    )
-                    result = VerificationResult(
-                        document_type=document_type_dir.name,
-                        company_name=company_dir.name,
-                        report_name=report_dir.name,
-                        execution_time_in_seconds=execution_time_in_seconds,
-                        character_count=character_count,
-                        allowed_execution_time_in_seconds=allowed_execution_time_in_seconds,
-                        missing_count=missing_count,
-                        unexpected_count=unexpected_count,
-                    )
-                    results.append(result)
+            missing_count, unexpected_count = show_diff_with_line_numbers(
+                expected_contents,
+                actual_contents,
+                report_detail.identifier,
+            )
+
+            character_count = len(html_content)
+            allowed_execution_time_in_seconds = (
+                character_count * ALLOWED_MICROSECONDS_PER_CHAR / 1_000_000
+            )
+            result = VerificationResult(
+                report=report_detail,
+                execution_time_in_seconds=execution_time_in_seconds,
+                character_count=character_count,
+                allowed_execution_time_in_seconds=allowed_execution_time_in_seconds,
+                missing_count=missing_count,
+                unexpected_count=unexpected_count,
+            )
+            results.append(result)
 
     if not processed_documents:
         msg = "No files found with the given filters."
@@ -354,6 +305,4 @@ def load_yaml_filter(file_path: Path) -> dict:
             return yaml.safe_load(stream)
         except yaml.YAMLError as e:
             print(f"Error reading YAML file: {e}")
-            return {}
-            return {}
             return {}

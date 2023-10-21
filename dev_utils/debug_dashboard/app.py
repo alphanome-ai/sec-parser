@@ -537,12 +537,12 @@ def to_tree_item(tree_node: sp.TreeNode, indexer):
     icon = {
         se.TextElement: "text-paragraph",
         se.TitleElement: "bookmark",
-        se.TopLevelSectionStartMarker: "journal-bookmark",
+        se.TopLevelSectionTitle: "journal-bookmark",
         sec_parser.semantic_elements.table_element.TableElement: "table",
         se.ImageElement: "card-image",
         se.NotYetClassifiedElement: "question-square",
         se.IrrelevantElement: "trash",
-        se.TopLevelSectionStartMarker: "pause",
+        se.TopLevelSectionTitle: "pause",
         se.EmptyElement: "trash",
     }.get(element.__class__, "box")
     return sac.TreeItem(

@@ -21,7 +21,7 @@ from sec_parser.semantic_elements.semantic_elements import (
     NotYetClassifiedElement,
     TextElement,
     TitleElement,
-    TopLevelSectionStartMarker,
+    TopLevelSectionTitle,
 )
 from sec_parser.semantic_elements.table_element import TableElement
 
@@ -29,7 +29,7 @@ __all__ = [
     "AbstractSemanticElement",
     "AbstractLevelElement",
     "NotYetClassifiedElement",
-    "TopLevelSectionStartMarker",
+    "TopLevelSectionTitle",
     "TextElement",
     "TitleElement",
     "InvalidLevelError",

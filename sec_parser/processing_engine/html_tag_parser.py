@@ -28,17 +28,9 @@ class HtmlTagParser(AbstractHtmlTagParser):
         self._parser_backend = (parser_backend or default).lower().strip()
 
     def parse(self, html: str) -> list[HtmlTag]:
-        with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
-            root: bs4.Tag | bs4.BeautifulSoup = bs4.BeautifulSoup(
-                html,
-                features=self._parser_backend,
-            )
-        if root.html:
-            root = root.html
-            root = root.body if root.body else root
+        root: bs4.Tag = self._parse_to_bs4(html)
 
-        elements = []
+        elements: list[HtmlTag] = []
         for child in root.children:
             if isinstance(child, bs4.NavigableString) and not child.strip():
                 continue
@@ -50,3 +42,15 @@ class HtmlTagParser(AbstractHtmlTagParser):
             )
             raise ValueError(msg)
         return elements
+
+    def _parse_to_bs4(self, html: str) -> bs4.Tag:
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+            root: bs4.Tag = bs4.BeautifulSoup(
+                html,
+                features=self._parser_backend,
+            )
+        if root.html:
+            root = root.html
+            root = root.body if root.body else root
+        return root

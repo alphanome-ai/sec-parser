@@ -71,9 +71,19 @@ tasks:
       - poetry run python -m tests.e2e generate {{.CLI_ARGS}}
       - "echo -e \"Please review the generated snapshot in sec-parser-validation-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
 
+  eval-tests:
+    desc: Run evaluation tests to assess the parser's functional scalability and compatibility with real-world datasets. May cross-check results using 3rd-party services.
+    cmds:
+      - poetry run pytest -s -vv {{.CLI_ARGS}} tests/eval/
+
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###
 ################################################################
+
+  eval-tests-parallel: # Run evaluation tests in parallel. 
+    cmds: 
+      # TODO: There might be a possibility of workers duplicating effort by parsing the same document. This depends on how tests are distributed across workers, as each worker has its own independent cache. Consider confirming and fixing this.
+      - poetry run pytest -n auto -s -vv {{.CLI_ARGS}} tests/eval/
 
   unit-tests: # Execute unit tests and assess code coverage.
     cmds:
@@ -119,9 +129,9 @@ tasks:
       - task: pre-push-checks
       - git push
 
-######################################
-### Shorthand Tasks for Efficiency ###
-######################################
+###################################################
+### Shorthand Tasks for Efficiency (may change) ###
+###################################################
 
   c: # You can just run `task c` instead of `task pre-commit-checks`.
     deps:
@@ -150,3 +160,7 @@ tasks:
   xx: # You can just run `task xx` instead of `task verify-docs-integrity`.
     deps:
       - verify-docs-integrity
+
+  l: # You can just run `task l` instead of `task eval-tests`.
+    deps:
+      - eval-tests

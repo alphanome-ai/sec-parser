@@ -15,9 +15,9 @@ class NotYetClassifiedElement(AbstractSemanticElement):
     """
 
 
-class TopLevelSectionStartMarker(AbstractSemanticElement):
+class TopLevelSectionTitle(AbstractLevelElement, AbstractSemanticElement):
     """
-    The TopLevelSectionStartMarker class represents the beginning of a top-level
+    The TopLevelSectionTitle class represents the title and the beginning of a top-level
     section of a document. For instance, in SEC 10-Q reports, a
     top-level section could be "Part I, Item 3. Quantitative and Qualitative
     Disclosures About Market Risk.".
