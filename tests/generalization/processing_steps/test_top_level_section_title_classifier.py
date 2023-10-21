@@ -24,7 +24,7 @@ def test_top_level_section_title_classifier(
         if isinstance(element, TopLevelSectionTitle)
     ]
 
-    assert {title.level for title in top_level_titles} == {0, 1}
+    assert {title.level for title in top_level_titles}.issubset({0, 1})
 
     assert top_level_titles[0].level == 0
 

@@ -75,16 +75,13 @@ tasks:
     desc: Execute generalization tests to assess parser across a large number of reports. It may cross-verify results with 3rd-party services.
     cmds:
       - task: clone-sec-parser-test-data    
-      - poetry run pytest -s -vv {{.CLI_ARGS}} tests/generalization/
+      # TODO: Confirm whether workers might duplicate effort by parsing the same document. This is likely because each pytest-xdist worker instantiates its own session-scoped fixtures. If confirmed, consider implementing a solution.
+      # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      - poetry run pytest -n auto -s {{.CLI_ARGS}} tests/generalization/
 
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###
 ################################################################
-
-  generalization-tests-parallel: # Run generalization tests simultaneously to speed up the testing process.
-    cmds: 
-      # TODO: Confirm whether workers might duplicate effort by parsing the same document. This is likely because each pytest-xdist worker instantiates its own session-scoped fixtures. If confirmed, consider implementing a solution.
-      - poetry run pytest -n auto -s -vv {{.CLI_ARGS}} tests/generalization/
 
   unit-tests: # Execute unit tests and assess code coverage.
     cmds:
