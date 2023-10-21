@@ -33,9 +33,9 @@ class TopLevelSectionTitleClassifier(AbstractElementwiseProcessingStep):
         if not isinstance(element, TitleElement):
             return element
         text = _normalize_string(element.text)
-        if re.search(r"^part (i+)", text):
+        if re.search(r"^part i+", text):
             return TopLevelSectionTitle.create_from_element(element, level=0)
-        if re.search(r"^item (\d+a?)", text):
+        if re.search(r"^item \d+a?", text):
             return TopLevelSectionTitle.create_from_element(element, level=1)
         return element
 
