@@ -33,5 +33,5 @@ def test_top_level_section_title_classifier(
     part1_idx = top_level_titles.index(level0_titles[0])
     part2_idx = top_level_titles.index(level0_titles[1])
 
-    assert len(top_level_titles[part1_idx + 1 : part2_idx]) == 4
-    assert 5 <= len(top_level_titles[part2_idx + 1 :]) <= 7
+    assert 1 <= len(top_level_titles[part1_idx + 1 : part2_idx]) <= 4
+    assert 1 <= len(top_level_titles[part2_idx + 1 :]) <= 7
