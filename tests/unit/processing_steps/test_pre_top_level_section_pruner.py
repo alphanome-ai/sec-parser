@@ -5,10 +5,8 @@ from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_steps.pre_top_level_section_pruner import (
     PreTopLevelSectionPruner,
 )
-from sec_parser.semantic_elements.semantic_elements import (
-    NotYetClassifiedElement,
-    TopLevelSectionTitle,
-)
+from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
+from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 from tests.unit._utils import assert_elements
 
 

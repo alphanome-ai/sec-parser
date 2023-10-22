@@ -2,10 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Callable
 
-from sec_parser.semantic_elements.semantic_elements import (
-    TitleElement,
-    TopLevelSectionTitle,
-)
+from sec_parser.semantic_elements.semantic_elements import TitleElement
+from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
     AlwaysNestAsParentRule,

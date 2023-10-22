@@ -2,12 +2,12 @@ from unittest.mock import patch
 
 import pytest
 
-from sec_parser import TextElement
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
-from sec_parser.semantic_elements.semantic_elements import TopLevelSectionTitle
+from sec_parser.semantic_elements.table_element import TableElement
+from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 from tests.unit._utils import assert_elements
 
 

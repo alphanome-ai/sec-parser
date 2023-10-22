@@ -2,7 +2,7 @@ from sec_parser.processing_steps.abstract_processing_step import AbstractProcess
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
-from sec_parser.semantic_elements.semantic_elements import TopLevelSectionTitle
+from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 
 
 class PreTopLevelSectionPruner(AbstractProcessingStep):

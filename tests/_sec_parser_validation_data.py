@@ -29,8 +29,18 @@ class Report:
         return self.report_full_path / "primary-document.html"
 
     @property
+    def expected_top_level_sections_json_path(self) -> Path:
+        return self.report_full_path / "expected-top-level-sections.json"
+
+    @property
     def identifier(self) -> str:
         return f"{self.document_type}_{self.company_name}_{self.report_name}"
+
+
+@dataclass(frozen=True)
+class ExpectedSection:
+    identifier: str
+    character_count: int
 
 
 def filter_valid_directories(starting_directory: Path) -> Generator[Path, None, None]:

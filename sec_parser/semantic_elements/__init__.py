@@ -21,9 +21,9 @@ from sec_parser.semantic_elements.semantic_elements import (
     NotYetClassifiedElement,
     TextElement,
     TitleElement,
-    TopLevelSectionTitle,
 )
 from sec_parser.semantic_elements.table_element import TableElement
+from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 
 __all__ = [
     "AbstractSemanticElement",

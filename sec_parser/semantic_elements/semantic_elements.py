@@ -15,15 +15,6 @@ class NotYetClassifiedElement(AbstractSemanticElement):
     """
 
 
-class TopLevelSectionTitle(AbstractLevelElement, AbstractSemanticElement):
-    """
-    The TopLevelSectionTitle class represents the title and the beginning of a top-level
-    section of a document. For instance, in SEC 10-Q reports, a
-    top-level section could be "Part I, Item 3. Quantitative and Qualitative
-    Disclosures About Market Risk.".
-    """
-
-
 class IrrelevantElement(AbstractSemanticElement):
     """
     The IrrelevantElement class identifies elements in the parsed HTML that do not
@@ -42,7 +33,7 @@ class EmptyElement(AbstractSemanticElement):
     """
 
 
-class TitleElement(AbstractLevelElement, AbstractSemanticElement):
+class TitleElement(AbstractLevelElement):
     """
     The TitleElement class represents the title of a paragraph or other content object.
     It serves as a semantic marker, providing context and structure to the document.

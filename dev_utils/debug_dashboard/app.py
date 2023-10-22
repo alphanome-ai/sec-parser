@@ -34,6 +34,8 @@ from dev_utils.debug_dashboard.streamlit_utils import (
 )
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 
+import sec_parser.semantic_elements.top_level_section_title
+
 rich.traceback.install()
 USE_METADATA = True
 DEFAULT_PAGE_SIZE = 50
@@ -537,12 +539,12 @@ def to_tree_item(tree_node: sp.TreeNode, indexer):
     icon = {
         se.TextElement: "text-paragraph",
         se.TitleElement: "bookmark",
-        se.TopLevelSectionTitle: "journal-bookmark",
+        sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "journal-bookmark",
         sec_parser.semantic_elements.table_element.TableElement: "table",
         se.ImageElement: "card-image",
         se.NotYetClassifiedElement: "question-square",
         se.IrrelevantElement: "trash",
-        se.TopLevelSectionTitle: "pause",
+        sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "pause",
         se.EmptyElement: "trash",
     }.get(element.__class__, "box")
     return sac.TreeItem(

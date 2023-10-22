@@ -9,6 +9,8 @@ from bs4 import XMLParsedAsHTMLWarning
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
 
+import sec_parser.semantic_elements.top_level_section_title
+
 
 def normalize_company_name(name):
     name = name.title()
@@ -58,7 +60,7 @@ def get_emoji_chain(cls: type):
         emoji = {
             se.TextElement: "📝",
             se.TitleElement: "🏷️",
-            se.TopLevelSectionTitle: "📚",
+            sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "📚",
             sec_parser.semantic_elements.table_element.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.NotYetClassifiedElement: "🛸",
