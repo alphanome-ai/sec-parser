@@ -72,7 +72,30 @@ To update the e2e dataset in line with any changes you've made to `sec-parser`, 
 ```bash
 task e2e-generate
 ```
+
 Make sure to include the `sec-parser` commit hash in your commit message for version tracking.
+
+## Introduction to Generalization Tests
+### What are Generalization Tests?
+Generalization Tests are designed to assess the parser's performance across a diverse set of financial documents. These tests ensure the parser's ability to operate consistently and accurately on different types of reports.
+
+### Why Run Generalization Tests?
+Generalization Tests add an extra layer of quality assurance beyond our existing unit and end-to-end tests. They help us quickly discover any issues the parser may have with specific kinds of documents.
+
+### How to Run Generalization Tests?
+
+1. **Navigate to the Project Directory:** Open your terminal and go to the sec-parser folder.
+
+2. **Execute the Test Command:** Run the following command to initiate the tests:
+
+    ```
+    task generalization-tests
+    ```
+
+For a more focused test, you can run a customized test command. Locate the generalization-tests command in the `Taskfile.yml`, copy it, and modify it to meet your needs. You could replace `tests/generalization/` with a specific test, like `tests/generalization/processing_steps/test_top_level_section_title_classifier.py`.
+
+> **Note**
+We offer a script that allows you to expand the test database locally. Simply provide the stock tickers you're interested in, and the script will do the rest.
 
 ## What Can I Work On?
 
