@@ -33,7 +33,10 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_hide_page_element,
     st_multiselect_allow_long_titles,
 )
-from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from sec_parser.semantic_elements.semantic_elements import (
+    IrrelevantElement,
+    TitleElement,
+)
 
 rich.traceback.install()
 USE_METADATA = True
@@ -404,11 +407,18 @@ def render_semantic_element(
     element: sp.AbstractSemanticElement,
     do_element_render_html: bool,
 ):
-    if do_element_render_html:
-        element_html = remove_ix_tags(str(element.html_tag._bs4))
-        st.markdown(element_html, unsafe_allow_html=True)
-    else:
-        st.code(element.html_tag._bs4.prettify(), language="markup")
+    ctx = PassthroughContext()
+    if (
+        isinstance(element, sec_parser.semantic_elements.table_element.TableElement)
+        and element.html_tag.get_approx_table_metrics().rows > 5
+    ):
+        ctx = st.expander(element.get_summary(), expanded=False)
+    with ctx:
+        if do_element_render_html:
+            element_html = remove_ix_tags(str(element.html_tag._bs4))
+            st.markdown(element_html, unsafe_allow_html=True)
+        else:
+            st.code(element.html_tag._bs4.prettify(), language="markup")
 
 
 if not USE_METADATA:
