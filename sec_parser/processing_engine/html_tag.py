@@ -7,6 +7,10 @@ import xxhash
 from frozendict import frozendict
 
 from sec_parser.exceptions import SecParserValueError
+from sec_parser.utils.bs4_.approx_table_metrics import (
+    ApproxTableMetrics,
+    get_approx_table_metrics,
+)
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
@@ -50,6 +54,7 @@ class HtmlTag:
         self._frozen_dict: frozendict | None = None
         self._source_code: str | None = None
         self._pretty_source_code: str | None = None
+        self._approx_table_metrics: ApproxTableMetrics | None = None
 
     def get_source_code(self, *, pretty: bool = False) -> str:
         if pretty:
@@ -155,6 +160,11 @@ class HtmlTag:
         if self._text_styles_metrics is None:
             self._text_styles_metrics = compute_text_styles_metrics(self._bs4)
         return self._text_styles_metrics
+
+    def get_approx_table_metrics(self) -> ApproxTableMetrics:
+        if self._approx_table_metrics is None:
+            self._approx_table_metrics = get_approx_table_metrics(self._bs4)
+        return self._approx_table_metrics
 
     @staticmethod
     def _to_tag(element: bs4.PageElement) -> bs4.Tag:

@@ -37,9 +37,7 @@ tasks:
   pre-push-checks:
     desc: Execute all pre-push checks before pushing code or creating a PR.
     cmds:
-      - task: ensure-clean-working-tree
       - task: ci-checks
-      - task: ensure-clean-working-tree
 
   ci-checks:
     desc: Execute all CI/CD checks for debugging a failing CI/CD pipeline.
@@ -124,7 +122,9 @@ tasks:
 
   check-and-push:
     cmds:
+      - task: ensure-clean-working-tree
       - task: pre-push-checks
+      - task: ensure-clean-working-tree
       - git push
 
 ###################################################

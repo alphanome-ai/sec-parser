@@ -153,7 +153,7 @@ print("\n".join(sp.render(section).split("\n")[:13]) + "...")
 <pre>
 <b><font color="navy">TitleElement:</font></b> Segment Operating Performance
 ├── <b><font color="navy">TextElement:</font></b> The following table sho... (dollars in millions):
-├── <b><font color="navy">TableElement:</font></b> 414 characters.
+├── <b><font color="navy">TableElement:</font></b> Table with 7 rows, 40 numbers, and 414 characters.
 ├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Americas
 │   └── <b><font color="navy">TextElement:</font></b> Americas net sales decr... net sales of Services.
 ├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Europe

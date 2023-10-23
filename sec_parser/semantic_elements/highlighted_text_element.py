@@ -13,9 +13,15 @@ if TYPE_CHECKING:  # pragma: no cover
 
 class HighlightedTextElement(AbstractSemanticElement):
     """
-    The HighlightedElement class used for detecting title elements.
-    The process begins with the detection of highlighted elements,
-    which are then further classified into title elements.
+    The HighlightedTextElement class, among other uses,
+    is an intermediate step in identifying title elements.
+
+    For example:
+    ============
+    First, elements with specific styles (like bold or italic text)
+    are classified as HighlightedTextElements.
+    These are later examined to determine if they should
+    be considered TitleElements.
     """
 
     def __init__(

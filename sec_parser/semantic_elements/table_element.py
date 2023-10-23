@@ -13,4 +13,9 @@ class TableElement(AbstractSemanticElement):
         This method aims to provide a simplified, human-friendly representation of
         the underlying HtmlTag.
         """
-        return f"{len(self.text)} characters."
+        metrics = self.html_tag.get_approx_table_metrics()
+        return (
+            f"Table with {metrics.rows} rows, "
+            f"{metrics.numbers} numbers, and "
+            f"{len(self.text)} characters."
+        )
