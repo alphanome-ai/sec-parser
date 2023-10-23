@@ -8,7 +8,6 @@ from bs4 import XMLParsedAsHTMLWarning
 
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
-
 import sec_parser.semantic_elements.top_level_section_title
 
 
@@ -78,10 +77,10 @@ def get_pretty_class_name(element_cls, element=None, *, source: str = ""):
     name = add_spaces(element_cls.__name__.replace("Element", "").strip())
 
     level = ""
-    if element and hasattr(element, "level") and element.level > 1:
-        level = f" (Level {element.level})"
+    if element and hasattr(element, "level"):
+        level = f" | L{element.level}"
 
-    pretty_name = f"{emoji_chain} **{name}{level}**"
+    pretty_name = f"{emoji_chain} **{name}**{level}"
 
     if source:
         pretty_name += f" | {source}"
