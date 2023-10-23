@@ -27,7 +27,6 @@ def get_latest_10q_html(
     return storage.get_file_contents()[0].content
 
 
-@st.cache_resource
 def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
     parser = sp.Edgar10QParser()
     return parser.parse(html)

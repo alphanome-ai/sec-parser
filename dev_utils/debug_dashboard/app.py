@@ -12,6 +12,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 import sec_parser as sp
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
+import sec_parser.semantic_elements.top_level_section_title
 from dev_utils.debug_dashboard.config import get_config
 from dev_utils.debug_dashboard.general_utils import interleave_lists
 from dev_utils.debug_dashboard.sec_data_retrieval import (
@@ -33,8 +34,6 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_multiselect_allow_long_titles,
 )
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
-
-import sec_parser.semantic_elements.top_level_section_title
 
 rich.traceback.install()
 USE_METADATA = True
@@ -507,16 +506,24 @@ if selected_step == 2:
             ),
         )
     if pagination_size:
-        selected_page = sac.pagination(
-            total=len(titles_and_elements),
-            page_size=pagination_size,
-            align="center",
-            circle=True,
-            disabled=False,
-            jump=True,
-            simple=True,
-            show_total=True,
-        )
+        cols = st.columns(3)
+        with cols[1]:
+            label = f"Select Page (Total: {(len(titles_and_elements) // pagination_size) + 1})"
+            selected_page = st.number_input(
+                label,
+                min_value=1,
+                max_value=(len(titles_and_elements) // pagination_size) + 1,
+                value=1,
+                step=1,
+                format="%d",
+            )
+            total_items = len(titles_and_elements)
+            start_item = (selected_page - 1) * pagination_size + 1
+            end_item = min(selected_page * pagination_size, total_items)
+            st.markdown(
+                f"<p style='text-align: center;'>{start_item}-{end_item} / {total_items} items</p>",
+                unsafe_allow_html=True,
+            )
         pagination_start_idx = (selected_page - 1) * pagination_size
         pagination_end_idx = selected_page * pagination_size
         titles_and_elements = titles_and_elements[
