@@ -57,7 +57,7 @@ class HighlightedTextElement(AbstractSemanticElement):
 
 @dataclass(frozen=True)
 class TextStyle:
-    PERCENTAGE_THRESHOLD = 80
+    PERCENTAGE_THRESHOLD = 50
     BOLD_THRESHOLD = 600
 
     bold_with_font_weight: bool
