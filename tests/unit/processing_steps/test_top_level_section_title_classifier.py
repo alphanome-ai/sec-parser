@@ -113,6 +113,28 @@ def test_pre_top_level_section_pruner(name, elements, expected_elements):
                     # should have "fields": {"level": 1, "identifier": "part1item1"},
                 },
             ],
+        ),(
+            "",
+            """
+<div style="margin-top:10pt">
+ <span style="color:#000000;font-family:'Times New Roman',sans-serif;font-size:10pt;font-weight:700;line-height:115%">
+  Item 3.
+ </span>
+ <span style="color:#000000;font-family:'Times New Roman',sans-serif;font-size:10pt;font-weight:700;line-height:115%;text-decoration:underline">
+  Defaults Upon Senior Securities.
+ </span>
+ <span style="color:#000000;font-family:'Times New Roman',sans-serif;font-size:10pt;font-weight:400;line-height:115%">
+  — No matters require disclosure.
+ </span>
+</div>
+            """,
+            [
+                {
+                    "type": TopLevelSectionTitle,
+                    "tag": "div",
+                    "fields": {"level": 1, "identifier": "part?item3"},
+                }
+            ],
         ),
     ],
     ids=[v[0] for v in values],
