@@ -1,3 +1,8 @@
+from __future__ import annotations
+
+from dataclasses import asdict
+from typing import Any
+
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -19,3 +24,9 @@ class TableElement(AbstractSemanticElement):
             f"{metrics.numbers} numbers, and "
             f"{len(self.text)} characters."
         )
+
+    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+        return {
+            **super().to_dict(include_html_tag),
+            "metrics": asdict(self.html_tag.get_approx_table_metrics()),
+        }

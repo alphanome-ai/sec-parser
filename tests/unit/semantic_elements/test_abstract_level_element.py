@@ -20,7 +20,7 @@ def test_invalid_level_raises():
 
     # Act & Assert
     with pytest.raises(InvalidLevelError):
-        DummyElement(Mock(), level=invalid_level)
+        DummyElement(Mock(), (), level=invalid_level)
 
 
 def test_to_dict():
@@ -29,7 +29,7 @@ def test_to_dict():
     tag.string = "A" * 60
 
     # Act
-    actual = DummyElement(HtmlTag(tag)).to_dict()
+    actual = DummyElement(HtmlTag(tag), ()).to_dict()
 
     # Assert
     assert actual["cls_name"] == "DummyElement"
@@ -38,7 +38,7 @@ def test_to_dict():
 def test_repr():
     # Arrange
     tag = bs4.Tag(name="div")
-    element = DummyElement(HtmlTag(tag))
+    element = DummyElement(HtmlTag(tag), ())
 
     # Act
     repr_string = repr(element)

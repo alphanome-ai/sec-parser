@@ -30,7 +30,7 @@ def test_composite_semantic_element_initialization_valid_inner_elements(
     mock_html_tag = MockHtmlTag()
 
     # Act
-    element = CompositeSemanticElement(mock_html_tag, default_inner_elements)
+    element = CompositeSemanticElement(mock_html_tag, (), default_inner_elements)
 
     # Assert
     assert element.inner_elements == default_inner_elements
@@ -47,7 +47,7 @@ def test_composite_semantic_element_initialization_none_inner_elements():
 
     # Act & Assert
     with pytest.raises(ValueError, match="inner_elements cannot be None."):
-        CompositeSemanticElement(mock_html_tag, None)
+        CompositeSemanticElement(mock_html_tag, (), None)
 
 
 def test_composite_semantic_element_initialization_empty_inner_elements():
@@ -60,7 +60,7 @@ def test_composite_semantic_element_initialization_empty_inner_elements():
 
     # Act & Assert
     with pytest.raises(ValueError, match="inner_elements cannot be empty."):
-        CompositeSemanticElement(mock_html_tag, [])
+        CompositeSemanticElement(mock_html_tag, (), [])
 
 
 def test_create_from_element_source_valid_inner_elements(default_inner_elements):
@@ -70,7 +70,7 @@ def test_create_from_element_source_valid_inner_elements(default_inner_elements)
     """
     # Arrange
     shared_mock = Mock()
-    other = AbstractSemanticElement(shared_mock)
+    other = AbstractSemanticElement(shared_mock, ())
 
     # Act
     converted = CompositeSemanticElement.create_from_element(

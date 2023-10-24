@@ -26,9 +26,9 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
         (
             [
                 NotYetClassifiedElement(html_tag("p")),
-                TopLevelSectionTitle(html_tag("p")),
+                TopLevelSectionTitle(html_tag("p"), ()),
                 NotYetClassifiedElement(html_tag("p")),
-                TopLevelSectionTitle(html_tag("p")),
+                TopLevelSectionTitle(html_tag("p"), ()),
                 NotYetClassifiedElement(html_tag("p")),
             ],
             [

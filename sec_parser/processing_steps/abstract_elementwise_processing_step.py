@@ -18,14 +18,25 @@ ElementTransformer = Callable[[AbstractSemanticElement], AbstractSemanticElement
 @dataclass
 class ElementwiseProcessingContext:
     """
-    ElementwiseProcessingContext class for passing context information
-    to elementwise processing steps.
+    The ElementwiseProcessingContext class is designed to provide context information
+    for elementwise processing steps. This includes specifying whether an element is a
+    root and tracking the current iteration in a series of repeated processing steps
+    over all elements.
+
+    Attributes
+    ----------
+        is_root_element (bool): Indicates if the given semantic element is a root
+                                element in the HTML document.
+
+        iteration (int): Represents the current iteration number during the repeated
+                         processing of all semantic elements. This is related to the
+                         `_NUM_ITERATIONS` constant in subclasses, which specifies
+                         the total number of iterations that will be performed over
+                         all elements.
     """
 
-    # The is_root variable informs the processing step whether the given
-    # semantic element wraps an HTML tag that is at the top level of the
-    # HTML document.
     is_root_element: bool
+    iteration: int
 
 
 class AbstractElementwiseProcessingStep(AbstractProcessingStep):
@@ -33,6 +44,11 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
     `AbstractElementwiseTransformStep` class is used to iterate over
     all Semantic Elements with or without applying transformations.
     """
+
+    # _NUM_ITERATIONS specifies the number of times this subclass will
+    # iterate over all semantic elements. Modify this constant to \
+    # change the iteration count.
+    _NUM_ITERATIONS = 1
 
     def __init__(
         self,
@@ -50,33 +66,35 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
         *,
         _context: ElementwiseProcessingContext | None = None,
     ) -> list[AbstractSemanticElement]:
-        context = _context or ElementwiseProcessingContext(
-            is_root_element=True,
-        )
+        for iteration in range(self._NUM_ITERATIONS):
+            context = _context or ElementwiseProcessingContext(
+                is_root_element=True,
+                iteration=iteration,
+            )
+            for i, e in enumerate(elements):
+                # avoids lint error "`element` overwritten by assignment target"
+                element = e
 
-        for i, e in enumerate(elements):
-            # avoids lint error "`element` overwritten by assignment target"
-            element = e
+                if self._types_to_process and not any(
+                    isinstance(element, t) for t in self._types_to_process
+                ):
+                    continue
+                if any(isinstance(element, t) for t in self._types_to_exclude):
+                    continue
 
-            if self._types_to_process and not any(
-                isinstance(element, t) for t in self._types_to_process
-            ):
-                continue
-            if any(isinstance(element, t) for t in self._types_to_exclude):
-                continue
+                if isinstance(element, CompositeSemanticElement):
+                    child_context = ElementwiseProcessingContext(
+                        is_root_element=False,
+                        iteration=iteration,
+                    )
+                    element.inner_elements = self._process(
+                        element.inner_elements,
+                        _context=child_context,
+                    )
+                else:
+                    element = self._process_element(element, context)
 
-            if isinstance(element, CompositeSemanticElement):
-                child_context = ElementwiseProcessingContext(
-                    is_root_element=False,
-                )
-                element.inner_elements = self._process(
-                    element.inner_elements,
-                    _context=child_context,
-                )
-            else:
-                element = self._process_element(element, context)
-
-            elements[i] = element
+                elements[i] = element
 
         return elements
 

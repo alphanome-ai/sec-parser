@@ -26,12 +26,23 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     def __init__(
         self,
         html_tag: HtmlTag,
+        transformation_history: tuple[AbstractSemanticElement, ...],
     ) -> None:
         self._html_tag = html_tag
+        self._transformation_history = transformation_history
 
     @property
     def html_tag(self) -> HtmlTag:
         return self._html_tag
+
+    def get_transformation_history(
+        self,
+        *,
+        include_self: bool = True,
+    ) -> tuple[AbstractSemanticElement, ...]:
+        if include_self:
+            return (*self._transformation_history, self)
+        return self._transformation_history
 
     @classmethod
     def create_from_element(
@@ -39,13 +50,16 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         source: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
-        return cls(source._html_tag)  # noqa: SLF001
+        return cls(
+            source._html_tag,  # noqa: SLF001
+            source.get_transformation_history(),
+        )
 
-    def to_dict(self) -> dict[str, Any]:
-        return {
-            "cls_name": self.__class__.__name__,
-            **self._html_tag.to_dict(),
-        }
+    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+        result = {"cls_name": self.__class__.__name__}
+        if include_html_tag is not False:
+            result.update(self._html_tag.to_dict())
+        return result
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}<{self._html_tag.name}>"
@@ -85,9 +99,10 @@ class AbstractLevelElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
+        transformation_history: tuple[AbstractSemanticElement, ...],
         level: int | None = None,
     ) -> None:
-        super().__init__(html_tag)
+        super().__init__(html_tag, transformation_history)
         level = level or self.MIN_LEVEL
 
         if level < self.MIN_LEVEL:
@@ -102,11 +117,15 @@ class AbstractLevelElement(AbstractSemanticElement):
         *,
         level: int | None = None,
     ) -> AbstractLevelElement:
-        return cls(source._html_tag, level=level)  # noqa: SLF001
+        return cls(
+            source._html_tag,  # noqa: SLF001
+            source.get_transformation_history(),
+            level=level,
+        )
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
         return {
-            **super().to_dict(),
+            **super().to_dict(include_html_tag),
             "level": self.level,
         }
 

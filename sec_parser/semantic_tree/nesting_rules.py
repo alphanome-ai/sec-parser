@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
-from sec_parser.semantic_elements.semantic_elements import AbstractLevelElement
+from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (

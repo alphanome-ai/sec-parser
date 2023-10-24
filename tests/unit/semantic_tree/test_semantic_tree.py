@@ -79,4 +79,4 @@ class MockSemanticElement(AbstractSemanticElement):
 def element(text):
     t = bs4.Tag(name="p")
     t.string = text
-    return MockSemanticElement(HtmlTag(t))
+    return MockSemanticElement(HtmlTag(t), ())

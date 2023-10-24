@@ -32,6 +32,12 @@ def get_semantic_elements(html: str) -> list[sp.AbstractSemanticElement]:
     return parser.parse(html)
 
 
+def get_semantic_elements_parallelized(
+    html_list: list[str],
+) -> list[list[sp.AbstractSemanticElement]]:
+    return [get_semantic_elements(html) for html in html_list]
+
+
 def get_semantic_tree(elements: list[sp.AbstractSemanticElement]) -> sp.SemanticTree:
     tree_builder = sp.TreeBuilder()
     return tree_builder.build(elements)

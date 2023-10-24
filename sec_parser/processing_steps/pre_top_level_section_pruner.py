@@ -22,4 +22,4 @@ class PreTopLevelSectionPruner(AbstractProcessingStep):
         for i, element in enumerate(elements):
             if isinstance(element, TopLevelSectionTitle):
                 return elements[i:]
-        return []
+        return elements

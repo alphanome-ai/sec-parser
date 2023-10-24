@@ -7,7 +7,6 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import TitleElement
 from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -40,8 +39,6 @@ class TopLevelSectionTitleClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
-        if not isinstance(element, TitleElement):
-            return element
         text = _normalize_string(element.text)
         if match := re.search(r"^part (i+)", text):
             self._last_part = str(len(match.group(1)))

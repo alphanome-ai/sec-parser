@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractLevelElement,
@@ -22,10 +22,11 @@ class TopLevelSectionTitle(AbstractLevelElement):
     def __init__(
         self,
         html_tag: HtmlTag,
+        transformation_history: tuple[AbstractSemanticElement, ...],
         level: int | None = None,
         identifier: str | None = None,
     ) -> None:
-        super().__init__(html_tag, level)
+        super().__init__(html_tag, transformation_history, level)
         self.identifier = identifier
 
     @classmethod
@@ -36,4 +37,15 @@ class TopLevelSectionTitle(AbstractLevelElement):
         level: int | None = None,
         identifier: str | None = None,
     ) -> AbstractLevelElement:
-        return cls(source._html_tag, level=level, identifier=identifier)  # noqa: SLF001
+        return cls(
+            source._html_tag,  # noqa: SLF001
+            source.get_transformation_history(),
+            level=level,
+            identifier=identifier,
+        )
+
+    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+        return {
+            **super().to_dict(include_html_tag),
+            "identifier": self.identifier,
+        }

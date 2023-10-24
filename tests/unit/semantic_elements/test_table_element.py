@@ -1,7 +1,9 @@
-from unittest.mock import Mock, patch
+from dataclasses import asdict
+from unittest.mock import Mock
 
 import pytest
 
+from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.table_element import TableElement
 from sec_parser.utils.bs4_.approx_table_metrics import ApproxTableMetrics
 
@@ -41,10 +43,29 @@ def test_table_element_get_summary(test_case):
         rows,
         numbers,
     )
-    table_element = TableElement(html_tag=mock_semantic_element)
+    table_element = TableElement(mock_semantic_element, ())
 
     # Act
     result = table_element.get_summary()
 
     # Assert
     assert result == expected_summary
+
+
+def test_to_dict():
+    # Arrange
+    mock_semantic_element = Mock(spec=HtmlTag)
+    mock_semantic_element.get_approx_table_metrics.return_value = ApproxTableMetrics(
+        5, 6
+    )
+    mock_semantic_element.to_dict.return_value = (
+        {}
+    )  # Mock the to_dict method to return an empty dictionary
+
+    table_element = TableElement(mock_semantic_element, ())
+
+    # Act
+    actual = table_element.to_dict()
+
+    # Assert
+    assert actual["metrics"] == asdict(ApproxTableMetrics(5, 6))

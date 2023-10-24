@@ -20,7 +20,7 @@ def test_highlighted_text_element_initialization():
         ValueError,
         match="styles must be specified for HighlightedElement",
     ):
-        HighlightedTextElement(mock_html_tag, style=None)
+        HighlightedTextElement(mock_html_tag, (), style=None)
 
 
 def test_to_dict():
@@ -30,7 +30,7 @@ def test_to_dict():
     style = TextStyle(bold_with_font_weight=True, italic=True)
 
     # Act
-    actual = HighlightedTextElement(HtmlTag(tag), style=style).to_dict()
+    actual = HighlightedTextElement(HtmlTag(tag), (), style=style).to_dict()
 
     # Assert
     assert actual["text_style"] == asdict(style)

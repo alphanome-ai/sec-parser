@@ -42,9 +42,9 @@ class LeveledElement(AbstractLevelElement):
 def test_nesting_of_leveled_elements():
     # Arrange
     mock_elements = [
-        LeveledElement(html_tag("tag1", "text1"), level=1),
-        LeveledElement(html_tag("tag2", "text2"), level=2),
-        LeveledElement(html_tag("tag3", "text3"), level=2),
+        LeveledElement(html_tag("tag1", "text1"), (), level=1),
+        LeveledElement(html_tag("tag2", "text2"), (), level=2),
+        LeveledElement(html_tag("tag3", "text3"), (), level=2),
     ]
 
     def get_rules() -> list[AbstractNestingRule]:

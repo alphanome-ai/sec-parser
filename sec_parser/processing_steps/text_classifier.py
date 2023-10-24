@@ -6,7 +6,7 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
 )
-from sec_parser.semantic_elements.semantic_elements import EmptyElement, TextElement
+from sec_parser.semantic_elements.semantic_elements import TextElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -32,7 +32,6 @@ class TextClassifier(AbstractElementwiseProcessingStep):
             types_to_process=types_to_process,
             types_to_exclude=types_to_exclude,
         )
-        self._unique_markers_by_order: list[str] = []
 
     def _process_element(
         self,
@@ -43,6 +42,6 @@ class TextClassifier(AbstractElementwiseProcessingStep):
         Transform a single semantic element
         into a TextElement if applicable.
         """
-        if element.text == "":
-            return EmptyElement.create_from_element(element)
-        return TextElement.create_from_element(element)
+        if element.text != "":
+            return TextElement.create_from_element(element)
+        return element

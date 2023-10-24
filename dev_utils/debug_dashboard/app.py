@@ -1,3 +1,4 @@
+import json
 from collections import Counter
 from dataclasses import dataclass
 from itertools import zip_longest
@@ -12,12 +13,14 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 import sec_parser as sp
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
+import sec_parser.semantic_elements.title_element
 import sec_parser.semantic_elements.top_level_section_title
 from dev_utils.debug_dashboard.config import get_config
 from dev_utils.debug_dashboard.general_utils import interleave_lists
 from dev_utils.debug_dashboard.sec_data_retrieval import (
     get_latest_10q_html,
     get_semantic_elements,
+    get_semantic_elements_parallelized,
     get_semantic_tree,
 )
 from dev_utils.debug_dashboard.sec_utils import (
@@ -33,10 +36,8 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_hide_page_element,
     st_multiselect_allow_long_titles,
 )
-from sec_parser.semantic_elements.semantic_elements import (
-    IrrelevantElement,
-    TitleElement,
-)
+from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from sec_parser.semantic_elements.title_element import TitleElement
 
 rich.traceback.install()
 USE_METADATA = True
@@ -97,6 +98,7 @@ selected_step = 0
 do_interleave = False
 use_tree_view = False
 show_text_length = False
+show_transformation_history = False
 
 if not HIDE_UI_ELEMENTS:
     tickers = []
@@ -229,10 +231,8 @@ if not HIDE_UI_ELEMENTS:
                 "Welcome! The original, unprocessed SEC EDGAR document is displayed below.\n\nTo start processing, please select a step:",
             )
 
-for html in htmls:
-    if selected_step >= 2:
-        elements = get_semantic_elements(html)
-        elements_lists.append(elements)
+if selected_step >= 2:
+    elements_lists.extend(get_semantic_elements_parallelized(htmls))
 
 if not HIDE_UI_ELEMENTS:
     do_expand_all = False
@@ -335,6 +335,7 @@ if not HIDE_UI_ELEMENTS:
                             "Expand All",
                             value=True,
                         )
+
                 sidebar_left, sidebar_right = st.columns(2)
 
 for elements in elements_lists:
@@ -406,7 +407,18 @@ def get_buttons(metadata, url, *, align="end"):
 def render_semantic_element(
     element: sp.AbstractSemanticElement,
     do_element_render_html: bool,
+    show_transformation_history: bool,
 ):
+    if show_transformation_history:
+        transformation_history = element.get_transformation_history(include_self=True)
+        with st.expander(f"Transformation history ({len(transformation_history)})"):
+            transformation_history = {
+                e["cls_name"]: {k: v for k, v in e.items() if k != "cls_name"}
+                for e in (
+                    e.to_dict(include_html_tag=False) for e in transformation_history
+                )
+            }
+            st.code(json.dumps(transformation_history, indent=4))
     ctx = PassthroughContext()
     if (
         isinstance(element, sec_parser.semantic_elements.table_element.TableElement)
@@ -420,6 +432,15 @@ def render_semantic_element(
         else:
             st.code(element.html_tag._bs4.prettify(), language="markup")
 
+
+if selected_step in (2, 3):
+    container = right if selected_step == 3 else sidebar_right
+    with container:
+        show_transformation_history = st.checkbox(
+            "History",
+            value=False,
+            help="Display the history of how this element became the current type, with full context.",
+        )
 
 if not USE_METADATA:
     metadatas = []
@@ -445,7 +466,11 @@ if selected_step == 1 or (selected_step == 3 and not use_tree_view):
                     expander_title,
                     expanded=expand_depth > _current_depth,
                 ):
-                    render_semantic_element(element, do_element_render_html)
+                    render_semantic_element(
+                        element,
+                        do_element_render_html,
+                        show_transformation_history,
+                    )
                     for child in tree_node.children:
                         render_tree_node(child, _current_depth=_current_depth + 1)
 
@@ -456,6 +481,7 @@ if selected_step == 1 or (selected_step == 3 and not use_tree_view):
             if selected_step == 3:
                 for root_node in list(tree):
                     render_tree_node(root_node)
+
 
 if selected_step == 2:
     titles_and_elements_per_report = []
@@ -515,27 +541,36 @@ if selected_step == 2:
                 "Set to 0 to disable pagination and show all elements at once."
             ),
         )
-    if pagination_size:
+    total_items = len(titles_and_elements)
+    max_value = ((total_items // pagination_size) + 1) if pagination_size else 1
+    selected_page = 1
+    if max_value == 1:
+        st.markdown(
+            f"<p style='text-align: center; color: lightgrey;'>Total elements: {total_items}</p>",
+            unsafe_allow_html=True,
+        )
+    elif max_value > 1:
         cols = st.columns(3)
         with cols[1]:
-            label = f"Select Page (Total: {(len(titles_and_elements) // pagination_size) + 1})"
+            label = f"Choose a page (out of {max_value} total pages)"
             selected_page = st.number_input(
                 label,
                 min_value=1,
-                max_value=(len(titles_and_elements) // pagination_size) + 1,
+                max_value=max_value,
                 value=1,
                 step=1,
                 format="%d",
             )
-            total_items = len(titles_and_elements)
+
             start_item = (selected_page - 1) * pagination_size + 1
             end_item = min(selected_page * pagination_size, total_items)
             st.markdown(
                 f"<p style='text-align: center;'>{start_item}-{end_item} / {total_items} items</p>",
                 unsafe_allow_html=True,
             )
-        pagination_start_idx = (selected_page - 1) * pagination_size
-        pagination_end_idx = selected_page * pagination_size
+    pagination_start_idx = (selected_page - 1) * pagination_size
+    pagination_end_idx = selected_page * pagination_size
+    if max_value > 1:
         titles_and_elements = titles_and_elements[
             pagination_start_idx:pagination_end_idx
         ]
@@ -544,7 +579,11 @@ if selected_step == 2:
     for i_col, col in enumerate(cols):
         for expander_title, element in titles_and_elements[i_col::element_column_count]:
             with col, st.expander(expander_title, expanded=do_expand_all):
-                render_semantic_element(element, do_element_render_html)
+                render_semantic_element(
+                    element,
+                    do_element_render_html,
+                    show_transformation_history,
+                )
 
 
 def to_tree_item(tree_node: sp.TreeNode, indexer):
@@ -555,7 +594,7 @@ def to_tree_item(tree_node: sp.TreeNode, indexer):
         children.append(to_tree_item(child, indexer))
     icon = {
         se.TextElement: "text-paragraph",
-        se.TitleElement: "bookmark",
+        sec_parser.semantic_elements.title_element.TitleElement: "bookmark",
         sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "journal-bookmark",
         sec_parser.semantic_elements.table_element.TableElement: "table",
         se.ImageElement: "card-image",
@@ -616,7 +655,11 @@ if selected_step == 3 and use_tree_view:
     with right, st.expander("Viewer", expanded=True):
         if selected_tree_item_ids is not None:
             selected_item = elements[selected_tree_item_id]
-            render_semantic_element(selected_item, do_element_render_html)
+            render_semantic_element(
+                selected_item,
+                do_element_render_html,
+                show_transformation_history,
+            )
         else:
             st.write("Select an element from the browser to view it here.")
 

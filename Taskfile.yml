@@ -17,7 +17,7 @@ tasks:
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run ptw -- -- -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 {{.CLI_ARGS}} tests/unit/
+      - poetry run ptw -- -- -s {{.CLI_ARGS}} --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
   launch-docs:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
@@ -29,22 +29,30 @@ tasks:
 ########################################
 
   pre-commit-checks: 
-    desc: Execute all pre-commit checks before committing code.
+    desc: Execute all pre-commit checks before committing code. Run "pre-commit install" to have it run automatically during every commit.
     cmds:
       - task: unit-tests
       - task: lint
 
-  pre-push-checks:
-    desc: Execute all pre-push checks before pushing code or creating a PR.
+  pre-push-preparation:
+    desc: Execute this task before pushing to remote or creating a Pull Request to ensure code quality and consistency.
     cmds:
+      - task: ensure-clean-working-tree
+      - task: lint
+      - task: update-dependencies
+      - task: update-notebook-outputs
+      - git add -u
+      - git commit --amend --no-edit
+      - task: ensure-clean-working-tree
       - task: ci-checks
+      - task: ensure-clean-working-tree
 
   ci-checks:
-    desc: Execute all CI/CD checks for debugging a failing CI/CD pipeline.
+    desc: Execute all checks required for Continuous Integration. Useful for troubleshooting issues in the CI/CD pipeline.
     cmds:
       - task: unit-tests
       - task: lint-without-autofix
-      - task: verify-docs-integrity
+      - task: update-notebook-outputs
       - task: e2e-verify
 
 ####################################
@@ -97,11 +105,10 @@ tasks:
       - poetry run ruff check sec_parser/
       - poetry run mypy
 
-  verify-docs-integrity: # Check the integrity of the documentation.
+  update-notebook-outputs: # Run and verify all Jupyter notebooks in the documentation source folder, and refresh their output cells to ensure they execute without errors.
     silent: true
     cmds:
-      - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
-      - echo "[Taskfile] Executing notebooks and checking for errors. The output will be saved to the notebook files."
+      - echo "[Taskfile] Running and verifying Jupyter notebooks in the documentation source folder to ensure they execute without errors, while refreshing their output cells."
       - for file in $(find {{.ROOT_DIR}}/docs/source/notebooks -name "*.ipynb"); do echo -n "Processing file \"$file\"... "; poetry run exec_nb --exc_stop $file --dest $file && echo "done!" || { echo "Processing failed for file \"$file\""; exit 1; }; done
 
   ensure-clean-working-tree: # Ensure no changes in the working tree or index, abort if any.
@@ -115,17 +122,20 @@ tasks:
       - poetry run cz bump {{.CLI_ARGS}}
       - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
 
+  update-dependencies:
+    cmds:
+      - poetry update
+      - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
+
+  check-and-push:
+    cmds:
+      - task: pre-push-preparation
+      - git push
+
   clone-sec-parser-test-data: # Clone the 'sec-parser-test-data' repository if it's not already present.
     silent: true
     cmds:
       - if [ -d "{{.ROOT_DIR}}/../sec-parser-test-data" ]; then :; else echo "Repository does not exist. Cloning from GitHub..."; git clone https://github.com/alphanome-ai/sec-parser-test-data "{{.ROOT_DIR}}/../sec-parser-test-data" || { echo "Directory ../sec-parser-test-data does not exist and git clone failed. Please use \"git clone\" to download it from https://github.com/alphanome-ai/sec-parser-test-data. Aborting."; exit 1; }; fi
-
-  check-and-push:
-    cmds:
-      - task: ensure-clean-working-tree
-      - task: pre-push-checks
-      - task: ensure-clean-working-tree
-      - git push
 
 ###################################################
 ### Shorthand Tasks for Efficiency (may change) ###
@@ -135,11 +145,11 @@ tasks:
     deps:
       - pre-commit-checks
 
-  p: # You can just run `task p` instead of `task pre-push-checks`.
+  i: # You can just run `task i` instead of `task ci-checks`.
     deps:
-      - pre-push-checks
+      - ci-checks
 
-  pp: # You can just run `task pp` instead of `task check-and-push`.
+  ii: # You can just run `task ii` instead of `task check-and-push`.
     deps:
       - check-and-push
 
@@ -155,9 +165,9 @@ tasks:
     deps:
       - launch-docs
 
-  xx: # You can just run `task xx` instead of `task verify-docs-integrity`.
+  xx: # You can just run `task xx` instead of `task update-notebook-outputs`.
     deps:
-      - verify-docs-integrity
+      - update-notebook-outputs
 
   g: # You can just run `task g` instead of `task generalization-tests`.
     deps:

@@ -73,7 +73,7 @@ def test_render_with_pretty_option():
     )
 
 
-def new_node(name, text, cls: Callable = Element):
+def new_node(name, text, cls: Callable = lambda k: Element(k, ())):
     tag = bs4.Tag(name=name)
     tag.string = text
     return TreeNode(cls(HtmlTag(tag)))
@@ -85,12 +85,12 @@ def get_tree():
     node3 = new_node(
         "p",
         "This is an ignored type",
-        cls=IrrelevantElement,
+        cls=lambda k: IrrelevantElement(k, ()),
     )
     node4 = new_node(
         "p",
         "Child 1 of node1",
-        cls=lambda k: ElementWithLevel(k, level=2),
+        cls=lambda k: ElementWithLevel(k, (), level=2),
     )
     node5 = new_node("p", "Child 2 of node1, with its own child")
     node6 = new_node("p", "Grandchild of node1 (Child of node5)")

@@ -14,7 +14,14 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             """
                 <div>
                 <div>
-                <table></table>
+                <table>
+                    <tr>
+                        <td>Row 1 content</td>
+                    </tr>
+                    <tr>
+                        <td>Row 2 content</td>
+                    </tr>
+                </table>
                 </div>
                 </div>
             """,

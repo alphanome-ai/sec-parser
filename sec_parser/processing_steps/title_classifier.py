@@ -10,7 +10,7 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
-from sec_parser.semantic_elements.semantic_elements import TitleElement
+from sec_parser.semantic_elements.title_element import TitleElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -64,4 +64,7 @@ class TitleClassifier(AbstractElementwiseProcessingStep):
         self._add_unique_style(element.style)
 
         level = self._unique_styles_by_order.index(element.style)
-        return TitleElement.create_from_element(element, level=level)
+        return TitleElement.create_from_element(
+            element,
+            level=level,
+        )

@@ -34,9 +34,10 @@ class CompositeSemanticElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
+        transformation_history: tuple[AbstractSemanticElement, ...],
         inner_elements: list[AbstractSemanticElement] | None,
     ) -> None:
-        super().__init__(html_tag)
+        super().__init__(html_tag, transformation_history)
         if inner_elements is None:
             msg = "inner_elements cannot be None."
             raise ValueError(msg)
@@ -62,13 +63,14 @@ class CompositeSemanticElement(AbstractSemanticElement):
         inner_elements: list[AbstractSemanticElement] | None = None,
     ) -> CompositeSemanticElement:
         return cls(
-            html_tag=source.html_tag,
-            inner_elements=inner_elements,
+            source.html_tag,
+            source.get_transformation_history(),
+            inner_elements,
         )
 
-    def to_dict(self) -> dict[str, Any]:
+    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
         return {
-            **super().to_dict(),
+            **super().to_dict(include_html_tag),
             "inner_elements": len(self.inner_elements),
         }
 

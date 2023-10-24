@@ -9,8 +9,8 @@ from sec_parser.semantic_elements.semantic_elements import (
     EmptyElement,
     NotYetClassifiedElement,
     TextElement,
-    TitleElement,
 )
+from sec_parser.semantic_elements.title_element import TitleElement
 from tests.unit._utils import assert_elements
 from tests.unit.processing_steps._utils import parse_initial_semantic_elements
 
@@ -56,7 +56,7 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             [
                 {"type": TitleElement, "tag": "div"},
                 {"type": TextElement, "tag": "span"},
-                {"type": EmptyElement, "tag": "p"},
+                {"type": NotYetClassifiedElement, "tag": "p"},
             ],
         ),
     ],

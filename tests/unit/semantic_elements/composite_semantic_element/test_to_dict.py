@@ -17,7 +17,9 @@ def test_to_dict():
 
     # Act
     actual = CompositeSemanticElement(
-        HtmlTag(tag), inner_elements=[Mock(), Mock()]
+        HtmlTag(tag),
+        (),
+        inner_elements=[Mock(), Mock()],
     ).to_dict()
 
     # Assert

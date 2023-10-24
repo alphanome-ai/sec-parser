@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import warnings
+from functools import cache
 
 import bs4
 from bs4 import XMLParsedAsHTMLWarning
@@ -9,6 +10,8 @@ from bs4 import XMLParsedAsHTMLWarning
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
 import sec_parser.semantic_elements.top_level_section_title
+
+import sec_parser.semantic_elements.title_element
 
 
 def normalize_company_name(name):
@@ -27,6 +30,7 @@ def generate_bool_list(idx, length):
     return [i == idx for i in range(length)]
 
 
+@cache
 def remove_ix_tags(html):
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
@@ -58,13 +62,14 @@ def get_emoji_chain(cls: type):
 
         emoji = {
             se.TextElement: "📝",
-            se.TitleElement: "🏷️",
+            sec_parser.semantic_elements.title_element.TitleElement: "🏷️",
             sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "📚",
             sec_parser.semantic_elements.table_element.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.NotYetClassifiedElement: "🛸",
             se.IrrelevantElement: "🚮",
             se.EmptyElement: "0️⃣",
+            se.SupplementaryText: "ℹ️",
         }.get(ancestor, "❓")
 
         emojis.append(emoji)

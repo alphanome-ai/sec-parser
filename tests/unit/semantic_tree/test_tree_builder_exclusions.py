@@ -39,10 +39,10 @@ class LeveledElement(AbstractLevelElement):
 def test_exclude_ignored_parent():
     # Arrange
     mock_elements = [
-        IgnoredParent(html_tag("tag2", "text2")),
-        ChildElement(html_tag("tag1", "text1")),
-        ParentElement(html_tag("tag3", "text3")),
-        ChildElement(html_tag("tag1", "text1")),
+        IgnoredParent(html_tag("tag2", "text2"), ()),
+        ChildElement(html_tag("tag1", "text1"), ()),
+        ParentElement(html_tag("tag3", "text3"), ()),
+        ChildElement(html_tag("tag1", "text1"), ()),
     ]
 
     def get_rules():
@@ -63,10 +63,10 @@ def test_exclude_ignored_parent():
 def test_exclude_ignored_child():
     # Arrange
     mock_elements = [
-        ParentElement(html_tag("tag2", "text2")),
-        IgnoredChild(html_tag("tag1", "text1")),
-        ParentElement(html_tag("tag3", "text3")),
-        ChildElement(html_tag("tag1", "text1")),
+        ParentElement(html_tag("tag2", "text2"), ()),
+        IgnoredChild(html_tag("tag1", "text1"), ()),
+        ParentElement(html_tag("tag3", "text3"), ()),
+        ChildElement(html_tag("tag1", "text1"), ()),
     ]
 
     def get_rules():
@@ -87,12 +87,12 @@ def test_exclude_ignored_child():
 def test_exclude_both_ignored_parent_and_child():
     # Arrange
     mock_elements = [
-        ParentElement(html_tag("tag2", "text2")),
-        ChildElement(html_tag("tag1", "text1")),
-        ParentElement(html_tag("tag3", "text3")),
-        IgnoredChild(html_tag("tag1", "text1")),
-        IgnoredParent(html_tag("tag2", "text2")),
-        ChildElement(html_tag("tag1", "text1")),
+        ParentElement(html_tag("tag2", "text2"), ()),
+        ChildElement(html_tag("tag1", "text1"), ()),
+        ParentElement(html_tag("tag3", "text3"), ()),
+        IgnoredChild(html_tag("tag1", "text1"), ()),
+        IgnoredParent(html_tag("tag2", "text2"), ()),
+        ChildElement(html_tag("tag1", "text1"), ()),
     ]
 
     def get_rules():

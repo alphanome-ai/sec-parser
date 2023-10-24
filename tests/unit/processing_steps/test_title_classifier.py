@@ -7,7 +7,7 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
-from sec_parser.semantic_elements.semantic_elements import TitleElement
+from sec_parser.semantic_elements.title_element import TitleElement
 from tests.unit._utils import assert_elements
 
 
@@ -19,10 +19,8 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
 
 bold = TextStyle(
     bold_with_font_weight=True,
-    italic=False,
 )
 italic = TextStyle(
-    bold_with_font_weight=False,
     italic=True,
 )
 
@@ -32,10 +30,10 @@ italic = TextStyle(
     [
         (
             [
-                HighlightedTextElement(html_tag("p"), style=italic),
-                HighlightedTextElement(html_tag("p"), style=bold),
-                HighlightedTextElement(html_tag("p"), style=bold),
-                HighlightedTextElement(html_tag("p"), style=italic),
+                HighlightedTextElement(html_tag("p"), (), style=italic),
+                HighlightedTextElement(html_tag("p"), (), style=bold),
+                HighlightedTextElement(html_tag("p"), (), style=bold),
+                HighlightedTextElement(html_tag("p"), (), style=italic),
             ],
             [
                 {"type": TitleElement, "tag": "p", "fields": {"level": 0}},
