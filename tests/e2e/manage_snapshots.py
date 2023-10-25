@@ -49,30 +49,6 @@ class VerificationResult:
         )
 
 
-def compare_elements(
-    elements: list[AbstractSemanticElement],
-    expected_items: list[dict],
-) -> tuple[list, list]:
-    unexpected_items, missing_items = [], []
-    i, j = 0, 0
-    while i < len(elements) and j < len(expected_items):
-        el_dict = elements[i].to_dict()
-        if {k: v for k, v in el_dict.items() if k != "id"} == {
-            k: v for k, v in expected_items[j].items() if k != "id"
-        }:
-            i += 1
-            j += 1
-        elif i < j:
-            unexpected_items.append(el_dict)
-            i += 1
-        else:
-            missing_items.append(expected_items[j])
-            j += 1
-    unexpected_items.extend(el.to_dict() for el in elements[i:])
-    missing_items.extend(expected_items[j:])
-    return unexpected_items, missing_items
-
-
 def print_verification_result_table(
     results: list[VerificationResult],
 ) -> None:

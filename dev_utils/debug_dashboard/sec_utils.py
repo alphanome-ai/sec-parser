@@ -9,9 +9,8 @@ from bs4 import XMLParsedAsHTMLWarning
 
 import sec_parser.semantic_elements as se
 import sec_parser.semantic_elements.table_element
-import sec_parser.semantic_elements.top_level_section_title
-
 import sec_parser.semantic_elements.title_element
+import sec_parser.semantic_elements.top_level_section_title
 
 
 def normalize_company_name(name):
