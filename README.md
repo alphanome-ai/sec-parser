@@ -44,7 +44,7 @@
   <a href="https://parser.app.alphanome.dev">See Demo</a> |
   <a href="https://sec-parser.rtfd.io">Read Docs</a> |
   <a href="https://github.com/orgs/alphanome-ai/discussions">Join Discussions</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
+  <a href="https://discord.gg/w6bpyBW6">Join Discord</a>
   </b>
 </div>
 <br>
