@@ -439,7 +439,7 @@ if selected_step in (2, 3):
         show_transformation_history = st.checkbox(
             "History",
             value=False,
-            help="Display the history of how this element became the current type, with full context.",
+            help="Display the history of how each element became the current type, with full context.",
         )
 
 if not USE_METADATA:
