@@ -6,7 +6,6 @@ from sec_parser.processing_steps.highlighted_text_classifier import (
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.semantic_elements.semantic_elements import (
-    EmptyElement,
     NotYetClassifiedElement,
     TextElement,
 )
