@@ -44,7 +44,7 @@
   <a href="https://parser.app.alphanome.dev">See Demo</a> |
   <a href="https://sec-parser.rtfd.io">Read Docs</a> |
   <a href="https://github.com/orgs/alphanome-ai/discussions">Join Discussions</a> |
-  <a href="https://github.com/alphanome-ai/sec-parser/issues">Report Bugs</a>
+  <a href="https://discord.gg/w6bpyBW6">Join Discord</a>
   </b>
 </div>
 <br>
@@ -163,7 +163,8 @@ print("\n".join(sp.render(section).split("\n")[:13]) + "...")
 ├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Japan
 │   └── <b><font color="navy">TextElement:</font></b> The weakness in the yen..., Home and Accessories.
 └── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Rest of Asia Pacific
-    ├── <b><font color="navy">TextElement:</font></b> The weakness in foreign...lower net sales of Mac....
+    ├── <b><font color="navy">TextElement:</font></b> The weakness in foreign...lower net sales of Mac.
+...
 </pre>
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
