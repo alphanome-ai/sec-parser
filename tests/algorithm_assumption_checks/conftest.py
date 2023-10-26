@@ -3,9 +3,7 @@ import pytest
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_engine.html_tag_parser import HtmlTagParser
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
-from sec_parser.processing_engine.create_unclassified_elements import (
-    create_unclassified_elements,
-)
+
 from tests._sec_parser_validation_data import (
     DEFAULT_VALIDATION_DATA_DIR,
     Report,
@@ -28,7 +26,7 @@ def html_tags_per_report() -> dict[Report, list[NotYetClassifiedElement]]:
         html_text = report.primary_doc_html_path.read_text()
         bs4_root_tags[report] = HtmlTagParser().parse(html_text)
     return {
-        report: create_unclassified_elements(tags)
+        report: [NotYetClassifiedElement(tag) for tag in tags]
         for report, tags in bs4_root_tags.items()
     }
 

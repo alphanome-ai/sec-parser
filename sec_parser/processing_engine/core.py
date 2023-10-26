@@ -3,9 +3,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Callable
 
-from sec_parser.processing_engine.create_unclassified_elements import (
-    create_unclassified_elements,
-)
 from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
@@ -122,7 +119,9 @@ class AbstractSemanticElementParser(ABC):
         include_containers: bool | None = None,
     ) -> list[AbstractSemanticElement]:
         steps = self._get_steps()
-        elements = create_unclassified_elements(root_tags)
+        elements: list[AbstractSemanticElement] = [
+            NotYetClassifiedElement(tag) for tag in root_tags
+        ]
 
         for step in steps:
             elements = step.process(elements)
@@ -145,26 +144,8 @@ class Edgar10QParser(AbstractSemanticElementParser):
 
     @classmethod
     def get_default_steps(cls) -> list[AbstractProcessingStep]:
-        def contains_single_semantic_element(
-            html_tag: HtmlTag,
-        ) -> bool:
-            img_count = html_tag.count_tags("img")
-            if img_count > 1:
-                return False
-
-            table_count = html_tag.count_tags("img")
-            if table_count > 1:
-                return False
-
-            if img_count or table_count:
-                outside_text = html_tag.without_tags(["img", "table"]).text
-                if outside_text:
-                    return False
-
-            return True
-
         return [
-            CompositeElementCreator(contains_single_semantic_element),
+            CompositeElementCreator(cls._contains_single_semantic_element),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
@@ -177,3 +158,16 @@ class Edgar10QParser(AbstractSemanticElementParser):
             TitleClassifier(types_to_process={HighlightedTextElement}),
             IrrelevantElementClassifier(),
         ]
+
+    @staticmethod
+    def _contains_single_semantic_element(
+        _: AbstractSemanticElement,
+    ) -> bool:
+        # if img_count > 1:
+
+        # if table_count > 1:
+
+        # if img_count or table_count:
+        #     if outside_text:
+
+        return True

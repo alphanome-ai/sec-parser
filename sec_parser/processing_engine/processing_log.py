@@ -1,3 +1,4 @@
+import copy
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Union
 
@@ -32,3 +33,6 @@ class ProcessingLog:
 
     def get_items(self) -> tuple[LogItem, ...]:
         return tuple(self._log)
+
+    def copy(self) -> "ProcessingLog":
+        return copy.deepcopy(self)

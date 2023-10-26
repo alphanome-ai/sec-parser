@@ -1,9 +1,5 @@
 from typing import Callable
 
-from sec_parser.processing_engine.create_unclassified_elements import (
-    create_unclassified_elements,
-)
-from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
@@ -11,6 +7,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
+from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 
 class CompositeElementCreator(AbstractProcessingStep):
@@ -25,7 +22,7 @@ class CompositeElementCreator(AbstractProcessingStep):
     def __init__(
         self,
         contains_single_semantic_element: Callable[
-            [HtmlTag],
+            [AbstractSemanticElement],
             bool,
         ],
     ) -> None:
@@ -37,7 +34,15 @@ class CompositeElementCreator(AbstractProcessingStep):
         element: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         html_tags = element.html_tag.get_children()
-        inner_elements = self._process(create_unclassified_elements(html_tags))
+        inner_elements: list[AbstractSemanticElement] = [
+            NotYetClassifiedElement(
+                html_tag,
+                log_origin=self.__class__.__name__,
+                processing_log=element.processing_log.copy(),
+            )
+            for html_tag in html_tags
+        ]
+        inner_elements = self._process(inner_elements)
         return CompositeSemanticElement.create_from_element(
             element,
             log_origin=self.__class__.__name__,
@@ -50,9 +55,7 @@ class CompositeElementCreator(AbstractProcessingStep):
     ) -> list[AbstractSemanticElement]:
         result = []
         for element in elements:
-            contains_single = self._contains_single_semantic_element(
-                element.html_tag,
-            )
+            contains_single = self._contains_single_semantic_element(element)
             if not contains_single:
                 result.append(self._create_composite_element(element))
             else:

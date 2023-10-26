@@ -25,8 +25,9 @@ class NotYetClassifiedElement(AbstractSemanticElement):
         html_tag: HtmlTag,
         *,
         log_origin: LogItemOrigin | None = None,
+        processing_log: ProcessingLog | None = None,
     ) -> None:
-        super().__init__(html_tag, log_origin=log_origin)
+        super().__init__(html_tag, log_origin=log_origin, processing_log=processing_log)
 
 
 class ErrorWhileProcessingElement(AbstractSemanticElement):

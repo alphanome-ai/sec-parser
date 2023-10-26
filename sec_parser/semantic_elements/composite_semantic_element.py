@@ -80,6 +80,7 @@ class CompositeSemanticElement(AbstractSemanticElement):
         return cls(
             source.html_tag,
             log_origin=log_origin,
+            processing_log=source.processing_log,
             inner_elements=tuple(inner_elements) if inner_elements else None,
         )
 
