@@ -124,9 +124,7 @@ class AbstractSemanticElementParser(ABC):
         ]
 
         for step in steps:
-            pass
             elements = step.process(elements)
-            pass
 
         if unwrap_elements is False:
             return elements
