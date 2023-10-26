@@ -120,7 +120,6 @@ tasks:
   version-bump: # Increment the version number.
     cmds:
       - poetry run cz bump {{.CLI_ARGS}}
-      - poetry export --with doc -f requirements.txt --output docs/rtd_requirements.txt
 
   update-dependencies:
     cmds:
