@@ -45,13 +45,12 @@ class TopLevelSectionTitle(AbstractLevelElement):
         *,
         level: int | None = None,
         identifier: str | None = None,
-        processing_log: ProcessingLog | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
             level=level,
             identifier=identifier,
-            processing_log=processing_log,
+            processing_log=source.processing_log,
             log_origin=log_origin,
         )
 

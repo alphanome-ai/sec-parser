@@ -1,5 +1,6 @@
 import pytest
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.utils.py_utils import get_direct_subclass_of_base_class
 
 
@@ -45,7 +46,7 @@ def test_invalid_input_type():
 
 def test_no_direct_subclass():
     with pytest.raises(
-        ValueError,
+        SecParserValueError,
         match=r"Could not find a root child class for the given class below Parent.",
     ):
         get_direct_subclass_of_base_class(Parent, Parent)

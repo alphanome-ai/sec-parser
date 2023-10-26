@@ -4,6 +4,8 @@ from hypothesis import strategies as st
 
 from sec_parser.utils.py_utils import MAX_THRESHOLD, exceeds_capitalization_threshold
 
+from sec_parser.exceptions import SecParserValueError
+
 
 @pytest.mark.parametrize(
     "input_str,threshold,expected",
@@ -41,6 +43,6 @@ def test_exceeds_capitalization_threshold(input_str, threshold, expected):
     ],
 )
 def test_exceeds_capitalization_threshold_exceptions(input_str, threshold):
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(SecParserValueError) as excinfo:
         exceeds_capitalization_threshold(input_str, threshold)
     assert str(excinfo.value) == "Threshold must be between 0 and 100."

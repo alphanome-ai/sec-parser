@@ -10,6 +10,8 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     TextStyle,
 )
 
+from sec_parser.exceptions import SecParserValueError
+
 
 def test_highlighted_text_element_initialization():
     # Arrange
@@ -17,7 +19,7 @@ def test_highlighted_text_element_initialization():
 
     # Act & Assert
     with pytest.raises(
-        ValueError,
+        SecParserValueError,
         match="styles must be specified for HighlightedElement",
     ):
         HighlightedTextElement(mock_html_tag, style=None)

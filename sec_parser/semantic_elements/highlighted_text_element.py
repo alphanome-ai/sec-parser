@@ -38,7 +38,7 @@ class HighlightedTextElement(AbstractSemanticElement):
         super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
         if style is None:
             msg = "styles must be specified for HighlightedElement"
-            raise ValueError(msg)
+            raise SecParserValueError(msg)
         self.style = style
 
     @classmethod
@@ -47,7 +47,6 @@ class HighlightedTextElement(AbstractSemanticElement):
         source: AbstractSemanticElement,
         log_origin: LogItemOrigin,
         *,
-        processing_log: ProcessingLog | None = None,
         style: TextStyle | None = None,
     ) -> HighlightedTextElement:
         if style is None:
@@ -56,7 +55,7 @@ class HighlightedTextElement(AbstractSemanticElement):
         return cls(
             source.html_tag,
             style=style,
-            processing_log=processing_log,
+            processing_log=source.processing_log,
             log_origin=log_origin,
         )
 

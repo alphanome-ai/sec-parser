@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 import bs4
 from bs4.builder import XMLParsedAsHTMLWarning
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.processing_engine.html_tag import HtmlTag
 
 DEFAULT_BEAUTIFUL_SOUP_PARSER_BACKEND = "lxml"
@@ -40,7 +41,7 @@ class HtmlTagParser(AbstractHtmlTagParser):
                 "The HTML document did not contain any top-level tags. "
                 "This may indicate that the document is malformed."
             )
-            raise ValueError(msg)
+            raise SecParserValueError(msg)
         return elements
 
     def _parse_to_bs4(self, html: str) -> bs4.Tag:

@@ -3,6 +3,8 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import TYPE_CHECKING
 
+from sec_parser.exceptions import SecParserValueError
+
 if TYPE_CHECKING:  # pragma: no cover
     from bs4 import Tag
 
@@ -65,7 +67,7 @@ def _compute_effective_style(tag: Tag) -> dict[str, str]:
                 # this should never happen, can't even construct a
                 # scenario where this would occur
                 msg = "Expected a string, got a list"
-                raise ValueError(msg)
+                raise SecParserValueError(msg)
             styles = found_styles.split(";")
             for style in styles:
                 if ":" in style:

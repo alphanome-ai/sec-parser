@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -49,7 +50,7 @@ class CompositeSemanticElement(AbstractSemanticElement):
         self._inner_elements: tuple[AbstractSemanticElement, ...] = ()
         if not inner_elements:
             msg = "inner_elements cannot be None or empty."
-            raise ValueError(msg)
+            raise SecParserValueError(msg)
         self.inner_elements = inner_elements
 
     @property
@@ -65,7 +66,7 @@ class CompositeSemanticElement(AbstractSemanticElement):
     ) -> None:
         if not elements:
             msg = "inner_elements cannot be None or empty."
-            raise ValueError(msg)
+            raise SecParserValueError(msg)
         self._inner_elements = elements
 
     @classmethod

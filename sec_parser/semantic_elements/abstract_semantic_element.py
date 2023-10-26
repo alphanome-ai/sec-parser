@@ -116,12 +116,11 @@ class AbstractLevelElement(AbstractSemanticElement):
         source: AbstractSemanticElement,
         log_origin: LogItemOrigin,
         *,
-        processing_log: ProcessingLog | None = None,
         level: int | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
-            processing_log=processing_log,
+            processing_log=source.processing_log,
             level=level,
             log_origin=log_origin,
         )

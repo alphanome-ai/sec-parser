@@ -1,5 +1,7 @@
 import re
 
+from sec_parser.exceptions import SecParserValueError
+
 MAX_THRESHOLD = 100.0
 
 
@@ -23,7 +25,7 @@ def get_direct_subclass_of_base_class(cls: type, base_class: type) -> type:
             f"Could not find a root child class for "
             f"the given class below {base_class.__name__}."
         )
-        raise ValueError(msg)
+        raise SecParserValueError(msg)
 
     return root_child
 
@@ -49,7 +51,7 @@ def exceeds_capitalization_threshold(s: str, threshold: float) -> bool:
     """
     if not 0 <= threshold <= MAX_THRESHOLD:
         msg = "Threshold must be between 0 and 100."
-        raise ValueError(msg)
+        raise SecParserValueError(msg)
     if not s:
         return False
 

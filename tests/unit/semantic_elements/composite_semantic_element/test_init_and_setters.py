@@ -12,6 +12,8 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 )
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
+from sec_parser.exceptions import SecParserValueError
+
 MockHtmlTag = Mock()
 
 
@@ -38,8 +40,8 @@ def test_composite_semantic_element_initialization_valid_inner_elements(
 @pytest.mark.parametrize(
     "inner_elements, expected_exception, expected_message",
     [
-        (None, ValueError, "inner_elements cannot be None or empty."),
-        ((), ValueError, "inner_elements cannot be None or empty."),
+        (None, SecParserValueError, "inner_elements cannot be None or empty."),
+        ((), SecParserValueError, "inner_elements cannot be None or empty."),
     ],
 )
 def test_composite_semantic_element_initialization_with_invalid_inner_elements(

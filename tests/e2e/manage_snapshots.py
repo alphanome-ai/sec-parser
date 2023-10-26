@@ -18,11 +18,6 @@ from sec_parser import Edgar10QParser
 from tests._sec_parser_validation_data import Report, traverse_repository_for_reports
 from tests.e2e._overwrite_file import OverwriteResult, overwrite_with_change_track
 
-if TYPE_CHECKING:
-    from sec_parser.semantic_elements.abstract_semantic_element import (
-        AbstractSemanticElement,
-    )
-
 AVAILABLE_ACTIONS = ["update", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1
 DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "e2e_test_data.yaml"
