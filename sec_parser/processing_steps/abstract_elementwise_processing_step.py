@@ -60,6 +60,8 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
     ) -> None:
         super().__init__()
         self._types_to_process = types_to_process or set()
+        if types_to_process:
+            self._types_to_process.add(CompositeSemanticElement)
         self._types_to_exclude = types_to_exclude or set()
         self._types_to_exclude.add(ErrorWhileProcessingElement)
 

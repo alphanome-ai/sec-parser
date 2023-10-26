@@ -40,10 +40,10 @@ def assert_elements(
                 ), f"Element at index {i} has field '{field}' with value '{getattr(ele, field)}', but expected value '{expected_value}'. Path: {current_path}"
 
         # Recursively check all descendants
-        if "children" in expected:
+        if "inner_elements" in expected:
             assert isinstance(ele, CompositeSemanticElement)
             assert_elements(
                 list(ele.inner_elements),
-                expected["children"],
+                expected["inner_elements"],
                 path=current_path,
             )

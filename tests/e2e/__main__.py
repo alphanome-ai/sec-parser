@@ -57,12 +57,14 @@ def update(
 @click.option("--company_name", multiple=True, help="Filter by company names")
 @click.option("--report_id", multiple=True, help="Filter by report IDs")
 @click.option("--yaml_path", help="Path to YAML filter file")
+@click.option("--quiet", is_flag=True, help="Print less output")
 def verify(
     data_dir: str,
     document_type: list[str],
     company_name: list[str],
     report_id: list[str],
     yaml_path: str,
+    quiet: bool,
 ) -> None:
     """
     Verify the integrity and correctness of the end-to-end dataset snapshot.
@@ -80,6 +82,7 @@ def verify(
             company_name,
             report_id,
             yaml_path,
+            verbose=not quiet,
         )
     except VerificationFailedError as e:
         print(e)

@@ -4,6 +4,9 @@ from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_steps.composite_element_creator import (
     CompositeElementCreator,
 )
+from sec_parser.semantic_elements.composite_semantic_element import (
+    CompositeSemanticElement,
+)
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 from tests.unit._utils import assert_elements
 
@@ -33,6 +36,7 @@ from tests.unit._utils import assert_elements
                         <div id="foo">
                             <p>Some</p>
                         </div>
+                        <table>Text</table>
                         <div id="bar">
                             <table>Text</table>
                         </div>
@@ -40,13 +44,23 @@ from tests.unit._utils import assert_elements
                 """,
             [
                 {
-                    "type": NotYetClassifiedElement,
+                    "type": CompositeSemanticElement,
                     "tag": "div",
+                    "inner_elements": [
+                        {
+                            "type": NotYetClassifiedElement,
+                            "tag": "div",
+                        },
+                        {
+                            "type": NotYetClassifiedElement,
+                            "tag": "table",
+                        },
+                        {
+                            "type": NotYetClassifiedElement,
+                            "tag": "div",
+                        },
+                    ],
                 },
-                # {
-                #     "type": NotYetClassifiedElement,
-                #     "tag": "table",
-                # },
             ],
         ),
     ],

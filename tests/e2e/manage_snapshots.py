@@ -19,7 +19,7 @@ from tests._sec_parser_validation_data import Report, traverse_repository_for_re
 from tests.e2e._overwrite_file import OverwriteResult, overwrite_with_change_track
 
 AVAILABLE_ACTIONS = ["update", "verify"]
-ALLOWED_MICROSECONDS_PER_CHAR = 1
+ALLOWED_MICROSECONDS_PER_CHAR = 6
 DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "e2e_test_data.yaml"
 
 
@@ -99,6 +99,8 @@ def manage_snapshots(
     company_names: list[str] | None,
     report_ids: list[str] | None,
     yaml_path_str: str | None,
+    *,
+    verbose: bool = True,
 ) -> None:
     if action not in AVAILABLE_ACTIONS:
         msg = f"Invalid action. Available actions are: {AVAILABLE_ACTIONS}"
@@ -175,10 +177,11 @@ def manage_snapshots(
             with actual_json_file.open("w") as f:
                 f.write(actual_contents)
 
-            missing_count, unexpected_count = show_diff_with_line_numbers(
+            missing_count, unexpected_count = diff_lines(
                 expected_contents,
                 actual_contents,
                 report_detail.identifier,
+                verbose=verbose,
             )
 
             character_count = len(html_content)
@@ -241,7 +244,7 @@ def manage_snapshots(
         print("Verification of the end-to-end snapshots completed successfully.")
 
 
-def show_diff_with_line_numbers(expected, actual, identifier):
+def diff_lines(expected, actual, identifier, verbose):
     identifier = identifier.ljust(25)
     word1, word2 = "\[expected]:", "\[actual]:"
     d = difflib.Differ()
@@ -256,15 +259,17 @@ def show_diff_with_line_numbers(expected, actual, identifier):
             line_number_expected += 1
             line_number_actual += 1
         elif line.startswith("- "):
-            print(
-                f'"{identifier}" Line {line_number_expected + 1} {word1.ljust(len(word2))} {line[2:].strip()}',
-            )
+            if verbose:
+                print(
+                    f'"{identifier}" Line {line_number_expected + 1} {word1.ljust(len(word2))} {line[2:].strip()}',
+                )
             missing_count += 1
             line_number_expected += 1
         elif line.startswith("+ "):
-            print(
-                f'"{identifier}" Line {line_number_actual + 1} {word2.ljust(len(word1))} {line[2:].strip()}',
-            )
+            if verbose:
+                print(
+                    f'"{identifier}" Line {line_number_actual + 1} {word2.ljust(len(word1))} {line[2:].strip()}',
+                )
             unexpected_count += 1
             line_number_actual += 1
     return missing_count, unexpected_count

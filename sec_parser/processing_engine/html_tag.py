@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import warnings
+from typing import TYPE_CHECKING
 
 import bs4
 import xxhash
@@ -16,6 +17,9 @@ from sec_parser.utils.bs4_.count_tags import count_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 from sec_parser.utils.bs4_.without_tags import without_tags
+
+if TYPE_CHECKING:
+    from collections.abc import Iterable
 
 TEXT_PREVIEW_LENGTH = 40
 
@@ -135,7 +139,7 @@ class HtmlTag:
             )
         return self._contains_tag[tag_key]
 
-    def without_tags(self, names: list[str]) -> HtmlTag:
+    def without_tags(self, names: Iterable[str]) -> HtmlTag:
         """
         `without_tags` method creates a copy of the current HTML tag and removes all
         descendant tags with the specified name. For example, calling
@@ -239,4 +243,5 @@ class NotSetType:
     pass
 
 
+NotSet = NotSetType()
 NotSet = NotSetType()

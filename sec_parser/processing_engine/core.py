@@ -159,15 +159,43 @@ class Edgar10QParser(AbstractSemanticElementParser):
             IrrelevantElementClassifier(),
         ]
 
-    @staticmethod
+    @classmethod
     def _contains_single_semantic_element(
-        _: AbstractSemanticElement,
+        cls,
+        element: AbstractSemanticElement,
     ) -> bool:
-        # if img_count > 1:
+        el_tag = element.html_tag
 
-        # if table_count > 1:
+        special_tags = ("table", "img")
 
-        # if img_count or table_count:
-        #     if outside_text:
+        # Check if tag itself is a special tag
+        if el_tag.name in special_tags:
+            return True
+
+        # Check if contains multiple special tags
+        special_tag_counts = {name: el_tag.count_tags(name) for name in special_tags}
+        for name, count in special_tag_counts.items():
+            if count > 1:
+                element.processing_log.add_item(
+                    log_origin="contains_single_semantic_element",
+                    message=f"Detected multiple <{name}> tags ({count})",
+                )
+                return False
+
+        # Check if contains something else than a special tag
+        single_special_tags = [
+            name for name, count in special_tag_counts.items() if count == 1
+        ]
+        if single_special_tags:
+            outside_text = element.html_tag.without_tags(single_special_tags).text
+            if outside_text:
+                element.processing_log.add_item(
+                    log_origin="contains_single_semantic_element",
+                    message=(
+                        f"Detected text outside of the special tags "
+                        f"({single_special_tags})."
+                    ),
+                )
+                return False
 
         return True
