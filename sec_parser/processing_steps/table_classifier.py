@@ -39,10 +39,6 @@ class TableClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
-        element.processing_log.add_item(
-            log_origin=self.__class__.__name__,
-            message="REACHED",
-        )
         if element.html_tag.contains_tag("table", include_self=True):
             metrics = element.html_tag.get_approx_table_metrics()
             if metrics.rows > self._row_count_threshold:

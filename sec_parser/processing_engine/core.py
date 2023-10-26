@@ -166,10 +166,6 @@ class Edgar10QParser(AbstractSemanticElementParser):
         cls,
         element: AbstractSemanticElement,
     ) -> bool:
-        element.processing_log.add_item(
-            log_origin="contains_single_semantic_element",
-            message="REACHED",
-        )
         el_tag = element.html_tag
 
         if el_tag.name in ("table", "img"):
