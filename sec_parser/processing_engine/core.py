@@ -166,36 +166,29 @@ class Edgar10QParser(AbstractSemanticElementParser):
     ) -> bool:
         el_tag = element.html_tag
 
-        special_tags = ("table", "img")
-
-        # Check if tag itself is a special tag
-        if el_tag.name in special_tags:
+        if el_tag.name in ("table", "img"):
             return True
+        if (table_count := el_tag.count_tags("table")) > 1:
+            _log_multiple(element, "table", table_count)
+            return False
+        if (image_count := el_tag.count_tags("img")) > 1:
+            _log_multiple(element, "img", image_count)
+            return False
 
-        # Check if contains multiple special tags
-        special_tag_counts = {name: el_tag.count_tags(name) for name in special_tags}
-        for name, count in special_tag_counts.items():
-            if count > 1:
-                element.processing_log.add_item(
-                    log_origin="contains_single_semantic_element",
-                    message=f"Detected multiple <{name}> tags ({count})",
-                )
-                return False
-
-        # Check if contains something else than a special tag
-        single_special_tags = [
-            name for name, count in special_tag_counts.items() if count == 1
-        ]
-        if single_special_tags:
-            outside_text = element.html_tag.without_tags(single_special_tags).text
-            if outside_text:
-                element.processing_log.add_item(
-                    log_origin="contains_single_semantic_element",
-                    message=(
-                        f"Detected text outside of the special tags "
-                        f"({single_special_tags})."
-                    ),
-                )
+        if table_count == 1:
+            element.processing_log.add_item(
+                log_origin="contains_single_semantic_element",
+                message="Detected text outside of the <table> tag.",
+            )
+            if el_tag.has_text_outside_tags("table"):
                 return False
 
         return True
+
+
+def _log_multiple(element: AbstractSemanticElement, name: str, count: int) -> None:
+    msg = f"Detected multiple <{name}> tags ({count})"
+    element.processing_log.add_item(
+        log_origin="contains_single_semantic_element",
+        message=msg,
+    )

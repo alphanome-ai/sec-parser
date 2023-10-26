@@ -14,6 +14,7 @@ from sec_parser.utils.bs4_.approx_table_metrics import (
 )
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.count_tags import count_tags
+from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 from sec_parser.utils.bs4_.without_tags import without_tags
@@ -64,6 +65,7 @@ class HtmlTag:
         self._contains_tag: dict[tuple[str, bool], bool] = {}
         self._without_tags: dict[tuple[str, ...], HtmlTag] = {}
         self._count_tags: dict[str, int] = {}
+        self._has_text_outside_tags: dict[tuple[str, ...], bool] = {}
 
     def get_source_code(self, *, pretty: bool = False) -> str:
         if pretty:
@@ -138,6 +140,23 @@ class HtmlTag:
                 include_containers=include_self,
             )
         return self._contains_tag[tag_key]
+
+    def has_text_outside_tags(self, tags: list[str] | str) -> bool:
+        """
+        `has_text_outside_tags` function checks if the given
+        node has any text outside the specified tag.
+        For example, calling has_text_outside_tags(node, ["b"])
+        on a node representing "<div><p><b>text</b>extra text</p></div>"
+        would return True, as there is text outside the 'b'
+        tag within the descendants of the 'div' tag.
+        """
+        tag_names = tuple(tags if isinstance(tags, list) else [tags])
+        if tag_names not in self._has_text_outside_tags:
+            self._has_text_outside_tags[tag_names] = has_text_outside_tags(
+                self._bs4,
+                tag_names,
+            )
+        return self._has_text_outside_tags[tag_names]
 
     def without_tags(self, names: Iterable[str]) -> HtmlTag:
         """
