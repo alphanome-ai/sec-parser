@@ -137,7 +137,7 @@ class HtmlTag:
             self._contains_tag[tag_key] = contains_tag(
                 self._bs4,
                 name,
-                include_containers=include_self,
+                include_self=include_self,
             )
         return self._contains_tag[tag_key]
 

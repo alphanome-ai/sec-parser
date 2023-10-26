@@ -34,14 +34,15 @@ class CompositeElementCreator(AbstractProcessingStep):
         element: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         html_tags = element.html_tag.get_children()
-        inner_elements: list[AbstractSemanticElement] = [
-            NotYetClassifiedElement(
+        inner_elements: list[AbstractSemanticElement] = []
+        for html_tag in html_tags:
+            processing_log = element.processing_log.copy()
+            inner_element = NotYetClassifiedElement(
                 html_tag,
                 log_origin=self.__class__.__name__,
-                processing_log=element.processing_log.copy(),
+                processing_log=processing_log,
             )
-            for html_tag in html_tags
-        ]
+            inner_elements.append(inner_element)
         inner_elements = self._process(inner_elements)
         return CompositeSemanticElement.create_from_element(
             element,

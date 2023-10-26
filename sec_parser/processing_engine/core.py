@@ -124,7 +124,9 @@ class AbstractSemanticElementParser(ABC):
         ]
 
         for step in steps:
+            pass
             elements = step.process(elements)
+            pass
 
         if unwrap_elements is False:
             return elements
@@ -164,6 +166,10 @@ class Edgar10QParser(AbstractSemanticElementParser):
         cls,
         element: AbstractSemanticElement,
     ) -> bool:
+        element.processing_log.add_item(
+            log_origin="contains_single_semantic_element",
+            message="REACHED",
+        )
         el_tag = element.html_tag
 
         if el_tag.name in ("table", "img"):
@@ -175,13 +181,12 @@ class Edgar10QParser(AbstractSemanticElementParser):
             _log_multiple(element, "img", image_count)
             return False
 
-        if table_count == 1:
+        if table_count == 1 and el_tag.has_text_outside_tags("table"):
             element.processing_log.add_item(
                 log_origin="contains_single_semantic_element",
                 message="Detected text outside of the <table> tag.",
             )
-            if el_tag.has_text_outside_tags("table"):
-                return False
+            return False
 
         return True
 

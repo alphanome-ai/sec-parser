@@ -11,7 +11,7 @@ def test_contains_tag_with_self_included():
     assert tag
 
     # Acts
-    result = contains_tag(tag, "div", include_containers=True)
+    result = contains_tag(tag, "div", include_self=True)
 
     # Assert
     assert result is True, "Expected True when tag is included in search"
@@ -25,7 +25,7 @@ def test_contains_tag_with_self_excluded():
     assert tag
 
     # Act
-    result = contains_tag(tag, "div", include_containers=False)
+    result = contains_tag(tag, "div", include_self=False)
 
     # Assert
     assert result is False, "Expected False when tag is excluded from search"

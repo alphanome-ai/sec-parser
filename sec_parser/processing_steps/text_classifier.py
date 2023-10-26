@@ -42,6 +42,10 @@ class TextClassifier(AbstractElementwiseProcessingStep):
         Transform a single semantic element
         into a TextElement if applicable.
         """
+        element.processing_log.add_item(
+            log_origin=self.__class__.__name__,
+            message="REACHED",
+        )
         if element.text != "":
             return TextElement.create_from_element(
                 element,

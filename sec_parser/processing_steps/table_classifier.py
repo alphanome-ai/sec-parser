@@ -28,9 +28,10 @@ class TableClassifier(AbstractElementwiseProcessingStep):
         types_to_process: set[type[AbstractSemanticElement]] | None = None,
         types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
     ) -> None:
-        super().__init__()
-        self._types_to_process = types_to_process or set()
-        self._types_to_exclude = types_to_exclude or set()
+        super().__init__(
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
+        )
         self._row_count_threshold = 1
 
     def _process_element(
@@ -38,21 +39,22 @@ class TableClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
-        found_tables = element.html_tag.count_tags("table")
-        if found_tables == 1:
+        element.processing_log.add_item(
+            log_origin=self.__class__.__name__,
+            message="REACHED",
+        )
+        if element.html_tag.contains_tag("table", include_self=True):
             metrics = element.html_tag.get_approx_table_metrics()
             if metrics.rows > self._row_count_threshold:
                 return TableElement.create_from_element(
                     element,
                     log_origin=self.__class__.__name__,
                 )
-        elif found_tables > 1:
             element.processing_log.add_item(
                 log_origin=self.__class__.__name__,
                 message=(
-                    f"Multiple tables detected ({found_tables}). "
-                    "Expected only one. Skipping processing."
+                    f"Skipping: Table has {metrics.rows} rows, which is below the "
+                    f"threshold of {self._row_count_threshold}."
                 ),
             )
-
         return element

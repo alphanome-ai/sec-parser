@@ -419,10 +419,11 @@ def render_semantic_element(
             for item in processing_log:
                 payload: str = ""
                 if isinstance(item.payload, AbstractSemanticElement):
-                    payload = json.dumps(
+                    obj_json = json.dumps(
                         item.payload.to_dict(include_html_tag=False),
                         indent=4,
                     )
+                    payload = f"created element {obj_json}"
                 else:
                     payload = str(item.payload)
                 output += f"{item.origin}: {payload}\n"

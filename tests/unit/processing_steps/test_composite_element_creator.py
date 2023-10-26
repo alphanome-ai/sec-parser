@@ -30,6 +30,44 @@ from tests.unit._utils import assert_elements
             ],
         ),
         (
+            "nested",
+            """
+                    <div>
+                        <table></table>
+                        <div>
+                            <table></table>
+                            <p>text</p>
+                        </div>
+                    </div>
+                """,
+            [
+                {
+                    "type": CompositeSemanticElement,
+                    "tag": "div",
+                    "inner_elements": [
+                        {
+                            "type": NotYetClassifiedElement,
+                            "tag": "table",
+                        },
+                        {
+                            "type": CompositeSemanticElement,
+                            "tag": "div",
+                            "inner_elements": [
+                                {
+                                    "type": NotYetClassifiedElement,
+                                    "tag": "table",
+                                },
+                                {
+                                    "type": NotYetClassifiedElement,
+                                    "tag": "p",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        ),
+        (
             "text_and_table",
             """
                     <div style="color:red;">
