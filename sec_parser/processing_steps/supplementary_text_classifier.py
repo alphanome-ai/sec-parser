@@ -54,13 +54,19 @@ class SupplementaryTextClassifier(AbstractElementwiseProcessingStep):
             return element
 
         if element.text.startswith("(") and element.text.endswith(")"):
-            return SupplementaryText.create_from_element(element)
+            return SupplementaryText.create_from_element(
+                element,
+                log_origin=self.__class__.__name__,
+            )
         if (
             isinstance(element, HighlightedTextElement)
             and element.style.italic
             and element.text.endswith(".")
         ):
-            return SupplementaryText.create_from_element(element)
+            return SupplementaryText.create_from_element(
+                element,
+                log_origin=self.__class__.__name__,
+            )
         normalized_text = clean_whitespace(element.text).lower()
         if (
             (
@@ -73,5 +79,8 @@ class SupplementaryTextClassifier(AbstractElementwiseProcessingStep):
             and normalized_text.count(".") == 1
             and normalized_text.endswith(".")
         ):
-            return SupplementaryText.create_from_element(element)
+            return SupplementaryText.create_from_element(
+                element,
+                log_origin=self.__class__.__name__,
+            )
         return element

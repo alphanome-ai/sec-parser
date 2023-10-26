@@ -9,6 +9,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
+    from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
 
 
 class TopLevelSectionTitle(AbstractLevelElement):
@@ -22,26 +23,36 @@ class TopLevelSectionTitle(AbstractLevelElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[AbstractSemanticElement, ...],
+        *,
+        processing_log: ProcessingLog | None = None,
+        log_origin: LogItemOrigin | None = None,
         level: int | None = None,
         identifier: str | None = None,
     ) -> None:
-        super().__init__(html_tag, transformation_history, level)
+        super().__init__(
+            html_tag,
+            processing_log=processing_log,
+            level=level,
+            log_origin=log_origin,
+        )
         self.identifier = identifier
 
     @classmethod
     def create_from_element(
         cls,
         source: AbstractSemanticElement,
+        log_origin: LogItemOrigin,
         *,
         level: int | None = None,
         identifier: str | None = None,
+        processing_log: ProcessingLog | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
-            source.get_transformation_history(),
             level=level,
             identifier=identifier,
+            processing_log=processing_log,
+            log_origin=log_origin,
         )
 
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:

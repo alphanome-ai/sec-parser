@@ -81,7 +81,10 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
         if element.text == "":
-            return EmptyElement.create_from_element(element)
+            return EmptyElement.create_from_element(
+                element,
+                log_origin=self.__class__.__name__,
+            )
 
         # Text duplicate finder
         normalized_text = self._normalize_text(element.text)
@@ -113,7 +116,10 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
             self._text_occurences[self._normalize_text(element.text)]
             >= self._min_occurences_to_classify_as_irrelevant
         ):
-            return IrrelevantElement.create_from_element(element)
+            return IrrelevantElement.create_from_element(
+                element,
+                log_origin=self.__class__.__name__,
+            )
 
         # Consecutive irrelevant title (of same level) pruner
         if self._consecutive_title_and_level_occurences:
@@ -124,6 +130,9 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
                 and self._text_occurences[self._normalize_text(element.text)]
                 == max_occurrences
             ):
-                return IrrelevantElement.create_from_element(element)
+                return IrrelevantElement.create_from_element(
+                    element,
+                    log_origin=self.__class__.__name__,
+                )
 
         return element

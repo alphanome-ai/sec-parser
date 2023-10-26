@@ -93,7 +93,7 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
         (
             "elements",
             [
-                EmptyElement(html_tag("p", text=""), ()),
+                EmptyElement(html_tag("p", text="")),
             ],
             [
                 {"type": EmptyElement, "tag": "p"},

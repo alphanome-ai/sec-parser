@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-from frozendict import frozendict
-
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -12,6 +10,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import Iterable
 
     from sec_parser.processing_engine.html_tag import HtmlTag
+    from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
 
 
 class CompositeSemanticElement(AbstractSemanticElement):
@@ -37,30 +36,21 @@ class CompositeSemanticElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[
-            AbstractSemanticElement,
-            ...,
-        ],
         inner_elements: tuple[
             AbstractSemanticElement,
             ...,
         ]
         | None,
-        composite_element_reasons: dict[str, Any] | None = None,
+        *,
+        processing_log: ProcessingLog | None = None,
+        log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, transformation_history)
-
+        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
         self._inner_elements: tuple[AbstractSemanticElement, ...] = ()
         if not inner_elements:
             msg = "inner_elements cannot be None or empty."
             raise ValueError(msg)
-        for element in inner_elements:
-            element.append_to_transformation_history(self)
         self.inner_elements = inner_elements
-
-        self.composite_element_reasons: frozendict[str, Any] = frozendict(
-            composite_element_reasons or {},
-        )
 
     @property
     def inner_elements(
@@ -76,38 +66,26 @@ class CompositeSemanticElement(AbstractSemanticElement):
         if not elements:
             msg = "inner_elements cannot be None or empty."
             raise ValueError(msg)
-        for element in elements:
-            if not any(
-                isinstance(e, CompositeSemanticElement)
-                for e in element.get_transformation_history()
-            ):
-                msg = (
-                    "Transformation history does not contain an"
-                    " instance of CompositeSemanticElement."
-                )
-                raise ValueError(msg)
         self._inner_elements = elements
 
     @classmethod
     def create_from_element(
         cls,
         source: AbstractSemanticElement,
+        log_origin: LogItemOrigin,
         *,
         inner_elements: list[AbstractSemanticElement] | None = None,
-        composite_element_reasons: dict[str, Any] | None = None,
     ) -> CompositeSemanticElement:
         return cls(
             source.html_tag,
-            source.get_transformation_history(),
-            tuple(inner_elements) if inner_elements else None,
-            composite_element_reasons,
+            log_origin=log_origin,
+            inner_elements=tuple(inner_elements) if inner_elements else None,
         )
 
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
         return {
             **super().to_dict(include_html_tag),
             "inner_elements": len(self.inner_elements),
-            "composite_element_reasons": self.composite_element_reasons,
         }
 
     @classmethod
@@ -138,5 +116,4 @@ class CompositeSemanticElement(AbstractSemanticElement):
                     include_containers=include_containers,
                 ),
             )
-        return flattened_elements
         return flattened_elements

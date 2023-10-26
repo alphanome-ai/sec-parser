@@ -48,7 +48,7 @@ def test_smoke_test():
     # Arrange
     tag = bs4.Tag(name="p")
     tag.string = "Hello, world!"
-    element = BaseElement(HtmlTag(tag), ())
+    element = BaseElement(HtmlTag(tag))
     expected_tree = SemanticTree([TreeNode(element)])
     tree_builder = TreeBuilder()
 

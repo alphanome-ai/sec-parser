@@ -43,7 +43,7 @@ def test_table_element_get_summary(test_case):
         rows,
         numbers,
     )
-    table_element = TableElement(mock_semantic_element, ())
+    table_element = TableElement(mock_semantic_element)
 
     # Act
     result = table_element.get_summary()
@@ -62,7 +62,7 @@ def test_to_dict():
         {}
     )  # Mock the to_dict method to return an empty dictionary
 
-    table_element = TableElement(mock_semantic_element, ())
+    table_element = TableElement(mock_semantic_element)
 
     # Act
     actual = table_element.to_dict()

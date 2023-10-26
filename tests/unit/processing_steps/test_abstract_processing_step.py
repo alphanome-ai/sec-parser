@@ -26,9 +26,7 @@ class DummyProcessingStep(AbstractProcessingStep):
 
 def test_process_already_processed_raises_error():
     # Arrange
-    elements: list[AbstractSemanticElement] = [
-        DummyElement(Mock(), ()) for _ in range(5)
-    ]
+    elements: list[AbstractSemanticElement] = [DummyElement(Mock()) for _ in range(5)]
     step = DummyProcessingStep()
 
     # Act

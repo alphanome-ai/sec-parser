@@ -11,7 +11,7 @@ def test_to_dict():
     identifier = "foo"
 
     # Act
-    actual = TopLevelSectionTitle(HtmlTag(tag), (), identifier=identifier).to_dict()
+    actual = TopLevelSectionTitle(HtmlTag(tag), identifier=identifier).to_dict()
 
     # Assert
     assert actual["identifier"] == identifier

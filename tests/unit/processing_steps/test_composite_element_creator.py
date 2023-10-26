@@ -53,8 +53,14 @@ from tests.unit._utils import assert_elements
     ids=[v[0] for v in values],
 )
 def test_with_real_data(name, html_str, expected_elements):
-    z = CompositeElementCreator(lambda _: (True, {"foo": "bar"}))
-    sec_parser = Edgar10QParser(lambda: [z])
+    # Arrange
+    sec_parser = Edgar10QParser(
+        get_steps=lambda: [
+            step
+            for step in Edgar10QParser.get_default_steps()
+            if isinstance(step, CompositeElementCreator)
+        ],
+    )
 
     # Act
     processed_elements = sec_parser.parse(html_str, unwrap_elements=False)

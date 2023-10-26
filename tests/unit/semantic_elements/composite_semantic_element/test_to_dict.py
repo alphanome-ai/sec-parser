@@ -17,7 +17,6 @@ def test_to_dict():
     # Act
     actual = CompositeSemanticElement(
         HtmlTag(tag),
-        (),
         inner_elements=(
             NotYetClassifiedElement(HtmlTag(bs4.Tag(name="p"))),
             NotYetClassifiedElement(HtmlTag(bs4.Tag(name="p"))),

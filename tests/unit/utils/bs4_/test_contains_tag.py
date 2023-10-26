@@ -8,6 +8,7 @@ def test_contains_tag_with_self_included():
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
     tag = soup.div
+    assert tag
 
     # Acts
     result = contains_tag(tag, "div", include_containers=True)
@@ -21,6 +22,7 @@ def test_contains_tag_with_self_excluded():
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
     tag = soup.div
+    assert tag
 
     # Act
     result = contains_tag(tag, "div", include_containers=False)
@@ -47,6 +49,7 @@ def test_contains_tag_without_descendant_tag():
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
     tag = soup.div
+    assert tag
 
     # Act
     result = contains_tag(tag, "a")
@@ -60,6 +63,7 @@ def test_contains_tag_with_empty_tag():
     html = "<div></div>"
     soup = BeautifulSoup(html, "lxml")
     tag = soup.div
+    assert tag
 
     # Act
     result = contains_tag(tag, "p")

@@ -44,4 +44,8 @@ class HighlightedTextClassifier(AbstractElementwiseProcessingStep):
         style: TextStyle = TextStyle.from_style_and_text(styles_metrics, element.text)
         if not style:
             return element
-        return HighlightedTextElement.create_from_element(element, style=style)
+        return HighlightedTextElement.create_from_element(
+            element,
+            log_origin=self.__class__.__name__,
+            style=style,
+        )

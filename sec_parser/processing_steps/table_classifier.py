@@ -9,7 +9,6 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
 from sec_parser.semantic_elements.table_element import TableElement
 
 if TYPE_CHECKING:  # pragma: no cover
-    from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -34,19 +33,26 @@ class TableClassifier(AbstractElementwiseProcessingStep):
         self._types_to_exclude = types_to_exclude or set()
         self._row_count_threshold = 1
 
-    def matches(self, tag: HtmlTag) -> bool:
-        is_unary = tag.is_unary_tree()
-        contains_table = tag.contains_tag("table", include_self=True)
-        return is_unary and contains_table
-
     def _process_element(
         self,
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
-        if self.matches(element.html_tag):
+        found_tables = element.html_tag.count_tags("table")
+        if found_tables == 1:
             metrics = element.html_tag.get_approx_table_metrics()
             if metrics.rows > self._row_count_threshold:
-                return TableElement.create_from_element(element)
+                return TableElement.create_from_element(
+                    element,
+                    log_origin=self.__class__.__name__,
+                )
+        elif found_tables > 1:
+            element.processing_log.add_item(
+                log_origin=self.__class__.__name__,
+                message=(
+                    f"Multiple tables detected ({found_tables}). "
+                    "Expected only one. Skipping processing."
+                ),
+            )
 
         return element

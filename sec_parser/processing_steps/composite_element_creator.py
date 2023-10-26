@@ -1,4 +1,4 @@
-from typing import Any, Callable
+from typing import Callable
 
 from sec_parser.processing_engine.create_unclassified_elements import (
     create_unclassified_elements,
@@ -26,7 +26,7 @@ class CompositeElementCreator(AbstractProcessingStep):
         self,
         contains_single_semantic_element: Callable[
             [HtmlTag],
-            tuple[bool, dict[str, Any]],
+            bool,
         ],
     ) -> None:
         super().__init__()
@@ -40,6 +40,7 @@ class CompositeElementCreator(AbstractProcessingStep):
         inner_elements = self._process(create_unclassified_elements(html_tags))
         return CompositeSemanticElement.create_from_element(
             element,
+            log_origin=self.__class__.__name__,
             inner_elements=inner_elements,
         )
 
@@ -49,7 +50,10 @@ class CompositeElementCreator(AbstractProcessingStep):
     ) -> list[AbstractSemanticElement]:
         result = []
         for element in elements:
-            if not self._contains_single_semantic_element(element.html_tag):
+            contains_single = self._contains_single_semantic_element(
+                element.html_tag,
+            )
+            if not contains_single:
                 result.append(self._create_composite_element(element))
             else:
                 result.append(element)

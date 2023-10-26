@@ -67,4 +67,5 @@ class TitleClassifier(AbstractElementwiseProcessingStep):
         return TitleElement.create_from_element(
             element,
             level=level,
+            log_origin=self.__class__.__name__,
         )

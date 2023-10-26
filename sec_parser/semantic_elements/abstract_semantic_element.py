@@ -4,6 +4,7 @@ from abc import ABC
 from typing import TYPE_CHECKING, Any
 
 from sec_parser.exceptions import SecParserValueError
+from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
@@ -26,38 +27,30 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[
-            AbstractSemanticElement,
-            ...,
-        ],
+        *,
+        processing_log: ProcessingLog | None = None,
+        log_origin: LogItemOrigin | None = None,
     ) -> None:
         self._html_tag = html_tag
-        self._transformation_history = transformation_history
+        self.processing_log = processing_log or ProcessingLog()
+        if log_origin:
+            self.processing_log.add_item(log_origin=log_origin, message=self)
 
     @property
     def html_tag(self) -> HtmlTag:
         return self._html_tag
 
-    def get_transformation_history(
-        self,
-    ) -> tuple[AbstractSemanticElement, ...]:
-        return (*self._transformation_history, self)
-
-    def append_to_transformation_history(
-        self,
-        element: AbstractSemanticElement,
-    ) -> None:
-        self._transformation_history = (*self._transformation_history, element)
-
     @classmethod
     def create_from_element(
         cls,
         source: AbstractSemanticElement,
+        log_origin: LogItemOrigin,
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
         return cls(
             source._html_tag,  # noqa: SLF001
-            source.get_transformation_history(),
+            processing_log=source.processing_log,
+            log_origin=log_origin,
         )
 
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
@@ -104,10 +97,12 @@ class AbstractLevelElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[AbstractSemanticElement, ...],
+        *,
+        processing_log: ProcessingLog | None = None,
         level: int | None = None,
+        log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, transformation_history)
+        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
         level = level or self.MIN_LEVEL
 
         if level < self.MIN_LEVEL:
@@ -119,13 +114,16 @@ class AbstractLevelElement(AbstractSemanticElement):
     def create_from_element(
         cls,
         source: AbstractSemanticElement,
+        log_origin: LogItemOrigin,
         *,
+        processing_log: ProcessingLog | None = None,
         level: int | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
-            source.get_transformation_history(),
+            processing_log=processing_log,
             level=level,
+            log_origin=log_origin,
         )
 
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:

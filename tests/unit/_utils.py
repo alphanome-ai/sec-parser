@@ -6,6 +6,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
+from sec_parser.semantic_elements.semantic_elements import ErrorWhileProcessingElement
 
 
 def assert_elements(
@@ -19,6 +20,9 @@ def assert_elements(
 
     for i, (ele, expected) in enumerate(zip(elements, expected_elements)):
         current_path = f"{path} -> Element {i} (type: {expected['type'].__name__}, tag: {expected['tag']})"
+
+        if isinstance(ele, ErrorWhileProcessingElement):
+            raise ele.error
 
         assert isinstance(
             ele,
@@ -39,7 +43,7 @@ def assert_elements(
         if "children" in expected:
             assert isinstance(ele, CompositeSemanticElement)
             assert_elements(
-                ele.inner_elements,
+                list(ele.inner_elements),
                 expected["children"],
                 path=current_path,
             )

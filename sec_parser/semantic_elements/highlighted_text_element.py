@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import TYPE_CHECKING, Any
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -10,6 +11,7 @@ from sec_parser.utils.py_utils import exceeds_capitalization_threshold
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
+    from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
 
 
 class HighlightedTextElement(AbstractSemanticElement):
@@ -28,11 +30,12 @@ class HighlightedTextElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[AbstractSemanticElement, ...],
         *,
+        processing_log: ProcessingLog | None = None,
         style: TextStyle | None = None,
+        log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, transformation_history)
+        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
         if style is None:
             msg = "styles must be specified for HighlightedElement"
             raise ValueError(msg)
@@ -42,13 +45,19 @@ class HighlightedTextElement(AbstractSemanticElement):
     def create_from_element(
         cls,
         source: AbstractSemanticElement,
+        log_origin: LogItemOrigin,
         *,
+        processing_log: ProcessingLog | None = None,
         style: TextStyle | None = None,
     ) -> HighlightedTextElement:
+        if style is None:
+            msg = "Style must be provided."
+            raise SecParserValueError(msg)
         return cls(
             source.html_tag,
-            source.get_transformation_history(),
             style=style,
+            processing_log=processing_log,
+            log_origin=log_origin,
         )
 
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:

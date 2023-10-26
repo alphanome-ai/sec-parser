@@ -27,7 +27,7 @@ def test_get_source_code(test_case):
     expected_result = test_case["expected_result"]
     mock_html_tag = Mock()
     mock_html_tag.get_source_code.return_value = expected_result
-    semantic_element = AbstractSemanticElement(mock_html_tag, ())
+    semantic_element = AbstractSemanticElement(mock_html_tag)
 
     # Act
     result = semantic_element.get_source_code(pretty=pretty)
@@ -37,28 +37,10 @@ def test_get_source_code(test_case):
     mock_html_tag.get_source_code.assert_called_once_with(pretty=pretty)
 
 
-@pytest.mark.parametrize(
-    "history",
-    [
-        [Mock(spec=DummyElement)],
-    ],
-)
-def test_get_transformation_history(history):
-    # Arrange
-    tag = bs4.Tag(name="p")
-    element = DummyElement(HtmlTag(tag), history)
-
-    # Act
-    actual = element.get_transformation_history()
-
-    # Assert
-    assert actual == (*history, element)
-
-
 def test_repr():
     # Arrange
     tag = bs4.Tag(name="div")
-    element = DummyElement(HtmlTag(tag), ())
+    element = DummyElement(HtmlTag(tag))
 
     # Act
     repr_string = repr(element)

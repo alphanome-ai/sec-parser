@@ -16,7 +16,6 @@ def _create_element(tag) -> AbstractSemanticElement:
         inner_tags = tag.get_children()
         return CompositeSemanticElement(
             tag,
-            (),
             inner_elements=_parse_elements(inner_tags),
         )
     return NotYetClassifiedElement(tag)

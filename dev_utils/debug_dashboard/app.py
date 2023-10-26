@@ -36,6 +36,9 @@ from dev_utils.debug_dashboard.streamlit_utils import (
     st_hide_page_element,
     st_multiselect_allow_long_titles,
 )
+from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractSemanticElement,
+)
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 from sec_parser.semantic_elements.title_element import TitleElement
 
@@ -410,15 +413,20 @@ def render_semantic_element(
     show_transformation_history: bool,
 ):
     if show_transformation_history:
-        transformation_history = element.get_transformation_history()
-        with st.expander(f"Transformation history ({len(transformation_history)})"):
-            transformation_history = {
-                e["cls_name"]: {k: v for k, v in e.items() if k != "cls_name"}
-                for e in (
-                    e.to_dict(include_html_tag=False) for e in transformation_history
-                )
-            }
-            st.code(json.dumps(transformation_history, indent=4))
+        processing_log = element.processing_log.get_items()
+        with st.expander(f"Processing Log ({len(processing_log)})"):
+            output = ""
+            for item in processing_log:
+                payload: str = ""
+                if isinstance(item.payload, AbstractSemanticElement):
+                    payload = json.dumps(
+                        item.payload.to_dict(include_html_tag=False),
+                        indent=4,
+                    )
+                else:
+                    payload = str(item.payload)
+                output += f"{item.origin}: {payload}\n"
+            st.code(output)
     ctx = PassthroughContext()
     if (
         isinstance(element, sec_parser.semantic_elements.table_element.TableElement)
@@ -437,9 +445,9 @@ if selected_step in (2, 3):
     container = right if selected_step == 3 else sidebar_right
     with container:
         show_transformation_history = st.checkbox(
-            "History",
+            "Show Log",
             value=False,
-            help="Display the history of how each element became the current type, with full context.",
+            help="Display the history of how each element was processed.",
         )
 
 if not USE_METADATA:

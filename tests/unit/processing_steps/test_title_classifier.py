@@ -30,10 +30,10 @@ italic = TextStyle(
     [
         (
             [
-                HighlightedTextElement(html_tag("p"), (), style=italic),
-                HighlightedTextElement(html_tag("p"), (), style=bold),
-                HighlightedTextElement(html_tag("p"), (), style=bold),
-                HighlightedTextElement(html_tag("p"), (), style=italic),
+                HighlightedTextElement(html_tag("p"), style=italic),
+                HighlightedTextElement(html_tag("p"), style=bold),
+                HighlightedTextElement(html_tag("p"), style=bold),
+                HighlightedTextElement(html_tag("p"), style=italic),
             ],
             [
                 {"type": TitleElement, "tag": "p", "fields": {"level": 0}},

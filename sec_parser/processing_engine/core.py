@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Any, Callable
+from typing import TYPE_CHECKING, Callable
 
 from sec_parser.processing_engine.create_unclassified_elements import (
     create_unclassified_elements,
@@ -54,29 +54,36 @@ if TYPE_CHECKING:  # pragma: no cover
 class AbstractSemanticElementParser(ABC):
     """
     Responsible for parsing semantic elements from HTML documents.
-    It takes raw HTML and returns a list of objects representing semantic elements.
+    It takes raw HTML and turns it into a list of objects
+    representing semantic elements.
 
     At a High Level:
     ==================
     1. Extract top-level HTML tags from the document.
-    2. Convert them into a list of more specific semantic elements step-by-step.
+    2. Transform these tags into a list of more specific semantic
+       elements step-by-step.
 
     Why Focus on Top-Level Tags?
     ============================
-    SEC filings typically have a flat HTML structure. This simplifies the
-    parsing process, as each top-level HTML tag often directly corresponds
-    to a single semantic element. This is different from many websites,
-    where HTML tags are usually nested deeply, requiring more complex parsing.
+    SEC filings usually have a flat HTML structure, which simplifies the
+    parsing process.Each top-level HTML tag often directly corresponds
+    to a single semantic element. This is different from many websites
+    where HTML tags are nested deeply,requiring more complex parsing.
 
     For Advanced Users:
     ====================
-    The parsing process is implemented as a sequence of steps (Pipeline Pattern)
-    and allows customization of each step (Strategy Pattern).
+    The parsing process is implemented as a sequence of steps and allows for
+    customization at each step.
 
-    - Pipeline Pattern: Raw HTML tags are processed in a sequential, step-by-step manner
-    - Strategy Pattern: You can either replace, remove, or extend any of the existing
-      steps with your own or inherited implementation, or you can replace the entire
-      pipeline with your own implementation.
+    - Pipeline Pattern: Raw HTML tags are processed in a sequential manner.
+      The steps follow an ordered, step-by-step approach, akin to a Finite
+      State Machine (FSM). Each element transitions through various states
+      defined by the sequence of processing steps.
+
+    - Strategy Pattern: Each step is customizable. You can either replace,
+      remove, or extend any of the existing steps with your own or
+      inherited implementation. Alternatively, you can replace the entire pipeline
+      with your own process.
     """
 
     def __init__(
@@ -139,9 +146,22 @@ class Edgar10QParser(AbstractSemanticElementParser):
     @classmethod
     def get_default_steps(cls) -> list[AbstractProcessingStep]:
         def contains_single_semantic_element(
-            _: HtmlTag,
-        ) -> tuple[bool, dict[str, Any]]:
-            return True, {}
+            html_tag: HtmlTag,
+        ) -> bool:
+            img_count = html_tag.count_tags("img")
+            if img_count > 1:
+                return False
+
+            table_count = html_tag.count_tags("img")
+            if table_count > 1:
+                return False
+
+            if img_count or table_count:
+                outside_text = html_tag.without_tags(["img", "table"]).text
+                if outside_text:
+                    return False
+
+            return True
 
         return [
             CompositeElementCreator(contains_single_semantic_element),

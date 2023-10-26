@@ -12,8 +12,10 @@ from sec_parser.utils.bs4_.approx_table_metrics import (
     get_approx_table_metrics,
 )
 from sec_parser.utils.bs4_.contains_tag import contains_tag
+from sec_parser.utils.bs4_.count_tags import count_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
+from sec_parser.utils.bs4_.without_tags import without_tags
 
 TEXT_PREVIEW_LENGTH = 40
 
@@ -56,12 +58,15 @@ class HtmlTag:
         self._pretty_source_code: str | None = None
         self._approx_table_metrics: ApproxTableMetrics | None = None
         self._contains_tag: dict[tuple[str, bool], bool] = {}
+        self._without_tags: dict[tuple[str, ...], HtmlTag] = {}
+        self._count_tags: dict[str, int] = {}
 
     def get_source_code(self, *, pretty: bool = False) -> str:
         if pretty:
             if self._pretty_source_code is None:
                 self._pretty_source_code = self._bs4.prettify()
             return self._pretty_source_code
+
         if self._source_code is None:
             self._source_code = str(self._bs4)
         return self._source_code
@@ -129,6 +134,40 @@ class HtmlTag:
                 include_containers=include_self,
             )
         return self._contains_tag[tag_key]
+
+    def without_tags(self, names: list[str]) -> HtmlTag:
+        """
+        `without_tags` method creates a copy of the current HTML tag and removes all
+        descendant tags with the specified name. For example, calling
+        without_tags(tag, ["b","i"]) on an HtmlTag instance representing
+        "<div><b>foo</b><p>bar<i>bax</i></p></div>" would
+        return a copy HtmlTag instance representing "<div><p>bar</p></div>".
+        """
+        tag_key = tuple(names)
+        if self._without_tags.get(tag_key) is None:
+            self._without_tags[tag_key] = HtmlTag(
+                without_tags(
+                    self._bs4,
+                    names,
+                ),
+            )
+        return self._without_tags[tag_key]
+
+    def count_tags(self, name: str) -> int:
+        """
+        `count_tags` method counts the number of descendant tags with the specified name
+        within the current HTML tag. For example, calling count_tags("b") on an
+        HtmlTag instance representing "<div><p><b>text</b></p><b>more text</b></div>"
+        would return 2, as there are two 'b' tags within the descendants of
+        the 'div' tag.
+        """
+        tag_key = name
+        if self._count_tags.get(tag_key) is None:
+            self._count_tags[tag_key] = count_tags(
+                self._bs4,
+                name,
+            )
+        return self._count_tags[tag_key]
 
     def is_unary_tree(self) -> bool:
         """

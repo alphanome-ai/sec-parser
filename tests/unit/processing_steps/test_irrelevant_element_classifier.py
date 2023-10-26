@@ -22,7 +22,6 @@ from sec_parser.semantic_elements.semantic_elements import (
     IrrelevantElement,
     TextElement,
 )
-from sec_parser.semantic_elements.table_element import TableElement
 from sec_parser.semantic_elements.title_element import TitleElement
 from tests.unit._utils import assert_elements
 
@@ -131,7 +130,6 @@ def test_process_element_raises_value_error():
     context = ElementwiseProcessingContext(False, 2)  # Invalid iteration
     element = AbstractSemanticElement(
         Mock(spec=HtmlTag),
-        (),
     )  # Assume this is a valid element
 
     with pytest.raises(InvalidIterationError):

@@ -46,6 +46,7 @@ class TopLevelSectionTitleClassifier(AbstractElementwiseProcessingStep):
                 element,
                 level=0,
                 identifier=f"part{self._last_part}",
+                log_origin=self.__class__.__name__,
             )
         if match := re.search(r"^item (\d+a?)", text):
             item = match.group(1)
@@ -53,6 +54,7 @@ class TopLevelSectionTitleClassifier(AbstractElementwiseProcessingStep):
                 element,
                 level=1,
                 identifier=f"part{self._last_part}item{item}",
+                log_origin=self.__class__.__name__,
             )
         return element
 

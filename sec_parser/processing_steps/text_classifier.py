@@ -43,5 +43,8 @@ class TextClassifier(AbstractElementwiseProcessingStep):
         into a TextElement if applicable.
         """
         if element.text != "":
-            return TextElement.create_from_element(element)
+            return TextElement.create_from_element(
+                element,
+                log_origin=self.__class__.__name__,
+            )
         return element

@@ -2,12 +2,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
+    from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
 
 
 class NotYetClassifiedElement(AbstractSemanticElement):
@@ -21,9 +23,47 @@ class NotYetClassifiedElement(AbstractSemanticElement):
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[AbstractSemanticElement, ...] = (),
+        *,
+        log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, transformation_history)
+        super().__init__(html_tag, log_origin=log_origin)
+
+
+class ErrorWhileProcessingElement(AbstractSemanticElement):
+    """
+    The ErrorWhileProcessingElement class represents an element that could
+    not be processed due to an error. This class is used to handle exceptions
+    and errors during the parsing process.
+    """
+
+    def __init__(
+        self,
+        html_tag: HtmlTag,
+        error: Exception,
+        *,
+        processing_log: ProcessingLog | None = None,
+        log_origin: LogItemOrigin | None = None,
+    ) -> None:
+        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
+        self.error = error
+
+    @classmethod
+    def create_from_element(
+        cls,
+        source: AbstractSemanticElement,
+        log_origin: LogItemOrigin,
+        *,
+        error: Exception | None = None,
+    ) -> AbstractSemanticElement:
+        if error is None:
+            msg = "Error must be provided."
+            raise SecParserValueError(msg)
+        return cls(
+            source._html_tag,  # noqa: SLF001
+            processing_log=source.processing_log,
+            error=error,
+            log_origin=log_origin,
+        )
 
 
 class IrrelevantElement(AbstractSemanticElement):

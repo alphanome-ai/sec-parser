@@ -46,11 +46,11 @@ class LeveledElement(AbstractLevelElement):
 def test_always_nest_as_child():
     # Arrange
     mock_elements = [
-        ChildElement(html_tag("tag7", "text7"), ()),
-        ParentElement(html_tag("tag6", "text6"), ()),
-        ChildElement(html_tag("tag8", "text8"), ()),
-        ParentElement(html_tag("tag17", "text17"), ()),
-        ChildElement(html_tag("tag18", "text18"), ()),
+        ChildElement(html_tag("tag7", "text7")),
+        ParentElement(html_tag("tag6", "text6")),
+        ChildElement(html_tag("tag8", "text8")),
+        ParentElement(html_tag("tag17", "text17")),
+        ChildElement(html_tag("tag18", "text18")),
     ]
 
     def get_rules() -> list[AbstractNestingRule]:

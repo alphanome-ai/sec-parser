@@ -18,9 +18,9 @@ class MockElement(AbstractSemanticElement):
 
 def test_unwrap_elements_normal_with_include_containers():
     # Arrange
-    elem1 = MockElement(Mock(), ())
-    elem2 = MockElement(Mock(), ())
-    composite = MockCompositeElement(Mock(), (), [elem1, elem2])
+    elem1 = MockElement(Mock())
+    elem2 = MockElement(Mock())
+    composite = MockCompositeElement(Mock(), [elem1, elem2])
     elements: list[AbstractSemanticElement] = [composite]
 
     # Act
@@ -32,9 +32,9 @@ def test_unwrap_elements_normal_with_include_containers():
 
 def test_unwrap_elements_normal_without_include_containers():
     # Arrange
-    elem1 = MockElement(Mock(), ())
-    elem2 = MockElement(Mock(), ())
-    composite = MockCompositeElement(Mock(), (), [elem1, elem2])
+    elem1 = MockElement(Mock())
+    elem2 = MockElement(Mock())
+    composite = MockCompositeElement(Mock(), [elem1, elem2])
     elements: list[AbstractSemanticElement] = [composite]
 
     # Act
@@ -59,8 +59,8 @@ def test_unwrap_elements_empty_list():
 # Test for list with no CompositeSemanticElement
 def test_unwrap_elements_no_composite():
     # Arrange
-    elem1 = MockElement(Mock(), ())
-    elem2 = MockElement(Mock(), ())
+    elem1 = MockElement(Mock())
+    elem2 = MockElement(Mock())
     elements: list[AbstractSemanticElement] = [elem1, elem2]
 
     # Act
@@ -73,10 +73,10 @@ def test_unwrap_elements_no_composite():
 # Test for nested CompositeSemanticElement
 def test_unwrap_elements_nested_composite():
     # Arrange
-    elem1 = MockElement(Mock(), ())
-    elem2 = MockElement(Mock(), ())
-    composite_inner = MockCompositeElement(Mock(), (), [elem1, elem2])
-    composite_outer = MockCompositeElement(Mock(), (), [composite_inner])
+    elem1 = MockElement(Mock())
+    elem2 = MockElement(Mock())
+    composite_inner = MockCompositeElement(Mock(), [elem1, elem2])
+    composite_outer = MockCompositeElement(Mock(), [composite_inner])
     elements: list[AbstractSemanticElement] = [composite_outer]
 
     # Act

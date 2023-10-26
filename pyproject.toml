@@ -103,6 +103,7 @@ ignore = [
     "D212",    # Multi-line docstring summary should start at the first line
     "ANN101",  # Missing type annotation for self in method
     "ANN102",  # Missing type annotation for cls in classmethod
+    "PLR0913", # Too many arguments to function call (> 5)
     ]
 
 
