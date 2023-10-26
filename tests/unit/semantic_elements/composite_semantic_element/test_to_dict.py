@@ -6,8 +6,7 @@ from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
-
-MockHtmlTag = Mock()
+from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 
 def test_to_dict():
@@ -19,7 +18,10 @@ def test_to_dict():
     actual = CompositeSemanticElement(
         HtmlTag(tag),
         (),
-        inner_elements=[Mock(), Mock()],
+        inner_elements=(
+            NotYetClassifiedElement(HtmlTag(bs4.Tag(name="p"))),
+            NotYetClassifiedElement(HtmlTag(bs4.Tag(name="p"))),
+        ),
     ).to_dict()
 
     # Assert

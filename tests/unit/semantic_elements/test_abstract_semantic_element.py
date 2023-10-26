@@ -38,25 +38,21 @@ def test_get_source_code(test_case):
 
 
 @pytest.mark.parametrize(
-    ("include_self", "history"),
+    "history",
     [
-        (False, (Mock(spec=DummyElement),)),
-        (True, (Mock(spec=DummyElement),)),
+        [Mock(spec=DummyElement)],
     ],
 )
-def test_get_transformation_history(include_self, history):
+def test_get_transformation_history(history):
     # Arrange
     tag = bs4.Tag(name="p")
     element = DummyElement(HtmlTag(tag), history)
 
     # Act
-    actual = element.get_transformation_history(include_self=include_self)
+    actual = element.get_transformation_history()
 
     # Assert
-    if not include_self:
-        assert actual == history
-    if include_self:
-        assert actual == (*history, element)
+    assert actual == (*history, element)
 
 
 def test_repr():

@@ -26,11 +26,35 @@ from tests.unit._utils import assert_elements
                 },
             ],
         ),
+        (
+            "text_and_table",
+            """
+                    <div style="color:red;">
+                        <div id="foo">
+                            <p>Some</p>
+                        </div>
+                        <div id="bar">
+                            <table>Text</table>
+                        </div>
+                    </div>
+                """,
+            [
+                {
+                    "type": NotYetClassifiedElement,
+                    "tag": "div",
+                },
+                # {
+                #     "type": NotYetClassifiedElement,
+                #     "tag": "table",
+                # },
+            ],
+        ),
     ],
     ids=[v[0] for v in values],
 )
 def test_with_real_data(name, html_str, expected_elements):
-    sec_parser = Edgar10QParser(lambda: [CompositeElementCreator()])
+    z = CompositeElementCreator(lambda _: (True, {"foo": "bar"}))
+    sec_parser = Edgar10QParser(lambda: [z])
 
     # Act
     processed_elements = sec_parser.parse(html_str, unwrap_elements=False)

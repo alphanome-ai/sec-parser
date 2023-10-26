@@ -55,6 +55,7 @@ class HtmlTag:
         self._source_code: str | None = None
         self._pretty_source_code: str | None = None
         self._approx_table_metrics: ApproxTableMetrics | None = None
+        self._contains_tag: dict[tuple[str, bool], bool] = {}
 
     def get_source_code(self, *, pretty: bool = False) -> str:
         if pretty:
@@ -120,7 +121,14 @@ class HtmlTag:
         HtmlTag instance representing "<div><p><b>text</b></p></div>" would
         return True, as there is a 'b' tag within the descendants of the 'div' tag.
         """
-        return contains_tag(self._bs4, name, include_containers=include_self)
+        tag_key = (name, include_self)
+        if self._contains_tag.get(tag_key) is None:
+            self._contains_tag[tag_key] = contains_tag(
+                self._bs4,
+                name,
+                include_containers=include_self,
+            )
+        return self._contains_tag[tag_key]
 
     def is_unary_tree(self) -> bool:
         """

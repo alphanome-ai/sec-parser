@@ -15,16 +15,18 @@ def _create_element(tag) -> AbstractSemanticElement:
     if tag.name == "section":
         inner_tags = tag.get_children()
         return CompositeSemanticElement(
-            tag, (), inner_elements=_parse_elements(inner_tags)
+            tag,
+            (),
+            inner_elements=_parse_elements(inner_tags),
         )
     return NotYetClassifiedElement(tag)
 
 
-def _parse_elements(root_tags: list[HtmlTag]) -> list[AbstractSemanticElement]:
-    return [_create_element(tag) for tag in root_tags]
+def _parse_elements(root_tags: list[HtmlTag]) -> tuple[AbstractSemanticElement, ...]:
+    return tuple(_create_element(tag) for tag in root_tags)
 
 
 def parse_initial_semantic_elements(html: str) -> list[AbstractSemanticElement]:
     html_parser = HtmlTagParser()
     root_tags = html_parser.parse(html.strip())
-    return _parse_elements(root_tags)
+    return list(_parse_elements(root_tags))

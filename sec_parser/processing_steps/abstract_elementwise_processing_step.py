@@ -87,10 +87,11 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
                         is_root_element=False,
                         iteration=iteration,
                     )
-                    element.inner_elements = self._process(
-                        element.inner_elements,
+                    inner_elements = self._process(
+                        list(element.inner_elements),
                         _context=child_context,
                     )
+                    element.inner_elements = tuple(inner_elements)
                 else:
                     element = self._process_element(element, context)
 

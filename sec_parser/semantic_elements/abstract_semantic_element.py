@@ -26,7 +26,10 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     def __init__(
         self,
         html_tag: HtmlTag,
-        transformation_history: tuple[AbstractSemanticElement, ...],
+        transformation_history: tuple[
+            AbstractSemanticElement,
+            ...,
+        ],
     ) -> None:
         self._html_tag = html_tag
         self._transformation_history = transformation_history
@@ -37,12 +40,14 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
     def get_transformation_history(
         self,
-        *,
-        include_self: bool = True,
     ) -> tuple[AbstractSemanticElement, ...]:
-        if include_self:
-            return (*self._transformation_history, self)
-        return self._transformation_history
+        return (*self._transformation_history, self)
+
+    def append_to_transformation_history(
+        self,
+        element: AbstractSemanticElement,
+    ) -> None:
+        self._transformation_history = (*self._transformation_history, element)
 
     @classmethod
     def create_from_element(

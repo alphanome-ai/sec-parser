@@ -410,7 +410,7 @@ def render_semantic_element(
     show_transformation_history: bool,
 ):
     if show_transformation_history:
-        transformation_history = element.get_transformation_history(include_self=True)
+        transformation_history = element.get_transformation_history()
         with st.expander(f"Transformation history ({len(transformation_history)})"):
             transformation_history = {
                 e["cls_name"]: {k: v for k, v in e.items() if k != "cls_name"}

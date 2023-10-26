@@ -1,11 +1,17 @@
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TYPE_CHECKING, Callable
+from typing import TYPE_CHECKING, Any, Callable
 
+from sec_parser.processing_engine.create_unclassified_elements import (
+    create_unclassified_elements,
+)
 from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
+)
+from sec_parser.processing_steps.composite_element_creator import (
+    CompositeElementCreator,
 )
 from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
@@ -109,9 +115,7 @@ class AbstractSemanticElementParser(ABC):
         include_containers: bool | None = None,
     ) -> list[AbstractSemanticElement]:
         steps = self._get_steps()
-        elements: list[AbstractSemanticElement] = [
-            NotYetClassifiedElement(tag) for tag in root_tags
-        ]
+        elements = create_unclassified_elements(root_tags)
 
         for step in steps:
             elements = step.process(elements)
@@ -134,7 +138,13 @@ class Edgar10QParser(AbstractSemanticElementParser):
 
     @classmethod
     def get_default_steps(cls) -> list[AbstractProcessingStep]:
+        def contains_single_semantic_element(
+            _: HtmlTag,
+        ) -> tuple[bool, dict[str, Any]]:
+            return True, {}
+
         return [
+            CompositeElementCreator(contains_single_semantic_element),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
