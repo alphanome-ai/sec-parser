@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import streamlit as st
@@ -20,6 +21,11 @@ def get_latest_10q_html(
 ) -> str:
     ticker = ticker.upper().strip()
     assert ticker, "Ticker must not be empty"
+    if ticker.startswith("_"):
+        ticker = ticker.replace("_", "")
+        if re.match(r"[A-Z]+", ticker):
+            filepath = Path(__file__).resolve().parent / ".cache" / f"{ticker}.html"
+            return filepath.read_text()
     storage = DownloadStorage(filter_pattern="**/*.htm*")
     with storage as path:
         dl = Downloader(EDGAR_CLIENT_NAME, EDGAR_CLIENT_EMAIL, path)
