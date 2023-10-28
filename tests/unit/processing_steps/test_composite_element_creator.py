@@ -109,7 +109,7 @@ def test_with_real_data(name, html_str, expected_elements):
     sec_parser = Edgar10QParser(
         get_steps=lambda: [
             step
-            for step in Edgar10QParser.get_default_steps()
+            for step in Edgar10QParser().get_default_steps()
             if isinstance(step, CompositeElementCreator)
         ],
     )

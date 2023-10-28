@@ -147,7 +147,7 @@ def test_with_synthetic_input(name, elements, expected_elements):
 def test_with_real_data(name, html_str, expected_elements):
     # Arrange
     def get_steps():
-        default = Edgar10QParser.get_default_steps()
+        default = Edgar10QParser().get_default_steps()
         return [s for s in default if not isinstance(s, PreTopLevelSectionPruner)]
 
     sec_parser = Edgar10QParser(get_steps)

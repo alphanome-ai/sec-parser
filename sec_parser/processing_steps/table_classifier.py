@@ -54,3 +54,28 @@ class TableClassifier(AbstractElementwiseProcessingStep):
                 ),
             )
         return element
+
+    @classmethod
+    def contains_single_element(cls, element: AbstractSemanticElement) -> bool | None:
+        el_tag = element.html_tag
+        if el_tag.name == "table":
+            return True
+
+        table_count = el_tag.count_tags("table")
+
+        if table_count > 1:
+            msg = f"Detected multiple <table> tags ({table_count})"
+            element.processing_log.add_item(
+                log_origin=cls.__name__,
+                message=msg,
+            )
+            return False
+
+        if table_count == 1 and el_tag.has_text_outside_tags("table"):
+            element.processing_log.add_item(
+                log_origin=cls.__name__,
+                message="Detected text outside of the <table> tag.",
+            )
+            return False
+
+        return None

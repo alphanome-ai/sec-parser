@@ -69,7 +69,7 @@ from tests.unit._utils import assert_elements
 def test_supplementary_element_classifier(name, html_str, expected_elements):
     # Arrange
     def get_steps():
-        default = Edgar10QParser.get_default_steps()
+        default = Edgar10QParser().get_default_steps()
         return [s for s in default if not isinstance(s, PreTopLevelSectionPruner)]
 
     sec_parser = Edgar10QParser(get_steps)

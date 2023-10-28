@@ -1,6 +1,11 @@
+from __future__ import annotations
+
 from typing import Callable
 
-from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
+from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+    AbstractElementwiseProcessingStep,
+    ElementwiseProcessingContext,
+)
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
@@ -9,8 +14,13 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 )
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
+SingleElementCheck = Callable[
+    [AbstractSemanticElement],
+    bool | None,
+]
 
-class CompositeElementCreator(AbstractProcessingStep):
+
+class CompositeElementCreator(AbstractElementwiseProcessingStep):
     """
     Responsible for aggregating multiple semantic elements wrapped by a single HTML
     element into a CompositeSemanticElement. This ensures structural integrity
@@ -21,13 +31,10 @@ class CompositeElementCreator(AbstractProcessingStep):
 
     def __init__(
         self,
-        contains_single_semantic_element: Callable[
-            [AbstractSemanticElement],
-            bool,
-        ],
+        single_element_checks: list[SingleElementCheck],
     ) -> None:
         super().__init__()
-        self._contains_single_semantic_element = contains_single_semantic_element
+        self._single_element_checks = single_element_checks
 
     def _create_composite_element(
         self,
@@ -50,15 +57,20 @@ class CompositeElementCreator(AbstractProcessingStep):
             inner_elements=inner_elements,
         )
 
-    def _process(
+    def _process_element(
         self,
-        elements: list[AbstractSemanticElement],
-    ) -> list[AbstractSemanticElement]:
-        result = []
-        for element in elements:
-            contains_single = self._contains_single_semantic_element(element)
-            if not contains_single:
-                result.append(self._create_composite_element(element))
-            else:
-                result.append(element)
-        return result
+        element: AbstractSemanticElement,
+        _: ElementwiseProcessingContext,
+    ) -> AbstractSemanticElement:
+        contains_single = self._contains_single_element(element)
+        if not contains_single:
+            return self._create_composite_element(element)
+
+        return element
+
+    def _contains_single_element(self, element: AbstractSemanticElement) -> bool:
+        for check in self._single_element_checks:
+            contains_single_element = check(element)
+            if contains_single_element is not None:
+                return contains_single_element
+        return True

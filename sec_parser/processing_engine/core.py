@@ -9,6 +9,7 @@ from sec_parser.processing_engine.html_tag_parser import (
 )
 from sec_parser.processing_steps.composite_element_creator import (
     CompositeElementCreator,
+    SingleElementCheck,
 )
 from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
@@ -92,9 +93,8 @@ class AbstractSemanticElementParser(ABC):
         self._get_steps = get_steps or self.get_default_steps
         self._html_tag_parser = html_tag_parser or HtmlTagParser()
 
-    @classmethod
     @abstractmethod
-    def get_default_steps(cls) -> list[AbstractProcessingStep]:
+    def get_default_steps(self) -> list[AbstractProcessingStep]:
         raise NotImplementedError  # pragma: no cover
 
     def parse(
@@ -142,10 +142,14 @@ class Edgar10QParser(AbstractSemanticElementParser):
     the visual structure of the original document.
     """
 
-    @classmethod
-    def get_default_steps(cls) -> list[AbstractProcessingStep]:
+    def get_default_steps(
+        self,
+        single_element_checks: list[SingleElementCheck] | None = None,
+    ) -> list[AbstractProcessingStep]:
         return [
-            CompositeElementCreator(cls._contains_single_semantic_element),
+            CompositeElementCreator(
+                single_element_checks or self.get_default_single_element_checks(),
+            ),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
@@ -159,35 +163,10 @@ class Edgar10QParser(AbstractSemanticElementParser):
             IrrelevantElementClassifier(),
         ]
 
-    @classmethod
-    def _contains_single_semantic_element(
-        cls,
-        element: AbstractSemanticElement,
-    ) -> bool:
-        el_tag = element.html_tag
-
-        if el_tag.name in ("table", "img"):
-            return True
-        if (table_count := el_tag.count_tags("table")) > 1:
-            _log_multiple(element, "table", table_count)
-            return False
-        if (image_count := el_tag.count_tags("img")) > 1:
-            _log_multiple(element, "img", image_count)
-            return False
-
-        if table_count == 1 and el_tag.has_text_outside_tags("table"):
-            element.processing_log.add_item(
-                log_origin="contains_single_semantic_element",
-                message="Detected text outside of the <table> tag.",
-            )
-            return False
-
-        return True
-
-
-def _log_multiple(element: AbstractSemanticElement, name: str, count: int) -> None:
-    msg = f"Detected multiple <{name}> tags ({count})"
-    element.processing_log.add_item(
-        log_origin="contains_single_semantic_element",
-        message=msg,
-    )
+    def get_default_single_element_checks(self) -> list[SingleElementCheck]:
+        return [
+            ImageClassifier.contains_single_element,
+            # the table check is potentially computationally
+            # expensive, therefore we do it last
+            TableClassifier.contains_single_element,
+        ]
