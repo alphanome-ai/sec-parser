@@ -1,23 +1,24 @@
 from __future__ import annotations
 
-from typing import Callable
+from typing import TYPE_CHECKING, Callable
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementwiseProcessingContext,
-)
-from sec_parser.semantic_elements.abstract_semantic_element import (
-    AbstractSemanticElement,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
-SingleElementCheck = Callable[
-    [AbstractSemanticElement],
-    bool | None,
-]
+if TYPE_CHECKING:
+    from sec_parser.processing_steps.composite_element_creator.single_element_checks.abstract_single_element_check import (  # noqa: E501
+        AbstractSingleElementCheck,
+    )
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
+    )
 
 
 class CompositeElementCreator(AbstractElementwiseProcessingStep):
@@ -31,10 +32,19 @@ class CompositeElementCreator(AbstractElementwiseProcessingStep):
 
     def __init__(
         self,
-        single_element_checks: list[SingleElementCheck],
+        *,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
+        get_checks: Callable[[], list[AbstractSingleElementCheck]] | None = None,
     ) -> None:
-        super().__init__()
-        self._single_element_checks = single_element_checks
+        super().__init__(
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
+        )
+        if get_checks is None:
+            msg = "get_checks function is not provided"
+            raise SecParserValueError(msg)
+        self._checks = get_checks()
 
     def _create_composite_element(
         self,
@@ -62,15 +72,15 @@ class CompositeElementCreator(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementwiseProcessingContext,
     ) -> AbstractSemanticElement:
-        contains_single = self._contains_single_element(element)
-        if not contains_single:
+        contains_single_element = self._contains_single_element(element)
+        if not contains_single_element:
             return self._create_composite_element(element)
 
         return element
 
     def _contains_single_element(self, element: AbstractSemanticElement) -> bool:
-        for check in self._single_element_checks:
-            contains_single_element = check(element)
+        for check in self._checks:
+            contains_single_element = check.contains_single_element(element)
             if contains_single_element is not None:
                 return contains_single_element
         return True

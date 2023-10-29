@@ -1,7 +1,7 @@
 import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
-from sec_parser.processing_steps.composite_element_creator import (
+from sec_parser.processing_steps.composite_element_creator.composite_element_creator import (
     CompositeElementCreator,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (

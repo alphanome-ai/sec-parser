@@ -114,7 +114,7 @@ class HtmlTag:
     @property
     def name(self) -> str:
         """Returns tag name, e.g. for <div> return 'div'."""
-        return self._bs4.name
+        return self._bs4.name.lower()
 
     def get_children(self) -> list[HtmlTag]:
         if self._children is None:

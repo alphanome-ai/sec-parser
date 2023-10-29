@@ -34,28 +34,3 @@ class ImageClassifier(AbstractElementwiseProcessingStep):
             )
 
         return element
-
-    @classmethod
-    def contains_single_element(cls, element: AbstractSemanticElement) -> bool | None:
-        el_tag = element.html_tag
-        if el_tag.name == "img":
-            return True
-
-        img_count = el_tag.count_tags("img")
-
-        if img_count > 1:
-            msg = f"Detected multiple <img> tags ({img_count})"
-            element.processing_log.add_item(
-                log_origin=cls.__name__,
-                message=msg,
-            )
-            return False
-
-        if img_count == 1 and el_tag.text:
-            element.processing_log.add_item(
-                log_origin=cls.__name__,
-                message="Detected both text and <img> tag.",
-            )
-            return False
-
-        return None

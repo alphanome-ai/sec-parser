@@ -9,7 +9,7 @@ from sec_parser.processing_steps.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
 )
 from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
-from sec_parser.processing_steps.composite_element_creator import (
+from sec_parser.processing_steps.composite_element_creator.composite_element_creator import (  # noqa: E501
     CompositeElementCreator,
 )
 from sec_parser.processing_steps.image_classifier import ImageClassifier

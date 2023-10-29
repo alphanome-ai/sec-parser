@@ -7,9 +7,17 @@ from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
 )
-from sec_parser.processing_steps.composite_element_creator import (
+from sec_parser.processing_steps.composite_element_creator.composite_element_creator import (  # noqa: E501
     CompositeElementCreator,
-    SingleElementCheck,
+)
+from sec_parser.processing_steps.composite_element_creator.single_element_checks.image_check import (  # noqa: E501
+    ImageCheck,
+)
+from sec_parser.processing_steps.composite_element_creator.single_element_checks.table_check import (  # noqa: E501
+    TableCheck,
+)
+from sec_parser.processing_steps.composite_element_creator.single_element_checks.xbrl_tag_check import (  # noqa: E501
+    XbrlTagCheck,
 )
 from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
@@ -43,6 +51,9 @@ if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.processing_steps.abstract_processing_step import (
         AbstractProcessingStep,
+    )
+    from sec_parser.processing_steps.composite_element_creator.single_element_checks.abstract_single_element_check import (  # noqa: E501
+        AbstractSingleElementCheck,
     )
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
@@ -144,11 +155,11 @@ class Edgar10QParser(AbstractSemanticElementParser):
 
     def get_default_steps(
         self,
-        single_element_checks: list[SingleElementCheck] | None = None,
+        get_checks: Callable[[], list[AbstractSingleElementCheck]] | None = None,
     ) -> list[AbstractProcessingStep]:
         return [
             CompositeElementCreator(
-                single_element_checks or self.get_default_single_element_checks(),
+                get_checks=get_checks or self.get_default_single_element_checks,
             ),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
@@ -163,10 +174,10 @@ class Edgar10QParser(AbstractSemanticElementParser):
             IrrelevantElementClassifier(),
         ]
 
-    def get_default_single_element_checks(self) -> list[SingleElementCheck]:
+    def get_default_single_element_checks(self) -> list[AbstractSingleElementCheck]:
         return [
-            ImageClassifier.contains_single_element,
-            # the table check is potentially computationally
-            # expensive, therefore we do it last
-            TableClassifier.contains_single_element,
+            XbrlTagCheck(),
+            ImageCheck(),
+            # TableCheck is last because it is potentially computationally expensive
+            TableCheck(),
         ]
