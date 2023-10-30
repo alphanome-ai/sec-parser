@@ -133,40 +133,51 @@ html = dl.get_latest_html("10-Q", "AAPL")
 > **Note**
 The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
 
-Now, we can parse the filing into semantic elements and arrange them into a tree structure:
+Now, we can parse the filing HTML into a list of semantic elements:
+
+```python
+# Utility function to make the example code a bit more compact
+def print_first_n_lines(text: str, *, n: int):
+    print("\n".join(text.split("\n")[:n]), "...", sep="\n")
+```
 
 ```python
 import sec_parser as sp
 
-# Parse the HTML into a list of semantic elements
-elements = sp.Edgar10QParser().parse(html)
+elements: list = sp.Edgar10QParser().parse(html)
 
-# Construct a semantic tree to allow for easy filtering by section
-tree = sp.TreeBuilder().build(elements)
-
-# Find section "Segment Operating Performance"
-section = [n for n in tree.nodes if n.text.startswith("Segment")][0]
-
-# Preview the tree
-print("\n".join(sp.render(section).split("\n")[:13]) + "...")
+demo_output: str = sp.render(elements)
+print_first_n_lines(demo_output, n=7)
 ```
-
 <pre>
-<b><font color="navy">TitleElement:</font></b> Segment Operating Performance
-├── <b><font color="navy">TextElement:</font></b> The following table sho... (dollars in millions):
-├── <b><font color="navy">TableElement:</font></b> Table with 7 rows, 40 numbers, and 414 characters.
-├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Americas
-│   └── <b><font color="navy">TextElement:</font></b> Americas net sales decr... net sales of Services.
-├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Europe
-│   └── <b><font color="navy">TextElement:</font></b> The weakness in foreign...er net sales of iPhone.
-├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Greater China
-│   └── <b><font color="navy">TextElement:</font></b> The weakness in the ren...er net sales of iPhone.
-├── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Japan
-│   └── <b><font color="navy">TextElement:</font></b> The weakness in the yen..., Home and Accessories.
-└── <b><font color="navy">TitleElement<font color="green">[L1]</font>:</font></b> Rest of Asia Pacific
-    ├── <b><font color="navy">TextElement:</font></b> The weakness in foreign...lower net sales of Mac.
+<b><font color="navy">TopLevelSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
+<b><font color="navy">TopLevelSectionTitle:</font></b> Item 1.    Financial Statements
+<b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited)
+<b><font color="navy">SupplementaryText:</font></b> (In millions, except number of ...housands and per share amounts)
+<b><font color="navy">TableElement:</font></b> Table with 24 rows, 80 numbers, and 1058 characters.
+<b><font color="navy">SupplementaryText:</font></b> See accompanying Notes to Conde...solidated Financial Statements.
+<b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMEN...OMPREHENSIVE INCOME (Unaudited)
 ...
 </pre>
+
+We can also construct a semantic tree to allow for easy filtering by parent sections:
+```python
+tree = sp.TreeBuilder().build(elements)
+
+demo_output: str = sp.render(tree)
+print_first_n_lines(demo_output, n=7)
+```
+<pre>
+<b><font color="navy">TopLevelSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
+├── <b><font color="navy">TopLevelSectionTitle:</font></b> Item 1.    Financial Statements
+│   ├── <b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited)
+│   │   ├── <b><font color="navy">SupplementaryText:</font></b> (In millions, except number of ...housands and per share amounts)
+│   │   ├── <b><font color="navy">TableElement:</font></b> Table with 24 rows, 80 numbers, and 1058 characters.
+│   │   ├── <b><font color="navy">SupplementaryText:</font></b> See accompanying Notes to Conde...solidated Financial Statements.
+│   ├── <b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMEN...OMPREHENSIVE INCOME (Unaudited)
+...
+</pre>
+
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
