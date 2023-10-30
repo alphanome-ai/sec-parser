@@ -234,7 +234,7 @@ def manage_snapshots(
         if added_lines != 0:
             summary += f"  - [bold green]Added lines:[/bold green] {added_lines}\n"
         if items_not_matching_filters_count != 0:
-            summary += f"- [bold]Filtered out (skipped):[/bold] {items_not_matching_filters_count}\n"
+            summary += f"- [bold]Files not matching filter (skipped):[/bold] {items_not_matching_filters_count}\n"
         console.print(Panel(summary.strip()))
     elif action == "verify":
         print_verification_result_table(results)
