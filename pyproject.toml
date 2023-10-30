@@ -29,6 +29,7 @@ beautifulsoup4 = "^4.12.2"
 lxml = "^4.9.3"
 cssutils = "^2.9.0"
 xxhash = "^3.4.1"
+loguru = "^0.7.2"
 
 
 [tool.poetry.group.dev.dependencies]

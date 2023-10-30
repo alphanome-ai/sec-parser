@@ -3,6 +3,8 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import TYPE_CHECKING
 
+from loguru import logger
+
 from sec_parser.exceptions import SecParserError
 from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
     AbstractProcessingStep,
@@ -98,6 +100,7 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
 
                     elements[i] = element
                 except SecParserError as e:
+                    logger.exception(e)
                     elements[i] = ErrorWhileProcessingElement.create_from_element(
                         element,
                         error=e,

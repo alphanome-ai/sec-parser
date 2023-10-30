@@ -3,6 +3,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING, Callable
 
+from loguru import logger
+
 from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
@@ -136,6 +138,7 @@ class AbstractSemanticElementParser(ABC):
         ]
 
         for step in steps:
+            logger.trace("Processing step: {}", step.__class__.__name__)
             elements = step.process(elements)
 
         if unwrap_elements is False:

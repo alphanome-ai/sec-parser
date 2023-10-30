@@ -7,6 +7,7 @@ if TYPE_CHECKING:  # pragma: no cover
         AbstractSemanticElement,
     )
 
+from loguru import logger
 
 LogItemOrigin = str
 LogItemPayload = Union[str, "AbstractSemanticElement"]
@@ -28,6 +29,7 @@ class ProcessingLog:
         log_origin: LogItemOrigin,
         message: LogItemPayload,
     ) -> None:
+        logger.trace("Adding log item: {}", str(message))
         log_item = LogItem(log_origin, message)
         self._log.append(log_item)
 

@@ -19,7 +19,6 @@ from dev_utils.debug_dashboard.config import get_config
 from dev_utils.debug_dashboard.general_utils import interleave_lists
 from dev_utils.debug_dashboard.sec_data_retrieval import (
     get_latest_10q_html,
-    get_semantic_elements,
     get_semantic_elements_parallelized,
     get_semantic_tree,
 )

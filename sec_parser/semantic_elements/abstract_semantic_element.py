@@ -132,7 +132,8 @@ class AbstractLevelElement(AbstractSemanticElement):
         }
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}[L{self.level}]<{self._html_tag.name}>"
+        level_repr = f"[L{self.level}]" if hasattr(self, "level") else "[L?]"
+        return f"{self.__class__.__name__}{level_repr}<{self._html_tag.name}>"
 
 
 class InvalidLevelError(SecParserValueError):
