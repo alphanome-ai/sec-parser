@@ -18,6 +18,7 @@ from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 from sec_parser.utils.bs4_.without_tags import without_tags
+from sec_parser.utils.bs4_.wrap_tags_in_new_parent import wrap_tags_in_new_parent
 
 if TYPE_CHECKING:
     from collections.abc import Iterable
@@ -252,6 +253,18 @@ class HtmlTag:
             msg = f"Unsupported element type: {type(element).__name__}"
             raise TypeError(msg)
         return tag
+
+    @staticmethod
+    def wrap_tags_in_new_parent(
+        parent_tag_name: str,
+        tags: Iterable[HtmlTag],
+    ) -> HtmlTag:
+        return HtmlTag(
+            wrap_tags_in_new_parent(
+                parent_tag_name,
+                [tag._bs4 for tag in tags],  # noqa: SLF001
+            ),
+        )
 
 
 class EmptyNavigableStringError(SecParserValueError):

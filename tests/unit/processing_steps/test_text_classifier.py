@@ -20,10 +20,10 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
             "simple",
             """
                 <p>1</p>
-                <section>
+                <composite>
                     <div><i>2</i></div>
                     <p></p>
-                </section>
+                </composite>
                 <div>
                     <p>3</p>
                     <p>4</p>
@@ -33,7 +33,7 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
                 {"type": TextElement, "tag": "p"},
                 {
                     "type": CompositeSemanticElement,
-                    "tag": "section",
+                    "tag": "composite",
                     "children": [
                         {"type": TextElement, "tag": "div"},
                         {"type": NotYetClassifiedElement, "tag": "p"},

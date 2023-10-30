@@ -1,8 +1,8 @@
 import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
-from sec_parser.processing_steps.composite_element_creator.composite_element_creator import (
-    CompositeElementCreator,
+from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (
+    IndividualSemanticElementExtractor,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
@@ -110,7 +110,7 @@ def test_with_real_data(name, html_str, expected_elements):
         get_steps=lambda: [
             step
             for step in Edgar10QParser().get_default_steps()
-            if isinstance(step, CompositeElementCreator)
+            if isinstance(step, IndividualSemanticElementExtractor)
         ],
     )
 

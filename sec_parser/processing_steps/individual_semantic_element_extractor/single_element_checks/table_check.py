@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.composite_element_creator.single_element_checks.abstract_single_element_check import (  # noqa: E501
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
     AbstractSingleElementCheck,
 )
 
@@ -12,26 +12,26 @@ if TYPE_CHECKING:
     )
 
 
-class ImageCheck(AbstractSingleElementCheck):
+class TableCheck(AbstractSingleElementCheck):
     def contains_single_element(self, element: AbstractSemanticElement) -> bool | None:
         el_tag = element.html_tag
-        if el_tag.name == "img":
+        if el_tag.name == "table":
             return True
 
-        img_count = el_tag.count_tags("img")
+        table_count = el_tag.count_tags("table")
 
-        if img_count > 1:
-            msg = f"Detected multiple <img> tags ({img_count})"
+        if table_count > 1:
+            msg = f"Detected multiple <table> tags ({table_count})"
             element.processing_log.add_item(
                 log_origin=self.__class__.__name__,
                 message=msg,
             )
             return False
 
-        if img_count == 1 and el_tag.text:
+        if table_count == 1 and el_tag.has_text_outside_tags("table"):
             element.processing_log.add_item(
                 log_origin=self.__class__.__name__,
-                message="Detected both text and <img> tag.",
+                message="Detected text outside of the <table> tag.",
             )
             return False
 

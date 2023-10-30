@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
-    ElementwiseProcessingContext,
+    ElementProcessingContext,
 )
 from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
@@ -54,7 +54,7 @@ class TitleClassifier(AbstractElementwiseProcessingStep):
     def _process_element(
         self,
         element: AbstractSemanticElement,
-        _: ElementwiseProcessingContext,
+        _: ElementProcessingContext,
     ) -> AbstractSemanticElement:
         """Process each element and convert to TitleElement if necessary."""
         if not isinstance(element, HighlightedTextElement):

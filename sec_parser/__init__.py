@@ -5,7 +5,9 @@ from sec_parser.exceptions import (
 )
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
+from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
+    AbstractProcessingStep,
+)
 from sec_parser.semantic_elements.semantic_elements import (
     AbstractSemanticElement,
     EmptyElement,

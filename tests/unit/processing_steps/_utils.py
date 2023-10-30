@@ -1,5 +1,3 @@
-from typing import Union
-
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_engine.html_tag_parser import HtmlTagParser
 from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -12,7 +10,7 @@ from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedEleme
 
 
 def _create_element(tag) -> AbstractSemanticElement:
-    if tag.name == "section":
+    if tag.name == "composite":
         inner_tags = tag.get_children()
         return CompositeSemanticElement(
             tag,

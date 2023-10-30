@@ -7,22 +7,22 @@ from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
 )
-from sec_parser.processing_steps.composite_element_creator.composite_element_creator import (  # noqa: E501
-    CompositeElementCreator,
-)
-from sec_parser.processing_steps.composite_element_creator.single_element_checks.image_check import (  # noqa: E501
-    ImageCheck,
-)
-from sec_parser.processing_steps.composite_element_creator.single_element_checks.table_check import (  # noqa: E501
-    TableCheck,
-)
-from sec_parser.processing_steps.composite_element_creator.single_element_checks.xbrl_tag_check import (  # noqa: E501
-    XbrlTagCheck,
-)
 from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
 )
 from sec_parser.processing_steps.image_classifier import ImageClassifier
+from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (
+    IndividualSemanticElementExtractor,
+)
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.image_check import (
+    ImageCheck,
+)
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.table_check import (
+    TableCheck,
+)
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.xbrl_tag_check import (
+    XbrlTagCheck,
+)
 from sec_parser.processing_steps.irrelevant_element_classifier import (
     IrrelevantElementClassifier,
 )
@@ -34,6 +34,7 @@ from sec_parser.processing_steps.supplementary_text_classifier import (
 )
 from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.text_classifier import TextClassifier
+from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
 from sec_parser.processing_steps.top_level_section_title_classifier import (
     TopLevelSectionTitleClassifier,
@@ -49,10 +50,10 @@ from sec_parser.semantic_elements.semantic_elements import (
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
-    from sec_parser.processing_steps.abstract_processing_step import (
+    from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
         AbstractProcessingStep,
     )
-    from sec_parser.processing_steps.composite_element_creator.single_element_checks.abstract_single_element_check import (  # noqa: E501
+    from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
         AbstractSingleElementCheck,
     )
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -158,7 +159,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
         get_checks: Callable[[], list[AbstractSingleElementCheck]] | None = None,
     ) -> list[AbstractProcessingStep]:
         return [
-            CompositeElementCreator(
+            IndividualSemanticElementExtractor(
                 get_checks=get_checks or self.get_default_single_element_checks,
             ),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
@@ -172,6 +173,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
             PreTopLevelSectionPruner(),
             TitleClassifier(types_to_process={HighlightedTextElement}),
             IrrelevantElementClassifier(),
+            TextElementMerger(),
         ]
 
     def get_default_single_element_checks(self) -> list[AbstractSingleElementCheck]:

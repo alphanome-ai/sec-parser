@@ -7,9 +7,9 @@ import pytest
 
 from sec_parser.exceptions import SecParserValueError
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
-    ElementwiseProcessingContext,
+    ElementProcessingContext,
 )
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
@@ -40,7 +40,7 @@ class ProcessingStep(AbstractElementwiseProcessingStep):
     def _process_element(
         self,
         element: AbstractSemanticElement,
-        _: ElementwiseProcessingContext,
+        _: ElementProcessingContext,
     ) -> AbstractSemanticElement:
         self.seen_elements.append(element)
         return element

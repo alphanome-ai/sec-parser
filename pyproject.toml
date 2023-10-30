@@ -104,6 +104,7 @@ ignore = [
     "ANN101",  # Missing type annotation for self in method
     "ANN102",  # Missing type annotation for cls in classmethod
     "PLR0913", # Too many arguments to function call (> 5)
+    "E501",    # Line too long
     ]
 
 

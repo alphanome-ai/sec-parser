@@ -1,44 +1,24 @@
 from __future__ import annotations
 
 from abc import abstractmethod
-from dataclasses import dataclass
-from typing import Callable
+from typing import TYPE_CHECKING
 
 from sec_parser.exceptions import SecParserError
-from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
-from sec_parser.semantic_elements.abstract_semantic_element import (
-    AbstractSemanticElement,
+from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
+    AbstractProcessingStep,
+)
+from sec_parser.processing_steps.abstract_classes.processing_context import (
+    ElementProcessingContext,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import ErrorWhileProcessingElement
 
-ElementTransformer = Callable[[AbstractSemanticElement], AbstractSemanticElement]
-
-
-@dataclass
-class ElementwiseProcessingContext:
-    """
-    The ElementwiseProcessingContext class is designed to provide context information
-    for elementwise processing steps. This includes specifying whether an element is a
-    root and tracking the current iteration in a series of repeated processing steps
-    over all elements.
-
-    Attributes
-    ----------
-        is_root_element (bool): Indicates if the given semantic element is a root
-                                element in the HTML document.
-
-        iteration (int): Represents the current iteration number during the repeated
-                         processing of all semantic elements. This is related to the
-                         `_NUM_ITERATIONS` constant in subclasses, which specifies
-                         the total number of iterations that will be performed over
-                         all elements.
-    """
-
-    is_root_element: bool
-    iteration: int
+if TYPE_CHECKING:
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
+    )
 
 
 class AbstractElementwiseProcessingStep(AbstractProcessingStep):
@@ -65,14 +45,29 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
         self._types_to_exclude = types_to_exclude or set()
         self._types_to_exclude.add(ErrorWhileProcessingElement)
 
+    @abstractmethod
+    def _process_element(
+        self,
+        element: AbstractSemanticElement,
+        context: ElementProcessingContext,
+    ) -> AbstractSemanticElement:
+        """
+        `_process_element` method is responsible for transforming a
+        single semantic element into another.
+
+        It can also be utilized to simply iterate over all
+        elements without applying any transformations.
+        """
+        raise NotImplementedError  # pragma: no cover
+
     def _process(
         self,
         elements: list[AbstractSemanticElement],
         *,
-        _context: ElementwiseProcessingContext | None = None,
+        _context: ElementProcessingContext | None = None,
     ) -> list[AbstractSemanticElement]:
         for iteration in range(self._NUM_ITERATIONS):
-            context = _context or ElementwiseProcessingContext(
+            context = _context or ElementProcessingContext(
                 is_root_element=True,
                 iteration=iteration,
             )
@@ -89,7 +84,7 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
                         continue
 
                     if isinstance(element, CompositeSemanticElement):
-                        child_context = ElementwiseProcessingContext(
+                        child_context = ElementProcessingContext(
                             is_root_element=False,
                             iteration=iteration,
                         )
@@ -110,18 +105,3 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
                     )
 
         return elements
-
-    @abstractmethod
-    def _process_element(
-        self,
-        element: AbstractSemanticElement,
-        context: ElementwiseProcessingContext,
-    ) -> AbstractSemanticElement:
-        """
-        `_process_element` method is responsible for transforming a
-        single semantic element into another.
-
-        It can also be utilized to simply iterate over all
-        elements without applying any transformations.
-        """
-        raise NotImplementedError  # pragma: no cover

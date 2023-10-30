@@ -4,8 +4,8 @@ import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    ElementwiseProcessingContext,
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+    ElementProcessingContext,
 )
 from sec_parser.processing_steps.irrelevant_element_classifier import (
     InvalidIterationError,
@@ -127,7 +127,7 @@ def test_irrelevant_element_classifier(name, html_str, expected_elements):
 
 def test_process_element_raises_value_error():
     classifier = IrrelevantElementClassifier()
-    context = ElementwiseProcessingContext(False, 2)  # Invalid iteration
+    context = ElementProcessingContext(False, 2)  # Invalid iteration
     element = AbstractSemanticElement(
         Mock(spec=HtmlTag),
     )  # Assume this is a valid element

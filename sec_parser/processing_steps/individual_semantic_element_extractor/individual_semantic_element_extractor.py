@@ -3,9 +3,9 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable
 
 from sec_parser.exceptions import SecParserValueError
-from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
-    ElementwiseProcessingContext,
+    ElementProcessingContext,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
@@ -13,7 +13,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 if TYPE_CHECKING:
-    from sec_parser.processing_steps.composite_element_creator.single_element_checks.abstract_single_element_check import (  # noqa: E501
+    from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
         AbstractSingleElementCheck,
     )
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -21,10 +21,11 @@ if TYPE_CHECKING:
     )
 
 
-class CompositeElementCreator(AbstractElementwiseProcessingStep):
+class IndividualSemanticElementExtractor(AbstractElementwiseProcessingStep):
     """
-    Responsible for aggregating multiple semantic elements wrapped by a single HTML
-    element into a CompositeSemanticElement. This ensures structural integrity
+    Responsible for splitting a single HTML representing multiple semantic elements
+    into multiple Semantic Element instances with a shared parent instance of
+    type CompositeSemanticElement. This ensures structural integrity
     during parsing, which is crucial for accurately reconstructing the original
     HTML document and for semantic analysis where the relationship between elements
     can hold significant meaning.
@@ -70,7 +71,7 @@ class CompositeElementCreator(AbstractElementwiseProcessingStep):
     def _process_element(
         self,
         element: AbstractSemanticElement,
-        _: ElementwiseProcessingContext,
+        _: ElementProcessingContext,
     ) -> AbstractSemanticElement:
         contains_single_element = self._contains_single_element(element)
         if not contains_single_element:
@@ -82,5 +83,9 @@ class CompositeElementCreator(AbstractElementwiseProcessingStep):
         for check in self._checks:
             contains_single_element = check.contains_single_element(element)
             if contains_single_element is not None:
+                element.processing_log.add_item(
+                    log_origin=check.__class__.__name__,
+                    message=f"Contains single element: {contains_single_element}",
+                )
                 return contains_single_element
         return True

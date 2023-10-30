@@ -3,7 +3,7 @@ from unittest.mock import Mock
 import bs4
 import pytest
 
-from sec_parser.processing_steps.abstract_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
     AbstractProcessingStep,
     AlreadyProcessedError,
 )

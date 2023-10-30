@@ -1,4 +1,6 @@
-from sec_parser.processing_steps.abstract_processing_step import AbstractProcessingStep
+from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
+    AbstractProcessingStep,
+)
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )

@@ -4,9 +4,9 @@ import re
 from collections import Counter
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
-    ElementwiseProcessingContext,
+    ElementProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import (
     EmptyElement,
@@ -58,7 +58,7 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
     def _process_element(
         self,
         element: AbstractSemanticElement,
-        context: ElementwiseProcessingContext,
+        context: ElementProcessingContext,
     ) -> AbstractSemanticElement:
         """
         Transform a single semantic element

@@ -5,8 +5,8 @@ import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.abstract_elementwise_processing_step import (
-    ElementwiseProcessingContext,
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+    ElementProcessingContext,
 )
 from sec_parser.processing_steps.irrelevant_element_classifier import (
     InvalidIterationError,

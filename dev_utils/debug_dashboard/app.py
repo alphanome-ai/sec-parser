@@ -423,7 +423,7 @@ def render_semantic_element(
                         item.payload.to_dict(include_html_tag=False),
                         indent=4,
                     )
-                    payload = f"created element {obj_json}"
+                    payload = f"Created element {obj_json}"
                 else:
                     payload = str(item.payload)
                 output += f"{item.origin}: {payload}\n"
