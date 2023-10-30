@@ -51,6 +51,8 @@
 
 # Overview
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3f16a04008d34932b8b8acff8c8aabca)](https://app.codacy.com/gh/alphanome-ai/sec-parser?utm_source=github.com&utm_medium=referral&utm_content=alphanome-ai/sec-parser&utm_campaign=Badge_Grade)
+
 The `sec-parser` project simplifies extracting meaningful information from SEC EDGAR HTML documents by organizing them into semantic elements and a tree structure. Semantic elements might include section titles, paragraphs, and tables, each classified for easier data manipulation. This forms a semantic tree that corresponds to the visual and informational structure of the document. If you're familiar with the <a href="https://www.google.com/search?tbm=isch&q=image+semantic+segmentation" target="_blank">Image Semantic Segmentation</a> concept, it's the same but applied to HTML documents.
 
 This tool is especially beneficial for Artificial Intelligence (AI), Machine Learning (ML), and Large Language Models (LLM) applications by streamlining data pre-processing and feature extraction.
