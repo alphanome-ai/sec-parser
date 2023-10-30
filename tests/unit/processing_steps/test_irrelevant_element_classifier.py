@@ -32,6 +32,8 @@ from tests.unit._utils import assert_elements
         (
             "10-Q_GOOG_0001652044-23-000070",
             """
+<p>hello</p>
+
 <div style="margin-top:3pt;text-align:center">
  <span style="color:#000000;font-family:'Arial',sans-serif;font-size:10pt;font-weight:700;line-height:120%">
   Alphabet Inc.
@@ -44,9 +46,7 @@ from tests.unit._utils import assert_elements
  </span>
 </div>
 
-<p>some text</p>
-
-<p></p>
+<p>world</p>
 
 <div style="margin-top:3pt;text-align:center">
  <span style="color:#000000;font-family:'Arial',sans-serif;font-size:10pt;font-weight:700;line-height:120%">
@@ -72,6 +72,10 @@ from tests.unit._utils import assert_elements
                 """,
             [
                 {
+                    "type": TextElement,
+                    "tag": "p",
+                },
+                {
                     "type": IrrelevantElement,
                     "tag": "div",
                 },
@@ -81,10 +85,6 @@ from tests.unit._utils import assert_elements
                 },
                 {
                     "type": TextElement,
-                    "tag": "p",
-                },
-                {
-                    "type": EmptyElement,
                     "tag": "p",
                 },
                 {
@@ -117,9 +117,6 @@ def test_irrelevant_element_classifier(name, html_str, expected_elements):
 
     # Act
     processed_elements = sec_parser.parse(html_str, unwrap_elements=False)
-
-    # Assert
-    assert_elements(processed_elements, expected_elements)
 
     # Assert
     assert_elements(processed_elements, expected_elements)

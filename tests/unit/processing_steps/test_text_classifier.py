@@ -6,7 +6,6 @@ from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import (
-    EmptyElement,
     NotYetClassifiedElement,
 )
 from tests.unit._utils import assert_elements
@@ -19,14 +18,14 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
         (
             "simple",
             """
-                <p>1</p>
+                <p>a</p>
                 <composite>
-                    <div><i>2</i></div>
+                    <div><i>b</i></div>
                     <p></p>
                 </composite>
                 <div>
-                    <p>3</p>
-                    <p>4</p>
+                    <p>c</p>
+                    <p>d</p>
                 </div>
             """,
             [

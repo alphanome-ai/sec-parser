@@ -41,7 +41,8 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     def log_init(self, log_origin: LogItemOrigin | None = None) -> None:
         if log_origin:
             self.processing_log.add_item(
-                log_origin=log_origin, message=self.to_dict(include_html_tag=False),
+                log_origin=log_origin,
+                message=self.to_dict(include_html_tag=False),
             )
 
     @property
@@ -69,6 +70,10 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}<{self._html_tag.name}>"
+
+    def contains_words(self) -> bool:
+        """Return True if the semantic element contains text."""
+        return self._html_tag.contains_words()
 
     @property
     def text(self) -> str:

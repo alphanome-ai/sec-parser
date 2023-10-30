@@ -21,8 +21,8 @@ class ProcessingLog:
     def add_item(
         self,
         *,
-        log_origin: LogItemOrigin,
         message: LogItemPayload,
+        log_origin: LogItemOrigin,
     ) -> None:
         logger.trace("Adding log item: {}", str(message))
         log_item = LogItem(log_origin, message)

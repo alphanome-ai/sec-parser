@@ -67,6 +67,7 @@ class HtmlTag:
         self._without_tags: dict[tuple[str, ...], HtmlTag] = {}
         self._count_tags: dict[str, int] = {}
         self._has_text_outside_tags: dict[tuple[str, ...], bool] = {}
+        self._contains_words: bool | None = None
 
     def get_source_code(self, *, pretty: bool = False) -> str:
         if pretty:
@@ -101,6 +102,14 @@ class HtmlTag:
                 },
             )
         return self._frozen_dict
+
+    def contains_words(self) -> bool:
+        """Return True if the semantic element contains text."""
+        if self._contains_words is None:
+            self._contains_words = (
+                any(char.isalpha() for char in self.text) if self.text else False
+            )
+        return self._contains_words
 
     @property
     def text(self) -> str:

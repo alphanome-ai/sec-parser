@@ -42,7 +42,7 @@ class TextClassifier(AbstractElementwiseProcessingStep):
         Transform a single semantic element
         into a TextElement if applicable.
         """
-        if element.text != "":
+        if element.contains_words():
             return TextElement.create_from_element(
                 element,
                 log_origin=self.__class__.__name__,

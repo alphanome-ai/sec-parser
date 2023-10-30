@@ -80,7 +80,11 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
         self,
         element: AbstractSemanticElement,
     ) -> AbstractSemanticElement:
-        if element.text == "":
+        if not element.contains_words():
+            element.processing_log.add_item(
+                message="Does not contain words",
+                log_origin=self.__class__.__name__,
+            )
             return EmptyElement.create_from_element(
                 element,
                 log_origin=self.__class__.__name__,
@@ -116,6 +120,10 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
             self._text_occurences[self._normalize_text(element.text)]
             >= self._min_occurences_to_classify_as_irrelevant
         ):
+            element.processing_log.add_item(
+                message=f"Text duplicates at least {self._min_occurences_to_classify_as_irrelevant} times",
+                log_origin=self.__class__.__name__,
+            )
             return IrrelevantElement.create_from_element(
                 element,
                 log_origin=self.__class__.__name__,
@@ -130,6 +138,10 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
                 and self._text_occurences[self._normalize_text(element.text)]
                 == max_occurrences
             ):
+                element.processing_log.add_item(
+                    message=f"Consecutive irrelevant title (of same level) at least {self._min_title_occurences_to_classify_as_irrelevant} times",
+                    log_origin=self.__class__.__name__,
+                )
                 return IrrelevantElement.create_from_element(
                     element,
                     log_origin=self.__class__.__name__,
