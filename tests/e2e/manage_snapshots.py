@@ -5,7 +5,7 @@ import json
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import TYPE_CHECKING, Literal
+from typing import Literal
 
 import yaml
 from millify import millify
@@ -19,7 +19,7 @@ from tests._sec_parser_validation_data import Report, traverse_repository_for_re
 from tests.e2e._overwrite_file import OverwriteResult, overwrite_with_change_track
 
 AVAILABLE_ACTIONS = ["update", "verify"]
-ALLOWED_MICROSECONDS_PER_CHAR = 6
+ALLOWED_MICROSECONDS_PER_CHAR = 1
 DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "e2e_test_data.yaml"
 
 
