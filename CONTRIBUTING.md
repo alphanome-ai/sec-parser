@@ -97,6 +97,11 @@ For a more focused test, you can run a customized test command. Locate the gener
 > **Note**
 We offer a script that allows you to expand the test database locally. Simply provide the stock tickers you're interested in, and the script will do the rest.
 
+## Other helpful tips
+
+- [Quick Tip: Speed Up sec-parser by Using a Profiler to Find Slow Areas](https://github.com/orgs/alphanome-ai/discussions/36)
+- [Introducing Processing Logs: Enhancing Transparency in Semantic Element Transformations](https://github.com/orgs/alphanome-ai/discussions/37)
+
 ## What Can I Work On?
 
 Check out the [Contribution Workflow](https://github.com/alphanome-ai/common-contributing-guide#contribution-workflow).
