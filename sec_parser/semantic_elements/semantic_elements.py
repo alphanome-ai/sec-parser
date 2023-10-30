@@ -20,15 +20,6 @@ class NotYetClassifiedElement(AbstractSemanticElement):
     subclasses of AbstractSemanticElement.
     """
 
-    def __init__(
-        self,
-        html_tag: HtmlTag,
-        *,
-        log_origin: LogItemOrigin | None = None,
-        processing_log: ProcessingLog | None = None,
-    ) -> None:
-        super().__init__(html_tag, log_origin=log_origin, processing_log=processing_log)
-
 
 class ErrorWhileProcessingElement(AbstractSemanticElement):
     """
@@ -45,8 +36,9 @@ class ErrorWhileProcessingElement(AbstractSemanticElement):
         processing_log: ProcessingLog | None = None,
         log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
+        super().__init__(html_tag, processing_log=processing_log, log_origin=None)
         self.error = error
+        self.log_init(log_origin)
 
     @classmethod
     def create_from_element(

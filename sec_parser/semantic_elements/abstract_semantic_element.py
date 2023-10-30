@@ -33,8 +33,16 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     ) -> None:
         self._html_tag = html_tag
         self.processing_log = processing_log or ProcessingLog()
+
+        # If creating derived classes that override __init__, make sure to call this
+        # in the derived class's __init__ method. Pass log_origin=None to the base class.
+        self.log_init(log_origin)
+
+    def log_init(self, log_origin: LogItemOrigin | None = None) -> None:
         if log_origin:
-            self.processing_log.add_item(log_origin=log_origin, message=self)
+            self.processing_log.add_item(
+                log_origin=log_origin, message=self.to_dict(include_html_tag=False),
+            )
 
     @property
     def html_tag(self) -> HtmlTag:
@@ -102,13 +110,14 @@ class AbstractLevelElement(AbstractSemanticElement):
         level: int | None = None,
         log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
+        super().__init__(html_tag, processing_log=processing_log, log_origin=None)
         level = level or self.MIN_LEVEL
 
         if level < self.MIN_LEVEL:
             msg = f"Level must be equal or greater than {self.MIN_LEVEL}"
             raise InvalidLevelError(msg)
         self.level = level
+        self.log_init(log_origin)
 
     @classmethod
     def create_from_element(
@@ -132,8 +141,7 @@ class AbstractLevelElement(AbstractSemanticElement):
         }
 
     def __repr__(self) -> str:
-        level_repr = f"[L{self.level}]" if hasattr(self, "level") else "[L?]"
-        return f"{self.__class__.__name__}{level_repr}<{self._html_tag.name}>"
+        return f"{self.__class__.__name__}[L{self.level}]<{self._html_tag.name}>"
 
 
 class InvalidLevelError(SecParserValueError):

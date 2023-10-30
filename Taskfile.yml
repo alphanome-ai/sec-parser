@@ -23,7 +23,7 @@ tasks:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
     cmds:
       - poetry run sphinx-autobuild docs/source docs/build/html
-      
+
 ########################################
 ### Automated Code Testing Pipelines ###
 ########################################
@@ -60,7 +60,7 @@ tasks:
 ####################################
 
   e2e-verify:
-    desc: Compare the most recent parser output with the saved snapshot of the expected output. Fails if there's a mismatch.
+    desc: Compare the most recent parser output with the saved snapshot of the expected output. Fails if there's a mismatch. Run 'task e2e-verify -- --help' to get help.
     silent: true
     cmds:
       - task: clone-sec-parser-test-data
@@ -69,7 +69,7 @@ tasks:
       - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
 
   e2e-update:
-    desc: Update the expected parser output snapshot with the most recent parser output.
+    desc: Update the expected parser output snapshot with the most recent parser output. Run 'task e2e-update -- --help' to get help.
     silent: true
     cmds:
       - task: clone-sec-parser-test-data
@@ -78,12 +78,17 @@ tasks:
       - "echo -e \"Please review the updated snapshot in sec-parser-test-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
 
   generalization-tests:
-    desc: Execute generalization tests to assess parser across a large number of reports. It may cross-verify results with 3rd-party services.
+    desc: Execute generalization tests to assess parser across a large number of reports.
     cmds:
       - task: clone-sec-parser-test-data    
       # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
       # TODO: Confirm whether workers might duplicate effort by parsing the same document. This is likely because each pytest-xdist worker instantiates its own session-scoped fixtures. If confirmed, consider implementing a solution.
       - poetry run pytest -n auto -s tests/generalization/
+
+  profiler:
+    desc: Open a performance report to identify bottlenecks. Run 'task profiler -- --help' to get help.
+    cmds:
+      - poetry run python -m dev_utils.profiler {{.CLI_ARGS}}
 
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###

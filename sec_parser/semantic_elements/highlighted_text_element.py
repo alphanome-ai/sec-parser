@@ -35,11 +35,12 @@ class HighlightedTextElement(AbstractSemanticElement):
         style: TextStyle | None = None,
         log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
+        super().__init__(html_tag, processing_log=processing_log, log_origin=None)
         if style is None:
             msg = "styles must be specified for HighlightedElement"
             raise SecParserValueError(msg)
         self.style = style
+        self.log_init(log_origin)
 
     @classmethod
     def create_from_element(

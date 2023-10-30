@@ -1,16 +1,11 @@
 import copy
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Union
-
-if TYPE_CHECKING:  # pragma: no cover
-    from sec_parser.semantic_elements.abstract_semantic_element import (
-        AbstractSemanticElement,
-    )
+from typing import Any, Union
 
 from loguru import logger
 
 LogItemOrigin = str
-LogItemPayload = Union[str, "AbstractSemanticElement"]
+LogItemPayload = Union[str, dict[str, Any]]
 
 
 @dataclass(frozen=True)

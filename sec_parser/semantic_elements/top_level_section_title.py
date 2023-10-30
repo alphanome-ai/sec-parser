@@ -33,9 +33,10 @@ class TopLevelSectionTitle(AbstractLevelElement):
             html_tag,
             processing_log=processing_log,
             level=level,
-            log_origin=log_origin,
+            log_origin=None,
         )
         self.identifier = identifier
+        self.log_init(log_origin)
 
     @classmethod
     def create_from_element(

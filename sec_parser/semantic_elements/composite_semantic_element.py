@@ -46,12 +46,13 @@ class CompositeSemanticElement(AbstractSemanticElement):
         processing_log: ProcessingLog | None = None,
         log_origin: LogItemOrigin | None = None,
     ) -> None:
-        super().__init__(html_tag, processing_log=processing_log, log_origin=log_origin)
+        super().__init__(html_tag, processing_log=processing_log, log_origin=None)
         self._inner_elements: tuple[AbstractSemanticElement, ...] = ()
         if not inner_elements:
             msg = "inner_elements cannot be None or empty."
             raise SecParserValueError(msg)
         self.inner_elements = inner_elements
+        self.log_init(log_origin)
 
     @property
     def inner_elements(
