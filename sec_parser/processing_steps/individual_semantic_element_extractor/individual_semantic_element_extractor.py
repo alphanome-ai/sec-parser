@@ -80,6 +80,9 @@ class IndividualSemanticElementExtractor(AbstractElementwiseProcessingStep):
         return element
 
     def _contains_single_element(self, element: AbstractSemanticElement) -> bool:
+        if not element.html_tag.has_tag_children():
+            return True
+
         for check in self._checks:
             contains_single_element = check.contains_single_element(element)
             if contains_single_element is not None:

@@ -1,5 +1,5 @@
 import pytest
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup
 
 from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
 
@@ -53,7 +53,7 @@ def test_has_text_outside_tag_normal_cases(html, expected):
     soup = BeautifulSoup(html, "lxml")
 
     # Act
-    result = has_text_outside_tags(soup, "table")
+    result = has_text_outside_tags(soup, ("table",))
 
     # Assert
     assert result == expected

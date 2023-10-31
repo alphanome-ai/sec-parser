@@ -20,5 +20,11 @@ class XbrlTagCheck(AbstractSingleElementCheck):
                 message=f"Detected XBRL tag {element.html_tag.name}",
             )
             return False
+        if element.html_tag.contains_tag("ix:nonnumeric"):
+            element.processing_log.add_item(
+                log_origin=self.__class__.__name__,
+                message=f"Detected XBRL tag ix:nonnumeric in {element.html_tag.name}",
+            )
+            return False
 
         return None

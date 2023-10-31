@@ -14,6 +14,7 @@ from sec_parser.utils.bs4_.approx_table_metrics import (
 )
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.count_tags import count_tags
+from sec_parser.utils.bs4_.has_tag_children import has_tag_children
 from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
@@ -125,6 +126,9 @@ class HtmlTag:
     def name(self) -> str:
         """Returns tag name, e.g. for <div> return 'div'."""
         return self._bs4.name.lower()
+
+    def has_tag_children(self) -> bool:
+        return has_tag_children(self._bs4)
 
     def get_children(self) -> list[HtmlTag]:
         if self._children is None:
