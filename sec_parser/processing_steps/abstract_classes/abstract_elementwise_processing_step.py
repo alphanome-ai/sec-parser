@@ -17,7 +17,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 )
 from sec_parser.semantic_elements.semantic_elements import ErrorWhileProcessingElement
 
-if TYPE_CHECKING:
+if TYPE_CHECKING: # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
