@@ -21,7 +21,7 @@ from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metric
 from sec_parser.utils.bs4_.without_tags import without_tags
 from sec_parser.utils.bs4_.wrap_tags_in_new_parent import wrap_tags_in_new_parent
 
-if TYPE_CHECKING:
+if TYPE_CHECKING: # pragma: no cover
     from collections.abc import Iterable
 
 TEXT_PREVIEW_LENGTH = 40
