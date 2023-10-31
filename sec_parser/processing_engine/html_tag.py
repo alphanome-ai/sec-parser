@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-import warnings
 from typing import TYPE_CHECKING
 
 import bs4
 import xxhash
 from frozendict import frozendict
+from loguru import logger
 
 from sec_parser.exceptions import SecParserValueError
 from sec_parser.utils.bs4_.approx_table_metrics import (
@@ -260,8 +260,7 @@ class HtmlTag:
                 raise EmptyNavigableStringError(msg)
             tag = bs4.Tag(name="span")
             tag.string = str(element)
-            msg = "Converting bs4.NavigableString to bs4.Tag(<span>)"
-            warnings.warn(msg, stacklevel=2)
+            logger.trace("Converting bs4.NavigableString to bs4.Tag(<span>)")
         else:
             msg = f"Unsupported element type: {type(element).__name__}"
             raise TypeError(msg)
@@ -288,5 +287,6 @@ class NotSetType:
     pass
 
 
+NotSet = NotSetType()
 NotSet = NotSetType()
 NotSet = NotSetType()

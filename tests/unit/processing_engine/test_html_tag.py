@@ -13,11 +13,9 @@ def test_init_with_non_empty_navigable_string():
     nav_string = NavigableString("Hello")
 
     # Act
-    with patch("warnings.warn") as mock_warn:
-        html_tag = HtmlTag(nav_string)
+    html_tag = HtmlTag(nav_string)
 
     # Assert
-    mock_warn.assert_called()
     tag = html_tag._bs4  # separate variable for readability
     assert isinstance(tag, bs4.Tag)
     assert tag.name == "span"
@@ -44,7 +42,9 @@ def test_init_with_unsupported_type():
 
 def test_without_tags():
     # Arrange
-    soup = bs4.BeautifulSoup("<div><p>Text <b>inside</b> a paragraph</p></div>", "html.parser")
+    soup = bs4.BeautifulSoup(
+        "<div><p>Text <b>inside</b> a paragraph</p></div>", "html.parser"
+    )
     div_tag = soup.find("div")
     html_tag = HtmlTag(div_tag)
 
@@ -94,7 +94,7 @@ def test_is_unary_tree(name, html_string, expected):
     actual = html_tag.is_unary_tree()
 
     # Assert
-    assert actual==expected
+    assert actual == expected
 
 
 def test_get_pretty_source_code():
@@ -145,8 +145,13 @@ def test_wrap_tags_in_new_parent():
 
     # Act
     new_parent_tag_name = "div"
-    new_parent = html_tag1.wrap_tags_in_new_parent(new_parent_tag_name, [html_tag1, html_tag2])
+    new_parent = html_tag1.wrap_tags_in_new_parent(
+        new_parent_tag_name, [html_tag1, html_tag2]
+    )
 
     # Assert
     assert new_parent.name == new_parent_tag_name
-    assert new_parent.get_source_code(pretty=True) == "<div>\n <p>\n  This is the first paragraph.\n </p>\n <p>\n  This is the second paragraph.\n </p>\n</div>\n"
+    assert (
+        new_parent.get_source_code(pretty=True)
+        == "<div>\n <p>\n  This is the first paragraph.\n </p>\n <p>\n  This is the second paragraph.\n </p>\n</div>\n"
+    )
