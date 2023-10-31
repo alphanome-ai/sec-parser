@@ -16,4 +16,4 @@ def test_contains_single_element():
     actual = check.contains_single_element(element)
 
     # Assert
-    assert actual is False #TODO(@INF800): Verify if `True` or `False` is expected.
+    assert actual is False
