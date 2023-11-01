@@ -1,9 +1,12 @@
-import pytest
 import bs4
+import pytest
 
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
-from sec_parser.semantic_elements.semantic_elements import TextElement, AbstractSemanticElement
+from sec_parser.semantic_elements.semantic_elements import (
+    AbstractSemanticElement,
+    TextElement,
+)
 from tests.unit._utils import assert_elements
 
 
@@ -42,7 +45,7 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
                     "tag": "sec-parser-merged-text",
                     "text": "Text 1.Text 2.Text 3.",
                 },
-            ]
+            ],
         ),
         (
             "no_merge_other_elements",
@@ -60,13 +63,13 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
                 {
                     "type": AbstractSemanticElement,
                     "tag": "div",
-                    "text": "Middle Divider."
+                    "text": "Middle Divider.",
                 },
                 {
                     "type": TextElement,
                     "tag": "span",
                     "text": "Text 2.",
-                },  
+                },
             ],
         ),
     ],
@@ -75,7 +78,7 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
 def test_merge_text_elements(name, elements, expected_elements):
     # Arrange
     step = TextElementMerger()
-    
+
     # Act
     processed_elements = step.process(elements)
 

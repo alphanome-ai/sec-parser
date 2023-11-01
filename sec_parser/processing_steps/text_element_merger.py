@@ -15,7 +15,7 @@ from sec_parser.semantic_elements.semantic_elements import (
     TextElement,
 )
 
-if TYPE_CHECKING: # pragma: no cover
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_steps.abstract_classes.processing_context import (
         ElementProcessingContext,
     )
@@ -72,9 +72,6 @@ class TextElementMerger(AbstractElementBatchProcessingStep):
         cls,
         elements: list[AbstractSemanticElement],
     ) -> AbstractSemanticElement:
-        if len(elements) == 1:
-            return elements[0]
-
         new_tag = HtmlTag.wrap_tags_in_new_parent(
             "sec-parser-merged-text",
             [e.html_tag for e in elements],
