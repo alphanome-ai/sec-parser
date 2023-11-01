@@ -5,11 +5,12 @@ from unittest.mock import Mock
 import bs4
 import pytest
 
-from sec_parser.exceptions import SecParserValueError
+from sec_parser.exceptions import SecParserError, SecParserValueError
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
+    ErrorWhileProcessingElement,
 )
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
@@ -44,6 +45,15 @@ class ProcessingStep(AbstractElementwiseProcessingStep):
     ) -> AbstractSemanticElement:
         self.seen_elements.append(element)
         return element
+
+
+class ErrorRaisingProcessingStep(AbstractElementwiseProcessingStep):
+    def _process_element(
+        self,
+        element: AbstractSemanticElement,
+        _: ElementProcessingContext,
+    ) -> AbstractSemanticElement:
+        raise SecParserError
 
 
 def test_process_skip_due_to_types_to_process():
@@ -107,3 +117,28 @@ def test_process_skip_due_to_both_types_to_process_and_types_to_exclude():
     assert step.seen_elements == [element1]
     assert processed_elements == input_elements
     assert processed_elements == input_elements
+
+
+def test_error_while_processing_element():
+    # Arrange    
+    input_elements = [MockSemanticElement(Mock())]
+    step = ErrorRaisingProcessingStep()
+
+    # Act
+    elements = step.process(input_elements)
+
+    # Assert
+    assert isinstance(elements[0], ErrorWhileProcessingElement)
+
+
+def test_error_while_processing_element_with_no_error():
+    # Arrange
+    element = MockSemanticElement(Mock())
+ 
+    # Act & Assert
+    with pytest.raises(SecParserValueError):
+        error_processing_element = ErrorWhileProcessingElement.create_from_element(
+            element,
+            error=None,
+            log_origin=None
+        )
