@@ -69,6 +69,8 @@ from tests.unit._utils import assert_elements
 <p>repeating</p>
 <p>repeating</p>
 <p>repeating</p>
+
+<p></p>
                 """,
             [
                 {
@@ -102,6 +104,10 @@ from tests.unit._utils import assert_elements
                     },
                 ]
                 * 10,
+                {
+                    "type": EmptyElement,
+                    "tag": "p",
+                },
             ],
         ),
     ],
