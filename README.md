@@ -199,7 +199,9 @@ pip install sec-ai
 
 To ensure your code remains functional even when we update `sec-parser`, it's recommended to avoid complex imports. Don't use intricate import statements that go deep into the package, like this:
 
+```
 from sec_parser.semantic_tree.internal_utils import SomeInternalClass
+```
 
 Here are the suggested ways to import modules from `sec-parser`:
 
