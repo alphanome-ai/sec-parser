@@ -6,6 +6,7 @@ from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
+from sec_parser.processing_engine.processing_log import LogItem
 from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 from tests.unit._utils import assert_elements
 
@@ -51,3 +52,34 @@ def test_smoke_test(name, html_str, unwrap_elements, expected_elements):
             mock_unwrap.assert_called()
         else:
             mock_unwrap.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    ("name", "html_str", "expected_processing_log"),
+    values := [
+        (
+            "simple", 
+            "<div>Hello World.</div>",
+            (
+                LogItem(
+                    origin="TextClassifier", 
+                    payload={
+                        'cls_name': 'TextElement'
+                    },
+                ),
+            ),
+        ),
+    ],
+    ids = [v[0] for v in values],
+)
+def test_transformation_history(name, html_str, expected_processing_log):
+    # Arrange
+    sec_parser = Edgar10QParser()
+
+    # Act
+    processed_elements = sec_parser.parse(html_str)
+    processing_log = processed_elements[0].processing_log.get_items()
+
+    # Assert
+    assert len(processed_elements)==1 # For simplicity, while crafting `html_str` make sure it always returns single element.
+    assert processing_log == expected_processing_log
