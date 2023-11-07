@@ -23,6 +23,8 @@ Alternatively, you can run the notebooks directly in your browser using Google C
 > **Note**
 Before contributing, we highly recommend familiarizing yourself with these guides. They will help you understand the structure and style of our codebase, enabling you to make effective contributions.
 
+# Advanced Topics
+
 ## Running End-to-End (e2e) Tests
 
 We take code quality and reliability seriously. Alongside unit tests, we have implemented an End-to-End (e2e) Testing workflow to validate the parser against real-world SEC EDGAR HTML documents. This section will guide you through running these e2e tests.
