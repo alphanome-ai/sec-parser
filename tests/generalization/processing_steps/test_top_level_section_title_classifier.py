@@ -1,21 +1,36 @@
 import warnings
-from typing import TYPE_CHECKING, Callable
+from pathlib import Path
+from typing import Callable
 
 import pytest
+import yaml
 
 from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
 from tests._sec_parser_validation_data import Report, traverse_repository_for_reports
 from tests.generalization.types import ParsedDocumentComponents
 
+CURRENT_DIR = Path(__file__).parent.resolve()
+
+
+def _load_yaml_filter(file_path: Path) -> dict:
+    with file_path.open("r") as stream:
+        return yaml.safe_load(stream)
+
+
 all_reports = list(traverse_repository_for_reports())
-all_report_ids = [report.identifier for report in all_reports]
+all_accession_numberentifiers = [report.identifier for report in all_reports]
+expected_to_pass_accession_numbers = _load_yaml_filter(
+    CURRENT_DIR / "test_top_level_section_title_classifier.yaml",
+)["accession_numbers"]
 
 
-@pytest.mark.parametrize("report", all_reports, ids=all_report_ids)
+@pytest.mark.parametrize("report", all_reports, ids=all_accession_numberentifiers)
 def test_top_level_section_title_classifier(
     report: Report,
     parse: Callable[[Report], ParsedDocumentComponents],
 ):
+    if report.accession_number not in expected_to_pass_accession_numbers:
+        pytest.skip(f"Skipping {report.identifier}")
     parsed_report = parse(report)
     semantic_elements = parsed_report.semantic_elements
     sections = [

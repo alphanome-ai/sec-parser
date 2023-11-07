@@ -97,7 +97,7 @@ def manage_snapshots(
     data_dir: str,
     document_types: list[str] | None,
     company_names: list[str] | None,
-    report_ids: list[str] | None,
+    accession_numbers: list[str] | None,
     yaml_path_str: str | None,
     *,
     verbose: bool = True,
@@ -110,7 +110,7 @@ def manage_snapshots(
     if (
         not document_types
         and not company_names
-        and not report_ids
+        and not accession_numbers
         and not yaml_path_str
     ):
         if not DEFAULT_YAML_FILTER_PATH.exists():
@@ -120,15 +120,15 @@ def manage_snapshots(
 
     document_types = list(document_types) if document_types else []
     company_names = list(company_names) if company_names else []
-    report_ids = list(report_ids) if report_ids else []
+    accession_numbers = list(accession_numbers) if accession_numbers else []
     if yaml_path:
         filters = load_yaml_filter(yaml_path)
         document_types.extend(filters.get("document_types", []))
         company_names.extend(filters.get("company_names", []))
-        report_ids.extend(filters.get("report_ids", []))
+        accession_numbers.extend(filters.get("accession_numbers", []))
 
-    if not document_types and not company_names and not report_ids:
-        msg = "No filters provided in document_types, company_names, or report_ids."
+    if not document_types and not company_names and not accession_numbers:
+        msg = "No filters provided in document_types, company_names, or accession_numbers."
         raise ValueError(msg)
 
     results: list[VerificationResult] = []
@@ -139,7 +139,7 @@ def manage_snapshots(
         if (
             (report_detail.document_type not in document_types)
             and (report_detail.company_name not in company_names)
-            and (report_detail.report_name not in report_ids)
+            and (report_detail.accession_number not in accession_numbers)
         ):
             items_not_matching_filters_count += 1
             continue
@@ -277,8 +277,4 @@ def diff_lines(expected, actual, identifier, verbose):
 
 def load_yaml_filter(file_path: Path) -> dict:
     with file_path.open("r") as stream:
-        try:
-            return yaml.safe_load(stream)
-        except yaml.YAMLError as e:
-            print(f"Error reading YAML file: {e}")
-            return {}
+        return yaml.safe_load(stream)

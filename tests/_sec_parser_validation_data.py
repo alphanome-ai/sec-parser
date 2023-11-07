@@ -13,7 +13,7 @@ DEFAULT_VALIDATION_DATA_DIR = (
 class Report:
     document_type: str
     company_name: str
-    report_name: str
+    accession_number: str
     report_full_path: Path
 
     @property
@@ -34,7 +34,7 @@ class Report:
 
     @property
     def identifier(self) -> str:
-        return f"{self.document_type}_{self.company_name}_{self.report_name}"
+        return f"{self.document_type}_{self.company_name}_{self.accession_number}"
 
 
 @dataclass(frozen=True)
@@ -64,6 +64,6 @@ def traverse_repository_for_reports(
                 yield Report(
                     document_type=document_type_directory.name,
                     company_name=company_directory.name,
-                    report_name=individual_report_directory.name,
+                    accession_number=individual_report_directory.name,
                     report_full_path=individual_report_directory,
                 )

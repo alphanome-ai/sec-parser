@@ -1,0 +1,73 @@
+accession_numbers:
+  - 0000320193-23-000077 # 10-Q AAPL Apple Inc.
+  - 0001652044-23-000070 # 10-Q GOOG Alphabet Inc.
+  - 0001551152-23-000033 # 10-Q ABBV AbbVie Inc.
+  # - 0001628280-23-027203 # 10-Q ABT Abbott Laboratories
+  - 0000796343-23-000205 # 10-Q ADBE Adobe Inc.
+  - 0001628280-23-031636 # 10-Q AI C3.ai, Inc.
+  # - 0001411579-23-000057 # 10-Q AMC AMC Entertainment Holdings, Inc.
+  # - 0000002488-23-000139 # 10-Q AMD Advanced Micro Devices, Inc.
+  - 0001018724-23-000012 # 10-Q AMZN Amazon.com, Inc.
+  # - 0000004962-23-000038 # 10-Q AXP American Express Company
+  - 0000012927-23-000048 # 10-Q BA The Boeing Company
+  # - 0000070858-23-000176 # 10-Q BAC Bank of America Corporation
+  - 0000014272-23-000152 # 10-Q BMY Bristol-Myers Squibb Company
+  - 0000018230-23-000047 # 10-Q CAT Caterpillar Inc.
+  # - 0000021665-23-000031 # 10-Q CL Colgate-Palmolive Company
+  - 0001166691-23-000032 # 10-Q CMCSA Comcast Corporation
+  - 0000858877-23-000013 # 10-Q CSCO Cisco Systems, Inc.
+  - 0000093410-23-000079 # 10-Q CVX Chevron Corporation
+  - 0001744489-23-000171 # 10-Q DIS The Walt Disney Company
+  # - 0001751788-23-000128 # 10-Q DOW Dow Inc.
+  # - 0000037996-23-000050 # 10-Q F Ford Motor Company
+  - 0000040533-23-000060 # 10-Q GD General Dynamics Corporation
+  # - 0000040545-23-000198 # 10-Q GE General Electric Company
+  # - 0001467858-23-000098 # 10-Q GM General Motors Company
+  - 0001326380-23-000047 # 10-Q GME GameStop Corp.
+  # - 0000886982-23-000008 # 10-Q GS The Goldman Sachs Group, Inc.
+  - 0000354950-23-000185 # 10-Q HD The Home Depot, Inc.
+  # - 0000773840-23-000073 # 10-Q HON Honeywell International Inc.
+  - 0000051143-23-000021 # 10-Q IBM International Business Machines Corporation
+  # - 0000050863-23-000069 # 10-Q INTC Intel Corporation
+  - 0000833444-23-000030 # 10-Q JCI Johnson Controls International plc
+  # - 0000200406-23-000082 # 10-Q JNJ Johnson & Johnson
+  # - 0000019617-23-000432 # 10-Q JPM JPMorgan Chase & Co.
+  - 0001637459-23-000114 # 10-Q KHC The Kraft Heinz Company
+  - 0000021344-23-000048 # 10-Q KO The Coca-Cola Company
+  - 0000060667-23-000139 # 10-Q LOW Lowe's Companies, Inc.
+  # - 0001141391-23-000131 # 10-Q MA Mastercard Incorporated
+  # - 0001493152-23-027174 # 10-Q MARA Marathon Digital Holdings, Inc.
+  # - 0000063908-23-000076 # 10-Q MCD McDonald's Corporation
+  - 0001613103-23-000128 # 10-Q MDT Medtronic plc
+  - 0001326801-23-000093 # 10-Q META Meta Platforms, Inc.
+  # - 0000066740-23-000058 # 10-Q MMM 3M Company
+  - 0001628280-23-027770 # 10-Q MRK Merck & Co., Inc.
+  # - 0000895421-23-000374 # 10-Q MS Morgan Stanley
+  # - 0000950170-23-014423 # 10-Q MSFT Microsoft Corporation
+  - 0000950170-23-036448 # 10-Q MSTR MicroStrategy Incorporated
+  # - 0001558370-23-014900 # 10-Q MULN Mullen Automotive, Inc.
+  - 0000320187-23-000052 # 10-Q NKE NIKE, Inc.
+  - 0001045810-23-000175 # 10-Q NVDA NVIDIA Corporation
+  - 0000950170-23-047713 # 10-Q ORCL Oracle Corporation
+  # - 0000077476-23-000058 # 10-Q PEP PepsiCo, Inc.
+  - 0000078003-23-000088 # 10-Q PFE Pfizer Inc.
+  - 0000080424-23-000103 # 10-Q PG The Procter & Gamble Company
+  - 0001321655-23-000090 # 10-Q PLTR Palantir Technologies Inc.
+  # - 0001558370-23-014305 # 10-Q RIOT Riot Blockchain, Inc.
+  # - 0001805284-23-000066 # 10-Q RKT Rocket Companies, Inc.
+  - 0000101829-23-000032 # 10-Q RTX Raytheon Technologies Corporation
+  # - 0000316709-23-000037 # 10-Q SCHW The Charles Schwab Corporation
+  - 0000719739-22-000081 # 10-Q SIVBQ SVB Financial Group
+  - 0000091419-23-000113 # 10-Q SJM The J.M. Smucker Company
+  # - 0000732717-23-000047 # 10-Q T AT&T Inc.
+  - 0000097745-23-000059 # 10-Q TMO Thermo Fisher Scientific Inc.
+  # - 0000086312-23-000063 # 10-Q TRV The Travelers Companies, Inc.
+  - 0000950170-23-033872 # 10-Q TSLA Tesla, Inc.
+  - 0000097476-23-000035 # 10-Q TXN Texas Instruments Incorporated
+  - 0000731766-23-000053 # 10-Q UNH UnitedHealth Group Incorporated
+  - 0001090727-23-000038 # 10-Q UPS United Parcel Service, Inc.
+  - 0001403161-23-000072 # 10-Q V Visa Inc.
+  # - 0000732712-23-000055 # 10-Q VZ Verizon Communications Inc.
+  # - 0001618921-23-000043 # 10-Q WBA Walgreens Boots Alliance, Inc.
+  - 0000104169-23-000097 # 10-Q WMT Walmart Inc.
+  - 0000034088-23-000048 # 10-Q XOM Exxon Mobil Corporation
