@@ -38,7 +38,6 @@ class TableParser:
                         columns_to_remove.append(next_column)
         df.drop(columns=columns_to_remove, inplace=True)
         return df
-    
     @staticmethod
     def merge_columns_by_marker(df: pd.DataFrame, marker: str) -> pd.DataFrame:
         for i in range(len(df.columns)):
@@ -50,7 +49,9 @@ class TableParser:
                 marker_rows = df.drop(non_empty_non_marker_rows.index)
                 marker_rows_indices = marker_rows.index
                 if (non_empty_non_marker_rows[current_column] == non_empty_non_marker_rows[next_column]).all():
-                    df.loc[marker_rows_indices, current_column] = df.loc[marker_rows_indices, current_column].str.cat(df.loc[marker_rows_indices, next_column], sep='', na_rep='').str.strip()
+                    df.loc[marker_rows_indices, current_column] = (df.loc[marker_rows_indices, current_column]
+                                                                   .str.cat(df.loc[marker_rows_indices, next_column], sep='', na_rep='')
+                                                                   .str.strip())
                     df.drop(columns=[next_column], inplace=True)
         return df
 
