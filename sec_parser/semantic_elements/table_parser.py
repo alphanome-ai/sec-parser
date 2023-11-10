@@ -55,7 +55,7 @@ class TableParser:
                     df.drop(columns=[next_column], inplace=True)
         return df
 
-    def parse(self) -> TableElement:
+    def parse(self) -> 'TableParser':
         soup = self.table_element.html_tag.get_source_code()
         df = self.basic_preprocessing(soup)
         df = self.remove_blank_columns(df)
