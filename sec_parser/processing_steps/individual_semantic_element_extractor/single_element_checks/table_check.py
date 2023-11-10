@@ -6,7 +6,7 @@ from sec_parser.processing_steps.individual_semantic_element_extractor.single_el
     AbstractSingleElementCheck,
 )
 
-if TYPE_CHECKING: # pragma: no cover
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )

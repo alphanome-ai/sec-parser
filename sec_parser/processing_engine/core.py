@@ -178,8 +178,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
 
     def get_default_single_element_checks(self) -> list[AbstractSingleElementCheck]:
         return [
+            TableCheck(),
             XbrlTagCheck(),
             ImageCheck(),
-            # TableCheck is last because it is potentially computationally expensive
-            TableCheck(),
         ]
