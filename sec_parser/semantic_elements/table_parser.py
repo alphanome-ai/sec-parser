@@ -26,7 +26,7 @@ class TableParser:
     @staticmethod
     def remove_blank_columns(df: pd.DataFrame) -> pd.DataFrame:
         columns_to_remove = []
-        for i in range(len(df.columns)):
+        for i, _ in enumerate(df.columns):
             if i < len(df.columns)-1:
                 current_column = df.columns[i]
                 next_column = df.columns[i + 1]
@@ -40,7 +40,7 @@ class TableParser:
         return df
     @staticmethod
     def merge_columns_by_marker(df: pd.DataFrame, marker: str) -> pd.DataFrame:
-        for i in range(len(df.columns)):
+        for i, _ in enumerate(df.columns):
             if i < len(df.columns)-1:
                 current_column = df.columns[i]
                 next_column = df.columns[i + 1]
