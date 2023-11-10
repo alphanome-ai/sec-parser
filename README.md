@@ -7,7 +7,7 @@
   <!-- Using &nbsp; for alignment due to GitHub README limitations -->
   <b>Essentials ➔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
   <a href='https://sec-parser.readthedocs.io/en/latest/?badge=latest'><img src='https://readthedocs.org/projects/sec-parser/badge/?version=latest' alt='Documentation Status' /></a>
-  <a href="LICENSE"><img alt="PyPI - License" src="https://img.shields.io/pypi/l/sec-parser?color=white"></a>
+  <a href="LICENSE"><img alt="PyPI - License" src="https://img.shields.io/pypi/l/sec-parser?color=success"></a>
   <a href="https://project-types.github.io/#federation"><img src="https://img.shields.io/badge/project%20type-federation-brightgreen" alt="Project Type: Federation"></a>
   <!-- NOTE: After changing stability level here, also change it in pyproject.toml -->
   <a href="https://github.com/mkenney/software-guides/blob/master/STABILITY-BADGES.md#beta"><img src="https://img.shields.io/badge/stability-beta-33bbff.svg" alt="Beta"></a>
@@ -20,7 +20,7 @@
   <b>Quality ➔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
   <a href="https://app.codacy.com/gh/alphanome-ai/sec-parser/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img alt="Codacy grade" src="https://img.shields.io/codacy/grade/8b7cb199e0954f2a892f80a3ce81fe42"></a>
   <a href="https://codecov.io/gh/alphanome-ai/sec-parser"><img src="https://codecov.io/gh/alphanome-ai/sec-parser/graph/badge.svg?token=KJLA96CBCN" alt="codecov" /></a>
-  <a href="https://mypy-lang.org/"><img src="https://img.shields.io/badge/type%20checked-mypy-blue.svg"></a>
+  <a href="https://mypy-lang.org/"><img src="https://img.shields.io/badge/type%20checked-mypy-success.svg"></a>
   <a href="https://github.com/psf/black"><img alt="Code Style: Black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
   <a href="https://github.com/astral-sh/ruff"><img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff"></a>
   <br>
