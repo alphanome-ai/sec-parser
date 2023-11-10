@@ -1,7 +1,6 @@
 import pandas as pd
 from bs4 import BeautifulSoup
 from typing import Any
-from dataclasses import asdict
 from sec_parser.semantic_elements.table_element import TableElement
 
 class TableParser:
