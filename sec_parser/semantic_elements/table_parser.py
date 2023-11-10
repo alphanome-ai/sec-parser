@@ -21,45 +21,63 @@ class TableParser:
         df = pd.concat([new_df, df], ignore_index=True)
         df.columns = range(1, len(df.columns) + 1)
         df = df.fillna('')
+        df=df.astype(str)
         return df
 
     @staticmethod
     def remove_blank_columns(df: pd.DataFrame) -> pd.DataFrame:
         columns_to_remove = []
-        num_columns = len(df.columns)
-        for i in range(num_columns - 1):
-            current_column = df.columns[i]
-            next_column = df.columns[i + 1]
-            non_empty_rows = df[(df[current_column] != '') & (df[next_column] != '')]
-            if (non_empty_rows[current_column] == non_empty_rows[next_column]).all():
-                column_to_remove = current_column if (df[current_column] == '').sum() >= (df[next_column] == '').sum() else next_column
-                columns_to_remove.append(column_to_remove)
+        for i in range(len(df.columns)):
+            if i < len(df.columns)-1:
+                col1 = df.columns[i]
+                col2 = df.columns[i + 1]
+                non_empty_rows = df[(df[col1] != '') & (df[col2] != '')]
+                if (non_empty_rows[col1] == non_empty_rows[col2]).all():
+                    if (df[col1] == '').sum() >= (df[col2] == '').sum():
+                        columns_to_remove.append(col1)
+                    else:
+                        columns_to_remove.append(col2)
         df.drop(columns=columns_to_remove, inplace=True)
         return df
-
     @staticmethod
-    def merge_columns_by_marker(df: pd.DataFrame, marker: str) -> pd.DataFrame:
-        num_columns = len(df.columns)
-        for i in range(num_columns - 1):
-            current_column = df.columns[i]
-            next_column = df.columns[i + 1]
-            non_marker_rows = df[(df[current_column] != marker) & (df[next_column] != marker)]
-            non_empty_non_marker_rows = non_marker_rows[(non_marker_rows[current_column] != '') & (non_marker_rows[next_column] != '')]
-            marker_rows = df.drop(non_empty_non_marker_rows.index)
-            marker_rows_indices = marker_rows.index
-            if (non_empty_non_marker_rows[current_column] == non_empty_non_marker_rows[next_column]).all():
-                df.loc[marker_rows_indices, current_column] = df.loc[marker_rows_indices, current_column].str.cat(df.loc[marker_rows_indices, next_column], sep='', na_rep='').str.strip()
-                df.drop(columns=[next_column], inplace=True)
-        return df
 
-    def parse(self) -> TableElement:
+    def merge_dollar_columns(df: pd.DataFrame) -> pd.DataFrame:
+        for i in range(len(df.columns)):
+            if i < len(df.columns)-1:
+                col1 = df.columns[i]
+                col2 = df.columns[i + 1]
+                non_dollar_rows = df[(df[col1] != '$') & (df[col2] != '$')]
+                non_dollar_rows=non_dollar_rows[(non_dollar_rows[col1] != '') & (non_dollar_rows[col2] != '')]
+                dollar_rows=df.drop(non_dollar_rows.index)
+                dollar_rows_indices=dollar_rows.index
+                if (non_dollar_rows[col1] == non_dollar_rows[col2]).all():
+                    df.loc[dollar_rows_indices, col1] = df.loc[dollar_rows_indices, col1].str.cat(df.loc[dollar_rows_indices, col2], sep='', na_rep='').str.strip()
+                    df.drop(columns=[col2], inplace=True)
+        return df
+    
+    @staticmethod
+    def merge_percentage_columns(df: pd.DataFrame) -> pd.DataFrame:
+        for i in range(len(df.columns)):
+            if i < len(df.columns)-1:
+                col1 = df.columns[i]
+                col2 = df.columns[i + 1]
+                non_dollar_rows = df[(df[col1] != '%') & (df[col2] != '%')]
+                non_percentage_rows=non_dollar_rows[(non_dollar_rows[col1] != '') & (non_dollar_rows[col2] != '')]
+                percentage_rows=df.drop(non_percentage_rows.index)
+                percentage_rows_indices=percentage_rows.index
+                if (non_percentage_rows[col1] == non_percentage_rows[col2]).all():
+                    df.loc[percentage_rows_indices, col1] = df.loc[percentage_rows_indices, col1].str.cat(df.loc[percentage_rows_indices, col2], sep='', na_rep='').str.strip()
+                    df.drop(columns=[col2], inplace=True)
+        return df
+    
+    def parse(self) -> pd.DataFrame:
         soup = self.table_element.html_tag.get_source_code()
         df = self.basic_preprocessing(soup)
         df = self.remove_blank_columns(df)
-        df = self.merge_columns_by_marker(df, '$')
-        df = self.merge_columns_by_marker(df, '%')
+        df = self.merge_dollar_columns(df)
+        df = self.merge_percentage_columns(df)
         df.columns = range(1, len(df.columns) + 1)
-        self.df = df
+        self.df=df
         return self
 
     def table_as_df(self) -> pd.DataFrame:
