@@ -28,7 +28,7 @@ from sec_parser.semantic_elements.semantic_elements import (
     SupplementaryText,
     TextElement,
 )
-from sec_parser.semantic_elements.table_element import TableElement
+from sec_parser.semantic_elements.table_element.table_element import TableElement
 from sec_parser.semantic_elements.title_element import TitleElement
 from tests.unit._utils import assert_elements
 
