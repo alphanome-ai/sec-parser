@@ -27,7 +27,7 @@
   <b>Distribution ➔&nbsp;&nbsp;&nbsp;</b>
   <a href="https://badge.fury.io/py/sec-parser"><img src="https://badge.fury.io/py/sec-parser.svg" alt="PyPI version" /></a>
   <a href="https://pypi.org/project/sec-parser/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/sec-parser"></a>
-  <a href="https://pypistats.org/packages/sec-parser"><img src="https://img.shields.io/pypi/dm/sec-parser.svg" alt="PyPI downloads"></a>
+  <a href="https://pypistats.org/packages/sec-parser"><img src="https://img.shields.io/pypi/dm/sec-parser?color=success" alt="PyPI downloads"></a>
   <br>
   <b>Community ➔&nbsp;&nbsp;&nbsp;&nbsp;</b>
   <a href="https://discord.gg/2MC3uJhBxs"><img alt="Discord" src="https://img.shields.io/discord/1164249739836018698?logo=discord&logoColor=white&style=flat"></a>
