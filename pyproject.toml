@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sec-parser"
-version = "0.24.0"
+version = "0.25.0"
 description = "Parse SEC EDGAR HTML documents into a tree of elements that correspond to the visual structure of the document."
 authors = ["Alphanome.AI <info@alphanome.ai>"]
 readme = "README.md"
