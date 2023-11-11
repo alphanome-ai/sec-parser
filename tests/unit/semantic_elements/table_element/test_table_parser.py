@@ -67,4 +67,3 @@ def test_parse_as_df_error(name, html_input, expected_error):
     with pytest.raises(type(expected_error)) as result_error:
         parser.parse_as_df()
     assert str(expected_error) in str(result_error.value)
-    assert str(expected_error) in str(result_error.value)
