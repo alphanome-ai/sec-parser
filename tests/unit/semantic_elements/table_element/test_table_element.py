@@ -1,6 +1,7 @@
 from dataclasses import asdict
 from unittest.mock import Mock
 
+import bs4
 import pytest
 
 from sec_parser.processing_engine.html_tag import HtmlTag
@@ -69,3 +70,29 @@ def test_to_dict():
 
     # Assert
     assert actual["metrics"] == asdict(ApproxTableMetrics(5, 6))
+
+
+def test_table_to_markdown():
+    # Arrange
+    from bs4 import BeautifulSoup
+
+    table_html = """
+    <table>
+        <tr>
+            <th>Header 1</th>
+        </tr>
+        <tr>
+            <td>Cell 1</td>
+        </tr>
+    </table>
+    """
+    table = BeautifulSoup(table_html, "lxml").table
+    assert isinstance(table, bs4.Tag)
+    table_element = TableElement(HtmlTag(table))
+
+    # Act
+    markdown_result = table_element.table_to_markdown()
+
+    # Assert
+    assert isinstance(markdown_result, str)
+    assert markdown_result == "| Header 1 |\n|---|\n| Cell 1 |"

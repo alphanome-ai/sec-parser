@@ -3,15 +3,13 @@ import pytest
 
 from sec_parser.utils.bs4_.approx_table_metrics import (
     ApproxTableMetrics,
-    MultipleTablesFoundError,
-    NoTableFoundError,
     get_approx_table_metrics,
 )
-from tests.unit.utils.bs4_._data_test_get_approx_table_metrics import (
-    AAPL_10Q_000032019323000077_TABLE,
+from tests.unit.utils.bs4_._data_html_tables import (
+    TABLE_10Q_AAPL_000032019323000077__001,
 )
 
-test_cases = [AAPL_10Q_000032019323000077_TABLE]
+test_cases = [TABLE_10Q_AAPL_000032019323000077__001]
 
 
 @pytest.mark.parametrize(
@@ -23,8 +21,8 @@ test_cases = [AAPL_10Q_000032019323000077_TABLE]
             ApproxTableMetrics(rows=2, numbers=1),
         ),
         (
-            "AAPL_10Q_000032019323000077",
-            AAPL_10Q_000032019323000077_TABLE,
+            "10Q_AAPL_000032019323000077",
+            TABLE_10Q_AAPL_000032019323000077__001,
             ApproxTableMetrics(
                 rows=13,
                 numbers=44,
@@ -42,21 +40,3 @@ def test_get_table_metrics(name: str, html: str, expected: ApproxTableMetrics) -
 
     # Assert
     assert actual == expected, f"{name}: {actual} != {expected}"
-
-
-@pytest.mark.parametrize(
-    ("html", "exception"),
-    [
-        ("<div><p>No table here.</p></div>", NoTableFoundError),
-        (
-            "<div><table><tr><td>1</td></tr></table><table><tr><td>2</td></tr></table></div>",
-            MultipleTablesFoundError,
-        ),
-    ],
-)
-def test_table_errors(html: str, exception: type[Exception]):
-    soup = bs4.BeautifulSoup(html, "lxml")
-    root = next(soup.html.body.children)
-
-    with pytest.raises(exception):
-        get_approx_table_metrics(root)

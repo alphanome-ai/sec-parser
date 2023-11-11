@@ -30,3 +30,6 @@ class TableElement(AbstractSemanticElement):
             **super().to_dict(include_html_tag),
             "metrics": asdict(self.html_tag.get_approx_table_metrics()),
         }
+
+    def table_to_markdown(self) -> str:
+        return self.html_tag.table_to_markdown()

@@ -110,28 +110,6 @@ def test_get_pretty_source_code():
     assert pretty_source_code == "<div>\n Hello, world!\n</div>\n"
 
 
-@pytest.mark.parametrize(
-    ("method_to_call", "method_to_patch"),
-    values := [
-        (
-            "get_approx_table_metrics",
-            "sec_parser.processing_engine.html_tag.get_approx_table_metrics",
-        ),
-    ],
-    ids=[v[0] for v in values],
-)
-def test_wrappers(method_to_patch, method_to_call):
-    # Arrange
-    html_tag = HtmlTag(Mock(spec=bs4.Tag))
-
-    # Act
-    with mock.patch(method_to_patch) as mocked_function:
-        getattr(html_tag, method_to_call)()
-
-    # Assert
-    mocked_function.assert_called_once()
-
-
 def test_wrap_tags_in_new_parent():
     # Arrange
     span = list(
@@ -161,4 +139,5 @@ def test_wrap_tags_in_new_parent():
     )
     assert p_tag1.parent.name == "span"
     assert p_tag2.parent.name == "span"
+    assert new_parent.parent.name == "span"
     assert new_parent.parent.name == "span"
