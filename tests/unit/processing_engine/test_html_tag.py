@@ -1,5 +1,5 @@
 from unittest import mock
-from unittest.mock import Mock, patch
+from unittest.mock import Mock
 
 import bs4
 import pytest
@@ -134,19 +134,23 @@ def test_wrappers(method_to_patch, method_to_call):
 
 def test_wrap_tags_in_new_parent():
     # Arrange
-    tag1 = bs4.Tag(name="p")
-    tag1.string = "This is the first paragraph."
-
-    tag2 = bs4.Tag(name="p")
-    tag2.string = "This is the second paragraph."
-
-    html_tag1 = HtmlTag(tag1)
-    html_tag2 = HtmlTag(tag2)
+    span = list(
+        bs4.BeautifulSoup(
+            """<span><p>This is the first paragraph.</p><p>This is the second paragraph.</p></span>""",
+            "lxml",
+        ).html.body.children
+    )[0]
+    p_tags = list(span.children)
+    p_tag1 = HtmlTag(p_tags[0])
+    p_tag2 = HtmlTag(p_tags[1])
+    assert p_tag1.parent.name == "span"
+    assert p_tag2.parent.name == "span"
 
     # Act
     new_parent_tag_name = "div"
-    new_parent = html_tag1.wrap_tags_in_new_parent(
-        new_parent_tag_name, [html_tag1, html_tag2]
+    new_parent = p_tag1.wrap_tags_in_new_parent(
+        new_parent_tag_name,
+        [p_tag1, p_tag2],
     )
 
     # Assert
@@ -155,3 +159,6 @@ def test_wrap_tags_in_new_parent():
         new_parent.get_source_code(pretty=True)
         == "<div>\n <p>\n  This is the first paragraph.\n </p>\n <p>\n  This is the second paragraph.\n </p>\n</div>\n"
     )
+    assert p_tag1.parent.name == "span"
+    assert p_tag2.parent.name == "span"
+    assert new_parent.parent.name == "span"

@@ -21,7 +21,7 @@ from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metric
 from sec_parser.utils.bs4_.without_tags import without_tags
 from sec_parser.utils.bs4_.wrap_tags_in_new_parent import wrap_tags_in_new_parent
 
-if TYPE_CHECKING: # pragma: no cover
+if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import Iterable
 
 TEXT_PREVIEW_LENGTH = 40
@@ -51,6 +51,7 @@ class HtmlTag:
         bs4_element: bs4.PageElement,
     ) -> None:
         self._bs4: bs4.Tag = self._to_tag(bs4_element)
+        self._parent: HtmlTag | None = None
 
         # We use cached properties to prevent performance issues in intensive loops.
         # As the source code is immutable, we can afford to use some extra memory
@@ -69,6 +70,14 @@ class HtmlTag:
         self._count_tags: dict[str, int] = {}
         self._has_text_outside_tags: dict[tuple[str, ...], bool] = {}
         self._contains_words: bool | None = None
+
+    @property
+    def parent(self) -> HtmlTag | None:
+        if self._parent is None:
+            parent = self._bs4.parent
+            if parent is not None:
+                self._parent = HtmlTag(parent)
+        return self._parent
 
     def get_source_code(self, *, pretty: bool = False) -> str:
         if pretty:
@@ -271,12 +280,13 @@ class HtmlTag:
         parent_tag_name: str,
         tags: Iterable[HtmlTag],
     ) -> HtmlTag:
-        return HtmlTag(
-            wrap_tags_in_new_parent(
-                parent_tag_name,
-                [tag._bs4 for tag in tags],  # noqa: SLF001
-            ),
-        )
+        html_tags = tuple(tags)
+        bs4_tags = [tag._bs4 for tag in html_tags]  # noqa: SLF001
+
+        tag = HtmlTag(wrap_tags_in_new_parent(parent_tag_name, bs4_tags))
+
+        tag._parent = html_tags[0].parent  # noqa: SLF001
+        return tag
 
 
 class EmptyNavigableStringError(SecParserValueError):
@@ -287,6 +297,4 @@ class NotSetType:
     pass
 
 
-NotSet = NotSetType()
-NotSet = NotSetType()
 NotSet = NotSetType()
