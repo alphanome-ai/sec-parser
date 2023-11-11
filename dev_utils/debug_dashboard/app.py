@@ -12,7 +12,7 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 
 import sec_parser as sp
 import sec_parser.semantic_elements as se
-import sec_parser.semantic_elements.table_element
+import sec_parser.semantic_elements.table_element.table_element
 import sec_parser.semantic_elements.title_element
 import sec_parser.semantic_elements.top_level_section_title
 from dev_utils.debug_dashboard.config import get_config
@@ -429,7 +429,10 @@ def render_semantic_element(
             st.code(output)
     ctx = PassthroughContext()
     if (
-        isinstance(element, sec_parser.semantic_elements.table_element.TableElement)
+        isinstance(
+            element,
+            sec_parser.semantic_elements.table_element.table_element.TableElement,
+        )
         and element.html_tag.get_approx_table_metrics().rows > 5
     ):
         ctx = st.expander(element.get_summary(), expanded=False)
@@ -604,7 +607,7 @@ def to_tree_item(tree_node: sp.TreeNode, indexer):
         se.TextElement: "text-paragraph",
         sec_parser.semantic_elements.title_element.TitleElement: "bookmark",
         sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "journal-bookmark",
-        sec_parser.semantic_elements.table_element.TableElement: "table",
+        sec_parser.semantic_elements.table_element.table_element.TableElement: "table",
         se.ImageElement: "card-image",
         se.NotYetClassifiedElement: "question-square",
         se.IrrelevantElement: "trash",

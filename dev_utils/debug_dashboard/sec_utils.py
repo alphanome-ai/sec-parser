@@ -8,7 +8,7 @@ import bs4
 from bs4 import XMLParsedAsHTMLWarning
 
 import sec_parser.semantic_elements as se
-import sec_parser.semantic_elements.table_element
+import sec_parser.semantic_elements.table_element.table_element
 import sec_parser.semantic_elements.title_element
 import sec_parser.semantic_elements.top_level_section_title
 
@@ -63,7 +63,7 @@ def get_emoji_chain(cls: type):
             se.TextElement: "📝",
             sec_parser.semantic_elements.title_element.TitleElement: "🏷️",
             sec_parser.semantic_elements.top_level_section_title.TopLevelSectionTitle: "📚",
-            sec_parser.semantic_elements.table_element.TableElement: "📊",
+            sec_parser.semantic_elements.table_element.table_element.TableElement: "📊",
             se.ImageElement: "🖼️",
             se.NotYetClassifiedElement: "🛸",
             se.IrrelevantElement: "🚮",

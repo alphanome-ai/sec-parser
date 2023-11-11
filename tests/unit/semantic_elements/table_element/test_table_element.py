@@ -4,7 +4,7 @@ from unittest.mock import Mock
 import pytest
 
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.semantic_elements.table_element import TableElement
+from sec_parser.semantic_elements.table_element.table_element import TableElement
 from sec_parser.utils.bs4_.approx_table_metrics import ApproxTableMetrics
 
 

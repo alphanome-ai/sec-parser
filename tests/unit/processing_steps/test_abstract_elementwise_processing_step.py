@@ -2,12 +2,13 @@ from __future__ import annotations
 
 from unittest.mock import Mock
 
-import bs4
 import pytest
+from loguru import logger
 
 from sec_parser.exceptions import SecParserError, SecParserValueError
-from sec_parser.processing_engine.html_tag import HtmlTag
+from sec_parser.processing_engine.processing_log import LogItemOrigin
 from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+    MODULE_LOGGER_NAME,
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
     ErrorWhileProcessingElement,
@@ -120,12 +121,14 @@ def test_process_skip_due_to_both_types_to_process_and_types_to_exclude():
 
 
 def test_error_while_processing_element():
-    # Arrange    
+    # Arrange
     input_elements = [MockSemanticElement(Mock())]
     step = ErrorRaisingProcessingStep()
 
     # Act
+    logger.disable(MODULE_LOGGER_NAME)
     elements = step.process(input_elements)
+    logger.enable(MODULE_LOGGER_NAME)
 
     # Assert
     assert isinstance(elements[0], ErrorWhileProcessingElement)
@@ -134,11 +137,11 @@ def test_error_while_processing_element():
 def test_error_while_processing_element_with_no_error():
     # Arrange
     element = MockSemanticElement(Mock())
- 
+
     # Act & Assert
     with pytest.raises(SecParserValueError):
-        error_processing_element = ErrorWhileProcessingElement.create_from_element(
+        ErrorWhileProcessingElement.create_from_element(
             element,
             error=None,
-            log_origin=None
+            log_origin=Mock(spec=LogItemOrigin),
         )
