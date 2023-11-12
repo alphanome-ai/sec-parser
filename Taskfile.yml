@@ -12,6 +12,11 @@ tasks:
       # Using PYTHONPATH to allow Streamlit to monitor file changes. Learn more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
       - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/debug_dashboard/app.py --server.runOnSave=true
 
+  launch-visualizer:
+    desc: Start a local visualization server
+    cmds:
+      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/semantic_visualization/app.py --server.runOnSave=true
+
   monitor-unit-tests:
     desc: "Run unit tests and rerun them immediately upon file modification."
     cmds:
