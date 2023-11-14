@@ -89,6 +89,8 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
                 element,
                 log_origin=self.__class__.__name__,
             )
+        return element  # TODO(elijas):   # noqa: FIX002
+        # https://github.com/alphanome-ai/sec-parser/issues/50
 
         # Text duplicate finder
         normalized_text = self._normalize_text(element.text)
