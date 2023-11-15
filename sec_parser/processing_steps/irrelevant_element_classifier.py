@@ -33,7 +33,7 @@ class IrrelevantElementClassifier(AbstractElementwiseProcessingStep):
     primarily by replacing suitable candidates with IrrelevantElement instances.
     """
 
-    _NUM_ITERATIONS = 2
+    _NUM_ITERATIONS = 1
 
     def __init__(
         self,
