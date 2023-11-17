@@ -130,7 +130,7 @@ from sec_downloader import Downloader
 dl = Downloader("MyCompanyName", "email@example.com")
 
 # Download the latest 10-Q filing for Apple
-html = dl.get_latest_html("10-Q", "AAPL")
+html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 ```
 
 > **Note**

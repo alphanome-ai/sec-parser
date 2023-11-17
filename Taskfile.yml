@@ -6,16 +6,11 @@ tasks:
 ### Development Tools: Local Application Launchers ###
 ######################################################
 
-  launch-debug-dashboard:
-    desc: Start a local debugging dashboard in the browser.
+  launch-dashboard:
+    desc: Start a local dashboard in the browser.
     cmds:
       # Using PYTHONPATH to allow Streamlit to monitor file changes. Learn more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
-      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/debug_dashboard/app.py --server.runOnSave=true
-
-  launch-visualizer:
-    desc: Start a local visualization server
-    cmds:
-      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/semantic_visualization/app.py --server.runOnSave=true
+      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/dashboard_app/app.py --server.runOnSave=false
 
   monitor-unit-tests:
     desc: "Run unit tests and rerun them immediately upon file modification."
@@ -90,11 +85,6 @@ tasks:
       # TODO: Confirm whether workers might duplicate effort by parsing the same document. This is likely because each pytest-xdist worker instantiates its own session-scoped fixtures. If confirmed, consider implementing a solution.
       - poetry run pytest -n auto -s tests/generalization/
 
-  profiler:
-    desc: Open a performance report to identify bottlenecks. Run 'task profiler -- --help' to get help.
-    cmds:
-      - poetry run python -m dev_utils.profiler {{.CLI_ARGS}}
-
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###
 ################################################################
@@ -164,9 +154,9 @@ tasks:
     deps:
       - check-and-push
 
-  d: # You can just run `task d` instead of `task launch-debug-dashboard`.
+  d: # You can just run `task d` instead of `task launch-dashboard`.
     deps:
-      - launch-debug-dashboard
+      - launch-dashboard
 
   m: # You can just run `task m` instead of `task monitor-unit-tests`.
     deps:

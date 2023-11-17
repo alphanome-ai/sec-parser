@@ -19,6 +19,9 @@ class SemanticTree:
         """Iterate over the root nodes of the tree."""
         yield from self._root_nodes
 
+    def __len__(self) -> int:
+        return len(self._root_nodes)
+
     @property
     def nodes(self) -> Iterator[TreeNode]:
         """

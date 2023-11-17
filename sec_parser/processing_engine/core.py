@@ -20,6 +20,9 @@ from sec_parser.processing_steps.individual_semantic_element_extractor.single_el
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.table_check import (
     TableCheck,
 )
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.xbrl_tag_check import (
+    XbrlTagCheck,
+)
 from sec_parser.processing_steps.irrelevant_element_classifier import (
     IrrelevantElementClassifier,
 )
@@ -108,7 +111,7 @@ class AbstractSemanticElementParser(ABC):
 
     def parse(
         self,
-        html: str,
+        html: str | bytes,
         *,
         unwrap_elements: bool | None = None,
         include_containers: bool | None = None,
@@ -176,6 +179,6 @@ class Edgar10QParser(AbstractSemanticElementParser):
     def get_default_single_element_checks(self) -> list[AbstractSingleElementCheck]:
         return [
             TableCheck(),
-            # XbrlTagCheck(), # noqa: ERA001 # TODO(elijas): https://github.com/alphanome-ai/sec-parser/issues/50
+            XbrlTagCheck(),
             ImageCheck(),
         ]

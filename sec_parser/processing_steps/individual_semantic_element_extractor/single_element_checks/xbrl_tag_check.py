@@ -6,7 +6,7 @@ from sec_parser.processing_steps.individual_semantic_element_extractor.single_el
     AbstractSingleElementCheck,
 )
 
-if TYPE_CHECKING: # pragma: no cover
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -18,12 +18,6 @@ class XbrlTagCheck(AbstractSingleElementCheck):
             element.processing_log.add_item(
                 log_origin=self.__class__.__name__,
                 message=f"Detected XBRL tag {element.html_tag.name}",
-            )
-            return False
-        if element.html_tag.contains_tag("ix:nonnumeric"):
-            element.processing_log.add_item(
-                log_origin=self.__class__.__name__,
-                message=f"Detected XBRL tag ix:nonnumeric in {element.html_tag.name}",
             )
             return False
 

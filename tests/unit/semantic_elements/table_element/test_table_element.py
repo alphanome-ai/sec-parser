@@ -16,19 +16,19 @@ from sec_parser.utils.bs4_.approx_table_metrics import ApproxTableMetrics
             "rows": 0,
             "numbers": 0,
             "text": "",
-            "expected_summary": "Table with 0 rows, 0 numbers, and 0 characters.",
+            "expected_summary": "Table with ~0 rows, ~0 numbers, and 0 characters.",
         },
         {
             "rows": 5,
             "numbers": 6,
             "text": "12345",
-            "expected_summary": "Table with 5 rows, 6 numbers, and 5 characters.",
+            "expected_summary": "Table with ~5 rows, ~6 numbers, and 5 characters.",
         },
         {
             "rows": 10,
             "numbers": 11,
             "text": "1234567890",
-            "expected_summary": "Table with 10 rows, 11 numbers, and 10 characters.",
+            "expected_summary": "Table with ~10 rows, ~11 numbers, and 10 characters.",
         },
     ],
 )

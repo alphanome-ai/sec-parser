@@ -4,4 +4,4 @@ primaryColor="#767FA6"
 
 [client]
 showErrorDetails = false
-toolbarMode = "minimal"
+toolbarMode = "viewer"

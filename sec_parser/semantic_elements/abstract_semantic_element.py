@@ -80,9 +80,17 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         """Property text is a passthrough to the HtmlTag text property."""
         return self._html_tag.text
 
-    def get_source_code(self, *, pretty: bool = False) -> str:
+    def get_source_code(
+        self,
+        *,
+        pretty: bool = False,
+        enable_compatibility: bool = False,
+    ) -> str:
         """get_source_code is a passthrough to the HtmlTag method."""
-        return self._html_tag.get_source_code(pretty=pretty)
+        return self._html_tag.get_source_code(
+            pretty=pretty,
+            enable_compatibility=enable_compatibility,
+        )
 
     def get_summary(self) -> str:
         """

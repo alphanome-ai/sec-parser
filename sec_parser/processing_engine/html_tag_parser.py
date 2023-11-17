@@ -14,7 +14,7 @@ DEFAULT_BEAUTIFUL_SOUP_PARSER_BACKEND = "lxml"
 
 class AbstractHtmlTagParser(ABC):
     @abstractmethod
-    def parse(self, html: str) -> list[HtmlTag]:
+    def parse(self, html: str | bytes) -> list[HtmlTag]:
         raise NotImplementedError  # pragma: no cover
 
 
@@ -28,7 +28,7 @@ class HtmlTagParser(AbstractHtmlTagParser):
         default = DEFAULT_BEAUTIFUL_SOUP_PARSER_BACKEND
         self._parser_backend = (parser_backend or default).lower().strip()
 
-    def parse(self, html: str) -> list[HtmlTag]:
+    def parse(self, html: str | bytes) -> list[HtmlTag]:
         root: bs4.Tag = self._parse_to_bs4(html)
 
         elements: list[HtmlTag] = []
@@ -44,7 +44,7 @@ class HtmlTagParser(AbstractHtmlTagParser):
             raise SecParserValueError(msg)
         return elements
 
-    def _parse_to_bs4(self, html: str) -> bs4.Tag:
+    def _parse_to_bs4(self, html: str | bytes) -> bs4.Tag:
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
             root: bs4.Tag = bs4.BeautifulSoup(

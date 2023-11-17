@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import TYPE_CHECKING
 
 import bs4
@@ -26,6 +27,12 @@ if TYPE_CHECKING:  # pragma: no cover
     from collections.abc import Iterable
 
 TEXT_PREVIEW_LENGTH = 40
+
+# Regex pattern for opening ix tags
+opening_tag_pattern = re.compile(r"<ix:[^>]+>")
+
+# Regex pattern for closing ix tags
+closing_tag_pattern = re.compile(r"</ix:[^>]+>")
 
 
 class HtmlTag:
@@ -65,6 +72,7 @@ class HtmlTag:
         self._frozen_dict: frozendict | None = None
         self._source_code: str | None = None
         self._pretty_source_code: str | None = None
+        self._compatible_source_code: str | None = None
         self._approx_table_metrics: ApproxTableMetrics | None = None
         self._contains_tag: dict[tuple[str, bool], bool] = {}
         self._without_tags: dict[tuple[str, ...], HtmlTag] = {}
@@ -81,9 +89,24 @@ class HtmlTag:
                 self._parent = HtmlTag(parent)
         return self._parent
 
-    def get_source_code(self, *, pretty: bool = False) -> str:
+    def get_source_code(
+        self,
+        *,
+        pretty: bool = False,
+        enable_compatibility: bool = False,
+    ) -> str:
+        if enable_compatibility:
+            if self._compatible_source_code is None:
+                # Streamlit's st.markdown(html) doesn't work with colons in tags names.
+                s = self.get_source_code(pretty=True)
+                s = opening_tag_pattern.sub("<span>", s)
+                s = closing_tag_pattern.sub("</span>", s)
+                self._compatible_source_code = s
+            return self._compatible_source_code
+
         if pretty:
             if self._pretty_source_code is None:
+                # Streamlit's st.markdown(html) doesn't colons in tags.
                 self._pretty_source_code = self._bs4.prettify()
             return self._pretty_source_code
 

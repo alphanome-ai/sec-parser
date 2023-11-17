@@ -20,8 +20,8 @@ class TableElement(AbstractSemanticElement):
         """
         metrics = self.html_tag.get_approx_table_metrics()
         return (
-            f"Table with {metrics.rows} rows, "
-            f"{metrics.numbers} numbers, and "
+            f"Table with ~{metrics.rows} rows, "
+            f"~{metrics.numbers} numbers, and "
             f"{len(self.text)} characters."
         )
 
