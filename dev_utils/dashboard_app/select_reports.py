@@ -9,6 +9,7 @@ from dev_utils.core.sec_edgar_reports_getter import (
     get_filing_metadatas,
 )
 from dev_utils.dashboard_app.constants import example_queries_items
+from dev_utils.dashboard_app.core.download_metadatas import global_get_report_metadatas
 from dev_utils.dashboard_app.python_utils import smart_join
 
 
@@ -45,7 +46,9 @@ def render_select_reports():
 
     to_add = [k for k in addlist if k not in current]
     current.extend(to_add)
-    st.session_state.select_reports__queries = smart_join(current)
+    queries = smart_join(current)
+
+    st.session_state.select_reports__queries = queries
     st_utils.st_unkeep("select_reports__queries")
     queries = st.text_area(
         "Enter your queries separated by commas and/or newlines:",
@@ -53,20 +56,17 @@ def render_select_reports():
         on_change=lambda: st_utils.st_keep("select_reports__queries"),
     )
 
-    query_list = SecEdgarReportsGetter.raw_query_to_list(queries)
+    query_list, report_metadatas = global_get_report_metadatas()
 
-    reports = []
     table_container = st.empty()
-    for query in query_list:
-        new_reports = get_filing_metadatas(query)
-        reports.extend(new_reports)
-    if reports:
-        reports_dict_list = SecEdgarReportsGetter.to_dict_list(reports)
+    if report_metadatas:
+        reports_dict_list = SecEdgarReportsGetter.to_dict_list(report_metadatas)
         table_container.dataframe(reports_dict_list, use_container_width=False)
 
-    st.session_state.select_reports__report_metadatas = reports
+    st.session_state.select_reports__report_metadatas = report_metadatas
 
-    queries = urlencode([("q", query) for query in query_list], doseq=True)
+    query_elements = [("q", query) for query in query_list]
+    queries = urlencode(query_elements, doseq=True)
 
     if query_list:
         sac.buttons(

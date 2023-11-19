@@ -1,3 +1,4 @@
+import contextlib
 import re
 from collections import Counter
 from enum import Enum, auto
@@ -8,6 +9,7 @@ import streamlit_antd_components as sac
 
 import sec_parser as sp
 from dev_utils.core.profiled_parser import get_parsing_output
+from dev_utils.dashboard_app.core.download_metadatas import global_get_report_metadatas
 from dev_utils.dashboard_app.view_parsed._utils import aggregate_skipped_elements
 from dev_utils.dashboard_app.view_parsed.export_as import render_view_parsed_export_as
 from dev_utils.dashboard_app.view_parsed.overlay import render_view_parsed_overlay
@@ -21,14 +23,15 @@ from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 
+URL_PARAM_KEY = "view_parsed"
 if TYPE_CHECKING:
     from sec_downloader.types import FilingMetadata
 
     import sec_parser as sp
 
 
-
 def render_view_parsed():
+    global_get_report_metadatas()
     if (
         "select_reports__report_metadatas" not in st.session_state
         or not st.session_state.select_reports__report_metadatas
@@ -37,6 +40,9 @@ def render_view_parsed():
         return
     metadatas: list[FilingMetadata] = st.session_state.select_reports__report_metadatas
 
+    #################
+    ### Sidebar
+    #################
     # Get elements
     metadata_options = [_format_name(metadata) for metadata in metadatas]
     with st.sidebar:
@@ -82,6 +88,20 @@ def render_view_parsed():
                 sac.SegmentedItem(icon="download", label="export as"),
             ]
 
+        def serialize(self):
+            return self.name.lower()
+
+        @classmethod
+        def deserialize(cls, name: str):
+            return ViewParsedItems[name.upper()]
+
+    url_query_params = st.experimental_get_query_params()
+    default_nav_bar_selection = ViewParsedItems.SEMANTIC_ELEMENTS.value
+    with contextlib.suppress(Exception):
+        default_nav_bar_selection = ViewParsedItems.deserialize(
+            url_query_params[URL_PARAM_KEY][0]
+        ).value
+
     selected_subnavbar = ViewParsedItems(
         1
         + sac.segmented(
@@ -90,11 +110,16 @@ def render_view_parsed():
             align="center",
             return_index=True,
             size="sm",
+            index=default_nav_bar_selection - 1,
         ),
     )
 
+    if selected_subnavbar == ViewParsedItems.OVERLAY:
+        # Make a copy of the elements to avoid modifying the original
+        elements = parsing_output.parser.parse(parsing_output.html)
+
     #################
-    ### Sidebar
+    ### Sidebar (continued)
     #################
 
     do_show_nested_composite_elements = False
@@ -192,10 +217,14 @@ def render_view_parsed():
     #################
     ### Runner
     #################
+    query_elements = None
     if selected_subnavbar == ViewParsedItems.OVERLAY:
-        render_view_parsed_overlay(filtered_elements, metadata.primary_doc_url)
+        query_elements = render_view_parsed_overlay(
+            filtered_elements,
+            metadata.primary_doc_url,
+        )
     elif selected_subnavbar == ViewParsedItems.PERFORMANCE:
-        render_view_parsed_performance(
+        query_elements = render_view_parsed_performance(
             parsing_output,
             _format_name(metadata, filename=True),
         )
@@ -205,21 +234,23 @@ def render_view_parsed():
     ):
         if selected_subnavbar == ViewParsedItems.SEMANTIC_TREE:
             tree = sp.TreeBuilder().build(filtered_elements)
-            render_view_parsed_semantic_elements(
+            query_elements = render_view_parsed_semantic_elements(
                 tree,
                 do_show_nested_composite_elements,
             )
         else:
-            render_view_parsed_semantic_elements(
+            query_elements = render_view_parsed_semantic_elements(
                 filtered_elements,
                 do_show_nested_composite_elements,
             )
     elif selected_subnavbar == ViewParsedItems.EXPORT_AS:
-        render_view_parsed_export_as(
+        query_elements = render_view_parsed_export_as(
             filtered_elements,
             parsing_output.html,
             _format_name(metadata, filename=True),
         )
+
+    return [(URL_PARAM_KEY, selected_subnavbar.serialize()), *(query_elements or [])]
 
 
 def _format_name(metadata, *, filename=False):
@@ -227,4 +258,3 @@ def _format_name(metadata, *, filename=False):
     if filename:
         name = re.sub("[^0-9a-zA-Z-_]", "-", name.replace(" | ", "_"))
     return name
-

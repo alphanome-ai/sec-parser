@@ -15,7 +15,7 @@ def render_view_parsed_performance(previous_parsing_output: ParsingOutput, name)
     with st.sidebar:
         options = [
             f"{x:.{max(1, 1-int(np.floor(np.log10(x))))}f}".rstrip("0")
-            for x in np.logspace(-4.5, -1, 100)
+            for x in np.logspace(-4.1, -1, 100)
         ]
         interval = st.select_slider(
             "Set sampling interval (seconds)",

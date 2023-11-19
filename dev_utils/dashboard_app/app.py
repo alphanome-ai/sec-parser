@@ -1,4 +1,6 @@
-from enum import Enum
+import contextlib
+from enum import Enum, auto
+from urllib.parse import urlencode
 
 import rich.traceback
 import streamlit as st
@@ -6,12 +8,14 @@ import streamlit_antd_components as sac
 
 import dev_utils.dashboard_app.streamlit_utils as st_utils
 from dev_utils.core.config import get_config
+from dev_utils.core.sec_edgar_reports_getter import SecEdgarReportsGetter
 from dev_utils.dashboard_app.constants import example_queries_items
 from dev_utils.dashboard_app.select_reports import render_select_reports
 from dev_utils.dashboard_app.view_parsed.view_parsed import render_view_parsed
 
-rich.traceback.install()
+URL_PARAM_KEY = "p"
 
+rich.traceback.install()
 ###################
 ### Page config ###
 ###################
@@ -24,14 +28,17 @@ st.set_page_config(
     layout="wide",
 )
 st_utils.st_multiselect_allow_long_titles()
-st_utils.st_change_decoration_color()
+st_utils.st_modify_decoration(hide=True)
 st_utils.st_remove_top_page_margin()
+st_utils.st_adjust_madewithstreamlit()
+st_utils.st_replace_menu_with_share_link_to_this_page_placeholder_button()
 
 ###################
 ### Persistence ###
 ###################
 
-url_params_queries = st.experimental_get_query_params().get("q", [])
+url_query_params = st.experimental_get_query_params()
+url_params_queries = url_query_params.get("q", [])
 
 if "select_reports__queries" not in st.session_state:
     default = ""
@@ -53,8 +60,8 @@ if "select_reports__example_queries" not in st.session_state:
 
 
 class NavbarItems(Enum):
-    SELECT_REPORTS = 0
-    VIEW_PARSED = 1
+    SELECT_REPORTS = auto()
+    VIEW_PARSED = auto()
 
     @classmethod
     def get_items(cls):
@@ -63,13 +70,27 @@ class NavbarItems(Enum):
             sac.SegmentedItem(icon="search", label="view parsed"),
         ]
 
+    def serialize(self):
+        return self.name.lower()
 
+    @classmethod
+    def deserialize(cls, name: str):
+        return NavbarItems[name.upper()]
+
+
+default_nav_bar_selection = NavbarItems.SELECT_REPORTS.value
+with contextlib.suppress(Exception):
+    default_nav_bar_selection = NavbarItems.deserialize(
+        url_query_params[URL_PARAM_KEY][0]
+    ).value
 selected_navbar = NavbarItems(
-    sac.segmented(
+    1
+    + sac.segmented(
         items=NavbarItems.get_items(),  # type: ignore
         format_func="title",
         align="center",
         return_index=True,
+        index=default_nav_bar_selection - 1,
     ),
 )
 
@@ -77,21 +98,40 @@ selected_navbar = NavbarItems(
 ### Runner ###
 ##############
 
+query_elements = None
 if selected_navbar == NavbarItems.SELECT_REPORTS:
-    render_select_reports()
+    query_elements = render_select_reports()
 elif selected_navbar == NavbarItems.VIEW_PARSED:
-    render_view_parsed()
+    query_elements = render_view_parsed()
 
 ##############
 ### Footer ###
 ##############
+
+# this is for metadata queries
+metadata_queries = st.session_state.select_reports__queries
+metadata_query_list = SecEdgarReportsGetter.raw_query_to_list(metadata_queries)
+
+# this is for URL queries
+query_elements = [
+    (URL_PARAM_KEY, selected_navbar.serialize()),
+    *(query_elements or []),
+    *([("q", query) for query in metadata_query_list]),
+]
+queries = urlencode(query_elements, doseq=True)
+st_utils.st_set_url_to_share_link_to_this_page_placeholder_button(f"/?{queries}")
 
 footer = f"v{get_config().sec_parser_version}"
 if not get_config().environment.is_prod:
     footer = f"[{get_config().environment.value}] {footer}"
 st.markdown(
     f"""
-    <div style="position: fixed; right: 20px; bottom: 10px; width: 100%; text-align: right; color: #aaa;">
+    <div style="position: fixed;
+        right: 18px;
+        bottom: 8px;
+        width: 100%;
+        text-align: right;
+        color: #eee;">
         {footer}
     </div>
     """,
