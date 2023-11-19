@@ -12,6 +12,7 @@ from dev_utils.dashboard_app.view_parsed._utils import NoContext
 
 PAGINATION_OFF = "off"
 LARGE_TABLE_ROWS_THRESHOLD = 7
+PAGINATION_DISABLE_THRESHOLD = 10
 
 
 class ShowSkippedElements(Enum):
@@ -31,46 +32,68 @@ class ShowSkippedElements(Enum):
 def render_view_parsed_semantic_elements(
     elements: list[sp.AbstractSemanticElement | sp.TreeNode] | sp.SemanticTree,
     do_show_nested_composite_elements: bool,
+    are_any_elements_filtered: bool,
 ):
-    with st.sidebar:
-        do_open_all_expanders = st.checkbox(
-            "Open All Expanders",
-        )
+    pagination_size = None
+    do_use_pagination = len(elements) >= PAGINATION_DISABLE_THRESHOLD
+    do_open_all_expanders = st.sidebar.checkbox(
+        "Open All Expanders",
+    )
+    do_set_visibility_of_filtered_elements = (
+        not do_show_nested_composite_elements and are_any_elements_filtered
+    )
 
-        i = -1
-        columns = st.columns(1 + int(not do_show_nested_composite_elements))
+    column_count = int(do_use_pagination) + int(do_set_visibility_of_filtered_elements)
 
-        if not do_show_nested_composite_elements:
-            i += 1
-            with columns[i]:
-                show_skipped_elements_option = ShowSkippedElements.from_value(
-                    st.select_slider(
-                        "Visibility of Filtered",
-                        ShowSkippedElements.get_items(),
-                        value=ShowSkippedElements.get_items()[1],
-                        help="This option determines the visibility of elements that have been filtered out.",
-                    ),
-                )
-        else:
-            show_skipped_elements_option = ShowSkippedElements.SHOW
+    i = -1
+    columns = []
+    if column_count:
+        with st.sidebar:
+            columns = st.columns(column_count)
 
+    if do_set_visibility_of_filtered_elements:
         i += 1
         with columns[i]:
-            pagination_size = st.select_slider(
-                "Set Page Size",
-                [10, 20, 30, 50, 100, 200, 300, 500, PAGINATION_OFF],
-                value=30,
-                help=(
-                    "Set the number of elements displayed per page. "
-                    "Use this to improve UI responsiveness. "
+            show_skipped_elements_option = ShowSkippedElements.from_value(
+                st.select_slider(
+                    "Visibility of Filtered",
+                    ShowSkippedElements.get_items(),
+                    value=ShowSkippedElements.get_items()[1],
+                    help="This option determines the visibility of elements that have been filtered out.",
                 ),
             )
+    else:
+        show_skipped_elements_option = ShowSkippedElements.SHOW
 
     if show_skipped_elements_option == ShowSkippedElements.HIDE:
         elements = [k for k in elements if not isinstance(k, list)]
 
+    if do_use_pagination:
+        i += 1
+        with columns[i]:
+            options = [
+                n for n in [10, 20, 30, 50, 100, 200, 300, 500] if n <= len(elements)
+            ]
+            if options:
+                pagination_size = st.select_slider(
+                    "Set Page Size",
+                    options=[*options, PAGINATION_OFF],
+                    value=options[0],
+                    help=(
+                        "Set the number of elements displayed per page. "
+                        "Use this to improve UI responsiveness. "
+                    ),
+                    format_func=lambda x: len(elements) if x == PAGINATION_OFF else x,
+                )
+                if pagination_size == PAGINATION_OFF:
+                    do_use_pagination = False
+            else:
+                do_use_pagination = False
+
+    assert i == len(columns) - 1, "columns should be exhausted"
+
     #### PAGINATION START
-    if pagination_size != PAGINATION_OFF:
+    if do_use_pagination:
         elements_list = list(elements)
         pagination_size = int(pagination_size)
         total_items = len(elements_list)

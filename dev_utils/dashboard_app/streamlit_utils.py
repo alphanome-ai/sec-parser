@@ -106,7 +106,7 @@ def st_divider(label, icon, *, align="center", bold=False):
 def get_style_remove_sidebar_top_margin():
     return """
         div[data-testid="stSidebarUserContent"] {
-            padding-top: 0px;
+            padding-top: 12px;
         }
     """.strip()
 

@@ -46,7 +46,6 @@ def render_view_parsed():
     # Get elements
     metadata_options = [_format_name(metadata) for metadata in metadatas]
     with st.sidebar:
-        st.write("Type text to quickly search and select reports:")
         columns = st.columns([11, 2])
         with columns[0]:
             filter_by_report = st.selectbox(
@@ -97,10 +96,16 @@ def render_view_parsed():
 
     url_query_params = st.experimental_get_query_params()
     default_nav_bar_selection = ViewParsedItems.SEMANTIC_ELEMENTS.value
-    with contextlib.suppress(Exception):
-        default_nav_bar_selection = ViewParsedItems.deserialize(
-            url_query_params[URL_PARAM_KEY][0]
-        ).value
+    try:
+        if URL_PARAM_KEY in url_query_params:
+            default_nav_bar_selection = ViewParsedItems.deserialize(
+                url_query_params[URL_PARAM_KEY][0]
+            ).value
+    except Exception:
+        st.toast(
+            "Error: Unable to parse the URL for the navigation bar selection.",
+            icon="❌",
+        )
 
     selected_subnavbar = ViewParsedItems(
         1
@@ -121,98 +126,112 @@ def render_view_parsed():
     #################
     ### Sidebar (continued)
     #################
-
+    are_any_elements_filtered = False
     do_show_nested_composite_elements = False
     filtered_elements = elements
     if selected_subnavbar != ViewParsedItems.PERFORMANCE:
+        sidebar_top = st.sidebar.container()
         if selected_subnavbar == ViewParsedItems.SEMANTIC_ELEMENTS:
-            with st.sidebar:
-                do_show_nested_composite_elements = st.checkbox(
-                    "Show Composite Elements",
-                    help="Check this box to display Composite Elements. "
-                    "Composite Elements act as containers for other semantic elements, "
-                    "especially useful when a single HTML root tag wraps multiple elements. "
-                    "This ensures structural integrity and enables features like semantic segmentation visualization, "
-                    "and debugging by comparison with the original document.",
-                )
+            do_show_nested_composite_elements = st.sidebar.checkbox(
+                "Show Composite Elements",
+                help="Check this box to display Composite Elements. "
+                "Composite Elements act as containers for other semantic elements, "
+                "especially useful when a single HTML root tag wraps multiple elements. "
+                "This ensures structural integrity and enables features like semantic segmentation visualization, "
+                "and debugging by comparison with the original document.",
+            )
         if not do_show_nested_composite_elements:
             unwrapped_elements = CompositeSemanticElement.unwrap_elements(elements)
-            with st.sidebar:
-                element_type_counts = Counter(
-                    type(element) for element in unwrapped_elements
-                )
-                element_type_options = sorted(
-                    [
-                        (element_type, count, f"{count}x {element_type.__name__}")
-                        for element_type, count in element_type_counts.items()
-                    ],
-                    key=lambda x: x[1],
-                    reverse=True,
-                )
-                default = [
-                    k[2]
-                    for k in element_type_options
-                    if (
-                        not issubclass(k[0], sp.IrrelevantElement)
-                        or selected_subnavbar == ViewParsedItems.OVERLAY
-                    )
-                ]
-                options = [k[2] for k in element_type_options]
-                filter_by_element_type_selection = st.multiselect(
-                    label=f"Filter parsed ({round(int(parsing_output.result.parse_time * 1000), -1)} ms) Semantic Element types"
+            filter_by_element_text = sidebar_top.text_input(
+                label=f"{len(unwrapped_elements)} elements parsed in "
+                + (
+                    f"{round(int(parsing_output.result.parse_time * 1000), -1)} ms"
                     if parsing_output.result.parse_time < 1
-                    else f"Filter parsed ({parsing_output.result.parse_time:.2f} s) Semantic Element types",
-                    options=options,
-                    default=default,
-                    placeholder="Hiding all elements.",
-                    help=(
-                        "**Semantic Elements** correspond to the semantic elements in SEC EDGAR documents."
-                        " A semantic element refers to a meaningful unit within the document that serves a"
-                        " specific purpose, such as a paragraph or a table. Unlike syntactic elements,"
-                        " which structure the HTML, semantic elements carry vital information for"
-                        " understanding the document's content."
-                    ),
+                    else f"{parsing_output.result.parse_time:.2f} s"
                 )
-                filtered_element_types = [
-                    next(k[0] for k in element_type_options if k[2] == selected_type)
-                    for selected_type in filter_by_element_type_selection
-                ]
-                filter_by_element_text = st.text_input(
-                    label=f"Search {len(unwrapped_elements)} elements containing:",
-                    placeholder="Showing all elements.",
-                )
-                include_html_in_text_search = st.checkbox(
-                    "Include HTML in text search",
-                    help="Check this box to include HTML source code in the text search.",
-                )
-                if not filter_by_element_type_selection:
-                    st.info("Please select at least one element type.")
-                    st.stop()
-
-                def predicate(element: sp.AbstractSemanticElement):
-                    return (
-                        not filtered_element_types
-                        or isinstance(element, tuple(filtered_element_types))
-                    ) and (
-                        not filter_by_element_text
-                        or filter_by_element_text
-                        in (
-                            element.text
-                            if not include_html_in_text_search
-                            else element.get_source_code()
-                        )
+                + ". Filter by text:",
+                placeholder="Showing all elements.",
+            )
+            element_type_counts = Counter(
+                type(element) for element in unwrapped_elements
+            )
+            element_type_options = sorted(
+                [
+                    (
+                        element_type,
+                        count,
+                        f"{count}x {element_type.__name__.replace('SemanticElement','').replace('Element','')}",
                     )
-
-                filtered_elements = aggregate_skipped_elements(
-                    unwrapped_elements,
-                    predicate,
+                    for element_type, count in element_type_counts.items()
+                ],
+                key=lambda x: x[1],
+                reverse=True,
+            )
+            default = [
+                k[2]
+                for k in element_type_options
+                if (
+                    not issubclass(k[0], sp.IrrelevantElement)
+                    or selected_subnavbar == ViewParsedItems.OVERLAY
                 )
-                if selected_subnavbar != ViewParsedItems.SEMANTIC_TREE:
-                    filtered_elements = [
-                        k
-                        for k in filtered_elements
-                        if not isinstance(k, list)  # skipped elements are put in lists
-                    ]
+            ]
+            options = [k[2] for k in element_type_options]
+            filter_by_element_type_selection = sidebar_top.multiselect(
+                label=". Filter by type:",
+                options=options,
+                default=default,
+                placeholder="Hiding all elements.",
+                help=(
+                    "**Semantic Elements** correspond to the semantic elements in SEC EDGAR documents."
+                    " A semantic element refers to a meaningful unit within the document that serves a"
+                    " specific purpose, such as a paragraph or a table. Unlike syntactic elements,"
+                    " which structure the HTML, semantic elements carry vital information for"
+                    " understanding the document's content."
+                ),
+            )
+            filtered_element_types = [
+                next(k[0] for k in element_type_options if k[2] == selected_type)
+                for selected_type in filter_by_element_type_selection
+            ]
+
+            include_html_in_text_search = st.sidebar.checkbox(
+                "Include HTML in text search",
+                help="Check this box to include HTML source code in the text search.",
+            )
+            if not filter_by_element_type_selection:
+                st.info("Please select at least one element type.")
+                st.stop()
+
+            def predicate(element: sp.AbstractSemanticElement):
+                return (
+                    not filtered_element_types
+                    or isinstance(element, tuple(filtered_element_types))
+                ) and (
+                    not filter_by_element_text
+                    or filter_by_element_text
+                    in (
+                        element.text
+                        if not include_html_in_text_search
+                        else element.get_source_code()
+                    )
+                )
+
+            filtered_elements = aggregate_skipped_elements(
+                unwrapped_elements,
+                predicate,
+            )
+
+            if selected_subnavbar == ViewParsedItems.SEMANTIC_ELEMENTS:
+                are_any_elements_filtered = len(filtered_elements) != len(
+                    unwrapped_elements
+                )
+            else:
+                filtered_elements = [
+                    k
+                    for k in filtered_elements
+                    if not isinstance(k, list)  # skipped elements are put in lists
+                ]
+                are_any_elements_filtered = False
 
     #################
     ### Runner
@@ -232,16 +251,19 @@ def render_view_parsed():
         ViewParsedItems.SEMANTIC_ELEMENTS,
         ViewParsedItems.SEMANTIC_TREE,
     ):
-        if selected_subnavbar == ViewParsedItems.SEMANTIC_TREE:
+        if selected_subnavbar in (
+            ViewParsedItems.SEMANTIC_TREE,
+            ViewParsedItems.SEMANTIC_TREE,
+        ):
             tree = sp.TreeBuilder().build(filtered_elements)
             query_elements = render_view_parsed_semantic_elements(
-                tree,
-                do_show_nested_composite_elements,
+                tree, do_show_nested_composite_elements, are_any_elements_filtered
             )
         else:
             query_elements = render_view_parsed_semantic_elements(
                 filtered_elements,
                 do_show_nested_composite_elements,
+                are_any_elements_filtered,
             )
     elif selected_subnavbar == ViewParsedItems.EXPORT_AS:
         query_elements = render_view_parsed_export_as(

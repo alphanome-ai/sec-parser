@@ -93,10 +93,16 @@ class NavbarItems(Enum):
 
 
 default_nav_bar_selection = NavbarItems.SELECT_REPORTS.value
-with contextlib.suppress(Exception):
-    default_nav_bar_selection = NavbarItems.deserialize(
-        url_query_params[URL_PARAM_KEY][0]
-    ).value
+try:
+    if URL_PARAM_KEY in url_query_params:
+        default_nav_bar_selection = NavbarItems.deserialize(
+            url_query_params[URL_PARAM_KEY][0]
+        ).value
+except Exception as e:
+    st.toast(
+        "An error occurred while parsing the URL for the navigation bar selection.",
+        icon="❌",
+    )
 selected_navbar = NavbarItems(
     1
     + sac.segmented(
