@@ -27,11 +27,27 @@ st.set_page_config(
     initial_sidebar_state="expanded",
     layout="wide",
 )
-st_utils.st_multiselect_allow_long_titles()
-st_utils.st_modify_decoration(hide=True)
-st_utils.st_remove_top_page_margin()
-st_utils.st_adjust_madewithstreamlit()
-st_utils.st_replace_menu_with_share_link_to_this_page_placeholder_button()
+
+(
+    style,
+    html,
+) = st_utils.get_html_replace_menu_with_share_link_to_this_page_placeholder_button()
+styles = [
+    st_utils.get_style_change_top_page_margin(),
+    st_utils.get_style_multiselect_allow_long_titles(),
+    st_utils.get_style_modify_decoration(),
+    st_utils.get_style_multiselect_allow_long_titles(),
+    style,
+]
+styles = "\n".join(styles)
+st.markdown(
+    f"""<style>
+{styles}
+</style>
+{html}""",
+    unsafe_allow_html=True,
+)
+
 
 ###################
 ### Persistence ###

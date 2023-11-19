@@ -76,6 +76,10 @@ def get_sec_edgar_reports_getter():
     return SecEdgarReportsGetter()
 
 
-@st.cache_resource()
 def get_filing_metadatas(query: str):
+    return _get_filing_metadatas(query.strip().upper())
+
+
+@st.cache_resource()
+def _get_filing_metadatas(query: str):
     return get_sec_edgar_reports_getter().get_filing_metadatas(query)

@@ -4,9 +4,8 @@ import streamlit as st
 import streamlit_antd_components as sac
 
 
-def st_adjust_madewithstreamlit():
-    st.markdown(
-        """
+def get_style_adjust_madewithstreamlit():
+    return """
         <style>
             footer {
                 padding-left: 15px !important;
@@ -17,15 +16,11 @@ def st_adjust_madewithstreamlit():
                 color: rgb(210, 210, 210) !important;
             }
         </style>
-        """,
-        unsafe_allow_html=True,
-    )
+        """.strip()
 
 
-def st_replace_menu_with_share_link_to_this_page_placeholder_button():
-    # Shared styles for the buttons
+def get_html_replace_menu_with_share_link_to_this_page_placeholder_button():
     style = """
-    <style>
         #MainMenu {
             margin-right: 50px;
             visibility: hidden;
@@ -50,8 +45,8 @@ def st_replace_menu_with_share_link_to_this_page_placeholder_button():
         .shareLinkToThisPageButton:hover {
             background-color: #777ea4;
             color: #fff !important;
-            text-decoration: none;  // Added this line to remove underline on hover
-            transition: color 0.3s ease;  // Added this line to add transition to color change on hover
+            text-decoration: none;  
+            transition: color 0.3s ease;  
         }
         .shareLinkToThisPageButton:active {
             background-color: #31333e;
@@ -76,16 +71,9 @@ def st_replace_menu_with_share_link_to_this_page_placeholder_button():
         .shareLinkToThisPageButtonPlaceholder {
             cursor: not-allowed;
         }
-    </style>
-    """
-    # Placeholder button
-    st.markdown(
-        style
-        + '<a class="shareLinkToThisPageButtonPlaceholder shareLinkToThisPageButton" href="'
-        + "#"
-        + """"><span class="shareLinkToThisPageButtonIcon">🔗</span><span class="shareLinkToThisPageButtonText">🔗 Share</span></a>""",
-        unsafe_allow_html=True,
-    )
+    """.strip()
+    html = """<a class="shareLinkToThisPageButtonPlaceholder shareLinkToThisPageButton" href="#"><span class="shareLinkToThisPageButtonIcon">🔗</span><span class="shareLinkToThisPageButtonText">🔗 Share</span></a>"""
+    return style, html
 
 
 def st_set_url_to_share_link_to_this_page_placeholder_button(url: str):
@@ -115,18 +103,13 @@ def st_divider(label, icon, *, align="center", bold=False):
     )
 
 
-def st_multiselect_allow_long_titles():  # noqa: ANN201
-    st.markdown(  # Make the multiselect fit long text options
-        """
-        <style>
+def get_style_multiselect_allow_long_titles():  # noqa: ANN201
+    return """
             .stMultiSelect [data-baseweb=select] span{
                 max-width: 500px;
                 font-size: 1rem;
             }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+        """.strip()
 
 
 def st_expander_allow_nested():  # noqa: ANN201
@@ -137,38 +120,19 @@ def st_expander_allow_nested():  # noqa: ANN201
     __ = _
 
 
-def st_modify_decoration(hide=False):
-    if hide:
-        st.markdown(
-            """
-            <style>
-                div[data-testid="stDecoration"] {
-                    display: none;
-                }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
-    else:
-        st.markdown(
-            """
-            <style>
-                div[data-testid="stDecoration"] {
-                    background: none; /* This removes any background images or gradients */
-                    background-color: #f0f2f6; /* This sets the background color to your primary color */
-                    background-image: linear-gradient(90deg, #f0f2f6, #777ea4); /* This sets the new gradient */
-                }
-            </style>
-            """,
-            unsafe_allow_html=True,
-        )
+def get_style_modify_decoration():
+    return """
+
+            div[data-testid="stDecoration"] {
+                background: none; /* This removes any background images or gradients */
+                background-color: #f0f2f6; /* This sets the background color to your primary color */
+                background-image: linear-gradient(90deg, #f0f2f6, #777ea4); /* This sets the new gradient */
+            }
+        """.strip()
 
 
-def st_remove_top_page_margin():
-    st.markdown(
-        "<style> div[class^='block-container'] { padding-top: 0rem; } </style>",
-        unsafe_allow_html=True,
-    )
+def get_style_change_top_page_margin():
+    return "div[class^='block-container'] { padding-top: 2rem; }".strip()
 
 
 def st_keep(key):
