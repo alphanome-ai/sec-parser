@@ -1,12 +1,9 @@
-import contextlib
-
 import streamlit as st
 import streamlit_antd_components as sac
 
 
 def get_style_adjust_madewithstreamlit():
     return """
-        <style>
             footer {
                 padding-left: 15px !important;
                 color: rgb(238, 238, 238) !important;
@@ -14,9 +11,7 @@ def get_style_adjust_madewithstreamlit():
             }
             footer a {
                 color: rgb(210, 210, 210) !important;
-            }
-        </style>
-        """.strip()
+            }""".strip()
 
 
 def get_html_replace_menu_with_placeholder_button():
@@ -77,6 +72,7 @@ def get_html_replace_menu_with_placeholder_button():
 
 
 def st_set_url_to_share_link_to_this_page_placeholder_button(url: str):
+    return
     style = """
         <style>
         .shareLinkToThisPageButtonPlaceholder {
@@ -129,14 +125,11 @@ def st_expander_allow_nested():  # noqa: ANN201
 
 
 def get_style_modify_decoration():
-    return """
-
-            div[data-testid="stDecoration"] {
-                background: none; /* This removes any background images or gradients */
-                background-color: #f0f2f6; /* This sets the background color to your primary color */
-                background-image: linear-gradient(90deg, #f0f2f6, #777ea4); /* This sets the new gradient */
-            }
-        """.strip()
+    return """div[data-testid="stDecoration"] {
+    background: none; 
+    background-color: #f0f2f6;
+    background-image: linear-gradient(90deg, #f0f2f6, #777ea4); 
+}""".strip()
 
 
 def get_style_change_top_page_margin():
