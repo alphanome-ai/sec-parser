@@ -515,9 +515,9 @@ pure-eval==0.2.2 ; python_version >= "3.9" and python_full_version != "3.9.7" an
 pycparser==2.21 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" and implementation_name == "pypy" \
     --hash=sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9 \
     --hash=sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206
-pygments==2.17.0 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
-    --hash=sha256:cd0c46944b2551af02ecc15961050182ea120d3895000e2676160820f3421527 \
-    --hash=sha256:edaa0fa2453d055d0ac94449d1f73ec7bc52c5e318204da1377c1392978c4a8d
+pygments==2.17.1 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
+    --hash=sha256:1b37f1b1e1bff2af52ecaf28cc601e2ef7077000b227a0675da25aef85784bc4 \
+    --hash=sha256:e45a0e74bf9c530f564ca81b8952343be986a29f6afe7f5ad95c5f06b7bdf5e8
 python-dateutil==2.8.2 ; python_version >= "3.9" and python_full_version != "3.9.7" and python_version < "4.0" \
     --hash=sha256:0123cacc1627ae19ddf3c27a5de5bd67ee4586fbdd6440d9748f8abb483d3e86 \
     --hash=sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9
