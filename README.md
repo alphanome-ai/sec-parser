@@ -41,7 +41,7 @@
 <br>
 <div align="center">
   <b>
-  <a href="https://parser.app.alphanome.dev">See Demo</a> |
+  <a href="https://parser.alphanome.app">See Demo</a> |
   <a href="https://sec-parser.rtfd.io">Read Docs</a> |
   <a href="https://github.com/orgs/alphanome-ai/discussions">Join Discussions</a> |
   <a href="https://discord.gg/2MC3uJhBxs">Join Discord</a>
@@ -59,7 +59,7 @@ The `sec-parser` project simplifies extracting meaningful information from SEC E
 
 This tool is especially beneficial for Artificial Intelligence (AI), Machine Learning (ML), and Large Language Models (LLM) applications by streamlining data pre-processing and feature extraction.
 
-- Explore the [**Demo**](https://parser.app.alphanome.dev/)
+- Explore the [**Demo**](https://parser.alphanome.app)
 - Read the [**Documentation**](https://sec-parser.rtfd.io)
 - Join the [**Discussions**](https://github.com/orgs/alphanome-ai/discussions) to get help, propose ideas, or chat with the community
 - Become part of our [**Discord**](https://discord.gg/2MC3uJhBxs) community
