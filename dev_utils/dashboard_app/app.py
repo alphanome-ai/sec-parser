@@ -28,15 +28,13 @@ st.set_page_config(
     layout="wide",
 )
 
-(
-    style,
-    html,
-) = st_utils.get_html_replace_menu_with_share_link_to_this_page_placeholder_button()
+style, html = st_utils.get_html_replace_menu_with_placeholder_button()
 styles = [
     st_utils.get_style_change_top_page_margin(),
     st_utils.get_style_multiselect_allow_long_titles(),
     st_utils.get_style_modify_decoration(),
     st_utils.get_style_multiselect_allow_long_titles(),
+    st_utils.get_style_remove_sidebar_top_margin(),
     style,
 ]
 styles = "\n".join(styles)

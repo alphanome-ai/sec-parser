@@ -228,12 +228,12 @@ def render_view_parsed_overlay(elements, original_document_url):
 
     with st.sidebar:
         # avs.add_vertical_space(1)
-        st.markdown(
-            f"<div style='font-weight: bold; text-align: center; padding: 2px;'>Color Legend</div>",
-            unsafe_allow_html=True,
+        html_content = []
+        html_content.append(
+            "<div style='font-weight: bold; text-align: center; padding: 2px;'>Color Legend</div>"
         )
         for element_type, color in COLOR_PAIR:
-            st.markdown(
-                f"<div style='background-color: {color};text-align: center; padding: 2px;'>{element_type.__name__}</div>",
-                unsafe_allow_html=True,
+            html_content.append(
+                f"<div style='background-color: {color};text-align: center; padding: 2px;'>{element_type.__name__}</div>"
             )
+        st.markdown("\n".join(html_content), unsafe_allow_html=True)

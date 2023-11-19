@@ -19,7 +19,7 @@ def get_style_adjust_madewithstreamlit():
         """.strip()
 
 
-def get_html_replace_menu_with_share_link_to_this_page_placeholder_button():
+def get_html_replace_menu_with_placeholder_button():
     style = """
         #MainMenu {
             margin-right: 50px;
@@ -101,6 +101,14 @@ def st_divider(label, icon, *, align="center", bold=False):
         bold=bold,
         dashed=True,
     )
+
+
+def get_style_remove_sidebar_top_margin():
+    return """
+        div[data-testid="stSidebarUserContent"] {
+            padding-top: 0px;
+        }
+    """.strip()
 
 
 def get_style_multiselect_allow_long_titles():  # noqa: ANN201
