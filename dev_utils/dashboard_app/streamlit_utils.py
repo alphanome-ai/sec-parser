@@ -72,7 +72,6 @@ def get_html_replace_menu_with_placeholder_button():
 
 
 def st_set_url_to_share_link_to_this_page_placeholder_button(url: str):
-    return
     style = """
         <style>
         .shareLinkToThisPageButtonPlaceholder {
@@ -145,6 +144,4 @@ def st_keep(key):
 def st_unkeep(key):
     "https://stackoverflow.com/questions/74968179/session-state-is-reset-in-streamlit-multipage-app"
     # Copy from permanent key to temporary widget key
-    st.session_state["_" + key] = st.session_state[key]
-    st.session_state["_" + key] = st.session_state[key]
     st.session_state["_" + key] = st.session_state[key]

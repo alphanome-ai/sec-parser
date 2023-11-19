@@ -1,4 +1,3 @@
-import contextlib
 import re
 from collections import Counter
 from enum import Enum, auto

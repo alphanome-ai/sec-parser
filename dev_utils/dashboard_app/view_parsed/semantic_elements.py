@@ -1,8 +1,6 @@
 from __future__ import annotations
 
 import json
-import random
-import string
 from enum import Enum, auto
 
 import streamlit as st
@@ -56,7 +54,7 @@ def render_view_parsed_semantic_elements(
         with columns[i]:
             show_skipped_elements_option = ShowSkippedElements.from_value(
                 st.select_slider(
-                    "Visibility of Filtered",
+                    "How to show hidden",
                     ShowSkippedElements.get_items(),
                     value=ShowSkippedElements.get_items()[1],
                     help="This option determines the visibility of elements that have been filtered out.",
