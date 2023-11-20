@@ -23,7 +23,7 @@ rich.traceback.install()
 st_utils.st_expander_allow_nested()
 st.set_page_config(
     page_icon="🏦",
-    page_title="Dasboard App",
+    page_title="sec-parser | Dashboard",
     initial_sidebar_state="expanded",
     layout="wide",
 )
