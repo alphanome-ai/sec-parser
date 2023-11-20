@@ -4,6 +4,7 @@ import json
 from enum import Enum, auto
 
 import streamlit as st
+import streamlit_antd_components as sac
 
 import sec_parser as sp
 from dev_utils.dashboard_app.view_parsed._utils import NoContext
@@ -143,24 +144,28 @@ def render_view_parsed_semantic_elements(
                 unsafe_allow_html=True,
             )
         elif max_value > 1:
-            cols = st.columns(3)
-            with cols[1]:
-                label = f"Choose a page (out of {max_value} total pages)"
-                selected_page = st.number_input(
-                    label,
-                    min_value=1,
-                    max_value=max_value,
-                    value=1,
-                    step=1,
-                    format="%d",
-                )
+            # cols = st.columns(3)
+            # with cols[1]:
+            #     label = f"Choose a page (out of {max_value} total pages)"
+            #     selected_page = st.number_input(
+            #         label,
+            #         min_value=1,
+            #         max_value=max_value,
+            #         value=1,
+            #         step=1,
+            #         format="%d",
+            #     )
 
-                start_item = (selected_page - 1) * pagination_size + 1
-                end_item = min(selected_page * pagination_size, total_items)
-                st.markdown(
-                    f"<p style='text-align: center;'>{start_item}-{end_item} / {total_items} items</p>",
-                    unsafe_allow_html=True,
-                )
+            #     start_item = (selected_page - 1) * pagination_size + 1
+            #     end_item = min(selected_page * pagination_size, total_items)
+            #     st.markdown(
+            #         f"<p style='text-align: center;'>{start_item}-{end_item} / {total_items} items</p>",
+            #         unsafe_allow_html=True,
+            #     )
+
+            selected_page = sac.pagination(
+                total=total_items, align="center", jump=True, show_total=True
+            )
         pagination_start_idx = (selected_page - 1) * pagination_size
         pagination_end_idx = selected_page * pagination_size
         if max_value > 1:
