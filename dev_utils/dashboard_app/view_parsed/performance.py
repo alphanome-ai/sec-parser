@@ -75,8 +75,10 @@ def render_view_parsed_performance(previous_parsing_output: ParsingOutput, name)
             "Verbose mode (for Preview only)",
             value=False,
         )
-    st.code(
-        profiled_result.profile.output_text(
-            unicode=True, timeline=timeline, show_all=show_all
-        ),
+
+    output_text = profiled_result.profile.output_text(
+        unicode=True, timeline=timeline, show_all=show_all
     )
+    # st.code trims whitespace at the beginning, so we add a dot to prevent that to not lose indentation
+    output_text = "_." + output_text[3:]
+    st.code(output_text)

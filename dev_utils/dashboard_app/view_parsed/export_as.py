@@ -38,13 +38,14 @@ def render_view_parsed_export_as(elements, html: bytes, filename: str):
             output.append(f"{title_level_to_markdown[element.level]} {element.text}")
         elif isinstance(element, sp.TableElement):
             unmerged_html: str = _unmerge_cells(element.get_source_code())
-            output.append(pd.read_html(StringIO(unmerged_html), flavor="lxml")[0])
+            output.append(_html_to_pandas(unmerged_html))
 
     nb = new_notebook()
+    nb.cells.append(new_code_cell("import pandas as pd\nfrom numpy import nan\n"))
     for k in output:
         if isinstance(k, pd.DataFrame):
             nb.cells.append(
-                new_code_cell(f"import pandas as pd\npd.DataFrame({k.to_dict()})"),
+                new_code_cell(f"pd.DataFrame({k.to_dict()})"),
             )
         else:
             nb.cells.append(new_markdown_cell(k))
@@ -125,8 +126,14 @@ def _unmerge_cells(html: str) -> str:
 
 
 def _pandas_to_markdown(df):
-    df = df.dropna(how="all")  # remove empty rows
     df = df.fillna("")
     markdown_table = "\n".join(df.to_markdown(index=False).split("\n")[2:])
     markdown_table = re.sub(r" +", " ", markdown_table)
     return markdown_table
+
+
+def _html_to_pandas(html):
+    df = pd.read_html(StringIO(html), flavor="lxml")[0]
+    df = df.dropna(how="all")
+    df = df.dropna(how="all", axis="columns")
+    return df

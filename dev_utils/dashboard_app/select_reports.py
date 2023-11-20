@@ -14,10 +14,19 @@ from dev_utils.dashboard_app.python_utils import smart_join
 
 
 def render_select_reports():
+    st.markdown(
+        """
+        <div style="text-align: right;">
+            <a href="https://discord.gg/2MC3uJhBxs"><img alt="Discord" src="https://img.shields.io/discord/1164249739836018698?logo=discord&logoColor=white&style=flat&color=white&labelColor=767FA6"></a>
+            <a href="https://github.com/alphanome-ai/sec-parser"><img src="https://img.shields.io/github/stars/alphanome-ai/sec-parser.svg?style=social&label=Star us on GitHub!" alt="GitHub stars"></a>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st_utils.st_unkeep("select_reports__example_queries")
     selected_example_queries = sac.chip(
         items=[k[0] for k in example_queries_items],
-        label="Get Started with Examples",
+        label="Get started with examples:",
         size="xs",
         format_func="title",
         align="start",

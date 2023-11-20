@@ -23,6 +23,10 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 )
 
 URL_PARAM_KEY = "view_parsed"
+URL_PARAM_KEY_ELEMENT_TYPE = "et"
+URL_PARAM_KEY_FILTER_BY_TEXT = "filter_by_text"
+URL_PARAM_KEY_SHOW_COMPOSITE = "show_composite"
+URL_PARAM_KEY_DO_FILTER_BY_HTML = "do_filter_by_html"
 if TYPE_CHECKING:
     from sec_downloader.types import FilingMetadata
 
@@ -38,6 +42,9 @@ def render_view_parsed():
         st.error("Please select some reports first.")
         return
     metadatas: list[FilingMetadata] = st.session_state.select_reports__report_metadatas
+
+    url_params = st.experimental_get_query_params()
+    new_url_params = []
 
     #################
     ### Sidebar
@@ -128,9 +135,20 @@ def render_view_parsed():
     are_any_elements_filtered = False
     do_show_nested_composite_elements = False
     filtered_elements = elements
-    if selected_subnavbar != ViewParsedItems.PERFORMANCE:
+    filter_by_element_type_selection_default = None
+    filtered_element_types = None
+    is_filtering_enabled = selected_subnavbar != ViewParsedItems.PERFORMANCE
+    is_filtering_by_type_enabled = False
+    if is_filtering_enabled:
         sidebar_top = st.sidebar.container()
         if selected_subnavbar == ViewParsedItems.SEMANTIC_ELEMENTS:
+            default = False
+            value = default
+            value_from_url = url_params.get(URL_PARAM_KEY_SHOW_COMPOSITE, [])
+            if value_from_url:
+                value_from_url = value_from_url[0] == "1"
+                value = value_from_url
+
             do_show_nested_composite_elements = st.sidebar.checkbox(
                 "Show Composite Elements",
                 help="Check this box to display Composite Elements. "
@@ -138,9 +156,22 @@ def render_view_parsed():
                 "especially useful when a single HTML root tag wraps multiple elements. "
                 "This ensures structural integrity and enables features like semantic segmentation visualization, "
                 "and debugging by comparison with the original document.",
+                value=value,
             )
+
+            if do_show_nested_composite_elements != default:
+                new_url_params.append(
+                    (
+                        URL_PARAM_KEY_SHOW_COMPOSITE,
+                        int(do_show_nested_composite_elements),
+                    )
+                )
         if not do_show_nested_composite_elements:
+            is_filtering_by_type_enabled = True
             unwrapped_elements = CompositeSemanticElement.unwrap_elements(elements)
+            url_params_filter_by_text = url_params.get(URL_PARAM_KEY_FILTER_BY_TEXT, [])
+            if url_params_filter_by_text:
+                url_params_filter_by_text = url_params_filter_by_text[0]
             filter_by_element_text = sidebar_top.text_input(
                 label=f"{len(unwrapped_elements)} elements parsed in "
                 + (
@@ -150,7 +181,12 @@ def render_view_parsed():
                 )
                 + ". Filter by text:",
                 placeholder="Showing all elements.",
+                value=url_params_filter_by_text or "",
             )
+            if filter_by_element_text:
+                new_url_params.append(
+                    (URL_PARAM_KEY_FILTER_BY_TEXT, filter_by_element_text)
+                )
             element_type_counts = Counter(
                 type(element) for element in unwrapped_elements
             )
@@ -166,19 +202,35 @@ def render_view_parsed():
                 key=lambda x: x[1],
                 reverse=True,
             )
-            default = [
-                k[2]
+
+            url_element_types = url_params.get(URL_PARAM_KEY_ELEMENT_TYPE, [])
+            url_element_types = {k.lower() for k in url_element_types}
+            filter_by_element_type_selection_default = [
+                k
                 for k in element_type_options
                 if (
                     not issubclass(k[0], sp.IrrelevantElement)
                     or selected_subnavbar == ViewParsedItems.OVERLAY
                 )
             ]
+            filter_by_element_type_selection_default_str = [
+                k[2] for k in filter_by_element_type_selection_default
+            ]
+            if not url_element_types:
+                filter_by_element_type_selection_initial = (
+                    filter_by_element_type_selection_default_str
+                )
+            else:
+                filter_by_element_type_selection_initial = [
+                    k[2]
+                    for k in element_type_options
+                    if k[0].__name__.lower() in url_element_types
+                ]
             options = [k[2] for k in element_type_options]
             filter_by_element_type_selection = sidebar_top.multiselect(
-                label=". Filter by type:",
+                label="Filter by type:",
                 options=options,
-                default=default,
+                default=filter_by_element_type_selection_initial,
                 placeholder="Hiding all elements.",
                 help=(
                     "**Semantic Elements** correspond to the semantic elements in SEC EDGAR documents."
@@ -193,10 +245,29 @@ def render_view_parsed():
                 for selected_type in filter_by_element_type_selection
             ]
 
+            ### checkbox start
+            default = False
+            value = default
+            value_from_url = url_params.get(URL_PARAM_KEY_DO_FILTER_BY_HTML, [])
+            if value_from_url:
+                value_from_url = value_from_url[0] == "1"
+                value = value_from_url
+
             include_html_in_text_search = st.sidebar.checkbox(
                 "Include HTML in text search",
                 help="Check this box to include HTML source code in the text search.",
+                value=value,
             )
+
+            if include_html_in_text_search != default:
+                new_url_params.append(
+                    (
+                        URL_PARAM_KEY_DO_FILTER_BY_HTML,
+                        int(include_html_in_text_search),
+                    )
+                )
+            ### checkbox end
+
             if not filter_by_element_type_selection:
                 st.info("Please select at least one element type.")
                 st.stop()
@@ -271,7 +342,24 @@ def render_view_parsed():
             _format_name(metadata, filename=True),
         )
 
-    return [(URL_PARAM_KEY, selected_subnavbar.serialize()), *(query_elements or [])]
+    if is_filtering_by_type_enabled:
+        assert filter_by_element_type_selection_default and filtered_element_types
+        if set(filtered_element_types) != {
+            k[0] for k in filter_by_element_type_selection_default
+        }:
+            new_url_params.extend(
+                [
+                    (
+                        URL_PARAM_KEY_ELEMENT_TYPE,
+                        [k.__name__.lower() for k in filtered_element_types],
+                    ),
+                ]
+            )
+    return [
+        (URL_PARAM_KEY, selected_subnavbar.serialize()),
+        *new_url_params,
+        *(query_elements or []),
+    ]
 
 
 def _format_name(metadata, *, filename=False):

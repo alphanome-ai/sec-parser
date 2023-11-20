@@ -11,6 +11,8 @@ from dev_utils.dashboard_app.view_parsed._utils import NoContext
 PAGINATION_OFF = "off"
 LARGE_TABLE_ROWS_THRESHOLD = 7
 PAGINATION_DISABLE_THRESHOLD = 10
+URL_PARAM_KEY_OPEN_ALL_EXPANDERS = "open_all_expanders"
+URL_PARAM_KEY_SHOW_FILTERED_OUT = "show_filtered_out"
 
 
 class ShowSkippedElements(Enum):
@@ -32,11 +34,33 @@ def render_view_parsed_semantic_elements(
     do_show_nested_composite_elements: bool,
     are_any_elements_filtered: bool,
 ):
+    url_params = st.experimental_get_query_params()
+    new_url_params = []
     pagination_size = None
     do_use_pagination = len(elements) >= PAGINATION_DISABLE_THRESHOLD
+
+    ### checkbox start
+    default = False
+    value = default
+    value_from_url = url_params.get(URL_PARAM_KEY_OPEN_ALL_EXPANDERS, [])
+    if value_from_url:
+        value_from_url = value_from_url[0] == "1"
+        value = value_from_url
+
     do_open_all_expanders = st.sidebar.checkbox(
         "Open All Expanders",
+        value=value,
     )
+
+    if do_open_all_expanders != default:
+        new_url_params.append(
+            (
+                URL_PARAM_KEY_OPEN_ALL_EXPANDERS,
+                int(do_open_all_expanders),
+            ),
+        )
+    ### checkbox end
+
     do_set_visibility_of_filtered_elements = (
         not do_show_nested_composite_elements and are_any_elements_filtered
     )
@@ -52,13 +76,29 @@ def render_view_parsed_semantic_elements(
     if do_set_visibility_of_filtered_elements:
         i += 1
         with columns[i]:
+            default = ShowSkippedElements.get_items()[1]
+            value = default
+            value_from_url = url_params.get(URL_PARAM_KEY_SHOW_FILTERED_OUT, [])
+            if value_from_url:
+                value_from_url = value_from_url[0].lower()
+                if value_from_url in ShowSkippedElements.get_items():
+                    value = value_from_url
+
+            show_skipped_elements_option = st.select_slider(
+                "Filtered out elements:",
+                ShowSkippedElements.get_items(),
+                value=value,
+                help="This option determines the visibility of elements that have been filtered out.",
+            )
+            if show_skipped_elements_option != default:
+                new_url_params.append(
+                    (
+                        URL_PARAM_KEY_SHOW_FILTERED_OUT,
+                        show_skipped_elements_option,
+                    )
+                )
             show_skipped_elements_option = ShowSkippedElements.from_value(
-                st.select_slider(
-                    "How to show hidden",
-                    ShowSkippedElements.get_items(),
-                    value=ShowSkippedElements.get_items()[1],
-                    help="This option determines the visibility of elements that have been filtered out.",
-                ),
+                show_skipped_elements_option
             )
     else:
         show_skipped_elements_option = ShowSkippedElements.SHOW
@@ -74,7 +114,7 @@ def render_view_parsed_semantic_elements(
             ]
             if options:
                 pagination_size = st.select_slider(
-                    "Set Page Size",
+                    "Page Size:",
                     options=[*options, PAGINATION_OFF],
                     value=options[0],
                     help=(
@@ -134,6 +174,8 @@ def render_view_parsed_semantic_elements(
             do_open_all_expanders,
         )
 
+    return new_url_params
+
 
 def render_element(
     element: sp.AbstractSemanticElement | sp.TreeNode,
@@ -156,8 +198,10 @@ def render_element(
     if isinstance(element, list):  # skipped elements are put in lists
         skipped_elements_list = element
         if show_skipped_elements_option == ShowSkippedElements.MINIMAL:
+            element_count = len(element)
+            element_text = "element" if element_count == 1 else "elements"
             st.markdown(
-                f'<div align="center" style="color: lightgrey; margin-bottom: 10px;"><span style="font-style: italic;">(filtered out {len(element)} elements)</span></div>',
+                f'<div align="center" style="color: lightgrey; margin-bottom: 10px;"><span style="font-style: italic;">(filtered out {element_count} {element_text})</span></div>',
                 unsafe_allow_html=True,
             )
         if show_skipped_elements_option == ShowSkippedElements.SHOW:

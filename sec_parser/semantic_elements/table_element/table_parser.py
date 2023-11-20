@@ -11,11 +11,14 @@ class TableParser:
 
     @staticmethod
     def _basic_preprocessing(html: str) -> pd.DataFrame:
-        tables = pd.read_html(StringIO(html), flavor="lxml")
-        if len(tables) == 0:
-            msg = "No tables found"
-            raise ValueError(msg)
-        table = tables[0]
+        if not isinstance(html, pd.DataFrame):
+            tables = pd.read_html(StringIO(html), flavor="lxml")
+            if len(tables) == 0:
+                msg = "No tables found"
+                raise ValueError(msg)
+            table = tables[0]
+        else:
+            table = html
         table = table.dropna(how="all")
         table.columns = pd.Index(table.iloc[0].tolist())
         table = table[1:]
