@@ -180,7 +180,7 @@ def render_view_parsed():
                     else f"{parsing_output.result.parse_time:.2f} s"
                 )
                 + ". Filter by text:",
-                placeholder="Showing all elements.",
+                placeholder="Text filter not applied.",
                 value=url_params_filter_by_text or "",
             )
             if filter_by_element_text:
@@ -231,7 +231,7 @@ def render_view_parsed():
                 label="Filter by type:",
                 options=options,
                 default=filter_by_element_type_selection_initial,
-                placeholder="Hiding all elements.",
+                placeholder="Select at least one type.",
                 help=(
                     "**Semantic Elements** correspond to the semantic elements in SEC EDGAR documents."
                     " A semantic element refers to a meaningful unit within the document that serves a"
