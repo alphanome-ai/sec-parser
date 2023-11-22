@@ -56,21 +56,42 @@ def test_without_tags():
     assert actual == "<div>\n <p>\n  Text\n  a paragraph\n </p>\n</div>\n"
 
 
-def test_to_dict():
+@pytest.mark.parametrize(
+    ("name", "tag_string", "expected"),
+    values := [
+        (
+            "simple",
+            "<span>" + "A" * 60 + "</span>",
+            {
+                "tag_name": "span",
+                "text_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
+                "html_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
+                "html_hash": "3836a62b",
+            },
+        ),
+        (
+            "nested_with_same_tag",
+            "<div><div>n</div></div>",
+            {
+                "tag_name": "div",
+                "text_preview": "n",
+                "html_preview": "<div>n</div>",
+                "html_hash": "3c22ceca",
+            },
+        ),
+    ],
+    ids=[v[0] for v in values],
+)
+def test_to_dict(name, tag_string, expected):
     # Arrange
-    tag = bs4.Tag(name="span")
-    tag.string = "A" * 60
+    tag = next(bs4.BeautifulSoup(tag_string, "lxml").html.body.children)
+    assert isinstance(tag, bs4.Tag)
 
     # Act
     actual = HtmlTag(tag).to_dict()
 
     # Assert
-    assert actual == {
-        "tag_name": "span",
-        "text_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
-        "html_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
-        "html_hash": "3836a62b",
-    }
+    assert actual == expected
 
 
 @pytest.mark.parametrize(
@@ -88,6 +109,7 @@ def test_is_unary_tree(name, html_string, expected):
     # Arrange
     soup = bs4.BeautifulSoup(html_string, "html.parser")
     div_tag = soup.find("div")
+    assert isinstance(div_tag, bs4.Tag)
     html_tag = HtmlTag(div_tag)
 
     # Act
