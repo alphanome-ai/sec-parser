@@ -164,7 +164,11 @@ def render_view_parsed_semantic_elements(
             #     )
 
             selected_page = sac.pagination(
-                total=total_items, align="center", jump=True, show_total=True
+                total=total_items,
+                align="center",
+                jump=True,
+                show_total=True,
+                page_size=pagination_size,
             )
         pagination_start_idx = (selected_page - 1) * pagination_size
         pagination_end_idx = selected_page * pagination_size
