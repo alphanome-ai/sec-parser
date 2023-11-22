@@ -48,7 +48,6 @@ streamlit-nested-layout = "^0.1.1"
 millify = "^0.1.1"
 streamlit-extras = "^0.3.5"
 ipykernel = "^6.27.0"
-jupyter = "^1.0.0"
 pytest-watch = "^4.2.0"
 click = "^8.1.7"
 rich = "^13.7.0"
@@ -62,6 +61,7 @@ pandas-stubs = "^2.1.1.230928"
 sec-downloader = "^0.10.1"
 tiktoken = "^0.5.1"
 streamlit-antd-components = "^0.2.3"
+notebook = "^7.0.6"
 
 
 [tool.poetry.group.doc.dependencies]
