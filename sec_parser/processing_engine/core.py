@@ -7,6 +7,7 @@ from sec_parser.processing_engine.html_tag_parser import (
     AbstractHtmlTagParser,
     HtmlTagParser,
 )
+from sec_parser.processing_engine.types import ParsingOptions
 from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
 )
@@ -100,9 +101,11 @@ class AbstractSemanticElementParser(ABC):
         self,
         get_steps: Callable[[], list[AbstractProcessingStep]] | None = None,
         *,
+        parsing_options: ParsingOptions | None = None,
         html_tag_parser: AbstractHtmlTagParser | None = None,
     ) -> None:
         self._get_steps = get_steps or self.get_default_steps
+        self._parsing_options = parsing_options or ParsingOptions()
         self._html_tag_parser = html_tag_parser or HtmlTagParser()
 
     @abstractmethod

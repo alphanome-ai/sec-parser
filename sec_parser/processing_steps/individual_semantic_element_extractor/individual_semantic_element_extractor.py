@@ -12,7 +12,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 )
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
-if TYPE_CHECKING: # pragma: no cover
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
         AbstractSingleElementCheck,
     )
@@ -45,7 +45,7 @@ class IndividualSemanticElementExtractor(AbstractElementwiseProcessingStep):
         if get_checks is None:
             msg = "get_checks function is not provided"
             raise SecParserValueError(msg)
-        self._checks = get_checks()
+        self._contains_single_element_checks = get_checks()
 
     def _create_composite_element(
         self,
@@ -83,7 +83,7 @@ class IndividualSemanticElementExtractor(AbstractElementwiseProcessingStep):
         if not element.html_tag.has_tag_children():
             return True
 
-        for check in self._checks:
+        for check in self._contains_single_element_checks:
             contains_single_element = check.contains_single_element(element)
             if contains_single_element is not None:
                 element.processing_log.add_item(

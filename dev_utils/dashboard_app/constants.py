@@ -12,3 +12,5 @@ example_queries_items = [
         "https://www.sec.gov/Archives/edgar/data/1326801/000132680119000037/fb-03312019x10q.htm",
     ),
 ]
+
+URL_PARAM_KEY_FILTER_BY_TEXT = "filter_by_text"

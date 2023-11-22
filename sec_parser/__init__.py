@@ -5,6 +5,7 @@ from sec_parser.exceptions import (
 )
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag import HtmlTag
+from sec_parser.processing_engine.types import ParsingOptions
 from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
     AbstractProcessingStep,
 )
@@ -57,4 +58,5 @@ __all__ = [
     "HtmlTag",
     # Misc
     "render",
+    "ParsingOptions",
 ]

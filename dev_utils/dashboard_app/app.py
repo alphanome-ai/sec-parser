@@ -9,7 +9,10 @@ import streamlit_antd_components as sac
 import dev_utils.dashboard_app.streamlit_utils as st_utils
 from dev_utils.core.config import get_config
 from dev_utils.core.sec_edgar_reports_getter import SecEdgarReportsGetter
-from dev_utils.dashboard_app.constants import example_queries_items
+from dev_utils.dashboard_app.constants import (
+    URL_PARAM_KEY_FILTER_BY_TEXT,
+    example_queries_items,
+)
 from dev_utils.dashboard_app.select_reports import render_select_reports
 from dev_utils.dashboard_app.view_parsed.view_parsed import render_view_parsed
 
@@ -67,6 +70,13 @@ if "select_reports__example_queries" not in st.session_state:
             i for i, k in enumerate(example_queries_items) if k[1] in url_params_queries
         ]
     st.session_state["select_reports__example_queries"] = default
+
+if "view_parsed__filter_by_text" not in st.session_state:
+    default = None
+    if url_filter_by_text := url_query_params.get(URL_PARAM_KEY_FILTER_BY_TEXT, []):
+        default = url_filter_by_text[0]
+    st.session_state["view_parsed__filter_by_text"] = default
+
 
 ############
 ### Menu ###

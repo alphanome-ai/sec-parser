@@ -6,8 +6,10 @@ from typing import TYPE_CHECKING
 import streamlit as st
 import streamlit_antd_components as sac
 
+import dev_utils.dashboard_app.streamlit_utils as st_utils
 import sec_parser as sp
 from dev_utils.core.profiled_parser import get_parsing_output
+from dev_utils.dashboard_app.constants import URL_PARAM_KEY_FILTER_BY_TEXT
 from dev_utils.dashboard_app.core.download_metadatas import global_get_report_metadatas
 from dev_utils.dashboard_app.view_parsed._utils import aggregate_skipped_elements
 from dev_utils.dashboard_app.view_parsed.export_as import render_view_parsed_export_as
@@ -24,7 +26,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 
 URL_PARAM_KEY = "view_parsed"
 URL_PARAM_KEY_ELEMENT_TYPE = "et"
-URL_PARAM_KEY_FILTER_BY_TEXT = "filter_by_text"
+
 URL_PARAM_KEY_SHOW_COMPOSITE = "show_composite"
 URL_PARAM_KEY_DO_FILTER_BY_HTML = "do_filter_by_html"
 if TYPE_CHECKING:
@@ -169,9 +171,7 @@ def render_view_parsed():
         if not do_show_nested_composite_elements:
             is_filtering_by_type_enabled = True
             unwrapped_elements = CompositeSemanticElement.unwrap_elements(elements)
-            url_params_filter_by_text = url_params.get(URL_PARAM_KEY_FILTER_BY_TEXT, [])
-            if url_params_filter_by_text:
-                url_params_filter_by_text = url_params_filter_by_text[0]
+            st_utils.st_unkeep("view_parsed__filter_by_text")
             filter_by_element_text = sidebar_top.text_input(
                 label=f"{len(unwrapped_elements)} elements parsed in "
                 + (
@@ -181,7 +181,8 @@ def render_view_parsed():
                 )
                 + ". Filter by text:",
                 placeholder="Text filter not applied.",
-                value=url_params_filter_by_text or "",
+                key="_view_parsed__filter_by_text",
+                on_change=lambda: st_utils.st_keep("view_parsed__filter_by_text"),
             )
             if filter_by_element_text:
                 new_url_params.append(

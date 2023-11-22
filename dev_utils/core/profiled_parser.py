@@ -4,8 +4,10 @@ from dataclasses import dataclass
 from time import perf_counter
 from typing import TYPE_CHECKING
 
+import streamlit as st
 from pyinstrument import Profiler
 
+from dev_utils.core.config import get_config
 from dev_utils.core.sec_edgar_reports_getter import (
     get_filing_metadatas,
     get_sec_edgar_reports_getter,
@@ -16,8 +18,6 @@ if TYPE_CHECKING:
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
-
-import streamlit as st
 
 import sec_parser as sp
 
@@ -36,7 +36,10 @@ class ProfiledParser:
         parser: AbstractSemanticElementParser | None = None,
         interval: float | None = None,
     ) -> None:
-        self._parser = parser or sp.Edgar10QParser()
+        parsing_options = sp.ParsingOptions(
+            html_integrity_checks=get_config().environment.is_dev,
+        )
+        self._parser = parser or sp.Edgar10QParser(parsing_options=parsing_options)
         self._interval = interval
 
     @property

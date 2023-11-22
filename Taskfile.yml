@@ -10,7 +10,7 @@ tasks:
     desc: Start a local dashboard in the browser.
     cmds:
       # Using PYTHONPATH to allow Streamlit to monitor file changes. Learn more: https://docs.streamlit.io/knowledge-base/using-streamlit/streamlit-watch-changes-other-modules-importing-app
-      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/dashboard_app/app.py --server.runOnSave=false
+      - export PYTHONPATH=$PYTHONPATH:$(pwd)/sec_parser ENVIRONMENT=dev && poetry run streamlit run dev_utils/dashboard_app/app.py --server.runOnSave=false --client.showErrorDetails=true
 
   monitor-unit-tests:
     desc: "Run unit tests and rerun them immediately upon file modification."
