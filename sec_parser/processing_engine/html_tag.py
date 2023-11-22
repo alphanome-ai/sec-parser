@@ -132,7 +132,11 @@ class HtmlTag:
                 {
                     "tag_name": self._bs4.name,
                     "text_preview": self._generate_preview(self.text),
-                    "html_preview": self._generate_preview(self.get_source_code()),
+                    "html_preview": self._generate_preview(
+                        self.get_source_code()
+                        .lstrip("<" + self._bs4.name + ">")
+                        .rstrip("</" + self._bs4.name + ">"),
+                    ),
                     "html_hash": xxhash.xxh32(self.get_source_code()).hexdigest(),
                 },
             )

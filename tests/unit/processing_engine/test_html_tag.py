@@ -68,7 +68,7 @@ def test_to_dict():
     assert actual == {
         "tag_name": "span",
         "text_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
-        "html_preview": "<span>AAAAAAAAAAAAAA...[33]...AAAAAAAAAAAAA</span>",
+        "html_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
         "html_hash": "3836a62b",
     }
 
