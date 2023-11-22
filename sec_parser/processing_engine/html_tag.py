@@ -133,9 +133,11 @@ class HtmlTag:
                     "tag_name": self._bs4.name,
                     "text_preview": self._generate_preview(self.text),
                     "html_preview": self._generate_preview(
-                        self.get_source_code()
-                        .lstrip("<" + self._bs4.name + ">")
-                        .rstrip("</" + self._bs4.name + ">"),
+                        remove_affixes(
+                            self.get_source_code(),
+                            prefixes=(f"<{self._bs4.name}>", f"<{self._bs4.name} "),
+                            suffix=f"</{self._bs4.name}>",
+                        ),
                     ),
                     "html_hash": xxhash.xxh32(self.get_source_code()).hexdigest(),
                 },
@@ -332,3 +334,14 @@ class NotSetType:
 
 
 NotSet = NotSetType()
+
+
+def remove_affixes(text: str, prefixes: tuple, suffix: str) -> str:
+    start = 0
+    if prefixes is not None:
+        for prefix in prefixes:
+            if text.startswith(prefix):
+                start = len(prefix)
+                break
+    end = -len(suffix) if suffix and text.endswith(suffix) else None
+    return text[start:end]
