@@ -8,12 +8,9 @@ from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
     ElementProcessingContext,
 )
-from sec_parser.processing_steps.irrelevant_element_classifier import (
+from sec_parser.processing_steps.empty_element_classifier import (
+    EmptyElementClassifier,
     InvalidIterationError,
-    IrrelevantElementClassifier,
-)
-from sec_parser.processing_steps.pre_top_level_section_pruner import (
-    PreTopLevelSectionPruner,
 )
 from sec_parser.processing_steps.supplementary_text_classifier import (
     SupplementaryTextClassifier,
@@ -70,7 +67,7 @@ def test_supplementary_element_classifier(name, html_str, expected_elements):
     # Arrange
     def get_steps():
         default = Edgar10QParser().get_default_steps()
-        return [s for s in default if not isinstance(s, PreTopLevelSectionPruner)]
+        return list(default)
 
     sec_parser = Edgar10QParser(get_steps)
 

@@ -11,15 +11,10 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
 from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
     AbstractProcessingStep,
 )
+from sec_parser.processing_steps.empty_element_classifier import EmptyElementClassifier
 from sec_parser.processing_steps.image_classifier import ImageClassifier
 from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (
     IndividualSemanticElementExtractor,
-)
-from sec_parser.processing_steps.irrelevant_element_classifier import (
-    IrrelevantElementClassifier,
-)
-from sec_parser.processing_steps.pre_top_level_section_pruner import (
-    PreTopLevelSectionPruner,
 )
 from sec_parser.processing_steps.supplementary_text_classifier import (
     SupplementaryTextClassifier,
@@ -27,9 +22,6 @@ from sec_parser.processing_steps.supplementary_text_classifier import (
 from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.title_classifier import TitleClassifier
-from sec_parser.processing_steps.top_level_section_title_classifier import (
-    TopLevelSectionTitleClassifier,
-)
 
 __all__ = [
     "AbstractProcessingStep",
@@ -40,7 +32,5 @@ __all__ = [
     "TableClassifier",
     "IndividualSemanticElementExtractor",
     "SupplementaryTextClassifier",
-    "TopLevelSectionTitleClassifier",
-    "IrrelevantElementClassifier",
-    "PreTopLevelSectionPruner",
+    "EmptyElementClassifier",
 ]
