@@ -214,7 +214,10 @@ def render_element(
                 unsafe_allow_html=True,
             )
         if show_skipped_elements_option == ShowSkippedElements.SHOW:
-            with st.expander(f"*------------- {len(element)} skipped -------------*"):
+            with st.expander(
+                f"*------------- {len(element)} skipped -------------*",
+                expanded=do_open_all_expanders,
+            ):
                 for skipped_element in skipped_elements_list:
                     render_element(
                         skipped_element,

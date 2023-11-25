@@ -22,6 +22,9 @@ from sec_parser.processing_steps.supplementary_text_classifier import (
 from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.title_classifier import TitleClassifier
+from sec_parser.processing_steps.top_level_section_manager import (
+    TopLevelSectionTitleManager,
+)
 
 __all__ = [
     "AbstractProcessingStep",
@@ -33,4 +36,5 @@ __all__ = [
     "IndividualSemanticElementExtractor",
     "SupplementaryTextClassifier",
     "EmptyElementClassifier",
+    "TopLevelSectionTitleManager",
 ]

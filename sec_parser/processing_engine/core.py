@@ -32,6 +32,9 @@ from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
+from sec_parser.processing_steps.top_level_section_manager import (
+    TopLevelSectionTitleManager,
+)
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
@@ -157,8 +160,9 @@ class Edgar10QParser(AbstractSemanticElementParser):
             IndividualSemanticElementExtractor(
                 get_checks=get_checks or self.get_default_single_element_checks,
             ),
-            EmptyElementClassifier(),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
+            EmptyElementClassifier(types_to_process={NotYetClassifiedElement}),
+            TopLevelSectionTitleManager(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),

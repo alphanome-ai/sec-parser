@@ -148,7 +148,7 @@ class HtmlTag:
         """Return True if the semantic element contains text."""
         if self._contains_words is None:
             self._contains_words = (
-                any(char.isalpha() for char in self.text) if self.text else False
+                any(char.isalnum() for char in self.text) if self.text else False
             )
         return self._contains_words
 
