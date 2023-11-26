@@ -8,7 +8,6 @@ import streamlit_antd_components as sac
 
 import sec_parser as sp
 from dev_utils.dashboard_app.view_parsed._utils import NoContext
-from sec_parser.utils.py_utils import EnhancedJSONEncoder
 
 PAGINATION_OFF = "off"
 LARGE_TABLE_ROWS_THRESHOLD = 7
