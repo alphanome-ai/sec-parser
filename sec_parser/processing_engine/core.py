@@ -22,6 +22,9 @@ from sec_parser.processing_steps.individual_semantic_element_extractor.single_el
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.table_check import (
     TableCheck,
 )
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.top_level_section_title_check import (
+    TopLevelSectionTitleCheck,
+)
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.xbrl_tag_check import (
     XbrlTagCheck,
 )
@@ -178,4 +181,5 @@ class Edgar10QParser(AbstractSemanticElementParser):
             TableCheck(),
             XbrlTagCheck(),
             ImageCheck(),
+            TopLevelSectionTitleCheck(),
         ]

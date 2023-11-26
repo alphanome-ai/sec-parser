@@ -12,7 +12,7 @@ from sec_parser.semantic_tree.tree_node import TreeNode
 DEFAULT_CHAR_DISPLAY_LIMIT = 65
 
 
-def render(  # noqa: C901, PLR0912
+def render(
     tree: list[TreeNode] | TreeNode | SemanticTree | list[AbstractSemanticElement],
     *,
     pretty: bool | None = True,

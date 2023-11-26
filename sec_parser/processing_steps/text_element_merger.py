@@ -76,8 +76,18 @@ class TextElementMerger(AbstractElementBatchProcessingStep):
             "sec-parser-merged-text",
             [e.html_tag for e in elements],
         )
+        merged_processing_log = elements[0].processing_log.copy()
+        # After merging, we retain the processing log of the first element and drop the logs of the others.
+        # This is because the merged text element now represents a single entity, and we want to avoid
+        # log duplication or confusion about which part of the merged text the logs refer to.
+        dropped_logs = [e.processing_log for e in elements[1:]]
+        if any(dropped_logs):
+            merged_processing_log.add_item(
+                message="Merged multiple TextElements. Processing logs from subsequent elements are dropped.",
+                log_origin=cls.__name__,
+            )
         return TextElement(
             new_tag,
-            processing_log=elements[0].processing_log.copy(),
+            processing_log=merged_processing_log,
             log_origin=cls.__name__,
         )

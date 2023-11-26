@@ -38,6 +38,13 @@ def render_view_parsed_semantic_elements(
     new_url_params = []
     pagination_size = None
     do_use_pagination = len(elements) >= PAGINATION_DISABLE_THRESHOLD
+    pagination_options = []
+    if do_use_pagination:
+        pagination_options = [
+            n for n in [10, 20, 30, 50, 100, 200, 300, 500] if n <= len(elements)
+        ]
+        if not pagination_options:
+            do_use_pagination = False
 
     ### checkbox start
     default = False
@@ -60,7 +67,6 @@ def render_view_parsed_semantic_elements(
             ),
         )
     ### checkbox end
-
     do_set_visibility_of_filtered_elements = (
         not do_show_nested_composite_elements and are_any_elements_filtered
     )
@@ -98,7 +104,7 @@ def render_view_parsed_semantic_elements(
                     )
                 )
             show_skipped_elements_option = ShowSkippedElements.from_value(
-                show_skipped_elements_option
+                show_skipped_elements_option,
             )
     else:
         show_skipped_elements_option = ShowSkippedElements.SHOW
@@ -107,28 +113,28 @@ def render_view_parsed_semantic_elements(
         elements = [k for k in elements if not isinstance(k, list)]
 
     if do_use_pagination:
+        pagination_options = [
+            n for n in [10, 20, 30, 50, 100, 200, 300, 500] if n <= len(elements)
+        ]
+        if not pagination_options:
+            do_use_pagination = False
+    if do_use_pagination:
         i += 1
         with columns[i]:
-            options = [
-                n for n in [10, 20, 30, 50, 100, 200, 300, 500] if n <= len(elements)
-            ]
-            if options:
-                pagination_size = st.select_slider(
-                    "Page Size:",
-                    options=[*options, PAGINATION_OFF],
-                    value=options[0],
-                    help=(
-                        "Set the number of elements displayed per page. "
-                        "Use this to improve UI responsiveness. "
-                    ),
-                    format_func=lambda x: len(elements) if x == PAGINATION_OFF else x,
-                )
-                if pagination_size == PAGINATION_OFF:
-                    do_use_pagination = False
-            else:
+            pagination_size = st.select_slider(
+                "Page Size:",
+                options=[*pagination_options, PAGINATION_OFF],
+                value=pagination_options[0],
+                help=(
+                    "Set the number of elements displayed per page. "
+                    "Use this to improve UI responsiveness. "
+                ),
+                format_func=lambda x: len(elements) if x == PAGINATION_OFF else x,
+            )
+            if pagination_size == PAGINATION_OFF:
                 do_use_pagination = False
 
-    assert i == len(columns) - 1, "columns should be exhausted"
+    # assert i == len(columns) - 1, "columns should be exhausted"
 
     #### PAGINATION START
     if do_use_pagination:
@@ -240,7 +246,7 @@ def render_element(
         if is_semantic_tree_node:
             tab_names.append("Children Elements")
 
-        tab_names.extend(("Source code", "Processing Log"))
+        tab_names.extend(("Source code", "Text", "Processing Log"))
 
         if not is_large_table and is_semantic_tree_node:
             st.markdown(
@@ -293,6 +299,10 @@ def render_element(
         i += 1
         with tabs[i]:
             st.code(element.get_source_code(pretty=True), language="text")
+
+        i += 1
+        with tabs[i]:
+            st.code(element.text, language="text")
 
         i += 1
         with tabs[i]:

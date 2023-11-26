@@ -17,7 +17,13 @@ tasks:
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run ptw -- -- -s {{.CLI_ARGS}} --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
+      - poetry run ptw -- -- {{.CLI_ARGS}} -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
+
+  monitor-generalization-tests:
+    desc: "Run generalization tests and rerun them immediately upon file modification."
+    cmds:
+      # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      - poetry run ptw -- -- {{.CLI_ARGS}} -s -n auto tests/generalization/
 
   launch-docs:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
@@ -39,6 +45,7 @@ tasks:
     cmds:
       - task: ensure-clean-working-tree
       - task: lint
+      - task: generalization-tests
       - task: update-dependencies
       - task: update-notebook-outputs
       - git add -u
@@ -82,7 +89,7 @@ tasks:
     cmds:
       - task: clone-sec-parser-test-data    
       # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run pytest -n auto -s tests/generalization/
+      - poetry run pytest -s -n auto tests/generalization/
 
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###

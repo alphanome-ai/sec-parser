@@ -15,6 +15,9 @@ from sec_parser.utils.bs4_.approx_table_metrics import (
 )
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 from sec_parser.utils.bs4_.count_tags import count_tags
+from sec_parser.utils.bs4_.count_text_matches_in_descendants import (
+    count_text_matches_in_descendants,
+)
 from sec_parser.utils.bs4_.has_tag_children import has_tag_children
 from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
@@ -324,30 +327,15 @@ class HtmlTag:
         tag._parent = html_tags[0].parent  # noqa: SLF001
         return tag
 
-    @classmethod
-    def traverse_tags_for_match(
-        cls,
-        tag: HtmlTag,
-        predicate: Callable[[HtmlTag], bool],
-    ) -> HtmlTag | None:
-        """
-        Recursively traverse through HTML tags starting from a given tag to find a tag
-        that matches a given predicate.
-
-        :param tag: The starting HtmlTag from which to begin the traversal.
-        :param predicate: A function that takes a HtmlTag and returns True if it matches the condition.
-        :return: The first HtmlTag that matches the predicate, or None if no match is found.
-        """
-        if predicate(tag):
-            return tag
-
-        for child in tag.get_children():
-            if isinstance(child, HtmlTag):
-                matching_tag = cls.traverse_tags_for_match(child, predicate)
-                if matching_tag:
-                    return matching_tag
-
-        return None
+    def count_text_matches_in_descendants(
+        self,
+        predicate: Callable[[str], bool],
+        *,
+        exclude_links: bool | None = None,
+    ) -> int:
+        return count_text_matches_in_descendants(
+            self._bs4, predicate, exclude_links=exclude_links,
+        )
 
 
 class EmptyNavigableStringError(SecParserValueError):
