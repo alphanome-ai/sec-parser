@@ -82,7 +82,6 @@ tasks:
     cmds:
       - task: clone-sec-parser-test-data    
       # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      # TODO: Confirm whether workers might duplicate effort by parsing the same document. This is likely because each pytest-xdist worker instantiates its own session-scoped fixtures. If confirmed, consider implementing a solution.
       - poetry run pytest -n auto -s tests/generalization/
 
 ################################################################

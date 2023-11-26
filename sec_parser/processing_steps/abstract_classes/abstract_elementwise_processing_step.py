@@ -64,49 +64,52 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
         """
         raise NotImplementedError  # pragma: no cover
 
-    def _process(
+    def _process_recursively(
         self,
         elements: list[AbstractSemanticElement],
         *,
-        _context: ElementProcessingContext | None = None,
+        _context: ElementProcessingContext,
+    ) -> list[AbstractSemanticElement]:
+        for i, e in enumerate(elements):
+            # avoids lint error "`element` overwritten by assignment target"
+            element = e
+
+            try:
+                if self._types_to_process and not any(
+                    isinstance(element, t) for t in self._types_to_process
+                ):
+                    continue
+                if any(isinstance(element, t) for t in self._types_to_exclude):
+                    continue
+
+                if isinstance(element, CompositeSemanticElement):
+                    inner_elements = self._process_recursively(
+                        list(element.inner_elements),
+                        _context=_context,
+                    )
+                    element.inner_elements = tuple(inner_elements)
+                else:
+                    element = self._process_element(element, _context)
+
+                elements[i] = element
+            except SecParserError as e:
+                logger.exception(e)
+                elements[i] = ErrorWhileProcessingElement.create_from_element(
+                    element,
+                    error=e,
+                    log_origin=self.__class__.__name__,
+                )
+
+        return elements
+
+    def _process(
+        self,
+        elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
         for iteration in range(self._NUM_ITERATIONS):
-            context = _context or ElementProcessingContext(
-                is_root_element=True,
+            context = ElementProcessingContext(
                 iteration=iteration,
             )
-            for i, e in enumerate(elements):
-                # avoids lint error "`element` overwritten by assignment target"
-                element = e
-
-                try:
-                    if self._types_to_process and not any(
-                        isinstance(element, t) for t in self._types_to_process
-                    ):
-                        continue
-                    if any(isinstance(element, t) for t in self._types_to_exclude):
-                        continue
-
-                    if isinstance(element, CompositeSemanticElement):
-                        child_context = ElementProcessingContext(
-                            is_root_element=False,
-                            iteration=iteration,
-                        )
-                        inner_elements = self._process(
-                            list(element.inner_elements),
-                            _context=child_context,
-                        )
-                        element.inner_elements = tuple(inner_elements)
-                    else:
-                        element = self._process_element(element, context)
-
-                    elements[i] = element
-                except SecParserError as e:
-                    logger.exception(e)
-                    elements[i] = ErrorWhileProcessingElement.create_from_element(
-                        element,
-                        error=e,
-                        log_origin=self.__class__.__name__,
-                    )
+            self._process_recursively(elements, _context=context)
 
         return elements

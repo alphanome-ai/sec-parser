@@ -42,33 +42,33 @@ def test_top_level_section_title_classifier(
     # Sanity checks
     assert len(sections) > 0, "No top level sections found"
     assert {title.level for title in sections}.issubset({0, 1})
-    msg = f"Duplicate top level section identifiers found, {sections}"
+    msg = f"Duplicate top level section types found, {sections}"
     assert len(sections) == len(set(sections)), msg
 
     # Check top level 10-Q sections: "part1" and "part2"
     sections0 = [s for s in sections if s.level == 0]
-    msg = f"10-Q document should have part1 and part2, but has {[s.identifier for s in sections0]}"
-    assert [s.identifier for s in sections0] == ["part1", "part2"], msg
+    msg = f"10-Q document should have part1 and part2, but has {[s.section_type.identifier for s in sections0]}"
+    assert [s.section_type.identifier for s in sections0] == ["part1", "part2"], msg
     assert sections[0].level == 0
-    assert sections[0].identifier == "part1"
+    assert sections[0].section_type.identifier == "part1"
 
     # Check top level 10-Q sections: "part1item1", "part1item2", etc.
-    actual_identifiers = [
-        s.identifier for s in sections if s.level == 1 and s.identifier
+    actual_section_types = [
+        s.section_type.identifier for s in sections if s.level == 1 and s.section_type
     ]
     if parsed_report.expected_sections:
-        expected_identifiers = [
-            s.identifier
+        expected_section_types = [
+            s.section_type
             for s in parsed_report.expected_sections
             if s.character_count > 0
         ]
 
         def get_msg() -> str:
-            missing = sorted(set(expected_identifiers) - set(actual_identifiers))
-            unexpected = sorted(set(actual_identifiers) - set(expected_identifiers))
+            missing = sorted(set(expected_section_types) - set(actual_section_types))
+            unexpected = sorted(set(actual_section_types) - set(expected_section_types))
 
             msg_parts = []
-            if len(missing) == len(set(expected_identifiers)):
+            if len(missing) == len(set(expected_section_types)):
                 msg_parts.append('Missing all expected 10-Q "part" sections')
             elif missing:
                 msg_parts.append(f"Missing: {missing}")
@@ -76,11 +76,11 @@ def test_top_level_section_title_classifier(
                 msg_parts.append(f"Unexpected: {unexpected}")
             if not msg_parts:
                 msg_parts.append(
-                    f"Actual: {actual_identifiers}, Expected: {expected_identifiers}",
+                    f"Actual: {actual_section_types}, Expected: {expected_section_types}",
                 )
             return ", ".join(msg_parts)
 
-        assert actual_identifiers == expected_identifiers, get_msg()
+        assert actual_section_types == expected_section_types, get_msg()
     else:
         warnings.warn(
             f"No expected sections file found for {report.identifier}. Heuristics will be used.",

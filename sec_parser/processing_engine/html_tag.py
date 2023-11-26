@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import re
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Callable
 
 import bs4
 import xxhash
@@ -323,6 +323,31 @@ class HtmlTag:
 
         tag._parent = html_tags[0].parent  # noqa: SLF001
         return tag
+
+    @classmethod
+    def traverse_tags_for_match(
+        cls,
+        tag: HtmlTag,
+        predicate: Callable[[HtmlTag], bool],
+    ) -> HtmlTag | None:
+        """
+        Recursively traverse through HTML tags starting from a given tag to find a tag
+        that matches a given predicate.
+
+        :param tag: The starting HtmlTag from which to begin the traversal.
+        :param predicate: A function that takes a HtmlTag and returns True if it matches the condition.
+        :return: The first HtmlTag that matches the predicate, or None if no match is found.
+        """
+        if predicate(tag):
+            return tag
+
+        for child in tag.get_children():
+            if isinstance(child, HtmlTag):
+                matching_tag = cls.traverse_tags_for_match(child, predicate)
+                if matching_tag:
+                    return matching_tag
+
+        return None
 
 
 class EmptyNavigableStringError(SecParserValueError):

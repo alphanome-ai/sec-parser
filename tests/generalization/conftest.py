@@ -27,7 +27,11 @@ def parse():
                 with report.expected_top_level_sections_json_path.open("r") as file:
                     sections = json.load(file)
                     expected_sections = [
-                        ExpectedSection(**section) for section in sections
+                        ExpectedSection(
+                            section_type=section["identifier"],
+                            character_count=section["character_count"],
+                        )
+                        for section in sections
                     ]
 
             root_tags = HtmlTagParser().parse(html_text)

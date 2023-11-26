@@ -13,7 +13,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 
-if TYPE_CHECKING: # pragma: no cover
+if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,
     )
@@ -30,30 +30,30 @@ class AbstractElementBatchProcessingStep(AbstractProcessingStep):
     ) -> list[AbstractSemanticElement]:
         raise NotImplementedError  # pragma: no cover
 
-    def _process(
+    def _process_recursively(
         self,
         elements: list[AbstractSemanticElement],
         *,
-        _context: ElementProcessingContext | None = None,
+        _context: ElementProcessingContext,
+    ) -> list[AbstractSemanticElement]:
+        for element in elements:
+            if isinstance(element, CompositeSemanticElement):
+                element.inner_elements = tuple(
+                    self._process_recursively(
+                        list(element.inner_elements),
+                        _context=_context,
+                    ),
+                )
+        return self._process_elements(elements, _context)
+
+    def _process(
+        self,
+        elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
         for iteration in range(self._NUM_ITERATIONS):
-            context = _context or ElementProcessingContext(
-                is_root_element=True,
+            context = ElementProcessingContext(
                 iteration=iteration,
             )
-
-            for element in elements:
-                if isinstance(element, CompositeSemanticElement):
-                    child_context = ElementProcessingContext(
-                        is_root_element=False,
-                        iteration=iteration,
-                    )
-                    element.inner_elements = tuple(
-                        self._process(
-                            list(element.inner_elements),
-                            _context=child_context,
-                        ),
-                    )
-            elements = self._process_elements(elements, context)
+            elements = self._process_recursively(elements, _context=context)
 
         return elements

@@ -39,7 +39,7 @@ class Report:
 
 @dataclass(frozen=True)
 class ExpectedSection:
-    identifier: str
+    section_type: str
     character_count: int
 
 

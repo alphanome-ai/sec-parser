@@ -32,8 +32,8 @@ from sec_parser.processing_steps.table_classifier import TableClassifier
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
-from sec_parser.processing_steps.top_level_section_manager import (
-    TopLevelSectionTitleManager,
+from sec_parser.processing_steps.top_level_section_manager_for_10q import (
+    TopLevelSectionManagerFor10Q,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
@@ -162,7 +162,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
             ),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
             EmptyElementClassifier(types_to_process={NotYetClassifiedElement}),
-            TopLevelSectionTitleManager(types_to_process={NotYetClassifiedElement}),
+            TopLevelSectionManagerFor10Q(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),

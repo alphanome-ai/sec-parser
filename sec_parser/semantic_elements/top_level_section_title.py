@@ -10,6 +10,9 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
+    from sec_parser.semantic_elements.top_level_section_title_types import (
+        TopLevelSectionType,
+    )
 
 
 class TopLevelSectionTitle(AbstractLevelElement):
@@ -27,7 +30,7 @@ class TopLevelSectionTitle(AbstractLevelElement):
         processing_log: ProcessingLog | None = None,
         log_origin: LogItemOrigin | None = None,
         level: int | None = None,
-        identifier: str | None = None,
+        section_type: TopLevelSectionType | None = None,
     ) -> None:
         super().__init__(
             html_tag,
@@ -35,7 +38,10 @@ class TopLevelSectionTitle(AbstractLevelElement):
             level=level,
             log_origin=None,
         )
-        self.identifier = identifier
+        if section_type is None:
+            msg = "section_type cannot be None"
+            raise ValueError(msg)
+        self.section_type = section_type
         self.log_init(log_origin)
 
     @classmethod
@@ -45,12 +51,12 @@ class TopLevelSectionTitle(AbstractLevelElement):
         log_origin: LogItemOrigin,
         *,
         level: int | None = None,
-        identifier: str | None = None,
+        section_type: TopLevelSectionType | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
             level=level,
-            identifier=identifier,
+            section_type=section_type,
             processing_log=source.processing_log,
             log_origin=log_origin,
         )
@@ -58,5 +64,5 @@ class TopLevelSectionTitle(AbstractLevelElement):
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
         return {
             **super().to_dict(include_html_tag),
-            "identifier": self.identifier,
+            "section_type": self.section_type.identifier,
         }
