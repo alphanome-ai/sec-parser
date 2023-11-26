@@ -23,7 +23,6 @@ from sec_parser.semantic_elements.title_element import TitleElement
 from tests.unit._utils import assert_elements
 
 
-@pytest.mark.xfail(reason="TODO: https://github.com/alphanome-ai/sec-parser/issues/50")
 @pytest.mark.parametrize(
     ("name", "html_str", "expected_elements"),
     values := [
@@ -31,7 +30,6 @@ from tests.unit._utils import assert_elements
             "simple",
             """
 <p>hello</p>
-
 <p></p>
                 """,
             [
