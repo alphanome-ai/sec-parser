@@ -38,7 +38,7 @@ accession_numbers:
   - 0000060667-23-000139 # 10-Q LOW Lowe's Companies, Inc.
 # - 0001141391-23-000131 # 10-Q MA Mastercard Incorporated
 # - 0001493152-23-027174 # 10-Q MARA Marathon Digital Holdings, Inc.
-  - 0000063908-23-000076 # 10-Q MCD McDonald's Corporation
+#  - 0000063908-23-000076 # 10-Q MCD McDonald's Corporation
   - 0001613103-23-000128 # 10-Q MDT Medtronic plc
   - 0001326801-23-000093 # 10-Q META Meta Platforms, Inc.
   - 0000066740-23-000058 # 10-Q MMM 3M Company
