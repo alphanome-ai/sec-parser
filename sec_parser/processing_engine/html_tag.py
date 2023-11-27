@@ -21,6 +21,7 @@ from sec_parser.utils.bs4_.count_text_matches_in_descendants import (
 from sec_parser.utils.bs4_.has_tag_children import has_tag_children
 from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
+from sec_parser.utils.bs4_.table_check_data_cell import check_table_contains_text_page
 from sec_parser.utils.bs4_.table_to_markdown import TableToMarkdown
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 from sec_parser.utils.bs4_.without_tags import without_tags
@@ -292,6 +293,9 @@ class HtmlTag:
         if self._approx_table_metrics is None:
             self._approx_table_metrics = get_approx_table_metrics(self._bs4)
         return self._approx_table_metrics
+
+    def is_table_of_content(self) -> bool:
+        return check_table_contains_text_page(self._bs4)
 
     def table_to_markdown(self) -> str:
         if self._markdown_table is None:
