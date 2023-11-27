@@ -169,9 +169,9 @@ class Edgar10QParser(AbstractSemanticElementParser):
             ),
             ImageClassifier(types_to_process={NotYetClassifiedElement}),
             EmptyElementClassifier(types_to_process={NotYetClassifiedElement}),
-            TopLevelSectionManagerFor10Q(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TableOfContentsClassifier(types_to_process={TableElement}),
+            TopLevelSectionManagerFor10Q(types_to_process={NotYetClassifiedElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),
             SupplementaryTextClassifier(
