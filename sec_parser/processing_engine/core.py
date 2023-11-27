@@ -29,6 +29,9 @@ from sec_parser.processing_steps.supplementary_text_classifier import (
     SupplementaryTextClassifier,
 )
 from sec_parser.processing_steps.table_classifier import TableClassifier
+from sec_parser.processing_steps.table_of_contents_classifier import (
+    TableOfContentsClassifier,
+)
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
@@ -43,6 +46,7 @@ from sec_parser.semantic_elements.semantic_elements import (
     NotYetClassifiedElement,
     TextElement,
 )
+from sec_parser.semantic_elements.table_element.table_element import TableElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
@@ -164,6 +168,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
             EmptyElementClassifier(types_to_process={NotYetClassifiedElement}),
             TopLevelSectionManagerFor10Q(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
+            TableOfContentsClassifier(types_to_process={TableElement}),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),
             SupplementaryTextClassifier(
