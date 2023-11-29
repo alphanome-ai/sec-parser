@@ -204,12 +204,10 @@ def render_element(
     is_semantic_tree_node = tree_node is not None and tree_node.children
     is_composite_element = isinstance(element, sp.CompositeSemanticElement)
     is_large_table = True
-    metrics = element.html_tag.get_approx_table_metrics()
-    if metrics:
-        is_large_table = (
-            isinstance(element, sp.TableElement)
-            and metrics.rows >= LARGE_TABLE_ROWS_THRESHOLD
-        )
+    if isinstance(element, sp.TableElement):
+        metrics = element.html_tag.get_approx_table_metrics()
+        if metrics:
+            is_large_table = metrics.rows >= LARGE_TABLE_ROWS_THRESHOLD
 
     if isinstance(element, list):  # skipped elements are put in lists
         skipped_elements_list = element

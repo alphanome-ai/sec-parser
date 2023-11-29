@@ -294,9 +294,8 @@ class HtmlTag:
             self._approx_table_metrics = get_approx_table_metrics(self._bs4)
 
         # Appeasing type checkers
-        if self._approx_table_metrics is None or not isinstance(
-            self._approx_table_metrics,
-            ApproxTableMetrics,
+        if self._approx_table_metrics is not None and not isinstance(
+            self._approx_table_metrics, ApproxTableMetrics,
         ):
             msg = f"Invalid type for _approx_table_metrics: {type(self._approx_table_metrics).__name__}"
             raise ValueError(msg)
