@@ -27,6 +27,6 @@ def get_approx_table_metrics(bs4_tag: bs4.Tag) -> ApproxTableMetrics | None:
             if cell.text.strip()
         )
         return ApproxTableMetrics(rows, numbers)
-    except AttributeError as e:
+    except Exception as e:  # noqa: BLE001
         warnings.warn(f"Failed to get table metrics: {e}", stacklevel=0)
         return None
