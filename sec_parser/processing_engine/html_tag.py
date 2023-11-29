@@ -77,7 +77,7 @@ class HtmlTag:
         self._source_code: str | None = None
         self._pretty_source_code: str | None = None
         self._compatible_source_code: str | None = None
-        self._approx_table_metrics: ApproxTableMetrics | None = None
+        self._approx_table_metrics: ApproxTableMetrics | None | NotSetType = NotSet
         self._contains_tag: dict[tuple[str, bool], bool] = {}
         self._without_tags: dict[tuple[str, ...], HtmlTag] = {}
         self._count_tags: dict[str, int] = {}
@@ -289,9 +289,18 @@ class HtmlTag:
             self._text_styles_metrics = compute_text_styles_metrics(self._bs4)
         return self._text_styles_metrics
 
-    def get_approx_table_metrics(self) -> ApproxTableMetrics:
-        if self._approx_table_metrics is None:
+    def get_approx_table_metrics(self) -> ApproxTableMetrics | None:
+        if self._approx_table_metrics is NotSet:
             self._approx_table_metrics = get_approx_table_metrics(self._bs4)
+
+        # Appeasing type checkers
+        if self._approx_table_metrics is None or not isinstance(
+            self._approx_table_metrics,
+            ApproxTableMetrics,
+        ):
+            msg = f"Invalid type for _approx_table_metrics: {type(self._approx_table_metrics).__name__}"
+            raise ValueError(msg)
+
         return self._approx_table_metrics
 
     def is_table_of_content(self) -> bool:
@@ -338,7 +347,9 @@ class HtmlTag:
         exclude_links: bool | None = None,
     ) -> int:
         return count_text_matches_in_descendants(
-            self._bs4, predicate, exclude_links=exclude_links,
+            self._bs4,
+            predicate,
+            exclude_links=exclude_links,
         )
 
 

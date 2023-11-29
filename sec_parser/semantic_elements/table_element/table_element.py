@@ -19,6 +19,8 @@ class TableElement(AbstractSemanticElement):
         the underlying HtmlTag.
         """
         metrics = self.html_tag.get_approx_table_metrics()
+        if metrics is None:
+            return "Table with {len(self.text)} characters."
         return (
             f"Table with ~{metrics.rows} rows, "
             f"~{metrics.numbers} numbers, and "
@@ -26,9 +28,10 @@ class TableElement(AbstractSemanticElement):
         )
 
     def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+        metrics = self.html_tag.get_approx_table_metrics()
         return {
             **super().to_dict(include_html_tag),
-            "metrics": asdict(self.html_tag.get_approx_table_metrics()),
+            "metrics": asdict(metrics) if metrics is not None else None,
         }
 
     def table_to_markdown(self) -> str:

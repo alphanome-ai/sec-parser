@@ -1,11 +1,13 @@
 import bs4
 
+from sec_parser.exceptions import SecParserValueError
 
-class NoTableFoundError(Exception):
+
+class NoTableFoundError(SecParserValueError):
     pass
 
 
-class MultipleTablesFoundError(Exception):
+class MultipleTablesFoundError(SecParserValueError):
     pass
 
 

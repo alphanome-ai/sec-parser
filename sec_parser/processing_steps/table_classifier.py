@@ -41,6 +41,12 @@ class TableClassifier(AbstractElementwiseProcessingStep):
     ) -> AbstractSemanticElement:
         if element.html_tag.contains_tag("table", include_self=True):
             metrics = element.html_tag.get_approx_table_metrics()
+            if metrics is None:
+                element.processing_log.add_item(
+                    log_origin=self.__class__.__name__,
+                    message=("Skipping: Failed to get table metrics."),
+                )
+                return element
             if metrics.rows > self._row_count_threshold:
                 return TableElement.create_from_element(
                     element,
