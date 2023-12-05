@@ -21,7 +21,7 @@ from tests.utils import load_yaml_filter, traverse_repository_for_reports
 
 AVAILABLE_ACTIONS = ["update", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1.2
-DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "selected_filings.yaml"
+DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "selected-filings.yaml"
 
 
 class VerificationFailedError(ValueError):

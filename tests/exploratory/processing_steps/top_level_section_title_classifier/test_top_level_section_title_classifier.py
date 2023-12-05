@@ -13,7 +13,7 @@ SHOW_SKIPPED = True
 
 
 expected_to_pass_accession_numbers = load_yaml_filter(
-    CURRENT_DIR / "selected_filings.yaml",
+    CURRENT_DIR / "selected-filings.yaml",
 )["accession_numbers"]
 
 
