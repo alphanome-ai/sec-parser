@@ -19,11 +19,17 @@ tasks:
       # Note: also update .codecov.yml when changing the target coverage.
       - poetry run ptw -- -- {{.CLI_ARGS}} -s --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
-  monitor-generalization-tests:
-    desc: "Run generalization tests and rerun them immediately upon file modification."
+  monitor-exploratory-tests:
+    desc: "Run exploratory tests and rerun them immediately upon file modification."
     cmds:
-      # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run ptw -- -- {{.CLI_ARGS}} -s -n auto tests/generalization/
+      # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      - poetry run ptw -- -- {{.CLI_ARGS}} -s -n auto tests/exploratory/
+
+  monitor-accuracy-tests:
+    desc: "Run accuracy tests and rerun them immediately upon file modification."
+    cmds:
+      # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      - poetry run ptw -- -- {{.CLI_ARGS}} -s -n auto tests/accuracy/
 
   launch-docs:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
@@ -45,7 +51,7 @@ tasks:
     cmds:
       - task: ensure-clean-working-tree
       - task: lint
-      - task: generalization-tests
+      - task: exploratory-tests
       - task: update-dependencies
       - task: update-notebook-outputs
       - git add -u
@@ -60,36 +66,43 @@ tasks:
       - task: unit-tests
       - task: lint-without-autofix
       - task: update-notebook-outputs
-      - task: e2e-verify
+      - task: snapshot-verify
 
 ####################################
 ### Additional Development Tools ###
 ####################################
 
-  e2e-verify:
-    desc: Compare the most recent parser output with the saved snapshot of the expected output. Fails if there's a mismatch. Run 'task e2e-verify -- --help' to get help.
+  snapshot-verify:
+    desc: Compare the most recent parser output with the saved snapshot of the expected output. Fails if there's a mismatch. Run 'task snapshot-verify -- --help' to get help.
     silent: true
     cmds:
       - task: clone-sec-parser-test-data
       # Checking if the sec-parser-test-data directory has any changes in the working tree or index. If it does, aborting.
       - cd "{{.ROOT_DIR}}/../sec-parser-test-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-test-data repository. Please commit or stash them before proceeding."; exit 1; fi
-      - poetry run python -m tests.e2e verify {{.CLI_ARGS}}
+      - poetry run python -m tests.snapshot verify {{.CLI_ARGS}}
 
-  e2e-update:
-    desc: Update the expected parser output snapshot with the most recent parser output. Run 'task e2e-update -- --help' to get help.
+  snapshot-update:
+    desc: Update the expected parser output snapshot with the most recent parser output. Run 'task snapshot-update -- --help' to get help.
     silent: true
     cmds:
       - task: clone-sec-parser-test-data
       - task: ensure-clean-working-tree
-      - poetry run python -m tests.e2e update {{.CLI_ARGS}}
+      - poetry run python -m tests.snapshot update {{.CLI_ARGS}}
       - "echo -e \"Please review the updated snapshot in sec-parser-test-data.\nIf correct, commit it to the repository.\nInclude the sec-parser hash in the commit message: $(git rev-parse HEAD)\""
 
-  generalization-tests:
-    desc: Execute generalization tests to assess parser across a large number of reports.
+  exploratory-tests:
+    desc: Execute exploratory tests to check assumptions, find edge cases, and explore the behavior of the parser.
     cmds:
       - task: clone-sec-parser-test-data    
-      # Note: running generalization tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run pytest -s -n auto tests/generalization/
+      # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      - poetry run pytest -s -n auto tests/exploratory/
+
+  accuracy-tests:
+    desc: Execute accuracy tests to assess parser against a set of reports with known expected output.
+    cmds:
+      - task: clone-sec-parser-test-data    
+      # Note: running accuracy tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      - poetry run pytest -s -n auto tests/accuracy/
 
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###
@@ -176,6 +189,10 @@ tasks:
     deps:
       - update-notebook-outputs
 
-  g: # You can just run `task g` instead of `task generalization-tests`.
+  e: # You can just run `task e` instead of `task exploratory-tests`.
     deps:
-      - generalization-tests
+      - exploratory-tests
+
+  a: # You can just run `task a` instead of `task accuracy-tests`.
+    deps:
+      - accuracy-tests

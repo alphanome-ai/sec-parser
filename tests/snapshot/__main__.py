@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import sys
+
 import click
 import rich.traceback
 
-from tests._sec_parser_validation_data import DEFAULT_VALIDATION_DATA_DIR
-from tests.e2e.manage_snapshots import VerificationFailedError, manage_snapshots
+from tests.snapshot.manage_snapshots import VerificationFailedError, manage_snapshots
+from tests.utils import DEFAULT_VALIDATION_DATA_DIR
 
 rich.traceback.install()
 
@@ -86,7 +88,7 @@ def verify(
         )
     except VerificationFailedError as e:
         print(e)
-        exit(1)
+        sys.exit(1)
 
 
 cli.add_command(update)

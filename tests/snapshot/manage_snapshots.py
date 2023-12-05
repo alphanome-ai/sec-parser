@@ -15,12 +15,13 @@ from rich.panel import Panel
 from rich.table import Table
 
 from sec_parser import Edgar10QParser
-from tests._sec_parser_validation_data import Report, traverse_repository_for_reports
-from tests.e2e._overwrite_file import OverwriteResult, overwrite_with_change_track
+from tests.snapshot._overwrite_file import OverwriteResult, overwrite_with_change_track
+from tests.types import Report
+from tests.utils import load_yaml_filter, traverse_repository_for_reports
 
 AVAILABLE_ACTIONS = ["update", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1.2
-DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "e2e_test_data.yaml"
+DEFAULT_YAML_FILTER_PATH = Path(__file__).parent / "selected_filings.yaml"
 
 
 class VerificationFailedError(ValueError):
@@ -246,7 +247,7 @@ def manage_snapshots(
 
 def diff_lines(expected, actual, identifier, verbose):
     identifier = identifier.ljust(25)
-    word1, word2 = "\[expected]:", "\[actual]:"
+    word1, word2 = r"\[expected]:", r"\[actual]:"
     d = difflib.Differ()
     diff = list(d.compare(expected.splitlines(), actual.splitlines()))
 
@@ -273,8 +274,3 @@ def diff_lines(expected, actual, identifier, verbose):
             unexpected_count += 1
             line_number_actual += 1
     return missing_count, unexpected_count
-
-
-def load_yaml_filter(file_path: Path) -> dict:
-    with file_path.open("r") as stream:
-        return yaml.safe_load(stream)

@@ -78,7 +78,7 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 - Flexible Filtering: Easily filter SEC documents by sections and types, giving you precisely the data you need.
 
 #### Analytics and Data Science
-- Academic Research: Facilitate large-scale studies involving public financial disclosures, sentiment analysis, or corporate governance generalization.
+- Academic Research: Facilitate large-scale studies involving public financial disclosures, sentiment analysis, or corporate governance exploratory.
 - Analytics Ready: Integrate parsed data seamlessly into popular analytics tools for further analysis and visualization.
 
 #### AI and Machine Learning

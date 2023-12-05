@@ -1,46 +1,19 @@
 from __future__ import annotations
 
-from collections.abc import Generator
-from dataclasses import dataclass
+import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+import yaml
+
+from tests.types import Report
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 DEFAULT_VALIDATION_DATA_DIR = (
     Path(__file__).resolve().parent.parent.parent / "sec-parser-test-data"
 )
-
-
-@dataclass(frozen=True)
-class Report:
-    document_type: str
-    company_name: str
-    accession_number: str
-    report_full_path: Path
-
-    @property
-    def expected_elements_json_path(self) -> Path:
-        return self.report_full_path / "expected-semantic-elements-list.json"
-
-    @property
-    def actual_elements_json_path(self) -> Path:
-        return self.report_full_path / "actual-semantic-elements-list.json"
-
-    @property
-    def primary_doc_html_path(self) -> Path:
-        return self.report_full_path / "primary-document.html"
-
-    @property
-    def expected_top_level_sections_json_path(self) -> Path:
-        return self.report_full_path / "expected-top-level-sections.json"
-
-    @property
-    def identifier(self) -> str:
-        return f"{self.document_type}_{self.company_name}_{self.accession_number}"
-
-
-@dataclass(frozen=True)
-class ExpectedSection:
-    section_type: str
-    character_count: int
 
 
 def filter_valid_directories(starting_directory: Path) -> Generator[Path, None, None]:
@@ -67,3 +40,13 @@ def traverse_repository_for_reports(
                     accession_number=individual_report_directory.name,
                     report_full_path=individual_report_directory,
                 )
+
+
+def load_yaml_filter(file_path: Path) -> dict:
+    with file_path.open("r") as stream:
+        return yaml.safe_load(stream)
+
+
+all_reports = None
+if "pytest" in sys.modules:
+    all_reports = list(traverse_repository_for_reports())

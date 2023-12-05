@@ -3,28 +3,29 @@ from pathlib import Path
 from typing import Callable
 
 import pytest
-import yaml
 
 from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
-from tests._sec_parser_validation_data import Report, traverse_repository_for_reports
-from tests.generalization.types import ParsedDocumentComponents
+from tests.types import ParsedDocumentComponents, Report
+from tests.utils import all_reports, load_yaml_filter
 
 CURRENT_DIR = Path(__file__).parent.resolve()
+SHOW_SKIPPED = True
 
 
-def _load_yaml_filter(file_path: Path) -> dict:
-    with file_path.open("r") as stream:
-        return yaml.safe_load(stream)
-
-
-all_reports = list(traverse_repository_for_reports())
-all_accession_numberentifiers = [report.identifier for report in all_reports]
-expected_to_pass_accession_numbers = _load_yaml_filter(
-    CURRENT_DIR / "test_top_level_section_title_classifier.yaml",
+expected_to_pass_accession_numbers = load_yaml_filter(
+    CURRENT_DIR / "selected_filings.yaml",
 )["accession_numbers"]
 
 
-@pytest.mark.parametrize("report", all_reports, ids=all_accession_numberentifiers)
+@pytest.mark.parametrize(
+    "report",
+    selected_filings := [
+        k
+        for k in all_reports
+        if SHOW_SKIPPED or k.accession_number in expected_to_pass_accession_numbers
+    ],
+    ids=[k.identifier for k in selected_filings],
+)
 def test_top_level_section_title_classifier(
     report: Report,
     parse: Callable[[Report], ParsedDocumentComponents],

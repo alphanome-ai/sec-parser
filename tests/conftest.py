@@ -7,11 +7,10 @@ import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag_parser import HtmlTagParser
-from tests._sec_parser_validation_data import ExpectedSection
-from tests.generalization.types import ParsedDocumentComponents
+from tests.types import ExpectedSection, ParsedDocumentComponents
 
 if TYPE_CHECKING:  # pragma: no cover
-    from tests._sec_parser_validation_data import Report
+    from tests.types import Report
 
 
 @pytest.fixture(scope="session")
