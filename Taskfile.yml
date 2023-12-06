@@ -54,8 +54,6 @@ tasks:
       - task: exploratory-tests
       - task: update-dependencies
       - task: update-notebook-outputs
-      - git add -u
-      - git commit --amend --no-edit
       - task: ensure-clean-working-tree
       - task: ci-checks
       - task: ensure-clean-working-tree
