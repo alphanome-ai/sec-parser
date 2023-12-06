@@ -100,7 +100,7 @@ Exploratory Tests add an extra layer of quality assurance beyond our existing un
 
 For a more focused test, you can run a customized test command. Locate the exploratory-tests command in the `Taskfile.yml`, copy it, and modify it to meet your needs. You could replace `tests/exploratory/` with a specific test, like `tests/exploratory/processing_steps/test_top_level_section_title_classifier.py`.
 
-> **Note**
+> [!NOTE]
 We offer a script that allows you to expand the test database locally. Simply provide the stock tickers you're interested in, and the script will do the rest.
 
 ## Other helpful tips
