@@ -133,7 +133,7 @@ dl = Downloader("MyCompanyName", "email@example.com")
 html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 ```
 
-> **Note**
+> [!NOTE]
 The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
 
 Now, we can parse the filing HTML into a list of semantic elements:
@@ -220,7 +220,7 @@ Here are the suggested ways to import modules from `sec-parser`:
 ### Submodule Import (direct)
 - **`from sec_parser.semantic_tree import SomeClass`**: This imports a specific class `SomeClass` from the `semantic_tree` submodule.
 
-> **Note**
+> [!NOTE]
 The main package `sec_parser` contains only the most common functionalities. For specialized tasks, please use submodule or submodule-level imports.
 
 # Contributing
