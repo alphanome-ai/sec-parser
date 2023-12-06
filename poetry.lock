@@ -1632,13 +1632,13 @@ jupyter-server = ">=1.1.2"
 
 [[package]]
 name = "jupyter-server"
-version = "2.11.2"
+version = "2.12.0"
 description = "The backend—i.e. core services, APIs, and REST endpoints—to Jupyter web applications."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "jupyter_server-2.11.2-py3-none-any.whl", hash = "sha256:0c548151b54bcb516ca466ec628f7f021545be137d01b5467877e87f6fff4374"},
-    {file = "jupyter_server-2.11.2.tar.gz", hash = "sha256:0c99f9367b0f24141e527544522430176613f9249849be80504c6d2b955004bb"},
+    {file = "jupyter_server-2.12.0-py3-none-any.whl", hash = "sha256:3482912efa4387bb1edc23ba60531796aff3b6d6a6e93a5810f5719e2bdb48b7"},
+    {file = "jupyter_server-2.12.0.tar.gz", hash = "sha256:9fa74ed3bb931cf33f42b3d9046e2788328ec9e6dcc59d48aa3e0910a491e3e4"},
 ]
 
 [package.dependencies]
