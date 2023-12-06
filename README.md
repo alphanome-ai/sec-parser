@@ -215,7 +215,7 @@ Here are the suggested ways to import modules from `sec-parser`:
 - **`from sec_parser import SomeClass`**: This allows you to directly use `SomeClass` without any prefix.
 
 ### Submodule Import (prefix)
-- **`import sec_parser.semantic_tree**`**: This imports the `semantic_tree` submodule, and you can access its classes and functions using `semantic_tree.` prefix.
+- **`import sec_parser.semantic_tree`**: This imports the `semantic_tree` submodule, and you can access its classes and functions using `semantic_tree.` prefix.
 
 ### Submodule Import (direct)
 - **`from sec_parser.semantic_tree import SomeClass`**: This imports a specific class `SomeClass` from the `semantic_tree` submodule.
