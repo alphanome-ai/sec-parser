@@ -6,6 +6,9 @@ from sec_parser.exceptions import SecParserValueError
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
+from sec_parser.semantic_elements.mixins.dict_text_content_mixin import (
+    DictTextContentMixin,
+)
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
@@ -77,11 +80,21 @@ class EmptyElement(IrrelevantElement):
     """
 
 
-class TextElement(AbstractSemanticElement):
+class IntroductorySectionElement(IrrelevantElement):
+    """
+    The IntroductorySectionElement class represents elements that are part of the
+    introductory sections of a document, such as title page, disclaimers or other
+    preliminary information that precedes the main content of the document.
+    This class is a subclass of the IrrelevantElement class, as these introductory
+    sections are typically not part of the core financial data to be extracted.
+    """
+
+
+class TextElement(DictTextContentMixin, AbstractSemanticElement):
     """The TextElement class represents a standard text paragraph within a document."""
 
 
-class SupplementaryText(AbstractSemanticElement):
+class SupplementaryText(DictTextContentMixin, AbstractSemanticElement):
     """
     The SupplementaryText class captures various types of supplementary text
     within a document, such as unit qualifiers, additional notes, and disclaimers.

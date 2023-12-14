@@ -15,7 +15,9 @@ def test_to_dict():
     section_type = IDENTIFIER_TO_10Q_SECTION[identifier]
 
     # Act
-    actual = TopLevelSectionTitle(HtmlTag(tag), section_type=section_type).to_dict()
+    actual = TopLevelSectionTitle(HtmlTag(tag), section_type=section_type).to_dict(
+        include_previews=True,
+    )
 
     # Assert
     assert actual["section_type"] == identifier

@@ -170,7 +170,7 @@ def manage_snapshots(
         else:
             with expected_json_file.open("r") as f:
                 expected_contents = f.read()
-            dict_items = [e.to_dict() for e in elements]
+            dict_items = [e.to_dict(include_previews=True) for e in elements]
             actual_contents = json.dumps(
                 dict_items,
                 indent=4,

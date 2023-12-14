@@ -29,7 +29,7 @@ def test_to_dict():
     tag.string = "A" * 60
 
     # Act
-    actual = DummyElement(HtmlTag(tag)).to_dict()
+    actual = DummyElement(HtmlTag(tag)).to_dict(include_previews=True)
 
     # Assert
     assert actual["cls_name"] == "DummyElement"

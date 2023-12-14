@@ -66,7 +66,7 @@ def test_to_dict():
     table_element = TableElement(mock_semantic_element)
 
     # Act
-    actual = table_element.to_dict()
+    actual = table_element.to_dict(include_previews=True)
 
     # Assert
     assert actual["metrics"] == asdict(ApproxTableMetrics(5, 6))

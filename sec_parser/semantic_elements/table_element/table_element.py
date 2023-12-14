@@ -27,12 +27,20 @@ class TableElement(AbstractSemanticElement):
             f"{len(self.text)} characters."
         )
 
-    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
-        metrics = self.html_tag.get_approx_table_metrics()
-        return {
-            **super().to_dict(include_html_tag),
-            "metrics": asdict(metrics) if metrics is not None else None,
-        }
+    def to_dict(
+        self,
+        *,
+        include_previews: bool = False,
+        include_contents: bool = False,
+    ) -> dict[str, Any]:
+        result_dict = super().to_dict(
+            include_previews=include_previews,
+            include_contents=include_contents,
+        )
+        if include_previews is not False:
+            metrics = self.html_tag.get_approx_table_metrics()
+            result_dict["metrics"] = asdict(metrics) if metrics is not None else None
+        return result_dict
 
     def table_to_markdown(self) -> str:
         return self.html_tag.table_to_markdown()

@@ -19,7 +19,9 @@ if TYPE_CHECKING:  # pragma: no cover
     )
 
 
-class SupplementaryTextClassifier(AbstractElementwiseProcessingStep):
+class SupplementaryTextClassifier(
+    AbstractElementwiseProcessingStep,
+):
     """
     SupplementaryTextClassifier class for converting elements into
     SupplementaryText instances.

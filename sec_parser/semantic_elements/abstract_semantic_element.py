@@ -42,7 +42,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         if log_origin:
             self.processing_log.add_item(
                 log_origin=log_origin,
-                message=self.to_dict(include_html_tag=False),
+                message=self.to_dict(include_previews=False),
             )
 
     @property
@@ -62,9 +62,16 @@ class AbstractSemanticElement(ABC):  # noqa: B024
             log_origin=log_origin,
         )
 
-    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+    def to_dict(
+        self,
+        *,
+        include_previews: bool = False,
+        include_contents: bool = False,
+    ) -> dict[str, Any]:
+        _ = include_contents
+
         result = {"cls_name": self.__class__.__name__}
-        if include_html_tag is not False:
+        if include_previews is not False:
             result.update(self._html_tag.to_dict())
         return result
 
@@ -147,9 +154,17 @@ class AbstractLevelElement(AbstractSemanticElement):
             log_origin=log_origin,
         )
 
-    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+    def to_dict(
+        self,
+        *,
+        include_previews: bool = False,
+        include_contents: bool = False,
+    ) -> dict[str, Any]:
         return {
-            **super().to_dict(include_html_tag),
+            **super().to_dict(
+                include_previews=include_previews,
+                include_contents=include_contents,
+            ),
             "level": self.level,
         }
 

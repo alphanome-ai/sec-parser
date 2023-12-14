@@ -4,10 +4,7 @@ import streamlit as st
 import streamlit_antd_components as sac
 
 import dev_utils.dashboard_app.streamlit_utils as st_utils
-from dev_utils.core.sec_edgar_reports_getter import (
-    SecEdgarReportsGetter,
-    get_filing_metadatas,
-)
+from dev_utils.core.sec_edgar_reports_getter import SecEdgarReportsGetter
 from dev_utils.dashboard_app.constants import example_queries_items
 from dev_utils.dashboard_app.core.download_metadatas import global_get_report_metadatas
 from dev_utils.dashboard_app.python_utils import smart_join

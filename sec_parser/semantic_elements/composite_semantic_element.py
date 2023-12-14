@@ -85,9 +85,17 @@ class CompositeSemanticElement(AbstractSemanticElement):
             inner_elements=tuple(inner_elements) if inner_elements else None,
         )
 
-    def to_dict(self, include_html_tag: bool | None = None) -> dict[str, Any]:
+    def to_dict(
+        self,
+        *,
+        include_previews: bool = False,
+        include_contents: bool = False,
+    ) -> dict[str, Any]:
         return {
-            **super().to_dict(include_html_tag),
+            **super().to_dict(
+                include_previews=include_previews,
+                include_contents=include_contents,
+            ),
             "inner_elements": len(self.inner_elements),
         }
 

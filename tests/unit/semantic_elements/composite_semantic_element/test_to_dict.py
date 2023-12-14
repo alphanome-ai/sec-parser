@@ -21,7 +21,7 @@ def test_to_dict():
             NotYetClassifiedElement(HtmlTag(bs4.Tag(name="p"))),
             NotYetClassifiedElement(HtmlTag(bs4.Tag(name="p"))),
         ),
-    ).to_dict()
+    ).to_dict(include_previews=True)
 
     # Assert
     assert actual["inner_elements"] == 2
