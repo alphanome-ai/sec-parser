@@ -51,9 +51,12 @@ tasks:
     cmds:
       - task: ensure-clean-working-tree
       - task: lint
+      - task: ensure-clean-working-tree
       - task: exploratory-tests
       - task: update-dependencies
+      - task: ensure-clean-working-tree
       - task: update-notebook-outputs
+      - task: ensure-clean-working-tree
       - task: ci-checks
       - task: ensure-clean-working-tree
 
