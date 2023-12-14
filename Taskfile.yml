@@ -167,7 +167,11 @@ tasks:
     deps:
       - ci-checks
 
-  ii: # You can just run `task ii` instead of `task check-and-push`.
+  ii: # You can just run `task ii` instead of `task pre-push-preparation`.
+    deps:
+      - pre-push-preparation
+
+  iii: # You can just run `task iii` instead of `task check-and-push`.
     deps:
       - check-and-push
 
