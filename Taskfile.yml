@@ -128,9 +128,8 @@ tasks:
     cmds:
       - poetry run cz bump {{.CLI_ARGS}}
 
-  version-bump-and-push: # Increment the version number and push the latest tag to remote.
+  push-version: # Push the latest tag to remote.
     cmds:
-      - task: version-bump
       - git push origin $(git describe --tags `git rev-list --tags --max-count=1`)
 
   update-dependencies:
@@ -198,6 +197,6 @@ tasks:
     deps:
       - version-bump
 
-  vv: # You can just run `task vv` instead of `task version-bump-and-push`.
+  vv: # You can just run `task vv` instead of `task push-version`.
     deps:
-      - version-bump-and-push
+      - push-version
