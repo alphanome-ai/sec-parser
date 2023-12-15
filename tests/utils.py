@@ -25,7 +25,7 @@ def filter_valid_directories(starting_directory: Path) -> Generator[Path, None, 
         yield current_directory
 
 
-def traverse_repository_for_reports(
+def traverse_repository_for_filings(
     root_directory: Path | None = None,
 ) -> Generator[Report, None, None]:
     root_directory = Path(root_directory or DEFAULT_VALIDATION_DATA_DIR)
@@ -49,4 +49,4 @@ def load_yaml_filter(file_path: Path) -> dict:
 
 all_reports = None
 if "pytest" in sys.modules:
-    all_reports = list(traverse_repository_for_reports())
+    all_reports = list(traverse_repository_for_filings())

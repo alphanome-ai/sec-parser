@@ -80,7 +80,7 @@ def test_structure_and_text(
         if actual_element not in expected_elements_json
     ]
 
-    # STEP: Report the results
+    # STEP: Report and save the results
     total_expected = len(expected_elements_json)
     total_missing = len(elements_not_found_in_actual)
     total_unexpected = len(elements_not_expected_but_present)

@@ -5,9 +5,8 @@ import json
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Literal
+from typing import TYPE_CHECKING, Literal
 
-import yaml
 from millify import millify
 from rich import print
 from rich.console import Console
@@ -16,8 +15,10 @@ from rich.table import Table
 
 from sec_parser import Edgar10QParser
 from tests.snapshot._overwrite_file import OverwriteResult, overwrite_with_change_track
-from tests.types import Report
-from tests.utils import load_yaml_filter, traverse_repository_for_reports
+from tests.utils import load_yaml_filter, traverse_repository_for_filings
+
+if TYPE_CHECKING:
+    from tests.types import Report
 
 AVAILABLE_ACTIONS = ["update", "verify"]
 ALLOWED_MICROSECONDS_PER_CHAR = 1.2
@@ -136,7 +137,7 @@ def manage_snapshots(
     generation_results: list[OverwriteResult] = []
     items_not_matching_filters_count = 0
     processed_documents = 0
-    for report_detail in traverse_repository_for_reports(Path(data_dir)):
+    for report_detail in traverse_repository_for_filings(Path(data_dir)):
         if (
             (report_detail.document_type not in document_types)
             and (report_detail.company_name not in company_names)

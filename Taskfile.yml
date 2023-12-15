@@ -19,18 +19,6 @@ tasks:
       # Note: also update .codecov.yml when changing the target coverage.
       - poetry run ptw -- -- {{.CLI_ARGS}} -rx --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
-  monitor-exploratory-tests:
-    desc: "Run exploratory tests and rerun them immediately upon file modification."
-    cmds:
-      # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run ptw -- -- {{.CLI_ARGS}} -rx -n auto tests/exploratory/
-
-  monitor-accuracy-tests:
-    desc: "Run accuracy tests and rerun them immediately upon file modification."
-    cmds:
-      # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run ptw -- -- {{.CLI_ARGS}} -rx -n auto tests/accuracy/
-
   launch-docs:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
     cmds:
@@ -94,15 +82,15 @@ tasks:
     desc: Execute exploratory tests to check assumptions, find edge cases, and explore the behavior of the parser.
     cmds:
       - task: clone-sec-parser-test-data    
-      # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
+      # Note: '-n auto' flag allows to run accuracy tests concurrently to speed up the testing process.
       - poetry run pytest -rx -n auto tests/exploratory/
 
   accuracy-tests:
-    desc: Execute accuracy tests to assess parser against a set of reports with known expected output.
+    desc: Execute accuracy tests to assess parser against a set of filings with known expected output.
     cmds:
-      - task: clone-sec-parser-test-data    
-      # Note: running accuracy tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run pytest --with-saved-output --with-verbose-output -rx -n auto tests/accuracy/
+      - task: clone-sec-parser-test-data
+      - poetry run pytest --with-saved-output --with-verbose-output -rx tests/accuracy/
+      - poetry run python -m tests.accuracy.structure_and_text.summarize_results
 
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###
