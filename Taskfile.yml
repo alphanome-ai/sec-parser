@@ -209,3 +209,14 @@ tasks:
   vv: # You can just run `task vv` instead of `task push-version`.
     deps:
       - push-version
+
+  full: # Full CI/CD pipeline.
+    cmds:
+      - task: check-and-push
+      - task: version-bump
+      - task: push-version
+
+  default:
+    silent: true
+    cmds:
+      - task --list
