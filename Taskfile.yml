@@ -17,19 +17,19 @@ tasks:
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run ptw -- -- {{.CLI_ARGS}} -rA --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
+      - poetry run ptw -- -- {{.CLI_ARGS}} -rx --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
   monitor-exploratory-tests:
     desc: "Run exploratory tests and rerun them immediately upon file modification."
     cmds:
       # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run ptw -- -- {{.CLI_ARGS}} -rA -n auto tests/exploratory/
+      - poetry run ptw -- -- {{.CLI_ARGS}} -rx -n auto tests/exploratory/
 
   monitor-accuracy-tests:
     desc: "Run accuracy tests and rerun them immediately upon file modification."
     cmds:
       # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run ptw -- -- {{.CLI_ARGS}} -rA -n auto tests/accuracy/
+      - poetry run ptw -- -- {{.CLI_ARGS}} -rx -n auto tests/accuracy/
 
   launch-docs:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
@@ -95,14 +95,14 @@ tasks:
     cmds:
       - task: clone-sec-parser-test-data    
       # Note: running exploratory tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run pytest -rA -n auto tests/exploratory/
+      - poetry run pytest -rx -n auto tests/exploratory/
 
   accuracy-tests:
     desc: Execute accuracy tests to assess parser against a set of reports with known expected output.
     cmds:
       - task: clone-sec-parser-test-data    
       # Note: running accuracy tests simultaneously to speed up the testing process. Remove the '-n auto' flag to run them sequentially.
-      - poetry run pytest --with-saved-output --with-verbose-output -rA -n auto tests/accuracy/
+      - poetry run pytest --with-saved-output --with-verbose-output -rx -n auto tests/accuracy/
 
 ################################################################
 ### Hidden: Primarily Used within Other Tasks or Used Rarely ###
@@ -112,7 +112,7 @@ tasks:
     cmds:
       # Recommended coverage viewer in VSCode: https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters
       # Note: also update .codecov.yml when changing the target coverage.
-      - poetry run pytest -rA --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 {{.CLI_ARGS}} tests/unit/
+      - poetry run pytest -rx --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 {{.CLI_ARGS}} tests/unit/
 
   lint: # Perform linting on the code and automatically fix issues.
     cmds:
