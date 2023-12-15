@@ -27,6 +27,10 @@ class Report:
         return self.report_full_path / "actual-semantic-elements-list.json"
 
     @property
+    def actual_elements_json_diff_path(self) -> Path:
+        return self.report_full_path / "actual-semantic-elements-list_diff.txt"
+
+    @property
     def primary_doc_html_path(self) -> Path:
         return self.report_full_path / "primary-document.html"
 
@@ -37,6 +41,14 @@ class Report:
     @property
     def expected_structure_and_text(self) -> Path:
         return self.report_full_path / "expected-structure-and-text.json"
+
+    @property
+    def actual_structure_and_text(self) -> Path:
+        return self.report_full_path / "actual-structure-and-text.json"
+
+    @property
+    def actual_structure_and_text_summary(self) -> Path:
+        return self.report_full_path / "actual-structure-and-text_summary.json"
 
     @property
     def expected_top_level_sections_json_path(self) -> Path:

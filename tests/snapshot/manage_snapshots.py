@@ -174,16 +174,20 @@ def manage_snapshots(
             actual_contents = json.dumps(
                 dict_items,
                 indent=4,
+                ensure_ascii=False,
+                sort_keys=True,
             )
             with actual_json_file.open("w") as f:
                 f.write(actual_contents)
 
-            missing_count, unexpected_count = diff_lines(
+            missing_count, unexpected_count, diff_output = diff_lines(
                 expected_contents,
                 actual_contents,
                 report_detail.identifier,
                 verbose=verbose,
             )
+            with report_detail.actual_elements_json_diff_path.open("w") as f:
+                f.write(diff_output)
 
             character_count = len(html_content)
             allowed_execution_time_in_seconds = (
@@ -255,22 +259,23 @@ def diff_lines(expected, actual, identifier, verbose):
     line_number_actual = 0
     missing_count = 0
     unexpected_count = 0
+    diff_output = ""
     for line in diff:
         if line.startswith("  "):
             line_number_expected += 1
             line_number_actual += 1
         elif line.startswith("- "):
+            missing_line = f'"{identifier}" Line {line_number_expected + 1} {word1.ljust(len(word2))} {line[2:].strip()}'
+            diff_output += missing_line + "\n"
             if verbose:
-                print(
-                    f'"{identifier}" Line {line_number_expected + 1} {word1.ljust(len(word2))} {line[2:].strip()}',
-                )
+                print(missing_line)
             missing_count += 1
             line_number_expected += 1
         elif line.startswith("+ "):
+            unexpected_line = f'"{identifier}" Line {line_number_actual + 1} {word2.ljust(len(word1))} {line[2:].strip()}'
+            diff_output += unexpected_line + "\n"
             if verbose:
-                print(
-                    f'"{identifier}" Line {line_number_actual + 1} {word2.ljust(len(word1))} {line[2:].strip()}',
-                )
+                print(unexpected_line)
             unexpected_count += 1
             line_number_actual += 1
-    return missing_count, unexpected_count
+    return missing_count, unexpected_count, diff_output.strip()

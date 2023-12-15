@@ -13,6 +13,21 @@ if TYPE_CHECKING:  # pragma: no cover
     from tests.types import Report
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        "--with-saved-output",
+        action="store_true",
+        default=False,
+        help="Save the output of the tests to files.",
+    )
+    parser.addoption(
+        "--with-verbose-output",
+        action="store_true",
+        default=False,
+        help="Print the output of the tests to the console.",
+    )
+
+
 @pytest.fixture(scope="session")
 def parse():
     results = {}
