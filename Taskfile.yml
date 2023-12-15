@@ -47,6 +47,9 @@ tasks:
       - task: ensure-clean-working-tree
       - task: ci-checks
       - task: ensure-clean-working-tree
+      - task: ensure-clean-working-tree-in-test-data
+      - task: accuracy-tests
+      - task: ensure-clean-working-tree-in-test-data
 
   ci-checks:
     desc: Execute all checks required for Continuous Integration. Useful for troubleshooting issues in the CI/CD pipeline.
@@ -66,7 +69,7 @@ tasks:
     cmds:
       - task: clone-sec-parser-test-data
       # Checking if the sec-parser-test-data directory has any changes in the working tree or index. If it does, aborting.
-      - cd "{{.ROOT_DIR}}/../sec-parser-test-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-test-data repository. Please commit or stash them before proceeding."; exit 1; fi
+      - task: ensure-clean-working-tree-in-test-data
       - poetry run python -m tests.snapshot verify {{.CLI_ARGS}}
 
   snapshot-update:
@@ -123,6 +126,12 @@ tasks:
     internal: true
     cmds:
       - if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index. Please commit or stash them before proceeding."; exit 1; fi
+
+  ensure-clean-working-tree-in-test-data: # Ensure no changes in the working tree or index, abort if any.
+    silent: true
+    internal: true
+    cmds:
+      - cd "{{.ROOT_DIR}}/../sec-parser-test-data" && if git diff --exit-code > /dev/null 2>&1 && git diff --cached --exit-code > /dev/null 2>&1; then :; else echo "Changes detected in the working tree or index of the sec-parser-test-data repository. Please commit or stash them before proceeding."; exit 1; fi
 
   version-bump: # Increment the version number.
     cmds:

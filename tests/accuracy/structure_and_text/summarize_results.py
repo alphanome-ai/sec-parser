@@ -9,12 +9,15 @@ import yaml
 from rich import print
 from rich.panel import Panel
 
-from tests.utils import traverse_repository_for_filings
+from tests.utils import DEFAULT_VALIDATION_DATA_DIR, traverse_repository_for_filings
 
 rich.traceback.install()
 
 
 DEFAULT_YAML = Path(__file__).parent / "selected-filings.yaml"
+LAST_ACCURACY_TEST_RESULT_PATH = (
+    DEFAULT_VALIDATION_DATA_DIR / "last_accuracy_test_result.json"
+)
 
 
 def main():
@@ -76,9 +79,13 @@ def main():
             summary["total_unexpected"].setdefault(element_type, 0)
             summary["total_unexpected"][element_type] += count
 
-    # STEP: Show the summary
+    # STEP: Show and save the summary
     print("# Selected filings:", [r.identifier for r in filings])
-    print("# Summary:", summary)
+    print(
+        "# Summary:", json.dumps(summary, indent=4, sort_keys=False, ensure_ascii=False)
+    )
+    with LAST_ACCURACY_TEST_RESULT_PATH.open("w") as file:
+        json.dump(summary, file, indent=4, sort_keys=False, ensure_ascii=False)
 
 
 if __name__ == "__main__":
