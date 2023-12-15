@@ -46,6 +46,12 @@ def overwrite_with_change_track(
         created_file = True
 
     with json_file.open("w") as f:
-        json.dump(dict_items, f, indent=4)
+        json.dump(
+            dict_items,
+            f,
+            indent=4,
+            ensure_ascii=False,
+            sort_keys=True,
+        )
 
     return OverwriteResult(removed_lines, added_lines, created_file)
