@@ -27,7 +27,12 @@ def overwrite_with_change_track(
     if json_file.exists():
         with json_file.open("r") as f:
             old_content = f.read()
-        new_content = json.dumps(dict_items, indent=4)
+        new_content = json.dumps(
+            dict_items,
+            indent=4,
+            ensure_ascii=False,
+            sort_keys=True,
+        )
         diff = list(
             difflib.unified_diff(old_content.splitlines(), new_content.splitlines()),
         )
