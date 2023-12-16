@@ -1,4 +1,5 @@
 import json
+import warnings
 from collections import Counter
 from pathlib import Path
 from pprint import pprint
@@ -52,11 +53,16 @@ def test_structure_and_text(
 
     # STEP: Load (or save) the expected elements
     if not report.expected_structure_and_text.exists():
-        with report.expected_structure_and_text.open("w") as f:
-            json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
+        if request.config.getoption("--create-missing-files"):
+            with report.expected_structure_and_text.open("w") as f:
+                json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
+            warnings.warn(
+                f"Created {report.expected_structure_and_text.name}. Please manually review it and commit the file.",
+                stacklevel=0,
+            )
+        else:
             pytest.fail(
-                f"Expected structure and text file did not exist. "
-                f"Created {report.expected_structure_and_text}. Please review and commit the file.",
+                f"File {report.expected_structure_and_text.name} does not exist. Use --create-missing-files to create it.",
             )
     with report.expected_structure_and_text.open("r") as f:
         expected_elements_json = json.load(f)

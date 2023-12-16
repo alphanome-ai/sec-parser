@@ -82,7 +82,8 @@ def main():
     # STEP: Show and save the summary
     print("# Selected filings:", [r.identifier for r in filings])
     print(
-        "# Summary:", json.dumps(summary, indent=4, sort_keys=False, ensure_ascii=False)
+        "# Summary:",
+        json.dumps(summary, indent=4, sort_keys=False, ensure_ascii=False),
     )
     with LAST_ACCURACY_TEST_RESULT_PATH.open("w") as file:
         json.dump(summary, file, indent=4, sort_keys=False, ensure_ascii=False)

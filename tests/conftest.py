@@ -26,6 +26,12 @@ def pytest_addoption(parser):
         default=False,
         help="Print the output of the tests to the console.",
     )
+    parser.addoption(
+        "--create-missing-files",
+        action="store_true",
+        default=False,
+        help="Create missing files.",
+    )
 
 
 @pytest.fixture(scope="session")

@@ -137,7 +137,10 @@ def manage_snapshots(
     generation_results: list[OverwriteResult] = []
     items_not_matching_filters_count = 0
     processed_documents = 0
-    for report_detail in traverse_repository_for_filings(Path(data_dir)):
+    reports = list(traverse_repository_for_filings(Path(data_dir)))
+    if accession_numbers:
+        test_filings_exist(accession_numbers)
+    for report_detail in reports:
         if (
             (report_detail.document_type not in document_types)
             and (report_detail.company_name not in company_names)
@@ -280,3 +283,15 @@ def diff_lines(expected, actual, identifier, verbose):
             unexpected_count += 1
             line_number_actual += 1
     return missing_count, unexpected_count, diff_output.strip()
+
+
+def test_filings_exist(accession_numbers):
+    accession_numbers = list(accession_numbers)
+    assert accession_numbers, "No accession numbers found in YAML file."
+
+    existing_numbers = {
+        report.accession_number for report in traverse_repository_for_filings()
+    }
+
+    for accession_number in accession_numbers:
+        assert accession_number in existing_numbers, f"Missing {accession_number}"
