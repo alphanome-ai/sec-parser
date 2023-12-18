@@ -8,12 +8,12 @@ from typing import Callable
 import pytest
 
 from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
+from tests.accuracy.structure_and_text.utils import elements_to_dicts
 from tests.types import ParsedDocumentComponents, Report
 from tests.utils import all_reports, load_yaml_filter
 
 CURRENT_DIR = Path(__file__).parent.resolve()
 SHOW_SKIPPED = False
-IGNORED_SEMANTIC_ELEMENT_TYPES = (IrrelevantElement,)
 
 expected_to_pass_accession_numbers = load_yaml_filter(
     CURRENT_DIR / "selected-filings.yaml",
@@ -38,18 +38,9 @@ def test_structure_and_text(
     if report.accession_number not in expected_to_pass_accession_numbers:
         pytest.skip(f"Skipping {report.identifier}")
 
-    # STEP: Parse the report
+    # STEP: Parse the report and convert the elements to dicts
     elements = parse(report).semantic_elements
-
-    # STEP: Compare the actual elements to the expected elements
-    actual_json = [
-        e.to_dict(
-            include_previews=False,
-            include_contents=True,
-        )
-        for e in elements
-        if not isinstance(e, IGNORED_SEMANTIC_ELEMENT_TYPES)
-    ]
+    actual_json = elements_to_dicts(elements)
 
     # STEP: Load (or save) the expected elements
     if not report.expected_structure_and_text.exists():
