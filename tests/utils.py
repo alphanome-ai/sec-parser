@@ -38,7 +38,7 @@ def traverse_repository_for_filings(
                     document_type=document_type_directory.name,
                     company_name=company_directory.name,
                     accession_number=individual_report_directory.name,
-                    report_full_path=individual_report_directory,
+                    path=individual_report_directory,
                 )
 
 

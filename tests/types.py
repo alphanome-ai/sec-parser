@@ -16,43 +16,43 @@ class Report:
     document_type: str
     company_name: str
     accession_number: str
-    report_full_path: Path
+    path: Path
 
     @property
     def expected_elements_json_path(self) -> Path:
-        return self.report_full_path / "expected-semantic-elements-list.json"
+        return self.path / "expected-semantic-elements-list.json"
 
     @property
     def actual_elements_json_path(self) -> Path:
-        return self.report_full_path / "actual-semantic-elements-list.json"
+        return self.path / "actual-semantic-elements-list.json"
 
     @property
     def actual_elements_json_diff_path(self) -> Path:
-        return self.report_full_path / "actual-semantic-elements-list_diff.txt"
+        return self.path / "actual-semantic-elements-list_diff.txt"
 
     @property
     def primary_doc_html_path(self) -> Path:
-        return self.report_full_path / "primary-document.html"
+        return self.path / "primary-document.html"
 
     @property
     def expected_tables(self) -> Path:
-        return self.report_full_path / "expected-tables.json"
+        return self.path / "expected-tables.json"
 
     @property
     def expected_structure_and_text(self) -> Path:
-        return self.report_full_path / "expected-structure-and-text.json"
+        return self.path / "expected-structure-and-text.json"
 
     @property
     def actual_structure_and_text(self) -> Path:
-        return self.report_full_path / "actual-structure-and-text.json"
+        return self.path / "actual-structure-and-text.json"
 
     @property
     def actual_structure_and_text_summary(self) -> Path:
-        return self.report_full_path / "actual-structure-and-text_summary.json"
+        return self.path / "actual-structure-and-text_summary.json"
 
     @property
     def expected_top_level_sections_json_path(self) -> Path:
-        return self.report_full_path / "expected-top-level-sections.json"
+        return self.path / "expected-top-level-sections.json"
 
     @property
     def identifier(self) -> str:
