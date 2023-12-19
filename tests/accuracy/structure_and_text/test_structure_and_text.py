@@ -1,3 +1,4 @@
+import importlib.util
 import json
 import warnings
 from collections import Counter
@@ -47,6 +48,21 @@ def test_structure_and_text(
         if request.config.getoption("--create-missing-files"):
             with report.expected_structure_and_text.open("w") as f:
                 json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
+            if report.expected_structure_and_text_postprocessor.exists():
+                path = report.expected_structure_and_text_postprocessor
+                if path.exists():
+                    spec = importlib.util.spec_from_file_location("postprocessor", path)
+                    assert spec is not None, f"Could not load {path} (spec is None))"
+                    assert (
+                        spec.loader is not None
+                    ), f"Could not load {path} (spec.loader is None))"
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+                    if hasattr(module, "main"):
+                        module.main()
+                    else:
+                        msg = f"The module {module.__name__} does not have a main function."
+                        raise AttributeError(msg)
             warnings.warn(
                 f"Created {report.expected_structure_and_text.name}. Please manually review it and commit the file.",
                 stacklevel=0,
