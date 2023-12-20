@@ -50,17 +50,29 @@ def main():
     average_actual = sum(m["total_actual"] for m in all_metrics) / num_filings
     average_missing = sum(m["total_missing"] for m in all_metrics) / num_filings
     average_unexpected = sum(m["total_unexpected"] for m in all_metrics) / num_filings
-    precision = (
+    average_precision = (
         sum(float(m["precision"].rstrip("%")) for m in all_metrics) / num_filings
     )
-    recall = sum(float(m["recall"].rstrip("%")) for m in all_metrics) / num_filings
-    f1_score = sum(float(m["f1_score"].rstrip("%")) for m in all_metrics) / num_filings
+    average_recall = (
+        sum(float(m["recall"].rstrip("%")) for m in all_metrics) / num_filings
+    )
+    average_f1_score = (
+        sum(float(m["f1_score"].rstrip("%")) for m in all_metrics) / num_filings
+    )
+    num_perfect_f1_score = sum(1 for m in all_metrics if m["f1_score"] == 100)
+    num_perfect_recall = sum(1 for m in all_metrics if m["recall"] == 100)
     summary = {
-        "num_filings": f"{num_filings:g}",
+        "num_filings": {
+            "total": num_filings,
+            "perfect_f1_score": num_perfect_f1_score,
+            "perfect_recall": num_perfect_recall,
+            "ratio_perfect_f1_score": f"{num_perfect_f1_score / num_filings:.2f}%",
+            "ratio_perfect_recall": f"{num_perfect_recall / num_filings:.2f}%",
+        },
         "average_metrics": {
-            "f1_score": f"{f1_score:.2f}%",
-            "precision": f"{precision:.2f}%",
-            "recall": f"{recall:.2f}%",
+            "f1_score": f"{average_f1_score:.2f}%",
+            "precision": f"{average_precision:.2f}%",
+            "recall": f"{average_recall:.2f}%",
         },
         "average_elements": {
             "expected": f"{average_expected:g}",
