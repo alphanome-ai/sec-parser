@@ -19,6 +19,11 @@ tasks:
       # Note: also update .codecov.yml when changing the target coverage.
       - poetry run ptw -- -- {{.CLI_ARGS}} -rx --cov --cov-report=lcov:lcov.info --cov-report=term:skip-covered --cov-fail-under=90 tests/unit/
 
+  monitor-accuracy-tests:
+    desc: "Run unit tests and rerun them immediately upon file modification."
+    cmds:
+      - poetry run ptw --onpass="poetry run python -m tests.accuracy.structure_and_text.summarize_results" -- -- -rx tests/accuracy/
+
   launch-docs:
     desc: Start a local server to preview and automatically rebuild documentation upon file modification.
     cmds:
