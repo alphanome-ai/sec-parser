@@ -1,7 +1,8 @@
 accession_numbers:
   - 0000320193-23-000077 # 10-Q AAPL Apple Inc.
   - 0001193125-18-236766 # 10-Q AA Alcoa Corporation
-  - 0001652044-23-000070 # 10-Q GOOG Alphabet Inc.
+  - 0001652044-23-000094 # 10-Q GOOG Alphabet Inc. 2023-10-25
+  - 0001652044-23-000070 # 10-Q GOOG Alphabet Inc. 2023-07-26
   - 0001551152-23-000033 # 10-Q ABBV AbbVie Inc.
 # - 0001628280-23-027203 # 10-Q ABT Abbott Laboratories
   - 0000796343-23-000205 # 10-Q ADBE Adobe Inc.
@@ -41,6 +42,7 @@ accession_numbers:
 # - 0000063908-23-000076 # 10-Q MCD McDonald's Corporation
   - 0001613103-23-000128 # 10-Q MDT Medtronic plc
   - 0001326801-23-000093 # 10-Q META Meta Platforms, Inc.
+  - 0001326801-19-000037 # 10-Q META Meta Platforms Inc. 2019-04-25
   - 0000066740-23-000058 # 10-Q MMM 3M Company
   - 0001628280-23-027770 # 10-Q MRK Merck & Co., Inc.
 # - 0000895421-23-000374 # 10-Q MS Morgan Stanley
