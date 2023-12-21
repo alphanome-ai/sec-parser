@@ -72,6 +72,14 @@ class IrrelevantElement(AbstractSemanticElement):
     """
 
 
+class PageNumberElement(IrrelevantElement):
+    """
+    The PageNumberElement class represents a page number within a document.
+    It is a subclass of the IrrelevantElement class and is used to identify
+    and handle page numbers in the document.
+    """
+
+
 class EmptyElement(IrrelevantElement):
     """
     The EmptyElement class represents an HTML element that does not contain any content.

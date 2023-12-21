@@ -93,8 +93,8 @@ def st_divider(label, icon, *, align="center", bold=False):
         label=label,
         icon=icon,
         align=align,
-        bold=bold,
-        dashed=True,
+        label_style={"font-weight": "bold"},
+        variant="dashed",
     )
 
 
