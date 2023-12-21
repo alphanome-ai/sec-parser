@@ -135,7 +135,6 @@ class HtmlTag:
             self._frozen_dict = frozendict(
                 {
                     "tag_name": self._bs4.name,
-                    "text_preview": self._generate_preview(self.text),
                     "html_preview": self._generate_preview(
                         remove_affixes(
                             self.get_source_code(),
@@ -295,7 +294,8 @@ class HtmlTag:
 
         # Appeasing type checkers
         if self._approx_table_metrics is not None and not isinstance(
-            self._approx_table_metrics, ApproxTableMetrics,
+            self._approx_table_metrics,
+            ApproxTableMetrics,
         ):
             msg = f"Invalid type for _approx_table_metrics: {type(self._approx_table_metrics).__name__}"
             raise ValueError(msg)

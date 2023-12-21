@@ -171,10 +171,18 @@ def manage_snapshots(
                 elements,
             )
             generation_results.append(generation_result)
+
+            with actual_json_file.open("w") as f:
+                f.write("")
+            with report_detail.actual_elements_json_diff_path.open("w") as f:
+                f.write("")
         else:
             with expected_json_file.open("r") as f:
                 expected_contents = f.read()
-            dict_items = [e.to_dict(include_previews=True) for e in elements]
+            dict_items = [
+                e.to_dict(include_previews=True, include_contents=True)
+                for e in elements
+            ]
             actual_contents = json.dumps(
                 dict_items,
                 indent=4,

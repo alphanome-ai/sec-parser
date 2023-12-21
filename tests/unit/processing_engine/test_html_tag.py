@@ -64,7 +64,6 @@ def test_without_tags():
             "<span>" + "A" * 60 + "</span>",
             {
                 "tag_name": "span",
-                "text_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
                 "html_preview": "AAAAAAAAAAAAAAAAAAAA...[20]...AAAAAAAAAAAAAAAAAAAA",
                 "html_hash": "3836a62b",
             },
@@ -74,7 +73,6 @@ def test_without_tags():
             "<div><div>n</div></div>",
             {
                 "tag_name": "div",
-                "text_preview": "n",
                 "html_preview": "<div>n</div>",
                 "html_hash": "3c22ceca",
             },

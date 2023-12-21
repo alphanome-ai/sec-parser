@@ -19,7 +19,9 @@ def overwrite_with_change_track(
     json_file: Path,
     elements: list[AbstractSemanticElement],
 ) -> OverwriteResult:
-    dict_items = [e.to_dict(include_previews=True) for e in elements]
+    dict_items = [
+        e.to_dict(include_previews=True, include_contents=True) for e in elements
+    ]
     created_file = False
     removed_lines = 0
     added_lines = 0
