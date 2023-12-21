@@ -20,7 +20,7 @@ LAST_ACCURACY_TEST_RESULT_PATH = (
 )
 
 
-def main():
+def main() -> None:
     # STEP: Load the YAML file
     with DEFAULT_YAML.open("r") as file:
         selected_filings = yaml.safe_load(file)
@@ -93,13 +93,31 @@ def main():
             summary["total_unexpected"][element_type] += count
 
     # STEP: Show and save the summary
-    print("# Selected filings                | F1-score | Recall  | Precision")
+    from rich.console import Console
+    from rich.table import Table
+
+    console = Console()
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Selected filings", style="dim", width=33)
+    table.add_column("F1-score", justify="right")
+    table.add_column("Recall", justify="right")
+    table.add_column("Precision", justify="right")
+    table.add_column("Missing", justify="right")
+    table.add_column("Unexpected", justify="right")
+    table.add_column("Total", justify="right")
+
     for m in all_metrics:
-        print(
-            f"{m['identifier']:>33} | {m['f1_score']:>8} | {m['recall']:>7} | {m['precision']:>7}"
+        table.add_row(
+            m["identifier"],
+            str(m["f1_score"]),
+            str(m["recall"]),
+            str(m["precision"]),
+            str(m["total_missing"]),
+            str(m["total_unexpected"]),
+            str(m["total_actual"]),
         )
+    console.print(table)
     print(
-        "# Summary:",
         json.dumps(summary, indent=4, sort_keys=False, ensure_ascii=False),
     )
     with LAST_ACCURACY_TEST_RESULT_PATH.open("w") as file:

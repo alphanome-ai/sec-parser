@@ -27,10 +27,10 @@ def pytest_addoption(parser):
         help="Print the output of the tests to the console.",
     )
     parser.addoption(
-        "--create-missing-files",
+        "--update",
         action="store_true",
         default=False,
-        help="Create missing files.",
+        help="Create missing files. Overwrite files that were previously generated automatically.",
     )
 
 

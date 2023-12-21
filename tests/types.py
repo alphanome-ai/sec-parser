@@ -47,8 +47,16 @@ class Report:
         return self.path / "actual-structure-and-text.json"
 
     @property
+    def expected_structure_and_text_postprocessor_input(self) -> Path:
+        return self.path / "postprocess_expected_structure_and_text.py.original.json"
+
+    @property
     def expected_structure_and_text_postprocessor(self) -> Path:
         return self.path / "postprocess_expected_structure_and_text.py"
+
+    @property
+    def expected_structure_and_text_config_json(self) -> Path:
+        return self.path / "expected-structure-and-text.config.json"
 
     @property
     def actual_structure_and_text_summary(self) -> Path:

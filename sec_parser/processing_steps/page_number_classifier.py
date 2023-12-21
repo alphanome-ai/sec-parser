@@ -9,7 +9,6 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
 )
-from sec_parser.semantic_elements.highlighted_text_element import HighlightedTextElement
 from sec_parser.semantic_elements.semantic_elements import PageNumberElement
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -31,7 +30,7 @@ class MostCommonCandidateSearchStatus(Enum):
     FOUND = auto()
 
 
-class IrrelevantElementsClassifier(AbstractElementwiseProcessingStep):
+class PageNumberClassifier(AbstractElementwiseProcessingStep):
     _NUM_ITERATIONS = 2
 
     def __init__(
@@ -63,13 +62,11 @@ class IrrelevantElementsClassifier(AbstractElementwiseProcessingStep):
             self._find_page_number_candidates(element)
             return element
         if context.iteration == 1:
-            return self._classify_irrelevant_elements(element)
+            return self._classify_elements(element)
         msg = f"Invalid iteration: {context.iteration}"
         raise ValueError(msg)
 
     def _find_page_number_candidates(self, element: AbstractSemanticElement) -> None:
-        if not isinstance(element, HighlightedTextElement):
-            return
         if len(element.text) > PageNumberCandidate.TEXT_LENGTH_THRESHOLD:
             return
         if not any(char.isdigit() for char in element.text):
@@ -86,7 +83,7 @@ class IrrelevantElementsClassifier(AbstractElementwiseProcessingStep):
         self._element_to_page_number_candidate[element] = candidate
         self._candidate_count[candidate] += 1
 
-    def _classify_irrelevant_elements(
+    def _classify_elements(
         self,
         element: AbstractSemanticElement,
     ) -> AbstractSemanticElement:

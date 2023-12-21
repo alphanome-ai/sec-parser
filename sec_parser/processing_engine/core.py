@@ -31,9 +31,8 @@ from sec_parser.processing_steps.individual_semantic_element_extractor.single_el
 from sec_parser.processing_steps.introductory_section_classifier import (
     IntroductorySectionElementClassifier,
 )
-from sec_parser.processing_steps.irrelevant_elements_classifier import (
-    IrrelevantElementsClassifier,
-)
+from sec_parser.processing_steps.page_header_classifier import PageHeaderClassifier
+from sec_parser.processing_steps.page_number_classifier import PageNumberClassifier
 from sec_parser.processing_steps.supplementary_text_classifier import (
     SupplementaryTextClassifier,
 )
@@ -181,7 +180,10 @@ class Edgar10QParser(AbstractSemanticElementParser):
             IntroductorySectionElementClassifier(),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),
-            IrrelevantElementsClassifier(
+            PageHeaderClassifier(
+                types_to_process={TextElement, HighlightedTextElement},
+            ),
+            PageNumberClassifier(
                 types_to_process={TextElement, HighlightedTextElement},
             ),
             SupplementaryTextClassifier(

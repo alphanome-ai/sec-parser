@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import shutil
 import warnings
 from collections import Counter
 from pathlib import Path
@@ -44,35 +45,52 @@ def test_structure_and_text(
     actual_json = elements_to_dicts(elements)
 
     # STEP: Load (or save) the expected elements
-    if not report.expected_structure_and_text.exists():
-        if request.config.getoption("--create-missing-files"):
+    expected_elements_json = None
+    if request.config.getoption("--update"):
+        config_json_path = report.expected_structure_and_text_config_json
+        was_manually_edited = False
+        if config_json_path.exists():
+            with config_json_path.open("r") as config_file:
+                config_json = json.load(config_file)
+                was_manually_edited = config_json["was_manually_edited"]
+
+        if not was_manually_edited:
+            existed_before = report.expected_structure_and_text.exists()
             with report.expected_structure_and_text.open("w") as f:
                 json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
+            py_path = report.expected_structure_and_text_postprocessor
             if report.expected_structure_and_text_postprocessor.exists():
-                path = report.expected_structure_and_text_postprocessor
-                if path.exists():
-                    spec = importlib.util.spec_from_file_location("postprocessor", path)
-                    assert spec is not None, f"Could not load {path} (spec is None))"
-                    assert (
-                        spec.loader is not None
-                    ), f"Could not load {path} (spec.loader is None))"
-                    module = importlib.util.module_from_spec(spec)
-                    spec.loader.exec_module(module)
-                    if hasattr(module, "main"):
-                        module.main()
-                    else:
-                        msg = f"The module {module.__name__} does not have a main function."
-                        raise AttributeError(msg)
-            warnings.warn(
-                f"Created {report.expected_structure_and_text.name}. Please manually review it and commit the file.",
-                stacklevel=0,
-            )
-        else:
-            pytest.fail(
-                f"File {report.expected_structure_and_text.name} does not exist. Use --create-missing-files to create it.",
-            )
-    with report.expected_structure_and_text.open("r") as f:
-        expected_elements_json = json.load(f)
+                # Set up input file for the postprocessor
+                shutil.copy(
+                    report.expected_structure_and_text,
+                    report.expected_structure_and_text_postprocessor_input,
+                )
+
+                # Run python code
+                spec = importlib.util.spec_from_file_location("postprocessor", py_path)
+                assert spec is not None, f"Could not load {py_path} (spec is None))"
+                assert (
+                    spec.loader is not None
+                ), f"Could not load {py_path} (spec.loader is None))"
+                module = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(module)
+                if hasattr(module, "main"):
+                    module.main()
+                else:
+                    msg = f"The module {module.__name__} does not have a main function."
+                    raise AttributeError(msg)
+            if not existed_before:
+                warnings.warn(
+                    f"Created {report.expected_structure_and_text.name}. Please manually review it and commit the file.",
+                    stacklevel=0,
+                )
+        elif not report.expected_structure_and_text.exists():
+            with report.expected_structure_and_text.open("w") as f:
+                json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
+            expected_elements_json = actual_json
+    if expected_elements_json is None:
+        with report.expected_structure_and_text.open("r") as f:
+            expected_elements_json = json.load(f)
 
     # STEP: Compare the actual elements to the expected elements
     index_of_last_matched_element = 0
@@ -155,4 +173,10 @@ def test_structure_and_text(
         with report.actual_structure_and_text.open("w") as f:
             json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
         with report.actual_structure_and_text_summary.open("w") as f:
-            json.dump(summary_output_contents, f, sort_keys=False, indent=4, ensure_ascii=False)
+            json.dump(
+                summary_output_contents,
+                f,
+                sort_keys=False,
+                indent=4,
+                ensure_ascii=False,
+            )
