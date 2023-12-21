@@ -5,9 +5,7 @@
     "name" : "Sec Parser",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "hostRequirements": {
-        "cpus": 4,
-        "memory": "8gb",
-        "storage": "32gb"
+        "cpus": 4
     },
     "waitFor": "onCreateCommand",
     "updateContentCommand": "python3 -m pip install -r .devcontainer/requirements.txt",
