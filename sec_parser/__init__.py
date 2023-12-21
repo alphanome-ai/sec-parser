@@ -18,6 +18,8 @@ from sec_parser.semantic_elements.semantic_elements import (
     ImageElement,
     IrrelevantElement,
     NotYetClassifiedElement,
+    PageHeaderElement,
+    PageNumberElement,
     SupplementaryText,
     TextElement,
 )
@@ -46,7 +48,8 @@ __all__ = [
     "TableElement",
     "SupplementaryText",
     "EmptyElement",
-    # Common exceptions
+    "PageNumberElement",
+    "PageHeaderElement",  # Common exceptions
     "SecParserError",
     "SecParserRuntimeError",
     "SecParserValueError",

@@ -80,6 +80,15 @@ class PageNumberElement(IrrelevantElement):
     """
 
 
+class PageHeaderElement(IrrelevantElement):
+    """
+    The PageHeaderElement class represents a page header within a document.
+    It is a subclass of the IrrelevantElement class and is used to identify
+    and handle page headers in the document, such as current section titles
+    and company names.
+    """
+
+
 class EmptyElement(IrrelevantElement):
     """
     The EmptyElement class represents an HTML element that does not contain any content.

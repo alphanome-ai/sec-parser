@@ -12,7 +12,7 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
-from sec_parser.semantic_elements.semantic_elements import PageNumberElement
+from sec_parser.semantic_elements.semantic_elements import PageHeaderElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -84,7 +84,7 @@ class PageHeaderClassifier(AbstractElementwiseProcessingStep):
             message=f"Matches one of the most common candidates: {candidate}",
             log_origin=self.__class__.__name__,
         )
-        return PageNumberElement.create_from_element(
+        return PageHeaderElement.create_from_element(
             element,
             log_origin=self.__class__.__name__,
         )
