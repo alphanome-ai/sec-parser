@@ -11,7 +11,6 @@ from sec_parser.semantic_elements.highlighted_text_element import (
     TextStyle,
 )
 from sec_parser.semantic_elements.title_element import TitleElement
-from sec_parser.semantic_elements.page_element import PageElement
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -60,18 +59,11 @@ class TitleClassifier(AbstractElementwiseProcessingStep):
         """Process each element and convert to TitleElement if necessary."""
         if not isinstance(element, HighlightedTextElement):
             return element
-       
+
         # Ensure the style is tracked
         self._add_unique_style(element.style)
 
-        level = self._unique_styles_by_order.index(element.style) 
-
-        if PageElement.is_page(source = element):
-            return PageElement.create_from_element(
-                element,
-                log_origin=self.__class__.__name__,
-            )
-        
+        level = self._unique_styles_by_order.index(element.style)
         return TitleElement.create_from_element(
             element,
             level=level,
