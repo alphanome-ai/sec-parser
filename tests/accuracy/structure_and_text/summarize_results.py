@@ -60,15 +60,19 @@ def main() -> None:
     average_f1_score = (
         sum(float(m["f1_score"].rstrip("%")) for m in all_metrics) / num_filings
     )
-    num_perfect_f1_score = sum(1 for m in all_metrics if m["f1_score"] == 100)
-    num_perfect_recall = sum(1 for m in all_metrics if m["recall"] == 100)
+    num_perfect_f1_score = sum(
+        1 for m in all_metrics if float(m["f1_score"].rstrip("%")) == 100.00
+    )
+    num_perfect_recall = sum(
+        1 for m in all_metrics if float(m["recall"].rstrip("%")) == 100.00
+    )
     summary = {
         "num_filings": {
             "total": num_filings,
             "perfect_f1_score": num_perfect_f1_score,
             "perfect_recall": num_perfect_recall,
-            "ratio_perfect_f1_score": f"{num_perfect_f1_score / num_filings:.2f}%",
-            "ratio_perfect_recall": f"{num_perfect_recall / num_filings:.2f}%",
+            "ratio_perfect_f1_score": f"{num_perfect_f1_score / num_filings:.2%}",
+            "ratio_perfect_recall": f"{num_perfect_recall / num_filings:.2%}",
         },
         "average_metrics": {
             "f1_score": f"{average_f1_score:.2f}%",
