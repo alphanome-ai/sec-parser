@@ -1,0 +1,23 @@
+// Adopting the default GitHub codespaces-jupyter template as starter
+// https://github.com/github/codespaces-jupyter
+
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "hostRequirements": {
+      "cpus": 4
+    },
+    "waitFor": "onCreateCommand",
+    "updateContentCommand": "python3 -m pip install -r .devcontainer/requirements.txt",
+    "postCreateCommand": "",
+    "customizations": {
+      "codespaces": {
+        "openFiles": ["./docs/source/notebooks/user_guide.ipynb"]
+      },
+      "vscode": {
+        "extensions": [
+          "ms-toolsai.jupyter",
+          "ms-python.python"
+        ]
+      }
+    }
+}
