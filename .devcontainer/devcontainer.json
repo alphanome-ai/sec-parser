@@ -2,9 +2,12 @@
 // https://github.com/github/codespaces-jupyter
 
 {
+    "name" : "Sec Parser",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "hostRequirements": {
-      "cpus": 4
+        "cpus": 4,
+        "memory": "8gb",
+        "storage": "32gb"
     },
     "waitFor": "onCreateCommand",
     "updateContentCommand": "python3 -m pip install -r .devcontainer/requirements.txt",
