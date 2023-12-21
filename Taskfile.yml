@@ -97,7 +97,7 @@ tasks:
     desc: Execute accuracy tests to assess parser against a set of filings with known expected output.
     cmds:
       - task: clone-sec-parser-test-data
-      - poetry run pytest --with-saved-output --with-verbose-output -rx tests/accuracy/
+      - poetry run pytest --with-saved-output --with-verbose-output {{.CLI_ARGS}} -rx tests/accuracy/
       - poetry run python -m tests.accuracy.structure_and_text.summarize_results
 
 ################################################################

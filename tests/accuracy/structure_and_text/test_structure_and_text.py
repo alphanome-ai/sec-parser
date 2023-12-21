@@ -155,4 +155,4 @@ def test_structure_and_text(
         with report.actual_structure_and_text.open("w") as f:
             json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)
         with report.actual_structure_and_text_summary.open("w") as f:
-            json.dump(summary_output_contents, f, indent=4, ensure_ascii=False)
+            json.dump(summary_output_contents, f, sort_keys=False, indent=4, ensure_ascii=False)

@@ -103,7 +103,12 @@ def main():
         json.dumps(summary, indent=4, sort_keys=False, ensure_ascii=False),
     )
     with LAST_ACCURACY_TEST_RESULT_PATH.open("w") as file:
-        json.dump(summary, file, indent=4, sort_keys=False, ensure_ascii=False)
+        saved_summary = summary.copy()
+        saved_summary["selected_filings"] = {
+            m["identifier"]: {k: v for k, v in m.items() if k != "identifier"}
+            for m in all_metrics
+        }
+        json.dump(saved_summary, file, indent=4, sort_keys=False, ensure_ascii=False)
 
 
 if __name__ == "__main__":
