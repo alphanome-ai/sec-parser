@@ -40,7 +40,8 @@ def main():
         ), f"missing '{report.actual_structure_and_text_summary.name}' for '{report.identifier}'"
         with report.actual_structure_and_text_summary.open("r") as file:
             summary_data = json.load(file)
-        metrics = summary_data["metrics"]
+        metrics = summary_data["metrics"].copy()
+        metrics["identifier"] = report.identifier
         all_metrics.append(metrics)
 
     # STEP: Aggregate the metrics
@@ -92,7 +93,11 @@ def main():
             summary["total_unexpected"][element_type] += count
 
     # STEP: Show and save the summary
-    print("# Selected filings:", [r.identifier for r in filings])
+    print("# Selected filings                | F1-score | Recall  | Precision")
+    for m in all_metrics:
+        print(
+            f"{m['identifier']:>33} | {m['f1_score']:>8} | {m['recall']:>7} | {m['precision']:>7}"
+        )
     print(
         "# Summary:",
         json.dumps(summary, indent=4, sort_keys=False, ensure_ascii=False),
