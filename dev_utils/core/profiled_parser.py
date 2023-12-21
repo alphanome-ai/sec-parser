@@ -74,7 +74,7 @@ class ParsingOutput:
     parser: AbstractSemanticElementParser
 
 
-# @st.cache_resource() TODO: uncomment
+@st.cache_resource()
 def get_parsing_output(url):
     html = get_sec_edgar_reports_getter().download_filing(url)
     profiled_parser = ProfiledParser()
