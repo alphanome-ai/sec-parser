@@ -180,13 +180,13 @@ class Edgar10QParser(AbstractSemanticElementParser):
             IntroductorySectionElementClassifier(),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),
+            SupplementaryTextClassifier(
+                types_to_process={TextElement, HighlightedTextElement},
+            ),
             PageHeaderClassifier(
                 types_to_process={TextElement, HighlightedTextElement},
             ),
             PageNumberClassifier(
-                types_to_process={TextElement, HighlightedTextElement},
-            ),
-            SupplementaryTextClassifier(
                 types_to_process={TextElement, HighlightedTextElement},
             ),
             TitleClassifier(types_to_process={HighlightedTextElement}),
