@@ -1,8 +1,8 @@
 # NOTE:
 # For more examples and advanced usage of `sec-parser`, refer to the following resources:
-# - [User Guide](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html)
-# - [Developer Guide](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html)
-# - [Documentation](https://sec-parser.rtfd.io)
+# - User Guide: https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html
+# - Developer Guide: https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html
+# - Documentation: https://sec-parser.rtfd.io
 
 from sec_downloader import Downloader
 
