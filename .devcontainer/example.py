@@ -5,7 +5,7 @@
 # - Developer Guide
 #     https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html
 # - Documentation:
-#     https://sec-parser.rtfd.io
+#     https://sec-parser.readthedocs.io/en/latest/
 
 from sec_downloader import Downloader
 
