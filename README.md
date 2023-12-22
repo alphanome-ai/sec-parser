@@ -143,7 +143,7 @@ The company name and email address are used to form a user-agent string that adh
 
 Now, we can parse the filing HTML into a list of semantic elements:
 
-```python
+```python``
 # Utility function to make the example code a bit more compact
 def print_first_n_lines(text: str, *, n: int):
     print("\n".join(text.split("\n")[:n]), "...", sep="\n")
