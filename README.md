@@ -139,7 +139,7 @@ html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 ```
 
 > [!NOTE]
-The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
+> The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
 
 Now, we can parse the filing HTML into a list of semantic elements:
 
@@ -205,13 +205,14 @@ pip install sec-ai
 
 ## How to Import Modules In Your Code
 
-To ensure your code remains functional even when we change the internal structure of `sec-parser`, it's recommended to avoid deep imports. Here is an example of a deep import:
+To ensure your code remains functional even when we change the internal structure of `sec-parser`, it's recommended to avoid deep imports. Here is an example of a deep import (not recommended):
 
-```
-from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass
-```
+> [!CAUTION]
+> ```
+> from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass
+> ```
 
-Here are the suggested ways to import modules from `sec-parser`:
+Instead, use the suggested ways to import modules from `sec-parser`:
 
 ### Root Import (prefix)
 - **`import sec_parser as sp`**. This imports the main package as `sp`. You can then access its functionalities using `sp.` prefix.
