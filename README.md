@@ -186,12 +186,22 @@ print_first_n_lines(demo_output, n=7)
 ...
 </pre>
 
+> [!TIP]
+> 
+> Feel free to experiment with the example code provided above. You can easily do this by launching a GitHub Codespace for the `sec-parser` repository, which will set up a development environment for you in the cloud:
+>
+> [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?machine_type=standardLinux32Gb&repo=alphanome-ai/sec-parser)
+>
+> This is a great way to play around with the code without having to set up anything on your local machine. Give it a try!
+
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
 ## What's Next?
 
-You've successfully parsed an SEC document into semantic elements and arranged them into a tree structure. To further analyze this data with analytics or AI, you can use any tool of your choice.
+Your turn to explore the capabilities of `sec-parser`! With the tools and examples provided, you can now dive into parsing and analyzing SEC filings. 
+
+The semantic elements and tree structures created by the parser will serve as a solid foundation for your financial analysis and research tasks with the tools of your choice.
 
 For a tailored experience, consider using our free and open-source library for AI-powered financial analysis: 
 
