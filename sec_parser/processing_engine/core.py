@@ -51,6 +51,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 )
 from sec_parser.semantic_elements.highlighted_text_element import HighlightedTextElement
 from sec_parser.semantic_elements.semantic_elements import (
+    IrrelevantElement,
     NotYetClassifiedElement,
     TextElement,
 )
@@ -125,12 +126,14 @@ class AbstractSemanticElementParser(ABC):
         *,
         unwrap_elements: bool | None = None,
         include_containers: bool | None = None,
+        include_irrelevant_elements: bool | None = None,
     ) -> list[AbstractSemanticElement]:
         root_tags = self._html_tag_parser.parse(html)
         return self.parse_from_tags(
             root_tags,
             unwrap_elements=unwrap_elements,
             include_containers=include_containers,
+            include_irrelevant_elements=include_irrelevant_elements,
         )
 
     def parse_from_tags(
@@ -139,6 +142,7 @@ class AbstractSemanticElementParser(ABC):
         *,
         unwrap_elements: bool | None = None,
         include_containers: bool | None = None,
+        include_irrelevant_elements: bool | None = None,
     ) -> list[AbstractSemanticElement]:
         steps = self._get_steps()
         elements: list[AbstractSemanticElement] = [
@@ -148,6 +152,10 @@ class AbstractSemanticElementParser(ABC):
         for step in steps:
             elements = step.process(elements)
 
+        if not include_irrelevant_elements:
+            elements = [
+                e for e in elements if isinstance(e, IrrelevantElement) is False
+            ]
         if unwrap_elements is False:
             return elements
         return CompositeSemanticElement.unwrap_elements(

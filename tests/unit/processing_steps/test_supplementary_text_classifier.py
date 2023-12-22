@@ -72,7 +72,9 @@ def test_supplementary_element_classifier(name, html_str, expected_elements):
     sec_parser = Edgar10QParser(get_steps)
 
     # Act
-    processed_elements = sec_parser.parse(html_str, unwrap_elements=False)
+    processed_elements = sec_parser.parse(
+        html_str, unwrap_elements=False, include_irrelevant_elements=True
+    )
 
     # Assert
     assert_elements(processed_elements, expected_elements)

@@ -54,9 +54,17 @@ class ProfiledParser:
         start_time = perf_counter()
         if self._interval is not None:
             with Profiler(interval=self._interval) as profiler:
-                elements = self.parser.parse(html, unwrap_elements=False)
+                elements = self.parser.parse(
+                    html,
+                    unwrap_elements=False,
+                    include_irrelevant_elements=True,
+                )
         else:
-            elements = self.parser.parse(html, unwrap_elements=False)
+            elements = self.parser.parse(
+                html,
+                unwrap_elements=False,
+                include_irrelevant_elements=True,
+            )
         end_time = perf_counter()
         parse_time = end_time - start_time
 

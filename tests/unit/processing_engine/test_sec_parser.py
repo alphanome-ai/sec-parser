@@ -44,7 +44,7 @@ def test_smoke_test(name, html_str, unwrap_elements, expected_elements):
         wraps=CompositeSemanticElement.unwrap_elements,
     ) as mock_unwrap:
         # Act
-        processed_elements = sec_parser.parse(html_str, unwrap_elements=unwrap_elements)
+        processed_elements = sec_parser.parse(html_str, unwrap_elements=unwrap_elements, include_irrelevant_elements=True)
 
         # Assert
         assert_elements(processed_elements, expected_elements)
