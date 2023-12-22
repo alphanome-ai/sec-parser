@@ -1,6 +1,7 @@
 import streamlit_antd_components as sac
 
 example_queries_items = [
+    (sac.ChipItem(label="Unselect All"), None),
     (sac.ChipItem(icon="apple", label="Latest apple 10-Q"), "AAPL"),
     (sac.ChipItem(icon="google", label="Two Latest alphabet 10-Q"), "2/GOOG"),
     (

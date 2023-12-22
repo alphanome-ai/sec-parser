@@ -135,13 +135,25 @@ def get_style_change_top_page_margin():
     return "div[class^='block-container'] { padding-top: 2rem; }".strip()
 
 
-def st_keep(key):
-    "https://stackoverflow.com/questions/74968179/session-state-is-reset-in-streamlit-multipage-app"
+def st_keep(key, value_func=None) -> None:
+    """
+    Keep a widget's value in session state.
+    https://stackoverflow.com/questions/74968179/session-state-is-reset-in-streamlit-multipage-app
+    """
     # Copy from temporary widget key to permanent key
-    st.session_state[key] = st.session_state["_" + key]
+    new_value = st.session_state["_" + key]
+    if value_func:
+        new_value = value_func(new_value)
+    st.session_state[key] = new_value
 
 
-def st_unkeep(key):
-    "https://stackoverflow.com/questions/74968179/session-state-is-reset-in-streamlit-multipage-app"
+def st_unkeep(key, value_func=None) -> None:
+    """
+    Recall a widget's value from session state.
+    https://stackoverflow.com/questions/74968179/session-state-is-reset-in-streamlit-multipage-app
+    """
     # Copy from permanent key to temporary widget key
-    st.session_state["_" + key] = st.session_state[key]
+    new_value = st.session_state[key]
+    if value_func:
+        new_value = value_func(new_value)
+    st.session_state["_" + key] = new_value

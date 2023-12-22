@@ -1,4 +1,3 @@
-import contextlib
 from enum import Enum, auto
 from urllib.parse import urlencode
 
@@ -64,7 +63,7 @@ if "select_reports__queries" not in st.session_state:
     st.session_state["select_reports__queries"] = default
 
 if "select_reports__example_queries" not in st.session_state:
-    default = [0, 2]
+    default = [1, 3]
     if url_params_queries:
         default = [
             i for i, k in enumerate(example_queries_items) if k[1] in url_params_queries

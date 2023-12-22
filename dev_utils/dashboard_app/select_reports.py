@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from urllib.parse import urlencode
 
 import streamlit as st
@@ -20,27 +22,51 @@ def render_select_reports():
         """,
         unsafe_allow_html=True,
     )
-    st_utils.st_unkeep("select_reports__example_queries")
-    selected_example_queries = sac.chip(
-        items=[k[0] for k in example_queries_items],
-        label="Get started with examples:",
-        size="xs",
-        format_func="title",
-        align="start",
-        index=st.session_state.select_reports__example_queries,
-        variant="outline",
-        multiple=True,
-        return_index=True,
-        key="_select_reports__example_queries",
-        on_change=lambda: st_utils.st_keep("select_reports__example_queries"),
-    )
 
+    class OnChangeHandler:
+        def __init__(self, key):
+            self.key = key
+
+        def __call__(self, value):
+            if isinstance(value, list):
+                if len(value) >= 2 and 0 in value and value[0] != 0:
+                    return [0]  # [v for v in value if v != 0]
+                if len(value) >= 2 and value[0] == 0:
+                    return [v for v in value if v != 0]
+                elif len(value) == 0:
+                    return [0]
+            return value
+
+    handler = OnChangeHandler("actual")
+    st_utils.st_unkeep("select_reports__example_queries")
+    selected_example_queries = handler(
+        sac.chip(
+            items=[k[0] for k in example_queries_items],
+            label="Get started with examples:",
+            size="xs",
+            format_func="title",
+            align="start",
+            index=st.session_state.select_reports__example_queries,
+            variant="outline",
+            multiple=True,
+            return_index=True,
+            key="_select_reports__example_queries",
+            on_change=lambda: st_utils.st_keep(
+                "select_reports__example_queries",
+                handler,
+            ),
+        ),
+    )
     avoidlist = [
         k[1]
         for i, k in enumerate(example_queries_items)
         if i not in selected_example_queries
     ]
-    addlist = [example_queries_items[i][1] for i in selected_example_queries]
+    addlist = [
+        example_queries_items[i][1]
+        for i in selected_example_queries
+        if example_queries_items[i][1]
+    ]
 
     current = [
         k
