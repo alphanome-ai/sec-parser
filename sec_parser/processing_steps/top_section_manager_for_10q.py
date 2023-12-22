@@ -10,11 +10,11 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
 )
-from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
-from sec_parser.semantic_elements.top_level_section_title_types import (
+from sec_parser.semantic_elements.top_section_title import TopSectionTitle
+from sec_parser.semantic_elements.top_section_title_types import (
     IDENTIFIER_TO_10Q_SECTION,
-    InvalidTopLevelSectionIn10Q,
-    TopLevelSectionType,
+    InvalidTopSectionIn10Q,
+    TopSectionType,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -29,11 +29,11 @@ item_pattern = re.compile(r"item\s+(\d+a?)[.\s]*", re.IGNORECASE)
 
 @dataclass
 class _Candidate:
-    section_type: TopLevelSectionType
+    section_type: TopSectionType
     element: AbstractSemanticElement
 
 
-class TopLevelSectionManagerFor10Q(AbstractElementwiseProcessingStep):
+class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
     """
     Documents are divided into sections, subsections, and so on.
     Top level sections are the highest level of sections and are
@@ -91,11 +91,11 @@ class TopLevelSectionManagerFor10Q(AbstractElementwiseProcessingStep):
                 self._last_part = part
                 section_type = IDENTIFIER_TO_10Q_SECTION.get(
                     f"part{self._last_part}",
-                    InvalidTopLevelSectionIn10Q,
+                    InvalidTopSectionIn10Q,
                 )
-                if section_type is InvalidTopLevelSectionIn10Q:
+                if section_type is InvalidTopSectionIn10Q:
                     warnings.warn(
-                        f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopLevelSectionIn10Q.",
+                        f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionIn10Q.",
                         UserWarning,
                         stacklevel=8,
                     )
@@ -103,11 +103,11 @@ class TopLevelSectionManagerFor10Q(AbstractElementwiseProcessingStep):
             elif item := self.match_item(element.text):
                 section_type = IDENTIFIER_TO_10Q_SECTION.get(
                     f"part{self._last_part}item{item}",
-                    InvalidTopLevelSectionIn10Q,
+                    InvalidTopSectionIn10Q,
                 )
-                if section_type is InvalidTopLevelSectionIn10Q:
+                if section_type is InvalidTopSectionIn10Q:
                     warnings.warn(
-                        f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopLevelSectionIn10Q.",
+                        f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionIn10Q.",
                         UserWarning,
                         stacklevel=8,
                     )
@@ -123,7 +123,7 @@ class TopLevelSectionManagerFor10Q(AbstractElementwiseProcessingStep):
         if context.iteration == 1:
             if self._selected_candidates is None:
                 grouped_candidates: dict[
-                    TopLevelSectionType,
+                    TopSectionType,
                     list[AbstractSemanticElement],
                 ] = defaultdict(list)
                 for candidate in self._candidates:
@@ -170,7 +170,7 @@ class TopLevelSectionManagerFor10Q(AbstractElementwiseProcessingStep):
                             log_origin=self.__class__.__name__,
                         )
                         continue
-                    return TopLevelSectionTitle.create_from_element(
+                    return TopSectionTitle.create_from_element(
                         candidate.element,
                         level=candidate.section_type.level,
                         section_type=candidate.section_type,

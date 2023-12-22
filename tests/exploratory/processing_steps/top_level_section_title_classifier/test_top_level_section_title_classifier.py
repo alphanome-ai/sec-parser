@@ -4,7 +4,7 @@ from typing import Callable
 
 import pytest
 
-from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
+from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 from tests.types import ParsedDocumentComponents, Report
 from tests.utils import all_reports, load_yaml_filter
 
@@ -35,9 +35,7 @@ def test_top_level_section_title_classifier(
     parsed_report = parse(report)
     semantic_elements = parsed_report.semantic_elements
     sections = [
-        element
-        for element in semantic_elements
-        if isinstance(element, TopLevelSectionTitle)
+        element for element in semantic_elements if isinstance(element, TopSectionTitle)
     ]
 
     # Sanity checks

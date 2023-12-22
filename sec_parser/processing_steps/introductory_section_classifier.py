@@ -7,7 +7,7 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
     ElementProcessingContext,
 )
 from sec_parser.semantic_elements.semantic_elements import IntroductorySectionElement
-from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
+from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -47,14 +47,14 @@ class IntroductorySectionElementClassifier(AbstractElementwiseProcessingStep):
     ) -> AbstractSemanticElement:
         if context.iteration == 0:
             if (
-                isinstance(element, TopLevelSectionTitle)
+                isinstance(element, TopSectionTitle)
                 and element.section_type.identifier == "part1"
             ):
                 self._part1_exists = True
             return element
         if context.iteration == 1 and self._part1_exists:
             if (
-                isinstance(element, TopLevelSectionTitle)
+                isinstance(element, TopSectionTitle)
                 and element.section_type.identifier == "part1"
             ):
                 self._part1_found = True

@@ -25,7 +25,7 @@ TRANSPARENT_EXTRA_STYLE = {
     "z-index": 10,
 }
 COLOR_PAIR = [
-    (sp.TopLevelSectionTitle, "rgba(247, 217, 196, 0.7)"),
+    (sp.TopSectionTitle, "rgba(247, 217, 196, 0.7)"),
     (sp.TitleElement, "rgba(250, 237, 203, 0.7)"),
     (sp.TextElement, "rgba(201, 228, 222, 0.7)"),
     (sp.ImageElement, "rgba(198, 222, 241, 0.7)"),

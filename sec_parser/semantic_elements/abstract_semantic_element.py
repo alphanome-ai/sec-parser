@@ -35,10 +35,12 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         self.processing_log = processing_log or ProcessingLog()
 
         # If creating derived classes that override __init__, make sure to call this
-        # in the derived class's __init__ method. Pass log_origin=None to the base class.
+        # at the very end the derived class's __init__ method. Pass log_origin=None to the base class.
+        # This is to ensure that the log_init is called at the very end of the __init__
         self.log_init(log_origin)
 
     def log_init(self, log_origin: LogItemOrigin | None = None) -> None:
+        """Has to be called at the very end of the __init__ method."""
         if log_origin:
             self.processing_log.add_item(
                 log_origin=log_origin,
@@ -137,7 +139,7 @@ class AbstractLevelElement(AbstractSemanticElement):
             msg = f"Level must be equal or greater than {self.MIN_LEVEL}"
             raise InvalidLevelError(msg)
         self.level = level
-        self.log_init(log_origin)
+        self.log_init(log_origin)  # Has to be called at the very end
 
     @classmethod
     def create_from_element(

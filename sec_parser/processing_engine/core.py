@@ -22,8 +22,8 @@ from sec_parser.processing_steps.individual_semantic_element_extractor.single_el
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.table_check import (
     TableCheck,
 )
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.top_level_section_title_check import (
-    TopLevelSectionTitleCheck,
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.top_section_title_check import (
+    TopSectionTitleCheck,
 )
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.xbrl_tag_check import (
     XbrlTagCheck,
@@ -43,8 +43,8 @@ from sec_parser.processing_steps.table_of_contents_classifier import (
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
-from sec_parser.processing_steps.top_level_section_manager_for_10q import (
-    TopLevelSectionManagerFor10Q,
+from sec_parser.processing_steps.top_section_manager_for_10q import (
+    TopSectionManagerFor10Q,
 )
 from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
@@ -184,7 +184,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
             EmptyElementClassifier(types_to_process={NotYetClassifiedElement}),
             TableClassifier(types_to_process={NotYetClassifiedElement}),
             TableOfContentsClassifier(types_to_process={TableElement}),
-            TopLevelSectionManagerFor10Q(types_to_process={NotYetClassifiedElement}),
+            TopSectionManagerFor10Q(types_to_process={NotYetClassifiedElement}),
             IntroductorySectionElementClassifier(),
             TextClassifier(types_to_process={NotYetClassifiedElement}),
             HighlightedTextClassifier(types_to_process={TextElement}),
@@ -206,5 +206,5 @@ class Edgar10QParser(AbstractSemanticElementParser):
             TableCheck(),
             XbrlTagCheck(),
             ImageCheck(),
-            TopLevelSectionTitleCheck(),
+            TopSectionTitleCheck(),
         ]

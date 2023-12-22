@@ -158,8 +158,8 @@ demo_output: str = sp.render(elements)
 print_first_n_lines(demo_output, n=7)
 ```
 <pre>
-<b><font color="navy">TopLevelSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
-<b><font color="navy">TopLevelSectionTitle:</font></b> Item 1.    Financial Statements
+<b><font color="navy">TopSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
+<b><font color="navy">TopSectionTitle:</font></b> Item 1.    Financial Statements
 <b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited)
 <b><font color="navy">SupplementaryText:</font></b> (In millions, except number of ...housands and per share amounts)
 <b><font color="navy">TableElement:</font></b> Table with 24 rows, 80 numbers, and 1058 characters.
@@ -176,8 +176,8 @@ demo_output: str = sp.render(tree)
 print_first_n_lines(demo_output, n=7)
 ```
 <pre>
-<b><font color="navy">TopLevelSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
-├── <b><font color="navy">TopLevelSectionTitle:</font></b> Item 1.    Financial Statements
+<b><font color="navy">TopSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
+├── <b><font color="navy">TopSectionTitle:</font></b> Item 1.    Financial Statements
 │   ├── <b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited)
 │   │   ├── <b><font color="navy">SupplementaryText:</font></b> (In millions, except number of ...housands and per share amounts)
 │   │   ├── <b><font color="navy">TableElement:</font></b> Table with 24 rows, 80 numbers, and 1058 characters.

@@ -25,7 +25,7 @@ from sec_parser.semantic_elements.semantic_elements import (
 )
 from sec_parser.semantic_elements.table_element.table_element import TableElement
 from sec_parser.semantic_elements.title_element import TitleElement
-from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
+from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 from sec_parser.semantic_tree.nesting_rules import AbstractNestingRule
 from sec_parser.semantic_tree.render_ import render
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
@@ -40,7 +40,7 @@ __all__ = [
     "AbstractSemanticElement",
     "CompositeSemanticElement",
     "NotYetClassifiedElement",
-    "TopLevelSectionTitle",
+    "TopSectionTitle",
     "TextElement",
     "TitleElement",
     "IrrelevantElement",

@@ -30,7 +30,7 @@ def render_view_parsed_export_as(elements, html: bytes, filename: str):
     title_level_to_markdown = _get_map_title_levels_to_markdown_headings(elements)
     output = []
     for element in elements:
-        if isinstance(element, sp.TopLevelSectionTitle):
+        if isinstance(element, sp.TopSectionTitle):
             output.append(f"# {element.text}")
         elif isinstance(element, sp.TextElement):
             output.append(f"{element.text}")

@@ -5,8 +5,8 @@ from typing import TYPE_CHECKING
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
     AbstractSingleElementCheck,
 )
-from sec_parser.processing_steps.top_level_section_manager_for_10q import (
-    TopLevelSectionManagerFor10Q,
+from sec_parser.processing_steps.top_section_manager_for_10q import (
+    TopSectionManagerFor10Q,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -16,13 +16,14 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 def _is_match_part_or_item(text: str) -> bool:
-    return TopLevelSectionManagerFor10Q.is_match_part_or_item(text)
+    return TopSectionManagerFor10Q.is_match_part_or_item(text)
 
 
-class TopLevelSectionTitleCheck(AbstractSingleElementCheck):
+class TopSectionTitleCheck(AbstractSingleElementCheck):
     def contains_single_element(self, element: AbstractSemanticElement) -> bool | None:
         match_count = element.html_tag.count_text_matches_in_descendants(
-            _is_match_part_or_item, exclude_links=True,
+            _is_match_part_or_item,
+            exclude_links=True,
         )
 
         if match_count >= 1:

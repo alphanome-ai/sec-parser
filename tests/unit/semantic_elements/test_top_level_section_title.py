@@ -2,8 +2,8 @@ import bs4
 
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.highlighted_text_element import TextStyle
-from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
-from sec_parser.semantic_elements.top_level_section_title_types import (
+from sec_parser.semantic_elements.top_section_title import TopSectionTitle
+from sec_parser.semantic_elements.top_section_title_types import (
     IDENTIFIER_TO_10Q_SECTION,
 )
 
@@ -15,7 +15,7 @@ def test_to_dict():
     section_type = IDENTIFIER_TO_10Q_SECTION[identifier]
 
     # Act
-    actual = TopLevelSectionTitle(HtmlTag(tag), section_type=section_type).to_dict(
+    actual = TopSectionTitle(HtmlTag(tag), section_type=section_type).to_dict(
         include_previews=True,
     )
 

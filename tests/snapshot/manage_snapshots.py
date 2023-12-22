@@ -162,7 +162,10 @@ def manage_snapshots(
             html_content = f.read()
 
         execution_time_start = time.perf_counter()
-        elements = Edgar10QParser().parse(html_content)
+        elements = Edgar10QParser().parse(
+            html_content,
+            include_irrelevant_elements=True,
+        )
         execution_time_in_seconds = time.perf_counter() - execution_time_start
 
         if action == "update":

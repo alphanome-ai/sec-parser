@@ -38,7 +38,9 @@ def test_highlighted_text_element_from_element():
         match="Style must be provided.",
     ):
         _ = HighlightedTextElement.create_from_element(
-            element, style=None, log_origin=None
+            element,
+            style=None,
+            log_origin=None,
         )
 
 

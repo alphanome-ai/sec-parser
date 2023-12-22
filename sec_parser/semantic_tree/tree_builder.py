@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable
 
 from sec_parser.semantic_elements.title_element import TitleElement
-from sec_parser.semantic_elements.top_level_section_title import TopLevelSectionTitle
+from sec_parser.semantic_elements.top_section_start_marker import TopSectionStartMarker
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
     AlwaysNestAsParentRule,
@@ -54,14 +54,10 @@ class TreeBuilder:
     @staticmethod
     def get_default_rules() -> list[AbstractNestingRule]:
         return [
-            AlwaysNestAsParentRule(TopLevelSectionTitle),
-            # Both RootSectionRule and TitleRule nest all elements under them,
-            # leading to a conflict where a decision between TopLevelSectionStartMarker
-            # and TitleRule is needed. This conflict is resolved by excluding
-            # TopLevelSectionStartMarker from the rule for TitleElements.
+            AlwaysNestAsParentRule(TopSectionStartMarker),
             AlwaysNestAsParentRule(
                 TitleElement,
-                exclude_children={TopLevelSectionTitle},
+                exclude_children={TopSectionStartMarker},
             ),
             NestSameTypeDependingOnLevelRule(),
         ]

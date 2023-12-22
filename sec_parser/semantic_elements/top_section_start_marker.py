@@ -6,24 +6,18 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractLevelElement,
     AbstractSemanticElement,
 )
-from sec_parser.semantic_elements.mixins.dict_text_content_mixin import (
-    DictTextContentMixin,
-)
 
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
-    from sec_parser.semantic_elements.top_level_section_title_types import (
-        TopLevelSectionType,
-    )
+    from sec_parser.semantic_elements.top_section_title_types import TopSectionType
 
 
-class TopLevelSectionTitle(DictTextContentMixin, AbstractLevelElement):
+class TopSectionStartMarker(AbstractLevelElement):
     """
-    The TopLevelSectionTitle class represents the title and the beginning of a top-level
-    section of a document. For instance, in SEC 10-Q reports, a
-    top-level section could be "Part I, Item 3. Quantitative and Qualitative
-    Disclosures About Market Risk.".
+    The TopSectionStartMarker class represents the beginning of a top-level
+    section of a document. It is used to mark the start of sections such as
+    "Part I, Item 1. Business" in SEC 10-Q reports.
     """
 
     def __init__(
@@ -33,13 +27,13 @@ class TopLevelSectionTitle(DictTextContentMixin, AbstractLevelElement):
         processing_log: ProcessingLog | None = None,
         log_origin: LogItemOrigin | None = None,
         level: int | None = None,
-        section_type: TopLevelSectionType | None = None,
+        section_type: TopSectionType | None = None,
     ) -> None:
         super().__init__(
             html_tag,
             processing_log=processing_log,
             level=level,
-            log_origin=None,
+            log_origin=None,  # None because log_init has to be called at the very end
         )
         if section_type is None:
             msg = "section_type cannot be None"
@@ -54,7 +48,7 @@ class TopLevelSectionTitle(DictTextContentMixin, AbstractLevelElement):
         log_origin: LogItemOrigin,
         *,
         level: int | None = None,
-        section_type: TopLevelSectionType | None = None,
+        section_type: TopSectionType | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
