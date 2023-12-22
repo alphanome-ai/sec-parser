@@ -64,6 +64,10 @@ def render_select_reports():
 
     query_list, report_metadatas = global_get_report_metadatas()
 
+    if any(m.form_type != "10-Q" for m in report_metadatas):
+        st.warning(
+            "**Warning:** Only 10-Q form types are supported at this time. Parsing other form types may lead to unexpected results.",
+        )
     table_container = st.empty()
     if report_metadatas:
         reports_dict_list = SecEdgarReportsGetter.to_dict_list(report_metadatas)
