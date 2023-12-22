@@ -105,6 +105,9 @@ This project, `sec-parser`, is an independent, open-source initiative and has no
 
 This guide will walk you through the process of installing the `sec-parser` package and using it to extract the "Segment Operating Performance" section as a semantic tree from the latest Apple 10-Q filing.
 
+> [!TIP]
+> To run the example code in a ready-to-code environment, you can use GitHub Codespaces. Click the button below to open the example code below in a codespace and start experimenting with `sec-parser`:
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alphanome-ai/sec-parser?devcontainer_path=.devcontainer/devcontainer.json)
 
 ## Installation

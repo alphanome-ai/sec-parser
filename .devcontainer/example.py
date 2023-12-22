@@ -1,20 +1,20 @@
-import sec_downloader as sd
+from sec_downloader import Downloader
 
 import sec_parser as sp
 
 # Initialize the downloader with your company name and email
-dl = sd.Downloader("MyCompanyName", "email@example.com")
+dl = Downloader("MyCompanyName", "email@example.com")
 
 # Download the latest 10-Q filing for Apple
 html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 
-# Now, we can parse the filing HTML into a list of semantic elements:
+
+# Utility function to make the example code a bit more compact
+def print_first_n_lines(text: str, *, n: int):
+    print("\n".join(text.split("\n")[:n]), "...", sep="\n")
+
+
 elements: list = sp.Edgar10QParser().parse(html)
 
-# Let's print the first 5 elements:
-for element in elements[:5]:
-    element_type = element.__class__.__name__
-    element_text = element.text
-    print(f"Element Type: {element_type}")
-    print(f"Text Content: {element_text}")
-    print("-" * 40)  # Separator for readability
+demo_output: str = sp.render(elements)
+print_first_n_lines(demo_output, n=7)
