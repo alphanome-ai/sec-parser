@@ -1,5 +1,3 @@
-from unittest.mock import Mock
-
 import bs4
 import pytest
 
