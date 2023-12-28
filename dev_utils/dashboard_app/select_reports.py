@@ -78,7 +78,7 @@ def render_select_reports():
 
     to_add = [k for k in addlist if k not in current]
     current.extend(to_add)
-    queries = smart_join(current)
+    queries = smart_join(current, max_length=50)
 
     st.session_state.select_reports__queries = queries
     st_utils.st_unkeep("select_reports__queries")

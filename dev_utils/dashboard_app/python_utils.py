@@ -1,4 +1,4 @@
-def smart_join(strings, max_length=50):
+def smart_join(strings, max_length: int):
     result = ""
     for i, string in enumerate(strings):
         # Add a newline if the string is long or the previous string was long
