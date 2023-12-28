@@ -1,6 +1,3 @@
-from unittest import mock
-from unittest.mock import Mock
-
 import bs4
 import pytest
 from bs4 import NavigableString

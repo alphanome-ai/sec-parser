@@ -1,5 +1,3 @@
-from unittest.mock import Mock
-
 import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser

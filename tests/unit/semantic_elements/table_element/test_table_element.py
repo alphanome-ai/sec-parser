@@ -38,13 +38,13 @@ def test_table_element_get_summary(test_case):
     numbers = test_case["numbers"]
     text = test_case["text"]
     expected_summary = test_case["expected_summary"]
-    mock_semantic_element = Mock()
-    mock_semantic_element.text = text
-    mock_semantic_element.get_approx_table_metrics.return_value = ApproxTableMetrics(
+    mock_html_tag = Mock()
+    mock_html_tag.text = text
+    mock_html_tag.get_approx_table_metrics.return_value = ApproxTableMetrics(
         rows,
         numbers,
     )
-    table_element = TableElement(mock_semantic_element)
+    table_element = TableElement(mock_html_tag)
 
     # Act
     result = table_element.get_summary()
@@ -55,15 +55,15 @@ def test_table_element_get_summary(test_case):
 
 def test_to_dict():
     # Arrange
-    mock_semantic_element = Mock(spec=HtmlTag)
-    mock_semantic_element.get_approx_table_metrics.return_value = ApproxTableMetrics(
+    mock_html_tag = Mock(spec=HtmlTag)
+    mock_html_tag.get_approx_table_metrics.return_value = ApproxTableMetrics(
         5, 6
     )
-    mock_semantic_element.to_dict.return_value = (
+    mock_html_tag.to_dict.return_value = (
         {}
     )  # Mock the to_dict method to return an empty dictionary
 
-    table_element = TableElement(mock_semantic_element)
+    table_element = TableElement(mock_html_tag)
 
     # Act
     actual = table_element.to_dict(include_previews=True)
