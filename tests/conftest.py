@@ -32,6 +32,12 @@ def pytest_addoption(parser):
         default=False,
         help="Create missing files. Overwrite files that were previously generated automatically.",
     )
+    parser.addoption(
+        "--create-missing",
+        action="store_true",
+        default=False,
+        help="Create missing files.",
+    )
 
 
 @pytest.fixture(scope="session")

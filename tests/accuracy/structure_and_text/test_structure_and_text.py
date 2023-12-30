@@ -111,6 +111,10 @@ def test_structure_and_text(
         if actual_element not in expected_elements_json
     ]
 
+    # STEP: Sanity check
+    if not elements_not_found_in_actual and not elements_not_expected_but_present:
+        assert actual_json == expected_elements_json
+
     # STEP: Report and save the results
     total_expected = len(expected_elements_json)
     total_missing = len(elements_not_found_in_actual)
