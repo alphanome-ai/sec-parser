@@ -4,7 +4,7 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (  # noqa: E501
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
 )
