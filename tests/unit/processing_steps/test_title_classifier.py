@@ -44,7 +44,7 @@ italic = TextStyle(
         ),
     ],
 )
-def test_title_classifier(elements, expected_elements):
+def test_title_classifier(elements, expected_elements) -> None:
     # Arrange
     step = TitleClassifier()
 

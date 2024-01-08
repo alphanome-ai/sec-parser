@@ -5,7 +5,7 @@ subpackage. These steps carry out specific tasks such as
 section identification, title parsing, and text extraction, etc.
 """
 
-from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (  # noqa: E501
     AbstractElementwiseProcessingStep,
 )
 from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
@@ -13,7 +13,7 @@ from sec_parser.processing_steps.abstract_classes.abstract_processing_step impor
 )
 from sec_parser.processing_steps.empty_element_classifier import EmptyElementClassifier
 from sec_parser.processing_steps.image_classifier import ImageClassifier
-from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (  # noqa: E501
     IndividualSemanticElementExtractor,
 )
 from sec_parser.processing_steps.supplementary_text_classifier import (

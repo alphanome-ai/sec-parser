@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (  # noqa: E501
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
 )
@@ -18,8 +18,9 @@ if TYPE_CHECKING:  # pragma: no cover
 
 class TableOfContentsClassifier(AbstractElementwiseProcessingStep):
     """
-    TableOfContentsClassifier class for converting elements into TableOfContentsElement instances.
-
+    TableOfContentsClassifier class for converting elements into TableOfContentsElement
+    instances.
+    
     This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with TableOfContentsElement instances.
     """

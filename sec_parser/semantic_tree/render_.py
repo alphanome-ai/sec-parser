@@ -39,10 +39,15 @@ def render(
         elif all(isinstance(e, TreeNode) for e in tree):
             root_nodes = cast(list[TreeNode], tree)
         else:
-            msg = "All elements in the tree must be of type AbstractSemanticElement or TreeNode"
+            msg = ("All elements in the tree must be of type "
+                   "AbstractSemanticElement or TreeNode"
+                   )
             raise TypeError(msg)
     else:
-        msg = "Invalid type for 'tree'. Expected TreeNode, SemanticTree, list[AbstractSemanticElement], or list[TreeNode]"
+        msg = ("Invalid type for 'tree'. "
+               "Expected TreeNode, SemanticTree, "
+               "list[AbstractSemanticElement], or list[TreeNode]"
+               )
         raise TypeError(msg)
     pretty = pretty if pretty is not None else True
     ignored_types = ignored_types or (IrrelevantElement,)

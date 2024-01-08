@@ -14,10 +14,13 @@ class AbstractSingleElementCheck(ABC):
     def contains_single_element(self, element: AbstractSemanticElement) -> bool | None:
         """
         Designed to work as series of subsequent checks.
-        - Returning None means that the check is inconclusive, and the next check should be performed.
-        - Returning True means that no further checks are necessary, and the HTML element will be
+        - Returning None means that the check is inconclusive, and the next check should
+          be performed.
+        - Returning True means that no further checks are necessary, and the HTML
+          element will be
         later be able to be converted into a semantic element without any splits.
-        - Returning False means that the HTML element will be split into multiple semantic elements
+        - Returning False means that the HTML element will be split into multiple
+          semantic elements
         of type NotYetClassifiedElement.
         """
         raise NotImplementedError  # pragma: no cover

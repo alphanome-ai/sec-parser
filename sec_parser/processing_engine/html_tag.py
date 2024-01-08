@@ -297,7 +297,9 @@ class HtmlTag:
             self._approx_table_metrics,
             ApproxTableMetrics,
         ):
-            msg = f"Invalid type for _approx_table_metrics: {type(self._approx_table_metrics).__name__}"
+            msg = (f"Invalid type for _approx_table_metrics: "
+                   f"{type(self._approx_table_metrics).__name__}"
+                   )
             raise ValueError(msg)
 
         return self._approx_table_metrics

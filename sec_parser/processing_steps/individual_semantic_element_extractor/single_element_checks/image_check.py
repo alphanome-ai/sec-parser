@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (  # noqa: E501
     AbstractSingleElementCheck,
 )
 
