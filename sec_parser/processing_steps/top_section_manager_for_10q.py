@@ -127,7 +127,7 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
     If it does, it appends the candidate version of the semantic element to
     the _candidates.
     """
-    
+
     def _process_iteration_0(self, element: AbstractSemanticElement) -> None:
         self._identify_candidate(element)
 
@@ -161,7 +161,7 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
       the section type and the semantic element.
     - Appends the identified candidate to the list of candidates "_candidates"
     """
-    
+
     def _identify_candidate(self, element: AbstractSemanticElement) -> None:
         candidate = None
 

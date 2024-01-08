@@ -20,7 +20,7 @@ class TableOfContentsClassifier(AbstractElementwiseProcessingStep):
     """
     TableOfContentsClassifier class for converting elements into TableOfContentsElement
     instances.
-    
+
     This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with TableOfContentsElement instances.
     """
