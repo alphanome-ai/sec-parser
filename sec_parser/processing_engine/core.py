@@ -13,19 +13,19 @@ from sec_parser.processing_steps.highlighted_text_classifier import (
     HighlightedTextClassifier,
 )
 from sec_parser.processing_steps.image_classifier import ImageClassifier
-from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.individual_semantic_element_extractor import (  # noqa: E501
     IndividualSemanticElementExtractor,
 )
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.image_check import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.image_check import (  # noqa: E501
     ImageCheck,
 )
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.table_check import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.table_check import (  # noqa: E501
     TableCheck,
 )
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.top_section_title_check import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.top_section_title_check import (  # noqa: E501
     TopSectionTitleCheck,
 )
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.xbrl_tag_check import (
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.xbrl_tag_check import (  # noqa: E501
     XbrlTagCheck,
 )
 from sec_parser.processing_steps.introductory_section_classifier import (
@@ -62,7 +62,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_steps.abstract_classes.abstract_processing_step import (
         AbstractProcessingStep,
     )
-    from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
+    from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (  # noqa: E501
         AbstractSingleElementCheck,
     )
     from sec_parser.semantic_elements.abstract_semantic_element import (

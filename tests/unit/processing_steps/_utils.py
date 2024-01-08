@@ -9,7 +9,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 
-def _create_element(tag) -> AbstractSemanticElement:
+def _create_element(tag: HtmlTag) -> AbstractSemanticElement:
     if tag.name == "composite":
         inner_tags = tag.get_children()
         return CompositeSemanticElement(
