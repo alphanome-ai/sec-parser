@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Callable
 
 from sec_parser.exceptions import SecParserValueError
-from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (  # noqa: E501
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
 )
@@ -13,7 +13,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 if TYPE_CHECKING:  # pragma: no cover
-    from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
+    from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (  # noqa: E501
         AbstractSingleElementCheck,
     )
     from sec_parser.semantic_elements.abstract_semantic_element import (

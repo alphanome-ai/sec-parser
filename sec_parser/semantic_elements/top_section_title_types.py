@@ -31,7 +31,9 @@ ALL_10Q_SECTIONS = (
     ),
     TopSectionIn10Q(
         identifier="part1item2",
-        title="Management's Discussion and Analysis of Financial Condition and Results of Operations",
+        title = ("Management's Discussion and Analysis of "
+                 "Financial Condition and Results of Operations"
+                 ),
         order=2,
         level=1,
     ),
