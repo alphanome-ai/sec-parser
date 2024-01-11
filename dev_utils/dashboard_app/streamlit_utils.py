@@ -40,8 +40,8 @@ def get_html_replace_menu_with_placeholder_button():
         .shareLinkToThisPageButton:hover {
             background-color: #777ea4;
             color: #fff !important;
-            text-decoration: none;  
-            transition: color 0.3s ease;  
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
         .shareLinkToThisPageButton:active {
             background-color: #31333e;
