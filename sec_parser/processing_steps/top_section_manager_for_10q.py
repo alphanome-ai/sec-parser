@@ -13,6 +13,7 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
 from sec_parser.semantic_elements.highlighted_text_element import TextStyle
 from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 from sec_parser.semantic_elements.top_section_title_types import (
+    ALL_10Q_SECTIONS,
     IDENTIFIER_TO_10Q_SECTION,
     InvalidTopSectionIn10Q,
     TopSectionType,
@@ -24,7 +25,18 @@ if TYPE_CHECKING:  # pragma: no cover
     )
 
 part_pattern = re.compile(r"part\s+(i+)[.\s]*", re.IGNORECASE)
-item_pattern = re.compile(r"item\s+(\d+a?)[.\s]*", re.IGNORECASE)
+additional_title = ("Unregistered Sales of Equity Securities, Use of Proceeds, and "
+                    "Issuer Purchases of Equity Securities")
+# single quotation in management's
+additional_title_two = ("Management's Discussion and Analysis of Financial Condition "
+                        "and Results of Operations")
+ALL_TITLES = [section.title for section in ALL_10Q_SECTIONS]
+ALL_TITLES += [additional_title, additional_title_two]
+# The (?:{}|\b) ensures that it either matches one of the titles from ALL_TITLES or
+# an empty title.
+pattern_template = r"item\s+(\d+a?)([.\s]*\b(?:{}|\b)\b)?"
+pattern_formatted = pattern_template.format("|".join(map(re.escape, ALL_TITLES)))
+item_pattern = re.compile(pattern_formatted, re.IGNORECASE)
 PAGE_HEADER_TEXT_LENGTH_THRESHOLD = 100
 TWO_ELEMNTS_LENGTH = 2
 
@@ -79,7 +91,9 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
     @staticmethod
     def match_item(text: str) -> str | None:
         if match := item_pattern.match(text):
-            return match.group(1).lower()
+           remaining_text = match.group(2)
+           if remaining_text is not None:
+               return match.group(1).lower()
         return None
 
     """
