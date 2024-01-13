@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from enum import Enum, auto
 from typing import TYPE_CHECKING
 
-from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (  # noqa: E501
     AbstractElementwiseProcessingStep,
     ElementProcessingContext,
 )
@@ -95,7 +95,10 @@ class PageNumberClassifier(AbstractElementwiseProcessingStep):
             return element
 
         element.processing_log.add_item(
-            message=f"Matches the most common (x{self._most_common_candidate_count}) candidate: {candidate}",
+            message = (f"Matches the most common (x"
+                       f"{self._most_common_candidate_count})"
+                       f"candidate: {candidate}"
+                       ),
             log_origin=self.__class__.__name__,
         )
         return PageNumberElement.create_from_element(
