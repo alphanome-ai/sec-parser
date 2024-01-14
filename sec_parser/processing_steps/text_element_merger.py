@@ -4,7 +4,7 @@ from collections import deque
 from typing import TYPE_CHECKING, cast
 
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.abstract_classes.abstract_element_batch_processing_step import (
+from sec_parser.processing_steps.abstract_classes.abstract_element_batch_processing_step import (  # noqa: E501
     AbstractElementBatchProcessingStep,
 )
 from sec_parser.semantic_elements.abstract_semantic_element import (
@@ -28,9 +28,14 @@ class TextElementMerger(AbstractElementBatchProcessingStep):
     into a single TextElement(<span></span><span></span>).
 
     Intended to fix weird formatting artifacts, such as:
-        <ix:nonnumeric contextref="c-1" name="us-gaap:PropertyPlantAndEquipmentTextBlock" id="f-989" escape="true">
-            <span style="background-color:#ffffff;color:#000000;font-family:'Arial',sans-serif;font-size:10pt;font-weight:400;line-height:120%">Property and equipment, net, co</span>
-            <span style="color:#000000;font-family:'Arial',sans-serif;font-size:10pt;font-weight:400;line-height:120%">nsisted of the following (in millions):</span>
+        <ix:nonnumeric contextref="c-1"
+        name="us-gaap:PropertyPlantAndEquipmentTextBlock" id="f-989" escape="true">
+            <span style="background-color:#ffffff;color:#000000;font-family:'Arial',
+            sans-serif;font-size:10pt;font-weight:400;line-height:120%">Property and
+            equipment, net, co</span>
+            <span style="color:#000000;font-family:'Arial',sans-serif;font-size:10pt;
+            font-weight:400;line-height:120%">nsisted of the following (in millions):
+            </span>
         </ix:nonnumeric>
     Notice, how text is split into two spans, even though it's a single sentence.
     Source: https://www.sec.gov/Archives/edgar/data/1652044/000165204423000094/goog-20230930.htm
@@ -77,13 +82,16 @@ class TextElementMerger(AbstractElementBatchProcessingStep):
             [e.html_tag for e in elements],
         )
         merged_processing_log = elements[0].processing_log.copy()
-        # After merging, we retain the processing log of the first element and drop the logs of the others.
-        # This is because the merged text element now represents a single entity, and we want to avoid
-        # log duplication or confusion about which part of the merged text the logs refer to.
+        # After merging, we retain the processing log of the first element and drop the
+        # logs of the others. This is because the merged text element now represents a
+        # single entity, and we want to avoid log duplication or confusion about which
+        # part of the merged text the logs refer to.
         dropped_logs = [e.processing_log for e in elements[1:]]
         if any(dropped_logs):
             merged_processing_log.add_item(
-                message="Merged multiple TextElements. Processing logs from subsequent elements are dropped.",
+                message = ("Merged multiple TextElements. "
+                           "Processing logs from subsequent elements are dropped."
+                           ),
                 log_origin=cls.__name__,
             )
         return TextElement(
