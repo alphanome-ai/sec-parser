@@ -55,7 +55,7 @@ class SemanticTree:
             verbose=verbose,
         )
 
-    def print(  # noqa: A003
+    def print(
         self,
         *,
         pretty: bool | None = True,
