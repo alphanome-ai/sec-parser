@@ -72,26 +72,31 @@ This tool is especially beneficial for Artificial Intelligence (AI), Machine Lea
 `sec-parser` is versatile and can be applied in various scenarios, including but not limited to:
 
 #### Financial and Regulatory Analysis
+
 - Financial Analysis: Extract financial data from 10-Q and 10-K filings for quantitative modeling.
 - Risk Assessment: Evaluate risk factors or Management's Discussion and Analysis sections for qualitative analysis.
 - Regulatory Compliance: Assist in automating compliance checks for the legal teams.
 - Flexible Filtering: Easily filter SEC documents by sections and types, giving you precisely the data you need.
 
 #### Analytics and Data Science
+
 - Academic Research: Facilitate large-scale studies involving public financial disclosures, sentiment analysis, or corporate governance exploratory.
 - Analytics Ready: Integrate parsed data seamlessly into popular analytics tools for further analysis and visualization.
 
 #### AI and Machine Learning
+
 - Cutting-Edge AI for SEC EDGAR: Apply advanced AI techniques like MemWalker to navigate and extract and transform complex information from SEC documents efficiently. Learn more in our blog post: [Cutting-Edge AI for SEC EDGAR: Introducing MemWalker](https://github.com/orgs/alphanome-ai/discussions/18).
 - AI Applications: Leverage parsed data for various AI tasks such as text summarization, sentiment analysis, and named entity recognition.
 - Data Augmentation: Use authentic financial text to train and test machine learning models.
 
 #### Causal AI
+
 - Causal Analysis: Use parsed data to understand cause-effect relationships in financial data, beyond mere correlations.
 - Predictive Modeling: Enhance predictive models by incorporating causal relationships, leading to more robust and reliable predictions.
 - Decision Making: Aid decision-making processes by providing insights into the potential impact of different actions, based on causal relationships identified in the data.
 
 #### Large Language Models
+
 - LLM Compatible: Use parsed data to facilitate complex NLU tasks with Large Language Models like ChatGPT, including question-answering, language translation, and information retrieval.
 
 These use-cases demonstrate the flexibility and power of `sec-parser` in handling both traditional data extraction tasks and facilitating more advanced AI-driven analysis.
@@ -99,7 +104,7 @@ These use-cases demonstrate the flexibility and power of `sec-parser` in handlin
 # Disclaimer
 
 > [!IMPORTANT]
-This project, `sec-parser`, is an independent, open-source initiative and has no affiliation, endorsement, or verification by the United States Securities and Exchange Commission (SEC). It utilizes public APIs and data provided by the SEC solely for research, informational, and educational objectives. This tool is not intended for financial advisement or as a substitute for professional investment advice or compliance with securities regulations. The creators and maintainers make no warranties, expressed or implied, about the accuracy, completeness, or reliability of the data and analyses presented. Use this software at your own risk. For accurate and comprehensive financial analysis, consult with qualified financial professionals and comply with all relevant legal requirements. The project maintainers and contributors are not liable for any financial or legal consequences arising from the use of this tool.
+> This project, `sec-parser`, is an independent, open-source initiative and has no affiliation, endorsement, or verification by the United States Securities and Exchange Commission (SEC). It utilizes public APIs and data provided by the SEC solely for research, informational, and educational objectives. This tool is not intended for financial advisement or as a substitute for professional investment advice or compliance with securities regulations. The creators and maintainers make no warranties, expressed or implied, about the accuracy, completeness, or reliability of the data and analyses presented. Use this software at your own risk. For accurate and comprehensive financial analysis, consult with qualified financial professionals and comply with all relevant legal requirements. The project maintainers and contributors are not liable for any financial or legal consequences arising from the use of this tool.
 
 # Getting Started
 
@@ -135,7 +140,7 @@ from sec_downloader import Downloader
 dl = Downloader("MyCompanyName", "email@example.com")
 
 # Download the latest 10-Q filing for Apple
-html = dl.get_latest_html(ticker="AAPL", doc_type="10-Q")
+html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 ```
 
 > [!NOTE]
@@ -157,6 +162,7 @@ elements: list = sp.Edgar10QParser().parse(html)
 demo_output: str = sp.render(elements)
 print_first_n_lines(demo_output, n=7)
 ```
+
 <pre>
 <b><font color="navy">TopSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
 <b><font color="navy">TopSectionTitle:</font></b> Item 1.    Financial Statements
@@ -169,12 +175,14 @@ print_first_n_lines(demo_output, n=7)
 </pre>
 
 We can also construct a semantic tree to allow for easy filtering by parent sections:
+
 ```python
 tree = sp.TreeBuilder().build(elements)
 
 demo_output: str = sp.render(tree)
 print_first_n_lines(demo_output, n=7)
 ```
+
 <pre>
 <b><font color="navy">TopSectionTitle:</font></b> PART I  —  FINANCIAL INFORMATION
 ├── <b><font color="navy">TopSectionTitle:</font></b> Item 1.    Financial Statements
@@ -187,23 +195,22 @@ print_first_n_lines(demo_output, n=7)
 </pre>
 
 > [!TIP]
-> 
+>
 > Feel free to experiment with the example code provided above. You can easily do this by launching a GitHub Codespace for the `sec-parser` repository, which will set up a development environment for you in the cloud:
 >
 > [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?machine_type=standardLinux32Gb&repo=alphanome-ai/sec-parser)
 >
 > This is a great way to play around with the code without having to set up anything on your local machine. Give it a try!
 
-
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
 ## What's Next?
 
-Your turn to explore the capabilities of `sec-parser`! With the tools and examples provided, you can now dive into parsing and analyzing SEC filings. 
+Your turn to explore the capabilities of `sec-parser`! With the tools and examples provided, you can now dive into parsing and analyzing SEC filings.
 
 The semantic elements and tree structures created by the parser will serve as a solid foundation for your financial analysis and research tasks with the tools of your choice.
 
-For a tailored experience, consider using our free and open-source library for AI-powered financial analysis: 
+For a tailored experience, consider using our free and open-source library for AI-powered financial analysis:
 
 ```bash
 pip install sec-ai
@@ -217,28 +224,33 @@ pip install sec-ai
 
 To ensure your code remains functional even when we change the internal structure of `sec-parser`, it's recommended to avoid deep imports. Here is an example of a deep import (not recommended):
 
-> [!CAUTION]
-> `from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass`
+> [!CAUTION] > `from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass`
 
 Instead, use the suggested ways to import modules from `sec-parser`:
 
 ### Root Import (prefix)
+
 - **`import sec_parser as sp`**. This imports the main package as `sp`. You can then access its functionalities using `sp.` prefix.
 
 ### Root Import (direct)
+
 - **`from sec_parser import SomeClass`**: This allows you to directly use `SomeClass` without any prefix.
 
 ### Submodule Import (prefix)
+
 - **`import sec_parser.semantic_tree`**: This imports the `semantic_tree` submodule, and you can access its classes and functions using `semantic_tree.` prefix.
 
 ### Submodule Import (direct)
+
 - **`from sec_parser.semantic_tree import SomeClass`**: This imports a specific class `SomeClass` from the `semantic_tree` submodule.
 
 > [!NOTE]
-The main package `sec_parser` contains only the most common functionalities. For specialized tasks, please use submodule or submodule-level imports.
+> The main package `sec_parser` contains only the most common functionalities. For specialized tasks, please use submodule or submodule-level imports.
 
 # Contributing
+
 For information about setting up the development environment, coding standards, and contribution workflows, please refer to our [CONTRIBUTING.md](https://github.com/alphanome-ai/sec-parser/blob/main/CONTRIBUTING.md) guide.
 
 # License
+
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/alphanome-ai/sec-parser/blob/main/LICENSE) file for details.
