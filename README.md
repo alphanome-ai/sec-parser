@@ -204,6 +204,10 @@ print_first_n_lines(demo_output, n=7)
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
+## This was an example of 10-Q SEC Form parsing. How do we parse other SEC Form types, such as 10-K, 8-K, S-1, etc.?
+
+Please refer to [this document](https://github.com/Elijas/sec-parser-exploration/blob/main/02_other_sec_form_types.ipynb).
+
 ## What's Next?
 
 Your turn to explore the capabilities of `sec-parser`! With the tools and examples provided, you can now dive into parsing and analyzing SEC filings.
