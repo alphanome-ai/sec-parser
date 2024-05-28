@@ -228,7 +228,8 @@ pip install sec-ai
 
 To ensure your code remains functional even when we change the internal structure of `sec-parser`, it's recommended to avoid deep imports. Here is an example of a deep import (not recommended):
 
-> [!CAUTION] > `from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass`
+> [!CAUTION]
+> > `from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass`
 
 Instead, use the suggested ways to import modules from `sec-parser`:
 
