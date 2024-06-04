@@ -174,6 +174,13 @@ print_first_n_lines(demo_output, n=7)
 ...
 </pre>
 
+
+> [!TIP]
+>
+> **FAQ: How do I get the text of each element (or all of the document)? How do I get all of the text in a specific section?**
+> 
+> Use the `element.text` field. Check out [this notebook](https://github.com/Elijas/sec-parser-exploration/blob/main/00_mdna.ipynb) for a full example.
+
 We can also construct a semantic tree to allow for easy filtering by parent sections:
 
 ```python
