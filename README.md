@@ -123,7 +123,7 @@ First, install the `sec-parser` package using pip:
 pip install sec-parser
 ```
 
-In order to run the example code in this README, you'll also need the `sec_downloader` package:
+To run the example code in this README, you'll also need the `sec_downloader` package:
 
 ```bash
 pip install sec-downloader
@@ -145,6 +145,9 @@ html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 
 > [!NOTE]
 > The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
+
+> [!TIP]
+> Read [sec-downloader documentation](https://github.com/Elijas/sec-downloader) (and [examples](https://discord.com/channels/1164249739836018698/1247302201836175401/1247655286102298757)) for more advanced usage (such as downloading three latest Apple 10-Q filings instead of just one, or downloading based on a specific CIK or Filing ID (i.e. accession number)). 
 
 Now, we can parse the filing HTML into a list of semantic elements:
 
