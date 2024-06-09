@@ -71,7 +71,7 @@ def _compute_effective_style(tag: Tag) -> dict[str, str]:
             styles = found_styles.split(";")
             for style in styles:
                 if ":" in style:
-                    prop, val = style.split(":")
+                    prop, val = style.split(":", 1)
                     prop = prop.strip()
                     val = val.strip()
                     # Only set if not previously set to respect CSS cascading rules
