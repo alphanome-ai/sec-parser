@@ -123,7 +123,7 @@ First, install the `sec-parser` package using pip:
 pip install sec-parser
 ```
 
-In order to run the example code in this README, you'll also need the `sec_downloader` package:
+To run the example code in this README, you'll also need the `sec_downloader` package:
 
 ```bash
 pip install sec-downloader
@@ -145,6 +145,9 @@ html = dl.get_filing_html(ticker="AAPL", form="10-Q")
 
 > [!NOTE]
 > The company name and email address are used to form a user-agent string that adheres to the SEC EDGAR's fair access policy for programmatic downloading. [Source](https://www.sec.gov/os/webmaster-faq#code-support)
+
+> [!TIP]
+> Read [sec-downloader documentation](https://github.com/Elijas/sec-downloader) (and [examples](https://discord.com/channels/1164249739836018698/1247302201836175401/1247655286102298757)) for more advanced usage (such as downloading three latest Apple 10-Q filings instead of just one, or downloading based on a specific CIK or Filing ID (i.e. accession number)). 
 
 Now, we can parse the filing HTML into a list of semantic elements:
 
@@ -173,6 +176,13 @@ print_first_n_lines(demo_output, n=7)
 <b><font color="navy">TitleElement:</font></b> CONDENSED CONSOLIDATED STATEMEN...OMPREHENSIVE INCOME (Unaudited)
 ...
 </pre>
+
+
+> [!TIP]
+>
+> **FAQ: How do I get the text of each element (or all of the document)? How do I get all of the text in a specific section?**
+> 
+> Use the `element.text` field. Check out [this notebook](https://github.com/Elijas/sec-parser-exploration/blob/main/00_mdna.ipynb) for a full example.
 
 We can also construct a semantic tree to allow for easy filtering by parent sections:
 
@@ -204,6 +214,10 @@ print_first_n_lines(demo_output, n=7)
 
 For more examples and advanced usage, you can continue learning how to use `sec-parser` by referring to the [**User Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html), [**Developer Guide**](https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html), and [**Documentation**](https://sec-parser.rtfd.io).
 
+## This was an example of 10-Q SEC Form parsing. How do we parse other SEC Form types, such as 10-K, 8-K, S-1, etc.?
+
+Please refer to [this document](https://github.com/Elijas/sec-parser-exploration/blob/main/02_other_sec_form_types.ipynb).
+
 ## What's Next?
 
 Your turn to explore the capabilities of `sec-parser`! With the tools and examples provided, you can now dive into parsing and analyzing SEC filings.
@@ -224,7 +238,8 @@ pip install sec-ai
 
 To ensure your code remains functional even when we change the internal structure of `sec-parser`, it's recommended to avoid deep imports. Here is an example of a deep import (not recommended):
 
-> [!CAUTION] > `from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass`
+> [!CAUTION]
+> > `from sec_parser.semantic_tree.internal_utils.core import SomeInternalClass`
 
 Instead, use the suggested ways to import modules from `sec-parser`:
 
