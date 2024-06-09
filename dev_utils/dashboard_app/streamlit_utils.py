@@ -2,6 +2,19 @@ import streamlit as st
 import streamlit_antd_components as sac
 
 
+def st_disable_warning(substr):
+    import streamlit
+
+    original_warning = streamlit.warning
+
+    def new_warning(s):
+        if substr in s:
+            return
+        original_warning(s)
+
+    streamlit.warning = new_warning
+
+
 def get_style_adjust_madewithstreamlit():
     return """
             footer {

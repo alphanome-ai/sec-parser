@@ -2,10 +2,12 @@ from enum import Enum, auto
 from urllib.parse import urlencode
 
 import rich.traceback
+import dev_utils.dashboard_app.streamlit_utils as st_utils
+
+st_utils.st_disable_warning("will be removed after 2024-04-11")
 import streamlit as st
 import streamlit_antd_components as sac
 
-import dev_utils.dashboard_app.streamlit_utils as st_utils
 from dev_utils.core.config import get_config
 from dev_utils.core.sec_edgar_reports_getter import SecEdgarReportsGetter
 from dev_utils.dashboard_app.constants import (
