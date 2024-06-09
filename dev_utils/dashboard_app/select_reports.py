@@ -83,7 +83,7 @@ def render_select_reports():
     st.session_state.select_reports__queries = queries
     st_utils.st_unkeep("select_reports__queries")
     queries = st.text_area(
-        "Enter your queries separated by commas and/or newlines:",
+        "Enter your [queries](https://github.com/Elijas/sec-downloader) separated by commas and/or newlines:",
         key="_select_reports__queries",
         on_change=lambda: st_utils.st_keep("select_reports__queries"),
     )
