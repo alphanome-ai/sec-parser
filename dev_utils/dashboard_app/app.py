@@ -53,8 +53,7 @@ st.markdown(
 ### Persistence ###
 ###################
 
-url_query_params = st.experimental_get_query_params()
-url_params_queries = url_query_params.get("q", [])
+url_params_queries = st.query_params.get_all("q")
 
 if "select_reports__queries" not in st.session_state:
     default = ""
@@ -72,7 +71,7 @@ if "select_reports__example_queries" not in st.session_state:
 
 if "view_parsed__filter_by_text" not in st.session_state:
     default = None
-    if url_filter_by_text := url_query_params.get(URL_PARAM_KEY_FILTER_BY_TEXT, []):
+    if url_filter_by_text := st.query_params.get_all(URL_PARAM_KEY_FILTER_BY_TEXT):
         default = url_filter_by_text[0]
     st.session_state["view_parsed__filter_by_text"] = default
 
@@ -103,9 +102,9 @@ class NavbarItems(Enum):
 
 default_nav_bar_selection = NavbarItems.SELECT_REPORTS.value
 try:
-    if URL_PARAM_KEY in url_query_params:
+    if URL_PARAM_KEY in st.query_params:
         default_nav_bar_selection = NavbarItems.deserialize(
-            url_query_params[URL_PARAM_KEY][0]
+            st.query_params[URL_PARAM_KEY],
         ).value
 except Exception as e:
     st.toast(

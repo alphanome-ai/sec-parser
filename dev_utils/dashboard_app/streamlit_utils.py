@@ -132,7 +132,7 @@ def get_style_modify_decoration():
 
 
 def get_style_change_top_page_margin():
-    return "div[class^='block-container'] { padding-top: 2rem; }".strip()
+    return "div[class^='block-container'] { padding-top: 2.8rem; }".strip()
 
 
 def st_keep(key, value_func=None) -> None:
