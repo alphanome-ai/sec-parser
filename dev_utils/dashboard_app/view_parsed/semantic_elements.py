@@ -34,10 +34,7 @@ def render_view_parsed_semantic_elements(
     do_show_nested_composite_elements: bool,
     are_any_elements_filtered: bool,
 ):
-    url_params = st.query_params
-    url_params = (
-        {}
-    )  # TODO: Temporarily disabled until https://github.com/alphanome-ai/sec-parser/issues/85 is solved
+    url_params = st.experimental_get_query_params()
     new_url_params = []
     pagination_size = None
     do_use_pagination = len(elements) >= PAGINATION_DISABLE_THRESHOLD

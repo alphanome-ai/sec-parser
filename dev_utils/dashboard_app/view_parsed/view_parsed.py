@@ -45,8 +45,7 @@ def render_view_parsed():
         return
     metadatas: list[FilingMetadata] = st.session_state.select_reports__report_metadatas
 
-    url_params = st.query_params
-    url_params = {} # TODO: Temporarily disabled until https://github.com/alphanome-ai/sec-parser/issues/85 is solved
+    url_params = st.experimental_get_query_params()
     new_url_params = []
 
     #################
@@ -103,8 +102,7 @@ def render_view_parsed():
         def deserialize(cls, name: str):
             return ViewParsedItems[name.upper()]
 
-    url_query_params = st.query_params
-    url_query_params = {} # TODO: Temporarily disabled until https://github.com/alphanome-ai/sec-parser/issues/85 is solved
+    url_query_params = st.experimental_get_query_params()
     default_nav_bar_selection = ViewParsedItems.SEMANTIC_ELEMENTS.value
     try:
         if URL_PARAM_KEY in url_query_params:
