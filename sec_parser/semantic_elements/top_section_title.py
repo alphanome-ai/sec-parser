@@ -14,7 +14,7 @@ if TYPE_CHECKING:  # pragma: no cover
         AbstractLevelElement,
         AbstractSemanticElement,
     )
-    from sec_parser.semantic_elements.top_section_title_types import TopSectionType
+    from sec_parser.semantic_elements.top_section_title_types import TopSectionInFiling
 
 
 class TopSectionTitle(DictTextContentMixin, TopSectionStartMarker):
@@ -32,7 +32,7 @@ class TopSectionTitle(DictTextContentMixin, TopSectionStartMarker):
         processing_log: ProcessingLog | None = None,
         log_origin: LogItemOrigin | None = None,
         level: int | None = None,
-        section_type: TopSectionType | None = None,
+        section_type: TopSectionInFiling | None = None,
     ) -> None:
         super().__init__(
             html_tag,
@@ -50,7 +50,7 @@ class TopSectionTitle(DictTextContentMixin, TopSectionStartMarker):
         log_origin: LogItemOrigin,
         *,
         level: int | None = None,
-        section_type: TopSectionType | None = None,
+        section_type: TopSectionInFiling | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001

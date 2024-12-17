@@ -13,8 +13,8 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
 from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 from sec_parser.semantic_elements.top_section_title_types import (
     IDENTIFIER_TO_10Q_SECTION,
-    InvalidTopSectionIn10Q,
-    TopSectionType,
+    InvalidTopSectionInFiling,
+    TopSectionInFiling,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -29,7 +29,7 @@ item_pattern = re.compile(r"item\s+(\d+a?)[.\s]*", re.IGNORECASE)
 
 @dataclass
 class _Candidate:
-    section_type: TopSectionType
+    section_type: TopSectionInFiling
     element: AbstractSemanticElement
 
 
@@ -156,18 +156,18 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
         if part := self.match_part(element.text):
             self._last_part = part
             section_type = self._get_section_type(f"part{self._last_part}")
-            if section_type is InvalidTopSectionIn10Q:
+            if section_type is InvalidTopSectionInFiling:
                     warnings.warn(
-                        f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionIn10Q.",
+                        f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionInFiling.",
                         UserWarning,
                         stacklevel=8,
                     )
             candidate = _Candidate(section_type, element)
         elif item := self.match_item(element.text):
             section_type = self._get_section_type(f"part{self._last_part}item{item}")
-            if section_type is InvalidTopSectionIn10Q:
+            if section_type is InvalidTopSectionInFiling:
                     warnings.warn(
-                        f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionIn10Q.",
+                        f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionInFiling.",
                         UserWarning,
                         stacklevel=8,
                     )
@@ -182,17 +182,17 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
             )
 
     """
-    Returns the corresponding TopSectionType of the given identifier. The TopSectionType represents a standard top section type in the context of a 10-Q report.
+    Returns the corresponding TopSectionInFiling of the given identifier. The TopSectionInFiling represents a standard top section type in the context of a 10-Q report.
     The function utilizes the IDENTIFIER_TO_10Q_SECTION dictionary.
 
     Input:
     - identifier (type: String): an identifier of a top section title expressed by a string
 
     Output:
-    - returns the corresponding TopSectionType of the given identifier. Returns InvalisTopSectionIn10Q if the identifier doesn't match any TopSectionType.
+    - returns the corresponding TopSectionInFiling of the given identifier. Returns InvalisTopSectionInFiling if the identifier doesn't match any TopSectionInFiling.
     """
-    def _get_section_type(self, identifier: str) -> TopSectionType:
-        return IDENTIFIER_TO_10Q_SECTION.get(identifier, InvalidTopSectionIn10Q)
+    def _get_section_type(self, identifier: str) -> TopSectionInFiling:
+        return IDENTIFIER_TO_10Q_SECTION.get(identifier, InvalidTopSectionInFiling)
 
     """"
     Groups candidates by section type. Then selects the first element candidate of each section type by using the helper function select_element.
