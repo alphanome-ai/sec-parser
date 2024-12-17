@@ -28,6 +28,7 @@ class FilingSections:
             {section.identifier: section for section in all_sections},
         )
 
+
 FilingSectionsIn10Q = FilingSections(
     all_sections=(
         TopSectionInFiling(
@@ -175,7 +176,7 @@ FilingSectionsIn10K = FilingSections(
         ),
         TopSectionInFiling(
             identifier="part2item6",
-            title="Consolidated Financial Data",
+            title="[Reserved]",
             order=10,
             level=1,
         ),
@@ -216,51 +217,63 @@ FilingSectionsIn10K = FilingSections(
             level=1,
         ),
         TopSectionInFiling(
+            identifier="part2item9c",
+            title="Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+            order=17,
+            level=1,
+        ),
+        TopSectionInFiling(
             identifier="part3",
             title="",
-            order=17,
+            order=18,
             level=0,
         ),
         TopSectionInFiling(
             identifier="part3item10",
             title="Directors, Executive Officers and Corporate Governance",
-            order=18,
+            order=19,
             level=1,
         ),
         TopSectionInFiling(
             identifier="part3item11",
             title="Executive Compensation",
-            order=19,
+            order=20,
             level=1,
         ),
         TopSectionInFiling(
             identifier="part3item12",
             title="Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
-            order=20,
+            order=21,
             level=1,
         ),
         TopSectionInFiling(
             identifier="part3item13",
             title="Certain Relationships and Related Transactions, and Director Independence",
-            order=21,
+            order=22,
             level=1,
         ),
         TopSectionInFiling(
             identifier="part3item14",
             title="Principal Accounting Fees and Services",
-            order=22,
+            order=23,
             level=1,
         ),
         TopSectionInFiling(
             identifier="part4",
             title="",
-            order=23,
+            order=24,
             level=0,
         ),
         TopSectionInFiling(
             identifier="part4item15",
             title="Exhibits, Financial Statement Schedules Signatures",
-            order=24,
+            order=25,
+            level=1,
+        ),
+        TopSectionInFiling(
+            identifier="part4item16",
+            title="Form 10-K Summary",
+            order=26,
             level=1,
         ),
     ),

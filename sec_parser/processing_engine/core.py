@@ -86,7 +86,7 @@ class AbstractSemanticElementParser(ABC):
     Why Focus on Top-Level Tags?
     ============================
     SEC filings usually have a flat HTML structure, which simplifies the
-    parsing process.Each top-level HTML tag often directly corresponds
+    parsing process. Each top-level HTML tag often directly corresponds
     to a single semantic element. This is different from many websites
     where HTML tags are nested deeply,requiring more complex parsing.
 

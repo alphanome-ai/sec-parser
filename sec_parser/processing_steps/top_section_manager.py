@@ -25,8 +25,8 @@ if TYPE_CHECKING:  # pragma: no cover
     )
 
 
-part_pattern = re.compile(r"part\s+(i+)[.\s]*", re.IGNORECASE)
-item_pattern = re.compile(r"item\s+(\d+a?)[.\s]*", re.IGNORECASE)
+part_pattern = re.compile(r"part\s+([iv]+)[.\s]*", re.IGNORECASE)
+item_pattern = re.compile(r"item\s+(\d+[a-c]?)[.\s]*", re.IGNORECASE)
 
 
 @dataclass
@@ -75,7 +75,10 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
     @staticmethod
     def match_part(text: str) -> str | None:
         if match := part_pattern.match(text):
-            return str(len(match.group(1)))
+            part_text = match.group(1).lower()
+            # Map roman numerals to arabic numbers
+            roman_map = {"i": "1", "ii": "2", "iii": "3", "iv": "4"}
+            return roman_map.get(part_text)
         return None
 
     @staticmethod
@@ -161,20 +164,20 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
             self._last_part = part
             section_type = self._get_section_type(f"part{self._last_part}")
             if section_type is InvalidTopSectionInFiling:
-                    warnings.warn(
-                        f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionInFiling.",
-                        UserWarning,
-                        stacklevel=8,
-                    )
+                warnings.warn(
+                    f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionInFiling.",
+                    UserWarning,
+                    stacklevel=8,
+                )
             candidate = _Candidate(section_type, element)
         elif item := self.match_item(element.text):
             section_type = self._get_section_type(f"part{self._last_part}item{item}")
             if section_type is InvalidTopSectionInFiling:
-                    warnings.warn(
-                        f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionInFiling.",
-                        UserWarning,
-                        stacklevel=8,
-                    )
+                warnings.warn(
+                    f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionInFiling.",
+                    UserWarning,
+                    stacklevel=8,
+                )
             candidate = _Candidate(section_type, element)
 
 
@@ -186,14 +189,16 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
             )
 
     """
-    Returns the corresponding TopSectionInFiling of the given identifier. The TopSectionInFiling represents a standard top section type in the context of an SEC filing.
+    Returns the corresponding TopSectionInFiling of the given identifier.
+    The TopSectionInFiling represents a standard top section type in the context of an SEC filing.
     The function utilizes the identifier_to_section dictionary of the given FilingSections object.
 
     Input:
     - identifier (type: String): an identifier of a top section title expressed by a string
 
     Output:
-    - returns the corresponding TopSectionInFiling of the given identifier. Returns InvalisTopSectionInFiling if the identifier doesn't match any TopSectionInFiling.
+    - returns the corresponding TopSectionInFiling of the given identifier.
+    - Returns InvalidTopSectionInFiling if the identifier doesn't match any TopSectionInFiling.
     """
     def _get_section_type(self, identifier: str) -> TopSectionInFiling:
         return self._filing_sections.identifier_to_section.get(identifier, InvalidTopSectionInFiling)
@@ -233,7 +238,7 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
                         if not element.html_tag.contains_tag("table", include_self = True)
                     ]
             if len(elements_without_table) >= 1:
-                    return elements_without_table[0]
+                return elements_without_table[0]
             return elements[0]
 
 
@@ -337,6 +342,7 @@ class TopSectionManagerFor10K(TopSectionManager):
             types_to_process=types_to_process,
             types_to_exclude=types_to_exclude,
         )
+
 
 """
 Algorithm:
