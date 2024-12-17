@@ -10,7 +10,7 @@ from sec_parser.semantic_elements.abstract_semantic_element import (
 if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.processing_engine.processing_log import LogItemOrigin, ProcessingLog
-    from sec_parser.semantic_elements.top_section_title_types import TopSectionType
+    from sec_parser.semantic_elements.top_section_title_types import TopSectionInFiling
 
 
 class TopSectionStartMarker(AbstractLevelElement):
@@ -27,7 +27,7 @@ class TopSectionStartMarker(AbstractLevelElement):
         processing_log: ProcessingLog | None = None,
         log_origin: LogItemOrigin | None = None,
         level: int | None = None,
-        section_type: TopSectionType | None = None,
+        section_type: TopSectionInFiling | None = None,
     ) -> None:
         super().__init__(
             html_tag,
@@ -48,7 +48,7 @@ class TopSectionStartMarker(AbstractLevelElement):
         log_origin: LogItemOrigin,
         *,
         level: int | None = None,
-        section_type: TopSectionType | None = None,
+        section_type: TopSectionInFiling | None = None,
     ) -> AbstractLevelElement:
         return cls(
             source._html_tag,  # noqa: SLF001
