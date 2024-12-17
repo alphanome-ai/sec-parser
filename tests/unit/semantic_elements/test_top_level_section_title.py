@@ -12,7 +12,7 @@ def test_to_dict():
     # Arrange
     tag = bs4.Tag(name="span")
     identifier = "part1item2"
-    section_type = FilingSectionsIn10Q.IDENTIFIER_TO_SECTION[identifier]
+    section_type = FilingSectionsIn10Q.identifier_to_section[identifier]
 
     # Act
     actual = TopSectionTitle(HtmlTag(tag), section_type=section_type).to_dict(

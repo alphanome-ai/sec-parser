@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Tuple, Dict
 
 
 @dataclass(frozen=True)
@@ -19,18 +18,18 @@ InvalidTopSectionInFiling = TopSectionInFiling(
 
 @dataclass(frozen=True)
 class FilingSections:
-    sections: Tuple[TopSectionInFiling]
+    all_sections: tuple[TopSectionInFiling, ...]
+    identifier_to_section: dict[str, TopSectionInFiling]
 
-    def __post_init__(self):
-        object.__setattr__(self, 'ALL_SECTIONS', self.sections)
+    def __init__(self, all_sections: tuple[TopSectionInFiling, ...]) -> None:
         object.__setattr__(
             self,
-            'IDENTIFIER_TO_SECTION',
-            {section.identifier: section for section in self.sections}
+            "identifier_to_section",
+            {section.identifier: section for section in all_sections},
         )
 
 FilingSectionsIn10Q = FilingSections(
-    sections=(
+    all_sections=(
         TopSectionInFiling(
             identifier="part1",
             title="Financial Information",
@@ -109,11 +108,11 @@ FilingSectionsIn10Q = FilingSections(
             order=12,
             level=1,
         ),
-    )
+    ),
 )
 
 FilingSectionsIn10K = FilingSections(
-    sections=(
+    all_sections=(
         TopSectionInFiling(
             identifier="part1",
             title="",
@@ -264,5 +263,5 @@ FilingSectionsIn10K = FilingSections(
             order=24,
             level=1,
         ),
-    )
+    ),
 )

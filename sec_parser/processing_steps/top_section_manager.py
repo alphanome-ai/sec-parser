@@ -12,11 +12,11 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
 )
 from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 from sec_parser.semantic_elements.top_section_title_types import (
+    FilingSections,
+    FilingSectionsIn10K,
+    FilingSectionsIn10Q,
     InvalidTopSectionInFiling,
     TopSectionInFiling,
-    FilingSections,
-    FilingSectionsIn10Q,
-    FilingSectionsIn10K
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -187,7 +187,7 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
 
     """
     Returns the corresponding TopSectionInFiling of the given identifier. The TopSectionInFiling represents a standard top section type in the context of an SEC filing.
-    The function utilizes the IDENTIFIER_TO_SECTION dictionary of the given FilingSections object.
+    The function utilizes the identifier_to_section dictionary of the given FilingSections object.
 
     Input:
     - identifier (type: String): an identifier of a top section title expressed by a string
@@ -196,7 +196,7 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
     - returns the corresponding TopSectionInFiling of the given identifier. Returns InvalisTopSectionInFiling if the identifier doesn't match any TopSectionInFiling.
     """
     def _get_section_type(self, identifier: str) -> TopSectionInFiling:
-        return self._filing_sections.IDENTIFIER_TO_SECTION.get(identifier, InvalidTopSectionInFiling)
+        return self._filing_sections.identifier_to_section.get(identifier, InvalidTopSectionInFiling)
 
     """"
     Groups candidates by section type. Then selects the first element candidate of each section type by using the helper function select_element.
