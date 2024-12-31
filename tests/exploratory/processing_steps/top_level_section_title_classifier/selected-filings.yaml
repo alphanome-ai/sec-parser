@@ -82,33 +82,32 @@ accession_numbers:
   # ===========================
   # 10-K filings
   # ===========================
-  - 0000316709-24-000018 # 10-K SCHW The Charles Schwab Corporation 2024-74-220
-  - 0000019617-24-000225 # 10-K JPM JPMorgan Chase & Co. 2024-73-217
-  - 0001628280-24-007680 # 10-K MARA Marathon Digital Holdings Inc. 2024-72-214
-  - 0001403161-24-000058 # 10-K V Visa Inc. 2024-71-211
+# - 0000316709-24-000018 # 10-K SCHW The Charles Schwab Corporation 2024-74-220
+# - 0000019617-24-000225 # 10-K JPM JPMorgan Chase & Co. 2024-73-217
+# - 0001628280-24-007680 # 10-K MARA Marathon Digital Holdings Inc. 2024-72-214
+# - 0001403161-24-000058 # 10-K V Visa Inc. 2024-71-211
   - 0001558370-24-000312 # 10-K MULN Mullen Automotive 2024-70-208
   - 0000796343-24-000006 # 10-K ADBE Adobe Inc. 2024-69-205
   - 0000021665-24-000003 # 10-K CL Colgate-Palmolive Company 2024-68-202
   - 0000320187-24-000044 # 10-K NKE Nike Inc. 2024-67-199
   - 0000014272-24-000044 # 10-K BMY Bristol-Myers Squibb Company 2024-66-196
   - 0000091419-24-000054 # 10-K SJM The J. M. Smucker Company 2024-65-193
-  - 0000004962-24-000013 # 10-K AXP American Express Company 2024-64-190
+# - 0000004962-24-000013 # 10-K AXP American Express Company 2024-64-190
   - 0000021344-24-000009 # 10-K KO Coca-Cola Co. 2024-63-187
-  - 0000040533-24-000007 # 10-K GD General Dynamics Corporation 2024-62-184
+# - 0000040533-24-000007 # 10-K GD General Dynamics Corporation 2024-62-184
   - 0000858877-24-000017 # 10-K CSCO Cisco Systems Inc. 2024-61-181
   - 0001744489-24-000276 # 10-K DIS Walt Disney Co. 2024-60-178
   - 0001467858-24-000031 # 10-K GM General Motors Company 2024-59-175
-# - 0001193125-18-236766 # 10-K AA Alcoa Corporation 2018 2024-58-172
   - 0000731766-24-000081 # 10-K UNH UnitedHealth Group Inc. 2024-57-169
   - 0000833444-24-000064 # 10-K JCI Johnson Controls International plc 2024-56-166
   - 0001045810-24-000029 # 10-K NVDA NVIDIA Corporation 2024-55-163
-  - 0000040545-24-000027 # 10-K GE General Electric Company 2024-54-160
-  - 0000012927-24-000010 # 10-K BA Boeing Company 2024-53-157
+# - 0000040545-24-000027 # 10-K GE General Electric Company 2024-54-160
+# - 0000012927-24-000010 # 10-K BA Boeing Company 2024-53-157
   - 0001618921-24-000084 # 10-K WBA Walgreens Boots Alliance Inc. 2024-52-154
-  - 0000773840-24-000014 # 10-K HON Honeywell International Inc. 2024-51-151
+# - 0000773840-24-000014 # 10-K HON Honeywell International Inc. 2024-51-151
   - 0000086312-24-000012 # 10-K TRV The Travelers Companies Inc. 2024-50-148
   - 0000101829-24-000008 # 10-K RTX United Technologies Corporation 2024-49-145
-  - 0001751788-24-000010 # 10-K DOW The Dow Chemical Company 2024-48-142
+# - 0001751788-24-000010 # 10-K DOW The Dow Chemical Company 2024-48-142
   - 0001628280-24-028786 # 10-K AI [C3.ai](http://c3.ai/) Inc. 2024-47-139
   - 0001628280-24-005348 # 10-K ABT Abbott Laboratories 2024-46-136
   - 0001613103-24-000072 # 10-K MDT Medtronic Inc. 2024-45-133
@@ -121,32 +120,30 @@ accession_numbers:
   - 0000950170-24-075605 # 10-K ORCL Oracle Corporation 2024-38-112
   - 0000732717-24-000009 # 10-K T AT&T Inc. 2024-37-109
   - 0001805284-24-000009 # 10-K RKT Rocket Companies 2024-36-106
-  - 0000063908-24-000072 # 10-K MCD McDonald's Corporation 2024-35-103
+# - 0000063908-24-000072 # 10-K MCD McDonald's Corporation 2024-35-103
   - 0001551152-24-000011 # 10-K ABBV AbbVie Inc. 2024-34-100
   - 0001326801-24-000012 # 10-K META Meta Platforms Inc. 2024-33-97
-# - 0001326801-19-000037 # 10-K META Meta Platforms Inc. 2024-32-94
   - 0000950170-24-087843 # 10-K MSFT Microsoft Corporation 2024-31-91
   - 0000097745-24-000007 # 10-K TMO Thermo Fisher Scientific Inc. 2024-30-88
   - 0001628280-24-002390 # 10-K TSLA Tesla Inc. 2024-29-85
-  - 0000070858-24-000122 # 10-K BAC Bank of America Corporation 2024-28-82
+# - 0000070858-24-000122 # 10-K BAC Bank of America Corporation 2024-28-82
   - 0000200406-24-000013 # 10-K JNJ Johnson & Johnson 2024-27-79
   - 0001628280-24-006850 # 10-K MRK Merck & Co. Inc. 2024-26-76
   - 0000950170-24-015847 # 10-K MSTR MicroStrategy Incorporated 2024-25-73
-  - 0000354950-24-000062 # 10-K HD Home Depot Inc. 2024-24-70
+# - 0000354950-24-000062 # 10-K HD Home Depot Inc. 2024-24-70
   - 0001141391-24-000022 # 10-K MA Mastercard Incorporated 2024-23-67
   - 0000060667-24-000033 # 10-K LOW Lowe's Companies Inc. 2024-22-64
   - 0000886982-24-000006 # 10-K GS The Goldman Sachs Group Inc. 2024-21-61
-  - 0000050863-24-000010 # 10-K INTC Intel Corporation 2024-20-58
-  - 0000097476-24-000007 # 10-K TXN Texas Instruments Incorporated 2024-19-55
+# - 0000050863-24-000010 # 10-K INTC Intel Corporation 2024-20-58
+# - 0000097476-24-000007 # 10-K TXN Texas Instruments Incorporated 2024-19-55
   - 0000093410-24-000013 # 10-K CVX Chevron Corporation 2024-18-52
   - 0001558370-24-001550 # 10-K RIOT Riot Platforms Inc. 2024-17-49
-  - 0000104169-24-000056 # 10-K WMT Walmart Inc. 2024-16-46
-  - 0000895421-24-000300 # 10-K MS Morgan Stanley 2024-15-43
+# - 0000104169-24-000056 # 10-K WMT Walmart Inc. 2024-16-46
+# - 0000895421-24-000300 # 10-K MS Morgan Stanley 2024-15-43
   - 0001321655-24-000022 # 10-K PLTR Palantir Technologies 2024-14-40
   - 0001090727-24-000008 # 10-K UPS United Parcel Service Inc. 2024-13-37
   - 0000066740-24-000016 # 10-K MMM 3M Company 2024-12-34
   - 0001652044-24-000022 # 10-K GOOG Alphabet Inc. 2024-11-31
-# - 0001652044-23-000094 # 10-K GOOG Alphabet Inc. 2024-10-28
   - 0000077476-24-000008 # 10-K PEP PepsiCo Inc. 2024-09-25
   - 0000078003-24-000039 # 10-K PFE Pfizer Inc. 2024-08-22
   - 0001166691-24-000011 # 10-K CMCSA Comcast Corporation 2024-07-19
