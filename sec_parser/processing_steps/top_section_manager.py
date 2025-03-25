@@ -12,9 +12,11 @@ from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processin
 )
 from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 from sec_parser.semantic_elements.top_section_title_types import (
-    IDENTIFIER_TO_10Q_SECTION,
-    InvalidTopSectionIn10Q,
-    TopSectionType,
+    FilingSections,
+    FilingSectionsIn10K,
+    FilingSectionsIn10Q,
+    InvalidTopSectionInFiling,
+    TopSectionInFiling,
 )
 
 if TYPE_CHECKING:  # pragma: no cover
@@ -23,17 +25,17 @@ if TYPE_CHECKING:  # pragma: no cover
     )
 
 
-part_pattern = re.compile(r"part\s+(i+)[.\s]*", re.IGNORECASE)
-item_pattern = re.compile(r"item\s+(\d+a?)[.\s]*", re.IGNORECASE)
+part_pattern = re.compile(r"part\s+([iv]+)[.\s]*", re.IGNORECASE)
+item_pattern = re.compile(r"item\s+(\d+[a-c]?)[.\s]*", re.IGNORECASE)
 
 
 @dataclass
 class _Candidate:
-    section_type: TopSectionType
+    section_type: TopSectionInFiling
     element: AbstractSemanticElement
 
 
-class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
+class TopSectionManager(AbstractElementwiseProcessingStep):
     """
     Documents are divided into sections, subsections, and so on.
     Top level sections are the highest level of sections and are
@@ -49,6 +51,7 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
 
     def __init__(
         self,
+        filing_sections: FilingSections,
         *,
         types_to_process: set[type[AbstractSemanticElement]] | None = None,
         types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
@@ -57,6 +60,7 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
             types_to_process=types_to_process,
             types_to_exclude=types_to_exclude,
         )
+        self._filing_sections = filing_sections
         self._candidates: list[_Candidate] = []
         self._selected_candidates: tuple[_Candidate, ...] | None = None
         self._last_part: str = "?"
@@ -71,7 +75,10 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
     @staticmethod
     def match_part(text: str) -> str | None:
         if match := part_pattern.match(text):
-            return str(len(match.group(1)))
+            part_text = match.group(1).lower()
+            # Map roman numerals to arabic numbers
+            roman_map = {"i": "1", "ii": "2", "iii": "3", "iv": "4"}
+            return roman_map.get(part_text)
         return None
 
     @staticmethod
@@ -156,21 +163,21 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
         if part := self.match_part(element.text):
             self._last_part = part
             section_type = self._get_section_type(f"part{self._last_part}")
-            if section_type is InvalidTopSectionIn10Q:
-                    warnings.warn(
-                        f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionIn10Q.",
-                        UserWarning,
-                        stacklevel=8,
-                    )
+            if section_type is InvalidTopSectionInFiling:
+                warnings.warn(
+                    f"Invalid section type for part{self._last_part}. Defaulting to InvalidTopSectionInFiling.",
+                    UserWarning,
+                    stacklevel=8,
+                )
             candidate = _Candidate(section_type, element)
         elif item := self.match_item(element.text):
             section_type = self._get_section_type(f"part{self._last_part}item{item}")
-            if section_type is InvalidTopSectionIn10Q:
-                    warnings.warn(
-                        f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionIn10Q.",
-                        UserWarning,
-                        stacklevel=8,
-                    )
+            if section_type is InvalidTopSectionInFiling:
+                warnings.warn(
+                    f"Invalid section type for part{self._last_part}item{item}. Defaulting to InvalidTopSectionInFiling.",
+                    UserWarning,
+                    stacklevel=8,
+                )
             candidate = _Candidate(section_type, element)
 
 
@@ -182,17 +189,19 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
             )
 
     """
-    Returns the corresponding TopSectionType of the given identifier. The TopSectionType represents a standard top section type in the context of a 10-Q report.
-    The function utilizes the IDENTIFIER_TO_10Q_SECTION dictionary.
+    Returns the corresponding TopSectionInFiling of the given identifier.
+    The TopSectionInFiling represents a standard top section type in the context of an SEC filing.
+    The function utilizes the identifier_to_section dictionary of the given FilingSections object.
 
     Input:
     - identifier (type: String): an identifier of a top section title expressed by a string
 
     Output:
-    - returns the corresponding TopSectionType of the given identifier. Returns InvalisTopSectionIn10Q if the identifier doesn't match any TopSectionType.
+    - returns the corresponding TopSectionInFiling of the given identifier.
+    - Returns InvalidTopSectionInFiling if the identifier doesn't match any TopSectionInFiling.
     """
-    def _get_section_type(self, identifier: str) -> TopSectionType:
-        return IDENTIFIER_TO_10Q_SECTION.get(identifier, InvalidTopSectionIn10Q)
+    def _get_section_type(self, identifier: str) -> TopSectionInFiling:
+        return self._filing_sections.identifier_to_section.get(identifier, InvalidTopSectionInFiling)
 
     """"
     Groups candidates by section type. Then selects the first element candidate of each section type by using the helper function select_element.
@@ -229,7 +238,7 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
                         if not element.html_tag.contains_tag("table", include_self = True)
                     ]
             if len(elements_without_table) >= 1:
-                    return elements_without_table[0]
+                return elements_without_table[0]
             return elements[0]
 
 
@@ -294,6 +303,44 @@ class TopSectionManagerFor10Q(AbstractElementwiseProcessingStep):
             level=candidate.section_type.level,
             section_type=candidate.section_type,
             log_origin=self.__class__.__name__,
+        )
+
+class TopSectionManagerFor10Q(TopSectionManager):
+    """
+    Specialized version of TopSectionManagerForFiling for handling 10-Q filings.
+    Automatically uses FilingSectionsIn10Q while maintaining all the functionality
+    of the base class.
+    """
+
+    def __init__(
+        self,
+        *,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
+    ) -> None:
+        super().__init__(
+            filing_sections=FilingSectionsIn10Q,
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
+        )
+
+class TopSectionManagerFor10K(TopSectionManager):
+    """
+    Specialized version of TopSectionManagerForFiling for handling 10-K filings.
+    Automatically uses FilingSectionsIn10K while maintaining all the functionality
+    of the base class.
+    """
+
+    def __init__(
+        self,
+        *,
+        types_to_process: set[type[AbstractSemanticElement]] | None = None,
+        types_to_exclude: set[type[AbstractSemanticElement]] | None = None,
+    ) -> None:
+        super().__init__(
+            filing_sections=FilingSectionsIn10K,
+            types_to_process=types_to_process,
+            types_to_exclude=types_to_exclude,
         )
 
 

@@ -46,7 +46,8 @@ from sec_parser.processing_steps.table_of_contents_classifier import (
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
-from sec_parser.processing_steps.top_section_manager_for_10q import (
+from sec_parser.processing_steps.top_section_manager import (
+    TopSectionManagerFor10K,
     TopSectionManagerFor10Q,
 )
 
@@ -68,6 +69,7 @@ __all__ = [
     "TextClassifier",
     "TextElementMerger",
     "TitleClassifier",
+    "TopSectionManagerFor10K",
     "TopSectionManagerFor10Q",
     "TopSectionTitleCheck",
     "XbrlTagCheck",

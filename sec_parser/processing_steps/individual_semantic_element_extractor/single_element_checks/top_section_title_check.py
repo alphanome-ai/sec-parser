@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.abstract_single_element_check import (
     AbstractSingleElementCheck,
 )
-from sec_parser.processing_steps.top_section_manager_for_10q import (
+from sec_parser.processing_steps.top_section_manager import (
     TopSectionManagerFor10Q,
 )
 
