@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from sec_parser.utils.bs4_.count_tags import count_tags
 
 
-def test_count_tags_with_self_included():
+def test_count_tags_with_self_included() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -17,7 +17,7 @@ def test_count_tags_with_self_included():
     assert result == 1, "Expected 1 when tag is included in count"
 
 
-def test_count_tags_with_descendant_tag():
+def test_count_tags_with_descendant_tag() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -30,7 +30,7 @@ def test_count_tags_with_descendant_tag():
     assert result == 1, "Expected 1 when descendant tag is present"
 
 
-def test_count_tags_without_descendant_tag():
+def test_count_tags_without_descendant_tag() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -44,7 +44,7 @@ def test_count_tags_without_descendant_tag():
     assert result == 0, "Expected 0 when descendant tag is not present"
 
 
-def test_count_tags_with_empty_tag():
+def test_count_tags_with_empty_tag() -> None:
     # Arrange
     html = "<div></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -58,7 +58,7 @@ def test_count_tags_with_empty_tag():
     assert result == 0, "Expected 0 when tag is empty"
 
 
-def test_count_tags_with_nonexistent_tag():
+def test_count_tags_with_nonexistent_tag() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -72,7 +72,7 @@ def test_count_tags_with_nonexistent_tag():
     assert result == 0, "Expected 0 when tag does not exist"
 
 
-def test_count_tags_with_root_tag():
+def test_count_tags_with_root_tag() -> None:
     # Arrange
     html = "<b>text</b>"
     soup = BeautifulSoup(html, "lxml")

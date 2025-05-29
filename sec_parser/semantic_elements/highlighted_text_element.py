@@ -15,8 +15,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class HighlightedTextElement(AbstractSemanticElement):
-    """
-    The HighlightedTextElement class, among other uses,
+    """The HighlightedTextElement class, among other uses,
     is an intermediate step in identifying title elements.
 
     For example:

@@ -7,9 +7,6 @@ from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.processing_steps.abstract_classes.abstract_element_batch_processing_step import (
     AbstractElementBatchProcessingStep,
 )
-from sec_parser.semantic_elements.abstract_semantic_element import (
-    AbstractSemanticElement,
-)
 from sec_parser.semantic_elements.semantic_elements import (
     IrrelevantElement,
     TextElement,
@@ -19,11 +16,13 @@ if TYPE_CHECKING:  # pragma: no cover
     from sec_parser.processing_steps.abstract_classes.processing_context import (
         ElementProcessingContext,
     )
+    from sec_parser.semantic_elements.abstract_semantic_element import (
+        AbstractSemanticElement,
+    )
 
 
 class TextElementMerger(AbstractElementBatchProcessingStep):
-    """
-    TextElementMerger is a processing step that merges adjacent text elements
+    """TextElementMerger is a processing step that merges adjacent text elements
     For example, TextElement(<span></span>) and TextElement(<span></span>)
     into a single TextElement(<span></span><span></span>).
 
@@ -55,7 +54,7 @@ class TextElementMerger(AbstractElementBatchProcessingStep):
                 continue
             result[indices[0]] = self._merge(
                 cast(
-                    list[AbstractSemanticElement],
+                    "list[AbstractSemanticElement]",
                     # At this point,
                     # there shouldn't be any None
                     # elements in the list anyway

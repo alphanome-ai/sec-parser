@@ -14,7 +14,7 @@ class DummyElement(AbstractLevelElement):
     pass
 
 
-def test_invalid_level_raises():
+def test_invalid_level_raises() -> None:
     # Arrange
     invalid_level = -1
 
@@ -23,7 +23,7 @@ def test_invalid_level_raises():
         DummyElement(Mock(), level=invalid_level)
 
 
-def test_to_dict():
+def test_to_dict() -> None:
     # Arrange
     tag = bs4.Tag(name="span")
     tag.string = "A" * 60
@@ -35,7 +35,7 @@ def test_to_dict():
     assert actual["cls_name"] == "DummyElement"
 
 
-def test_repr():
+def test_repr() -> None:
     # Arrange
     tag = bs4.Tag(name="div")
     element = DummyElement(HtmlTag(tag))

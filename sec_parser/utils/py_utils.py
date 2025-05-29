@@ -6,8 +6,7 @@ MAX_THRESHOLD = 100.0
 
 
 def get_direct_subclass_of_base_class(cls: type, base_class: type) -> type:
-    """
-    Given a class, find the class that is one step below
+    """Given a class, find the class that is one step below
     the specified base_class in its inheritance hierarchy.
     """
     if not issubclass(cls, base_class):
@@ -45,8 +44,7 @@ def normalize_string(input_str: str) -> str:
 
 
 def exceeds_capitalization_threshold(s: str, threshold: float) -> bool:
-    """
-    Calculate the percentage of capitalized letters in a given string `s`.
+    """Calculate the percentage of capitalized letters in a given string `s`.
     Only counts characters that can be capitalized (alphabetic characters).
     """
     if not 0 <= threshold <= MAX_THRESHOLD:

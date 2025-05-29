@@ -15,8 +15,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class ImageClassifier(AbstractElementwiseProcessingStep):
-    """
-    ImageClassifier class for converting elements into ImageElement instances.
+    """ImageClassifier class for converting elements into ImageElement instances.
 
     This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with ImageElement instances.

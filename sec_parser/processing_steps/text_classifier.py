@@ -15,8 +15,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class TextClassifier(AbstractElementwiseProcessingStep):
-    """
-    TextClassifier class for converting elements into TextElement instances.
+    """TextClassifier class for converting elements into TextElement instances.
 
     This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with TextElement instances.
@@ -38,8 +37,7 @@ class TextClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementProcessingContext,
     ) -> AbstractSemanticElement:
-        """
-        Transform a single semantic element
+        """Transform a single semantic element
         into a TextElement if applicable.
         """
         if element.contains_words():

@@ -1,13 +1,11 @@
 from __future__ import annotations
 
 import json
-import pprint
 from pathlib import Path
 
 import rich.traceback
 import yaml
 from rich import print
-from rich.panel import Panel
 
 from tests.utils import DEFAULT_VALIDATION_DATA_DIR, traverse_repository_for_filings
 

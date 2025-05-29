@@ -19,8 +19,7 @@ class InvalidIterationError(ValueError):
 
 
 class EmptyElementClassifier(AbstractElementwiseProcessingStep):
-    """
-    IrrelevantElementClassifier class for converting elements
+    """IrrelevantElementClassifier class for converting elements
     into IrrelevantElement instances.
 
     This step scans through a list of semantic elements and changes it,
@@ -43,8 +42,7 @@ class EmptyElementClassifier(AbstractElementwiseProcessingStep):
         element: AbstractSemanticElement,
         _: ElementProcessingContext,
     ) -> AbstractSemanticElement:
-        """
-        Transform a single semantic element
+        """Transform a single semantic element
         into a EmptyElement if applicable.
         """
         if not element.contains_words():

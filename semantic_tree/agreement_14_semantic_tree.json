@@ -1,0 +1,1199 @@
+{
+  "filename": "agreement_14.html",
+  "success": true,
+  "quality_score": 0.8857142857142857,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 88,
+    "has_title": true,
+    "detected_title": "AMENDMENT NO. 2 TO CREDIT AGREEMENT",
+    "element_count_by_type": {
+      "metadata": 2,
+      "title": 1,
+      "paragraph": 65,
+      "section": 7,
+      "party": 1,
+      "signature": 12
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "AMENDMENT NO. 2 TO CREDIT AGREEMENT",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "EXHIBIT 10.10",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:right;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "AMENDMENT NO. 2 TO CREDIT AGREEMENT",
+        "level": 0,
+        "tag_name": "div",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:32px;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "This Amendment No. 2 to Credit Agreement, dated as of October 3, 2016 (this “ Amendment ”) is entered into by and among Deckers Outdoor Corporation (the “ Company ”) and JPMorgan Chase Bank, N.A., as Administrative Agent with reference to the Second Amended and Restated Credit Agreement, dated as of November 13, 2014 (as amended, restated, extended, supplemented or otherwise modified in writing prior to the date hereof, the “ Credit Agreement ”), among the Company, the Designated Borrowers from ...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, the Company, the Lenders party hereto and the Administrative Agent have agreed to amend the Credit Agreement as set forth herein in order to make certain changes to the  Agreement.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "NOW, THEREFORE, in consideration of the premises and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the parties hereto hereby agree as follows:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "1. Amendments .  Effective as of the date hereof and subject to the satisfaction of the conditions precedent set forth in Section 2 of this Amendment, the Credit Agreement is hereby amended as follows:",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-left:0px;padding-bottom:16px;text-align:justify;text-indent:48px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "a. Section 1.01 of the Credit Agreement is hereby amended by adding the following definition in the correct alphabetical order:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 6,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "““ Deckers Guangzhou ” means Deckers Outdoor (Guangzhou) Consulting Co. Ltd., a wholly-owned Subsidiary of the Company organized under the laws of China.”",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 7,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:96px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "b. Section 5.01(c) of the Credit Agreement is hereby amended and restated in its entirety as follows:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 8,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "“(c)     within 90 days after the end of each fiscal year of the Company, and within 45 days after the end of each of the first three fiscal quarters of each fiscal year of the Company, a certificate (a “ Compliance Certificate ”) in substantially the form of Exhibit C of a Financial Officer of the Company (i) certifying as to whether a Default has occurred and, if a Default has occurred, specifying the details thereof and any action taken or proposed to be taken with respect thereto, (ii) setti...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 9,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:96px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "party",
+            "content": "c. The second sentence of the last paragraph of Section 5.01 of the Credit Agreement is hereby amended by inserting “, (c)” between “(b)” and “or” therein.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 10,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "d. Section 6.01(n) of the Credit Agreement is hereby amended and restated in its entirety as follows:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 11,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "“(n)     unsecured Indebtedness of DBT, Deckers Shanghai, and/or Deckers Guangzhou in an aggregate outstanding amount not to exceed $50,000,000 at any time, and Guarantees by the Company or any Subsidiary of any such Indebtedness;”",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 12,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:96px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "e. Section 6.04(e) of the Credit Agreement is hereby amended and restated in its entirety as follows:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 13,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "“(n)     Guarantees constituting Indebtedness permitted by clauses (l), (n), (o) or (p) of Section 6.01;”",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 14,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:96px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "2. Conditions Precedent .  This Amendment shall become effective on the date (the “ Amendment Effective Date ” that the Administrative Agent shall have received each of the following:",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "signature",
+            "content": "a. counterparts of this Amendment duly executed by each Borrower, the Required Lenders and the Administrative Agent; and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 16,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "b. all fees required to be paid to the Administrative Agent or any Lender and all expenses for which reasonably detailed invoices have been presented on or before the Amendment Effective Date shall have been paid.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 17,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;padding-left:48px;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "3. Representations and Warranties .  Each Borrower represents and warrants to the Administrative Agent and the Lenders that (a) the representations and warranties contained in Article III of the Credit Agreement and in the other Loan Documents are true and correct in all material respects on and as of the date hereof (other than (i) such representations as are made as of a specific earlier date, in which case such representations and warranties are true and correct in all material respects as of...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 18,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "4. Confirmation . On and after the Amendment Effective Date, each reference in the Credit Agreement to “this Agreement”, “hereunder”, “hereof”, “herein” or words of like import referring to the Credit Agreement, and each reference in the other Loan Documents to the “Credit Agreement”, “thereunder”, “thereof” or words of like import referring to the Credit Agreement shall mean and be a reference to the Credit Agreement, as amended by the Amendment.  In all other respects, the terms of the Credit ...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "5. Counterparts .  This Amendment may be executed in any number of counterparts, and all of such counterparts taken together shall be deemed to constitute one and the same instrument.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 20,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "6. Governing Law .  THIS AMENDMENT SHALL BE GOVERNED BY, AND CONSTRUED IN ACCORDANCE WITH, THE LAW OF THE STATE OF NEW YORK.  In addition to and without limitation of any of the foregoing, this Amendment shall be deemed to be a Loan Document and shall otherwise be subject to all of the terms and conditions contained in Sections 9.09 and 9.10 of the Credit Agreement, as amended by the Amendment, mutatis mutandi .",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "metadata",
+            "content": "[Remainder of page intentionally left blank.]",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 22,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:center;padding-left:48px;text-indent:-48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "IN WITNESS WHEREOF, the parties hereto have executed this Amendment as of the date first written above by their duly authorized representatives.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 23,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:16px;text-align:justify;text-indent:48px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DECKERS OUTDOOR CORPORATION",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 24,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Thomas A. George Name: Thomas A. George Title: Chief Financial Officer",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 25,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DECKERS UK LIMITED",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 26,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Alex Henderson Name: Alex Henderson Title: Director",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 27,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DECKERS BENELUX B.V.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 28,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Alex Henderson Name: Alex Henderson Title: Director",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 29,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DECKERS EUROPE LIMITED",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 30,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Alex Henderson Name: Alex Henderson Title: Director",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 31,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-bottom:32px;text-align:left;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "ACKNOWLEDGED BY:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 32,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "JPMORGAN CHASE BANK, N.A.,",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 33,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "as Administrative Agent",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 34,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Anna C. Araya Name:  Anna C. Araya Title: Director",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 35,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "COMERICA BANK, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 36,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Anita Chan",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 37,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Name: Anita Chan",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 38,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Title: Relationship Manager",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 39,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "HSBC BANK USA, NATIONAL ASSOCIATION, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 40,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: /s/ Kathryn E. Benjamin",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 41,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Kathryn E. Benjamin",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 42,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 43,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "BANK OF AMERICA, N.A., as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 44,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Janet Palantone",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 45,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Janet Palantone",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 46,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Senior Vice-President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 47,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "COMPASS BANK, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 48,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ James Cigman",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 49,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: James Cigman",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 50,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Senior Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 51,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "FIFTH THIRD BANK, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 52,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Brian Anderson",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 53,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Brian Anderson",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 54,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 55,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "U.S. NATIONAL ASSOCIATION, as a Lender",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 56,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Conan Schleicher",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 57,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Conan Schleicher",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 58,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Senior Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 59,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "BANK OF THE WEST, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 60,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ David G. Kronen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 61,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: David G. Kronen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 62,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Director",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 63,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "BRANCH BANKING AND TRUST COMPANY, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 64,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Sarah Bryson",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 65,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Sarah Bryson",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 66,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Senior Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 67,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "RABOBANK, NATIONAL ASSOCIATION, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 68,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Paul Visueta",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 69,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Paul Visueta",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 70,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Senior Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 71,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "SUMITOMO MITSUI BANKING CORPORATION, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 72,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ James D. Weinstein",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 73,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: James D. Weinstein",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 74,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Managing Director",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 75,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "MUFG UNION BANK, N.A., as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 76,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Elizabeth Willis",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 77,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Elizabeth Willis",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 78,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 79,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "ZB, N.A. dba CALIFORNIA BANK & TRUST, as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 80,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Brian Knapp",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 81,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Brian Knapp",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 82,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Senior Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 83,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "WELLS FARGO BANK, N.A., as a Lender",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 84,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: /s/ Carl Martin Noren",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 85,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Carl Martin Noren",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 86,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Vice President & Relationship Manager",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 87,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:336px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      }
+    ],
+    "statistics": {
+      "total_elements": 88,
+      "element_types": {
+        "metadata": 2,
+        "title": 1,
+        "paragraph": 65,
+        "section": 7,
+        "party": 1,
+        "signature": 12
+      },
+      "structure_depth": 4
+    }
+  }
+}

@@ -24,8 +24,7 @@ def render(
     _prefix: str = "",
     _is_root: bool = True,
 ) -> str:
-    """
-    render function is used to visualize the structure of the semantic tree.
+    """Render function is used to visualize the structure of the semantic tree.
     It is primarily used for debugging purposes.
     """
     if isinstance(tree, TreeNode):
@@ -34,10 +33,10 @@ def render(
         root_nodes = list(tree)
     elif isinstance(tree, list) and tree:
         if all(isinstance(e, AbstractSemanticElement) for e in tree):
-            elements = cast(list[AbstractSemanticElement], tree)
+            elements = cast("list[AbstractSemanticElement]", tree)
             root_nodes = [TreeNode(e) for e in elements]
         elif all(isinstance(e, TreeNode) for e in tree):
-            root_nodes = cast(list[TreeNode], tree)
+            root_nodes = cast("list[TreeNode]", tree)
         else:
             msg = "All elements in the tree must be of type AbstractSemanticElement or TreeNode"
             raise TypeError(msg)

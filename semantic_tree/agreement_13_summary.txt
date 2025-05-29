@@ -1,0 +1,1089 @@
+SEMANTIC TREE: agreement_13.html
+================================================================================
+Quality Score: 0.89
+Format: html
+Total Elements: 1035
+
+Element Distribution:
+  metadata: 45
+  paragraph: 273
+  section: 357
+  signature: 14
+  subsection: 17
+  table: 329
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] Exhibit 10.10
+[PARAGRAPH] N INTH A MENDMENT
+[PARAGRAPH] T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+[PARAGRAPH] AMONG
+[PARAGRAPH] L EGACY R ESERVES LP,
+[PARAGRAPH] as Borrower,
+[PARAGRAPH] T HE G UARANTORS ,
+[PARAGRAPH] W ELLS F ARGO B ANK , N ATIONAL A SSOCIATION ,
+[PARAGRAPH] as Administrative Agent,
+[PARAGRAPH] and
+[PARAGRAPH] T HE L ENDERS S IGNATORY H ERETO
+[PARAGRAPH] D ATED AS OF M ARCH 23, 2018
+[PARAGRAPH] Sole Lead Arranger and Sole Book Runner
+[PARAGRAPH] Wells Fargo Securities, LLC
+[PARAGRAPH] Syndication Agent
+[PARAGRAPH] Compass Bank
+[PARAGRAPH] Co-Documentation Agents
+[PARAGRAPH] UBS Securities LLC
+[PARAGRAPH] and
+[SECTION] U.S. Bank National Association
+  [METADATA] TABLE OF CONTENTS Page ARTICLE I DEFINITIONS AND ACCOUNTING MATTERS 1 Section 1.01 Terms Defined Abo...
+  [PARAGRAPH] TABLE OF CONTENTS
+  [TABLE] Page
+[SECTION] ARTICLE I DEFINITIONS AND ACCOUNTING MATTERS
+[SECTION] ARTICLE I DEFINITIONS AND ACCOUNTING MATTERS
+[SECTION] Section 1.01
+[SECTION] Section 1.01
+  [TABLE] Terms Defined Above
+  [PARAGRAPH] Terms Defined Above
+[SECTION] Section 1.02
+[SECTION] Section 1.02
+  [TABLE] Certain Defined Terms
+  [PARAGRAPH] Certain Defined Terms
+[SECTION] Section 1.03
+[SECTION] Section 1.03
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 1.04
+[SECTION] Section 1.04
+  [TABLE] Terms Generally
+  [PARAGRAPH] Terms Generally
+[SECTION] Section 1.05
+[SECTION] Section 1.05
+  [TABLE] Accounting Terms and Determinations; GAAP
+  [PARAGRAPH] Accounting Terms and Determinations; GAAP
+[SECTION] Section 1.06
+[SECTION] Section 1.06
+  [TABLE] Designation and Conversion of E&P Subsidiaries
+  [PARAGRAPH] Designation and Conversion of E&P Subsidiaries
+[SECTION] ARTICLE II THE CREDITS
+[SECTION] ARTICLE II THE CREDITS
+[SECTION] Section 2.01
+[SECTION] Section 2.01
+  [TABLE] Loans
+  [PARAGRAPH] Loans
+[SECTION] Section 2.02
+[SECTION] Section 2.02
+  [TABLE] Loans and Borrowings
+  [PARAGRAPH] Loans and Borrowings
+[SECTION] Section 2.03
+[SECTION] Section 2.03
+  [TABLE] Requests for Borrowings
+  [PARAGRAPH] Requests for Borrowings
+[SECTION] Section 2.04
+[SECTION] Section 2.04
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 2.05
+[SECTION] Section 2.05
+  [TABLE] Funding of Borrowings
+  [PARAGRAPH] Funding of Borrowings
+[SECTION] ARTICLE III PAYMENTS; PREPAYMENTS; FEES
+[SECTION] ARTICLE III PAYMENTS; PREPAYMENTS; FEES
+[SECTION] Section 3.01
+[SECTION] Section 3.01
+  [TABLE] Repayment of Loans
+  [PARAGRAPH] Repayment of Loans
+[SECTION] Section 3.02
+[SECTION] Section 3.02
+  [TABLE] Interest
+  [PARAGRAPH] Interest
+[SECTION] Section 3.03
+[SECTION] Section 3.03
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 3.04
+[SECTION] Section 3.04
+  [TABLE] Prepayments
+  [PARAGRAPH] Prepayments
+[SECTION] Section 3.05
+[SECTION] Section 3.05
+  [TABLE] Fees
+  [PARAGRAPH] Fees
+[SECTION] ARTICLE IV PAYMENTS; PRO RATA TREATMENT; SHARING OF SET-OFFS.
+[SECTION] ARTICLE IV PAYMENTS; PRO RATA TREATMENT; SHARING OF SET-OFFS.
+[SECTION] Section 4.01
+[SECTION] Section 4.01
+  [TABLE] Payments Generally; Pro Rata Treatment; Sharing of Set-offs
+  [PARAGRAPH] Payments Generally; Pro Rata Treatment; Sharing of Set-offs
+[SECTION] Section 4.02
+[SECTION] Section 4.02
+  [TABLE] Presumption of Payment by the Borrower
+  [PARAGRAPH] Presumption of Payment by the Borrower
+[SECTION] Section 4.03
+[SECTION] Section 4.03
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] ARTICLE V INCREASED COSTS; TAXES
+[SECTION] ARTICLE V INCREASED COSTS; TAXES
+[SECTION] Section 5.01
+[SECTION] Section 5.01
+  [TABLE] Increased Costs
+  [PARAGRAPH] Increased Costs
+[SECTION] Section 5.02
+[SECTION] Section 5.02
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 5.03
+[SECTION] Section 5.03
+  [TABLE] Taxes
+  [PARAGRAPH] Taxes
+[SECTION] Section 5.04
+[SECTION] Section 5.04
+  [TABLE] Designation of Different Lending Office
+  [PARAGRAPH] Designation of Different Lending Office
+[SECTION] Section 5.05
+[SECTION] Section 5.05
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 5.06
+[SECTION] Section 5.06
+  [TABLE] Replacement of Lenders Under Certain Circumstances
+  [PARAGRAPH] Replacement of Lenders Under Certain Circumstances
+[SECTION] ARTICLE VI CONDITIONS PRECEDENT
+[SECTION] ARTICLE VI CONDITIONS PRECEDENT
+[SECTION] Section 6.01
+[SECTION] Section 6.01
+  [TABLE] Effective Date
+  [PARAGRAPH] Effective Date
+[SECTION] Section 6.02
+[SECTION] Section 6.02
+  [TABLE] Each Credit Event
+  [PARAGRAPH] Each Credit Event
+[SECTION] ARTICLE VII REPRESENTATIONS AND WARRANTIES
+[SECTION] ARTICLE VII REPRESENTATIONS AND WARRANTIES
+[SECTION] Section 7.01
+[SECTION] Section 7.01
+  [TABLE] Organization; Powers
+  [PARAGRAPH] Organization; Powers
+[SECTION] Section 7.02
+[SECTION] Section 7.02
+  [TABLE] Authority; Enforceability
+  [PARAGRAPH] Authority; Enforceability
+[SECTION] Section 7.03
+[SECTION] Section 7.03
+  [TABLE] Approvals; No Conflicts
+  [PARAGRAPH] Approvals; No Conflicts
+[SECTION] Section 7.04
+[SECTION] Section 7.04
+  [TABLE] Financial Position; No Material Adverse Change
+  [PARAGRAPH] Financial Position; No Material Adverse Change
+[SECTION] Section 7.05
+[SECTION] Section 7.05
+  [TABLE] Litigation
+  [PARAGRAPH] Litigation
+[SECTION] Section 7.06
+[SECTION] Section 7.06
+  [TABLE] Environmental Matters
+  [PARAGRAPH] Environmental Matters
+[SECTION] Section 7.07
+[SECTION] Section 7.07
+  [TABLE] Compliance with the Laws and Agreements; No Defaults
+  [PARAGRAPH] Compliance with the Laws and Agreements; No Defaults
+  [METADATA] Section 7.08 Investment Company Act 46 Section 7.09 Taxes 46 Section 7.10 ERISA 46 Section 7.11 Disc...
+[SECTION] Section 7.08
+[SECTION] Section 7.08
+  [TABLE] Investment Company Act
+  [PARAGRAPH] Investment Company Act
+[SECTION] Section 7.09
+[SECTION] Section 7.09
+  [TABLE] Taxes
+  [PARAGRAPH] Taxes
+[SECTION] Section 7.10
+[SECTION] Section 7.10
+  [TABLE] ERISA
+  [PARAGRAPH] ERISA
+[SECTION] Section 7.11
+[SECTION] Section 7.11
+  [TABLE] Disclosure; No Material Misstatements
+  [PARAGRAPH] Disclosure; No Material Misstatements
+[SECTION] Section 7.12
+[SECTION] Section 7.12
+  [TABLE] Insurance
+  [PARAGRAPH] Insurance
+[SECTION] Section 7.13
+[SECTION] Section 7.13
+  [TABLE] Restriction on Liens
+  [PARAGRAPH] Restriction on Liens
+[SECTION] Section 7.14
+[SECTION] Section 7.14
+  [TABLE] Subsidiaries
+  [PARAGRAPH] Subsidiaries
+[SECTION] Section 7.15
+[SECTION] Section 7.15
+  [TABLE] Location of Business and Offices
+  [PARAGRAPH] Location of Business and Offices
+[SECTION] Section 7.16
+[SECTION] Section 7.16
+  [TABLE] Properties; Titles, Etc.
+  [PARAGRAPH] Properties; Titles, Etc.
+[SECTION] Section 7.17
+[SECTION] Section 7.17
+  [TABLE] Maintenance of Properties
+  [PARAGRAPH] Maintenance of Properties
+[SECTION] Section 7.18
+[SECTION] Section 7.18
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 7.19
+[SECTION] Section 7.19
+  [TABLE] East Texas Acreage
+  [PARAGRAPH] East Texas Acreage
+[SECTION] Section 7.20
+[SECTION] Section 7.20
+  [TABLE] Swap Agreements
+  [PARAGRAPH] Swap Agreements
+[SECTION] Section 7.21
+[SECTION] Section 7.21
+  [TABLE] Use of Loans
+  [PARAGRAPH] Use of Loans
+[SECTION] Section 7.22
+[SECTION] Section 7.22
+  [TABLE] Solvency
+  [PARAGRAPH] Solvency
+[SECTION] Section 7.23
+[SECTION] Section 7.23
+  [TABLE] USA PATRIOT; AML Laws; Anti-Corruption Laws and Sanctions
+  [PARAGRAPH] USA PATRIOT; AML Laws; Anti-Corruption Laws and Sanctions
+[SECTION] Section 7.24
+[SECTION] Section 7.24
+  [TABLE] International Operations
+  [PARAGRAPH] International Operations
+[SECTION] ARTICLE VIII AFFIRMATIVE COVENANTS
+[SECTION] ARTICLE VIII AFFIRMATIVE COVENANTS
+[SECTION] Section 8.01
+[SECTION] Section 8.01
+  [TABLE] Financial Statements; Other Information
+  [PARAGRAPH] Financial Statements; Other Information
+[SECTION] Section 8.02
+[SECTION] Section 8.02
+  [TABLE] Notices of Material Events
+  [PARAGRAPH] Notices of Material Events
+[SECTION] Section 8.03
+[SECTION] Section 8.03
+  [TABLE] Existence; Conduct of Business
+  [PARAGRAPH] Existence; Conduct of Business
+[SECTION] Section 8.04
+[SECTION] Section 8.04
+  [TABLE] Payment of Obligations
+  [PARAGRAPH] Payment of Obligations
+[SECTION] Section 8.05
+[SECTION] Section 8.05
+  [TABLE] Performance of Obligations under Term Loan Documents
+  [PARAGRAPH] Performance of Obligations under Term Loan Documents
+[SECTION] Section 8.06
+[SECTION] Section 8.06
+  [TABLE] Operation and Maintenance of Properties
+  [PARAGRAPH] Operation and Maintenance of Properties
+[SECTION] Section 8.07
+[SECTION] Section 8.07
+  [TABLE] Insurance
+  [PARAGRAPH] Insurance
+[SECTION] Section 8.08
+[SECTION] Section 8.08
+  [TABLE] Books and Records; Inspection Rights
+  [PARAGRAPH] Books and Records; Inspection Rights
+[SECTION] Section 8.09
+[SECTION] Section 8.09
+  [TABLE] Compliance with Laws
+  [PARAGRAPH] Compliance with Laws
+[SECTION] Section 8.10
+[SECTION] Section 8.10
+  [TABLE] Environmental Matters
+  [PARAGRAPH] Environmental Matters
+[SECTION] Section 8.11
+[SECTION] Section 8.11
+  [TABLE] Further Assurances
+  [PARAGRAPH] Further Assurances
+[SECTION] Section 8.12
+[SECTION] Section 8.12
+  [TABLE] Reserve Reports
+  [PARAGRAPH] Reserve Reports
+[SECTION] Section 8.13
+[SECTION] Section 8.13
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 8.14
+[SECTION] Section 8.14
+  [TABLE] Additional Collateral; Additional Guarantors
+  [PARAGRAPH] Additional Collateral; Additional Guarantors
+[SECTION] Section 8.15
+[SECTION] Section 8.15
+  [TABLE] ERISA Compliance
+  [PARAGRAPH] ERISA Compliance
+[SECTION] Section 8.16
+[SECTION] Section 8.16
+  [TABLE] Marketing Activities
+  [PARAGRAPH] Marketing Activities
+[SECTION] Section 8.17
+[SECTION] Section 8.17
+  [TABLE] E&P Subsidiaries
+  [PARAGRAPH] E&P Subsidiaries
+[SECTION] Section 8.18
+[SECTION] Section 8.18
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 8.19
+[SECTION] Section 8.19
+  [TABLE] Accounts
+  [PARAGRAPH] Accounts
+[SECTION] Section 8.20
+[SECTION] Section 8.20
+  [TABLE] Hedging
+  [PARAGRAPH] Hedging
+[SECTION] ARTICLE IX NEGATIVE COVENANTS
+[SECTION] ARTICLE IX NEGATIVE COVENANTS
+[SECTION] Section 9.01
+[SECTION] Section 9.01
+  [TABLE] Financial Covenants
+  [PARAGRAPH] Financial Covenants
+[SECTION] Section 9.02
+[SECTION] Section 9.02
+  [TABLE] Debt
+  [PARAGRAPH] Debt
+[SECTION] Section 9.03
+[SECTION] Section 9.03
+  [TABLE] Liens
+  [PARAGRAPH] Liens
+[SECTION] Section 9.04
+[SECTION] Section 9.04
+  [TABLE] Dividends, Distributions and Redemptions; Repayment of Senior Notes and Priority Lien Debt
+  [PARAGRAPH] Dividends, Distributions and Redemptions; Repayment of Senior Notes and Priority Lien Debt
+[SECTION] Section 9.05
+[SECTION] Section 9.05
+  [TABLE] Investments, Loans and Advances
+  [PARAGRAPH] Investments, Loans and Advances
+[SECTION] Section 9.06
+[SECTION] Section 9.06
+  [TABLE] Nature of Business
+  [PARAGRAPH] Nature of Business
+[SECTION] Section 9.07
+[SECTION] Section 9.07
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 9.08
+[SECTION] Section 9.08
+  [TABLE] Proceeds of Loans; OFAC
+  [PARAGRAPH] Proceeds of Loans; OFAC
+[SECTION] Section 9.09
+[SECTION] Section 9.09
+  [TABLE] ERISA Compliance
+  [PARAGRAPH] ERISA Compliance
+  [METADATA] Section 9.10 [Reserved] 69 Section 9.11 Mergers, Etc. 69 Section 9.12 Sale of Properties 70 Section ...
+[SECTION] Section 9.10
+[SECTION] Section 9.10
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 9.11
+[SECTION] Section 9.11
+  [TABLE] Mergers, Etc.
+  [PARAGRAPH] Mergers, Etc.
+[SECTION] Section 9.12
+[SECTION] Section 9.12
+  [TABLE] Sale of Properties
+  [PARAGRAPH] Sale of Properties
+[SECTION] Section 9.13
+[SECTION] Section 9.13
+  [TABLE] Environmental Matters
+  [PARAGRAPH] Environmental Matters
+[SECTION] Section 9.14
+[SECTION] Section 9.14
+  [TABLE] Transactions with Affiliates
+  [PARAGRAPH] Transactions with Affiliates
+[SECTION] Section 9.15
+[SECTION] Section 9.15
+  [TABLE] Subsidiaries
+  [PARAGRAPH] Subsidiaries
+[SECTION] Section 9.16
+[SECTION] Section 9.16
+  [TABLE] Negative Pledge Agreements; Dividend Restrictions
+  [PARAGRAPH] Negative Pledge Agreements; Dividend Restrictions
+[SECTION] Section 9.17
+[SECTION] Section 9.17
+  [TABLE] Gas Imbalances, Take-or-Pay or Other Prepayments
+  [PARAGRAPH] Gas Imbalances, Take-or-Pay or Other Prepayments
+[SECTION] Section 9.18
+[SECTION] Section 9.18
+  [TABLE] Swap Agreements
+  [PARAGRAPH] Swap Agreements
+[SECTION] Section 9.19
+[SECTION] Section 9.19
+  [TABLE] New Accounts
+  [PARAGRAPH] New Accounts
+[SECTION] Section 9.20
+[SECTION] Section 9.20
+  [TABLE] Volumetric Production Payment
+  [PARAGRAPH] Volumetric Production Payment
+[SECTION] ARTICLE X EVENTS OF DEFAULT; REMEDIES
+[SECTION] ARTICLE X EVENTS OF DEFAULT; REMEDIES
+[SECTION] Section 10.01
+[SECTION] Section 10.01
+  [TABLE] Events of Default
+  [PARAGRAPH] Events of Default
+[SECTION] Section 10.02
+[SECTION] Section 10.02
+  [TABLE] Remedies
+  [PARAGRAPH] Remedies
+[SECTION] Section 10.03
+[SECTION] Section 10.03
+  [TABLE] Disposition of Proceeds
+  [PARAGRAPH] Disposition of Proceeds
+[SECTION] ARTICLE XI THE ADMINISTRATIVE AGENT
+[SECTION] ARTICLE XI THE ADMINISTRATIVE AGENT
+[SECTION] Section 11.01
+[SECTION] Section 11.01
+  [TABLE] Appointment; Powers
+  [PARAGRAPH] Appointment; Powers
+[SECTION] Section 11.02
+[SECTION] Section 11.02
+  [TABLE] Duties and Obligations of Administrative Agent
+  [PARAGRAPH] Duties and Obligations of Administrative Agent
+[SECTION] Section 11.03
+[SECTION] Section 11.03
+  [TABLE] Action by Administrative Agent
+  [PARAGRAPH] Action by Administrative Agent
+[SECTION] Section 11.04
+[SECTION] Section 11.04
+  [TABLE] Reliance by Administrative Agent
+  [PARAGRAPH] Reliance by Administrative Agent
+[SECTION] Section 11.05
+[SECTION] Section 11.05
+  [TABLE] Subagents
+  [PARAGRAPH] Subagents
+[SECTION] Section 11.06
+[SECTION] Section 11.06
+  [TABLE] Resignation or Removal of Administrative Agent
+  [PARAGRAPH] Resignation or Removal of Administrative Agent
+[SECTION] Section 11.07
+[SECTION] Section 11.07
+  [TABLE] Administrative Agent and Lenders
+  [PARAGRAPH] Administrative Agent and Lenders
+[SECTION] Section 11.08
+[SECTION] Section 11.08
+  [TABLE] No Reliance
+  [PARAGRAPH] No Reliance
+[SECTION] Section 11.09
+[SECTION] Section 11.09
+  [TABLE] Administrative Agent May File Proofs of Claim
+  [PARAGRAPH] Administrative Agent May File Proofs of Claim
+[SECTION] Section 11.10
+[SECTION] Section 11.10
+  [TABLE] Authority of Administrative Agent to Release Collateral and Liens
+  [PARAGRAPH] Authority of Administrative Agent to Release Collateral and Liens
+[SECTION] Section 11.11
+[SECTION] Section 11.11
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 11.12
+[SECTION] Section 11.12
+  [TABLE] Right to Realize on Collateral and Enforce Guarantee
+  [PARAGRAPH] Right to Realize on Collateral and Enforce Guarantee
+[SECTION] ARTICLE XII MISCELLANEOUS
+[SECTION] ARTICLE XII MISCELLANEOUS
+[SECTION] Section 12.01
+[SECTION] Section 12.01
+  [TABLE] Notices
+  [PARAGRAPH] Notices
+[SECTION] Section 12.02
+[SECTION] Section 12.02
+  [TABLE] Waivers; Amendments
+  [PARAGRAPH] Waivers; Amendments
+[SECTION] Section 12.03
+[SECTION] Section 12.03
+  [TABLE] Expenses; Indemnity; Damage Waiver
+  [PARAGRAPH] Expenses; Indemnity; Damage Waiver
+[SECTION] Section 12.04
+[SECTION] Section 12.04
+  [TABLE] Successors and Assigns
+  [PARAGRAPH] Successors and Assigns
+[SECTION] Section 12.05
+[SECTION] Section 12.05
+  [TABLE] Survival; Revival; Reinstatement
+  [PARAGRAPH] Survival; Revival; Reinstatement
+[SECTION] Section 12.06
+[SECTION] Section 12.06
+  [TABLE] Counterparts; Integration; Effectiveness
+  [PARAGRAPH] Counterparts; Integration; Effectiveness
+[SECTION] Section 12.07
+[SECTION] Section 12.07
+  [TABLE] Severability
+  [PARAGRAPH] Severability
+[SECTION] Section 12.08
+[SECTION] Section 12.08
+  [TABLE] Right of Setoff
+  [PARAGRAPH] Right of Setoff
+[SECTION] Section 12.09
+[SECTION] Section 12.09
+  [TABLE] GOVERNING LAW; JURISDICTION; CONSENT TO SERVICE OF PROCESS
+  [PARAGRAPH] GOVERNING LAW; JURISDICTION; CONSENT TO SERVICE OF PROCESS
+[SECTION] Section 12.10
+[SECTION] Section 12.10
+  [TABLE] Headings
+  [PARAGRAPH] Headings
+[SECTION] Section 12.11
+[SECTION] Section 12.11
+  [METADATA] Confidentiality
+  [METADATA] Confidentiality
+[SECTION] Section 12.12
+[SECTION] Section 12.12
+  [TABLE] Interest Rate Limitation
+  [PARAGRAPH] Interest Rate Limitation
+[SECTION] Section 12.13
+[SECTION] Section 12.13
+  [TABLE] EXCULPATION PROVISIONS
+  [PARAGRAPH] EXCULPATION PROVISIONS
+[SECTION] Section 12.14
+[SECTION] Section 12.14
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 12.15
+[SECTION] Section 12.15
+  [TABLE] No Third Party Beneficiaries
+  [PARAGRAPH] No Third Party Beneficiaries
+[SECTION] Section 12.16
+[SECTION] Section 12.16
+  [TABLE] USA PATRIOT Act
+  [PARAGRAPH] USA PATRIOT Act
+[SECTION] Section 12.17
+[SECTION] Section 12.17
+  [TABLE] Non-Fiduciary Status
+  [PARAGRAPH] Non-Fiduciary Status
+[SECTION] Section 12.18
+[SECTION] Section 12.18
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+  [PARAGRAPH] iii
+  [METADATA] Section 12.19 General Partner Liability 96 Section 12.20 [Reserved] 97 Section 12.21 INTERCREDITOR A...
+[SECTION] Section 12.19
+[SECTION] Section 12.19
+  [TABLE] General Partner Liability
+  [PARAGRAPH] General Partner Liability
+[SECTION] Section 12.20
+[SECTION] Section 12.20
+  [TABLE] [Reserved]
+  [PARAGRAPH] [Reserved]
+[SECTION] Section 12.21
+[SECTION] Section 12.21
+  [TABLE] INTERCREDITOR AGREEMENT
+  [PARAGRAPH] INTERCREDITOR AGREEMENT
+[SECTION] Section 12.22
+[SECTION] Section 12.22
+  [TABLE] Acknowledgement and Consent to Bail-In of EEA Financial Institutions
+  [PARAGRAPH] Acknowledgement and Consent to Bail-In of EEA Financial Institutions
+  [TABLE] ANNEXES:
+  [TABLE] Annex 1
+  [TABLE] Commitments
+  [TABLE] SCHEDULES:
+[SECTION] Schedule 1.02
+  [TABLE] East Texas Acreage
+[SECTION] Schedule 7.05
+  [TABLE] Litigation
+[SECTION] Schedule 7.14
+  [TABLE] Subsidiaries
+[SECTION] Schedule 7.15
+  [TABLE] Location of Business and Office
+[SECTION] Schedule 7.20
+  [TABLE] Swap Agreements
+  [TABLE] EXHIBITS:
+[SECTION] Exhibit A
+  [TABLE] Form of Term Loan Note
+[SECTION] Exhibit B
+  [TABLE] Form of Compliance Certificate
+[SECTION] Exhibit C
+  [TABLE] Form of Term Loan Security Instruments
+[SECTION] Exhibit D
+  [TABLE] Form of Assignment and Assumption
+[SECTION] Exhibit E-1—E-4
+  [TABLE] Form of U.S. Tax Compliance Certificate
+[SECTION] Exhibit F
+  [TABLE] Form of Intercreditor Agreement
+[SECTION] Exhibit G
+  [TABLE] Form of Borrowing Request
+  [METADATA] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT This N INTH A MENDMENT TO T HI...
+  [PARAGRAPH] N INTH A MENDMENT TO
+  [PARAGRAPH] T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] This N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT (this “ Ninth Amendment ”...
+  [PARAGRAPH] Recitals
+  [PARAGRAPH] A. The Borrower, the Administrative Agent and the Lenders are parties to that certain Third Amended ...
+  [PARAGRAPH] B. The Guarantors are parties to that certain Third Amended and Restated Guaranty Agreement dated as...
+  [PARAGRAPH] C. The Borrower, the Guarantors, the Administrative Agent and the Lenders have agreed to amend certa...
+  [PARAGRAPH] NOW, THEREFORE, in consideration of the premises and the mutual covenants herein contained, for good...
+[SECTION] Section 1. Defined Terms . Each capitalized term which is defined in the Credit Agreement, but which...
+  [METADATA] Page 1
+  [METADATA] Section 2. Amendments to Credit Agreement . Effective as of (a) in the case of the additions of Sect...
+[SECTION] Section 2. Amendments to Credit Agreement . Effective as of (a) in the case of the additions of Sect...
+[SECTION] 2.1 Amendments to Section 1.02 .
+  [SUBSECTION] (a) The following definitions are hereby amended and restated in their entirety to read as follows:
+    [PARAGRAPH] “ Agreement ” means this Third Amended and Restated Credit Agreement, as amended by the First Amendm...
+    [PARAGRAPH] “ Change in Control ” means (a) the Parent ceases to (i) be the Beneficial Owner of 100% of the Equi...
+    [PARAGRAPH] “ Consolidated Net Income ” means with respect to the Parent and the Consolidated Subsidiaries, for ...
+    [METADATA] Page 2
+    [METADATA] Subsidiary), as the case may be; (b) the net income (but not loss) during such period of any Consoli...
+    [PARAGRAPH] Subsidiary), as the case may be; (b) the net income (but not loss) during such period of any Consoli...
+    [PARAGRAPH] “ Consolidated Subsidiaries ” means, (a) with respect to the Borrower, each Subsidiary of the Borrow...
+    [PARAGRAPH] “ Continuing Directors ” means, as of any date of determination, any member of the board of director...
+    [PARAGRAPH] “ EBITDA ” means, for any period, Consolidated Net Income for such period plus , to the extent deduc...
+    [METADATA] Page 3
+    [METADATA] writeups or writedowns of assets, including ceiling test writedowns, and asset sales and (vii) (i) r...
+    [PARAGRAPH] writeups or writedowns of assets, including ceiling test writedowns, and asset sales and (vii) (i) r...
+    [PARAGRAPH] “ Guarantors ” means (a) Legacy Reserves Operating LP, (b) Legacy Reserves Operating GP LLC, (c) Leg...
+    [SIGNATURE] “ Pledge Agreement ” means the Third Amended and Restated Pledge Agreement of even date herewith exe...
+    [PARAGRAPH] “ Subsidiary ” means, with respect to any Person (the “ parent ”), (a) any other Person (i) of which...
+    [METADATA] Page 4
+    [METADATA] Unless otherwise indicated herein, each reference to the term “ Subsidiary ” shall mean a Subsidiary...
+    [PARAGRAPH] Unless otherwise indicated herein, each reference to the term “ Subsidiary ” shall mean a Subsidiary...
+    [PARAGRAPH] “ Agreement ” means this Third Amended and Restated Credit Agreement, as amended by the First Amendm...
+    [PARAGRAPH] “ Change in Control ” means (a) the Parent ceases to (i) be the Beneficial Owner of 100% of the Equi...
+    [PARAGRAPH] “ Consolidated Net Income ” means with respect to the Parent and the Consolidated Subsidiaries, for ...
+    [METADATA] Page 2
+    [METADATA] Subsidiary), as the case may be; (b) the net income (but not loss) during such period of any Consoli...
+    [PARAGRAPH] Subsidiary), as the case may be; (b) the net income (but not loss) during such period of any Consoli...
+    [PARAGRAPH] “ Consolidated Subsidiaries ” means, (a) with respect to the Borrower, each Subsidiary of the Borrow...
+    [PARAGRAPH] “ Continuing Directors ” means, as of any date of determination, any member of the board of director...
+    [PARAGRAPH] “ EBITDA ” means, for any period, Consolidated Net Income for such period plus , to the extent deduc...
+    [METADATA] Page 3
+    [METADATA] writeups or writedowns of assets, including ceiling test writedowns, and asset sales and (vii) (i) r...
+    [PARAGRAPH] writeups or writedowns of assets, including ceiling test writedowns, and asset sales and (vii) (i) r...
+    [PARAGRAPH] “ Guarantors ” means (a) Legacy Reserves Operating LP, (b) Legacy Reserves Operating GP LLC, (c) Leg...
+    [SIGNATURE] “ Pledge Agreement ” means the Third Amended and Restated Pledge Agreement of even date herewith exe...
+    [PARAGRAPH] “ Subsidiary ” means, with respect to any Person (the “ parent ”), (a) any other Person (i) of which...
+    [METADATA] Page 4
+    [METADATA] Unless otherwise indicated herein, each reference to the term “ Subsidiary ” shall mean a Subsidiary...
+    [PARAGRAPH] Unless otherwise indicated herein, each reference to the term “ Subsidiary ” shall mean a Subsidiary...
+  [SUBSECTION] (b) The following definitions are hereby added where alphabetically appropriate to read as follows:
+    [PARAGRAPH] “ GP Purchase ” means the acquisition by the Parent from the GP Sellers of 100% of the limited liabi...
+    [PARAGRAPH] “ GP Purchase Agreement ” means that certain GP Purchase Agreement, dated as of March 23, 2018, by a...
+    [PARAGRAPH] “ GP Sellers ” means, collectively, Brothers Production Properties, Ltd., Brothers Production Compan...
+    [PARAGRAPH] “ Legacy GP ” means Legacy Reserves GP, LLC, a Delaware limited liability company.
+    [PARAGRAPH] “ Merger Agreement ” means that certain Agreement and Plan of Merger, dated as of March 23, 2018, by...
+    [METADATA] Page 5
+    [METADATA] otherwise modified from time to time (without giving effect to any amendments, supplements, restatem...
+    [PARAGRAPH] otherwise modified from time to time (without giving effect to any amendments, supplements, restatem...
+    [PARAGRAPH] “ Ninth Amendment ” means that certain Ninth Amendment to Third Amended and Restated Credit Agreemen...
+    [PARAGRAPH] “ Ninth Amendment Effective Date ” has the meaning ascribed to such term in the Ninth Amendment.
+    [PARAGRAPH] “ Parent ” means Legacy Reserves Inc., a Delaware corporation.
+    [PARAGRAPH] “ Parent Guarantors ” means, collectively, the Parent and Legacy GP.
+    [PARAGRAPH] “ Reorganization Transactions ” means the corporate reorganization of the Borrower and its Subsidiar...
+    [PARAGRAPH] “ Subsidiary Guarantor ” means any Subsidiary of the Borrower that is a Guarantor.
+    [PARAGRAPH] “ GP Purchase ” means the acquisition by the Parent from the GP Sellers of 100% of the limited liabi...
+    [PARAGRAPH] “ GP Purchase Agreement ” means that certain GP Purchase Agreement, dated as of March 23, 2018, by a...
+    [PARAGRAPH] “ GP Sellers ” means, collectively, Brothers Production Properties, Ltd., Brothers Production Compan...
+    [PARAGRAPH] “ Legacy GP ” means Legacy Reserves GP, LLC, a Delaware limited liability company.
+    [PARAGRAPH] “ Merger Agreement ” means that certain Agreement and Plan of Merger, dated as of March 23, 2018, by...
+    [METADATA] Page 5
+    [METADATA] otherwise modified from time to time (without giving effect to any amendments, supplements, restatem...
+    [PARAGRAPH] otherwise modified from time to time (without giving effect to any amendments, supplements, restatem...
+    [PARAGRAPH] “ Ninth Amendment ” means that certain Ninth Amendment to Third Amended and Restated Credit Agreemen...
+    [PARAGRAPH] “ Ninth Amendment Effective Date ” has the meaning ascribed to such term in the Ninth Amendment.
+    [PARAGRAPH] “ Parent ” means Legacy Reserves Inc., a Delaware corporation.
+    [PARAGRAPH] “ Parent Guarantors ” means, collectively, the Parent and Legacy GP.
+    [PARAGRAPH] “ Reorganization Transactions ” means the corporate reorganization of the Borrower and its Subsidiar...
+    [PARAGRAPH] “ Subsidiary Guarantor ” means any Subsidiary of the Borrower that is a Guarantor.
+  [SUBSECTION] (c) Clause (e) of the definition of “Excepted Liens” is hereby amended by replacing the reference th...
+  [SUBSECTION] (d) Clause (i) of the definition of “Excluded Accounts” is hereby amended by replacing the reference...
+  [SUBSECTION] (e) The definition of “Indebtedness” is hereby amended by replacing the phrase “relating to the Borr...
+  [SUBSECTION] (f) The definition of “Second Lien Loan Documents” is hereby amended by replacing the phrase “the Bo...
+    [METADATA] Page 6
+    [METADATA] (g) Each of the definitions “Consolidated Cash Balance”, “First Lien Debt”, “Interest Expense”, “Sec...
+    [METADATA] Page 6
+    [METADATA] (g) Each of the definitions “Consolidated Cash Balance”, “First Lien Debt”, “Interest Expense”, “Sec...
+  [SUBSECTION] (g) Each of the definitions “Consolidated Cash Balance”, “First Lien Debt”, “Interest Expense”, “Sec...
+  [SUBSECTION] (h) Each of the definitions “Available Cash” and “Legacy Reserves GP, LLC” is hereby deleted in its ...
+[SECTION] 2.2 Amendment to Section 2.08(j) . Section 2.08(j) is hereby amended by replacing the phrase “the Bo...
+[SECTION] 2.3 Amendment to Section 3.04(d) . Section 3.04(d) is hereby amended by (a) replacing each instance ...
+[SECTION] 2.4 Amendment to Section 7.14 . Section 7.14 is hereby amended by adding a new sentence at the end t...
+[SECTION] 2.5 Amendment to Section 7.21 . Clause (b) of Section 7.21 is hereby amended and restated in its ent...
+[SECTION] 2.6 Amendment to Article VII . Article VII is hereby amended by (a) replacing the phrase “The Borrow...
+[SECTION] Section 7.27 Representations and Warranties of the Parent Guarantors . Each of the Parent Guarantors...
+  [METADATA] Page 7
+  [METADATA] 2.7 Amendment to Section 8.01(a)-(c) . Each of Sections 8.01(a), (b) and (c) is hereby amended and r...
+[SECTION] 2.7 Amendment to Section 8.01(a)-(c) . Each of Sections 8.01(a), (b) and (c) is hereby amended and r...
+  [SUBSECTION] (a) Annual Financial Statements . As soon as available, but in any event not later than 90 days afte...
+  [SUBSECTION] (b) Quarterly Financial Statements . As soon as available, but in any event not later than 45 days a...
+  [SUBSECTION] (c) Certificate of Financial Officer – Compliance . Concurrently with any delivery of financial stat...
+    [METADATA] Page 8
+    [METADATA] 2.8 Amendment to Section 8.01(h) . Section 8.01(h) is hereby amended and restated in its entirety to...
+    [METADATA] Page 8
+    [METADATA] 2.8 Amendment to Section 8.01(h) . Section 8.01(h) is hereby amended and restated in its entirety to...
+[SECTION] 2.8 Amendment to Section 8.01(h) . Section 8.01(h) is hereby amended and restated in its entirety to...
+  [SUBSECTION] (h) Other Accounting Reports . Promptly upon receipt thereof, a copy of each other report or letter ...
+[SECTION] 2.9 Amendment to Section 8.01(i) . Section 8.01(i) is hereby amended by replacing the phrase “the Bo...
+[SECTION] 2.10 Amendment to Section 8.01(p) . Section 8.01(p) is hereby amended by replacing the phrase “the B...
+[SECTION] 2.11 Amendment to Section 8.01(q) . Section 8.01(q) is hereby amended by replacing the phrase “the B...
+[SECTION] 2.12 Amendment to Section 8.02(b) . Section 8.02(b) is hereby amended by replacing the phrase “the B...
+[SECTION] 2.13 Amendment to Article VIII . Article VIII is hereby amended by (a) replacing the phrase “the Bor...
+[SECTION] Section 8.21 Affirmative Covenants of the Parent Guarantors . Each of the Parent Guarantors hereby c...
+[SECTION] 2.14 Amendment to Section 9.01 . Section 9.01 is hereby amended by replacing each instance of the wo...
+  [METADATA] Page 9
+  [METADATA] 2.15 Amendment to Section 9.04(a) . Section 9.04(a) is hereby amended and restated in its entirety t...
+[SECTION] 2.15 Amendment to Section 9.04(a) . Section 9.04(a) is hereby amended and restated in its entirety t...
+  [SUBSECTION] (a) Restricted Payments . The Borrower and the Parent Guarantors will not, and will not permit any o...
+[SECTION] 2.16 Amendment to Section 9.04(b)(i) . Section 9.04(b)(i) is hereby amended by (a) replacing the wor...
+  [METADATA] Page 10
+  [METADATA] 2.17 Amendments to Section 9.05 . (a) Section 9.05(g) is hereby amended and restated in its entirety...
+[SECTION] 2.17 Amendments to Section 9.05 .
+  [SUBSECTION] (a) Section 9.05(g) is hereby amended and restated in its entirety to read as follows:
+  [SUBSECTION] (g) Investments (i) made by the Borrower in or to the Subsidiary Guarantors, (ii) made by any Subsid...
+  [SUBSECTION] (b) Section 9.05(m) is hereby added to Section 9.05 to read as follows:
+  [SUBSECTION] (m) loans and advances made by the Borrower to the Parent to the extent any such loan or advance (i)...
+[SECTION] 2.18 Amendment to Section 9.11 . Section 9.11 is hereby amended by deleting the last paragraph there...
+[SECTION] 2.19 Amendment to Section 9.14 . Section 9.14 is hereby amended and restated in its entirety to read...
+[SECTION] Section 9.14 Transactions with Affiliates . The Borrower will not, and will not permit any Subsidiar...
+  [METADATA] Page 11
+  [METADATA] 2.20 Amendment to Section 9.21(a) . The final proviso of Section 9.21(a) is hereby amended and resta...
+[SECTION] 2.20 Amendment to Section 9.21(a) . The final proviso of Section 9.21(a) is hereby amended and resta...
+[SECTION] 2.21 Amendments to Article IX . Article IX is hereby amended by (a) replacing the phrase “the Borrow...
+[SECTION] Section 9.24 Passive Holding Company Status of Parent Guarantors . Neither of the Parent Guarantors ...
+  [METADATA] Page 12
+  [METADATA] Refinancing Debt of the foregoing to which it is a party or (C) pursuant to Section 9.05(h); (ii) in...
+  [PARAGRAPH] Refinancing Debt of the foregoing to which it is a party or (C) pursuant to Section 9.05(h); (ii) in...
+[SECTION] Section 9.25 Negative Covenants of the Parent Guarantors . Each of the Parent Guarantors hereby cove...
+[SECTION] Section 9.26 Certain Settlements . Each of the Borrower and the Parent Guarantors will not, and will...
+[SECTION] Section 9.27 LTIP . Each of the Borrower and the Parent Guarantors will not, and will not permit the...
+  [METADATA] Page 13
+  [METADATA] agreement (any such payment, an “ LTIP Payment ”) on account of or in connection with the Reorganiza...
+  [PARAGRAPH] agreement (any such payment, an “ LTIP Payment ”) on account of or in connection with the Reorganiza...
+[SECTION] 2.22 Amendment to Section 10.01 . Section 10.01 is hereby amended by replacing the phrase “the Borro...
+[SECTION] 2.23 Amendment to Section 12.03(b)(ii) . Section 12.03(b)(ii) is hereby amended by replacing the phr...
+[SECTION] 2.24 Amendment to Section 12.08 . Section 12.08 is hereby amended by replacing the phrase “the Borro...
+[SECTION] 2.25 Amendment to Section 12.19 . Section 12.19 is hereby amended and restated in its entirety to re...
+[SECTION] Section 12.19 Joinder of Parent Guarantors . By executing and delivering the Ninth Amendment, effect...
+[SECTION] Section 3. Consent to Reorganization Transactions .
+[SECTION] 3.1 So long as the Ninth Amendment Effective Date has occurred by December 31, 2018 (as may be exten...
+  [METADATA] Page 14
+  [METADATA] to the Borrower’s payment of cash in lieu of fractional shares held by its limited partner Equity In...
+  [PARAGRAPH] to the Borrower’s payment of cash in lieu of fractional shares held by its limited partner Equity In...
+[SECTION] 3.2 Except as expressly waived herein, all covenants, obligations and agreements of the Borrower and...
+[SECTION] Section 4. Conditions Precedent . This Ninth Amendment shall not become effective until the date on ...
+[SECTION] 4.1 The Administrative Agent shall have received from the Majority Lenders, the Borrower and the Gua...
+[SECTION] 4.2 The Administrative Agent shall have received from the Borrower and each Guarantor (including the...
+[SECTION] 4.3 The Administrative Agent shall be reasonably satisfied that the Security Instruments create firs...
+  [METADATA] Page 15
+  [METADATA] 4.4 The Administrative Agent shall have received a certificate (which may be the same certificate de...
+[SECTION] 4.4 The Administrative Agent shall have received a certificate (which may be the same certificate de...
+[SECTION] 4.5 The Administrative Agent shall have received certificates of the appropriate State agencies with...
+[SECTION] 4.6 The Administrative Agent shall have received an opinion of Kirkland & Ellis, LLP, special counse...
+[SECTION] 4.7 The Administrative Agent shall have received an executed copy of an amendment to the Second Lien...
+[SECTION] 4.8 The Administrative Agent shall have received a certificate (which may be the same certificate de...
+[SECTION] 4.9 The Administrative Agent and the Lenders shall have received all fees and other amounts due and ...
+  [METADATA] Page 16
+  [METADATA] executed this Ninth Amendment (each such Lender, a “ Consenting Lender ”), in an amount equal to the...
+  [SIGNATURE] executed this Ninth Amendment (each such Lender, a “ Consenting Lender ”), in an amount equal to the...
+[SECTION] 4.10 The Administrative Agent shall have received a certificate (which may be the same certificate d...
+[SECTION] 4.11 No Default shall have occurred and be continuing as of the Ninth Amendment Effective Date.
+[SECTION] 4.12 The Administrative Agent shall have received such other documents as the Administrative Agent o...
+  [PARAGRAPH] The Administrative Agent is hereby authorized and directed to declare this Ninth Amendment to be eff...
+  [METADATA] Page 17
+  [METADATA] Section 5. Miscellaneous . 5.1 Confirmation . The provisions of the Credit Agreement, as amended by ...
+[SECTION] Section 5. Miscellaneous .
+[SECTION] 5.1 Confirmation . The provisions of the Credit Agreement, as amended by this Ninth Amendment, shall...
+[SECTION] 5.2 Ratification and Affirmation; Representations and Warranties . Each Obligor hereby (a) acknowled...
+[SECTION] 5.3 Counterparts . This Ninth Amendment may be executed by one or more of the parties hereto in any ...
+[SECTION] 5.4 No Oral Agreement . This Ninth Amendment, the Credit Agreement and the other Loan Documents exec...
+[SECTION] 5.5 GOVERNING LAW . THIS NINTH AMENDMENT SHALL BE GOVERNED BY, AND CONSTRUED IN ACCORDANCE WITH, THE...
+[SECTION] 5.6 Payment of Expenses . In accordance with Section 12.03 of the Credit Agreement, the Borrower agr...
+  [METADATA] Page 18
+  [METADATA] 5.7 Severability . Any provision of this Ninth Amendment which is prohibited or unenforceable in any...
+[SECTION] 5.7 Severability . Any provision of this Ninth Amendment which is prohibited or unenforceable in any...
+[SECTION] 5.8 Successors and Assigns . This Ninth Amendment shall be binding upon and inure to the benefit of ...
+[SECTION] 5.9 Loan Document . This Ninth Amendment is a “Loan Document” as defined and described in the Credit...
+[SECTION] 5.10 RELEASE . FOR GOOD AND VALUABLE CONSIDERATION, THE RECEIPT AND SUFFICIENCY OF WHICH ARE HEREBY ...
+[SECTION] 5.11 Termination . Notwithstanding anything herein to the contrary, to the extent the Ninth Amendmen...
+  [SIGNATURE] [SIGNATURES BEGIN NEXT PAGE]
+  [METADATA] Page 19
+  [SIGNATURE] IN WITNESS WHEREOF, the parties hereto have caused this Ninth Amendment to be duly executed as of th...
+  [SIGNATURE] IN WITNESS WHEREOF, the parties hereto have caused this Ninth Amendment to be duly executed as of th...
+  [TABLE] BORROWER:
+  [TABLE] LEGACY RESERVES LP
+  [SIGNATURE] By:
+  [TABLE] Legacy Reserves GP, LLC,
+  [TABLE] its general partner
+  [SIGNATURE] By:
+  [SIGNATURE] /s/ James Daniel Westcott
+  [SIGNATURE] /s/ James Daniel Westcott
+  [SIGNATURE] Name:
+  [TABLE] James Daniel Westcott
+  [SIGNATURE] Title:
+  [TABLE] Executive Vice President and Chief Financial Officer
+  [TABLE] GUARANTORS:
+  [TABLE] LEGACY RESERVES OPERATING LP
+  [SIGNATURE] By:
+  [TABLE] Legacy Reserves Operating GP LLC, its general partner
+  [SIGNATURE] By:
+  [TABLE] Legacy Reserves LP , its sole member
+  [SIGNATURE] By:
+  [TABLE] Legacy Reserves GP, LLC , its general partner
+  [TABLE] By:
+  [TABLE] /s/ James Daniel Westcott
+  [PARAGRAPH] /s/ James Daniel Westcott
+  [TABLE] Name:
+  [TABLE] James Daniel Westcott
+  [TABLE] Title:
+  [TABLE] Executive Vice President and Chief Financial Officer
+  [TABLE] LEGACY RESERVES OPERATING GP LLC
+  [TABLE] By:
+  [TABLE] Legacy Reserves LP , its sole member
+  [TABLE] By:
+  [TABLE] Legacy Reserves GP, LLC , its general partner
+  [TABLE] By:
+  [TABLE] /s/ James Daniel Westcott
+  [PARAGRAPH] /s/ James Daniel Westcott
+  [TABLE] Name:
+  [TABLE] James Daniel Westcott
+  [TABLE] Title:
+  [TABLE] Executive Vice President and Chief Financial Officer
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] LEGACY RESERVES SERVICES, INC. DEW GATHERING LLC PINNACLE GAS TREATING LLC LEGACY RESERVES ENERGY SE...
+  [PARAGRAPH] LEGACY RESERVES SERVICES, INC. DEW GATHERING LLC PINNACLE GAS TREATING LLC LEGACY RESERVES ENERGY SE...
+  [TABLE] LEGACY RESERVES SERVICES, INC.
+  [TABLE] DEW GATHERING LLC
+  [TABLE] PINNACLE GAS TREATING LLC
+  [TABLE] LEGACY RESERVES ENERGY SERVICES LLC
+  [TABLE] LEGACY RESERVES GP, LLC
+  [TABLE] LEGACY RESERVES INC.
+  [TABLE] By:
+  [TABLE] /s/ James Daniel Westcott
+  [PARAGRAPH] /s/ James Daniel Westcott
+  [TABLE] Name:
+  [TABLE] James Daniel Westcott
+  [TABLE] Title:
+  [TABLE] Executive Vice President and Chief Financial Officer
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] ADMINISTRATIVE AGENT: WELLS FARGO BANK, NATIONAL ASSOCIATION , as Administrative Agent and a Lender ...
+  [TABLE] ADMINISTRATIVE AGENT:
+  [TABLE] WELLS FARGO BANK, NATIONAL
+  [TABLE] ASSOCIATION , as Administrative Agent and a Lender
+  [TABLE] By:
+  [TABLE] /s/ Stephanie Harrell
+  [PARAGRAPH] /s/ Stephanie Harrell
+  [TABLE] Name:
+  [TABLE] Stephanie Harrell
+  [TABLE] Title:
+  [TABLE] Vice President
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] LENDERS: COMPASS BANK By: /s/ Rachel Festervand Name: Rachel Festervand Title: Senior Vice President...
+  [TABLE] LENDERS:
+  [TABLE] COMPASS BANK
+  [TABLE] By:
+  [TABLE] /s/ Rachel Festervand
+  [PARAGRAPH] /s/ Rachel Festervand
+  [TABLE] Name:
+  [TABLE] Rachel Festervand
+  [TABLE] Title:
+  [TABLE] Senior Vice President
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] UBS AG, STAMFORD BRANCH By: /s/ Darlene Arias Name: Darlene Arias Title: Director By: /s/ Craig Pear...
+  [PARAGRAPH] UBS AG, STAMFORD BRANCH By: /s/ Darlene Arias Name: Darlene Arias Title: Director By: /s/ Craig Pear...
+  [TABLE] UBS AG, STAMFORD BRANCH
+  [TABLE] By:
+  [TABLE] /s/ Darlene Arias
+  [PARAGRAPH] /s/ Darlene Arias
+  [TABLE] Name:
+  [TABLE] Darlene Arias
+  [TABLE] Title:
+  [TABLE] Director
+  [TABLE] By:
+  [TABLE] /s/ Craig Pearson
+  [PARAGRAPH] /s/ Craig Pearson
+  [TABLE] Name:
+  [TABLE] Craig Pearson
+  [TABLE] Title:
+  [TABLE] Associate Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] BANK OF AMERICA, N.A. By: /s/ Kevin M. Behan Name: Kevin M. Behan Title: Managing Director S IGNATUR...
+  [PARAGRAPH] BANK OF AMERICA, N.A. By: /s/ Kevin M. Behan Name: Kevin M. Behan Title: Managing Director
+  [TABLE] BANK OF AMERICA, N.A.
+  [TABLE] By:
+  [TABLE] /s/ Kevin M. Behan
+  [PARAGRAPH] /s/ Kevin M. Behan
+  [TABLE] Name:
+  [TABLE] Kevin M. Behan
+  [TABLE] Title:
+  [TABLE] Managing Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] ROYAL BANK OF CANADA By: /s/ Jay T. Sartain Name: Jay T. Sartain Title: Authorized Signatory S IGNAT...
+  [PARAGRAPH] ROYAL BANK OF CANADA By: /s/ Jay T. Sartain Name: Jay T. Sartain Title: Authorized Signatory
+  [TABLE] ROYAL BANK OF CANADA
+  [TABLE] By:
+  [TABLE] /s/ Jay T. Sartain
+  [PARAGRAPH] /s/ Jay T. Sartain
+  [TABLE] Name:
+  [TABLE] Jay T. Sartain
+  [TABLE] Title:
+  [TABLE] Authorized Signatory
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] AG ENERGY FUNDING, LLC By: /s/ Todd Dittman Name: Todd Dittman Title: Authorized Signatory S IGNATUR...
+  [PARAGRAPH] AG ENERGY FUNDING, LLC By: /s/ Todd Dittman Name: Todd Dittman Title: Authorized Signatory
+  [TABLE] AG ENERGY FUNDING, LLC
+  [TABLE] By:
+  [TABLE] /s/ Todd Dittman
+  [PARAGRAPH] /s/ Todd Dittman
+  [TABLE] Name:
+  [TABLE] Todd Dittman
+  [TABLE] Title:
+  [TABLE] Authorized Signatory
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] JPMORGAN CHASE BANK, N.A. By: /s/ Stephanie Balette Name: Stephanie Balette Title: Authorized Office...
+  [PARAGRAPH] JPMORGAN CHASE BANK, N.A. By: /s/ Stephanie Balette Name: Stephanie Balette Title: Authorized Office...
+  [TABLE] JPMORGAN CHASE BANK, N.A.
+  [TABLE] By:
+  [TABLE] /s/ Stephanie Balette
+  [PARAGRAPH] /s/ Stephanie Balette
+  [TABLE] Name:
+  [TABLE] Stephanie Balette
+  [TABLE] Title:
+  [TABLE] Authorized Officer
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] BMO HARRIS FINANCING, INC . By: /s/ Melissa Guzmann Name: Melissa Guzmann Title: Director S IGNATURE...
+  [PARAGRAPH] BMO HARRIS FINANCING, INC . By: /s/ Melissa Guzmann Name: Melissa Guzmann Title: Director
+  [TABLE] BMO HARRIS FINANCING, INC .
+  [TABLE] By:
+  [TABLE] /s/ Melissa Guzmann
+  [PARAGRAPH] /s/ Melissa Guzmann
+  [TABLE] Name:
+  [TABLE] Melissa Guzmann
+  [TABLE] Title:
+  [TABLE] Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] BARCLAYS BANK PLC By: /s/ Sydney G. Dennis Name: Sydney G. Dennis Title: Director S IGNATURE P AGE N...
+  [PARAGRAPH] BARCLAYS BANK PLC By: /s/ Sydney G. Dennis Name: Sydney G. Dennis Title: Director
+  [TABLE] BARCLAYS BANK PLC
+  [TABLE] By:
+  [TABLE] /s/ Sydney G. Dennis
+  [PARAGRAPH] /s/ Sydney G. Dennis
+  [TABLE] Name:
+  [TABLE] Sydney G. Dennis
+  [TABLE] Title:
+  [TABLE] Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] CREDIT AGRICOLE CORPORATE AND INVESTMENT BANK By: /s/ Michael Willis Name: Michael Willis Title: Man...
+  [PARAGRAPH] CREDIT AGRICOLE CORPORATE AND INVESTMENT BANK By: /s/ Michael Willis Name: Michael Willis Title: Man...
+  [TABLE] CREDIT AGRICOLE CORPORATE AND INVESTMENT BANK
+  [TABLE] By:
+  [TABLE] /s/ Michael Willis
+  [PARAGRAPH] /s/ Michael Willis
+  [TABLE] Name:
+  [TABLE] Michael Willis
+  [TABLE] Title:
+  [TABLE] Managing Director
+  [TABLE] By:
+  [TABLE] /s/ Page Dillehunt
+  [PARAGRAPH] /s/ Page Dillehunt
+  [TABLE] Name:
+  [TABLE] Page Dillehunt
+  [TABLE] Title:
+  [TABLE] Managing Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] CITIBANK, N.A. By: /s/ Cliff Vaz Name: Cliff Vaz Title: Vice President S IGNATURE P AGE N INTH A MEN...
+  [PARAGRAPH] CITIBANK, N.A. By: /s/ Cliff Vaz Name: Cliff Vaz Title: Vice President
+  [TABLE] CITIBANK, N.A.
+  [TABLE] By:
+  [TABLE] /s/ Cliff Vaz
+  [PARAGRAPH] /s/ Cliff Vaz
+  [TABLE] Name:
+  [TABLE] Cliff Vaz
+  [TABLE] Title:
+  [TABLE] Vice President
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] SOCIETE GENERALE By: /s/ Max Sonnonstine Name: Max Sonnonstine Title: Director S IGNATURE P AGE N IN...
+  [PARAGRAPH] SOCIETE GENERALE By: /s/ Max Sonnonstine Name: Max Sonnonstine Title: Director
+  [TABLE] SOCIETE GENERALE
+  [TABLE] By:
+  [TABLE] /s/ Max Sonnonstine
+  [PARAGRAPH] /s/ Max Sonnonstine
+  [TABLE] Name:
+  [TABLE] Max Sonnonstine
+  [TABLE] Title:
+  [TABLE] Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] BRANCH BANKING AND TRUST COMPANY By: /s/ Greg Krablin Name: Greg Krablin Title: Vice President S IGN...
+  [PARAGRAPH] BRANCH BANKING AND TRUST COMPANY By: /s/ Greg Krablin Name: Greg Krablin Title: Vice President
+  [TABLE] BRANCH BANKING AND TRUST COMPANY
+  [PARAGRAPH] BRANCH BANKING AND TRUST
+  [PARAGRAPH] COMPANY
+  [TABLE] By:
+  [TABLE] /s/ Greg Krablin
+  [PARAGRAPH] /s/ Greg Krablin
+  [TABLE] Name:
+  [TABLE] Greg Krablin
+  [TABLE] Title:
+  [TABLE] Vice President
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] WEST TEXAS NATIONAL BANK By: /s/ C. Scott Wilson Name: C. Scott Wilson Title: Senior Vice President ...
+  [PARAGRAPH] WEST TEXAS NATIONAL BANK By: /s/ C. Scott Wilson Name: C. Scott Wilson Title: Senior Vice President
+  [TABLE] WEST TEXAS NATIONAL BANK
+  [TABLE] By:
+  [TABLE] /s/ C. Scott Wilson
+  [PARAGRAPH] /s/ C. Scott Wilson
+  [TABLE] Name:
+[SECTION] C. Scott Wilson
+  [TABLE] Title:
+  [TABLE] Senior Vice President
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] FIFTH THIRD BANK By: /s/ Justin Bellamy Name: Justin Bellamy Title: Director S IGNATURE P AGE N INTH...
+  [PARAGRAPH] FIFTH THIRD BANK By: /s/ Justin Bellamy Name: Justin Bellamy Title: Director
+  [TABLE] FIFTH THIRD BANK
+  [TABLE] By:
+  [TABLE] /s/ Justin Bellamy
+  [PARAGRAPH] /s/ Justin Bellamy
+  [TABLE] Name:
+  [TABLE] Justin Bellamy
+  [TABLE] Title:
+  [TABLE] Director
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] BP ENERGY COMPANY By: /s/ Timothy Yee Name: Timothy Yee Title: Attorney-in-Fact S IGNATURE P AGE N I...
+  [PARAGRAPH] BP ENERGY COMPANY By: /s/ Timothy Yee Name: Timothy Yee Title: Attorney-in-Fact
+  [TABLE] BP ENERGY COMPANY
+  [TABLE] By:
+  [TABLE] /s/ Timothy Yee
+  [PARAGRAPH] /s/ Timothy Yee
+  [TABLE] Name:
+  [TABLE] Timothy Yee
+  [TABLE] Title:
+  [TABLE] Attorney-in-Fact
+  [TABLE] S IGNATURE P AGE N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT
+  [PARAGRAPH] S IGNATURE P AGE
+  [PARAGRAPH] N INTH A MENDMENT TO T HIRD A MENDED AND R ESTATED C REDIT A GREEMENT

@@ -1,0 +1,77 @@
+SEMANTIC TREE: agreement_08.html
+================================================================================
+Quality Score: 0.89
+Format: html
+Total Elements: 58
+Title: Management Agreement
+
+Element Distribution:
+  metadata: 1
+  paragraph: 15
+  section: 11
+  signature: 3
+  table: 27
+  title: 1
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] Exhibit 10.1
+[PARAGRAPH] Execution Version
+[PARAGRAPH] FIRST AMENDMENT
+[TITLE] Management Agreement
+[PARAGRAPH] May 16, 2018
+[PARAGRAPH] This First Amendment (this “ Amendment ”) to the Management Agreement (as defined below) is entered ...
+[PARAGRAPH] WHEREAS, the Parties entered into that certain Management Agreement, dated January 29, 2015 (the “ M...
+[PARAGRAPH] WHEREAS, the Initial Term of the Management Agreement will expire on December 31, 2019, and, unless ...
+[PARAGRAPH] WHEREAS, prior to the expiration of the Initial Term, a Party may request changes to the Management ...
+[PARAGRAPH] WHEREAS, notwithstanding the automatic renewal provisions of Section 16(a) of the Management Agreeme...
+[PARAGRAPH] WHEREAS, pursuant to Section 22 of the Management Agreement, the Parties desire to amend the notice ...
+[PARAGRAPH] NOW THEREFORE, in consideration of the premises and for other good and valuable consideration, the r...
+[SECTION] 1. Amendment of Management Agreement .
+[SECTION] Section 16(a) of the Management Agreement is hereby amended by replacing the clause “at least 15 mon...
+[SECTION] Section 16(b) of the Management Agreement is hereby amended by replacing the clause “at least 365 da...
+[SECTION] 2. Continuing Effect . Except as expressly amended by this Amendment, the provisions of the Manageme...
+[SECTION] 2. Continuing Effect . Except as expressly amended by this Amendment, the provisions of the Manageme...
+[SECTION] 3. Miscellaneous . The following provisions of the Management Agreement are hereby incorporated into...
+[SECTION] Section 23
+  [TABLE] Governing Law
+[SECTION] Section 24
+  [TABLE] Arbitration
+[SECTION] Section 27
+  [TABLE] Cure of Invalid Provisions
+[SECTION] Section 28
+  [TABLE] Construction of Agreement
+[SECTION] Section 29
+  [TABLE] Multiple Counterparts
+  [SIGNATURE] [Signatures on Following Page]
+  [SIGNATURE] The Parties have executed this First Amendment as of the date first set forth above. HUNT UTILITY SE...
+  [SIGNATURE] The Parties have executed this First Amendment as of the date first set forth above.
+  [PARAGRAPH] HUNT UTILITY SERVICES, LLC By: /s/ David Campbell Name: David Campbell Title: President and Chief Ex...
+  [TABLE] HUNT UTILITY SERVICES, LLC
+  [TABLE] By:
+  [TABLE] /s/ David Campbell
+  [PARAGRAPH] /s/ David Campbell
+  [TABLE] Name:
+  [TABLE] David Campbell
+  [TABLE] Title:
+  [TABLE] President and Chief Executive Officer
+  [TABLE] INFRAREIT, INC.
+  [TABLE] By:
+  [TABLE] /s/ Brant Meleski
+  [PARAGRAPH] /s/ Brant Meleski
+  [TABLE] Name:
+  [TABLE] Brant Meleski
+  [TABLE] Title:
+  [TABLE] Senior Vice President and Chief Financial Officer
+  [TABLE] INFRAREIT PARTNERS, LP
+  [TABLE] By: InfraREIT, Inc., its general partner
+  [TABLE] By:
+  [TABLE] /s/ Brant Meleski
+  [PARAGRAPH] /s/ Brant Meleski
+  [TABLE] Name:
+  [TABLE] Brant Meleski
+  [TABLE] Title:
+  [TABLE] Senior Vice President and Chief Financial Officer
+  [PARAGRAPH] F IRST A MENDMENT TO M ANAGEMENT A GREEMENT

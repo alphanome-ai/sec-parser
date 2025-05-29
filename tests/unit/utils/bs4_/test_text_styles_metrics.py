@@ -1,11 +1,10 @@
-import pytest
 from bs4 import BeautifulSoup
 
 from sec_parser.utils.bs4_.text_styles_metrics import compute_text_styles_metrics
 
 
 # Test: Normal case with multiple styles
-def test_should_return_correct_metrics_for_multiple_styles():
+def test_should_return_correct_metrics_for_multiple_styles() -> None:
     # Arrange
     html = """
     <div>
@@ -25,7 +24,7 @@ def test_should_return_correct_metrics_for_multiple_styles():
 
 
 # Test: Edge case with no text
-def test_should_return_empty_metrics_for_no_text():
+def test_should_return_empty_metrics_for_no_text() -> None:
     # Arrange
     html = "<div></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -38,7 +37,7 @@ def test_should_return_empty_metrics_for_no_text():
     assert result == {}
 
 
-def test_should_return_correct_metrics_for_inherited_styles():
+def test_should_return_correct_metrics_for_inherited_styles() -> None:
     # Arrange
     html = """
     <div style="color:#000000;">

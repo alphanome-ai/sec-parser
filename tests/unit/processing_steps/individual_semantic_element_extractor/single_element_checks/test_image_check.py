@@ -1,12 +1,14 @@
 from unittest.mock import Mock
-import bs4
-import pytest
 
-from sec_parser.semantic_elements.abstract_semantic_element import AbstractSemanticElement
-from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.image_check import ImageCheck
+from sec_parser.processing_steps.individual_semantic_element_extractor.single_element_checks.image_check import (
+    ImageCheck,
+)
+from sec_parser.semantic_elements.abstract_semantic_element import (
+    AbstractSemanticElement,
+)
 
 
-def test_contains_single_element_with_img_tag():
+def test_contains_single_element_with_img_tag() -> None:
     # Arrange
     element = AbstractSemanticElement(Mock())
     element.html_tag.name = "img"
@@ -17,13 +19,13 @@ def test_contains_single_element_with_img_tag():
 
     # Assert
     assert actual is True
-    
 
-def test_contains_single_element_with_multiple_img_tags():
+
+def test_contains_single_element_with_multiple_img_tags() -> None:
     # Arrange
     element = AbstractSemanticElement(Mock())
     element.html_tag.name = "div"
-    element.html_tag.count_tags.side_effect = lambda tag_name: 2 if tag_name == 'img' else 0
+    element.html_tag.count_tags.side_effect = lambda tag_name: 2 if tag_name == "img" else 0
     check = ImageCheck()
 
     # Act
@@ -33,11 +35,11 @@ def test_contains_single_element_with_multiple_img_tags():
     assert actual is False
 
 
-def test_contains_single_element_with_text_and_img_tag():
+def test_contains_single_element_with_text_and_img_tag() -> None:
     # Arrange
     element = AbstractSemanticElement(Mock())
     element.html_tag.name = "div"
-    element.html_tag.count_tags.side_effect = lambda tag_name: 1 if tag_name == 'img' else 0
+    element.html_tag.count_tags.side_effect = lambda tag_name: 1 if tag_name == "img" else 0
     element.html_tag.text = "Some text"
     check = ImageCheck()
 
@@ -48,11 +50,11 @@ def test_contains_single_element_with_text_and_img_tag():
     assert actual is False
 
 
-def test_contains_single_element_with_other_tags():
+def test_contains_single_element_with_other_tags() -> None:
     # Arrange
     element = AbstractSemanticElement(Mock())
     element.html_tag.name = "div"
-    element.html_tag.count_tags.side_effect = lambda tag_name: 0 if tag_name == 'img' else 2
+    element.html_tag.count_tags.side_effect = lambda tag_name: 0 if tag_name == "img" else 2
     element.html_tag.text = ""
     check = ImageCheck()
 

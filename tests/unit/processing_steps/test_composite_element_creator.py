@@ -104,7 +104,7 @@ from tests.unit._utils import assert_elements
     ],
     ids=[v[0] for v in values],
 )
-def test_with_real_data(name, html_str, expected_elements):
+def test_with_real_data(name, html_str, expected_elements) -> None:
     # Arrange
     sec_parser = Edgar10QParser(
         get_steps=lambda: [
@@ -116,7 +116,7 @@ def test_with_real_data(name, html_str, expected_elements):
 
     # Act
     processed_elements = sec_parser.parse(
-        html_str, unwrap_elements=False, include_irrelevant_elements=True
+        html_str, unwrap_elements=False, include_irrelevant_elements=True,
     )
 
     # Assert

@@ -3,12 +3,6 @@ import bs4
 from sec_parser import AbstractSemanticElement, TreeBuilder
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
-from sec_parser.semantic_tree.nesting_rules import (
-    AbstractNestingRule,
-    AlwaysNestAsChildRule,
-    AlwaysNestAsParentRule,
-    NestSameTypeDependingOnLevelRule,
-)
 from sec_parser.semantic_tree.render_ import render
 from sec_parser.semantic_tree.semantic_tree import SemanticTree
 from sec_parser.semantic_tree.tree_node import TreeNode
@@ -44,7 +38,7 @@ class LeveledElement(AbstractLevelElement):
     pass
 
 
-def test_smoke_test():
+def test_smoke_test() -> None:
     # Arrange
     tag = bs4.Tag(name="p")
     tag.string = "Hello, world!"

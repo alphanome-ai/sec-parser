@@ -3,28 +3,13 @@ import pytest
 
 from sec_parser.processing_engine.core import Edgar10QParser
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.processing_steps.abstract_classes.abstract_elementwise_processing_step import (
-    ElementProcessingContext,
-)
-from sec_parser.processing_steps.empty_element_classifier import (
-    EmptyElementClassifier,
-    InvalidIterationError,
-)
 from sec_parser.processing_steps.supplementary_text_classifier import (
     SupplementaryTextClassifier,
 )
-from sec_parser.semantic_elements.abstract_semantic_element import (
-    AbstractSemanticElement,
-)
 from sec_parser.semantic_elements.semantic_elements import (
     EmptyElement,
-    ImageElement,
-    IrrelevantElement,
     SupplementaryText,
-    TextElement,
 )
-from sec_parser.semantic_elements.table_element.table_element import TableElement
-from sec_parser.semantic_elements.title_element import TitleElement
 from tests.unit._utils import assert_elements
 
 
@@ -61,7 +46,7 @@ from tests.unit._utils import assert_elements
     ],
     ids=[v[0] for v in values],
 )
-def test_supplementary_element_classifier(name, html_str, expected_elements):
+def test_supplementary_element_classifier(name, html_str, expected_elements) -> None:
     # Arrange
     def get_steps():
         default = Edgar10QParser().get_default_steps()
@@ -71,7 +56,7 @@ def test_supplementary_element_classifier(name, html_str, expected_elements):
 
     # Act
     processed_elements = sec_parser.parse(
-        html_str, unwrap_elements=False, include_irrelevant_elements=True
+        html_str, unwrap_elements=False, include_irrelevant_elements=True,
     )
 
     # Assert
@@ -99,7 +84,7 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
     ],
     ids=[v[0] for v in values],
 )
-def test_with_synthetic_input(name, elements, expected_elements):
+def test_with_synthetic_input(name, elements, expected_elements) -> None:
     # Arrange
     step = SupplementaryTextClassifier()
 

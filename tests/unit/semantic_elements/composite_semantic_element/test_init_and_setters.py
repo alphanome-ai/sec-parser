@@ -3,6 +3,7 @@ from unittest.mock import Mock
 import bs4
 import pytest
 
+from sec_parser.exceptions import SecParserValueError
 from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
@@ -11,8 +12,6 @@ from sec_parser.semantic_elements.composite_semantic_element import (
     CompositeSemanticElement,
 )
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
-
-from sec_parser.exceptions import SecParserValueError
 
 MockHtmlTag = Mock()
 
@@ -24,7 +23,7 @@ def default_inner_elements():
 
 def test_composite_semantic_element_initialization_valid_inner_elements(
     default_inner_elements,
-):
+) -> None:
     """Test if a CompositeSemanticElement object can be initialized with valid inner elements."""
     # Arrange
     mock_html_tag = MockHtmlTag()
@@ -38,15 +37,15 @@ def test_composite_semantic_element_initialization_valid_inner_elements(
 
 
 @pytest.mark.parametrize(
-    "inner_elements, expected_exception, expected_message",
+    ("inner_elements", "expected_exception", "expected_message"),
     [
         (None, SecParserValueError, "inner_elements cannot be None or empty."),
         ((), SecParserValueError, "inner_elements cannot be None or empty."),
     ],
 )
 def test_composite_semantic_element_initialization_with_invalid_inner_elements(
-    inner_elements, expected_exception, expected_message
-):
+    inner_elements, expected_exception, expected_message,
+) -> None:
     """Test initialization with invalid inner_elements."""
     # Arrange
     mock_html_tag = MockHtmlTag()
@@ -56,7 +55,7 @@ def test_composite_semantic_element_initialization_with_invalid_inner_elements(
         CompositeSemanticElement(mock_html_tag, inner_elements)
 
 
-def test_create_from_element_source_valid_inner_elements(default_inner_elements):
+def test_create_from_element_source_valid_inner_elements(default_inner_elements) -> None:
     """Test create_from_element() with valid inner elements."""
     # Arrange
     shared_mock = Mock()

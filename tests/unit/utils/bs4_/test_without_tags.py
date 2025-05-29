@@ -1,10 +1,9 @@
-import bs4
 from bs4 import BeautifulSoup
 
 from sec_parser.utils.bs4_.without_tags import without_tags
 
 
-def test_without_tags_single_tag():
+def test_without_tags_single_tag() -> None:
     # Arrange
     html = "<div><b>foo</b><p>bar<i>bax</i></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -20,7 +19,7 @@ def test_without_tags_single_tag():
     ), "Expected 'b' tags to be removed"
 
 
-def test_without_tags_multiple_tags():
+def test_without_tags_multiple_tags() -> None:
     # Arrange
     html = "<div><b>foo</b><p>bar<i>bax</i></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -36,7 +35,7 @@ def test_without_tags_multiple_tags():
     ), "Expected 'b' and 'i' tags to be removed"
 
 
-def test_without_tags_nonexistent_tag():
+def test_without_tags_nonexistent_tag() -> None:
     # Arrange
     html = "<div><b>foo</b><p>bar<i>bax</i></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -52,7 +51,7 @@ def test_without_tags_nonexistent_tag():
     ), "Expected no changes when tag does not exist"
 
 
-def test_without_tags_empty_input():
+def test_without_tags_empty_input() -> None:
     # Arrange
     html = "<div></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -66,7 +65,7 @@ def test_without_tags_empty_input():
     assert str(result) == "<div></div>", "Expected no changes when tag is empty"
 
 
-def test_without_tags_empty_tag_list():
+def test_without_tags_empty_tag_list() -> None:
     # Arrange
     html = "<div><b>foo</b><p>bar<i>bax</i></p></div>"
     soup = BeautifulSoup(html, "lxml")

@@ -93,7 +93,7 @@ class DivTagPruner(AbstractElementBatchProcessingStep):
     ],
     ids=[v[0] for v in values],
 )
-def test_batch_processing_step(name, cls, html_str, expected_elements):
+def test_batch_processing_step(name, cls, html_str, expected_elements) -> None:
     # Arrange
     elements = parse_initial_semantic_elements(html_str)
     step = cls()

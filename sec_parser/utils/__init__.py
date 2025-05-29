@@ -1,5 +1,4 @@
-"""
-The utils subpackage contains utility functions
+"""The utils subpackage contains utility functions
 and helpers used across the sec_parser project.
 """
 
@@ -10,7 +9,7 @@ from sec_parser.utils.py_utils import get_direct_subclass_of_base_class
 
 __all__ = [
     "ValueNotSetError",
-    "get_value_or_env_var",
     "get_direct_subclass_of_base_class",
+    "get_value_or_env_var",
     "is_unary_tree",
 ]

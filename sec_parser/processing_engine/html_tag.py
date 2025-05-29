@@ -40,8 +40,7 @@ closing_tag_pattern = re.compile(r"</ix:[^>]+>")
 
 
 class HtmlTag:
-    """
-    The HtmlTag class is a wrapper for BeautifulSoup4 Tag objects.
+    """The HtmlTag class is a wrapper for BeautifulSoup4 Tag objects.
 
     It serves three main purposes:
 
@@ -157,8 +156,7 @@ class HtmlTag:
 
     @property
     def text(self) -> str:
-        """
-        `text` property recursively extracts text from the child tags.
+        """`text` property recursively extracts text from the child tags.
         The result is cached as the underlying data doesn't change.
         """
         if self._text is None:
@@ -183,8 +181,7 @@ class HtmlTag:
         return self._children
 
     def contains_tag(self, name: str, *, include_self: bool = False) -> bool:
-        """
-        `contains_tag` method checks if the current HTML tag contains a descendant tag
+        """`contains_tag` method checks if the current HTML tag contains a descendant tag
         with the specified name. For example, calling contains_tag("b") on an
         HtmlTag instance representing "<div><p><b>text</b></p></div>" would
         return True, as there is a 'b' tag within the descendants of the 'div' tag.
@@ -199,8 +196,7 @@ class HtmlTag:
         return self._contains_tag[tag_key]
 
     def has_text_outside_tags(self, tags: list[str] | str) -> bool:
-        """
-        `has_text_outside_tags` function checks if the given
+        """`has_text_outside_tags` function checks if the given
         node has any text outside the specified tag.
         For example, calling has_text_outside_tags(node, ["b"])
         on a node representing "<div><p><b>text</b>extra text</p></div>"
@@ -216,8 +212,7 @@ class HtmlTag:
         return self._has_text_outside_tags[tag_names]
 
     def without_tags(self, names: Iterable[str]) -> HtmlTag:
-        """
-        `without_tags` method creates a copy of the current HTML tag and removes all
+        """`without_tags` method creates a copy of the current HTML tag and removes all
         descendant tags with the specified name. For example, calling
         without_tags(tag, ["b","i"]) on an HtmlTag instance representing
         "<div><b>foo</b><p>bar<i>bax</i></p></div>" would
@@ -234,8 +229,7 @@ class HtmlTag:
         return self._without_tags[tag_key]
 
     def count_tags(self, name: str) -> int:
-        """
-        `count_tags` method counts the number of descendant tags with the specified name
+        """`count_tags` method counts the number of descendant tags with the specified name
         within the current HTML tag. For example, calling count_tags("b") on an
         HtmlTag instance representing "<div><p><b>text</b></p><b>more text</b></div>"
         would return 2, as there are two 'b' tags within the descendants of
@@ -250,8 +244,7 @@ class HtmlTag:
         return self._count_tags[tag_key]
 
     def is_unary_tree(self) -> bool:
-        """
-        `is_unary_tree` determines if a BeautifulSoup tag forms a unary tree.
+        """`is_unary_tree` determines if a BeautifulSoup tag forms a unary tree.
         In a unary tree, each node has at most one child.
 
         However, if a non-leaf node contains a non-empty string even without a tag
@@ -266,8 +259,7 @@ class HtmlTag:
         return self._is_unary_tree
 
     def get_text_styles_metrics(self) -> dict[tuple[str, str], float]:
-        """
-        Compute the percentage distribution of various CSS styles within the text
+        """Compute the percentage distribution of various CSS styles within the text
         content of a given HTML tag and its descendants.
 
         This function iterates through all the text nodes within the tag, recursively
@@ -336,7 +328,7 @@ class HtmlTag:
 
         tag = HtmlTag(wrap_tags_in_new_parent(parent_tag_name, bs4_tags))
 
-        tag._parent = html_tags[0].parent  # noqa: SLF001
+        tag._parent = html_tags[0].parent
         return tag
 
     def count_text_matches_in_descendants(

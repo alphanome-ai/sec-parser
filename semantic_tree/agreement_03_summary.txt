@@ -1,0 +1,85 @@
+SEMANTIC TREE: agreement_03.html
+================================================================================
+Quality Score: 0.51
+Format: html
+Total Elements: 68
+Title: ALLETE Executive Annual Incentive Plan
+
+Element Distribution:
+  metadata: 2
+  paragraph: 40
+  table: 25
+  title: 1
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] Exhibit 10(a)1
+[METADATA] Exhibit 10(a)1
+[TITLE] ALLETE Executive Annual Incentive Plan
+[PARAGRAPH] Form of Award
+[PARAGRAPH] Effective 2018
+[PARAGRAPH] [Eligible Executive Employees, except CEO and CFO]
+[PARAGRAPH] Target Award Opportunity
+[PARAGRAPH] Base Salary $ Times Award Opportunity (percent of base salary) % Equals Target Award $
+[PARAGRAPH] Base Salary $ Times Award Opportunity (percent of base salary) % Equals Target Award $
+[TABLE] Base Salary
+[PARAGRAPH] Base Salary
+[TABLE] Times
+[PARAGRAPH] Times
+[TABLE] Award Opportunity (percent of base salary)
+[PARAGRAPH] Award Opportunity (percent of base salary)
+[TABLE] Equals
+[PARAGRAPH] Equals
+[TABLE] Target Award
+[PARAGRAPH] Target Award
+[PARAGRAPH] Performance Levels and Award Amounts
+[PARAGRAPH] Goal Performance Level Payout as Percent of Target Award Award Amount Superior 200% $ Target 100% $ ...
+[PARAGRAPH] Goal Performance Level Payout as Percent of Target Award Award Amount Superior 200% $ Target 100% $ ...
+[TABLE] Goal Performance Level
+[PARAGRAPH] Goal Performance Level
+[TABLE] Payout as Percent of Target Award
+[PARAGRAPH] Payout as Percent of
+[PARAGRAPH] Target Award
+[TABLE] Award Amount
+[PARAGRAPH] Award Amount
+[TABLE] Superior
+[PARAGRAPH] Superior
+[TABLE] 200%
+[PARAGRAPH] 200%
+[TABLE] Target
+[PARAGRAPH] Target
+[TABLE] 100%
+[PARAGRAPH] 100%
+[TABLE] Threshold
+[PARAGRAPH] Threshold
+[TABLE] 45%
+[PARAGRAPH] 45%
+[TABLE] Below Threshold
+[PARAGRAPH] Below Threshold
+[PARAGRAPH] Goals
+[PARAGRAPH] Goal Weighting Financial Goals Net Income 50% Cash from Operating Activities 25% Strategic & Operati...
+[PARAGRAPH] Goal Weighting Financial Goals Net Income 50% Cash from Operating Activities 25% Strategic & Operati...
+[TABLE] Goal
+[PARAGRAPH] Goal
+[TABLE] Weighting
+[PARAGRAPH] Weighting
+[TABLE] Financial Goals
+[PARAGRAPH] Financial Goals
+[TABLE] Net Income
+[PARAGRAPH] Net Income
+[TABLE] 50%
+[PARAGRAPH] 50%
+[TABLE] Cash from Operating Activities
+[PARAGRAPH] Cash from Operating Activities
+[TABLE] 25%
+[PARAGRAPH] 25%
+[TABLE] Strategic & Operational Positioning Goals
+[PARAGRAPH] Strategic & Operational Positioning Goals
+[TABLE] 25%
+[PARAGRAPH] 25%
+[TABLE] 100%
+[PARAGRAPH] 100%
+[PARAGRAPH] Compensation Subject to Compensation Recovery Policy
+[PARAGRAPH] Annual Incentive Plan Compensation is subject to recoupment as defined in the Compensation Recovery ...

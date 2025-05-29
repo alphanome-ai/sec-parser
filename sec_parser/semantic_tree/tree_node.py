@@ -11,8 +11,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class TreeNode:
-    """
-    The TreeNode class is a fundamental part of the semantic tree structure.
+    """The TreeNode class is a fundamental part of the semantic tree structure.
     Each TreeNode represents a node in the tree. It holds a reference to a semantic
     element, maintains a list of its child nodes, and a reference to its parent node.
     This class provides methods for managing the tree structure, such as adding and

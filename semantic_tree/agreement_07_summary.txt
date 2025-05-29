@@ -1,0 +1,214 @@
+SEMANTIC TREE: agreement_07.html
+================================================================================
+Quality Score: 0.90
+Format: html
+Total Elements: 152
+Title: Guaranty
+Agreement
+
+Element Distribution:
+  metadata: 1
+  paragraph: 23
+  section: 39
+  signature: 14
+  subsection: 28
+  table: 44
+  title: 3
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] Exhibit 10.5
+[PARAGRAPH] E xecution Version
+[TITLE] Guaranty Agreement
+[PARAGRAPH] Nxt-ID, Inc.,
+[PARAGRAPH] Fit Pay, Inc., and
+[PARAGRAPH] 3D-ID, LLC
+[PARAGRAPH] as Guarantors
+[PARAGRAPH] and
+[PARAGRAPH] Sagard Holdings Manager LP , as Administrative Agent
+[PARAGRAPH] Dated as of May 24, 2018
+[PARAGRAPH] Table of Contents
+[TABLE] Section
+[TABLE] Page
+[SECTION] Section 1.
+  [TABLE] Guaranty;     Limitation of Liability
+[SECTION] Section 2.
+  [TABLE] Guaranty     Absolute
+[SECTION] Section 3.
+  [TABLE] Waivers     and Acknowledgments
+[SECTION] Section 4.
+  [TABLE] Subrogation
+[SECTION] Section 5.
+  [TABLE] Payments     Free and Clear of Taxes, Etc.
+[SECTION] Section 6.
+  [TABLE] Representations     and Warranties
+[SECTION] Section 7.
+  [TABLE] Covenants
+[SECTION] Section 8.
+  [TABLE] Amendments,     Guaranty Supplements, Etc.
+[SECTION] Section 9.
+  [TABLE] Notices,     Etc.
+[SECTION] Section 10.
+  [TABLE] No     Waiver; Remedies
+[SECTION] Section 11.
+  [TABLE] Right     of Setoff
+[SECTION] Section 12.
+  [TABLE] Indemnification
+[SECTION] Section 13.
+  [TABLE] Subordination
+[SECTION] Section 14.
+  [TABLE] Continuing     Guaranty; Assignments under the Credit Agreement
+[SECTION] Section 15.
+  [TABLE] Execution     in Counterparts
+[SECTION] Section 16.
+  [TABLE] Governing     Law; Jurisdiction; Waiver of Jury Trial, Etc.
+[SECTION] Exhibit A - Guaranty Supplement
+  [PARAGRAPH] Guaranty Agreement (this “Agreement” ) dated as of May 24, 2018, among Nxt-ID, Inc. , a Delaware cor...
+  [PARAGRAPH] Reference is made to the Senior Secured Credit Agreement, dated as of the date hereof (as amended, r...
+  [PARAGRAPH] The Lenders have agreed to make a Term Loan to the Borrower, pursuant to, and upon the terms and sub...
+  [PARAGRAPH] Now, Therefore , in consideration of the premises and in order to induce the Lenders to make the Ter...
+[TITLE] Guaranty Agreement
+[SECTION] Section 1. Guaranty; Limitation of Liability . (a) Each Guarantor hereby absolutely, unconditionally...
+  [SUBSECTION] (b) Each Guarantor, and by its acceptance of this Agreement, the Administrative Agent and each other...
+  [SUBSECTION] (c) Each Guarantor hereby unconditionally and irrevocably agrees that in the event any payment shall...
+[SECTION] Section 2. Guaranty Absolute . Each Guarantor guarantees that the Guaranteed Obligations will be pai...
+  [SUBSECTION] (a)	any lack of validity or enforceability of any Loan Document or any agreement or instrument relat...
+  [SUBSECTION] (b)	any change in the time, manner or place of payment of, or in any other term of, all or any of th...
+  [SUBSECTION] (c)	any taking, exchange, release or non-perfection of any Collateral or any other collateral, or an...
+  [SUBSECTION] (d)	any manner of application of Collateral or any other collateral, or proceeds thereof, to all or ...
+  [SUBSECTION] (e)	any change, restructuring or termination of the corporate structure or existence of any Loan Par...
+  [SUBSECTION] (f)	any failure of any Secured Party to disclose to any Loan Party any information relating to the b...
+  [SUBSECTION] (g)	the failure of any other Person to execute or deliver this Agreement, any Guaranty Supplement (a...
+  [SUBSECTION] (h)	any other circumstance or any existence of or reliance on any representation by any Secured Part...
+    [PARAGRAPH] This Agreement shall continue to be effective or be reinstated, as the case may be, if at any time a...
+    [PARAGRAPH] This Agreement shall continue to be effective or be reinstated, as the case may be, if at any time a...
+[SECTION] Section 3. Waivers and Acknowledgments . (a) Each Guarantor hereby unconditionally and irrevocably w...
+  [SUBSECTION] (b) Each Guarantor hereby unconditionally and irrevocably waives any right to revoke this Agreement ...
+  [SUBSECTION] (c) Each Guarantor hereby unconditionally and irrevocably waives, to the extent permitted by applica...
+  [SUBSECTION] (d) Each Guarantor acknowledges that the Administrative Agent may, without notice to or demand upon ...
+  [SUBSECTION] (e) Each Guarantor hereby unconditionally and irrevocably waives any duty on the part of any Secured...
+  [SUBSECTION] (f) Each Guarantor acknowledges that it will receive substantial direct and indirect benefits from t...
+[SECTION] Section 4. Subrogation . Until the Obligations are indefeasibly satisfied in full, each Guarantor he...
+[SECTION] Section 5. Payments Free and Clear of Taxes, Etc . Any and all payments by or on account of any obli...
+[SECTION] Section 6. Representations and Warranties . Each Guarantor hereby makes each representation and warr...
+[SECTION] Section 7. Covenants . Each Guarantor covenants and agrees that, until the Termination Date has occu...
+[SECTION] Section 8. Amendments, Guaranty Supplements, Etc . (a) No amendment or waiver of any provision of th...
+  [SUBSECTION] (b) Pursuant to Section 6.11 of the Credit Agreement, certain Subsidiaries of Parent may be required...
+[SECTION] Section 9. Notices, Etc . All notices and other communications provided for hereunder shall be in wr...
+[SECTION] Section 10. No Waiver; Remedies . No failure on the part of any Secured Party to exercise, and no de...
+[SECTION] Section 11. Right of Setoff . Upon the occurrence and during the continuance of any Event of Default...
+[SECTION] Section 12. Indemnification . (a) Without limitation on any other Obligations of any Guarantor or re...
+  [SUBSECTION] (b) Each Guarantor hereby also agrees that none of the Indemnitees shall have any liability (whether...
+  [SUBSECTION] (c) Without prejudice to the survival of any of the other agreements of any Guarantor under this Agr...
+[SECTION] Section 13. Subordination . Each Guarantor hereby subordinates any and all debts, liabilities and ot...
+  [SUBSECTION] (a) Prohibited Payments, Etc . Except during the continuance of an Event of Default (including, with...
+  [SUBSECTION] (b) Prior Payment of Guaranteed Obligations . In any proceeding under any Bankruptcy Law relating to...
+    [PARAGRAPH] 1 Note for Robinson: Loan Parties are already covered by the Credit Agreement in Section 10.05
+    [PARAGRAPH] 1 Note for Robinson: Loan Parties are already covered by the Credit Agreement in Section 10.05
+  [SUBSECTION] (c) Turn-Over . After the occurrence and during the continuance of any Event of Default (including, ...
+  [SUBSECTION] (d) Administrative Agent Authorization . After the occurrence and during the continuance of any Even...
+[SECTION] Section 14. Continuing Guaranty; Assignments under the Credit Agreement . This Agreement is a contin...
+[SECTION] Section 15. Execution in Counterparts . This Agreement or any Guaranty Supplement and each amendment...
+[SECTION] Section 16. Governing Law; Jurisdiction; Waiver of Jury Trial, Etc . (a) This Agreement shall be gov...
+  [SUBSECTION] (b) ANY LEGAL ACTION OR PROCEEDING ARISING UNDER THIS AGREEMENT OR IN ANY WAY CONNECTED WITH OR RELA...
+  [SUBSECTION] (c) WAIVER OF RIGHT TO TRIAL BY JURY. EACH PARTY TO THIS AGREEMENT HEREBY EXPRESSLY WAIVES ANY RIGHT...
+    [SIGNATURE] [ Signature pages follow. ]
+    [SIGNATURE] In Witness Whereof , each Guarantor has caused this Agreement to be duly executed and delivered by i...
+    [TABLE] Nxt-ID, Inc . , as a Guarantor
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [TABLE] Fit Pay, Inc., as a Guarantor
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [TABLE] 3D-ID, LLC, as a Guarantor
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [SIGNATURE] signature page guaranty agreement
+    [TABLE] Acknowledged     and accepted:
+    [TABLE] Sagard     Holdings Manager LP , as Administrative Agent
+    [TABLE] By:
+    [TABLE] Its     general partner, Sagard Holdings Manager GP Inc.
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [TABLE] Signed     at Toronto, Canada
+    [SIGNATURE] signature page guaranty agreement
+    [SIGNATURE] [ Signature pages follow. ]
+    [SIGNATURE] In Witness Whereof , each Guarantor has caused this Agreement to be duly executed and delivered by i...
+    [TABLE] Nxt-ID, Inc . , as a Guarantor
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [TABLE] Fit Pay, Inc., as a Guarantor
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [TABLE] 3D-ID, LLC, as a Guarantor
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [SIGNATURE] signature page guaranty agreement
+    [TABLE] Acknowledged     and accepted:
+    [TABLE] Sagard     Holdings Manager LP , as Administrative Agent
+    [TABLE] By:
+    [TABLE] Its     general partner, Sagard Holdings Manager GP Inc.
+    [TABLE] By:
+    [TABLE] Name:
+    [TABLE] Title:
+    [TABLE] Signed     at Toronto, Canada
+    [SIGNATURE] signature page guaranty agreement
+[SECTION] Exhibit A
+  [PARAGRAPH] To The
+  [PARAGRAPH] Supplement No . _____ (this “Supplement” ) dated as of __________, 20___, to the Guaranty Agreement ...
+  [PARAGRAPH] A. Reference is made to that certain Senior Secured Credit Agreement dated as of May 24, 2018 (as am...
+  [PARAGRAPH] B. The Guarantors have entered into the Guaranty in order to induce the Lenders to make the Term Loa...
+  [PARAGRAPH] Accordingly, the Administrative Agent and the undersigned agree as follows:
+[TITLE] Guaranty Agreement
+[SECTION] Section 1. Guaranty; Limitation of Liability . (a) The undersigned hereby absolutely, unconditionall...
+  [SUBSECTION] (b) The undersigned, and by its acceptance of this Guaranty Supplement, the Administrative Agent and...
+  [SUBSECTION] (c) The undersigned hereby unconditionally and irrevocably agrees that in the event any payment shal...
+  [PARAGRAPH] A- 1
+  [TABLE] A- 1
+[SECTION] Section 2. Obligations Under the Guaranty . The undersigned hereby agrees, as of the date first abov...
+[SECTION] Section 3. Representations and Warranties . The undersigned hereby makes each representation and war...
+[SECTION] Section 4. Delivery by Facsimile; Electronic Transmission . Delivery of an executed counterpart of a...
+  [PARAGRAPH] A- 2
+  [TABLE] A- 2
+[SECTION] Section 5. Governing Law; Jurisdiction; Waiver of Jury Trial, Etc . (a) This Guaranty Supplement sha...
+  [SUBSECTION] (b) ANY LEGAL ACTION OR PROCEEDING ARISING UNDER THIS GUARANTY SUPPLEMENT OR IN ANY WAY CONNECTED WI...
+  [SUBSECTION] (c) WAIVER OF RIGHT TO TRIAL BY JURY. EACH PARTY TO THIS GUARANTY SUPPLEMENT HEREBY EXPRESSLY WAIVES...
+    [SIGNATURE] [ Signature pages follow. ]
+    [PARAGRAPH] A- 3
+    [TABLE] A- 3
+    [SIGNATURE] Very truly yours,
+    [TABLE] [ Name of Additional Guarantor ]
+    [SIGNATURE] By:
+    [SIGNATURE] Name:
+    [SIGNATURE] Title:
+    [SIGNATURE] signature page supplement no. [  ] to guaranty agreement
+    [TABLE] Acknowledged and accepted:
+    [TABLE] Sagard Holdings Manager LP , as Administrative Agent
+    [SIGNATURE] By:
+    [SIGNATURE] Name:
+    [SIGNATURE] Title:
+    [SIGNATURE] signature page supplement no. [  ] to guaranty agreement
+    [SIGNATURE] [ Signature pages follow. ]
+    [PARAGRAPH] A- 3
+    [TABLE] A- 3
+    [SIGNATURE] Very truly yours,
+    [TABLE] [ Name of Additional Guarantor ]
+    [SIGNATURE] By:
+    [SIGNATURE] Name:
+    [SIGNATURE] Title:
+    [SIGNATURE] signature page supplement no. [  ] to guaranty agreement
+    [TABLE] Acknowledged and accepted:
+    [TABLE] Sagard Holdings Manager LP , as Administrative Agent
+    [SIGNATURE] By:
+    [SIGNATURE] Name:
+    [SIGNATURE] Title:
+    [SIGNATURE] signature page supplement no. [  ] to guaranty agreement

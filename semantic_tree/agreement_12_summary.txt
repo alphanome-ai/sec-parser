@@ -1,0 +1,327 @@
+SEMANTIC TREE: agreement_12.html
+================================================================================
+Quality Score: 0.91
+Format: html
+Total Elements: 300
+Title: ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES
+
+Element Distribution:
+  metadata: 42
+  paragraph: 111
+  party: 2
+  section: 40
+  signature: 9
+  subsection: 24
+  table: 71
+  title: 1
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] EXHIBIT 10.3
+[METADATA] EXHIBIT 10.3
+[PARAGRAPH] Freddie Mac Loan Number: 503996270
+[PARAGRAPH] Property Name: Oak Crossing Apartments
+[TITLE] ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES
+[PARAGRAPH] (Revised 7-12-2016)
+[PARAGRAPH] THIS ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES (“ Assignment ”) is mad...
+[PARAGRAPH] RECITALS:
+[TABLE] Borrower has requested that Lender make a loan to Borrower (“ Loan ”). The Loan will be evidenced by...
+[PARAGRAPH] Borrower has requested that Lender make a loan to Borrower (“ Loan ”). The Loan will be evidenced by...
+[PARTY] Pursuant to a Management Agreement between Borrower and Property Manager (“ Management Agreement ”) ...
+[PARTY] Pursuant to a Management Agreement between Borrower and Property Manager (“ Management Agreement ”) ...
+[TABLE] Lender requires as a condition to the making of the Loan that Borrower assign the Management Agreeme...
+[PARAGRAPH] Lender requires as a condition to the making of the Loan that Borrower assign the Management Agreeme...
+[PARAGRAPH] For good and valuable consideration the parties agree as follows:
+[TABLE] Assignment of Management Agreement . As additional collateral security for the Loan, Borrower condit...
+[PARAGRAPH] Assignment of Management Agreement . As additional collateral security for the Loan, Borrower condit...
+[PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees
+[PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees
+[PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees
+[TABLE] Assignment of Management Agreement and
+[PARAGRAPH] Assignment of Management Agreement and
+[TABLE] Subordination of Management Fees
+[PARAGRAPH] Subordination of Management Fees
+[TABLE] Subordination of Management Fees. The Management Fees and all rights and privileges of Property Mana...
+[PARAGRAPH] Subordination of Management Fees. The Management Fees and all rights and privileges of Property Mana...
+[TABLE] Estoppel. Property Manager and Borrower represent and warrant that all of the following are true as ...
+[PARAGRAPH] Estoppel. Property Manager and Borrower represent and warrant that all of the following are true as ...
+[SUBSECTION] (a)
+[SUBSECTION] (a)
+[TABLE] The Management Agreement is in full force and effect and has not been modified, amended or assigned ...
+[PARAGRAPH] The Management Agreement is in full force and effect and has not been modified, amended or assigned ...
+[SUBSECTION] (b)
+[SUBSECTION] (b)
+[TABLE] Neither Property Manager nor Borrower is in default under any of the terms, covenants or provisions ...
+[PARAGRAPH] Neither Property Manager nor Borrower is in default under any of the terms, covenants or provisions ...
+[SUBSECTION] (c)
+[SUBSECTION] (c)
+[TABLE] Neither Property Manager nor Borrower has commenced any action or given or received any notice for t...
+[PARAGRAPH] Neither Property Manager nor Borrower has commenced any action or given or received any notice for t...
+[SUBSECTION] (d)
+[SUBSECTION] (d)
+[TABLE] The Management Fees and all other sums due and payable to the Property Manager under the Management ...
+[PARAGRAPH] The Management Fees and all other sums due and payable to the Property Manager under the Management ...
+[TABLE] Agreement by Borrower and Property Manager. Borrower and Property Manager agree that if there is an ...
+[PARAGRAPH] Agreement by Borrower and Property Manager. Borrower and Property Manager agree that if there is an ...
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 2
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 2
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 2
+[TABLE] Assignment of Management Agreement and
+[PARAGRAPH] Assignment of Management Agreement and
+[TABLE] Subordination of Management Fees
+[PARAGRAPH] Subordination of Management Fees
+[METADATA] Page 2
+[METADATA] Page 2
+[TABLE] Lender’s Right to Replace Property Manager. If Lender, in Lender’s reasonable discretion, at any tim...
+[PARAGRAPH] Lender’s Right to Replace Property Manager. If Lender, in Lender’s reasonable discretion, at any tim...
+[TABLE] Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any...
+[PARAGRAPH] Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any...
+[TABLE] Consent and Agreement by Property Manager . Property Manager acknowledges and consents to this Assig...
+[PARAGRAPH] Consent and Agreement by Property Manager . Property Manager acknowledges and consents to this Assig...
+[SUBSECTION] (a)
+[SUBSECTION] (a)
+[TABLE] It will not contest or impede the exercise by Lender of any right Lender has under or in connection ...
+[PARAGRAPH] It will not contest or impede the exercise by Lender of any right Lender has under or in connection ...
+[SUBSECTION] (b)
+[SUBSECTION] (b)
+[TABLE] It will give at least 30 days prior written notice to Lender of its intention to terminate the Manag...
+[PARAGRAPH] It will give at least 30 days prior written notice to Lender of its intention to terminate the Manag...
+[SUBSECTION] (c)
+[SUBSECTION] (c)
+[TABLE] It will not amend any of the provisions or terms of the Management Agreement without the prior conse...
+[PARAGRAPH] It will not amend any of the provisions or terms of the Management Agreement without the prior conse...
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 3
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 3
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 3
+[TABLE] Assignment of Management Agreement and
+[PARAGRAPH] Assignment of Management Agreement and
+[TABLE] Subordination of Management Fees
+[PARAGRAPH] Subordination of Management Fees
+[METADATA] Page 3
+[METADATA] Page 3
+[TABLE] Termination. When the Loan is paid in full and the Security Instrument is released or assigned of re...
+[PARAGRAPH] Termination. When the Loan is paid in full and the Security Instrument is released or assigned of re...
+[TABLE] Notices.
+[PARAGRAPH] Notices.
+[SUBSECTION] (a)
+[SUBSECTION] (a)
+[TABLE] All notices under or concerning this Assignment ( “Notice” ) will be in writing. Each Notice will be...
+[PARAGRAPH] All notices under or concerning this Assignment ( “Notice” ) will be in writing. Each Notice will be...
+[PARAGRAPH] If to Lender: PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, Californi...
+[PARAGRAPH] If to Lender: PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, Californi...
+[TABLE] If to Lender:
+[PARAGRAPH] If to Lender:
+[TABLE] PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, California 91301 Attent...
+[PARAGRAPH] PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, California 91301 Attent...
+[TABLE] If to Borrower:
+[PARAGRAPH] If to Borrower:
+[TABLE] STAR Delano, LLC c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612...
+[PARAGRAPH] STAR Delano, LLC c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612...
+[TABLE] If to Property Manager:
+[PARAGRAPH] If to Property
+[PARAGRAPH] Manager:
+[TABLE] Steadfast Management Company, Inc. c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine...
+[PARAGRAPH] Steadfast Management Company, Inc. c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine...
+[SUBSECTION] (b)
+[SUBSECTION] (b)
+[TABLE] Any party to this Assignment may change the address to which Notices intended for it are to be direc...
+[PARAGRAPH] Any party to this Assignment may change the address to which Notices intended for it are to be direc...
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 4
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 4
+[METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 4
+[TABLE] Assignment of Management Agreement and
+[PARAGRAPH] Assignment of Management Agreement and
+[TABLE] Subordination of Management Fees
+[PARAGRAPH] Subordination of Management Fees
+[METADATA] Page 4
+[METADATA] Page 4
+[SECTION] 10.
+[SECTION] 10.
+  [SUBSECTION] (a)
+  [SUBSECTION] (a)
+    [TABLE] This Assignment will be construed in accordance with and governed by the laws of the Property Jurisd...
+    [PARAGRAPH] This Assignment will be construed in accordance with and governed by the laws of the Property Jurisd...
+    [TABLE] This Assignment will be construed in accordance with and governed by the laws of the Property Jurisd...
+    [PARAGRAPH] This Assignment will be construed in accordance with and governed by the laws of the Property Jurisd...
+  [SUBSECTION] (b)
+  [SUBSECTION] (b)
+    [TABLE] Borrower and Property Manager agree that any controversy arising under or in relation to this Assign...
+    [PARAGRAPH] Borrower and Property Manager agree that any controversy arising under or in relation to this Assign...
+    [TABLE] Borrower and Property Manager agree that any controversy arising under or in relation to this Assign...
+    [PARAGRAPH] Borrower and Property Manager agree that any controversy arising under or in relation to this Assign...
+  [TABLE] Governing Law; Consent to Jurisdiction and Venue.
+  [PARAGRAPH] Governing Law; Consent to Jurisdiction and Venue.
+[SECTION] 11.
+[SECTION] 11.
+  [TABLE] Captions, Cross References and Exhibits . The captions assigned to provisions of this Assignment are...
+  [PARAGRAPH] Captions, Cross References and Exhibits . The captions assigned to provisions of this Assignment are...
+[SECTION] 12.
+[SECTION] 12.
+  [TABLE] Number and Gender. Use of the singular in this Assignment includes the plural, use of the plural inc...
+  [PARAGRAPH] Number and Gender. Use of the singular in this Assignment includes the plural, use of the plural inc...
+[SECTION] 13.
+[SECTION] 13.
+  [TABLE] No Partnership. This Assignment is not intended to, and will not, create a partnership or joint vent...
+  [PARAGRAPH] No Partnership. This Assignment is not intended to, and will not, create a partnership or joint vent...
+[SECTION] 14.
+[SECTION] 14.
+  [TABLE] Severability. The invalidity or unenforceability of any provision of this Assignment will not affect...
+  [PARAGRAPH] Severability. The invalidity or unenforceability of any provision of this Assignment will not affect...
+[SECTION] 15.
+[SECTION] 15.
+  [TABLE] Entire Assignment. This Assignment contains the entire agreement among the parties as to the rights ...
+  [PARAGRAPH] Entire Assignment. This Assignment contains the entire agreement among the parties as to the rights ...
+[SECTION] 16.
+[SECTION] 16.
+  [TABLE] No Waiver; No Remedy Exclusive. Any forbearance by a party to this Assignment in exercising any righ...
+  [PARAGRAPH] No Waiver; No Remedy Exclusive. Any forbearance by a party to this Assignment in exercising any righ...
+[SECTION] 17.
+[SECTION] 17.
+  [TABLE] Third Party Beneficiaries. Neither any creditor of any party to this Assignment, nor any other perso...
+  [PARAGRAPH] Third Party Beneficiaries. Neither any creditor of any party to this Assignment, nor any other perso...
+[SECTION] 18.
+[SECTION] 18.
+  [SIGNATURE] Further Assurances and Corrective Instruments. To the extent permitted by law, the parties will, fro...
+  [SIGNATURE] Further Assurances and Corrective Instruments. To the extent permitted by law, the parties will, fro...
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 5
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 5
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 5
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [METADATA] Page 5
+  [METADATA] Page 5
+[SECTION] 19.
+[SECTION] 19.
+  [SIGNATURE] Counterparts. This Assignment may be executed in multiple counterparts, each of which will constitut...
+  [SIGNATURE] Counterparts. This Assignment may be executed in multiple counterparts, each of which will constitut...
+[SECTION] 20.
+[SECTION] 20.
+  [TABLE] Indemnity. By executing this Assignment Borrower agrees to indemnify and hold harmless Lender and it...
+  [PARAGRAPH] Indemnity. By executing this Assignment Borrower agrees to indemnify and hold harmless Lender and it...
+[SECTION] 21.
+[SECTION] 21.
+  [TABLE] Costs and Expenses. Wherever pursuant to this Assignment it is provided that Borrower will pay any c...
+  [PARAGRAPH] Costs and Expenses. Wherever pursuant to this Assignment it is provided that Borrower will pay any c...
+[SECTION] 22.
+[SECTION] 22.
+  [TABLE] Determinations by Lender. In any instance where the consent or approval of Lender may be given or is...
+  [PARAGRAPH] Determinations by Lender. In any instance where the consent or approval of Lender may be given or is...
+[SECTION] 23.
+[SECTION] 23.
+  [TABLE] Successors and Assigns. This Assignment will be binding upon and inure to the benefit of Borrower, L...
+  [PARAGRAPH] Successors and Assigns. This Assignment will be binding upon and inure to the benefit of Borrower, L...
+[SECTION] 24.
+[SECTION] 24.
+  [TABLE] Secondary Market. Lender may sell, transfer and deliver the Note and assign the Loan Agreement, the ...
+  [PARAGRAPH] Secondary Market. Lender may sell, transfer and deliver the Note and assign the Loan Agreement, the ...
+[SECTION] 25.
+[SECTION] 25.
+  [TABLE] Attached Exhibits. The following Exhibits, if marked with an “X” in the space provided, are attached...
+  [PARAGRAPH] Attached Exhibits. The following Exhibits, if marked with an “X” in the space provided, are attached...
+  [PARAGRAPH] X Exhibit A Modifications to Assignment X Exhibit B Copy of Management Agreement
+  [PARAGRAPH] X Exhibit A Modifications to Assignment X Exhibit B Copy of Management Agreement
+[SECTION] Exhibit A
+[SECTION] Exhibit A
+  [TABLE] Modifications to Assignment
+  [PARAGRAPH] Modifications to Assignment
+[SECTION] Exhibit B
+[SECTION] Exhibit B
+  [TABLE] Copy of Management Agreement
+  [PARAGRAPH] Copy of Management Agreement
+  [SIGNATURE] IN WITNESS WHEREOF the undersigned have executed this Assignment as of the date and year first writt...
+  [SIGNATURE] [END OF PAGE – SIGNATURES TO FOLLOW]
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 6
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 6
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 6
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [METADATA] Page 6
+  [METADATA] Page 6
+  [PARAGRAPH] BORROWER:
+  [PARAGRAPH] SIR OAK CROSSING, LLC , a Delaware limited
+  [PARAGRAPH] liability company
+  [SIGNATURE] By:
+  [SIGNATURE] By:
+  [TABLE] Steadfast Income Advisor, LLC, a Delaware
+  [PARAGRAPH] Steadfast Income Advisor, LLC, a Delaware
+  [PARAGRAPH] limited liability company, its manager
+  [SIGNATURE] By:    _ /s/ Kevin J. Keating ______________
+  [PARAGRAPH] Kevin J. Keating
+  [PARAGRAPH] Chief Accounting Officer
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 7
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 7
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 7
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [METADATA] Page 7
+  [METADATA] Page 7
+  [PARAGRAPH] LENDER:
+  [PARAGRAPH] PNC BANK, NATIONAL ASSOCIATION , a
+  [PARAGRAPH] national banking association
+  [PARAGRAPH] By: _ /s/ Kelli A. Tyler ______________
+  [PARAGRAPH] Kell A. Tyler Vice President
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 8
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 8
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 8
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [METADATA] Page 8
+  [METADATA] Page 8
+  [PARAGRAPH] PROPERTY MANAGER:
+  [PARAGRAPH] STEADFAST MANAGEMENT COMPANY, INC., a California corporation
+  [PARAGRAPH] By: _ /s/ Ana Marie del Rio ______________
+  [PARAGRAPH] Name: Ana Marie del Rio
+  [PARAGRAPH] Title: Secretary
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 9
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 9
+  [METADATA] Assignment of Management Agreement and Subordination of Management Fees Page 9
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [METADATA] Page 9
+  [METADATA] Page 9
+[SECTION] EXHIBIT A
+  [PARAGRAPH] MODIFICATIONS TO ASSIGNMENT
+  [PARAGRAPH] The following modifications are made to the text of the Assignment that precedes this Exhibit.
+[SECTION] 1.    Section 3(a) is deleted in its entirety and replaced with the following:
+  [SUBSECTION] (a)
+  [SUBSECTION] (a)
+    [TABLE] The Management Agreement is in full force and effect and has not been modified , or amended or assig...
+    [PARAGRAPH] The Management Agreement is in full force and effect and has not been modified , or amended or assig...
+    [TABLE] The Management Agreement is in full force and effect and has not been modified , or amended or assig...
+    [PARAGRAPH] The Management Agreement is in full force and effect and has not been modified , or amended or assig...
+[SECTION] 2.    Section 6 is deleted in its entirety and replaced with the following:
+  [TABLE] Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any...
+  [PARAGRAPH] Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any...
+  [PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees Page A- 1
+  [PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees Page A- 1
+  [PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees Page A- 1
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [TABLE] Page A- 1
+  [PARAGRAPH] Page A- 1
+[SECTION] EXHIBIT B MANAGEMENT AGREEMENT
+  [PARAGRAPH] See Attached
+  [PARAGRAPH] [INTENTIONALLY OMITTED]
+  [PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees Page B- 1
+  [PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees Page B- 1
+  [PARAGRAPH] Assignment of Management Agreement and Subordination of Management Fees Page B- 1
+  [TABLE] Assignment of Management Agreement and
+  [PARAGRAPH] Assignment of Management Agreement and
+  [TABLE] Subordination of Management Fees
+  [PARAGRAPH] Subordination of Management Fees
+  [TABLE] Page B- 1
+  [PARAGRAPH] Page B- 1

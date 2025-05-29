@@ -3,8 +3,7 @@ from bs4 import NavigableString
 
 
 def has_text_outside_tags(node: bs4.PageElement, tag_names: tuple[str, ...]) -> bool:
-    """
-    `has_text_outside_tag` function checks if the given
+    """`has_text_outside_tag` function checks if the given
     node has any text outside the specified tag.
     For example, calling has_text_outside_tag(node, "b")
     on a node representing "<div><p><b>text</b>extra text</p></div>"

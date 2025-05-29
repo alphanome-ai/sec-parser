@@ -21,7 +21,7 @@ test_data = [
 
 
 @pytest.mark.parametrize("test_case", test_data)
-def test_get_source_code(test_case):
+def test_get_source_code(test_case) -> None:
     # Arrange
     pretty = test_case["pretty"]
     enable_compatibility = pretty
@@ -44,7 +44,7 @@ def test_get_source_code(test_case):
     )
 
 
-def test_repr():
+def test_repr() -> None:
     # Arrange
     tag = bs4.Tag(name="div")
     element = DummyElement(HtmlTag(tag))

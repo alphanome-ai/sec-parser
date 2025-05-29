@@ -75,7 +75,7 @@ def html_tag(tag_name: str, text: str = "Hello World") -> HtmlTag:
     ],
     ids=[v[0] for v in values],
 )
-def test_merge_text_elements(name, elements, expected_elements):
+def test_merge_text_elements(name, elements, expected_elements) -> None:
     # Arrange
     step = TextElementMerger()
 

@@ -27,7 +27,7 @@ expected_to_pass_accession_numbers = load_yaml_filter(
 def test_tables(
     report: Report,
     parse: Callable[[Report], ParsedDocumentComponents],
-):
+) -> None:
     # Arrange
     if report.accession_number not in expected_to_pass_accession_numbers:
         pytest.skip(f"Skipping {report.identifier}")

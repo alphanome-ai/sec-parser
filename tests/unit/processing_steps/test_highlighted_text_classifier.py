@@ -61,9 +61,8 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
     ],
     ids=[v[0] for v in values],
 )
-def test_title_step(name, html_str, expected_elements):
-    """
-    test_title_step test checks that the HighlightedTextClassifier and TitleClassifier
+def test_title_step(name, html_str, expected_elements) -> None:
+    """test_title_step test checks that the HighlightedTextClassifier and TitleClassifier
     can successfully transform a list of semantic elements returned by
     `parse_initial_semantic_elements`.
     """

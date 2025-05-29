@@ -1,0 +1,107 @@
+SEMANTIC TREE: agreement_14.html
+================================================================================
+Quality Score: 0.89
+Format: html
+Total Elements: 88
+Title: AMENDMENT NO. 2 TO CREDIT AGREEMENT
+
+Element Distribution:
+  metadata: 2
+  paragraph: 65
+  party: 1
+  section: 7
+  signature: 12
+  title: 1
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] EXHIBIT 10.10
+[TITLE] AMENDMENT NO. 2 TO CREDIT AGREEMENT
+[PARAGRAPH] This Amendment No. 2 to Credit Agreement, dated as of October 3, 2016 (this “ Amendment ”) is entere...
+[PARAGRAPH] WHEREAS, the Company, the Lenders party hereto and the Administrative Agent have agreed to amend the...
+[PARAGRAPH] NOW, THEREFORE, in consideration of the premises and for other good and valuable consideration, the ...
+[SECTION] 1. Amendments .  Effective as of the date hereof and subject to the satisfaction of the conditions p...
+  [PARAGRAPH] a. Section 1.01 of the Credit Agreement is hereby amended by adding the following definition in the ...
+  [PARAGRAPH] ““ Deckers Guangzhou ” means Deckers Outdoor (Guangzhou) Consulting Co. Ltd., a wholly-owned Subsidi...
+  [PARAGRAPH] b. Section 5.01(c) of the Credit Agreement is hereby amended and restated in its entirety as follows...
+  [PARAGRAPH] “(c)     within 90 days after the end of each fiscal year of the Company, and within 45 days after t...
+  [PARTY] c. The second sentence of the last paragraph of Section 5.01 of the Credit Agreement is hereby amend...
+  [PARAGRAPH] d. Section 6.01(n) of the Credit Agreement is hereby amended and restated in its entirety as follows...
+  [PARAGRAPH] “(n)     unsecured Indebtedness of DBT, Deckers Shanghai, and/or Deckers Guangzhou in an aggregate o...
+  [PARAGRAPH] e. Section 6.04(e) of the Credit Agreement is hereby amended and restated in its entirety as follows...
+  [PARAGRAPH] “(n)     Guarantees constituting Indebtedness permitted by clauses (l), (n), (o) or (p) of Section 6...
+[SECTION] 2. Conditions Precedent .  This Amendment shall become effective on the date (the “ Amendment Effect...
+  [SIGNATURE] a. counterparts of this Amendment duly executed by each Borrower, the Required Lenders and the Admin...
+  [PARAGRAPH] b. all fees required to be paid to the Administrative Agent or any Lender and all expenses for which...
+[SECTION] 3. Representations and Warranties .  Each Borrower represents and warrants to the Administrative Age...
+[SECTION] 4. Confirmation . On and after the Amendment Effective Date, each reference in the Credit Agreement ...
+[SECTION] 5. Counterparts .  This Amendment may be executed in any number of counterparts, and all of such cou...
+[SECTION] 6. Governing Law .  THIS AMENDMENT SHALL BE GOVERNED BY, AND CONSTRUED IN ACCORDANCE WITH, THE LAW O...
+  [METADATA] [Remainder of page intentionally left blank.]
+  [SIGNATURE] IN WITNESS WHEREOF, the parties hereto have executed this Amendment as of the date first written abo...
+  [PARAGRAPH] DECKERS OUTDOOR CORPORATION
+  [SIGNATURE] By: /s/ Thomas A. George Name: Thomas A. George Title: Chief Financial Officer
+  [PARAGRAPH] DECKERS UK LIMITED
+  [SIGNATURE] By: /s/ Alex Henderson Name: Alex Henderson Title: Director
+  [PARAGRAPH] DECKERS BENELUX B.V.
+  [SIGNATURE] By: /s/ Alex Henderson Name: Alex Henderson Title: Director
+  [PARAGRAPH] DECKERS EUROPE LIMITED
+  [SIGNATURE] By: /s/ Alex Henderson Name: Alex Henderson Title: Director
+  [SIGNATURE] ACKNOWLEDGED BY:
+  [PARAGRAPH] JPMORGAN CHASE BANK, N.A.,
+  [PARAGRAPH] as Administrative Agent
+  [SIGNATURE] By: /s/ Anna C. Araya Name:  Anna C. Araya Title: Director
+  [PARAGRAPH] COMERICA BANK, as a Lender
+  [SIGNATURE] By: /s/ Anita Chan
+  [SIGNATURE] Name: Anita Chan
+  [SIGNATURE] Title: Relationship Manager
+  [PARAGRAPH] HSBC BANK USA, NATIONAL ASSOCIATION, as a Lender
+  [SIGNATURE] By: /s/ Kathryn E. Benjamin
+  [PARAGRAPH] Name: Kathryn E. Benjamin
+  [PARAGRAPH] Title: Vice President
+  [PARAGRAPH] BANK OF AMERICA, N.A., as a Lender
+  [PARAGRAPH] By: /s/ Janet Palantone
+  [PARAGRAPH] Name: Janet Palantone
+  [PARAGRAPH] Title: Senior Vice-President
+  [PARAGRAPH] COMPASS BANK, as a Lender
+  [PARAGRAPH] By: /s/ James Cigman
+  [PARAGRAPH] Name: James Cigman
+  [PARAGRAPH] Title: Senior Vice President
+  [PARAGRAPH] FIFTH THIRD BANK, as a Lender
+  [PARAGRAPH] By: /s/ Brian Anderson
+  [PARAGRAPH] Name: Brian Anderson
+  [PARAGRAPH] Title: Vice President
+[SECTION] U.S. NATIONAL ASSOCIATION, as a Lender
+  [PARAGRAPH] By: /s/ Conan Schleicher
+  [PARAGRAPH] Name: Conan Schleicher
+  [PARAGRAPH] Title: Senior Vice President
+  [PARAGRAPH] BANK OF THE WEST, as a Lender
+  [PARAGRAPH] By: /s/ David G. Kronen
+  [PARAGRAPH] Name: David G. Kronen
+  [PARAGRAPH] Title: Director
+  [PARAGRAPH] BRANCH BANKING AND TRUST COMPANY, as a Lender
+  [PARAGRAPH] By: /s/ Sarah Bryson
+  [PARAGRAPH] Name: Sarah Bryson
+  [PARAGRAPH] Title: Senior Vice President
+  [PARAGRAPH] RABOBANK, NATIONAL ASSOCIATION, as a Lender
+  [PARAGRAPH] By: /s/ Paul Visueta
+  [PARAGRAPH] Name: Paul Visueta
+  [PARAGRAPH] Title: Senior Vice President
+  [PARAGRAPH] SUMITOMO MITSUI BANKING CORPORATION, as a Lender
+  [PARAGRAPH] By: /s/ James D. Weinstein
+  [PARAGRAPH] Name: James D. Weinstein
+  [PARAGRAPH] Title: Managing Director
+  [PARAGRAPH] MUFG UNION BANK, N.A., as a Lender
+  [PARAGRAPH] By: /s/ Elizabeth Willis
+  [PARAGRAPH] Name: Elizabeth Willis
+  [PARAGRAPH] Title: Vice President
+  [PARAGRAPH] ZB, N.A. dba CALIFORNIA BANK & TRUST, as a Lender
+  [PARAGRAPH] By: /s/ Brian Knapp
+  [PARAGRAPH] Name: Brian Knapp
+  [PARAGRAPH] Title: Senior Vice President
+  [PARAGRAPH] WELLS FARGO BANK, N.A., as a Lender
+  [PARAGRAPH] By: /s/ Carl Martin Noren
+  [PARAGRAPH] Name: Carl Martin Noren
+  [PARAGRAPH] Title: Vice President & Relationship Manager

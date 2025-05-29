@@ -1,11 +1,11 @@
 import pytest
 
-from sec_parser.utils.py_utils import clean_whitespace, normalize_string
+from sec_parser.utils.py_utils import normalize_string
 
 
 # Test for normal cases
 @pytest.mark.parametrize(
-    "input_str,expected",
+    ("input_str", "expected"),
     [
         ("Hello World", "hello world"),  # Simple case
         ("HELLO WORLD", "hello world"),  # All uppercase
@@ -14,9 +14,8 @@ from sec_parser.utils.py_utils import clean_whitespace, normalize_string
         ("", ""),  # Empty string
     ],
 )
-def test_normalize_string_normal_cases(input_str, expected):
+def test_normalize_string_normal_cases(input_str, expected) -> None:
     # Arrange
-    pass
 
     # Act
     result = normalize_string(input_str)
@@ -27,16 +26,15 @@ def test_normalize_string_normal_cases(input_str, expected):
 
 # Test for edge cases
 @pytest.mark.parametrize(
-    "input_str,expected",
+    ("input_str", "expected"),
     [
         ("123", "123"),  # Only numbers
         ("!@#$%", ""),  # Only special characters
         (" \t \n ", ""),  # Only whitespace, tabs, and newlines
     ],
 )
-def test_normalize_string_edge_cases(input_str, expected):
+def test_normalize_string_edge_cases(input_str, expected) -> None:
     # Arrange
-    pass
 
     # Act
     result = normalize_string(input_str)

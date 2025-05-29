@@ -22,8 +22,7 @@ if TYPE_CHECKING:  # pragma: no cover
 class SupplementaryTextClassifier(
     AbstractElementwiseProcessingStep,
 ):
-    """
-    SupplementaryTextClassifier class for converting elements into
+    """SupplementaryTextClassifier class for converting elements into
     SupplementaryText instances.
 
     This step scans through a list of semantic elements and changes it,
@@ -46,8 +45,7 @@ class SupplementaryTextClassifier(
         element: AbstractSemanticElement,
         _: ElementProcessingContext,
     ) -> AbstractSemanticElement:
-        """
-        Transform a single semantic element
+        """Transform a single semantic element
         into a TextElement if applicable.
         """
         is_text = isinstance(element, TextElement)

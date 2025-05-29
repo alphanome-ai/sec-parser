@@ -1,0 +1,68 @@
+SEMANTIC TREE: agreement_01.html
+================================================================================
+Quality Score: 0.80
+Format: html
+Total Elements: 48
+Title: Consulting Agreement
+
+Element Distribution:
+  metadata: 8
+  paragraph: 19
+  party: 1
+  section: 1
+  signature: 6
+  table: 12
+  title: 1
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] Exhibit 10.1
+[TITLE] Consulting Agreement
+[PARAGRAPH] This Consulting Agreement (this “Agreement”) is entered into as of June 19, 2017 by and among Aura S...
+[TABLE] Scope of Work; Independent Contractor.
+[PARAGRAPH] BetterSea will act as an independent contractor at all times in the performance of its duties under ...
+[PARAGRAPH] In connection with BetterSea’s services, Aura agrees to cooperate with BetterSea in connection with ...
+[TABLE] Acknowledgment of Existing Debt.
+[PARAGRAPH] Aura herby acknowledges and agrees that a past due principal balance of $331,492 is presently due an...
+[METADATA] BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 2 of 6
+[PARAGRAPH] In addition to the Past Due Balance (and any interest accrued thereon), Aura further acknowledges an...
+[TABLE] No Guarantee of Outcome.
+[PARAGRAPH] Aura acknowledges that many of the activities to be undertaken by BetterSea hereunder are complex in...
+[TABLE] Payment for Services.
+[PARAGRAPH] BetterSea’s fees for services are based primary on the actual time expended performing services mult...
+[PARAGRAPH] BetterSea will bill Aura monthly for its services and each invoice shall be paid by Aura within thir...
+[PARAGRAPH] The foregoing notwithstanding, with respect to each Sale (as defined below), BetterSea shall be enti...
+[METADATA] BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 3 of 6
+[PARAGRAPH] Commission payments to BetterSea shall be made within 10 business days of Aura’s receipt of payment ...
+[PARAGRAPH] Please note that that any fees quoted or otherwise agreed to by BetterSea do not include the cost of...
+[TABLE] Out-of-Pocket Expenses.
+[PARAGRAPH] Aura will be responsible for paying all out-of-pocket expenses incurred by BetterSea relating to Aur...
+[TABLE] Non-Exclusivity.
+[PARAGRAPH] The services provided to Aura by BetterSea are provided on a non-exclusive basis.
+[TABLE] Terminating the Representation.
+[PARAGRAPH] This Agreement may be terminated by either party for any reason at any time after February 28, 2019 ...
+[METADATA] BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 4 of 6
+[PARAGRAPH] Expiration or termination for any reason will not, however, relieve Aura of its obligation to pay fe...
+[TABLE] Indemnification.
+[PARAGRAPH] Aura shall indemnify and hold BetterSea (as well as BetterSea’s officers, employees, members, manage...
+[TABLE] Binding Arbitration of Disputes.
+[METADATA] Any dispute or controversy relating to this Agreement or any services or charges by BetterSea (inclu...
+[METADATA] BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 5 of 6
+[SECTION] 10.
+  [TABLE] Miscellaneous.
+  [PARTY] This Agreement is the entire agreement between Aura and BetterSea concerning BetterSea’s services to...
+  [SIGNATURE] Very truly yours,
+  [PARAGRAPH] BetterSea, LLC
+  [SIGNATURE] By:
+  [SIGNATURE] /s/ Zvi Kurtzman
+  [SIGNATURE] Authorized Agent
+  [METADATA] BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 6 of 6
+  [METADATA] [ intentionally blank ]
+  [SIGNATURE] APPROVED AND ACCEPTED:
+  [PARAGRAPH] AURA SYSTEMS INC.
+  [PARAGRAPH] A Delaware Corporation
+  [SIGNATURE] /s/ Melvin Gagerman
+  [TABLE] Melvin Gagerman
+  [TABLE] CEO

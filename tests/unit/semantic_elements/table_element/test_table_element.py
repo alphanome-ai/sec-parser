@@ -32,7 +32,7 @@ from sec_parser.utils.bs4_.approx_table_metrics import ApproxTableMetrics
         },
     ],
 )
-def test_table_element_get_summary(test_case):
+def test_table_element_get_summary(test_case) -> None:
     # Arrange
     rows = test_case["rows"]
     numbers = test_case["numbers"]
@@ -53,11 +53,11 @@ def test_table_element_get_summary(test_case):
     assert result == expected_summary
 
 
-def test_to_dict():
+def test_to_dict() -> None:
     # Arrange
     mock_html_tag = Mock(spec=HtmlTag)
     mock_html_tag.get_approx_table_metrics.return_value = ApproxTableMetrics(
-        5, 6
+        5, 6,
     )
     mock_html_tag.to_dict.return_value = (
         {}
@@ -72,7 +72,7 @@ def test_to_dict():
     assert actual["metrics"] == asdict(ApproxTableMetrics(5, 6))
 
 
-def test_table_to_markdown():
+def test_table_to_markdown() -> None:
     # Arrange
     from bs4 import BeautifulSoup
 

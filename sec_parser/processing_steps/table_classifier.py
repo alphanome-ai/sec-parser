@@ -15,8 +15,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class TableClassifier(AbstractElementwiseProcessingStep):
-    """
-    TableClassifier class for converting elements into TableElement instances.
+    """TableClassifier class for converting elements into TableElement instances.
 
     This step scans through a list of semantic elements and changes it,
     primarily by replacing suitable candidates with TableElement instances.

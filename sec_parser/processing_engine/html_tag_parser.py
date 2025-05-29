@@ -19,8 +19,7 @@ class AbstractHtmlTagParser(ABC):
 
 
 class HtmlTagParser(AbstractHtmlTagParser):
-    """
-    The HtmlTagParser parses an HTML document using BeautifulSoup4.
+    """The HtmlTagParser parses an HTML document using BeautifulSoup4.
     It then wraps the parsed bs4.Tag objects into HtmlTag objects.
     """
 

@@ -1,0 +1,919 @@
+{
+  "filename": "agreement_03.html",
+  "success": true,
+  "quality_score": 0.5071428571428571,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 68,
+    "has_title": true,
+    "detected_title": "ALLETE Executive Annual Incentive Plan",
+    "element_count_by_type": {
+      "metadata": 2,
+      "title": 1,
+      "paragraph": 40,
+      "table": 25
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "ALLETE Executive Annual Incentive Plan",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "Exhibit 10(a)1",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Exhibit 10(a)1",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-indent:576px;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "ALLETE Executive Annual Incentive Plan",
+        "level": 0,
+        "tag_name": "div",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Form of Award",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Effective 2018",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "[Eligible Executive Employees, except CEO and CFO]",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:174%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Target Award Opportunity",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 6,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Base Salary $ Times Award Opportunity (percent of base salary) % Equals Target Award $",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 7,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Base Salary $ Times Award Opportunity (percent of base salary) % Equals Target Award $",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 8,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Base Salary",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 9,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Base Salary",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 10,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Times",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 11,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Times",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 12,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Award Opportunity (percent of base salary)",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Award Opportunity (percent of base salary)",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 14,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Equals",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Equals",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 16,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Target Award",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 17,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Target Award",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 18,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Performance Levels and Award Amounts",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goal Performance Level Payout as Percent of Target Award Award Amount Superior 200% $ Target 100% $ Threshold 45% $ Below Threshold 0% $",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 20,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goal Performance Level Payout as Percent of Target Award Award Amount Superior 200% $ Target 100% $ Threshold 45% $ Below Threshold 0% $",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Goal Performance Level",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 22,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goal Performance Level",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 23,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Payout as Percent of Target Award",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 24,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Payout as Percent of",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 25,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Target Award",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 26,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Award Amount",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 27,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Award Amount",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 28,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Superior",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 29,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Superior",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 30,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "200%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 31,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "200%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 32,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Target",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 33,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Target",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 34,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "100%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 35,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "100%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 36,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Threshold",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 37,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Threshold",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 38,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "45%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 39,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "45%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 40,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Below Threshold",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 41,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;border-bottom:1px solid #000000;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #000000;border-right:1px solid #000000;border-top:1px solid #000000;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Below Threshold",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 42,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goals",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 43,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goal Weighting Financial Goals Net Income 50% Cash from Operating Activities 25% Strategic & Operational Positioning Goals 25% 100%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 44,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goal Weighting Financial Goals Net Income 50% Cash from Operating Activities 25% Strategic & Operational Positioning Goals 25% 100%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 45,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Goal",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 46,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Goal",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 47,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Weighting",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 48,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Weighting",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 49,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Financial Goals",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 50,
+        "confidence": 0.8,
+        "attributes": {
+          "colspan": "2",
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Financial Goals",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 51,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Net Income",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 52,
+        "confidence": 0.8,
+        "attributes": {
+          "colspan": "6",
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Net Income",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 53,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "50%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 54,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "50%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 55,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Cash from Operating Activities",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 56,
+        "confidence": 0.8,
+        "attributes": {
+          "colspan": "5",
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Cash from Operating Activities",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 57,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "25%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 58,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "25%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 59,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Strategic & Operational Positioning Goals",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 60,
+        "confidence": 0.8,
+        "attributes": {
+          "colspan": "4",
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Strategic & Operational Positioning Goals",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 61,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "25%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 62,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "25%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 63,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "100%",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 64,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "100%",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 65,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:center;font-size:11pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Compensation Subject to Compensation Recovery Policy",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 66,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Annual Incentive Plan Compensation is subject to recoupment as defined in the Compensation Recovery policy.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 67,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      }
+    ],
+    "statistics": {
+      "total_elements": 68,
+      "element_types": {
+        "metadata": 2,
+        "title": 1,
+        "paragraph": 40,
+        "table": 25
+      },
+      "structure_depth": 4
+    }
+  }
+}

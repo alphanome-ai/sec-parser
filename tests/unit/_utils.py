@@ -13,7 +13,7 @@ def assert_elements(
     elements: list[AbstractSemanticElement],
     expected_elements,
     path: Union[str, list[str]] = "root",
-):
+) -> None:
     assert len(elements) == len(
         expected_elements,
     ), f"Expected {len(expected_elements)} elements, but got {len(elements)}. Path: {path}"

@@ -32,7 +32,7 @@ from tests.unit.utils.bs4_._data_html_tables import (
     ],
     ids=[v[0] for v in tests],
 )
-def test_has_tag_children(name, html, expected):
+def test_has_tag_children(name, html, expected) -> None:
     # Arrange
     p = bs4.BeautifulSoup(html, "lxml")
     assert isinstance(p, bs4.Tag)

@@ -12,8 +12,7 @@ class TableElement(AbstractSemanticElement):
     """The TableElement class represents a standard table within a document."""
 
     def get_summary(self) -> str:
-        """
-        Return a human-readable summary of the semantic element.
+        """Return a human-readable summary of the semantic element.
 
         This method aims to provide a simplified, human-friendly representation of
         the underlying HtmlTag.

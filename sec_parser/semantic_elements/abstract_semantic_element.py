@@ -11,8 +11,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class AbstractSemanticElement(ABC):  # noqa: B024
-    """
-    In the domain of HTML parsing, especially in the context of SEC EDGAR documents,
+    """In the domain of HTML parsing, especially in the context of SEC EDGAR documents,
     a semantic element refers to a meaningful unit within the document that serves a
     specific purpose. For example, a paragraph or a table might be considered a
     semantic element. Unlike syntactic elements, which merely exist to structure the
@@ -59,7 +58,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
     ) -> AbstractSemanticElement:
         """Convert the semantic element into another semantic element type."""
         return cls(
-            source._html_tag,  # noqa: SLF001
+            source._html_tag,
             processing_log=source.processing_log,
             log_origin=log_origin,
         )
@@ -102,8 +101,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
         )
 
     def get_summary(self) -> str:
-        """
-        Return a human-readable summary of the semantic element.
+        """Return a human-readable summary of the semantic element.
 
         This method aims to provide a simplified, human-friendly representation of
         the underlying HtmlTag. In this base implementation, it is a passthrough
@@ -116,8 +114,7 @@ class AbstractSemanticElement(ABC):  # noqa: B024
 
 
 class AbstractLevelElement(AbstractSemanticElement):
-    """
-    The AbstractLevelElement class provides a level attribute to semantic elements.
+    """The AbstractLevelElement class provides a level attribute to semantic elements.
     It represents hierarchical levels in the document structure. For instance,
     a main section title might be at level 1, a subsection at level 2, etc.
     """

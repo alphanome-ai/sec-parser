@@ -72,8 +72,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class AbstractSemanticElementParser(ABC):
-    """
-    Responsible for parsing semantic elements from HTML documents.
+    """Responsible for parsing semantic elements from HTML documents.
     It takes raw HTML and turns it into a list of objects
     representing semantic elements.
 
@@ -166,8 +165,7 @@ class AbstractSemanticElementParser(ABC):
 
 
 class Edgar10QParser(AbstractSemanticElementParser):
-    """
-    The Edgar10QParser class is responsible for parsing SEC EDGAR 10-Q
+    """The Edgar10QParser class is responsible for parsing SEC EDGAR 10-Q
     quarterly reports. It transforms the HTML documents into a list
     of elements. Each element in this list represents a part of
     the visual structure of the original document.
@@ -211,8 +209,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
         ]
 
 class Edgar10KParser(AbstractSemanticElementParser):
-    """
-    The Edgar10KParser class is responsible for parsing SEC EDGAR 10-K
+    """The Edgar10KParser class is responsible for parsing SEC EDGAR 10-K
     quarterly reports. It transforms the HTML documents into a list
     of elements. Each element in this list represents a part of
     the visual structure of the original document.

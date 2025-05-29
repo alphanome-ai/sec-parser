@@ -35,7 +35,7 @@ from tests.unit._utils import assert_elements
     ],
     ids=[v[0] for v in values],
 )
-def test_smoke_test(name, html_str, unwrap_elements, expected_elements):
+def test_smoke_test(name, html_str, unwrap_elements, expected_elements) -> None:
     # Arrange
     sec_parser = Edgar10QParser()
 
@@ -70,7 +70,7 @@ def test_smoke_test(name, html_str, unwrap_elements, expected_elements):
     ],
     ids=[v[0] for v in values],
 )
-def test_transformation_history(name, html_str, expected_processing_log):
+def test_transformation_history(name, html_str, expected_processing_log) -> None:
     # Arrange
     sec_parser = Edgar10QParser()
 

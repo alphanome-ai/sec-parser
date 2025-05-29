@@ -1,0 +1,419 @@
+{
+  "filename": "agreement_02.html",
+  "success": true,
+  "quality_score": 0.7857142857142857,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 28,
+    "has_title": true,
+    "detected_title": "FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR AGREEMENT",
+    "element_count_by_type": {
+      "metadata": 1,
+      "title": 1,
+      "paragraph": 8,
+      "section": 3,
+      "table": 8,
+      "signature": 7
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR AGREEMENT",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "Exhibit 10.9",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "right"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR AGREEMENT",
+        "level": 0,
+        "tag_name": "p",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, WGC USA Asset Management Company, LLC, a Delaware limited liability company (“Sponsor”) and World Gold Trust (the\n“Trust’), a Delaware statutory trust organized in series (each, a “Fund” and collectively, the “Funds”), have heretofore entered into an Amended and Restated Sponsor Agreement (“Agreement”), dated as of\nOctober 14, 2016 as amended November 28, 2017; and",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, the parties hereto desire to amend the Agreement\n(“Amendment”) to list on Schedule A thereto a new series of the Trust.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "NOW, THEREFORE, in consideration of the agreements and\nobligations set forth herein and for other good and valuation consideration, the receipt and sufficiency of which are hereby acknowledged, each of the Sponsor and the Trust, both for itself and on behalf of each Fund set for on Schedule A, hereby\namend the Agreement and agree as follows:",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "Schedule A . Schedule A is hereby amended by listing a new series thereon, with such new\nseries underlined in such amended schedule, as follows:",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "“Schedule A",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 6,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:24pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+              "align": "center"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "The Trust will pay to the Sponsor as compensation for the Sponsor’s services rendered to each Fund, a fee, computed daily at an annual rate based on the\naverage daily net assets of each Fund in accordance with the following fee schedule:",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 7,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Fund",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 8,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "bottom",
+              "nowrap": ""
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Fund",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 9,
+            "confidence": 0.8,
+            "attributes": {
+              "style": " margin-top:0pt ; margin-bottom:0pt; border-bottom:1.00pt solid #000000; width:18.25pt; display:inline; font-size:8pt; font-family:Times New Roman; "
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Rate",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 10,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "bottom",
+              "colspan": "2",
+              "align": "center",
+              "style": "border-bottom:1.00pt solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "SPDR ® Long Dollar Gold Trust",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 11,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "SPDR ® Long Dollar Gold Trust",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 12,
+            "confidence": 0.8,
+            "attributes": {
+              "style": " margin-top:0pt ; margin-bottom:0pt; margin-left:1.00em; text-indent:-1.00em; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "0.33",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {
+          "valign": "bottom",
+          "align": "right"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "SPDR ® Gold MiniShares Trust",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 14,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "SPDR ® Gold MiniShares Trust",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 15,
+            "confidence": 0.8,
+            "attributes": {
+              "style": " margin-top:0pt ; margin-bottom:0pt; margin-left:1.00em; text-indent:-1.00em; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "0.XX",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 16,
+        "confidence": 0.8,
+        "attributes": {
+          "valign": "bottom",
+          "align": "right"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "signature",
+            "content": "IN WITNESS WHEREOF, the parties hereto have caused this Amendment to be duly executed and delivered as of\n[•], 2018.",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 17,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "World Gold Trust By: Delaware Trust Company, its Trustee By: ________________________________ Name: ______________________________ Title: ______________________________ WGC USA Asset Management Company, LLC By: ________________________________ Name: ______________________________ Title:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 18,
+            "confidence": 0.8,
+            "attributes": {
+              "align": "right"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "World Gold Trust",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 19,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: Delaware Trust Company, its Trustee",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 20,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: ________________________________",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 21,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Name: ______________________________",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 22,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Title: ______________________________",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 23,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "WGC USA Asset Management Company, LLC",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 24,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By: ________________________________",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 25,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Name: ______________________________",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 26,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Title:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 27,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      }
+    ],
+    "statistics": {
+      "total_elements": 28,
+      "element_types": {
+        "metadata": 1,
+        "title": 1,
+        "paragraph": 8,
+        "section": 3,
+        "table": 8,
+        "signature": 7
+      },
+      "structure_depth": 4
+    }
+  }
+}
