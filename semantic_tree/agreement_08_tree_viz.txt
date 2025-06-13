@@ -1,0 +1,60 @@
+📄 agreement_08.html (Quality: 0.89)
+└── 📋 Management Agreement
+    ├── 🏷️ METADATA: Exhibit 10.1
+    ├── 📝 PARAGRAPH: Execution Version
+    ├── 📝 PARAGRAPH: FIRST AMENDMENT
+    ├── 📜 TITLE: Management Agreement
+    ├── 📝 PARAGRAPH: May 16, 2018
+    ├── 📝 PARAGRAPH: This First Amendment (this “ Amendment ”) to the Manageme...
+    ├── 📝 PARAGRAPH: WHEREAS, the Parties entered into that certain Management...
+    ├── 📝 PARAGRAPH: WHEREAS, the Initial Term of the Management Agreement wil...
+    ├── 📝 PARAGRAPH: WHEREAS, prior to the expiration of the Initial Term, a P...
+    ├── 📝 PARAGRAPH: WHEREAS, notwithstanding the automatic renewal provisions...
+    ├── 📝 PARAGRAPH: WHEREAS, pursuant to Section 22 of the Management Agreeme...
+    ├── 📝 PARAGRAPH: NOW THEREFORE, in consideration of the premises and for o...
+    ├── 📑 SECTION: 1. Amendment of Management Agreement .
+    ├── 📑 SECTION: Section 16(a) of the Management Agreement is hereby amend...
+    ├── 📑 SECTION: Section 16(b) of the Management Agreement is hereby amend...
+    ├── 📑 SECTION: 2. Continuing Effect . Except as expressly amended by thi...
+    ├── 📑 SECTION: 2. Continuing Effect . Except as expressly amended by thi...
+    ├── 📑 SECTION: 3. Miscellaneous . The following provisions of the Manage...
+    ├── 📑 SECTION: Section 23
+    │   └── 📊 TABLE: Governing Law
+    ├── 📑 SECTION: Section 24
+    │   └── 📊 TABLE: Arbitration
+    ├── 📑 SECTION: Section 27
+    │   └── 📊 TABLE: Cure of Invalid Provisions
+    ├── 📑 SECTION: Section 28
+    │   └── 📊 TABLE: Construction of Agreement
+    └── 📑 SECTION: Section 29
+        ├── 📊 TABLE: Multiple Counterparts
+        ├── ✍️ SIGNATURE: [Signatures on Following Page]
+        ├── ✍️ SIGNATURE: The Parties have executed this First Amendment as of the ...
+        ├── ✍️ SIGNATURE: The Parties have executed this First Amendment as of the ...
+        ├── 📝 PARAGRAPH: HUNT UTILITY SERVICES, LLC By: /s/ David Campbell Name: D...
+        ├── 📊 TABLE: HUNT UTILITY SERVICES, LLC
+        ├── 📊 TABLE: By:
+        ├── 📊 TABLE: /s/ David Campbell
+        ├── 📝 PARAGRAPH: /s/ David Campbell
+        ├── 📊 TABLE: Name:
+        ├── 📊 TABLE: David Campbell
+        ├── 📊 TABLE: Title:
+        ├── 📊 TABLE: President and Chief Executive Officer
+        ├── 📊 TABLE: INFRAREIT, INC.
+        ├── 📊 TABLE: By:
+        ├── 📊 TABLE: /s/ Brant Meleski
+        ├── 📝 PARAGRAPH: /s/ Brant Meleski
+        ├── 📊 TABLE: Name:
+        ├── 📊 TABLE: Brant Meleski
+        ├── 📊 TABLE: Title:
+        ├── 📊 TABLE: Senior Vice President and Chief Financial Officer
+        ├── 📊 TABLE: INFRAREIT PARTNERS, LP
+        ├── 📊 TABLE: By: InfraREIT, Inc., its general partner
+        ├── 📊 TABLE: By:
+        ├── 📊 TABLE: /s/ Brant Meleski
+        ├── 📝 PARAGRAPH: /s/ Brant Meleski
+        ├── 📊 TABLE: Name:
+        ├── 📊 TABLE: Brant Meleski
+        ├── 📊 TABLE: Title:
+        ├── 📊 TABLE: Senior Vice President and Chief Financial Officer
+        └── 📝 PARAGRAPH: F IRST A MENDMENT TO M ANAGEMENT A GREEMENT

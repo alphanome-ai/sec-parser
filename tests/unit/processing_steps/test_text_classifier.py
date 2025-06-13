@@ -44,7 +44,7 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
     ],
     ids=[v[0] for v in values],
 )
-def test_text_classifier(name, html_str, expected_elements):
+def test_text_classifier(name, html_str, expected_elements) -> None:
     # Arrange
     elements = parse_initial_semantic_elements(html_str)
     step = TextClassifier()

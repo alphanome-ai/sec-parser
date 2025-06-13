@@ -1,0 +1,2227 @@
+{
+  "filename": "agreement_10.html",
+  "success": true,
+  "quality_score": 0.9142857142857143,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 164,
+    "has_title": true,
+    "detected_title": "SCREENPLAY OPTION/PURCHASE AGREEMENT",
+    "element_count_by_type": {
+      "metadata": 1,
+      "title": 1,
+      "paragraph": 84,
+      "table": 42,
+      "party": 1,
+      "section": 21,
+      "subsection": 6,
+      "signature": 8
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "SCREENPLAY OPTION/PURCHASE AGREEMENT",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "Exhibit 10.7",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: right; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "SCREENPLAY OPTION/PURCHASE AGREEMENT",
+        "level": 0,
+        "tag_name": "div",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "“CHILD SUPPORT”",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "As of\nAugust 1, 2016",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Pete\nRosen 4735\nSepulveda Blvd., No. 313 Sherman\nOaks, CA 91403 Email:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Pete\nRosen",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Pete\nRosen",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 6,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "4735\nSepulveda Blvd., No. 313",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 7,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "4735\nSepulveda Blvd., No. 313",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 8,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Sherman\nOaks, CA 91403",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 9,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Sherman\nOaks, CA 91403",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 10,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Email:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 11,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Email:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 12,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Gary\nBowen cc: Leif\nReinstein, Esq. 4735\nSepulveda Blvd., No. 333 Reed\nSmith LLP Sherman\nOaks, CA 91403 1901\nAvenue of the Stars, Suite 700 Email: Los\nAngeles, CA 90067",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Gary\nBowen",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 14,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Gary\nBowen",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "cc:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 16,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 5%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "cc:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 17,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Leif\nReinstein, Esq.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 18,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 45%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Leif\nReinstein, Esq.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "4735\nSepulveda Blvd., No. 333",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 20,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "4735\nSepulveda Blvd., No. 333",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Reed\nSmith LLP",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 22,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 45%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Reed\nSmith LLP",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 23,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Sherman\nOaks, CA 91403",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 24,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Sherman\nOaks, CA 91403",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 25,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "1901\nAvenue of the Stars, Suite 700",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 26,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 45%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "1901\nAvenue of the Stars, Suite 700",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 27,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Email:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 28,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 50%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Email:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 29,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Los\nAngeles, CA 90067",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 30,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align: top; width: 45%"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Los\nAngeles, CA 90067",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 31,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Dear\nPete and Gary:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 32,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "party",
+        "content": "This\nwill confirm the agreement between MJW Media, LLC\n(“Purchaser”), and you, Pete Rosen and Gary Bowen\n(collectively, “Artist”), with respect to the original\nscreenplay entitled “Child Support” written by Artist\n(which, together with the title, themes, contents, story and\ncharacters, and all translations, adaptations, and other versions,\nas well as all research performed by Artist in connection\ntherewith, whether now existing or hereafter created, is\nhereinafter called the “Property”) (the fir...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 33,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "In\nconsideration of the parties’ mutual promises, it is hereby\nagreed as follows:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 34,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "1. Option .",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 35,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a)          In\nconsideration of Purchaser’s commercially reasonable best\nefforts to set-up the Property for development and/or production\nand other good and valuable consideration, Artist hereby\nexclusively and irrevocably grants to Purchaser an exclusive option\n(the “Option”) lasting for twelve (12) months from the\nabove date (the “Initial Option Period”) to purchase\nall rights in the Property as more explicitly set forth in Section\n2 hereof (“Purchase Price”).",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 36,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 96px"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b)          Purchaser\nmay extend the Initial Option Period by an additional twelve (12)\nmonths (the “Extended Option Period”) by providing\nwritten notice to Artist accompanied by the applicable payment at\nany time prior to expiration of the Initial Option Period. The\nInitial Option Period and the Extended Option Period may be\nreferred to collectively herein as the “Option\nPeriod.”",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 37,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 96px"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c)          The\nOption price for the Initial Option Period shall be Two Thousand\nDollars ($2,000), payable within five (5) business days following\nArtist’s execution of this Agreement, which amount shall not\nbe applicable against the Purchase Price. The Option price for the\nExtended Option Period shall be Twenty Thousand Hundred Dollars\n($20,000), which amount shall be applicable against the Purchase\nPrice.",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 38,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 96px"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d)          During\nthe Option Period (and any extensions thereof), Purchaser shall\nhave the right to engage in or arrange for development and\npre-production with respect to motion pictures and/or other\nproductions intended to be based on the Property. If in connection\nwith such development and pre-production Artist or another party is\nengaged to write screenplays, revisions or other materials based on\nthe Property, all such writings shall be and remain\nPurchaser’s sole and exclusive property (w...",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 39,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 96px"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "2. Purchase\nPrice . If Purchaser exercises its Option granted pursuant to\nSection 1 hereunder, the purchase price for the Rights (as defined\nin Section 4 below) shall be a sum equal to Two and One-Quarter\nPercent (2.25%) of the final approved “direct cost”\nbudget (exclusive of interest, financing costs, completion bond\nfees, insurance costs and any contingency) (the\n“Budget”) of the Picture, with a floor of Two Hundred\nFifty Thousand Dollars ($250,000) and a ceiling of Seven Hundred\nFifty Thousa...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 40,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "3. Contingent\nCompensation . If Artist has fulfilled all of the terms and\nconditions hereunder and is not in uncured material breach hereof,\nand the Picture is produced, Artist shall be entitled to receive a\nsum equal to Two and One-Half Percent (2.5%) of One Hundred Percent\n(100%) of the net proceeds (or other best contingent compensation\ndenomination or definition received by Purchaser) derived from the\nPicture. Artist’s contingent compensation participation\n(however denominated) shall be defi...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 41,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "4. Writing\nServices . Purchaser shall engage Artist to perform a\nguaranteed first rewrite of the Property (the\n“Rewrite”) for a fee of Eighty Thousand Dollars\n($80,000), payable $25,000 upon commencement of such writing\nservices and $55,000 upon the earlier of commencement of principal\nphotography of the Picture or Purchaser’s conclusion and\nactual receipt of the unrestricted full funding for the Picture.\nNotwithstanding any other provision of this Agreement and subject\nonly to Section 14 below,...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 42,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "5. Rights .\nIf the Option granted pursuant to Section 1 hereunder is exercised,\nPurchaser shall own, and Artist hereby assigns to Purchaser,\nexclusively, in perpetuity and throughout the universe, all right,\ntitle and interest in and to the Property, whether now known or\nhereinafter devised, including, without limitation, all motion\npicture rights, all television rights (pay, free, film, tape,\ncassette, cable, live and otherwise), all computer-assisted media\nrights (including, but not limited to...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 43,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "Without\nlimiting the foregoing, if the Option granted pursuant to Section 1\nhereunder is exercised, Artist hereby acknowledges that a portion\nof the Purchase Price payable under this Agreement is allocated to\nand adequate compensation for the purchase/assignment of the Rental\nand Lending Rights, as defined below, and Artist hereby irrevocably\nassigns, licenses and grants to Purchaser, throughout the universe,\nin perpetuity, any and all rights of Artist to authorize, prohibit\nand/or control the r...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 44,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "The\nRights herein granted include the right to distribute, transmit,\nexhibit, broadcast and otherwise exploit all works produced\npursuant to the rights granted hereunder by means of any and all\nmedia and devices whether now known or hereafter devised, and in\nany and all markets whatsoever, as well as the right of Purchaser\nin its discretion to make any and all changes in, additions to and\ndeletions from the Property, as well as the right to use, in a\nreasonable and customary manner, Artist’s nam...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 45,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Artist\nagrees that Purchaser shall have the unlimited right to vary,\nchange, alter, modify, add to and/or delete from all or any part of\nthe Property (including without limitation the title or titles\nthereto), and to rearrange and/or transpose all or any part of the\nProperty and change the sequence thereof and the characters and\ndescriptions of the characters contained in the Property and to use\na portion or portions of the Property in conjunction with any other\nliterary, dramatic or other mater...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 46,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "6. Writer\nRepresentations and Warranties/Indemnities . Subject to\nArticle 28 of the WGA Minimum Basic Agreement, Artist hereby\nrepresents and warrants that: (a) the Property was written by and\nis wholly original with Artist (except incidental materials in the\npublic domain and materials provided or altered by Purchaser), (b)\nneither the Property nor any element thereof infringes the\ncopyright in any other work; (c) neither the Property nor any\nelement thereof, to the best of Artist’s knowledge, ...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 47,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "7. Purchaser\nIndemnities . Purchaser hereby indemnifies, defends and holds\nArtist harmless against any liability, loss, damage, cost or\nexpense (including reasonable outside attorneys’ fees)\nincurred by reason of any claim arising from Purchaser’s\nbreach or alleged breach of any of its obligations hereunder,\nmaterials Purchaser provides or alters, and the development,\nproduction, distribution and other exploitation of the Picture (or\nany element thereof or rights therein) to the extent that\nArti...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 48,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "8. Insurance\nCoverage . Artist shall be named as an additional insured on\nany errors and omissions and general liability insurance policies\ncovering the Picture.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 49,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "9. Additional\nDocuments . At Purchaser’s request, following a\nreasonable opportunity to review and comment, Artist shall execute\nany and all additional documents and instruments consistent\nherewith as are reasonably necessary or desirable to effectuate\npurposes of this agreement (including, without limitation, short\nform options and assignments). Upon Artist’s failure to\npromptly execute any such documents within five (5) business days\nafter delivery, Artist hereby appoints Purchaser as Artist’s...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 50,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "10. Credit .\nPurchaser shall accord Artist writing credit on screen as and to\nthe extent required by the WGA Basic Agreement. Such credit shall\nalso be accorded in paid ads (subject to customary exclusions) and\nanywhere the billing block appears. It is acknowledged and agreed\nthat no casual or inadvertent failure by Purchaser to accord such\ncredit, nor the failure for any reason by third parties to comply\nwith the provisions of this paragraph, shall be deemed a breach\nhereof by Purchaser, it bei...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 51,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "11. Subsequent\nProductions .",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 52,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) First\nNegotiation . If, within (7) years after the initial general\ntheatrical release of the Picture, Purchaser, its assignee,\ndesignee, licensee or successor intends to produce a theatrical or\ndirect-to-video sequel, prequel, remake, television or new media\nproduction based upon the Picture, (each a “Subsequent\nProduction”) and provided: (i) Artist is not in uncured\nmaterial breach hereunder; (ii) Artist is ready, willing and able\nto render such services as, when and where reasonably requir...",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 53,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 96px"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) Passive\nPayments . Provided that: (i) Artist is not in uncured\nmaterial breach hereof; (ii) Artist receives sole “written\nby” or “screenplay by” credit on the Picture upon\nfinal determination of writing credits pursuant to the MBA (as if\napplicable hereto); (iii) Purchaser or its assignee, licensee,\ndesignee or successor elects to produce any of the Subsequent\nProductions described below based upon the Picture; and (iv) Owner\nhas not been engaged to render writing services in connection with...",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 54,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 96px"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "paragraph",
+                "content": "i. Theatrical\nSequels/Prequels : For each applicable theatrical sequel or\nprequel motion picture based on the Picture, Artist shall be paid\nan amount equal to: (i) Fifty Percent (50%) of all amounts paid to\nArtist pursuant to Section 2 above, payable upon commencement of\nprincipal photography of such theatrical sequel and/or prequel; and\n(ii) a percentage of the Net Proceeds equal to fifty percent (50%)\nof the percentage to which Artist is entitled pursuant to Section 3\nabove.",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 55,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 144px"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "ii. Theatrical\nRemakes : For each applicable theatrical remake of the\nPicture, Artist shall be paid an amount equal to: (i) Thirty-Three\nand One-Third Percent (33-1/3%) of all amounts paid to Artist\npursuant to Section 2 above, payable upon commencement of principal\nphotography of such theatrical remake; and (ii) a percentage of Net\nProceeds equal to Thirty-Three and One-Third Percent (33-1/3%) of\nthe percentage to which Artist is entitled pursuant to Section 3\nabove.",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 56,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 144px"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "iii. Television\nProductions :",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 57,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 144px"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "a. Pilot and Series . If a television pilot and/or series is\nproduced, Artist shall be entitled to receive episode a royalty of\n$2,000 for each episode of 30 minutes or less; $3,000 for each\nepisode of 31-60 minutes; and $4,000 for each episode in excess of\n60 minutes, payable within ten (10) days aftercompletion of\nprincipal photography of the applicable episode. For each of the\nsecond through the sixth U.S. free Network television runs of the\napplicable episode, Artist shall receive an additio...",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 58,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: left"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Pilot and Series . If a television pilot and/or series is\nproduced, Artist shall be entitled to receive episode a royalty of\n$2,000 for each episode of 30 minutes or less; $3,000 for each\nepisode of 31-60 minutes; and $4,000 for each episode in excess of\n60 minutes, payable within ten (10) days aftercompletion of\nprincipal photography of the applicable episode. For each of the\nsecond through the sixth U.S. free Network television runs of the\napplicable episode, Artist shall receive an additional...",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 59,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "vertical-align: top; width: 76%;"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "Pilot and Series . If a television pilot and/or series is\nproduced, Artist shall be entitled to receive episode a royalty of\n$2,000 for each episode of 30 minutes or less; $3,000 for each\nepisode of 31-60 minutes; and $4,000 for each episode in excess of\n60 minutes, payable within ten (10) days aftercompletion of\nprincipal photography of the applicable episode. For each of the\nsecond through the sixth U.S. free Network television runs of the\napplicable episode, Artist shall receive an additional...",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 60,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "b. Movies-For-Television and Television Mini-Series . If a\ntelevision motion picture or “mini-series” is produced.\nArtist shall be entitled to receive an amount equal to $10.000 for\neach hour of programming produced, up to a maximum of $80,000,\npayable promptly following the commencement of principal\nphotography of the applicable production.",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 61,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: left"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Movies-For-Television and Television Mini-Series . If a\ntelevision motion picture or “mini-series” is produced.\nArtist shall be entitled to receive an amount equal to $10.000 for\neach hour of programming produced, up to a maximum of $80,000,\npayable promptly following the commencement of principal\nphotography of the applicable production.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 62,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "vertical-align: top; width: 76%;"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "Movies-For-Television and Television Mini-Series . If a\ntelevision motion picture or “mini-series” is produced.\nArtist shall be entitled to receive an amount equal to $10.000 for\neach hour of programming produced, up to a maximum of $80,000,\npayable promptly following the commencement of principal\nphotography of the applicable production.",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 63,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "iv. New\nMedia Productions : If a feature-length production or\nepisodic series production is produced for initial exhibition on a\nso-called “New Media” or digital platform, Artist shall\nbe entitled to receive a passive royalty to be negotiated in good\nfaith within customary parameters for agreements of this type,\ntaking into account the budget of the production and other relevant\nfactors. Notwithstanding the foregoing, if a new media Subsequent\nProduction is produced for initial exhibition on Net...",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 64,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 144px"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "v. 100/50/50 :\nWith respect to any television series, movie-for-television,\nmini-series, or new media production, if the applicable Subsequent\nProduction is placed in general theatrical release in the U.S.\nand/or abroad after its initial television broadcast, then Artist\nshall be entitled to an additional one-time royalty equal to fifty\npercent (50%) of the royalty originally paid for such Subsequent\nProduction if such production is so released in the U.S., and an\nadditional one-time royalty equ...",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 65,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 144px"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "12. Premieres .\nIf the Picture is produced and Artist is not in uncured material\nbreach hereof, each Artist and a non-business companion shall be\nentitled to receive invitations to the first celebrity premiere, if\nany, of the Picture. Purchaser shall make reasonable good faith\nefforts to cause the distributor of the Picture to provide travel\nand expenses for Artist and Artist’s companion on a favored\nnations basis with all non-cast; provided, Purchaser’s\nfailure or inability to do so shall not c...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 66,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "13. DVD .\nIf the Picture is produced and Artist is not in uncured material\nbreach hereof, each Artist will be entitled to receive a DVD copy\nof the Picture at such time as they become commercially available\n(subject to the policies of the distributor).",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 67,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "14. Reversion .\nIf Purchaser exercises the Option, but does not produce the Picture\nwithin 2 years from the date of such exercise, then all rights in\nand to the Property shall revert to Artist, subject to\nPurchaser’s first-priority lien against first dollars\nreceived by Artist from any third-party purchaser of the Property\nfor all of Purchaser’s script and development costs, plus\ninterest thereon at the rate of banker’s prime plus 1%, and\n5% of 100% of the profits derived from any production bas...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 68,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "15. Remedies .\nIt is acknowledged and agreed that neither the failure to accord\nArtist credit nor any other breach of this Agreement shall entitle\nArtist to equitable relief, whether injunctive or otherwise,\nagainst or with respect to the Picture or any other works produced\npursuant to the rights granted hereunder or their exploitation,\nsince Artist’s remedy of money damages at law is\nadequate.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 69,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "16. Assignment .\nPurchaser shall have the right to assign any or all of its rights\nand/or obligations under this Agreement to any person or entity,\nbut no such assignment shall relieve Purchaser of its obligations\nto Artist under this agreement unless such assignment is to a\nso-called “major” or “mini-major” motion\npicture distributor, or a network television broadcaster, or a\nmajor pay television company, as such terms are commonly understood\nin the motion picture industry, or a party that is a...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 70,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "17. Default/Force\nMajeure . Each and every option period hereunder shall be\nsubject to extension for any period of your material breach and/or\nforce majeure (including without limitation any strike by any\nguild, union or other labor organization against motion picture\nproducers during the option periods), and any period during which\nany claim remains outstanding or unresolved which involves the\nmaterial breach of any of your warranties, representations or\nagreements herein that materially affect...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 71,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "18. Jurisdiction .\nThis Agreement will be interpreted in accordance with the laws of\nthe State of California applicable to agreements entered into and\nto be wholly performed therein. Any and all disputes hereunder\nshall be exclusively submitted to a final and binding arbitration\nunder the rules of AFMA in Los Angeles, California. The prevailing\nparty (as determined by the arbitrator) shall be entitled to costs\nand attorney’s fees in connection with any such\nproceeding.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 72,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "19. Notices/Payments .\nAll notices from Artist to Purchaser shall be sent to the following\naddress:",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 73,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "MJW\nMedia, LLC Attn:\nMike Witherill 1166 E.\nWarner Road, Suite 205 Gilbert, AZ\n85296 Email:\nmjwitherill@gmail.com",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 74,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "MJW\nMedia, LLC Attn:\nMike Witherill 1166 E.\nWarner Road, Suite 205 Gilbert, AZ\n85296 Email:\nmjwitherill@gmail.com",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 75,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 91%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "MJW\nMedia, LLC Attn:\nMike Witherill 1166 E.\nWarner Road, Suite 205 Gilbert, AZ\n85296 Email:\nmjwitherill@gmail.com",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 76,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "MJW\nMedia, LLC",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 77,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Attn:\nMike Witherill",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 78,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "1166 E.\nWarner Road, Suite 205",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 79,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Gilbert, AZ\n85296",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 80,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Email:\nmjwitherill@gmail.com",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 81,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "cc: Paul\nMiloknay, Esq. Miloknay Weiner\nLLP 7162\nBeverly Blvd., Suite 345 Los\nAngeles, CA 90036 Email:\npaul@miloknayweiner.com",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 82,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "cc:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 83,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 5%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "cc:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 84,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Paul\nMiloknay, Esq. Miloknay Weiner\nLLP 7162\nBeverly Blvd., Suite 345 Los\nAngeles, CA 90036 Email:\npaul@miloknayweiner.com",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 85,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 91%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Paul\nMiloknay, Esq.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 86,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Miloknay Weiner\nLLP 7162\nBeverly Blvd., Suite 345 Los\nAngeles, CA 90036 Email:\npaul@miloknayweiner.com",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 87,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Miloknay Weiner\nLLP",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 88,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "7162\nBeverly Blvd., Suite 345",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 89,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Los\nAngeles, CA 90036",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 90,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Email:\npaul@miloknayweiner.com",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 91,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Notices\nshall be sufficiently given when the same shall be deposited so\naddressed, postage prepaid, in the United States mail and/or when\nthe same shall have been delivered so addressed by facsimile or\nemail transmission, and 3 days after the date of said mailing or\nthe date of facsimile or email transmission shall be the date of\nthe giving of such notice.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 92,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "All\npayments which Purchaser may be required to make to Artist\nhereunder shall be delivered or sent to Artist by mail at the\naddress for payments set forth on page one hereof, and Artist\nacknowledges that payment in such fashion shall be a good and valid\ndischarge of all such indebtedness to Artist.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 93,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "20. No\nObligation . Nothing contained in this Agreement shall be\nconstrued to obligate Purchaser to produce, distribute, release or\nexhibit any motion picture, television program or other production\nbased upon the Property or to exploit or make any use of the\nrights, license, privileges or property granted to Purchaser,\nincluding without limitation, the Rights.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 94,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "21. Miscellaneous .\nIt is contemplated that a more formal agreement may be prepared\ncontaining the terms set forth herein and such standard terms as\nare customary in the motion picture industry in agreements of this\nnature. Until such more formal agreement is executed, this\nAgreement shall constitute the entire understanding and agreement\nof the parties hereto and replaces any and all prior agreements or\nunderstandings, whether written or oral, relating to the subject\nmatter of this Agreement. T...",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 95,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 48px"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "ACCEPTED\nAND AGREED AS OF AUGUST 1, 2016:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 96,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "PURCHASER: ARTIST: MJW\nMEDIA, LLC PETE ROSEN By: /s/ Michael\nJ. Witherill By: /s/ Pete\nRosen Michael\nJ. Witherill Pete\nRosen Its: Managing\nMember GARY BOWEN By: /s/\nGary Bowen Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 97,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "PURCHASER:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 98,
+            "confidence": 0.8,
+            "attributes": {
+              "colspan": "2",
+              "rowspan": "1",
+              "style": "vertical-align: top; padding-bottom: 2px; width: 38%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "PURCHASER:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 99,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "ARTIST:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 100,
+            "confidence": 0.8,
+            "attributes": {
+              "colspan": "2",
+              "rowspan": "1",
+              "style": "vertical-align: top; width: 38%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "ARTIST:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 101,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "MJW\nMEDIA, LLC",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 102,
+            "confidence": 0.8,
+            "attributes": {
+              "colspan": "2",
+              "rowspan": "1",
+              "style": "vertical-align: top; padding-bottom: 2px; width: 38%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "MJW\nMEDIA, LLC",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 103,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "PETE ROSEN",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 104,
+            "confidence": 0.8,
+            "attributes": {
+              "colspan": "2",
+              "rowspan": "1",
+              "style": "vertical-align: top; width: 38%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "PETE ROSEN",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 105,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 106,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 3%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 107,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 108,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "/s/ Michael\nJ. Witherill",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 109,
+            "confidence": 0.8,
+            "attributes": {
+              "rowspan": "1",
+              "style": "vertical-align: top; padding-bottom: 2px; width: 35%; border-bottom: 2px solid rgb(0, 0, 0);"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "/s/ Michael\nJ. Witherill",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 110,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 111,
+            "confidence": 0.8,
+            "attributes": {
+              "rowspan": "1",
+              "style": "vertical-align: top; padding-bottom: 2px; width: 3%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "/s/ Pete\nRosen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 112,
+            "confidence": 0.8,
+            "attributes": {
+              "rowspan": "1",
+              "style": "vertical-align: top; width: 35%; border-bottom: 2px solid rgb(0, 0, 0);"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "/s/ Pete\nRosen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 113,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Michael\nJ. Witherill",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 114,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 35%; vertical-align: top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Michael\nJ. Witherill",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 115,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Pete\nRosen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 116,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 35%; vertical-align: top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Pete\nRosen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 117,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Its:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 118,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 3%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Its:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 119,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Its:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 120,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Managing\nMember",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 121,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 35%; vertical-align: top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Managing\nMember",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 122,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "GARY BOWEN",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 123,
+            "confidence": 0.8,
+            "attributes": {
+              "colspan": "2",
+              "style": "vertical-align: top; width: 38%;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "GARY BOWEN",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 124,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 125,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 3%; vertical-align: top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 126,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 127,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 128,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 35%; vertical-align: top; border-bottom: 2px solid rgb(0, 0, 0);"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 129,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 130,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: left; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 131,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 35%; vertical-align: top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 132,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 133,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 12px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "EXHIBIT “A”",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 134,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "SHORT FORM OPTION",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 135,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "For\ngood and valuable consideration, receipt of which is hereby\nacknowledged, the undersigned hereby grants to MJW Media, LLC\n(“Purchaser”), its successors and assigns, the sole and\nexclusive option to purchase all right, title and interest (except\nfor certain rights expressly reserved by the undersigned as set\nforth in the agreement referenced below) in the screenplay entitled\n“Child Support,” written by the undersigned (the\n“Property”). The Property includes, but is not limited\nto: (i) all con...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 136,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "This\ninstrument is executed in accordance with and is subject to the\nOption/Purchase agreement (the “Agreement”) between the\nundersigned and Purchaser dated as of August 1, 2016, relating to\nthe option granted to Purchaser to purchase the above-mentioned\nrights in the Property, which rights are more fully described in\nthe agreement.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 137,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DATED\nas of August 1, 2016 /s/\nPete Rosen Pete\nRosen /s/\nGary Bowen Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 138,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "DATED\nas of August 1, 2016",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 139,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DATED\nas of August 1, 2016",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 140,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "/s/\nPete Rosen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 141,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%; border-bottom: 2px solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "/s/\nPete Rosen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 142,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Pete\nRosen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 143,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Pete\nRosen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 144,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 145,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%; border-bottom: 2px solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 146,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 147,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 148,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "EXHIBIT “B”",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 149,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "SHORT FORM ASSIGNMENT",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 150,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: center; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "For\ngood and valuable consideration, the receipt of which is hereby\nacknowledged, the undersigned, ________________\n(“Assignor”), sells and assigns to MJW Media, LLC, its\nsuccessors and assigns, forever and throughout the world, all\nright, title and interest (except for certain rights expressly\nreserved by the undersigned as set forth in the agreement\nreferenced below) in the original book entitled “Child\nSupport” written by Assignor (the “Property”).\nThe Property includes, but is not limited to...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 151,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "IN\nWITNESS WHEREOF, the undersigned has executed this Assignment on\nthe date indicated below.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 152,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "DATED:  August\n1, 2016 /s/\nPete Rosen Pete\nRosen /s/\nGary Bowen Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 153,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "DATED:  August\n1, 2016",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 154,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "DATED:  August\n1, 2016",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 155,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "/s/\nPete Rosen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 156,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%; border-bottom: 2px solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "/s/\nPete Rosen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 157,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Pete\nRosen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 158,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Pete\nRosen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 159,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 160,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%; border-bottom: 2px solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "/s/\nGary Bowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 161,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 162,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align: top; width: 50%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Gary\nBowen",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 163,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify; margin-left: 0px; margin-right: 0px; text-indent: 0px"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      }
+    ],
+    "statistics": {
+      "total_elements": 164,
+      "element_types": {
+        "metadata": 1,
+        "title": 1,
+        "paragraph": 84,
+        "table": 42,
+        "party": 1,
+        "section": 21,
+        "subsection": 6,
+        "signature": 8
+      },
+      "structure_depth": 4
+    }
+  }
+}

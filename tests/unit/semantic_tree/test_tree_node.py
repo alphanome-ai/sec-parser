@@ -17,7 +17,7 @@ def mock_element():
     return Mock(spec=AbstractSemanticElement)
 
 
-def test_add_child(mock_element):
+def test_add_child(mock_element) -> None:
     # Arrange
     parent = TreeNode(mock_element)
     child = TreeNode(mock_element)
@@ -30,7 +30,7 @@ def test_add_child(mock_element):
     assert child.parent == parent
 
 
-def test_add_children(mock_element):
+def test_add_children(mock_element) -> None:
     # Arrange
     parent = TreeNode(mock_element)
     children = [TreeNode(mock_element) for _ in range(3)]
@@ -44,7 +44,7 @@ def test_add_children(mock_element):
         assert child.parent == parent
 
 
-def test_remove_child(mock_element):
+def test_remove_child(mock_element) -> None:
     # Arrange
     parent = TreeNode(mock_element)
     child = TreeNode(mock_element, parent=parent)
@@ -57,7 +57,7 @@ def test_remove_child(mock_element):
     assert child.parent is None
 
 
-def test_set_parent(mock_element):
+def test_set_parent(mock_element) -> None:
     # Arrange
     node = TreeNode(mock_element)
     new_parent = TreeNode(mock_element)
@@ -70,7 +70,7 @@ def test_set_parent(mock_element):
     assert new_parent.has_child(node)
 
 
-def test_remove_from_existing_parent_when_new_parent_assigned(mock_element):
+def test_remove_from_existing_parent_when_new_parent_assigned(mock_element) -> None:
     # Arrange
     initial_parent = TreeNode(mock_element)
     node = TreeNode(mock_element, parent=initial_parent)
@@ -85,7 +85,7 @@ def test_remove_from_existing_parent_when_new_parent_assigned(mock_element):
     assert not initial_parent.has_child(node)
 
 
-def test_remove_parent(mock_element):
+def test_remove_parent(mock_element) -> None:
     # Arrange
     parent = TreeNode(mock_element)
     child = TreeNode(mock_element, parent=parent)
@@ -98,7 +98,7 @@ def test_remove_parent(mock_element):
     assert not parent.has_child(child)
 
 
-def test_repr(mock_element):
+def test_repr(mock_element) -> None:
     # Arrange
     parent = TreeNode(mock_element)
     children = [TreeNode(mock_element) for _ in range(3)]
@@ -120,7 +120,7 @@ def test_repr(mock_element):
 
 
 @pytest.mark.parametrize(
-    "tree_structure,expected_nodes",
+    ("tree_structure", "expected_nodes"),
     [
         # Test with an empty tree
         ({"root": []}, []),
@@ -201,7 +201,7 @@ test_data = [
 
 
 @pytest.mark.parametrize("test_case", test_data)
-def test_tree_node_get_source_code(test_case):
+def test_tree_node_get_source_code(test_case) -> None:
     # Arrange
     pretty = test_case["pretty"]
     expected_result = test_case["expected_result"]

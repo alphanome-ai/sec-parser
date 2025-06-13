@@ -12,8 +12,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class AbstractNestingRule(ABC):
-    """
-    AbstractNestingRule is a base class for defining rules for nesting
+    """AbstractNestingRule is a base class for defining rules for nesting
     semantic elements. Each rule should ideally mention at most one or
     two types of semantic elements to reduce coupling and complexity.
 

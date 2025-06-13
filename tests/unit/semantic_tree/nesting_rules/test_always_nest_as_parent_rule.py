@@ -5,12 +5,8 @@ from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
 from sec_parser.semantic_tree.nesting_rules import (
     AbstractNestingRule,
-    AlwaysNestAsChildRule,
     AlwaysNestAsParentRule,
-    NestSameTypeDependingOnLevelRule,
 )
-from sec_parser.semantic_tree.semantic_tree import SemanticTree
-from sec_parser.semantic_tree.tree_node import TreeNode
 
 
 def html_tag(tag_name: str, text: str) -> HtmlTag:
@@ -43,7 +39,7 @@ class LeveledElement(AbstractLevelElement):
     pass
 
 
-def test_always_nest_as_parent():
+def test_always_nest_as_parent() -> None:
     # Arrange
     mock_elements = [
         ChildElement(html_tag("tag7", "text7")),
@@ -63,7 +59,7 @@ def test_always_nest_as_parent():
 
     # Assert
     assert len(list(tree)) == 3
-    assert isinstance(list(tree)[0].semantic_element, ChildElement)
+    assert isinstance(next(iter(tree)).semantic_element, ChildElement)
     assert isinstance(list(tree)[1].semantic_element, ParentElement)
     assert isinstance(list(tree)[2].semantic_element, ParentElement)
     assert len(list(tree)[1].children) == 1

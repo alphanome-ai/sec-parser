@@ -13,7 +13,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from tests.types import Report
 
 
-def pytest_addoption(parser):
+def pytest_addoption(parser) -> None:
     parser.addoption(
         "--with-saved-output",
         action="store_true",

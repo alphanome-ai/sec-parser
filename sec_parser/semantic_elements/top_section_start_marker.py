@@ -14,8 +14,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class TopSectionStartMarker(AbstractLevelElement):
-    """
-    The TopSectionStartMarker class represents the beginning of a top-level
+    """The TopSectionStartMarker class represents the beginning of a top-level
     section of a document. It is used to mark the start of sections such as
     "Part I, Item 1. Business" in SEC 10-Q reports.
     """

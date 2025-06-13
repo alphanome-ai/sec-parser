@@ -1,0 +1,664 @@
+{
+  "filename": "agreement_01.html",
+  "success": true,
+  "quality_score": 0.7999999999999999,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 48,
+    "has_title": true,
+    "detected_title": "Consulting Agreement",
+    "element_count_by_type": {
+      "metadata": 8,
+      "title": 1,
+      "paragraph": 19,
+      "table": 12,
+      "section": 1,
+      "party": 1,
+      "signature": 6
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "Consulting Agreement",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "Exhibit 10.1",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin: 0; text-align: right"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "Consulting Agreement",
+        "level": 0,
+        "tag_name": "p",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: bold 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "This Consulting Agreement (this “Agreement”)\nis entered into as of June 19, 2017 by and among Aura Systems Inc., a Delaware Corporation (“Aura”) and BetterSea,\nLLC a Wyoming Limited Liability Company (“BetterSea”).",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Scope of Work; Independent Contractor.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "BetterSea will act as an independent contractor\nat all times in the performance of its duties under this Agreement. BetterSea’s primary responsibilities on Aura’s\nbehalf will be to advise and assist Aura in scientific developments of magnetic technologies related to axial induction machines\nand electromagnetic actuators. In addition, BetterSea will provide technical and sales support to Aura for (i) various government\nand quasigovernmental grants and/or contracts sought by Aura, and (ii) Aura’s ...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "In connection with BetterSea’s services,\nAura agrees to cooperate with BetterSea in connection with the services to be performed, making its officers, directors and other\npersonnel available for consultation, providing relevant information and being truthful at all times. As you know, matters are\noften time sensitive and failure to act within a certain time may result in impairment or loss of certain opportunities. By signing\nthis Agreement, Aura agrees to respond timely to all requests by Bette...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Acknowledgment of Existing Debt.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 6,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Aura herby acknowledges and agrees that\na past due principal balance of $331,492 is presently due and owing to BetterSea for work performed through June 16, 2017 (the\n“Past Due Balance”). Aura further agrees that in the event that the Past Due Balance is not paid by January 1, 2018\nthe Past Due Balance will bear interest at the rate of ten percent (10%) per annum commencing January 1, 2018 until paid. Aura\nfurther agrees to pay no less than 25% of the past due by April 1, 2018, additional no les...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 7,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 2 of 6",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 8,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "In addition to the Past Due Balance (and\nany interest accrued thereon), Aura further acknowledges and agrees that BetterSea LLC is further entitled to receive, at no cost\nto BetterSea, such number of shares of Aura’s common stock equal to the product of 0.04 multiplied by the total number of\nshares of Aura’s common stock outstanding (calculated on a fully diluted basis) on the first business day following the effective\ndate of the first reverse stock split taking place after the effective date o...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 9,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "No Guarantee of Outcome.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 10,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Aura acknowledges that many of the activities\nto be undertaken by BetterSea hereunder are complex in nature involving not only complex scientific issues but also decisions of\nthird parties which are beyond the control of BetterSea. BetterSea cannot and does not promise or guarantee the successful implementation\nof any particular activity undertaken by it, including without limitation, the receipt of any particular sale, contract and/or\ngrant by Aura.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 11,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Payment for Services.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 12,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "BetterSea’s fees for services are\nbased primary on the actual time expended performing services multiplied by the hourly rates then in effect for its personnel.\nCurrently, the hourly rate of BetterSea’s senior technical and sales consultants is: $250 per hour; $175-$200 per hour for\njunior technical and sales consultants; and $60-100 per hour for other support members. Charged time includes all time personnel\nspend relating to Aura’s matters, including without limitation, travel time. Please not...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "BetterSea will bill Aura monthly for its\nservices and each invoice shall be paid by Aura within thirty (30) calendar days of Aura’s receipt thereof. It is the policy\nof BetterSea that it will perform no further services for Aura if Aura becomes more than sixty (60) days delinquent in the payment\nof BetterSea’s bills, unless an arrangement to cure the delinquency is made in writing and agreed to by both parties. Please\nnote that BetterSea’s hourly rates are adjusted periodically to reflect the ad...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 14,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "The foregoing notwithstanding, with respect\nto each Sale (as defined below), BetterSea shall be entitled to compensation equal to the greater of: (i) a commission equal to\nfive percent (5%) of the Net Amount (as defined below) of such Sale (a “Commission”) or (ii) the amount of its hourly\nbillings associated with such Sale calculated as of the date that such Sale is deemed to have occurred, as described below (the\n“Invoiced Amount”). To the extent that BetterSea is entitled to a Commission with ...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 3 of 6",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 16,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Commission payments to BetterSea shall\nbe made within 10 business days of Aura’s receipt of payment with respect to the applicable Sale. In the event of partial\nor progress payments to Aura, Aura will pay BetterSea proportionally as payments are received by Aura, in each case, within 10\nbusiness days of Aura’s receipt thereof.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 17,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Please note that that any fees quoted or\notherwise agreed to by BetterSea do not include the cost of any out-of-pocket expenses incurred in the course of BetterSea’s\nservice (as further described in paragraph 5 below). BetterSea barges for travel expenses, including time spent in transit in connection\nwith client matters as well as reimbursement for meals, transportation, accommodations, tolls, parking and mileage (at the standard\nmileage rate announced by the IRS). Aura expressly agrees that an...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 18,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Out-of-Pocket Expenses.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Aura will be responsible for paying all\nout-of-pocket expenses incurred by BetterSea relating to Aura matters. Chargeable expenses include, among others, postage/shipping\nfees, telephone charges, telecopy charges, document duplication and processing charges, travel expenses such as mileage, transportation,\nparking, airfare, meals, and hotel accommodations and any other out of pocket expenses incurred m connection with any matter related\nto BetterSea’s services for Aura.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 20,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Non-Exclusivity.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "The services provided to Aura by BetterSea\nare provided on a non-exclusive basis.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 22,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Terminating the Representation.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 23,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "This Agreement may be terminated by either\nparty for any reason at any time after February 28, 2019 upon 30 calendar days advance written notice. Notwithstanding the above,\nBetterSea may immediately cease performing services and terminate this Agreement if, among other things, Aura fails to honor the\nterms of this Agreement, Aura fails to cooperate with BetterSea, Aura fails to pay BetterSea’s fees and expenses incurred\nin a timely fashion, or under any other circumstances in which, in BetterSea...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 24,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 4 of 6",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 25,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Expiration or termination for any reason\nwill not, however, relieve Aura of its obligation to pay fees for services rendered or commission earned and charges for all expenses\naccrued on its behalf through the date of the termination. Upon the conclusion of BetterSea’s services, all unpaid fees and\nexpenses will immediately become due and payable.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 26,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Indemnification.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 27,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Aura shall indemnify and hold BetterSea\n(as well as BetterSea’s officers, employees, members, managers, and agents) harmless to the fullest extent permitted by law\nfrom any claim, fine, judgment, settlement, liability, loss; cost or expense of any nature (including attorney’s fees of\ncounsel selected by BetterSea and all costs of any nature) incurred by BetterSea which arises from or relates in any manner to\nBetterSea’s services to Aura. To the maximum extent allowed by law, all amounts to be in...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 28,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Binding Arbitration of Disputes.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 29,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Any dispute or controversy relating to\nthis Agreement or any services or charges by BetterSea (including, but not limited to, disputes or claims regarding breach of contract,\nfraud, or violation of any rule or statute) that cannot be resolved by discussion or negotiation, will be resolved exclusively\nthrough final and binding arbitration rather than by litigation in court. Such binding arbitration will take place in Los Angeles\nCounty, California in accordance with California substantive and pro...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 30,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 5 of 6",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 31,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "10.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 32,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "width: 0.25in; text-align: left"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Miscellaneous.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 33,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "party",
+            "content": "This Agreement is the entire agreement\nbetween Aura and BetterSea concerning BetterSea’s services to Aura and this Agreement supersedes all other prior oral or\nwritten agreements between Aura and BetterSea with respect to the matters discussed herein. Neither BetterSea nor Aura (nor any\nperson acting or purporting to act on the respective parties’ behalf) have made any representation, warranty, covenant, or\nundertaking with respect to such matters except as specifically set forth in this Agreeme...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 34,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Very truly yours,",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 35,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "BetterSea, LLC",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 36,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 37,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 4%"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "/s/ Zvi Kurtzman",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 38,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 36%; border-bottom: Black 1.5pt solid"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Authorized Agent",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 39,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "BetterSea LLC Agreement (Aura Systems) June 19, 2017 Page 6 of 6",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 40,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "[ intentionally blank ]",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 41,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: center"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "APPROVED AND ACCEPTED:",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 42,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "AURA SYSTEMS INC.",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 43,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "A Delaware Corporation",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 44,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "/s/ Melvin Gagerman",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 45,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 40%; text-align: justify; border-bottom: Black 1.5pt solid"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Melvin Gagerman",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 46,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "CEO",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 47,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-bottom: 12pt; text-align: justify"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      }
+    ],
+    "statistics": {
+      "total_elements": 48,
+      "element_types": {
+        "metadata": 8,
+        "title": 1,
+        "paragraph": 19,
+        "table": 12,
+        "section": 1,
+        "party": 1,
+        "signature": 6
+      },
+      "structure_depth": 4
+    }
+  }
+}

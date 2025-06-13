@@ -26,8 +26,7 @@ MODULE_LOGGER_NAME = __name__
 
 
 class AbstractElementwiseProcessingStep(AbstractProcessingStep):
-    """
-    `AbstractElementwiseTransformStep` class is used to iterate over
+    """`AbstractElementwiseTransformStep` class is used to iterate over
     all Semantic Elements with or without applying transformations.
     """
 
@@ -55,8 +54,7 @@ class AbstractElementwiseProcessingStep(AbstractProcessingStep):
         element: AbstractSemanticElement,
         context: ElementProcessingContext,
     ) -> AbstractSemanticElement:
-        """
-        `_process_element` method is responsible for transforming a
+        """`_process_element` method is responsible for transforming a
         single semantic element into another.
 
         It can also be utilized to simply iterate over all

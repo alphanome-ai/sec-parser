@@ -28,7 +28,7 @@ class IgnoredElement(AbstractSemanticElement):
     pass
 
 
-def test_tree_argument_overloading():
+def test_tree_argument_overloading() -> None:
     # Arrange
     tree1 = new_node("p", "")
     tree2 = [tree1]
@@ -46,7 +46,7 @@ def test_tree_argument_overloading():
     assert result1 == result2 == result3 == result4
 
 
-def test_tree_argument_overloading_exceptions():
+def test_tree_argument_overloading_exceptions() -> None:
     # Arrange
     unexpected_element = 42
     unexpected_tree = [unexpected_element]
@@ -54,12 +54,12 @@ def test_tree_argument_overloading_exceptions():
     # Act & Assert
     with pytest.raises(TypeError):
         render(unexpected_element)
-    
+
     with pytest.raises(TypeError):
         render(unexpected_tree)
 
 
-def test_basic_render():
+def test_basic_render() -> None:
     # Arrange
     tree = get_tree()
 
@@ -73,7 +73,7 @@ def test_basic_render():
     )
 
 
-def test_render_with_pretty_option():
+def test_render_with_pretty_option() -> None:
     # Arrange
     tree = get_tree()
 
@@ -87,7 +87,7 @@ def test_render_with_pretty_option():
     )
 
 
-def test_render_with_pretty_and_verbose_option():
+def test_render_with_pretty_and_verbose_option() -> None:
     # Arrange
     tree = get_tree()
 
@@ -136,11 +136,10 @@ def get_tree():
     node5.add_child(node6)
     node1.add_child(node7)
 
-    tree = SemanticTree(
+    return SemanticTree(
         [
             node1,
             node2,
             node3,
         ],
     )
-    return tree

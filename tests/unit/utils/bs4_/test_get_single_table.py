@@ -18,7 +18,7 @@ from sec_parser.utils.bs4_.get_single_table import (
         ),
     ],
 )
-def test_table_errors(html: str, exception: type[Exception]):
+def test_table_errors(html: str, exception: type[Exception]) -> None:
     soup = bs4.BeautifulSoup(html, "lxml")
     root = next(soup.html.body.children)
 

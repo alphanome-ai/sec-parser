@@ -19,8 +19,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class TitleClassifier(AbstractElementwiseProcessingStep):
-    """
-    TitleClassifier elements into TitleElement instances by scanning a list
+    """TitleClassifier elements into TitleElement instances by scanning a list
     of semantic elements and replacing suitable candidates.
 
     The "_unique_styles_by_order" tuple:

@@ -1,0 +1,2167 @@
+{
+  "filename": "agreement_07.html",
+  "success": true,
+  "quality_score": 0.8999999999999999,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 152,
+    "has_title": true,
+    "detected_title": "Guaranty\nAgreement",
+    "element_count_by_type": {
+      "metadata": 1,
+      "paragraph": 23,
+      "title": 3,
+      "table": 44,
+      "section": 39,
+      "subsection": 28,
+      "signature": 14
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "Guaranty\nAgreement",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "Exhibit 10.5",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin: 0; text-align: right"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "E xecution Version",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin: 0; text-align: right"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "Guaranty\nAgreement",
+        "level": 0,
+        "tag_name": "p",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Nxt-ID,\nInc.,",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Fit\nPay, Inc., and",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "3D-ID,\nLLC",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "as\nGuarantors",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 6,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "and",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 7,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Sagard\nHoldings Manager LP , as Administrative Agent",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 8,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Dated\nas of May 24, 2018",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 9,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Table\nof Contents",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 10,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin-top: 0; margin-bottom: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Section",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 11,
+        "confidence": 0.8,
+        "attributes": {
+          "colspan": "2",
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Page",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 12,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: center; border-bottom: Black 1.5pt solid"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "Section 1.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "width: 10%; text-align: left; text-indent: 0; padding: 0; font: 10pt Times New Roman, Times, Serif"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Guaranty;\n    Limitation of Liability",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 14,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 84%; text-align: left; text-indent: 0; padding: 0; font: 10pt Times New Roman, Times, Serif"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 2.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Guaranty\n    Absolute",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 16,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 3.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 17,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Waivers\n    and Acknowledgments",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 18,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 4.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Subrogation",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 20,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 5.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Payments\n    Free and Clear of Taxes, Etc.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 22,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 6.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 23,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Representations\n    and Warranties",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 24,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 7.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 25,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Covenants",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 26,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 8.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 27,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Amendments,\n    Guaranty Supplements, Etc.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 28,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 9.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 29,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Notices,\n    Etc.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 30,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 10.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 31,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "No\n    Waiver; Remedies",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 32,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 11.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 33,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Right\n    of Setoff",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 34,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 12.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 35,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Indemnification",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 36,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 13.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 37,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Subordination",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 38,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 14.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 39,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Continuing\n    Guaranty; Assignments under the Credit Agreement",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 40,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 15.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 41,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Execution\n    in Counterparts",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 42,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 16.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 43,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Governing\n    Law; Jurisdiction; Waiver of Jury Trial, Etc.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 44,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Exhibit A - Guaranty Supplement",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 45,
+        "confidence": 0.8,
+        "attributes": {
+          "colspan": "2",
+          "style": "font: 10pt Times New Roman, Times, Serif; padding: 0; text-align: left; text-indent: 0"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "Guaranty\nAgreement (this “Agreement” )\ndated as of May 24, 2018, among Nxt-ID, Inc. , a Delaware corporation ( “Parent” ), Fit Pay, Inc ., a Delaware corporation, 3D-ID,\nLLC , a Florida limited liability company, and each of the subsidiaries of Parent that is a party hereto or may become party\nhereto pursuant to Section 8(b) below (collectively, the “Guarantors” ) and Sagard\nHoldings Manager LP ( “Sagard” ), as administrative agent (in such capacity, and together with any successors\nin such capa...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 47,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Reference\nis made to the Senior Secured Credit Agreement, dated as of the date hereof (as amended, restated, amended and restated, supplemented\nor otherwise modified from time to time, the “Credit Agreement” ), among LogicMark,\nLLC , a Delaware limited liability company, (the “Borrower” ), the Lenders party thereto from time to\ntime and Sagard, as Administrative Agent and Collateral Agent. Terms used herein without definition shall have the meanings assigned\nto such terms in the Credit Agreement...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 48,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "The\nLenders have agreed to make a Term Loan to the Borrower, pursuant to, and upon the terms and subject to the conditions specified\nin, the Credit Agreement. Each of the Guarantors acknowledges that it will derive substantial direct and indirect economic benefit\nfrom the Term Loan made by the Lenders. The obligation of the Lenders to make the Term Loan is conditioned on, among other things,\nthe execution and delivery by the Guarantors of a Guaranty Agreement in the form hereof. As consideration...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 49,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Now,\nTherefore , in consideration of the premises and\nin order to induce the Lenders to make the Term Loan under the Credit Agreement, each Guarantor, jointly and severally with each\nother Guarantor, hereby agrees as follows:",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 50,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "content": "Guaranty\nAgreement",
+        "level": 0,
+        "tag_name": "p",
+        "line_number": 46,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: small-caps bold 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "Section 1. Guaranty; Limitation of Liability . (a) Each Guarantor hereby absolutely, unconditionally and irrevocably guarantees,\njointly and severally, the punctual payment when due, whether at scheduled maturity or on any date of a required prepayment or\nby acceleration, demand or otherwise, of all Obligations of each other Loan Party now or hereafter existing under or in respect\nof the Loan Documents (including, without limitation, any extensions, modifications, amendments or renewals of any o...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 51,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) Each\nGuarantor, and by its acceptance of this Agreement, the Administrative Agent and each other Secured Party, hereby confirms that\nit is the intention of all such Persons that this Agreement and the Obligations of each Guarantor hereunder not constitute a fraudulent\ntransfer or conveyance for purposes of Bankruptcy Law (as hereinafter defined), the Uniform Fraudulent Conveyance Act, the Uniform\nFraudulent Transfer Act or any similar foreign, federal or state law to the extent applicable to...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 52,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Each\nGuarantor hereby unconditionally and irrevocably agrees that in the event any payment shall be required to be made to any Secured\nParty under this Agreement or any other guaranty, such Guarantor will contribute, to the extent necessary and to the maximum extent\npermitted by law, such amounts to each other Guarantor and each other guarantor so as to maximize (up to but not exceeding the\npayment amount required) the aggregate amount paid to the Secured Parties under or in respect of the L...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 53,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 2. Guaranty Absolute . Each Guarantor guarantees that the Guaranteed Obligations will be paid strictly in accordance with the\nterms of the Loan Documents, regardless of any applicable law, regulation or order now or hereafter in effect in any jurisdiction\naffecting any of such terms or the rights of any Secured Party with respect thereto. The obligations of each Guarantor under or\nin respect of this Agreement are independent of the Guaranteed Obligations or any other obligations of any o...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 54,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a)\tany\nlack of validity or enforceability of any Loan Document or any agreement or instrument relating thereto;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 55,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b)\tany\nchange in the time, manner or place of payment of, or in any other term of, all or any of the Guaranteed Obligations or any other\nObligations of any other Loan Party under or in respect of the Loan Documents, or any other amendment or waiver of or any consent\nto departure from any Loan Document, including, without limitation, any increase in the Guaranteed Obligations resulting from\nthe extension of additional credit to any Loan Party or any of its Subsidiaries or otherwise;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 56,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c)\tany\ntaking, exchange, release or non-perfection of any Collateral or any other collateral, or any taking, release or amendment or\nwaiver of, or consent to departure from, any other guaranty, for all or any of the Guaranteed Obligations;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 57,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d)\tany\nmanner of application of Collateral or any other collateral, or proceeds thereof, to all or any of the Guaranteed Obligations,\nor any manner of sale or other disposition of any Collateral or any other collateral for all or any of the Guaranteed Obligations\nor any other Obligations of any Loan Party under the Loan Documents or any other assets of any Loan Party or any of its Subsidiaries;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 58,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(e)\tany\nchange, restructuring or termination of the corporate structure or existence of any Loan Party or any of its Subsidiaries;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 59,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(f)\tany\nfailure of any Secured Party to disclose to any Loan Party any information relating to the business, condition (financial or otherwise),\noperations, performance, properties or prospects of any other Loan Party now or hereafter known to such Secured Party (each Guarantor\nwaiving any duty on the part of the Secured Parties to disclose such information);",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 60,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(g)\tthe\nfailure of any other Person to execute or deliver this Agreement, any Guaranty Supplement (as hereinafter defined) or any other\nguaranty or agreement or the release or reduction of liability of any Guarantor or other guarantor or surety with respect to the\nGuaranteed Obligations; or",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 61,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(h)\tany\nother circumstance or any existence of or reliance on any representation by any Secured Party that might otherwise constitute\na defense available to, or a discharge of, any Loan Party or any other guarantor or surety, other than irrevocable payment in\nfull in cash of the Obligations (other than (A) contingent indemnification and reimbursement obligations not yet accrued\nand payable and (B) any other obligation (including a guarantee) that is contingent in nature and that has not yet accr...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 62,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "paragraph",
+                "content": "This\nAgreement shall continue to be effective or be reinstated, as the case may be, if at any time any payment of any of the Guaranteed\nObligations is rescinded or must otherwise be returned by any Secured Party or any other Person upon the insolvency, bankruptcy\nor reorganization of the Borrower or any other Loan Party or otherwise, all as though such payment had not been made.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 63,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 3. Waivers and Acknowledgments . (a) Each Guarantor hereby unconditionally and irrevocably waives, to the extent permitted\nby applicable Laws, promptness, diligence, notice of acceptance, presentment, demand for performance, notice of nonperformance,\ndefault, acceleration, protest or dishonor and any other notice with respect to any of the Guaranteed Obligations and this Agreement\nand any requirement that any Secured Party protect, secure, perfect or insure any Lien or any property subje...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 64,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) Each\nGuarantor hereby unconditionally and irrevocably waives any right to revoke this Agreement and acknowledges that this Agreement\nis continuing in nature and applies to all Guaranteed Obligations, whether existing now or in the future.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 65,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Each\nGuarantor hereby unconditionally and irrevocably waives, to the extent permitted by applicable Laws, (i) any defense arising\nby reason of any claim or defense based upon an election of remedies by any Secured Party that in any manner impairs, reduces,\nreleases or otherwise adversely affects the subrogation, reimbursement, exoneration, contribution or indemnification rights of\nsuch Guarantor or other rights of such Guarantor to proceed against any of the other Loan Parties, any other gua...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 66,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d) Each\nGuarantor acknowledges that the Administrative Agent may, without notice to or demand upon such Guarantor and without affecting\nthe liability of such Guarantor under this Agreement, foreclose under any mortgage by nonjudicial sale (to the extent such sale\nis permitted by applicable Laws), and each Guarantor hereby waives, to the extent permitted by applicable Laws, any defense to\nthe recovery by the Administrative Agent and the other Secured Parties against such Guarantor of any deficie...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 67,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(e) Each\nGuarantor hereby unconditionally and irrevocably waives any duty on the part of any Secured Party to disclose to such Guarantor\nany matter, fact or thing relating to the business, condition (financial or otherwise), operations, performance, properties or\nprospects of any other Loan Party or any of its Subsidiaries now or hereafter known by such Secured Party.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 68,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(f) Each\nGuarantor acknowledges that it will receive substantial direct and indirect benefits from the financing arrangements contemplated\nby the Loan Documents and that the waivers set forth in Section 2 and this Section 3 are knowingly made\nin contemplation of such benefits.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 69,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 4. Subrogation . Until the Obligations are indefeasibly satisfied in full, each Guarantor hereby unconditionally and irrevocably\nagrees not to exercise any rights that it may now have or hereafter acquire against the Borrower, any other Loan Party or any\nother insider guarantor that arise from the existence, payment, performance or enforcement of such Guarantor’s Obligations\nunder or in respect of this Agreement or any other Loan Document, including, without limitation, any right of subr...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 70,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 5. Payments Free and Clear of Taxes, Etc . Any and all payments by or on account of any obligation of any Guarantor hereunder\nor under any other Loan Document shall be made free and clear of and without deduction or withholding for any Taxes or Other Taxes\non the same terms and to the same extent that payments by the Borrower are required to be made free and clear of Taxes and Other\nTaxes pursuant to Section 3.01 of the Credit Agreement.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 71,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 6. Representations and Warranties . Each Guarantor hereby makes each representation and warranty made in the Loan Documents\nby the Borrower with respect to such Guarantor and each Guarantor hereby further represents and warrants that such Guarantor has,\nindependently and without reliance upon any Secured Party and based on such documents and information as it has deemed appropriate,\nmade its own credit analysis and decision to enter into this Agreement and each other Loan Document to whi...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 72,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 7. Covenants . Each Guarantor covenants and agrees that, until the Termination Date has occurred, such Guarantor will perform\nand observe all of the terms, covenants and agreements set forth in the Loan Documents on its part to be performed or observed\nor that the Borrower has agreed in the Loan Documents to cause such Guarantor to perform or observe.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 73,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 8. Amendments, Guaranty Supplements, Etc . (a) No amendment or waiver of any provision of this Agreement and no consent to\nany departure by any Guarantor therefrom shall in any event be effective unless the same shall be in writing and signed by the\nAdministrative Agent, and shall otherwise be in accordance with Section 10.01 of the Credit Agreement.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 74,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) Pursuant\nto Section 6.11 of the Credit Agreement, certain Subsidiaries of Parent may be required, after the date hereof, to enter\ninto this Agreement as a Guarantor. Upon the execution and delivery by any such Person of a guaranty supplement in substantially\nthe form of Exhibit A hereto (each, a “Guaranty Supplement” ), (i) such Person shall be referred\nto as an “Additional Guarantor” and shall become and be a Guarantor hereunder, and each reference in this Agreement\nto a “Guarantor” shall a...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 75,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 9. Notices, Etc . All notices and other communications provided for hereunder shall be in writing (including facsimile transmission,\nand, to the extent permitted under Section 10.02(e) of the Credit Agreement, in an electronic medium as specified\ntherein) and mailed, faxed or otherwise delivered to it in accordance with Section 10.02 of the Credit Agreement,\nif to any Guarantor, addressed to it in care of the Borrower at the Borrower’s address specified in Schedule 10.02 of the Credit Ag...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 76,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 10. No Waiver; Remedies . No failure on the part of any Secured Party to exercise, and no delay in exercising, any right hereunder\nshall operate as a waiver thereof; nor shall any single or partial exercise of any right hereunder preclude any other or further\nexercise thereof or the exercise of any other right. The remedies herein provided are cumulative and not exclusive of any remedies\nprovided by law.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 77,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 11. Right of Setoff . Upon the occurrence and during the continuance of any Event of Default, each Agent, each Lender and each\nof their respective Affiliates is hereby authorized upon prior written notice to each applicable Guarantor at any time and from\ntime to time, to the fullest extent permitted by applicable law, to set off and apply any and all deposits (general or special,\ntime or demand, provisional or final) (other than in accounts used exclusively for payroll or employee benefi...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 78,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 12. Indemnification . (a) Without limitation on any other Obligations of any Guarantor or remedies of the Secured Parties\nunder this Agreement, each Guarantor shall, to the fullest extent permitted by law, indemnify and hold harmless each Agent-Related\nPerson, each Secured Party and each of their respective Affiliates, directors, officers, employees, counsel, agents, trustees,\nand attorneys-in-fact (collectively the “Indemnitees” ) from and against any and all liabilities, obligations,\nl...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 79,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) Each\nGuarantor hereby also agrees that none of the Indemnitees shall have any liability (whether direct or indirect, in contract, tort\nor otherwise) to any of the Guarantors or any of their respective Affiliates or any of their respective officers, directors, employees,\nagents and advisors, and each Guarantor hereby agrees not to assert any claim against any Indemnitee on any theory of liability,\nfor special, indirect, consequential or punitive damages 1 arising out of or otherwise relating ...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 80,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Without\nprejudice to the survival of any of the other agreements of any Guarantor under this Agreement or any of the other Loan Documents,\nthe agreements and obligations of each Guarantor contained in Section 1(a) (with respect to enforcement expenses), Section 2 (with respect to the last sentence thereof), Section 5 and this Section 12 shall\nsurvive the payment in full of the Guaranteed Obligations and all of the other amounts payable under this Agreement and the resignation\nor removal of a...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 81,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 13. Subordination . Each Guarantor hereby subordinates any and all debts, liabilities and other Obligations owed to such Guarantor\nby each other Loan Party (the “Subordinated Obligations” ) to the Guaranteed Obligations to the extent and in\nthe manner hereinafter set forth in this Section 13 :",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 82,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) Prohibited\nPayments, Etc . Except during the continuance of an Event of Default (including, without limitation, the commencement and continuation\nof any proceeding under any Bankruptcy Law relating to any other Loan Party), and subject to the terms of the Credit Agreement,\neach Guarantor may receive payments from any other Loan Party on account of the Subordinated Obligations. After the occurrence\nand during the continuance of any Event of Default (including, without limitation, the commence...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 83,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) Prior\nPayment of Guaranteed Obligations . In any proceeding under any Bankruptcy Law relating to any other Loan Party, each Guarantor\nagrees that the Secured Parties shall be entitled to receive payment in full in cash of all Guaranteed Obligations (including\nall interest and expenses accruing after the commencement of a proceeding under any Bankruptcy Law, whether or not constituting\nan allowed claim in such proceeding ( “Post Petition Interest” )) before such Guarantor receives payment of ...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 84,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "paragraph",
+                "content": "1 Note for Robinson: Loan Parties are already covered\nby the Credit Agreement in Section 10.05",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 85,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Turn-Over .\nAfter the occurrence and during the continuance of any Event of Default (including, without limitation, the commencement and continuation\nof any proceeding under any Bankruptcy Law relating to any other Loan Party), each Guarantor shall, if the Administrative Agent\nso requests, collect, enforce and receive payments on account of the Subordinated Obligations as trustee for the Secured Parties\nand deliver such payments to the Administrative Agent on account of the Guaranteed Obliga...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 86,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d) Administrative\nAgent Authorization . After the occurrence and during the continuance of any Event of Default (including, without limitation,\nthe commencement and continuation of any proceeding under any Bankruptcy Law relating to any other Loan Party), the Administrative\nAgent is authorized and empowered (but without any obligation to so do), (i) in the name of each Guarantor, to collect and\nenforce, and to submit claims in respect of, Subordinated Obligations and to apply any amounts receiv...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 87,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0 0 0 0.5in; text-align: justify; text-indent: 0.5in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 14. Continuing Guaranty; Assignments under the Credit Agreement . This Agreement is a continuing guaranty and shall (a) remain\nin full force and effect until the Termination Date, (b) be binding upon each Guarantor, its successors and assigns and (c) inure\nto the benefit of and be enforceable by the Secured Parties and their successors, transferees and permitted assigns. Without limiting\nthe generality of clause (c) of the immediately preceding sentence, any Secured Party may assign or o...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 88,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 15. Execution in Counterparts . This Agreement or any Guaranty Supplement and each amendment, waiver and consent with respect\nhereto may be executed in any number of counterparts and by different parties thereto in separate counterparts, each of which\nwhen so executed shall be deemed to be an original and all of which taken together shall constitute one and the same agreement.\nDelivery of an executed counterpart of a signature page to this Agreement or any Guaranty Supplement by facsimil...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 89,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 16. Governing Law; Jurisdiction; Waiver of Jury Trial, Etc . (a) This Agreement shall be governed by, and construed in\naccordance with, the laws of the State of New York.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 90,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) ANY\nLEGAL ACTION OR PROCEEDING ARISING UNDER THIS AGREEMENT OR IN ANY WAY CONNECTED WITH OR RELATED OR INCIDENTAL TO THE DEALINGS\nOF THE UNDERSIGNED, THE SECURED PARTIES OR THE AGENTS OR ANY OF THEM WITH RESPECT TO THIS AGREEMENT OR ANY OTHER LOAN DOCUMENT,\nOR THE TRANSACTIONS RELATED HERETO OR THERETO, IN EACH CASE WHETHER NOW EXISTING OR HEREAFTER ARISING, MAY BE BROUGHT IN THE COURTS\nOF THE STATE OF NEW YORK SITTING IN NEW YORK COUNTY OR OF THE UNITED STATES FOR THE SOUTHERN DISTRICT OF S...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 91,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) WAIVER\nOF RIGHT TO TRIAL BY JURY. EACH PARTY TO THIS AGREEMENT HEREBY EXPRESSLY WAIVES ANY RIGHT TO TRIAL BY JURY OF ANY CLAIM, DEMAND,\nACTION OR CAUSE OF ACTION ARISING UNDER THIS AGREEMENT OR ANY LOAN DOCUMENT OR IN ANY WAY CONNECTED WITH OR RELATED OR INCIDENTAL\nTO THE DEALINGS OF THE UNDERSIGNED, THE SECURED PARTIES, THE AGENTS OR ANY OF THEM WITH RESPECT TO THIS AGREEMENT OR ANY OTHER\nLOAN DOCUMENT, OR THE TRANSACTIONS RELATED HERETO OR THERETO, IN EACH CASE WHETHER NOW EXISTING OR HERE...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 92,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "signature",
+                "content": "[ Signature\npages follow. ]",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 93,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "In\nWitness Whereof , each Guarantor has caused this\nAgreement to be duly executed and delivered by its officer thereunto duly authorized as of the date first above written.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 94,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Nxt-ID, Inc . , as a Guarantor",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 95,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "2",
+                  "style": "padding: 0; text-align: left; font-variant: small-caps; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 96,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 97,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 98,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Fit Pay, Inc., as a Guarantor",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 99,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "2",
+                  "style": "padding: 0; text-align: left; font-variant: small-caps; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 100,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 101,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 102,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "3D-ID, LLC, as a Guarantor",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 103,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "2",
+                  "style": "padding: 0; text-align: left; font-variant: small-caps; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 104,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 105,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 106,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "signature\npage guaranty agreement",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 107,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin-top: 0pt; margin-bottom: 0pt; text-align: center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Acknowledged\n    and accepted:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 108,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "3",
+                  "style": "padding: 0; text-indent: 0; font: 10pt Times New Roman, Times, Serif"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Sagard\n    Holdings Manager LP , as Administrative Agent",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 109,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "3",
+                  "style": "padding: 0; text-indent: 0; font: 10pt Times New Roman, Times, Serif"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 110,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0; text-indent: 0; font: 10pt Times New Roman, Times, Serif"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Its\n    general partner, Sagard Holdings Manager GP Inc.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 111,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "2",
+                  "style": "padding: 0; text-indent: 0; font: 10pt Times New Roman, Times, Serif"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 112,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; font: 10pt Times New Roman, Times, Serif; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 113,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; font: 10pt Times New Roman, Times, Serif; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 114,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; font: 10pt Times New Roman, Times, Serif; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Signed\n    at Toronto, Canada",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 115,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "3",
+                  "style": "padding: 0; text-indent: 0; font: 10pt Times New Roman, Times, Serif"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "signature\npage guaranty agreement",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 116,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin-top: 0; text-align: center; margin-bottom: 0"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Exhibit A",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 117,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: right"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "To\nThe",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 118,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: right"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Supplement\nNo . _____ (this “Supplement” )\ndated as of __________, 20___, to the Guaranty Agreement dated as of May 24, 2018 (as the same may be amended, supplemented or\notherwise modified from time to time, the “Guaranty” ), among Nxt-ID,\nInc. , a Delaware corporation ( “Parent” ), Fit Pay, Inc. ,\na Delaware corporation, 3D-ID, LLC , a Florida limited liability company, and each\nof the subsidiaries of Parent that is a party thereto or may become party thereto pursuant to Section 8(b) of the\nGua...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 120,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "A. Reference\nis made to that certain Senior Secured Credit Agreement dated as of May 24, 2018 (as amended, restated, amended and restated,\nsupplemented or otherwise modified from time to time, the “Credit Agreement” ), among LogicMark,\nLLC , a Delaware limited liability company, (the “Borrower” ), the Lenders party thereto from time to\ntime and Sagard, as Administrative Agent and Collateral Agent.",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 121,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "B. The\nGuarantors have entered into the Guaranty in order to induce the Lenders to make the Term Loan. Pursuant to Section 6.11\nof the Credit Agreement and the requirements of the “Collateral and Guarantee Requirement” set forth in the Credit\nAgreement (and subject to certain limitations provided therein) (i) Parent and each Subsidiary of Parent (excluding the Borrower)\nexisting on the Closing Date and (ii) any Person that becomes a Subsidiary of Parent after the Closing Date is required to\nente...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 122,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Accordingly,\nthe Administrative Agent and the undersigned agree as follows:",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 123,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "content": "Guaranty\nAgreement",
+        "level": 0,
+        "tag_name": "p",
+        "line_number": 119,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: right"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "Section 1. Guaranty; Limitation of Liability . (a) The undersigned hereby absolutely, unconditionally and irrevocably guarantees\nthe punctual payment when due, whether at scheduled maturity or on the date of any required prepayment or by acceleration, demand\nor otherwise, of all Obligations of each other Loan Party now or hereafter existing under or in respect of the Loan Documents\n(including, without limitation, any extensions, modifications, substitutions, amendments or renewals of any or all ...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 124,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) The\nundersigned, and by its acceptance of this Guaranty Supplement, the Administrative Agent and each other Secured Party, hereby\nconfirms that it is the intention of all such Persons that this Guaranty Supplement, the Guaranty and the Obligations of the undersigned\nhereunder and thereunder not constitute a fraudulent transfer or conveyance for purposes of Bankruptcy Law, the Uniform Fraudulent\nConveyance Act, the Uniform Fraudulent Transfer Act or any similar foreign, federal or state law t...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 127,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) The\nundersigned hereby unconditionally and irrevocably agrees that in the event any payment shall be required to be made to any Secured\nParty under this Guaranty Supplement, the Guaranty or any other guaranty, the undersigned will contribute, to the extent necessary\nand to the maximum extent permitted by applicable law, such amounts to each other Guarantor and each other guarantor so as to\nmaximize (up to but not exceeding the payment amount required) the aggregate amount paid to the Secured...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 128,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "A- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 125,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top: 12pt; margin-bottom: 6pt; border-bottom: Black 1.5pt solid"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "A- 1",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 126,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 34%; text-align: center"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 2. Obligations Under the Guaranty . The undersigned hereby agrees, as of the date first above written, to be bound as a Guarantor\nby all of the terms and conditions of the Guaranty to the same extent as each of the other Guarantors thereunder. The undersigned\nfurther agrees, as of the date first above written, that each reference in the Guaranty to an “Additional Guarantor” or a “Guarantor” shall also mean and be a reference to the undersigned, and each reference in any other\nLoan Docume...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 129,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 3. Representations and Warranties . The undersigned hereby makes each representation and warranty set forth in Section 6\nof the Guaranty to the same extent as each other Guarantor.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 130,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 4. Delivery by Facsimile; Electronic Transmission . Delivery of an executed counterpart of a signature page to this Guaranty\nSupplement by facsimile or electronic transmission of a .pdf copy shall be effective as delivery of an original executed counterpart\nof this Guaranty Supplement.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 131,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "A- 2",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 132,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top: 12pt; margin-bottom: 6pt; border-bottom: Black 1.5pt solid"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "A- 2",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 133,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "width: 34%; text-align: center"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Section 5. Governing Law; Jurisdiction; Waiver of Jury Trial, Etc . (a) This Guaranty Supplement shall be governed by, and construed\nin accordance with, the laws of the State of New York.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 134,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) ANY\nLEGAL ACTION OR PROCEEDING ARISING UNDER THIS GUARANTY SUPPLEMENT OR IN ANY WAY CONNECTED WITH OR RELATED OR INCIDENTAL TO THE\nDEALINGS OF THE UNDERSIGNED, THE SECURED PARTIES OR THE AGENT OR ANY OF THEM WITH RESPECT TO THIS GUARANTY SUPPLEMENT OR ANY LOAN\nDOCUMENT, OR THE TRANSACTIONS RELATED HERETO OR THERETO, IN EACH CASE WHETHER NOW EXISTING OR HEREAFTER ARISING, MAY BE BROUGHT\nIN THE COURTS OF THE STATE OF NEW YORK SITTING IN NEW YORK COUNTY OR OF THE UNITED STATES FOR THE SOUTHERN ...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 135,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) WAIVER\nOF RIGHT TO TRIAL BY JURY. EACH PARTY TO THIS GUARANTY SUPPLEMENT HEREBY EXPRESSLY WAIVES ANY RIGHT TO TRIAL BY JURY OF ANY CLAIM,\nDEMAND, ACTION OR CAUSE OF ACTION ARISING UNDER THIS GUARANTY SUPPLEMENT OR ANY LOAN DOCUMENT OR IN ANY WAY CONNECTED WITH OR\nRELATED OR INCIDENTAL TO THE DEALINGS OF THE UNDERSIGNED, THE SECURED PARTIES, THE AGENTS OR ANY OF THEM WITH RESPECT TO THIS\nGUARANTY SUPPLEMENT OR ANY LOAN DOCUMENT, OR THE TRANSACTIONS RELATED HERETO OR THERETO, IN EACH CASE WHET...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 136,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "font: 10pt Times New Roman, Times, Serif; margin: 0; text-align: justify; text-indent: 1in"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "signature",
+                "content": "[ Signature\npages follow. ]",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 137,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin-top: 0; margin-bottom: 0; text-align: center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "A- 3",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 138,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top: 12pt; margin-bottom: 6pt; border-bottom: Black 1.5pt solid"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "A- 3",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 139,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "width: 34%; text-align: center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Very truly yours,",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 140,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "2",
+                  "style": "padding: 0; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "[ Name of Additional Guarantor ]",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 141,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "2",
+                  "style": "padding: 0; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 142,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 143,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 144,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "signature\npage supplement no. [  ] to guaranty agreement",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 145,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin-top: 0pt; margin-bottom: 0pt; text-align: center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Acknowledged and accepted:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 146,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "3",
+                  "style": "padding: 0; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Sagard Holdings Manager LP , as Administrative Agent",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 147,
+                "confidence": 0.8,
+                "attributes": {
+                  "colspan": "3",
+                  "style": "padding: 0 0 0 10pt; text-indent: -10pt"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 148,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 149,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 150,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "padding: 0 0 1.5pt; text-indent: 0"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "signature\npage supplement no. [  ] to guaranty agreement",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 151,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "font: 10pt Times New Roman, Times, Serif; margin: 0pt 0; text-align: center"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      }
+    ],
+    "statistics": {
+      "total_elements": 152,
+      "element_types": {
+        "metadata": 1,
+        "paragraph": 23,
+        "title": 3,
+        "table": 44,
+        "section": 39,
+        "subsection": 28,
+        "signature": 14
+      },
+      "structure_depth": 4
+    }
+  }
+}

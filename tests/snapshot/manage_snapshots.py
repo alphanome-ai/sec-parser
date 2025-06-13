@@ -296,7 +296,7 @@ def diff_lines(expected, actual, identifier, verbose):
     return missing_count, unexpected_count, diff_output.strip()
 
 
-def test_filings_exist(accession_numbers):
+def test_filings_exist(accession_numbers) -> None:
     accession_numbers = list(accession_numbers)
     assert accession_numbers, "No accession numbers found in YAML file."
 

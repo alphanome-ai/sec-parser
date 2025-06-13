@@ -7,7 +7,7 @@ from tests.utils import traverse_repository_for_filings
 DEFAULT_YAML = Path(__file__).parent / "selected-filings.yaml"
 
 
-def test_filings_exist():
+def test_filings_exist() -> None:
     with DEFAULT_YAML.open("r") as file:
         selected_filings = yaml.safe_load(file)
     accession_numbers = list(selected_filings["accession_numbers"])

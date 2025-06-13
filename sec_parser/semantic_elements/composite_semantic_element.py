@@ -15,8 +15,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class CompositeSemanticElement(AbstractSemanticElement):
-    """
-    CompositeSemanticElement acts as a container for other semantic elements,
+    """CompositeSemanticElement acts as a container for other semantic elements,
     especially for cases where a single HTML root tag wraps multiple elements.
     This ensures structural integrity and enables various features like
     semantic segmentation visualization, and debugging by comparison with the
@@ -106,8 +105,7 @@ class CompositeSemanticElement(AbstractSemanticElement):
         *,
         include_containers: bool | None = None,
     ) -> list[AbstractSemanticElement]:
-        """
-        Recursively flatten a list of AbstractSemanticElement objects.
+        """Recursively flatten a list of AbstractSemanticElement objects.
         For each CompositeSemanticElement encountered, its inner_elements
         are also recursively flattened. The 'include_containers' parameter controls
         whether the CompositeSemanticElement itself is included in the flattened list.

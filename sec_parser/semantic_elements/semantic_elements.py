@@ -16,8 +16,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class NotYetClassifiedElement(AbstractSemanticElement):
-    """
-    The NotYetClassifiedElement class represents an element whose type
+    """The NotYetClassifiedElement class represents an element whose type
     has not yet been determined. The parsing process aims to
     classify all instances of this class into more specific
     subclasses of AbstractSemanticElement.
@@ -25,8 +24,7 @@ class NotYetClassifiedElement(AbstractSemanticElement):
 
 
 class ErrorWhileProcessingElement(AbstractSemanticElement):
-    """
-    The ErrorWhileProcessingElement class represents an element that could
+    """The ErrorWhileProcessingElement class represents an element that could
     not be processed due to an error. This class is used to handle exceptions
     and errors during the parsing process.
     """
@@ -63,8 +61,7 @@ class ErrorWhileProcessingElement(AbstractSemanticElement):
 
 
 class IrrelevantElement(AbstractSemanticElement):
-    """
-    The IrrelevantElement class identifies elements in the parsed HTML that do not
+    """The IrrelevantElement class identifies elements in the parsed HTML that do not
     contribute to the content. These elements often include page separators, page
     numbers, and other non-content items. For instance, HTML tags without content
     like <p></p> or <div></div> are deemed irrelevant, often used in documents just
@@ -73,16 +70,14 @@ class IrrelevantElement(AbstractSemanticElement):
 
 
 class PageNumberElement(IrrelevantElement):
-    """
-    The PageNumberElement class represents a page number within a document.
+    """The PageNumberElement class represents a page number within a document.
     It is a subclass of the IrrelevantElement class and is used to identify
     and handle page numbers in the document.
     """
 
 
 class PageHeaderElement(IrrelevantElement):
-    """
-    The PageHeaderElement class represents a page header within a document.
+    """The PageHeaderElement class represents a page header within a document.
     It is a subclass of the IrrelevantElement class and is used to identify
     and handle page headers in the document, such as current section titles
     and company names.
@@ -90,16 +85,14 @@ class PageHeaderElement(IrrelevantElement):
 
 
 class EmptyElement(IrrelevantElement):
-    """
-    The EmptyElement class represents an HTML element that does not contain any content.
+    """The EmptyElement class represents an HTML element that does not contain any content.
     It is a subclass of the IrrelevantElement class and is used to identify and handle
     empty HTML tags in the document.
     """
 
 
 class IntroductorySectionElement(IrrelevantElement):
-    """
-    The IntroductorySectionElement class represents elements that are part of the
+    """The IntroductorySectionElement class represents elements that are part of the
     introductory sections of a document, such as title page, disclaimers or other
     preliminary information that precedes the main content of the document.
     This class is a subclass of the IrrelevantElement class, as these introductory
@@ -112,8 +105,7 @@ class TextElement(DictTextContentMixin, AbstractSemanticElement):
 
 
 class SupplementaryText(DictTextContentMixin, AbstractSemanticElement):
-    """
-    The SupplementaryText class captures various types of supplementary text
+    """The SupplementaryText class captures various types of supplementary text
     within a document, such as unit qualifiers, additional notes, and disclaimers.
 
     For example:

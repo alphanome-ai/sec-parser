@@ -1,0 +1,70 @@
+📄 agreement_03.html (Quality: 0.51)
+└── 📋 ALLETE Executive Annual Incentive Plan
+    ├── 🏷️ METADATA: Exhibit 10(a)1
+    ├── 🏷️ METADATA: Exhibit 10(a)1
+    ├── 📜 TITLE: ALLETE Executive Annual Incentive Plan
+    ├── 📝 PARAGRAPH: Form of Award
+    ├── 📝 PARAGRAPH: Effective 2018
+    ├── 📝 PARAGRAPH: [Eligible Executive Employees, except CEO and CFO]
+    ├── 📝 PARAGRAPH: Target Award Opportunity
+    ├── 📝 PARAGRAPH: Base Salary $ Times Award Opportunity (percent of base sa...
+    ├── 📝 PARAGRAPH: Base Salary $ Times Award Opportunity (percent of base sa...
+    ├── 📊 TABLE: Base Salary
+    ├── 📝 PARAGRAPH: Base Salary
+    ├── 📊 TABLE: Times
+    ├── 📝 PARAGRAPH: Times
+    ├── 📊 TABLE: Award Opportunity (percent of base salary)
+    ├── 📝 PARAGRAPH: Award Opportunity (percent of base salary)
+    ├── 📊 TABLE: Equals
+    ├── 📝 PARAGRAPH: Equals
+    ├── 📊 TABLE: Target Award
+    ├── 📝 PARAGRAPH: Target Award
+    ├── 📝 PARAGRAPH: Performance Levels and Award Amounts
+    ├── 📝 PARAGRAPH: Goal Performance Level Payout as Percent of Target Award ...
+    ├── 📝 PARAGRAPH: Goal Performance Level Payout as Percent of Target Award ...
+    ├── 📊 TABLE: Goal Performance Level
+    ├── 📝 PARAGRAPH: Goal Performance Level
+    ├── 📊 TABLE: Payout as Percent of Target Award
+    ├── 📝 PARAGRAPH: Payout as Percent of
+    ├── 📝 PARAGRAPH: Target Award
+    ├── 📊 TABLE: Award Amount
+    ├── 📝 PARAGRAPH: Award Amount
+    ├── 📊 TABLE: Superior
+    ├── 📝 PARAGRAPH: Superior
+    ├── 📊 TABLE: 200%
+    ├── 📝 PARAGRAPH: 200%
+    ├── 📊 TABLE: Target
+    ├── 📝 PARAGRAPH: Target
+    ├── 📊 TABLE: 100%
+    ├── 📝 PARAGRAPH: 100%
+    ├── 📊 TABLE: Threshold
+    ├── 📝 PARAGRAPH: Threshold
+    ├── 📊 TABLE: 45%
+    ├── 📝 PARAGRAPH: 45%
+    ├── 📊 TABLE: Below Threshold
+    ├── 📝 PARAGRAPH: Below Threshold
+    ├── 📝 PARAGRAPH: Goals
+    ├── 📝 PARAGRAPH: Goal Weighting Financial Goals Net Income 50% Cash from O...
+    ├── 📝 PARAGRAPH: Goal Weighting Financial Goals Net Income 50% Cash from O...
+    ├── 📊 TABLE: Goal
+    ├── 📝 PARAGRAPH: Goal
+    ├── 📊 TABLE: Weighting
+    ├── 📝 PARAGRAPH: Weighting
+    ├── 📊 TABLE: Financial Goals
+    ├── 📝 PARAGRAPH: Financial Goals
+    ├── 📊 TABLE: Net Income
+    ├── 📝 PARAGRAPH: Net Income
+    ├── 📊 TABLE: 50%
+    ├── 📝 PARAGRAPH: 50%
+    ├── 📊 TABLE: Cash from Operating Activities
+    ├── 📝 PARAGRAPH: Cash from Operating Activities
+    ├── 📊 TABLE: 25%
+    ├── 📝 PARAGRAPH: 25%
+    ├── 📊 TABLE: Strategic & Operational Positioning Goals
+    ├── 📝 PARAGRAPH: Strategic & Operational Positioning Goals
+    ├── 📊 TABLE: 25%
+    ├── 📝 PARAGRAPH: 25%
+    ├── 📊 TABLE: 100%
+    ├── 📝 PARAGRAPH: 100%
+    ├── 📝 PARAGRAPH: Compensation Subject to Compensation Recovery Policy
+    └── 📝 PARAGRAPH: Annual Incentive Plan Compensation is subject to recoupme...

@@ -59,7 +59,7 @@ class SemanticElement(AbstractSemanticElement):
     ],
     ids=[k[0] for k in tests],
 )
-def test_top_level_section_title_check(name, html, root_tag, expected):
+def test_top_level_section_title_check(name, html, root_tag, expected) -> None:
     # Arrange
     bs4_tag = bs4.BeautifulSoup(html, "lxml").find(root_tag)
     assert isinstance(bs4_tag, bs4.Tag)

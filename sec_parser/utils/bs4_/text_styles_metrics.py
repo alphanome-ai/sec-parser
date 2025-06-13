@@ -10,8 +10,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 def compute_text_styles_metrics(tag: Tag) -> dict[tuple[str, str], float]:
-    """
-    Compute the percentage distribution of various CSS styles within the
+    """Compute the percentage distribution of various CSS styles within the
     text content of a given HTML tag and its descendants.
 
     This function iterates through all the text nodes within the tag,
@@ -54,8 +53,7 @@ def compute_text_styles_metrics(tag: Tag) -> dict[tuple[str, str], float]:
 
 
 def _compute_effective_style(tag: Tag) -> dict[str, str]:
-    """
-    Aggregate the effective styles for a given tag by
+    """Aggregate the effective styles for a given tag by
     traversing up the parent hierarchy.
     """
     effective_styles: dict[str, str] = {}

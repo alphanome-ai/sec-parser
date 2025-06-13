@@ -1,5 +1,4 @@
-"""
-The semantic_elements subpackage provides abstractions
+"""The semantic_elements subpackage provides abstractions
 for meaningful units in SEC EDGAR documents. It converts
 raw HTML elements into representations that carry
 semantic significance.
@@ -29,19 +28,19 @@ from sec_parser.semantic_elements.title_element import TitleElement
 from sec_parser.semantic_elements.top_section_title import TopSectionTitle
 
 __all__ = [
-    "AbstractSemanticElement",
     "AbstractLevelElement",
-    "NotYetClassifiedElement",
-    "TopSectionTitle",
-    "TextElement",
-    "TitleElement",
+    "AbstractSemanticElement",
+    "CompositeSemanticElement",
+    "EmptyElement",
+    "ImageElement",
     "InvalidLevelError",
     "IrrelevantElement",
-    "ImageElement",
-    "TableElement",
-    "EmptyElement",
-    "CompositeSemanticElement",
-    "SupplementaryText",
+    "NotYetClassifiedElement",
     "PageHeaderElement",
     "PageNumberElement",
+    "SupplementaryText",
+    "TableElement",
+    "TextElement",
+    "TitleElement",
+    "TopSectionTitle",
 ]

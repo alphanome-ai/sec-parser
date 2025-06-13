@@ -32,9 +32,8 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
     ],
     ids=[v[0] for v in values],
 )
-def test_table_classifier(name, html_str, expected_elements):
-    """
-    test_table_classifier test checks that the TableClassifier can successfully
+def test_table_classifier(name, html_str, expected_elements) -> None:
+    """test_table_classifier test checks that the TableClassifier can successfully
     transform a list of semantic elements returned by `parse_initial_semantic_elements`.
     """
     # Arrange

@@ -1,169 +1,106 @@
-[tool.poetry]
+[project]
 name = "sec-parser"
 version = "0.58.1"
 description = "Parse SEC EDGAR HTML documents into a tree of elements that correspond to the visual structure of the document."
-authors = ["Alphanome.AI <info@alphanome.ai>"]
+authors = [
+    { name = "Alphanome.AI", email = "info@alphanome.ai" }
+]
 readme = "README.md"
-repository = "https://github.com/alphanome-ai/sec-parser"
-license = "MIT"
+requires-python = ">=3.9.6"
+
+license = { text = "MIT" }
+keywords = ["SEC", "EDGAR", "parser", "HTML", "finance"]
 classifiers = [
     "Topic :: Text Processing :: Markup :: HTML",
     "Topic :: Office/Business :: Financial",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Scientific/Engineering :: Information Analysis",
     "Topic :: Software Development :: Libraries :: Python Modules",
-    # NOTE: After changing Development Status here, also change it in the README.md badge
     "Development Status :: 4 - Beta",
     "Natural Language :: English",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Financial and Insurance Industry",
-    "Operating System :: OS Independent",
+    "Operating System :: OS Independent"
+]
+dependencies = [
+    "frozendict>=2.4.4,<3.0.0",
+    "lxml>=5.2.2,<6.0.0",
+    "cssutils>=2.11.1,<3.0.0",
+    "xxhash>=3.4.1,<4.0.0",
+    "loguru>=0.7.2,<1.0.0",
+    "tabulate>=0.9.0,<1.0.0",
+    "pandas>=2.2.2,<3.0.0",
+    "sec-downloader>=0.11.1,<1.0.0",
+    "beautifulsoup4>=4.13.4",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2.2,<9.0.0",
+    "mypy>=1.10.0,<2.0.0",
+    "commitizen>=3.27.0,<4.0.0",
+    "pre-commit>=3.7.1,<4.0.0",
+    "ruff>=0.1.6,<1.0.0",
+    "pytest-cov>=5.0.0,<6.0.0",
+    "types-requests>=2.32.0.20240602",
+    "types-beautifulsoup4>=4.12.0.20240511",
+    "streamlit==1.33.0",
+    "watchdog>=4.0.1,<5.0.0",
+    "streamlit-nested-layout>=0.1.1,<1.0.0",
+    "millify>=0.1.1,<1.0.0",
+    "streamlit-extras>=0.3.5,<1.0.0",
+    "ipykernel>=6.29.4,<7.0.0",
+    "pytest-watch>=4.2.0,<5.0.0",
+    "click>=8.1.7,<9.0.0",
+    "rich>=13.7.1,<14.0.0",
+    "hypothesis>=6.103.1,<7.0.0",
+    "execnb>=0.1.5,<1.0.0",
+    "pyyaml>=6.0.1,<7.0.0",
+    "pytest-xdist>=3.6.1,<4.0.0",
+    "sec-api-io>=0.0.17,<1.0.0",
+    "pyinstrument>=4.6.2,<5.0.0",
+    "pandas-stubs>=2.2.2.240603",
+    "tiktoken>=0.5.1,<1.0.0",
+    "streamlit-antd-components>=0.2.3,<1.0.0",
+    "notebook>=7.2.1,<8.0.0"
+]
 
-[tool.poetry.dependencies]
-python = ">=3.9,<3.9.7 || >3.9.7,<4.0"
-frozendict = "^2.4.4"
-beautifulsoup4 = "^4.12.3"
-lxml = "^5.2.2"
-cssutils = "^2.11.1"
-xxhash = "^3.4.1"
-loguru = "^0.7.2"
-tabulate = "^0.9.0"
-pandas = "^2.2.2"
-sec-downloader = "^0.11.1"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.2"
-mypy = "^1.10.0"
-commitizen = "^3.27.0"
-pre-commit = "^3.7.1"
-ruff = "^0.1.6"
-pytest-cov = "^5.0.0"
-types-requests = "^2.32.0.20240602"
-types-beautifulsoup4 = "^4.12.0.20240511"
-streamlit = "1.33.0"
-watchdog = "^4.0.1"
-streamlit-nested-layout = "^0.1.1"
-millify = "^0.1.1"
-streamlit-extras = "^0.3.5"
-ipykernel = "^6.29.4"
-pytest-watch = "^4.2.0"
-click = "^8.1.7"
-rich = "^13.7.1"
-hypothesis = "^6.103.1"
-execnb = "^0.1.5"
-pyyaml = "^6.0.1"
-pytest-xdist = "^3.6.1"
-sec-api-io = "^0.0.17"
-pyinstrument = "^4.6.2"
-pandas-stubs = "^2.2.2.240603"
-tiktoken = "^0.5.1"
-streamlit-antd-components = "^0.2.3"
-notebook = "^7.2.1"
-
-
-[tool.poetry.group.doc.dependencies]
-sphinx = "^7.3.7"
-sphinx-autobuild = "^2024.4.16"
-myst-parser = "^3.0.1"
-nbsphinx = "^0.9.3"
-sphinx-autoapi = "^3.1.1"
-sphinx-rtd-theme = "^2.0.0"
-jupyter-black = "^0.3.4"
-aiohttp = "^3.9.5"
-
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-tag_format = "$version"
-version_scheme = "pep440"
-version_provider = "poetry"
-update_changelog_on_bump = false
-major_version_zero = true
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
+doc = [
+    "sphinx>=7.3.7,<8.0.0",
+    "sphinx-autobuild>=2024.4.16,<2025.0.0",
+    "myst-parser>=3.0.1,<4.0.0",
+    "nbsphinx>=0.9.3,<1.0.0",
+    "sphinx-autoapi>=3.1.1,<4.0.0",
+    "sphinx-rtd-theme>=2.0.0,<3.0.0",
+    "jupyter-black>=0.3.4,<1.0.0",
+    "aiohttp>=3.9.5,<4.0.0"
+]
 
 [tool.coverage.run]
 source = ["sec_parser"]
 
-
 [tool.ruff]
 select = ["ALL"]
 ignore = [
-    "D100",    # Missing docstring in public module
-    "D101",    # Missing docstring in public class
-    "D102",    # Missing docstring in public method
-    "D103",    # Missing docstring in public function
-    "D104",    # Missing docstring in public package
-    "D105",    # Missing docstring in magic method
-    "D107",    # Missing docstring in __init__
-    "D203",    # 1 blank line required before class docstring
-    "D205",    # 1 blank line required between summary line and description
-    "D212",    # Multi-line docstring summary should start at the first line
-    "ANN101",  # Missing type annotation for self in method
-    "ANN102",  # Missing type annotation for cls in classmethod
-    "PLR0913", # Too many arguments to function call (> 5)
-    "E501",    # Line too long
-    "C901",    # Function is too complex
-    "PLR0912", # Too many branches (>= 12)
-    ]
-
-
-# Allow autofix for all enabled rules (when `--fix`) is provided.
+    "D100", "D101", "D102", "D103", "D104", "D105", "D107",
+    "D203", "D205", "D212",
+    "ANN101", "ANN102",
+    "PLR0913", "E501", "C901", "PLR0912"
+]
 fixable = ["ALL"]
 unfixable = []
-
-# Exclude a variety of commonly ignored directories.
 exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".git-rewrite",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".pytype",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "venv",
-    ]
-
-# Same as Black.
+    ".bzr", ".direnv", ".eggs", ".git", ".git-rewrite", ".hg", ".mypy_cache", ".nox",
+    ".pants.d", ".pytype", ".ruff_cache", ".svn", ".tox", ".venv", "__pypackages__",
+    "_build", "buck-out", "build", "dist", "node_modules", "venv"
+]
 line-length = 88
-
-# Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-
-# Python 3.9 is the minimum supported version.
 target-version = "py39"
 
-
 [tool.ruff.per-file-ignores]
-"tests/**/*.py" = [
-    "S101", # Allow asserts in tests
-    "ARG", # Unused function args are functionally relevant due to fixtures
-    "FBT", # Positional booleans in tests are acceptable, e.g. via @pytest.mark.parametrize()
-    "PLR2004", # Allow magic values in tests
-]
-
+"tests/**/*.py" = ["S101", "ARG", "FBT", "PLR2004"]
 
 [tool.ruff.mccabe]
-# Unlike Flake8, default to a complexity level of 10.
 max-complexity = 10

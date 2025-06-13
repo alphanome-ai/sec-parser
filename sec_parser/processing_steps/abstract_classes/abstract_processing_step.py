@@ -16,8 +16,7 @@ class AlreadyProcessedError(SecParserRuntimeError):
 
 
 class AbstractProcessingStep(ABC):
-    """
-    AbstractProcessingStep class for transforming a list of elements.
+    """AbstractProcessingStep class for transforming a list of elements.
     Chaining multiple steps together allows for complex transformations
     while keeping the code modular.
 
@@ -28,8 +27,7 @@ class AbstractProcessingStep(ABC):
     """
 
     def __init__(self) -> None:
-        """
-        Initialize the step. Sets `_transformed` to False to ensure
+        """Initialize the step. Sets `_transformed` to False to ensure
         that each instance is used for exactly one transformation operation.
         """
         self._already_processed = False
@@ -38,8 +36,7 @@ class AbstractProcessingStep(ABC):
         self,
         elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
-        """
-        Transform the list of semantic elements.
+        """Transform the list of semantic elements.
 
         Note: The `elements` argument could potentially be mutated for
         performance reasons.
@@ -61,8 +58,7 @@ class AbstractProcessingStep(ABC):
         self,
         elements: list[AbstractSemanticElement],
     ) -> list[AbstractSemanticElement]:
-        """
-        Implement the actual transformation logic in child classes.
+        """Implement the actual transformation logic in child classes.
 
         This method is intended to be overridden by child classes to provide specific
         transformation logic.

@@ -30,7 +30,7 @@ from tests.unit.semantic_elements.table_element._data_for_table_parser import (
     ],
     ids=[t[0] for t in tests],
 )
-def test_parse_as_df(name, html_input, expected_output):
+def test_parse_as_df(name, html_input, expected_output) -> None:
     # Arrange
     parser = TableParser(html_input)
     result_df = parser.parse_as_df()
@@ -40,10 +40,7 @@ def test_parse_as_df(name, html_input, expected_output):
         pd.testing.assert_frame_equal(result_df, expected_output)
     except AssertionError:
         logger.error(
-            "Tables are different:\nResult DataFrame:\n{}\nExpected DataFrame:\n{}".format(
-                result_df.to_json(),
-                expected_output.to_json(),
-            ),
+            f"Tables are different:\nResult DataFrame:\n{result_df.to_json()}\nExpected DataFrame:\n{expected_output.to_json()}",
         )
         raise
 
@@ -59,7 +56,7 @@ def test_parse_as_df(name, html_input, expected_output):
     ],
     ids=[t[0] for t in error_tests],
 )
-def test_parse_as_df_error(name, html_input, expected_error):
+def test_parse_as_df_error(name, html_input, expected_error) -> None:
     # Arrange
     parser = TableParser(html_input)
 

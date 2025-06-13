@@ -33,8 +33,7 @@ def update(
     accession_number: list[str],
     yaml_path: str,
 ) -> None:
-    """
-    Update a new end-to-end dataset snapshot based on the latest parser results.
+    """Update a new end-to-end dataset snapshot based on the latest parser results.
 
     This command will create a new snapshot in the directory specified by `data_dir`.
     The snapshot will contain data based on the current state of the sec-parser.
@@ -68,8 +67,7 @@ def verify(
     yaml_path: str,
     quiet: bool,
 ) -> None:
-    """
-    Verify the integrity and correctness of the end-to-end dataset snapshot.
+    """Verify the integrity and correctness of the end-to-end dataset snapshot.
 
     This command will check the snapshot stored in the directory specified
     by `data_dir`.
@@ -86,8 +84,7 @@ def verify(
             yaml_path,
             verbose=not quiet,
         )
-    except VerificationFailedError as e:
-        print(e)
+    except VerificationFailedError:
         sys.exit(1)
 
 

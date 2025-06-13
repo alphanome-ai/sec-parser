@@ -5,7 +5,7 @@ import pytest
 from sec_parser.utils.env_var_helpers import ValueNotSetError, get_value_or_env_var
 
 
-def test_get_value_with_value_provided():
+def test_get_value_with_value_provided() -> None:
     # Arrange
     value = "test_value"
     env_var = "UNUSED_ENV_VAR"
@@ -18,7 +18,7 @@ def test_get_value_with_value_provided():
 
 
 @patch.dict("os.environ", {"TEST_ENV_VAR": "env_test_value"})
-def test_get_value_with_env_var_set():
+def test_get_value_with_env_var_set() -> None:
     # Arrange
     env_var = "TEST_ENV_VAR"
 
@@ -30,7 +30,7 @@ def test_get_value_with_env_var_set():
 
 
 @patch.dict("os.environ", {}, clear=True)
-def test_get_value_with_default_provided():
+def test_get_value_with_default_provided() -> None:
     # Arrange
     env_var = "TEST_ENV_VAR"
     default = "default_test_value"
@@ -43,7 +43,7 @@ def test_get_value_with_default_provided():
 
 
 @patch.dict("os.environ", {}, clear=True)
-def test_get_value_raises_exception():
+def test_get_value_raises_exception() -> None:
     # Arrange
     env_var = "TEST_ENV_VAR"
 
@@ -55,7 +55,7 @@ def test_get_value_raises_exception():
         get_value_or_env_var(None, env_var)
 
 
-def test_get_value_with_empty_string():
+def test_get_value_with_empty_string() -> None:
     # Arrange
     value = "   "
     env_var = "UNUSED_ENV_VAR"

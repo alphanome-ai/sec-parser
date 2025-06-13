@@ -16,7 +16,7 @@ class MockElement(AbstractSemanticElement):
     pass
 
 
-def test_unwrap_elements_normal_with_include_containers():
+def test_unwrap_elements_normal_with_include_containers() -> None:
     # Arrange
     elem1 = MockElement(Mock())
     elem2 = MockElement(Mock())
@@ -30,7 +30,7 @@ def test_unwrap_elements_normal_with_include_containers():
     assert result == [composite, elem1, elem2]
 
 
-def test_unwrap_elements_normal_without_include_containers():
+def test_unwrap_elements_normal_without_include_containers() -> None:
     # Arrange
     elem1 = MockElement(Mock())
     elem2 = MockElement(Mock())
@@ -45,7 +45,7 @@ def test_unwrap_elements_normal_without_include_containers():
 
 
 # Test for empty list
-def test_unwrap_elements_empty_list():
+def test_unwrap_elements_empty_list() -> None:
     # Arrange
     elements = []
 
@@ -57,7 +57,7 @@ def test_unwrap_elements_empty_list():
 
 
 # Test for list with no CompositeSemanticElement
-def test_unwrap_elements_no_composite():
+def test_unwrap_elements_no_composite() -> None:
     # Arrange
     elem1 = MockElement(Mock())
     elem2 = MockElement(Mock())
@@ -71,7 +71,7 @@ def test_unwrap_elements_no_composite():
 
 
 # Test for nested CompositeSemanticElement
-def test_unwrap_elements_nested_composite():
+def test_unwrap_elements_nested_composite() -> None:
     # Arrange
     elem1 = MockElement(Mock())
     elem2 = MockElement(Mock())

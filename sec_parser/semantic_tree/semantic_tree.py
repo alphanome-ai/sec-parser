@@ -24,8 +24,7 @@ class SemanticTree:
 
     @property
     def nodes(self) -> Iterator[TreeNode]:
-        """
-        Get all nodes in the semantic tree. This includes the root nodes and all
+        """Get all nodes in the semantic tree. This includes the root nodes and all
         their descendants.
         """
         for node in self._root_nodes:
@@ -40,8 +39,7 @@ class SemanticTree:
         char_display_limit: int | None = None,
         verbose: bool = False,
     ) -> str:
-        """
-        Render the semantic tree as a human-readable string.
+        """Render the semantic tree as a human-readable string.
 
         Syntactic sugar for a more convenient usage of `render`.
         """
@@ -64,8 +62,7 @@ class SemanticTree:
         verbose: bool = False,
         line_limit: int | None = None,
     ) -> None:
-        """
-        Print the semantic tree as a human-readable string.
+        """Print the semantic tree as a human-readable string.
 
         Syntactic sugar for a more convenient usage of `render`.
         """

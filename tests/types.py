@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from pathlib import Path
+
     from sec_parser.processing_engine.html_tag import HtmlTag
     from sec_parser.semantic_elements.abstract_semantic_element import (
         AbstractSemanticElement,

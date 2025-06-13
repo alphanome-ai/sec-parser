@@ -1,0 +1,2893 @@
+{
+  "filename": "agreement_11.html",
+  "success": true,
+  "quality_score": 0.9142857142857143,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 205,
+    "has_title": true,
+    "detected_title": "FORWARD PURCHASE AGREEMENT",
+    "element_count_by_type": {
+      "metadata": 18,
+      "title": 1,
+      "party": 1,
+      "paragraph": 41,
+      "table": 37,
+      "subsection": 63,
+      "section": 27,
+      "signature": 17
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "FORWARD PURCHASE AGREEMENT",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "Exhibit 10.8",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "right"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "FORWARD PURCHASE AGREEMENT",
+        "level": 0,
+        "tag_name": "p",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "party",
+        "content": "This Forward Purchase Agreement (this “ Agreement ”) is entered into as of May 18, 2018, between Far Point Acquisition\nCorporation, a Delaware corporation (the “ Company ”), and Cloudbreak Aggregator LP, a Cayman Islands exempted limited partnership (the “ Purchaser ”).",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Recitals",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:24pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS,\nthe Company was formed for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses (a “ Business Combination ”);",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, the Company intends to file with the U.S. Securities and Exchange Commission (the “ SEC ”) a registration statement on Form S-1 (the “ Registration Statement ”) for its initial public offering (“ IPO ”) of 40,000,000 units (or 46,000,000 units if the IPO over-allotment option (the\n“ IPO Option ”) is exercised in full) (the “ Public Units ”), at a price of $10.00 per Public Unit, each Public Unit comprised of one share of the Company’s Class A common stock, par value $0.0001 per share\n(t...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, following the closing of the IPO (the “ IPO Closing ”), the Company will seek to identify and consummate a Business\nCombination;",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 6,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, the parties wish to enter into this Agreement, pursuant to which immediately prior to the closing of the\nCompany’s initial Business Combination (the “ Business Combination Closing ”), the Company shall issue and sell to the Purchaser, and the Purchaser shall purchase from the Company, on a private placement basis, the number of\nForward Purchase Shares (as defined below) determined pursuant to Section 1(a)(ii) on the terms and conditions set forth herein;",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 7,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, the Company’s Class B common stock, par value $0.0001 per share (the “ Class B Shares ”),\nare convertible into Class A Shares on the terms and conditions set forth in the Company’s certificate of incorporation, as it may be amended from time to time (the “ Charter ”);",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 8,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, in connection with the IPO, the Sponsor will purchase an aggregate of 6,700,000 warrants (or 7,500,000 warrants if the IPO Option is\nexercised in full) at a price of $1.50 per warrant, in a private placement that will close simultaneously with the IPO Closing (the “ Private Placement Warrants ”), each Private Placement Warrant exercisable for one Class A Share\nat $11.50 per share; and",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 9,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "WHEREAS, proceeds from the IPO and the sale of the Private Placement Warrants in an aggregate amount equal to the\ngross proceeds from the IPO will be deposited into a trust account for the benefit of the holders of the Public Shares (the “ Trust Account ”), as described in the Registration Statement.",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 10,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "NOW, THEREFORE, in consideration of the premises, representations, warranties and the mutual\ncovenants contained in this Agreement, and for other good and valuable consideration, the receipt, sufficiency and adequacy of which are hereby acknowledged, the parties hereto agree as follows: Agreement 1. Sale and Purchase. (a) Forward Purchase Shares . (i) The Company shall issue and sell to the Purchaser, and the Purchaser shall purchase from the Company, that number of Class A Shares\n(the “ Forward...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 11,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "page-break-before:always"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "NOW, THEREFORE, in consideration of the premises, representations, warranties and the mutual\ncovenants contained in this Agreement, and for other good and valuable consideration, the receipt, sufficiency and adequacy of which are hereby acknowledged, the parties hereto agree as follows:",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 12,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Agreement",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:24pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Sale and Purchase.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 14,
+        "confidence": 0.8,
+        "attributes": {
+          "align": "left",
+          "valign": "top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a) Forward Purchase Shares .",
+        "level": 2,
+        "tag_name": "p",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:6pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(i) The Company shall issue and sell to the Purchaser, and the Purchaser shall purchase from the Company, that number of Class A Shares\n(the “ Forward Purchase Shares ”), determined as set forth in clause 1(a)(ii), for a purchase price of $9.50 per Forward Purchase Share (the “ Forward Purchase Price ”).",
+        "level": 2,
+        "tag_name": "p",
+        "line_number": 16,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:6pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "(ii) Notwithstanding the foregoing, the Purchaser shall have no obligation hereunder unless the number of Class A Shares whose holders\nelect to have their Class A Shares redeemed in connection with the initial Business Combination and who do not revoke their elections prior to the Business Combination Closing exceeds 20,000,000 (such number of Class A Shares to be\nredeemed, the “ Redeemed Shares ”). The actual number of Forward Purchase Shares to be purchased shall be a number of shares (rounded...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 17,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "(iii) The Company shall require the Purchaser to purchase the Forward Purchase Shares by delivering notice to the Purchaser, at least five\n(5) Business Days before the Business Combination Closing (or such lesser number of days as the Purchaser may consent to in writing), specifying the number of Forward Purchase Shares the Purchaser is required to purchase, the date of the\nBusiness Combination Closing, the aggregate Forward Purchase Price and instructions for wiring the Forward Purchase Price. ...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 18,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b) Legends . Each book entry for the Forward Purchase Shares shall contain a notation, and each certificate (if any) evidencing\nthe Forward Purchase Shares shall be stamped or otherwise imprinted with a legend, in substantially the following form:",
+        "level": 2,
+        "tag_name": "p",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "“THE\nSECURITIES REPRESENTED HEREBY HAVE NOT BEEN REGISTERED UNDER THE SECURITIES ACT OF 1933, AS AMENDED, OR THE SECURITIES LAWS OF ANY STATE OR OTHER JURISDICTION, AND MAY NOT BE TRANSFERRED IN VIOLATION OF SUCH ACT AND LAWS. THE SALE, PLEDGE,\nHYPOTHECATION, OR TRANSFER OF THE SECURITIES REPRESENTED HEREBY ARE SUBJECT TO THE TERMS AND CONDITIONS OF A CERTAIN FORWARD PURCHASE AGREEMENT BY AND AMONG THE HOLDER AND THE COMPANY. COPIES OF SUCH AGREEMENT MAY BE OBTAINED UPON WRITTEN\nREQUEST TO THE S...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 20,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:6pt; margin-bottom:0pt; margin-left:8%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "(c) Legend Removal . If the Forward Purchase Shares are eligible to be sold without\nrestriction under, and without the Company being in compliance with the current public information requirements of, Rule 144 under the Securities Act of 1933, as amended (the “ Securities Act ”), then at the Purchaser’s request,\nthe Company will cause the Company’s transfer agent to remove the legend set forth in Section 1(b). In connection therewith, if required by the Company’s transfer agent, the Company will ...",
+        "level": 4,
+        "tag_name": "p",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "page-break-before:always"
+        },
+        "metadata": {
+          "merged_count": 2
+        },
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "2. Representations and Warranties of the Purchaser . The Purchaser represents and warrants to the Company as follows, as\nof the date hereof:",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 23,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) Organization and Power . The Purchaser is duly organized, validly existing, and in good standing under\nthe laws of the jurisdiction of its formation and has all requisite power and authority to carry on its business as presently conducted and as proposed to be conducted.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 24,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) Authorization . The Purchaser has full power and authority to enter into this Agreement. This Agreement, when executed and\ndelivered by the Purchaser, will constitute the valid and legally binding obligation of the Purchaser, enforceable against the Purchaser in accordance with its terms, except (i) as limited by applicable bankruptcy, insolvency, reorganization,\nmoratorium, fraudulent conveyance and any other laws of general application affecting enforcement of creditors’ rights generally, ...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 25,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Governmental Consents and Filings . No consent, approval, order or authorization of, or registration, qualification,\ndesignation, declaration or filing with, any federal, state or local governmental authority is required on the part of the Purchaser in connection with the consummation of the transactions contemplated by this Agreement.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 26,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d) Compliance with Other Instruments . The execution, delivery and performance by the Purchaser of this Agreement and the\nconsummation by the Purchaser of the transactions contemplated by this Agreement will not result in any violation or default (i) of any provisions of its organizational documents, (ii) of any instrument, judgment, order, writ or decree to\nwhich it is a party or by which it is bound, (iii) under any note, indenture or mortgage to which it is a party or by which it is bound, (...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 27,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(e) Purchase Entirely for Own Account . This Agreement is made with the Purchaser\nin reliance upon the Purchaser’s representation to the Company, which by the Purchaser’s execution of this Agreement, the Purchaser hereby confirms, that the Forward Purchase Shares to be acquired by the Purchaser will be acquired for\ninvestment for the Purchaser’s own account, not as a nominee or agent, and not with a view to the resale or distribution of any part thereof in violation of any state or federal secur...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 28,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(f) Disclosure of Information . The Purchaser has had an opportunity to discuss the Company’s business, management, financial\naffairs and the terms and conditions of the offering of the Forward Purchase Shares, as well as the terms of the Company’s proposed IPO, with the Company’s management.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 29,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "(g) Restricted Securities . The Purchaser understands that the offer and sale of the\nForward Purchase Shares to the Purchaser has not been, and will not be, registered under the Securities Act by reason of a specific exemption from the registration provisions of the Securities Act which depends upon, among other things, the bona\nfide nature of the investment intent and the accuracy of the Purchaser’s representations as expressed herein. The Purchaser understands that the Forward Purchase Shares ...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 30,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {
+                  "merged_count": 2
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(h) No Public Market . The Purchaser understands that no public market now exists for the Forward Purchase Shares, and that the\nCompany has made no assurances that a public market will ever exist for the Forward Purchase Shares.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 32,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) High Degree of\nRisk . The Purchaser understands that its agreement to purchase the Forward Purchase Shares involves a high degree of risk which could cause the Purchaser to lose all or part of its investment.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 33,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(j) Accredited Investor . The Purchaser is an accredited investor as defined in Rule 501(a) of Regulation D promulgated\nunder the Securities Act.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 34,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(k) No General Solicitation . Neither the Purchaser, nor, to its knowledge, any of its officers,\ndirectors, employees, agents, stockholders or partners has either directly or indirectly, including, through a broker or finder (i) engaged in any general solicitation, or (ii) published any advertisement in connection with the offer and\nsale of the Forward Purchase Shares.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 35,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(l) Residence . The Purchaser’s principal place of business is the office or offices\nlocated at the address of the Purchaser set forth on the signature page hereof.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 36,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(m) Adequacy of Financing . The Purchaser\nhas available to it sufficient funds to satisfy its obligations under this Agreement.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 37,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(n) Affiliation of Certain FINRA\nMembers . The Purchaser is neither a person associated nor affiliated with Credit Suisse Securities (USA) LLC or Merrill Lynch, Pierce, Fenner & Smith Incorporated or, to its actual knowledge, any other member of the Financial\nIndustry Regulatory Authority (“ FINRA ”) that is participating in the IPO.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 38,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(o) No Other Representations and\nWarranties; Non-Reliance . Except for the specific representations and warranties contained in this Section 2 and in any certificate or agreement delivered pursuant hereto, none of the Purchaser\nnor any person acting on behalf of the Purchaser nor any of the Purchaser’s affiliates (the “ Purchaser Parties ”) has made, makes or shall be deemed to make any other express or implied representation or warranty with respect to\nthe Purchaser and this offering, and the P...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 39,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "3. Representations and Warranties of the Company . The Company represents and warrants to the\nPurchaser as follows: (a) Organization and Corporate Power . The Company is a corporation duly incorporated and validly\nexisting and in good standing as a corporation under the laws of the State of Delaware and has all requisite corporate power and authority to carry on its business as presently conducted and as proposed to be conducted. The Company has no\nsubsidiaries. (b) Capitalization . On the date ...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 40,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "3. Representations and Warranties of the Company . The Company represents and warrants to the\nPurchaser as follows:",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 41,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) Organization and Corporate Power . The Company is a corporation duly incorporated and validly\nexisting and in good standing as a corporation under the laws of the State of Delaware and has all requisite corporate power and authority to carry on its business as presently conducted and as proposed to be conducted. The Company has no\nsubsidiaries.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 42,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) Capitalization . On the date hereof, the authorized share capital of the Company consists of:",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 43,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) 200,000,000 Class A Shares, none of which are issued and outstanding.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 44,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "paragraph",
+                "content": "(ii) 20,000,000 Class B Shares, 11,500,000 of which are issued and outstanding as of the date hereof, and 1,500,000 of which are subject\nto forfeiture pursuant to Section 5(b) hereof. All of the outstanding Class B Shares have been duly authorized, are fully paid and nonassessable and were issued in compliance with all applicable federal and state securities laws.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 45,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "(iii) 1,000,000 preferred shares, none of which are issued and outstanding.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 46,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "Prior to the closing of the IPO, the Company expects to amend and restate its certificate of incorporation to increase its authorized share\ncapital to the following:",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 47,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:13%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(i)",
+            "level": 2,
+            "tag_name": "td",
+            "line_number": 48,
+            "confidence": 0.8,
+            "attributes": {
+              "width": "5%",
+              "valign": "top",
+              "align": "left"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "table",
+                "content": "400,000,000 Class A Shares.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 49,
+                "confidence": 0.8,
+                "attributes": {
+                  "align": "left",
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "(ii)",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 50,
+                "confidence": 0.8,
+                "attributes": {
+                  "width": "5%",
+                  "valign": "top",
+                  "align": "left"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "50,000,000 Class B Shares.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 51,
+                "confidence": 0.8,
+                "attributes": {
+                  "align": "left",
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "(iii)",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 52,
+                "confidence": 0.8,
+                "attributes": {
+                  "width": "5%",
+                  "valign": "top",
+                  "align": "left"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "1,000,000 preferred shares.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 53,
+                "confidence": 0.8,
+                "attributes": {
+                  "align": "left",
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Authorization . All corporate action required to\nbe taken by the Company’s Board of Directors and stockholders in order to authorize the Company to enter into this Agreement, and to issue the Forward Purchase Shares at the Forward Closing has been taken or will be taken prior to the Forward\nClosing. All action on the part of the stockholders, directors and officers of the Company necessary for the execution and delivery of this Agreement, the performance of all obligations of the Company und...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 54,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d) Valid Issuance of Securities . The Forward Purchase Shares, when issued, sold and delivered in accordance with the terms and for the consideration set forth in this Agreement will be validly issued, fully paid and nonassessable, as\napplicable, and free of all preemptive or similar rights, taxes, liens, encumbrances and charges with respect to the issue thereof and restrictions on transfer other than restrictions on transfer specified under this Agreement, applicable state and\nfederal securit...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 55,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(e) Governmental Consents\nand Filings . Assuming the accuracy of the representations made by the Purchaser in this Agreement, no consent, approval, order or authorization of, or registration, qualification, designation, declaration or filing with, any federal, state\nor local governmental authority is required on the part of the Company in connection with the consummation of the transactions contemplated by this Agreement, except for filings pursuant to applicable state securities laws, if any, a...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 56,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(f) Compliance with Other Instruments . The execution, delivery and performance of this Agreement and\nthe consummation of the transactions contemplated by this Agreement will not result in any violation or default",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 57,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "(i) of any provisions of the Charter, bylaws or other governing documents of the Company, (ii) of any instrument, judgment, order, writ or decree to which the Company is a party or by\nwhich it is bound, (iii) under any note, indenture or mortgage to which the Company is a party or by which it is bound, (iv) under any lease, agreement, contract or purchase order to which the Company is a party or by which it is bound or\n(v) of any provision of federal or state statute, rule or regulation applicab...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 58,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(i) of any provisions of the Charter, bylaws or other governing documents of the Company, (ii) of any instrument, judgment, order, writ or decree to which the Company is a party or by\nwhich it is bound, (iii) under any note, indenture or mortgage to which the Company is a party or by which it is bound, (iv) under any lease, agreement, contract or purchase order to which the Company is a party or by which it is bound or\n(v) of any provision of federal or state statute, rule or regulation applicab...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 59,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(g) Operations . As of the date hereof, the Company has not conducted, and prior to the IPO\nClosing the Company will not conduct, any operations other than organizational activities and activities in connection with offerings of its securities.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 60,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(h) No General Solicitation . Neither the Company, nor any of its officers, directors, employees, agents or stockholders has either\ndirectly or indirectly, including, through a broker or finder (i) engaged in any general solicitation, or (ii) published any advertisement in connection with the offer and sale of the Forward Purchase Shares.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 61,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) No Other Representations and Warranties; Non-Reliance . Except for the specific\nrepresentations and warranties contained in this Section 3 and in any certificate or agreement delivered pursuant hereto, none of the Company Parties has made, makes or shall be deemed to make any other express or implied representation or\nwarranty with respect to the Company, this offering, the proposed IPO or a potential Business Combination, and the Company Parties disclaim any such representation or warranty....",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 62,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "4. Registration Rights; Transfer",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 63,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) Registration . The Company agrees that the Purchaser shall have the registration rights set forth on Exhibit A.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 64,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:6pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) Indemnification .",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 65,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) The Company shall, notwithstanding any termination of this Agreement, indemnify, defend and hold harmless the Purchaser (to the extent a\nseller under the Forward Registration Statement), the officers, directors, agents, partners, members, managers, stockholders, affiliates, employees and investment advisers of the Purchaser, each person who controls the Purchaser (within the meaning\nof Section 15 of the Securities Act or Section 20 of the Securities Exchange Act of 1934, as amended (the “ Ex...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 66,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "(ii) The Purchaser shall, severally and not jointly with any other selling stockholder named in\nthe Forward Registration Statement, indemnify and hold harmless the Company, its directors, officers, agents and employees, each person who controls the Company (within the meaning of Section 15 of the Securities Act and Section 20 of the\nExchange Act), and the directors, officers, agents or employees of such controlling persons, to the fullest extent permitted by applicable law, from and against all ...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 67,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {
+                  "merged_count": 2
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Transfer . This Agreement and all of the Purchaser’s rights and obligations\nhereunder (including the Purchaser’s obligation to purchase the Forward Purchase Shares) may be transferred or assigned, at any time and from time to time, to one or more third parties (each such transferee, a\n“ Transferee ”). Upon any such assignment:",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 69,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) the applicable Transferee shall execute a signature page to this\nAgreement, substantially in the form of the Purchaser’s signature page hereto (the “ Joinder Agreement ”), which shall reflect the number of Forward Purchase Shares to be purchased by such Transferee (the “ Transferee\nSecurities ”), and, upon such execution, such Transferee shall have all the same rights and obligations of the Purchaser hereunder with respect to the Transferee Securities, and references herein to the “ Purchase...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 70,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "signature",
+                "content": "(ii) upon a\nTransferee’s execution and delivery of a Joinder Agreement, the number of Forward Purchase Shares to be purchased by the Purchaser hereunder shall be reduced by the total number of Forward Purchase Shares to be purchased by the applicable\nTransferee pursuant to the applicable Joinder Agreement, which reduction shall be evidenced by the Purchaser and the Company amending Schedule A to this Agreement to reflect each transfer and updating the “Number of Forward Purchase\nShares”, and “Ag...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 71,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "5. Additional Agreements and Acknowledgements of the Purchaser .",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 72,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) Trust Account .",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 73,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:6pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i)\nThe Purchaser hereby acknowledges that it is aware that the Company will establish the Trust Account for the benefit of its public stockholders upon the IPO Closing. The Purchaser, for itself and its affiliates, hereby agrees that it has no\nright, title, interest or claim of any kind in or to any monies held in the Trust Account, or any other asset of the Company as a result of any liquidation of the Company, except for redemption and liquidation rights, if any, the Purchaser may have\nin res...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 74,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "paragraph",
+                "content": "(ii) The Purchaser hereby agrees that it shall have no right of set-off or any right, title, interest or claim of any kind (“ Claim ”) to, or to any monies in, the Trust Account, and hereby irrevocably waives any Claim to, or to any monies in, the Trust Account\nthat it may have now or in the future, except for redemption",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 75,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "metadata",
+                "content": "and liquidation rights, if any, the Purchaser may have in respect of any Public Shares held by it. In the event the Purchaser has any Claim against the Company under this Agreement, the\nPurchaser shall pursue such Claim solely against the Company and its assets outside the Trust Account and not against the property or any monies in the Trust Account, except for redemption and liquidation rights, if any, the Purchaser may have in\nrespect of any Public Shares held by it. (b) Voting . The Purchaser...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 76,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "and liquidation rights, if any, the Purchaser may have in respect of any Public Shares held by it. In the event the Purchaser has any Claim against the Company under this Agreement, the\nPurchaser shall pursue such Claim solely against the Company and its assets outside the Trust Account and not against the property or any monies in the Trust Account, except for redemption and liquidation rights, if any, the Purchaser may have in\nrespect of any Public Shares held by it.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 77,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(b) Voting . The Purchaser hereby agrees that if the Company seeks stockholder\napproval of a proposed Business Combination, then in connection with such proposed Business Combination, the Purchaser shall vote any Class A Shares owned by it in favor of any proposed Business Combination.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 78,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) No Short Sales . The Purchaser hereby agrees that neither it, nor any person or entity acting on its behalf or pursuant to any\nunderstanding with it, will engage in any Short Sales with respect to securities of the Company prior to the Business Combination Closing. For purposes of this Section, “ Short Sales ” shall include, without limitation, all\n“ short sales ” as defined in Rule 200 promulgated under Regulation SHO under the Exchange Act, and all types of direct and indirect stock pledge...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 79,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "6. Listing . The Company will use commercially reasonable efforts to effect and maintain the listing of the\nClass A Shares and Public Warrants on the New York Stock Exchange (or another national securities exchange).",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 80,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "7. Forward Closing\nConditions .",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 81,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) The obligation of the Purchaser to purchase the Forward Purchase Shares at the Forward Closing under this Agreement\nshall be subject to the fulfillment, at or prior to the Forward Closing of each of the following conditions, any of which, to the extent permitted by applicable laws, may be waived by the Purchaser:",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 82,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:6pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) The Business Combination shall be consummated substantially concurrently with the purchase of the Forward Purchase Shares;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 83,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "paragraph",
+                "content": "(ii) The Company shall have delivered to the Purchaser a certificate evidencing the Company’s good standing as a Delaware corporation;",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 84,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "(iii) The representations and warranties of the Company set forth in Section 3 of this Agreement shall have been true and correct as\nof the date hereof and shall be true and correct as of the Forward Closing Date, as applicable, with the same effect as though such representations and warranties had been made on and as of such date (other than any such representation or warranty\nthat is made by its terms as of a specified date, which shall be true and correct as of such specified date), except wh...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 85,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "(iv) The Company shall have performed, satisfied and complied in all material respects with\nthe covenants, agreements and conditions required by this Agreement to be performed, satisfied or complied with by the Company at or prior to the Forward Closing; and",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 86,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(v) No order, writ, judgment, injunction, decree, determination, or award shall have been entered by or with any governmental, regulatory, or\nadministrative authority or any court, tribunal, or judicial, or arbitral body, and no other legal restraint or prohibition shall be in effect, preventing the purchase by the Purchaser of the Forward Purchase Shares.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 87,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) The obligation of the Company to sell the Forward Purchase Shares at the Forward Closing under this Agreement shall be subject to the\nfulfillment, at or prior to the Forward Closing of each of the following conditions, any of which, to the extent permitted by applicable laws, may be waived by the Company:",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 88,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) The Business Combination shall be consummated substantially concurrently with the purchase of the Forward Purchase Shares;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 89,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "(ii) The representations and warranties of the Purchaser set forth in Section 2 of this\nAgreement shall have been true and correct as of the date hereof and shall be true and correct as of the Forward Closing Date, as applicable, with the same effect as though such representations and warranties had been made on and as of such date\n(other than any such representation or warranty that is made by its terms as of a specified date, which shall be true and correct as of such specified date), except w...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 90,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {
+                  "merged_count": 2
+                },
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "(iii) The Purchaser shall have performed,\nsatisfied and complied in all material respects with the covenants, agreements and conditions required by this Agreement to be performed, satisfied or complied with by the Purchaser at or prior to the Forward Closing; and",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 92,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "(iv) No order, writ, judgment, injunction, decree, determination, or award shall have been entered by or with any governmental, regulatory, or\nadministrative authority or any court, tribunal, or judicial, or arbitral body, and no other legal restraint or prohibition shall be in effect, preventing the purchase by the Purchaser of the Forward Purchase Shares.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 93,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "8. Termination . This Agreement may be terminated at any time prior to the Forward Closing:",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 94,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) by mutual written consent of the Company and the Purchaser;",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 95,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b) automatically:",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 96,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) if the\nIPO is not consummated on or prior to September 30, 2018; or",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 97,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "signature",
+                "content": "(ii) if the Business Combination is not consummated within 24 months\nfrom the IPO Closing (or 27 months from the closing of this offering if the Company has executed a letter of intent, agreement in principle or definitive agreement for an initial business combination within 24 months from the closing of the IPO but\nhas not completed the initial business combination within such 24 month period).",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 98,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:8%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "In the event of any termination of this Agreement\npursuant to this Section 8, the Forward Purchase Price (and interest thereon, if any), if previously paid, and all Purchaser’s funds paid in connection herewith shall be promptly returned to the Purchaser, and thereafter this Agreement\nshall forthwith become null and void and have no effect, without any liability on the part of the Purchaser or the Company and their respective directors, officers, employees, partners, managers, members, or stockh...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 99,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "9. General Provisions .",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 100,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a) Notices . All notices and other communications given or made pursuant to this Agreement shall be in writing and shall be deemed\neffectively given upon the earlier of actual receipt, or (a) personal delivery to the party to be notified, (b) when sent, if sent by electronic mail or facsimile (if any) during normal business hours of the recipient, and if not sent\nduring normal business hours, then on the recipient’s next Business Day, (c) five (5) Business Days after having been sent by registe...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 101,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:6pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "All communications to the Purchaser shall be sent to the Purchaser’s address as set forth on\nthe signature page hereof, or to such e-mail address, facsimile number (if any) or address as subsequently modified by written notice given in accordance with this Section 9(a). (b) No Finder’s\nFees . Each party represents that it neither is nor will be obligated for any finder’s fee or commission in connection with this transaction. The Purchaser agrees to indemnify and to hold harmless the Company from...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 102,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "All communications to the Purchaser shall be sent to the Purchaser’s address as set forth on\nthe signature page hereof, or to such e-mail address, facsimile number (if any) or address as subsequently modified by written notice given in accordance with this",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 103,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Section 9(a).",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 104,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(b) No Finder’s\nFees . Each party represents that it neither is nor will be obligated for any finder’s fee or commission in connection with this transaction. The Purchaser agrees to indemnify and to hold harmless the Company from any liability for\nany commission or compensation in the nature of a finder’s or broker’s fee arising out of this transaction (and the costs and expenses of defending against such liability or asserted liability) for which the Purchaser or any of its\nofficers, employees ...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 105,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(c) Survival of Representations and Warranties . All of the representations and warranties contained herein shall survive the\nForward Closing.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 106,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(d) Entire Agreement . This Agreement, together with any documents, instruments and writings that are\ndelivered pursuant hereto or referenced herein, constitute the entire agreement and understanding of the parties hereto in respect of its subject matter and supersedes all prior understandings, agreements, or representations by or among the parties\nhereto, written or oral, to the extent they relate in any way to the subject matter hereof or the transactions contemplated hereby.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 107,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(e) Successors . All of the terms, agreements, covenants, representations, warranties, and conditions of this Agreement are binding upon, and inure to the benefit of and are enforceable by, the parties hereto and their respective\nsuccessors. Nothing in this Agreement, express or implied, is intended to confer upon any party other than the parties hereto or their respective successors and assigns any rights, remedies, obligations or liabilities under or by reason of this\nAgreement, except as expr...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 108,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(f) Assignments . Except as otherwise specifically provided herein,\nno party hereto may assign either this Agreement or any of its rights, interests, or obligations hereunder without the prior written approval of the other party.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 109,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(g) Counterparts . This Agreement may be executed in two or more counterparts, each of which will be deemed an original but all of\nwhich together will constitute one and the same instrument.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 110,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(h) Headings . The section headings contained in this Agreement\nare inserted for convenience only and will not affect in any way the meaning or interpretation of this Agreement.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 111,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(i) Governing\nLaw . This Agreement, the entire relationship of the parties hereto, and any litigation between the parties (whether grounded in contract, tort, statute, law or equity) shall be governed by, construed in accordance with, and interpreted\npursuant to the laws of the State of New York, without giving effect to its choice of laws principles.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 112,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(j) Jurisdiction . The\nparties (i) hereby irrevocably and unconditionally submit to the jurisdiction of the state courts of New York and to the jurisdiction of the United States District Court for the Southern District of New York for the purpose of any suit, action\nor other proceeding arising out of or based upon this Agreement, (b) agree not to commence any suit, action or other proceeding arising out of or based upon this Agreement except in state courts of New York or the United States Distr...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 113,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(k) Waiver of Jury Trial . The parties hereto hereby waive\nany right to a jury trial in connection with any litigation pursuant to this Agreement and the transactions contemplated hereby.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 114,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "metadata",
+                "content": "(l) Amendments . This Agreement may not be amended, modified or waived as to any\nparticular provision, except with the prior written consent of the Company and the Purchaser. (m) Severability . The\nprovisions of this Agreement will be deemed severable and the invalidity or unenforceability of any provision will not affect the validity or enforceability of the other provisions hereof; provided that if any provision of this\nAgreement, as applied to any party hereto or to any circumstance, is adjud...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 115,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(l) Amendments . This Agreement may not be amended, modified or waived as to any\nparticular provision, except with the prior written consent of the Company and the Purchaser.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 116,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(m) Severability . The\nprovisions of this Agreement will be deemed severable and the invalidity or unenforceability of any provision will not affect the validity or enforceability of the other provisions hereof; provided that if any provision of this\nAgreement, as applied to any party hereto or to any circumstance, is adjudged by a governmental authority, arbitrator, or mediator not to be enforceable in accordance with its terms, the parties hereto agree that the governmental authority,\narbitrat...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 117,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(n) Expenses . Each of the Company and the Purchaser will bear its own costs\nand expenses incurred in connection with the preparation, execution and performance of this Agreement and the consummation of the transactions contemplated hereby, including all fees and expenses of agents, representatives, financial advisors, legal\ncounsel and accountants. The Company shall be responsible for the fees of its transfer agent, stamp taxes and all The Depository Trust Company fees associated with the issua...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 118,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(o) Construction . The parties hereto have participated jointly in the negotiation and drafting of this Agreement. If an\nambiguity or question of intent or interpretation arises, this Agreement will be construed as if drafted jointly by the parties hereto and no presumption or burden of proof will arise favoring or disfavoring any party hereto because of the\nauthorship of any provision of this Agreement. Any reference to any federal, state, local, or foreign law will be deemed also to refer to l...",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 119,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(p) Waiver . No waiver by any party hereto of any default, misrepresentation,\nor breach of warranty or covenant hereunder, whether intentional or not, may be deemed to extend to any prior or subsequent default, misrepresentation, or breach of warranty or covenant hereunder or affect in any way any rights arising because of\nany prior or subsequent occurrence.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 120,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(q) Specific Performance . The Purchaser agrees that irreparable damage may occur in the\nevent any provision of this Agreement was not performed by the Purchaser in accordance with the terms hereof and that the Company shall be entitled to seek specific performance of the terms hereof, in addition to any other remedy at law or equity.",
+            "level": 2,
+            "tag_name": "p",
+            "line_number": 121,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "signature",
+                "content": "[Signature page follows]",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 122,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+                  "align": "center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "metadata",
+                "content": "IN WITNESS WHEREOF , the undersigned have executed this Agreement to be effective as of the\ndate first set forth above. PURCHASER: CLOUDBREAK AGGREGATOR LP By: THIRD POINT LLC, its investment manager By: /s/ Josh Targoff Name: Josh Targoff Title:  Chief Operating Officer and General Counsel Address for Notices: 390 Park Avenue New York, NY 10022 COMPANY: FAR POINT ACQUISITION CORPORATION By: /s/ David Bonanno Name: David Bonanno Title: Chief Financial Officer [Signature Page to Forward Purchase ...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 123,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "IN WITNESS WHEREOF , the undersigned have executed this Agreement to be effective as of the\ndate first set forth above.",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 124,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "PURCHASER:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 125,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top",
+                  "colspan": "3"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "CLOUDBREAK AGGREGATOR LP",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 126,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top",
+                  "colspan": "3"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 127,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "THIRD POINT LLC, its investment manager",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 128,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 129,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "/s/ Josh Targoff",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 130,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "/s/ Josh Targoff",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 131,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:1pt; border-bottom:1px solid #000000; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Name: Josh Targoff",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 132,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Title:  Chief Operating Officer and General Counsel",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 133,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "Title:  Chief Operating Officer and",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 134,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "General Counsel",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 135,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:1pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Address for Notices:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 136,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "390 Park Avenue New York, NY 10022",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 137,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top",
+                  "colspan": "5"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "390 Park Avenue",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 138,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "New York, NY 10022",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 139,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:1pt; border-bottom:1px solid #000000; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "COMPANY:",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 140,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "FAR POINT ACQUISITION CORPORATION",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 141,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:12pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 142,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "/s/ David Bonanno",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 143,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "/s/ David Bonanno",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 144,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:1pt; border-bottom:1px solid #000000; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name: David Bonanno",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 145,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title: Chief Financial Officer",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 146,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "[Signature Page to Forward Purchase Agreement]",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 147,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:24pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+                  "align": "center"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "metadata",
+                "content": "TO BE EXECUTED UPON ANY ASSIGNMENT AND/OR REVISION IN ACCORDANCE WITH THIS AGREEMENT TO “NUMBER OF\nFORWARD PURCHASE SHARES” AND “PURCHASE PRICE FOR FORWARD PURCHASE SHARES” SET FORTH ABOVE: Number of Forward Purchase Shares and\nPurchase Price for Forward Purchase Shares as of         , 201[    ], accepted and agreed to as of this      day of         ,\n201[    ]. [                   \n                                         \n                     ]. By:\n[                                         \n ...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 148,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "signature",
+                "content": "TO BE EXECUTED UPON ANY ASSIGNMENT AND/OR REVISION IN ACCORDANCE WITH THIS AGREEMENT TO “NUMBER OF\nFORWARD PURCHASE SHARES” AND “PURCHASE PRICE FOR FORWARD PURCHASE SHARES” SET FORTH ABOVE:",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 149,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "Number of Forward Purchase Shares and\nPurchase Price for Forward Purchase Shares as of         , 201[    ], accepted and agreed to as of this      day of         ,\n201[    ].",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 150,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:6pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "[                   \n                                         \n                     ].",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 151,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "[                   \n                                         \n                     ].",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 152,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": " margin-top:0pt ; margin-bottom:0pt; margin-left:1.00em; text-indent:-1.00em; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:\n[                                         \n                                 ]",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 153,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "By:\n[                                         \n                                 ]",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 154,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": " margin-top:0pt ; margin-bottom:0pt; margin-left:1.00em; text-indent:-1.00em; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 155,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "/s/",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 156,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "/s/",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 157,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:1pt; border-bottom:1px solid #000000; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 158,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 159,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "FAR POINT ACQUISITION CORPORATION",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 160,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top",
+                  "colspan": "3"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "By:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 161,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "top"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "/s/",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 162,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "/s/",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 163,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "margin-top:0pt; margin-bottom:1pt; border-bottom:1px solid #000000; font-size:10pt; font-family:Times New Roman"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Name:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 164,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "table",
+                "content": "Title:",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 165,
+                "confidence": 0.8,
+                "attributes": {
+                  "valign": "bottom"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "metadata",
+                "content": "SCHEDULE A SCHEDULE OF TRANSFERS OF FORWARD PURCHASE SHARES The following transfers of a portion of the original number of Forward Purchase Shares have been made: Date of Transfer Transferee Number of Forward Purchase Shares Transferred Purchaser Revised Forward Purchase Share Amount TO BE EXECUTED UPON ANY ASSIGNMENT OR FINAL DETERMINATION OF FORWARD PURCHASE SHARES: Schedule A as of            , 201[    ], accepted and agreed to as of\nthis    day of        , 201[    ] by: [                    ...",
+                "level": 4,
+                "tag_name": "p",
+                "line_number": 166,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "page-break-before:always"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "SCHEDULE A",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 167,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "SCHEDULE OF TRANSFERS OF FORWARD PURCHASE SHARES",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 168,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "The following transfers of a portion of the original number of Forward Purchase Shares have been made:",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 169,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:6pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Date of Transfer",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 170,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "bottom",
+              "nowrap": "",
+              "style": "border-bottom:1.00pt solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Date of Transfer",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 171,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:1pt; font-size:8pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Transferee",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 172,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "bottom",
+              "align": "center",
+              "style": "border-bottom:1.00pt solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Transferee",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 173,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:1pt; font-size:8pt; font-family:Times New Roman",
+              "align": "center"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Number of Forward Purchase Shares Transferred",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 174,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "bottom",
+              "align": "center",
+              "style": "border-bottom:1.00pt solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Number of Forward Purchase Shares Transferred",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 175,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:1pt; font-size:8pt; font-family:Times New Roman",
+              "align": "center"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Purchaser Revised Forward Purchase Share Amount",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 176,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "bottom",
+              "align": "center",
+              "style": "border-bottom:1.00pt solid #000000"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Purchaser Revised Forward Purchase Share Amount",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 177,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:1pt; font-size:8pt; font-family:Times New Roman",
+              "align": "center"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "TO BE EXECUTED UPON ANY ASSIGNMENT OR FINAL DETERMINATION OF FORWARD PURCHASE SHARES:",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 178,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:18pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Schedule A as of            , 201[    ], accepted and agreed to as of\nthis    day of        , 201[    ] by:",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 179,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:6pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "[                                    \n                                         \n       ]",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 180,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top",
+              "colspan": "3"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "FAR POINT ACQUISITION CORPORATION",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 181,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "By:\n[                                         \n                                       ]",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 182,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top",
+              "colspan": "3"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 183,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 184,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Name:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 185,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Name:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 186,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Title:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 187,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Title:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 188,
+            "confidence": 0.8,
+            "attributes": {
+              "valign": "top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "EXHIBIT A REGISTRATION RIGHTS 1.\nWithin thirty (30) days after the Business Combination Closing, the Company shall use commercially reasonable efforts (i) to file a registration statement on Form S-3 for a secondary offering\n(including any successor registration statement covering the resale of the Registrable Securities a “ Forward Registration Statement ”) of (x) the Forward Purchase Shares and (y) any other equity security of the Company\nissued or issuable with respect to the securities refer...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 189,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "page-break-before:always"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "EXHIBIT A",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 190,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+          "align": "center"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "REGISTRATION RIGHTS",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 191,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:0pt; margin-bottom:0pt; font-size:10pt; font-family:Times New Roman",
+              "align": "center"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "1.\nWithin thirty (30) days after the Business Combination Closing, the Company shall use commercially reasonable efforts (i) to file a registration statement on Form S-3 for a secondary offering\n(including any successor registration statement covering the resale of the Registrable Securities a “ Forward Registration Statement ”) of (x) the Forward Purchase Shares and (y) any other equity security of the Company\nissued or issuable with respect to the securities referred to in clause (x) by way of...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 192,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "2. In the event the Company is prohibited by applicable rule, regulation or interpretation by the staff (“ Staff ”) of the\nSecurities and Exchange Commission (“ SEC ”) from registering all of the Registrable Securities on a Forward Registration Statement or the Staff requires that the Purchaser be specifically identified as an “underwriter” in\norder to permit such registration statement to become effective, and such Purchaser does not consent in writing to being so named as an underwriter in suc...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 193,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "3. If at any time the Company proposes to file a\nregistration statement (a “ Registration Statement ”) on its own behalf, or on behalf of any other Persons who have registration rights (“ Other Holders ”), relating to an underwritten offering of ordinary shares, or\nengage in an Underwritten Takedown off an existing registration statement (a “ Company Offering ”), then the Company will provide the Purchaser and any Transferee who has purchased at least 2,000,000 Forward Purchase Shares\n(collectiv...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 194,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "metadata",
+            "content": "4. Within three (3) Business Days after receiving notice from the Sponsor of its request to\neffect an underwritten public offering pursuant to the Sponsor’s registration rights (an “ Underwritten Takedown ”), the Company shall provide written notice thereof to the Purchaser. Within five (5) Business Days after\nreceiving notice of the Underwritten Takedown, the Purchaser may make a written request to the Company to include some or all of Purchaser’s Registrable Securities in the prospectus supple...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 195,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "page-break-before:always"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "4. Within three (3) Business Days after receiving notice from the Sponsor of its request to\neffect an underwritten public offering pursuant to the Sponsor’s registration rights (an “ Underwritten Takedown ”), the Company shall provide written notice thereof to the Purchaser. Within five (5) Business Days after\nreceiving notice of the Underwritten Takedown, the Purchaser may make a written request to the Company to include some or all of Purchaser’s Registrable Securities in the prospectus supple...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 196,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "5. The determination of whether any\noffering of Registrable Securities pursuant to a Forward Registration Statement or an Underwritten Takedown Prospectus will be an underwritten offering shall be made in the sole discretion of the Sponsor, after consultation with the Company, and the\nSponsor shall have the right, after consultation with the Company, to determine the plan of distribution, including the price at which the Registrable Securities are to be sold and the underwriting commissions, dis...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 197,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "6. In connection with any underwritten offering, the Company shall enter into such customary agreements and take all such other actions in\nconnection therewith (including those requested by the Purchaser) in order to facilitate the disposition of such Registrable Securities as are reasonably necessary or required, and in such connection enter into a customary underwriting agreement\nthat provides for customary opinions, comfort letters and officer’s certificates and other customary deliverables.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 198,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "7. The Company\nshall pay all fees and expenses incident to the performance of or compliance with its obligation to prepare, file and maintain each Forward Registration Statement (including the fees of its counsel and accountants). The Company shall also pay all\nRegistration Expenses. For purposes of this paragraph 7, “ Registration Expenses ” shall mean the out-of-pocket expenses of a Company Offering or\nUnderwritten Shelf Takedown, including, without limitation, the following: (i) all registrat...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 199,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "metadata",
+            "content": "8. The Company may suspend the use of a prospectus included in a Forward Registration Statement\nby furnishing to the Purchaser a written notice (“ Suspension Notice ”) stating that in the good faith judgment of the Company, it would be either (i) prohibited by the Company’s insider trading policy (as if the Purchaser\nwere covered by such policy) or (ii) materially detrimental to the Company and its stockholders for such prospectus to be used at such time. The Company’s right to suspend the use o...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 200,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "page-break-before:always"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "8. The Company may suspend the use of a prospectus included in a Forward Registration Statement\nby furnishing to the Purchaser a written notice (“ Suspension Notice ”) stating that in the good faith judgment of the Company, it would be either (i) prohibited by the Company’s insider trading policy (as if the Purchaser\nwere covered by such policy) or (ii) materially detrimental to the Company and its stockholders for such prospectus to be used at such time. The Company’s right to suspend the use o...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 201,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "metadata",
+            "content": "9. The Purchaser agrees that, except as\nrequired by applicable law, the Purchaser shall treat as confidential the receipt of any Suspension Notice (provided that in no event shall such notice contain any material nonpublic information of the Company) hereunder and shall not disclose or\nuse the information contained in such Suspension Notice without the prior written consent of the Company until such time as the information contained therein is or becomes public, other than as a result of disclos...",
+            "level": 4,
+            "tag_name": "p",
+            "line_number": 202,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "10. The Company’s obligation under paragraph 1 of this Exhibit A is subject to\nthe Purchaser’s furnishing to the Company in writing such information as the Company reasonably requests for use in connection with a Forward Registration Statement, the related prospectus, or any amendment or supplement thereto.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 203,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "12. The Company shall cooperate with the Purchaser, to the extent the Registrable Securities become freely tradable, to facilitate the timely\npreparation and delivery of certificates (not bearing any restrictive legend) representing the Registrable Securities to be offered pursuant to a Forward Registration Statement and enable such certificates to be in such denominations or amounts, as\nthe case may be, as the Purchaser may reasonably request and registered in such names as the Purchaser may re...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 204,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "13. If requested by\nthe Purchaser, the Company shall as soon as practicable, subject to any Suspension Notice, (i) incorporate in a prospectus supplement or post-effective amendment such information as the Purchaser reasonably requests to be included therein\nrelating to the sale and distribution of Registrable Securities, including, without limitation, information with respect to the number of Registrable Securities being offered or sold, the purchase price being paid therefor and any other term...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 205,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "14. As long as the Purchaser shall own Registrable Securities, the Company, at all times while it shall be reporting under the Securities\nExchange Act of 1934, as amended, covenants to file all reports required to be filed by the Company after the date hereof pursuant to Sections 13(a) or 15(d) of the Securities Exchange Act of 1934, as amended, and to promptly furnish the Purchaser\nwith true and complete copies of all such filings, unless filed through the SEC’s EDGAR system. The Company furthe...",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 206,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:12pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "15. The rights, duties and obligations of the Purchaser under this Exhibit A may be assigned or\ndelegated by the Purchaser in conjunction with and to the extent of any permitted transfer or assignment of Registrable Securities by the Purchaser to any permitted transferee or assignee.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 207,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "page-break-before:always"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "15. The rights, duties and obligations of the Purchaser under this Exhibit A may be assigned or\ndelegated by the Purchaser in conjunction with and to the extent of any permitted transfer or assignment of Registrable Securities by the Purchaser to any permitted transferee or assignee.",
+        "level": 1,
+        "tag_name": "p",
+        "line_number": 208,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "margin-top:0pt; margin-bottom:0pt; text-indent:4%; font-size:10pt; font-family:Times New Roman"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      }
+    ],
+    "statistics": {
+      "total_elements": 205,
+      "element_types": {
+        "metadata": 18,
+        "title": 1,
+        "party": 1,
+        "paragraph": 41,
+        "table": 37,
+        "subsection": 63,
+        "section": 27,
+        "signature": 17
+      },
+      "structure_depth": 4
+    }
+  }
+}

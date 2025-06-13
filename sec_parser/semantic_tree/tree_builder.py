@@ -19,8 +19,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class TreeBuilder:
-    """
-    Builds a semantic tree from a list of semantic elements.
+    """Builds a semantic tree from a list of semantic elements.
 
     Why Use a Tree Structure?
     =========================

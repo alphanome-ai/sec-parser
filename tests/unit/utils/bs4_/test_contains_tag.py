@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from sec_parser.utils.bs4_.contains_tag import contains_tag
 
 
-def test_contains_tag_with_self_included():
+def test_contains_tag_with_self_included() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -17,7 +17,7 @@ def test_contains_tag_with_self_included():
     assert result is True, "Expected True when tag is included in search"
 
 
-def test_contains_tag_with_self_excluded():
+def test_contains_tag_with_self_excluded() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -31,7 +31,7 @@ def test_contains_tag_with_self_excluded():
     assert result is False, "Expected False when tag is excluded from search"
 
 
-def test_contains_tag_with_descendant_tag():
+def test_contains_tag_with_descendant_tag() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -44,7 +44,7 @@ def test_contains_tag_with_descendant_tag():
     assert result is True, "Expected True when descendant tag is present"
 
 
-def test_contains_tag_without_descendant_tag():
+def test_contains_tag_without_descendant_tag() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -58,7 +58,7 @@ def test_contains_tag_without_descendant_tag():
     assert result is False, "Expected False when descendant tag is not present"
 
 
-def test_contains_tag_with_empty_tag():
+def test_contains_tag_with_empty_tag() -> None:
     # Arrange
     html = "<div></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -72,7 +72,7 @@ def test_contains_tag_with_empty_tag():
     assert result is False, "Expected False when tag is empty"
 
 
-def test_contains_tag_with_nonexistent_tag():
+def test_contains_tag_with_nonexistent_tag() -> None:
     # Arrange
     html = "<div><p><b>text</b></p></div>"
     soup = BeautifulSoup(html, "lxml")

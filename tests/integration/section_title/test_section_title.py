@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 from typing import Callable
 
@@ -17,7 +16,7 @@ def test_bold_titles(
     html_path: Path,
     check: Callable[[AbstractSemanticElementParser, Path, pytest.FixtureRequest], None],
     request: pytest.FixtureRequest,
-):
+) -> None:
     def get_steps():
         return [k for k in Edgar10QParser().get_default_steps() if True]
 

@@ -4,12 +4,10 @@ import shutil
 import warnings
 from collections import Counter
 from pathlib import Path
-from pprint import pprint
 from typing import Callable
 
 import pytest
 
-from sec_parser.semantic_elements.semantic_elements import IrrelevantElement
 from tests.accuracy.structure_and_text.utils import elements_to_dicts
 from tests.types import ParsedDocumentComponents, Report
 from tests.utils import all_reports, load_yaml_filter
@@ -35,7 +33,7 @@ def test_structure_and_text(
     report: Report,
     parse: Callable[[Report], ParsedDocumentComponents],
     request: pytest.FixtureRequest,
-):
+) -> None:
     # STEP: Skip the test if the report is not in the list of filings to test
     if report.accession_number not in expected_to_pass_accession_numbers:
         pytest.skip(f"Skipping {report.identifier}")
@@ -168,11 +166,9 @@ def test_structure_and_text(
     }
     if request.config.getoption("--with-verbose-output"):
         if summary_output_contents["missing_elements"]:
-            print(f"[{report.identifier}] Missing elements:")
-            pprint(summary_output_contents["missing_elements"], width=200)
+            pass
         if summary_output_contents["unexpected_elements"]:
-            print(f"[{report.identifier}] Unexpected elements:")
-            pprint(summary_output_contents["unexpected_elements"], width=200)
+            pass
     if request.config.getoption("--with-saved-output"):
         with report.actual_structure_and_text.open("w") as f:
             json.dump(actual_json, f, sort_keys=True, indent=4, ensure_ascii=False)

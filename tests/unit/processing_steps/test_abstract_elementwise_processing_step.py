@@ -57,7 +57,7 @@ class ErrorRaisingProcessingStep(AbstractElementwiseProcessingStep):
         raise SecParserError
 
 
-def test_process_skip_due_to_types_to_process():
+def test_process_skip_due_to_types_to_process() -> None:
     """Test that elements not in 'types_to_process' are skipped."""
     # Arrange
     types_to_process: set[type[AbstractSemanticElement]] = {MockSemanticElement}
@@ -74,7 +74,7 @@ def test_process_skip_due_to_types_to_process():
     assert processed_elements == input_elements
 
 
-def test_process_skip_due_to_types_to_exclude():
+def test_process_skip_due_to_types_to_exclude() -> None:
     """Test that elements in 'types_to_exclude' are skipped."""
     # Arrange
     types_to_exclude: set[type[AbstractSemanticElement]] = {MockSemanticElement}
@@ -91,9 +91,8 @@ def test_process_skip_due_to_types_to_exclude():
     assert processed_elements == input_elements
 
 
-def test_process_skip_due_to_both_types_to_process_and_types_to_exclude():
-    """
-    Test that elements not in 'types_to_process' are skipped and
+def test_process_skip_due_to_both_types_to_process_and_types_to_exclude() -> None:
+    """Test that elements not in 'types_to_process' are skipped and
     then the elements in 'types_to_exclude' are also skipped.
     """
     # Arrange
@@ -120,7 +119,7 @@ def test_process_skip_due_to_both_types_to_process_and_types_to_exclude():
     assert processed_elements == input_elements
 
 
-def test_error_while_processing_element():
+def test_error_while_processing_element() -> None:
     # Arrange
     input_elements = [MockSemanticElement(Mock())]
     step = ErrorRaisingProcessingStep()
@@ -134,7 +133,7 @@ def test_error_while_processing_element():
     assert isinstance(elements[0], ErrorWhileProcessingElement)
 
 
-def test_error_while_processing_element_with_no_error():
+def test_error_while_processing_element_with_no_error() -> None:
     # Arrange
     element = MockSemanticElement(Mock())
 

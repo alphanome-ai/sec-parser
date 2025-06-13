@@ -4,19 +4,18 @@ from unittest.mock import Mock
 import bs4
 import pytest
 
+from sec_parser.exceptions import SecParserValueError
+from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.abstract_semantic_element import (
     AbstractSemanticElement,
 )
-from sec_parser.processing_engine.html_tag import HtmlTag
 from sec_parser.semantic_elements.highlighted_text_element import (
     HighlightedTextElement,
     TextStyle,
 )
 
-from sec_parser.exceptions import SecParserValueError
 
-
-def test_highlighted_text_element_initialization():
+def test_highlighted_text_element_initialization() -> None:
     # Arrange
     mock_html_tag = Mock()
 
@@ -28,7 +27,7 @@ def test_highlighted_text_element_initialization():
         HighlightedTextElement(mock_html_tag, style=None)
 
 
-def test_highlighted_text_element_from_element():
+def test_highlighted_text_element_from_element() -> None:
     # Arrange
     element = AbstractSemanticElement(Mock())
 
@@ -44,7 +43,7 @@ def test_highlighted_text_element_from_element():
         )
 
 
-def test_to_dict():
+def test_to_dict() -> None:
     # Arrange
     tag = bs4.Tag(name="span")
     tag.string = "A" * 60
@@ -52,7 +51,7 @@ def test_to_dict():
 
     # Act
     actual = HighlightedTextElement(HtmlTag(tag), style=style).to_dict(
-        include_previews=True
+        include_previews=True,
     )
 
     # Assert

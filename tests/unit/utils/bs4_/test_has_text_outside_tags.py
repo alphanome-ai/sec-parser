@@ -48,7 +48,7 @@ from sec_parser.utils.bs4_.has_text_outside_tags import has_text_outside_tags
         ),
     ],
 )
-def test_has_text_outside_tag_normal_cases(html, expected):
+def test_has_text_outside_tag_normal_cases(html, expected) -> None:
     # Arrange
     soup = BeautifulSoup(html, "lxml")
 

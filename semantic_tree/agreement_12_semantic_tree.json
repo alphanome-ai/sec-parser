@@ -1,0 +1,4029 @@
+{
+  "filename": "agreement_12.html",
+  "success": true,
+  "quality_score": 0.9142857142857143,
+  "format": "html",
+  "parsing_metadata": {
+    "total_elements": 300,
+    "has_title": true,
+    "detected_title": "ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES",
+    "element_count_by_type": {
+      "metadata": 42,
+      "paragraph": 111,
+      "title": 1,
+      "table": 71,
+      "party": 2,
+      "subsection": 24,
+      "section": 40,
+      "signature": 9
+    }
+  },
+  "tree": {
+    "type": "document",
+    "title": "ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES",
+    "elements": [
+      {
+        "type": "metadata",
+        "content": "EXHIBIT 10.3",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 0,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "EXHIBIT 10.3",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 1,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:right;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Freddie Mac Loan Number: 503996270",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 2,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:right;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Property Name: Oak Crossing Apartments",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 3,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:right;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "title",
+        "content": "ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES",
+        "level": 0,
+        "tag_name": "div",
+        "line_number": 4,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "(Revised 7-12-2016)",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 5,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;padding-bottom:16px;padding-top:16px;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "THIS ASSIGNMENT OF MANAGEMENT AGREEMENT AND SUBORDINATION OF MANAGEMENT FEES (“ Assignment ”) is made effective as of the 31st day of May, 2018, by and among SIR OAK CROSSING, LLC , a Delaware limited liability company (“ Borrower ”), PNC BANK, NATIONAL ASSOCIATION , a national banking association (“ Lender ”), and STEADFAST MANAGEMENT COMPANY, INC. , a California corporation (“ Property Manager ”).",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 6,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;padding-top:16px;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "RECITALS:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 7,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Borrower has requested that Lender make a loan to Borrower (“ Loan ”). The Loan will be evidenced by a Multifamily Note from Borrower to Lender effective as of the date of this Assignment (“ Note ”). The Note is secured by, among other things, a Multifamily Loan and Security Agreement (“ Loan Agreement ”) and a Multifamily Mortgage, Deed of Trust, or Deed to Secure Debt (“ Security Instrument ”), dated as of the date of this Assignment, which grants Lender a lien on the property encumbered by th...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 8,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Borrower has requested that Lender make a loan to Borrower (“ Loan ”). The Loan will be evidenced by a Multifamily Note from Borrower to Lender effective as of the date of this Assignment (“ Note ”). The Note is secured by, among other things, a Multifamily Loan and Security Agreement (“ Loan Agreement ”) and a Multifamily Mortgage, Deed of Trust, or Deed to Secure Debt (“ Security Instrument ”), dated as of the date of this Assignment, which grants Lender a lien on the property encumbered by th...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 9,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "party",
+        "content": "Pursuant to a Management Agreement between Borrower and Property Manager (“ Management Agreement ”) (a true and correct copy of which is attached as Exhibit B ), Borrower employed Property Manager exclusively to lease, operate and manage the Mortgaged Property, and Property Manager is entitled to certain management fees (“ Management Fees ”) pursuant to the Management Agreement.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 10,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "party",
+        "content": "Pursuant to a Management Agreement between Borrower and Property Manager (“ Management Agreement ”) (a true and correct copy of which is attached as Exhibit B ), Borrower employed Property Manager exclusively to lease, operate and manage the Mortgaged Property, and Property Manager is entitled to certain management fees (“ Management Fees ”) pursuant to the Management Agreement.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 11,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Lender requires as a condition to the making of the Loan that Borrower assign the Management Agreement and that Property Manager subordinate its interest in the Management Fees in lien and payment to the Loan as set forth below.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 12,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Lender requires as a condition to the making of the Loan that Borrower assign the Management Agreement and that Property Manager subordinate its interest in the Management Fees in lien and payment to the Loan as set forth below.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 13,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "For good and valuable consideration the parties agree as follows:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 14,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-top:16px;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Assignment of Management Agreement . As additional collateral security for the Loan, Borrower conditionally transfers, sets over, and assigns to Lender all of Borrower’s right, title and interest in and to the Management Agreement and all extensions and renewals. This transfer and assignment will automatically become a present, unconditional assignment, at Lender’s option, upon a default by Borrower under the Note, the Loan Agreement, the Security Instrument or any of the other Loan Documents (e...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 15,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement . As additional collateral security for the Loan, Borrower conditionally transfers, sets over, and assigns to Lender all of Borrower’s right, title and interest in and to the Management Agreement and all extensions and renewals. This transfer and assignment will automatically become a present, unconditional assignment, at Lender’s option, upon a default by Borrower under the Note, the Loan Agreement, the Security Instrument or any of the other Loan Documents (e...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 16,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 17,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 18,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 19,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 20,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 21,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 22,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 23,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Subordination of Management Fees. The Management Fees and all rights and privileges of Property Manager to the Management Fees are and will at all times continue to be subject and unconditionally subordinate in all respects in lien and payment to the lien and payment of the Loan Agreement, the Security Instrument, the Note, and the other Loan Documents, and to any renewals, extensions, modifications, assignments, replacements, or consolidations of the Loan Documents and the rights, privileges, a...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 24,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Subordination of Management Fees. The Management Fees and all rights and privileges of Property Manager to the Management Fees are and will at all times continue to be subject and unconditionally subordinate in all respects in lien and payment to the lien and payment of the Loan Agreement, the Security Instrument, the Note, and the other Loan Documents, and to any renewals, extensions, modifications, assignments, replacements, or consolidations of the Loan Documents and the rights, privileges, a...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 25,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Estoppel. Property Manager and Borrower represent and warrant that all of the following are true as of the date of this Assignment:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 26,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Estoppel. Property Manager and Borrower represent and warrant that all of the following are true as of the date of this Assignment:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 27,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 28,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 29,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "The Management Agreement is in full force and effect and has not been modified, amended or assigned other than pursuant to this Assignment.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 30,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "The Management Agreement is in full force and effect and has not been modified, amended or assigned other than pursuant to this Assignment.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 31,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 32,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 33,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Neither Property Manager nor Borrower is in default under any of the terms, covenants or provisions of the Management Agreement and Property Manager knows of no event which, but for the passage of time or the giving of notice or both, would constitute an event of default under the Management Agreement.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 34,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Neither Property Manager nor Borrower is in default under any of the terms, covenants or provisions of the Management Agreement and Property Manager knows of no event which, but for the passage of time or the giving of notice or both, would constitute an event of default under the Management Agreement.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 35,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(c)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 36,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(c)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 37,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Neither Property Manager nor Borrower has commenced any action or given or received any notice for the purpose of terminating the Management Agreement.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 38,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Neither Property Manager nor Borrower has commenced any action or given or received any notice for the purpose of terminating the Management Agreement.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 39,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(d)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 40,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(d)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 41,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "The Management Fees and all other sums due and payable to the Property Manager under the Management Agreement have been paid in full.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 42,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "The Management Fees and all other sums due and payable to the Property Manager under the Management Agreement have been paid in full.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 43,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Agreement by Borrower and Property Manager. Borrower and Property Manager agree that if there is an Event of  Default by Borrower (continuing beyond any applicable grace period) under the Note, the Loan Agreement, the Security Instrument or any of the other Loan Documents during the term of this Assignment or upon the occurrence of any event which would entitle Lender to terminate the Management Agreement in accordance with the terms of the Loan Documents, Lender may terminate the Management Agr...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 44,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Agreement by Borrower and Property Manager. Borrower and Property Manager agree that if there is an Event of  Default by Borrower (continuing beyond any applicable grace period) under the Note, the Loan Agreement, the Security Instrument or any of the other Loan Documents during the term of this Assignment or upon the occurrence of any event which would entitle Lender to terminate the Management Agreement in accordance with the terms of the Loan Documents, Lender may terminate the Management Agr...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 45,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 2",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 46,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 2",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 47,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 2",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 48,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 49,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 50,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 51,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 52,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Page 2",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 53,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Page 2",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 54,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:right;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Lender’s Right to Replace Property Manager. If Lender, in Lender’s reasonable discretion, at any time during the term of this Assignment, determines that the Mortgaged Property is not being managed in accordance with generally accepted management practices for properties similar to the Mortgaged Property, Lender will deliver written notice to Borrower and Property Manager, which notice will specify with particularity the grounds for Lender’s determination. If Lender reasonably determines that th...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 55,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Lender’s Right to Replace Property Manager. If Lender, in Lender’s reasonable discretion, at any time during the term of this Assignment, determines that the Mortgaged Property is not being managed in accordance with generally accepted management practices for properties similar to the Mortgaged Property, Lender will deliver written notice to Borrower and Property Manager, which notice will specify with particularity the grounds for Lender’s determination. If Lender reasonably determines that th...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 56,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any Management Fees or other fee, commission or other amount received by Property Manager prior to the occurrence of the Event of Default, and to which Property Manager was entitled under the Management Agreement. If the Property Manager receives any Management Fees after it has received notice of an Event of Default, Property Manager agrees that such Management Fees will be received and held in trus...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 57,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any Management Fees or other fee, commission or other amount received by Property Manager prior to the occurrence of the Event of Default, and to which Property Manager was entitled under the Management Agreement. If the Property Manager receives any Management Fees after it has received notice of an Event of Default, Property Manager agrees that such Management Fees will be received and held in trus...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 58,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Consent and Agreement by Property Manager . Property Manager acknowledges and consents to this Assignment and agrees that Property Manager will act in conformity with the provisions of this Assignment and Lender’s rights under this Assignment or otherwise related to the Management Agreement. If the responsibility for the management of the Mortgaged Property is transferred from Property Manager in accordance with the provisions of this Assignment, then Property Manager will fully cooperate in tra...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 59,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Consent and Agreement by Property Manager . Property Manager acknowledges and consents to this Assignment and agrees that Property Manager will act in conformity with the provisions of this Assignment and Lender’s rights under this Assignment or otherwise related to the Management Agreement. If the responsibility for the management of the Mortgaged Property is transferred from Property Manager in accordance with the provisions of this Assignment, then Property Manager will fully cooperate in tra...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 60,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 61,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 62,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "It will not contest or impede the exercise by Lender of any right Lender has under or in connection with this Assignment.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 63,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "It will not contest or impede the exercise by Lender of any right Lender has under or in connection with this Assignment.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 64,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 65,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 66,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "It will give at least 30 days prior written notice to Lender of its intention to terminate the Management Agreement or otherwise discontinue its management of the Mortgaged Property, in the manner provided for in this Assignment.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 67,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "It will give at least 30 days prior written notice to Lender of its intention to terminate the Management Agreement or otherwise discontinue its management of the Mortgaged Property, in the manner provided for in this Assignment.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 68,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(c)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 69,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(c)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 70,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "It will not amend any of the provisions or terms of the Management Agreement without the prior consent of Lender.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 71,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "It will not amend any of the provisions or terms of the Management Agreement without the prior consent of Lender.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 72,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 3",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 73,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 3",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 74,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 3",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 75,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 76,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 77,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 78,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 79,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Page 3",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 80,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Page 3",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 81,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:right;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Termination. When the Loan is paid in full and the Security Instrument is released or assigned of record, this Assignment and all of Lender’s right, title and interest hereunder with respect to the Management Agreement will terminate.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 82,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Termination. When the Loan is paid in full and the Security Instrument is released or assigned of record, this Assignment and all of Lender’s right, title and interest hereunder with respect to the Management Agreement will terminate.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 83,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Notices.",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 84,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Notices.",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 85,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 86,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(a)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 87,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "All notices under or concerning this Assignment ( “Notice” ) will be in writing. Each Notice will be deemed given on the earliest to occur of:  (i) the date when the Notice is received by the addressee, (ii) the first Business Day after the Notice is delivered to a recognized overnight courier service, with arrangements made for payment of charges for next Business Day delivery, or (iii) the third Business Day after the Notice is deposited in the United States mail with postage prepaid, certifie...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 88,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "All notices under or concerning this Assignment ( “Notice” ) will be in writing. Each Notice will be deemed given on the earliest to occur of:  (i) the date when the Notice is received by the addressee, (ii) the first Business Day after the Notice is delivered to a recognized overnight courier service, with arrangements made for payment of charges for next Business Day delivery, or (iii) the third Business Day after the Notice is deposited in the United States mail with postage prepaid, certifie...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 89,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "If to Lender: PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, California 91301 Attention:  Loan Servicing Manager If to Borrower: STAR Delano, LLC c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio If to Property Manager: Steadfast Management Company, Inc. c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 90,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;padding-left:102px;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "If to Lender: PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, California 91301 Attention:  Loan Servicing Manager If to Borrower: STAR Delano, LLC c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio If to Property Manager: Steadfast Management Company, Inc. c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 91,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "If to Lender:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 92,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;border-bottom:1px solid #00000a;padding-left:2px;padding-top:8px;padding-bottom:8px;padding-right:2px;border-left:1px solid #00000a;border-right:1px solid #00000a;border-top:1px solid #00000a;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "If to Lender:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 93,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-bottom:8px;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, California 91301 Attention:  Loan Servicing Manager",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 94,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;border-bottom:1px solid #00000a;padding-left:2px;padding-top:8px;padding-bottom:8px;padding-right:2px;border-left:1px solid #00000a;border-right:1px solid #00000a;border-top:1px solid #00000a;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "PNC Bank, National Association 26901 Agoura Road, Suite 200 Calabasas Hills, California 91301 Attention:  Loan Servicing Manager",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 95,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-bottom:8px;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "If to Borrower:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 96,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;border-bottom:1px solid #00000a;padding-left:2px;padding-top:8px;padding-bottom:8px;padding-right:2px;border-left:1px solid #00000a;border-right:1px solid #00000a;border-top:1px solid #00000a;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "If to Borrower:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 97,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-bottom:8px;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "STAR Delano, LLC c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 98,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;border-bottom:1px solid #00000a;padding-left:2px;padding-top:8px;padding-bottom:8px;padding-right:2px;border-left:1px solid #00000a;border-right:1px solid #00000a;border-top:1px solid #00000a;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "STAR Delano, LLC c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 99,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-bottom:8px;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "If to Property Manager:",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 100,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;border-bottom:1px solid #00000a;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;border-left:1px solid #00000a;border-right:1px solid #00000a;border-top:1px solid #00000a;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "If to Property",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 101,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Manager:",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 102,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Steadfast Management Company, Inc. c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 103,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;border-bottom:1px solid #00000a;padding-left:2px;padding-top:8px;padding-bottom:8px;padding-right:2px;border-left:1px solid #00000a;border-right:1px solid #00000a;border-top:1px solid #00000a;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Steadfast Management Company, Inc. c/o Steadfast Companies 18100 Von Karman Avenue, Suite 500 Irvine, California 92612 Attention – General Counsel:  Ana Marie del Rio",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 104,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-bottom:8px;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b)",
+        "level": 2,
+        "tag_name": "td",
+        "line_number": 105,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "subsection",
+        "content": "(b)",
+        "level": 2,
+        "tag_name": "div",
+        "line_number": 106,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:48px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Any party to this Assignment may change the address to which Notices intended for it are to be directed by means of Notice given to the other parties in accordance with this Section 9. Each party agrees that it will not refuse or reject delivery of any Notice given in accordance with this Section 9, that it will acknowledge, in writing, the receipt of any Notice upon request by the other party and that any Notice rejected or refused by it will be deemed for purposes of this Section 9 to have bee...",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 107,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Any party to this Assignment may change the address to which Notices intended for it are to be directed by means of Notice given to the other parties in accordance with this Section 9. Each party agrees that it will not refuse or reject delivery of any Notice given in accordance with this Section 9, that it will acknowledge, in writing, the receipt of any Notice upon request by the other party and that any Notice rejected or refused by it will be deemed for purposes of this Section 9 to have bee...",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 108,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 4",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 109,
+        "confidence": 0.8,
+        "attributes": {},
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 4",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 110,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;text-align:center;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Assignment of Management Agreement and Subordination of Management Fees Page 4",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 111,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 112,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Assignment of Management Agreement and",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 113,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "table",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 114,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "paragraph",
+        "content": "Subordination of Management Fees",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 115,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:left;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Page 4",
+        "level": 4,
+        "tag_name": "td",
+        "line_number": 116,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "metadata",
+        "content": "Page 4",
+        "level": 4,
+        "tag_name": "div",
+        "line_number": 117,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:right;font-size:10pt;"
+        },
+        "metadata": {},
+        "children": []
+      },
+      {
+        "type": "section",
+        "content": "10.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 118,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "10.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 119,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a)",
+            "level": 2,
+            "tag_name": "td",
+            "line_number": 122,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(a)",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 123,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;font-size:12pt;padding-left:48px;"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "table",
+                "content": "This Assignment will be construed in accordance with and governed by the laws of the Property Jurisdiction.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 124,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "vertical-align:top;"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "This Assignment will be construed in accordance with and governed by the laws of the Property Jurisdiction.",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 125,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "line-height:102%;text-align:justify;font-size:12pt;"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "subsection",
+            "content": "(b)",
+            "level": 2,
+            "tag_name": "td",
+            "line_number": 126,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(b)",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 127,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;font-size:12pt;padding-left:48px;"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "table",
+                "content": "Borrower and Property Manager agree that any controversy arising under or in relation to this Assignment may be litigated in the Property Jurisdiction. The state and federal courts and authorities with jurisdiction in the Property Jurisdiction will have jurisdiction over all controversies that may arise under or in relation to this Assignment. Borrower and Property Manager irrevocably consent to service, jurisdiction and venue of such courts for any such litigation and waive any other venue to w...",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 128,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "vertical-align:top;"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "Borrower and Property Manager agree that any controversy arising under or in relation to this Assignment may be litigated in the Property Jurisdiction. The state and federal courts and authorities with jurisdiction in the Property Jurisdiction will have jurisdiction over all controversies that may arise under or in relation to this Assignment. Borrower and Property Manager irrevocably consent to service, jurisdiction and venue of such courts for any such litigation and waive any other venue to w...",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 129,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "line-height:102%;text-align:justify;font-size:12pt;"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Governing Law; Consent to Jurisdiction and Venue.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 120,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Governing Law; Consent to Jurisdiction and Venue.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 121,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "11.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 130,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "11.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 131,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Captions, Cross References and Exhibits . The captions assigned to provisions of this Assignment are for convenience only and will be disregarded in construing this Assignment. Any reference in this Assignment to an “Exhibit” or a “Section,” unless otherwise explicitly provided, will be construed as referring, respectively, to an Exhibit attached to this Assignment or to a section of this Assignment. All Exhibits attached to or referred to in this Assignment are incorporated by reference into th...",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 132,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Captions, Cross References and Exhibits . The captions assigned to provisions of this Assignment are for convenience only and will be disregarded in construing this Assignment. Any reference in this Assignment to an “Exhibit” or a “Section,” unless otherwise explicitly provided, will be construed as referring, respectively, to an Exhibit attached to this Assignment or to a section of this Assignment. All Exhibits attached to or referred to in this Assignment are incorporated by reference into th...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 133,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "12.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 134,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "12.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 135,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Number and Gender. Use of the singular in this Assignment includes the plural, use of the plural includes the singular, and use of one gender includes all other genders, as the context may require.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 136,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Number and Gender. Use of the singular in this Assignment includes the plural, use of the plural includes the singular, and use of one gender includes all other genders, as the context may require.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 137,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "13.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 138,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "13.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 139,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "No Partnership. This Assignment is not intended to, and will not, create a partnership or joint venture among the parties, and no party to this Assignment will have the power or authority to bind any other party except as explicitly provided in this Assignment.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 140,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "No Partnership. This Assignment is not intended to, and will not, create a partnership or joint venture among the parties, and no party to this Assignment will have the power or authority to bind any other party except as explicitly provided in this Assignment.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 141,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "14.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 142,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "14.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 143,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Severability. The invalidity or unenforceability of any provision of this Assignment will not affect the validity of any other provision, and all other provisions will remain in full force and effect.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 144,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Severability. The invalidity or unenforceability of any provision of this Assignment will not affect the validity of any other provision, and all other provisions will remain in full force and effect.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 145,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "15.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 146,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "15.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 147,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Entire Assignment. This Assignment contains the entire agreement among the parties as to the rights granted and the obligations assumed in this Assignment.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 148,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Entire Assignment. This Assignment contains the entire agreement among the parties as to the rights granted and the obligations assumed in this Assignment.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 149,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "16.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 150,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "16.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 151,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "No Waiver; No Remedy Exclusive. Any forbearance by a party to this Assignment in exercising any right or remedy given under this Assignment or existing at law or in equity will not constitute a waiver of or preclude the exercise of that or any other right or remedy. Unless otherwise explicitly provided, no remedy under this Assignment is intended to be exclusive of any other available remedy, but each remedy will be cumulative and will be in addition to other remedies given under this Assignment...",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 152,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "No Waiver; No Remedy Exclusive. Any forbearance by a party to this Assignment in exercising any right or remedy given under this Assignment or existing at law or in equity will not constitute a waiver of or preclude the exercise of that or any other right or remedy. Unless otherwise explicitly provided, no remedy under this Assignment is intended to be exclusive of any other available remedy, but each remedy will be cumulative and will be in addition to other remedies given under this Assignment...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 153,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "17.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 154,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "17.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 155,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Third Party Beneficiaries. Neither any creditor of any party to this Assignment, nor any other person, is intended to be a third party beneficiary of this Assignment.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 156,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Third Party Beneficiaries. Neither any creditor of any party to this Assignment, nor any other person, is intended to be a third party beneficiary of this Assignment.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 157,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "18.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 158,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "18.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 159,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "signature",
+            "content": "Further Assurances and Corrective Instruments. To the extent permitted by law, the parties will, from time to time, execute, acknowledge and deliver, or cause to be executed, acknowledged and delivered, such supplements to this Assignment and such further instruments as may reasonably be required for carrying out the intention of or facilitating the performance of this Assignment.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 160,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Further Assurances and Corrective Instruments. To the extent permitted by law, the parties will, from time to time, execute, acknowledge and deliver, or cause to be executed, acknowledged and delivered, such supplements to this Assignment and such further instruments as may reasonably be required for carrying out the intention of or facilitating the performance of this Assignment.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 161,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 5",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 162,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 5",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 163,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 5",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 164,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 165,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 166,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 167,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 168,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 5",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 169,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 5",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 170,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "19.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 171,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "19.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 172,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "signature",
+            "content": "Counterparts. This Assignment may be executed in multiple counterparts, each of which will constitute an original document and all of which together will constitute one agreement.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 173,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "Counterparts. This Assignment may be executed in multiple counterparts, each of which will constitute an original document and all of which together will constitute one agreement.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 174,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "20.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 175,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "20.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 176,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Indemnity. By executing this Assignment Borrower agrees to indemnify and hold harmless Lender and its successors and assigns from and against any and all losses, claims, damages, liabilities and expenses including Attorneys’ Fees and Costs, which may be imposed or incurred in connection with this Assignment.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 177,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Indemnity. By executing this Assignment Borrower agrees to indemnify and hold harmless Lender and its successors and assigns from and against any and all losses, claims, damages, liabilities and expenses including Attorneys’ Fees and Costs, which may be imposed or incurred in connection with this Assignment.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 178,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "21.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 179,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "21.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 180,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Costs and Expenses. Wherever pursuant to this Assignment it is provided that Borrower will pay any costs and expenses, such costs and expenses will include Lender’s Attorneys’ Fees and Costs.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 181,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Costs and Expenses. Wherever pursuant to this Assignment it is provided that Borrower will pay any costs and expenses, such costs and expenses will include Lender’s Attorneys’ Fees and Costs.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 182,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "22.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 183,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "22.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 184,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Determinations by Lender. In any instance where the consent or approval of Lender may be given or is required, or where any determination, judgment or decision is to be rendered by Lender under this Assignment, the granting, withholding or denial of such consent or approval and the rendering of such determination, judgment or decision will be made or exercised by Lender (or its designated representative) at its sole and exclusive option and in its sole and absolute discretion and will be final a...",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 185,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Determinations by Lender. In any instance where the consent or approval of Lender may be given or is required, or where any determination, judgment or decision is to be rendered by Lender under this Assignment, the granting, withholding or denial of such consent or approval and the rendering of such determination, judgment or decision will be made or exercised by Lender (or its designated representative) at its sole and exclusive option and in its sole and absolute discretion and will be final a...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 186,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "23.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 187,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "23.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 188,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:120%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Successors and Assigns. This Assignment will be binding upon and inure to the benefit of Borrower, Lender and Property Manager and their respective successors and assigns forever.",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 189,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Successors and Assigns. This Assignment will be binding upon and inure to the benefit of Borrower, Lender and Property Manager and their respective successors and assigns forever.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 190,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "24.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 191,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "24.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 192,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Secondary Market. Lender may sell, transfer and deliver the Note and assign the Loan Agreement, the Security Instrument, this Assignment and the other Loan Documents to one or more investors in the secondary mortgage market (“ Investors ”). In connection with such sale, Lender may retain or assign responsibility for servicing the Loan, including the Note, the Loan Agreement, the Security Instrument, this Assignment and the other Loan Documents, or may delegate some or all of such responsibility ...",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 193,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Secondary Market. Lender may sell, transfer and deliver the Note and assign the Loan Agreement, the Security Instrument, this Assignment and the other Loan Documents to one or more investors in the secondary mortgage market (“ Investors ”). In connection with such sale, Lender may retain or assign responsibility for servicing the Loan, including the Note, the Loan Agreement, the Security Instrument, this Assignment and the other Loan Documents, or may delegate some or all of such responsibility ...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 194,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "25.",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 195,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "25.",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 196,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;font-size:12pt;padding-left:0px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Attached Exhibits. The following Exhibits, if marked with an “X” in the space provided, are attached to this Assignment:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 197,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Attached Exhibits. The following Exhibits, if marked with an “X” in the space provided, are attached to this Assignment:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 198,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "X Exhibit A Modifications to Assignment X Exhibit B Copy of Management Agreement",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 199,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-left:54px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "X Exhibit A Modifications to Assignment X Exhibit B Copy of Management Agreement",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 200,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Exhibit A",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 201,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Exhibit A",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 202,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Modifications to Assignment",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 203,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Modifications to Assignment",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 204,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "Exhibit B",
+        "level": 1,
+        "tag_name": "td",
+        "line_number": 205,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "vertical-align:top;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "Exhibit B",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 206,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Copy of Management Agreement",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 207,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Copy of Management Agreement",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 208,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "IN WITNESS WHEREOF the undersigned have executed this Assignment as of the date and year first written above.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 209,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "[END OF PAGE – SIGNATURES TO FOLLOW]",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 210,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 6",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 211,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 6",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 212,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 6",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 213,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 214,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 215,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 216,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 217,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 6",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 218,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 6",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 219,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "BORROWER:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 220,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;padding-left:288px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "SIR OAK CROSSING, LLC , a Delaware limited",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 221,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;padding-left:312px;text-indent:-24px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "liability company",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 222,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;padding-left:312px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 223,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 224,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;font-size:12pt;padding-left:288px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Steadfast Income Advisor, LLC, a Delaware",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 225,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Steadfast Income Advisor, LLC, a Delaware",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 226,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "limited liability company, its manager",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 227,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;padding-left:324px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "signature",
+            "content": "By:    _ /s/ Kevin J. Keating ______________",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 228,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;padding-left:324px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Kevin J. Keating",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 229,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;padding-left:360px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Chief Accounting Officer",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 230,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:left;padding-left:360px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 7",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 231,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 7",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 232,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 7",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 233,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 234,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 235,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 236,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 237,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 7",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 238,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 7",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 239,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "LENDER:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 240,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:7px;text-align:left;padding-left:286px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "PNC BANK, NATIONAL ASSOCIATION , a",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 241,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:14px;text-align:left;padding-left:286px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "national banking association",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 242,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:left;padding-left:288px;text-indent:24px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: _ /s/ Kelli A. Tyler ______________",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 243,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:2px;text-align:left;padding-left:286px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Kell A. Tyler Vice President",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 244,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:1px;text-align:justify;padding-left:309px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 8",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 245,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 8",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 246,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 8",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 247,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 248,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 249,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 250,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 251,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 8",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 252,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 8",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 253,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "PROPERTY MANAGER:",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 254,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:7px;text-align:left;padding-left:286px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "STEADFAST MANAGEMENT COMPANY, INC., a California corporation",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 255,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:14px;text-align:left;padding-left:286px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "By: _ /s/ Ana Marie del Rio ______________",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 256,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;padding-top:2px;text-align:left;padding-left:286px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Name: Ana Marie del Rio",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 257,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-indent:312px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Title: Secretary",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 258,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-indent:312px;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 9",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 259,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 9",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 260,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page 9",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 261,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 262,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 263,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 264,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 265,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 9",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 266,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "metadata",
+            "content": "Page 9",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 267,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "EXHIBIT A",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 268,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;padding-top:16px;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "MODIFICATIONS TO ASSIGNMENT",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 269,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;padding-top:16px;text-align:center;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "The following modifications are made to the text of the Assignment that precedes this Exhibit.",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 270,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "1.    Section 3(a) is deleted in its entirety and replaced with the following:",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 271,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:left;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [
+          {
+            "type": "subsection",
+            "content": "(a)",
+            "level": 2,
+            "tag_name": "td",
+            "line_number": 272,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": []
+          },
+          {
+            "type": "subsection",
+            "content": "(a)",
+            "level": 2,
+            "tag_name": "div",
+            "line_number": 273,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;font-size:12pt;padding-left:48px;"
+            },
+            "metadata": {},
+            "children": [],
+            "content_elements": [
+              {
+                "type": "table",
+                "content": "The Management Agreement is in full force and effect and has not been modified , or amended or assigned other than pursuant to this Assignment . There are no assignments of the Management Agreement that remain in effect other than pursuant to this Assignment.",
+                "level": 4,
+                "tag_name": "td",
+                "line_number": 274,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "vertical-align:top;"
+                },
+                "metadata": {},
+                "children": []
+              },
+              {
+                "type": "paragraph",
+                "content": "The Management Agreement is in full force and effect and has not been modified , or amended or assigned other than pursuant to this Assignment . There are no assignments of the Management Agreement that remain in effect other than pursuant to this Assignment.",
+                "level": 4,
+                "tag_name": "div",
+                "line_number": 275,
+                "confidence": 0.8,
+                "attributes": {
+                  "style": "line-height:102%;text-align:justify;font-size:12pt;"
+                },
+                "metadata": {},
+                "children": []
+              }
+            ]
+          }
+        ],
+        "content_elements": []
+      },
+      {
+        "type": "section",
+        "content": "2.    Section 6 is deleted in its entirety and replaced with the following:",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 276,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;text-align:justify;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "table",
+            "content": "Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any Management Fees or other fee, commission or other amount received by Property Manager prior to the occurrence of the Event of Default, and to which Property Manager was entitled under the Management Agreement. If the Property Manager receives any Management Fees after it has received notice of an Event of Default, Property Manager agrees that such Management Fees will be received and held in trus...",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 277,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:top;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Receipt of Management Fees. Property Manager will not be obligated to return or refund to Lender any Management Fees or other fee, commission or other amount received by Property Manager prior to the occurrence of the Event of Default, and to which Property Manager was entitled under the Management Agreement. If the Property Manager receives any Management Fees after it has received notice of an Event of Default, Property Manager agrees that such Management Fees will be received and held in trus...",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 278,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:justify;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page A- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 279,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page A- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 280,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page A- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 281,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 282,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 283,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 284,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 285,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Page A- 1",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 286,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Page A- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 287,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "section",
+        "content": "EXHIBIT B MANAGEMENT AGREEMENT",
+        "level": 1,
+        "tag_name": "div",
+        "line_number": 288,
+        "confidence": 0.8,
+        "attributes": {
+          "style": "line-height:102%;padding-top:16px;text-align:center;font-size:12pt;"
+        },
+        "metadata": {},
+        "children": [],
+        "subsections": [],
+        "content_elements": [
+          {
+            "type": "paragraph",
+            "content": "See Attached",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 289,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:center;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "[INTENTIONALLY OMITTED]",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 290,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:102%;text-align:center;font-size:12pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page B- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 291,
+            "confidence": 0.8,
+            "attributes": {},
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page B- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 292,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "line-height:120%;text-align:center;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and Subordination of Management Fees Page B- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 293,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "padding-left:0px;text-indent:0px;line-height:normal;padding-top:10px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 294,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Assignment of Management Agreement and",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 295,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 296,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Subordination of Management Fees",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 297,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:left;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "table",
+            "content": "Page B- 1",
+            "level": 4,
+            "tag_name": "td",
+            "line_number": 298,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "vertical-align:bottom;padding-left:2px;padding-top:2px;padding-bottom:2px;padding-right:2px;"
+            },
+            "metadata": {},
+            "children": []
+          },
+          {
+            "type": "paragraph",
+            "content": "Page B- 1",
+            "level": 4,
+            "tag_name": "div",
+            "line_number": 299,
+            "confidence": 0.8,
+            "attributes": {
+              "style": "text-align:right;font-size:10pt;"
+            },
+            "metadata": {},
+            "children": []
+          }
+        ]
+      }
+    ],
+    "statistics": {
+      "total_elements": 300,
+      "element_types": {
+        "metadata": 42,
+        "paragraph": 111,
+        "title": 1,
+        "table": 71,
+        "party": 2,
+        "subsection": 24,
+        "section": 40,
+        "signature": 9
+      },
+      "structure_depth": 4
+    }
+  }
+}

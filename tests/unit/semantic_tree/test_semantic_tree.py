@@ -47,11 +47,11 @@ def build_tree(tree_structure, parent=None):
     ],
     ids = [v[0] for v in values],
 )
-def test_render(name, tree_structure, render_kwargs, expected_output):
+def test_render(name, tree_structure, render_kwargs, expected_output) -> None:
     # Arrange
     root_nodes = build_tree(tree_structure)
     tree = SemanticTree(root_nodes)
-    
+
     # Act
     actual = tree.render(**render_kwargs)
 
@@ -63,20 +63,20 @@ def test_render(name, tree_structure, render_kwargs, expected_output):
     ("name", "tree_structure", "print_kwargs", "expected_output"),
     values := [
         (
-            "empty_tree_with_default_kwargs", 
-            [], 
-            {}, 
-            "\n"
+            "empty_tree_with_default_kwargs",
+            [],
+            {},
+            "\n",
         ),
         (
-            "simple_tree", 
-            [{"root": ["child1", "child2"]}], 
-            {}, 
-            "\x1b[1;34mMockSemanticElement\x1b[0m: root\n├── \x1b[1;34mMockSemanticElement\x1b[0m: child1\n└── \x1b[1;34mMockSemanticElement\x1b[0m: child2\n"
+            "simple_tree",
+            [{"root": ["child1", "child2"]}],
+            {},
+            "\x1b[1;34mMockSemanticElement\x1b[0m: root\n├── \x1b[1;34mMockSemanticElement\x1b[0m: child1\n└── \x1b[1;34mMockSemanticElement\x1b[0m: child2\n",
         ),
         (
             "simple_tree_with_line_limit",
-            [{"root": ["child1", "child2"]}], 
+            [{"root": ["child1", "child2"]}],
             {
                 "line_limit": 2,
             },
@@ -85,11 +85,11 @@ def test_render(name, tree_structure, render_kwargs, expected_output):
     ],
     ids = [v[0] for v in values],
 )
-def test_print(name, tree_structure, print_kwargs, expected_output, capsys):
+def test_print(name, tree_structure, print_kwargs, expected_output, capsys) -> None:
     # Arrange
     root_nodes = build_tree(tree_structure)
     tree = SemanticTree(root_nodes)
-    
+
     # Act
     tree.print(**print_kwargs)
     actual = capsys.readouterr().out
@@ -99,7 +99,7 @@ def test_print(name, tree_structure, print_kwargs, expected_output, capsys):
 
 
 @pytest.mark.parametrize(
-    "tree_structure,expected_nodes",
+    ("tree_structure", "expected_nodes"),
     [
         # Test with an empty tree
         ([], []),

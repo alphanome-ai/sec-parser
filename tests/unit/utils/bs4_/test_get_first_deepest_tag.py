@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from sec_parser.utils.bs4_.get_first_deepest_tag import get_first_deepest_tag
 
 
-def test_get_first_deepest_tag():
+def test_get_first_deepest_tag() -> None:
     # Arrange
     html = "<html><body><div><p>Test</p><span>Another Test</span></div></body></html>"
     soup = BeautifulSoup(html, "lxml")
@@ -15,7 +15,7 @@ def test_get_first_deepest_tag():
     assert deepest_tag.name == "p"
 
 
-def test_get_first_deepest_tag_no_children():
+def test_get_first_deepest_tag_no_children() -> None:
     # Arrange
     html = "<p>Test</p>"
     soup = BeautifulSoup(html, "lxml")
@@ -27,7 +27,7 @@ def test_get_first_deepest_tag_no_children():
     assert deepest_tag.name == "p"
 
 
-def test_get_first_deepest_tag_empty():
+def test_get_first_deepest_tag_empty() -> None:
     # Arrange
     html = "<p></p>"
     soup = BeautifulSoup(html, "lxml")
@@ -39,7 +39,7 @@ def test_get_first_deepest_tag_empty():
     assert deepest_tag.name == "p"
 
 
-def test_get_first_deepest_tag_with_whitespace():
+def test_get_first_deepest_tag_with_whitespace() -> None:
     # Arrange
     html = "<div>   <p>Test</p><span>Another Test</span></div>"
     soup = BeautifulSoup(html, "lxml")

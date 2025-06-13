@@ -1,6 +1,6 @@
 # NOTE:
 # For more examples and advanced usage of `sec-parser`, refer to the following resources:
-# - User Guide: 
+# - User Guide:
 #     https://sec-parser.readthedocs.io/en/latest/notebooks/user_guide.html
 # - Developer Guide
 #     https://sec-parser.readthedocs.io/en/latest/notebooks/developer_guide.html
@@ -11,9 +11,10 @@ from sec_downloader import Downloader
 
 import sec_parser as sp
 
+
 # Utility function to make the example code a bit more compact
-def print_first_n_lines(text: str, *, n: int):
-    print("\n".join(text.split("\n")[:n]), "...", sep="\n")
+def print_first_n_lines(text: str, *, n: int) -> None:
+    pass
 
 
 # Initialize the downloader with your company name and email

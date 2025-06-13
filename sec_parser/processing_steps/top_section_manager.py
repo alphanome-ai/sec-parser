@@ -36,8 +36,7 @@ class _Candidate:
 
 
 class TopSectionManager(AbstractElementwiseProcessingStep):
-    """
-    Documents are divided into sections, subsections, and so on.
+    """Documents are divided into sections, subsections, and so on.
     Top level sections are the highest level of sections and are
     standardized across each type of document.
 
@@ -306,8 +305,7 @@ class TopSectionManager(AbstractElementwiseProcessingStep):
         )
 
 class TopSectionManagerFor10Q(TopSectionManager):
-    """
-    Specialized version of TopSectionManagerForFiling for handling 10-Q filings.
+    """Specialized version of TopSectionManagerForFiling for handling 10-Q filings.
     Automatically uses FilingSectionsIn10Q while maintaining all the functionality
     of the base class.
     """
@@ -325,8 +323,7 @@ class TopSectionManagerFor10Q(TopSectionManager):
         )
 
 class TopSectionManagerFor10K(TopSectionManager):
-    """
-    Specialized version of TopSectionManagerForFiling for handling 10-K filings.
+    """Specialized version of TopSectionManagerForFiling for handling 10-K filings.
     Automatically uses FilingSectionsIn10K while maintaining all the functionality
     of the base class.
     """

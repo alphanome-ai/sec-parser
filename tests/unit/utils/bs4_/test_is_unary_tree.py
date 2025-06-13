@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from sec_parser.utils.bs4_.is_unary_tree import is_unary_tree
 
 
-def test_is_unary_tree_with_only_tags():
+def test_is_unary_tree_with_only_tags() -> None:
     # Arrange
     html = """
     <div>
@@ -22,7 +22,7 @@ def test_is_unary_tree_with_only_tags():
     assert result is True, "Expected a unary tree with only tags to return True"
 
 
-def test_is_unary_tree_with_leaf_text():
+def test_is_unary_tree_with_leaf_text() -> None:
     # Arrange
     html = """
     <div>
@@ -43,7 +43,7 @@ def test_is_unary_tree_with_leaf_text():
     ), "Expected a unary tree with non-empty leaf NavigableString to return True"
 
 
-def test_is_not_unary_tree():
+def test_is_not_unary_tree() -> None:
     # Arrange
     html = """
     <div>
@@ -61,7 +61,7 @@ def test_is_not_unary_tree():
     assert result is False, "Expected a non-unary tree to return False"
 
 
-def test_is_unary_tree_with_non_leaf_text_before():
+def test_is_unary_tree_with_non_leaf_text_before() -> None:
     # Arrange
     html = """
     <div>
@@ -82,7 +82,7 @@ def test_is_unary_tree_with_non_leaf_text_before():
     ), "Expected a unary tree with non-empty NavigableString at a non-leaf node to return False"
 
 
-def test_is_unary_tree_with_non_leaf_text_after():
+def test_is_unary_tree_with_non_leaf_text_after() -> None:
     # Arrange
     html = """
     <div>
@@ -103,7 +103,7 @@ def test_is_unary_tree_with_non_leaf_text_after():
     ), "Expected a unary tree with non-empty NavigableString at a non-leaf node to return False"
 
 
-def test_is_unary_tree_with_empty_tag():
+def test_is_unary_tree_with_empty_tag() -> None:
     # Arrange
     html = "<div></div>"
     soup = BeautifulSoup(html, "lxml")
@@ -116,7 +116,7 @@ def test_is_unary_tree_with_empty_tag():
     assert result is True, "Expected a tag with no children to return True"
 
 
-def test_is_unary_tree_with_table_as_child():
+def test_is_unary_tree_with_table_as_child() -> None:
     # Arrange
     html = """
     <div>
@@ -139,7 +139,7 @@ def test_is_unary_tree_with_table_as_child():
     ), "Expected a unary tree with a table as a child to return True"
 
 
-def test_is_unary_tree_with_table_as_root():
+def test_is_unary_tree_with_table_as_root() -> None:
     # Arrange
     html = """
     <table>
@@ -158,7 +158,7 @@ def test_is_unary_tree_with_table_as_root():
     assert result is True, "Expected a table as root to return True"
 
 
-def test_is_not_unary_tree_with_multiple_tables():
+def test_is_not_unary_tree_with_multiple_tables() -> None:
     # Arrange
     html = """
     <div>

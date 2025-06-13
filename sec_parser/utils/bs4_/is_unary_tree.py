@@ -3,8 +3,7 @@ from bs4 import NavigableString
 
 
 def is_unary_tree(tag: bs4.Tag) -> bool:
-    """
-    `is_unary_tree` determines if a BeautifulSoup tag forms a unary tree.
+    """`is_unary_tree` determines if a BeautifulSoup tag forms a unary tree.
     In a unary tree, each node has at most one child.
 
     Unary trees can contain NavigableString leaves. However, if a non-leaf node

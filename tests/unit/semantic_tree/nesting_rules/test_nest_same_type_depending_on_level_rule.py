@@ -39,7 +39,7 @@ class LeveledElement(AbstractLevelElement):
     pass
 
 
-def test_nesting_of_leveled_elements():
+def test_nesting_of_leveled_elements() -> None:
     # Arrange
     mock_elements = [
         LeveledElement(html_tag("tag1", "text1"), level=1),
@@ -57,9 +57,9 @@ def test_nesting_of_leveled_elements():
 
     # Assert
     assert len(list(tree)) == 1
-    assert isinstance(list(tree)[0].semantic_element, LeveledElement)
-    assert list(tree)[0].semantic_element.level == 1
-    assert len(list(tree)[0].children) == 2
-    for child in list(tree)[0].children:
+    assert isinstance(next(iter(tree)).semantic_element, LeveledElement)
+    assert next(iter(tree)).semantic_element.level == 1
+    assert len(next(iter(tree)).children) == 2
+    for child in next(iter(tree)).children:
         assert isinstance(child.semantic_element, LeveledElement)
         assert child.semantic_element.level == 2

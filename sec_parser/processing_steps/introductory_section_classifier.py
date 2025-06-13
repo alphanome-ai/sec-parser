@@ -16,8 +16,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class IntroductorySectionElementClassifier(AbstractElementwiseProcessingStep):
-    """
-    The IntroductorySectionElementClassifier is a processing step designed
+    """The IntroductorySectionElementClassifier is a processing step designed
     to classify elements that are located before the actual contents of
     the document.
 

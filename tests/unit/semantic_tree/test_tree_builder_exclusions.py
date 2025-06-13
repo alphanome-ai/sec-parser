@@ -2,8 +2,7 @@ import bs4
 
 from sec_parser import AbstractSemanticElement, TreeBuilder
 from sec_parser.processing_engine.html_tag import HtmlTag
-from sec_parser.semantic_elements.abstract_semantic_element import \
-    AbstractLevelElement
+from sec_parser.semantic_elements.abstract_semantic_element import AbstractLevelElement
 from sec_parser.semantic_tree.nesting_rules import AlwaysNestAsChildRule
 
 
@@ -37,7 +36,7 @@ class LeveledElement(AbstractLevelElement):
     pass
 
 
-def test_exclude_ignored_parent():
+def test_exclude_ignored_parent() -> None:
     # Arrange
     mock_elements = [
         IgnoredParent(html_tag("tag2", "text2")),
@@ -56,12 +55,12 @@ def test_exclude_ignored_parent():
 
     # Assert
     assert len(list(tree)) == 3
-    assert isinstance(list(tree)[0].semantic_element, IgnoredParent)
+    assert isinstance(next(iter(tree)).semantic_element, IgnoredParent)
     assert isinstance(list(tree)[1].semantic_element, ChildElement)
     assert isinstance(list(tree)[2].semantic_element, ParentElement)
 
 
-def test_exclude_ignored_child():
+def test_exclude_ignored_child() -> None:
     # Arrange
     mock_elements = [
         ParentElement(html_tag("tag2", "text2")),
@@ -80,12 +79,12 @@ def test_exclude_ignored_child():
 
     # Assert
     assert len(list(tree)) == 3
-    assert isinstance(list(tree)[0].semantic_element, ParentElement)
+    assert isinstance(next(iter(tree)).semantic_element, ParentElement)
     assert isinstance(list(tree)[1].semantic_element, IgnoredChild)
     assert isinstance(list(tree)[2].semantic_element, ParentElement)
 
 
-def test_exclude_both_ignored_parent_and_child():
+def test_exclude_both_ignored_parent_and_child() -> None:
     # Arrange
     mock_elements = [
         ParentElement(html_tag("tag2", "text2")),
@@ -112,7 +111,7 @@ def test_exclude_both_ignored_parent_and_child():
 
     # Assert
     assert len(list(tree)) == 5
-    assert isinstance(list(tree)[0].semantic_element, ParentElement)
+    assert isinstance(next(iter(tree)).semantic_element, ParentElement)
     assert isinstance(list(tree)[1].semantic_element, ParentElement)
     assert isinstance(list(tree)[2].semantic_element, IgnoredChild)
     assert isinstance(list(tree)[3].semantic_element, IgnoredParent)

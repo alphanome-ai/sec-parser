@@ -22,8 +22,7 @@ if TYPE_CHECKING:  # pragma: no cover
 
 
 class IndividualSemanticElementExtractor(AbstractElementwiseProcessingStep):
-    """
-    Responsible for splitting a single HTML representing multiple semantic elements
+    """Responsible for splitting a single HTML representing multiple semantic elements
     into multiple Semantic Element instances with a shared parent instance of
     type CompositeSemanticElement. This ensures structural integrity
     during parsing, which is crucial for accurately reconstructing the original

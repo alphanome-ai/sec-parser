@@ -36,34 +36,34 @@ from sec_parser.semantic_tree.tree_builder import TreeBuilder
 from sec_parser.semantic_tree.tree_node import TreeNode
 
 __all__ = [
-    # Main parser classes
-    "Edgar10KParser",
-    "Edgar10QParser",
-    "TreeBuilder",
-    # Common semantic elements
-    "AbstractSemanticElement",
-    "CompositeSemanticElement",
-    "NotYetClassifiedElement",
-    "TopSectionTitle",
-    "TextElement",
-    "TitleElement",
-    "IrrelevantElement",
-    "ImageElement",
-    "TableElement",
-    "SupplementaryText",
-    "EmptyElement",
-    "PageNumberElement",
-    "PageHeaderElement",  # Common exceptions
-    "SecParserError",
-    "SecParserRuntimeError",
-    "SecParserValueError",
     # Common types
     "AbstractNestingRule",
     "AbstractProcessingStep",
-    "SemanticTree",
-    "TreeNode",
+    # Common semantic elements
+    "AbstractSemanticElement",
+    "CompositeSemanticElement",
+    # Main parser classes
+    "Edgar10KParser",
+    "Edgar10QParser",
+    "EmptyElement",
     "HtmlTag",
+    "ImageElement",
+    "IrrelevantElement",
+    "NotYetClassifiedElement",
+    "PageHeaderElement",  # Common exceptions
+    "PageNumberElement",
+    "ParsingOptions",
+    "SecParserError",
+    "SecParserRuntimeError",
+    "SecParserValueError",
+    "SemanticTree",
+    "SupplementaryText",
+    "TableElement",
+    "TextElement",
+    "TitleElement",
+    "TopSectionTitle",
+    "TreeBuilder",
+    "TreeNode",
     # Misc
     "render",
-    "ParsingOptions",
 ]

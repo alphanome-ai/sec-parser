@@ -1,0 +1,47 @@
+SEMANTIC TREE: agreement_02.html
+================================================================================
+Quality Score: 0.79
+Format: html
+Total Elements: 28
+Title: FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR AGREEMENT
+
+Element Distribution:
+  metadata: 1
+  paragraph: 8
+  section: 3
+  signature: 7
+  table: 8
+  title: 1
+
+Structure Depth: 4
+
+DOCUMENT STRUCTURE:
+----------------------------------------
+[METADATA] Exhibit 10.9
+[TITLE] FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR AGREEMENT
+[PARAGRAPH] WHEREAS, WGC USA Asset Management Company, LLC, a Delaware limited liability company (“Sponsor”) and...
+[PARAGRAPH] WHEREAS, the parties hereto desire to amend the Agreement (“Amendment”) to list on Schedule A theret...
+[PARAGRAPH] NOW, THEREFORE, in consideration of the agreements and obligations set forth herein and for other go...
+[SECTION] Schedule A . Schedule A is hereby amended by listing a new series thereon, with such new series unde...
+  [PARAGRAPH] “Schedule A
+  [PARAGRAPH] The Trust will pay to the Sponsor as compensation for the Sponsor’s services rendered to each Fund, ...
+  [TABLE] Fund
+  [PARAGRAPH] Fund
+  [TABLE] Rate
+  [TABLE] SPDR ® Long Dollar Gold Trust
+  [PARAGRAPH] SPDR ® Long Dollar Gold Trust
+[SECTION] 0.33
+  [TABLE] SPDR ® Gold MiniShares Trust
+  [PARAGRAPH] SPDR ® Gold MiniShares Trust
+[SECTION] 0.XX
+  [SIGNATURE] IN WITNESS WHEREOF, the parties hereto have caused this Amendment to be duly executed and delivered ...
+  [SIGNATURE] World Gold Trust By: Delaware Trust Company, its Trustee By: ________________________________ Name: ...
+  [TABLE] World Gold Trust
+  [SIGNATURE] By: Delaware Trust Company, its Trustee
+  [SIGNATURE] By: ________________________________
+  [SIGNATURE] Name: ______________________________
+  [SIGNATURE] Title: ______________________________
+  [TABLE] WGC USA Asset Management Company, LLC
+  [SIGNATURE] By: ________________________________
+  [TABLE] Name: ______________________________
+  [TABLE] Title:

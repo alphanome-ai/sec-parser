@@ -4,8 +4,7 @@ import bs4
 
 
 def get_first_deepest_tag(tag: bs4.Tag) -> bs4.Tag | None:
-    """
-    Given a BeautifulSoup tag, returns the first deepest tag within it.
+    """Given a BeautifulSoup tag, returns the first deepest tag within it.
 
     For example, if we have the following HTML structure:
     <div><p>Test</p><span>Another Test</span></div>

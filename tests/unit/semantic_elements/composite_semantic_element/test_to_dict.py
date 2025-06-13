@@ -7,7 +7,7 @@ from sec_parser.semantic_elements.composite_semantic_element import (
 from sec_parser.semantic_elements.semantic_elements import NotYetClassifiedElement
 
 
-def test_to_dict():
+def test_to_dict() -> None:
     # Arrange
     tag = bs4.Tag(name="span")
     tag.string = "A" * 60

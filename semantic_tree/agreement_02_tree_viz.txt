@@ -1,0 +1,30 @@
+📄 agreement_02.html (Quality: 0.79)
+└── 📋 FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR ...
+    ├── 🏷️ METADATA: Exhibit 10.9
+    ├── 📜 TITLE: FORM OF SECOND AMENDMENT TO AMENDED AND RESTATED SPONSOR ...
+    ├── 📝 PARAGRAPH: WHEREAS, WGC USA Asset Management Company, LLC, a Delawar...
+    ├── 📝 PARAGRAPH: WHEREAS, the parties hereto desire to amend the Agreement...
+    ├── 📝 PARAGRAPH: NOW, THEREFORE, in consideration of the agreements and ob...
+    ├── 📑 SECTION: Schedule A . Schedule A is hereby amended by listing a ne...
+    │   ├── 📝 PARAGRAPH: “Schedule A
+    │   ├── 📝 PARAGRAPH: The Trust will pay to the Sponsor as compensation for the...
+    │   ├── 📊 TABLE: Fund
+    │   ├── 📝 PARAGRAPH: Fund
+    │   ├── 📊 TABLE: Rate
+    │   ├── 📊 TABLE: SPDR ® Long Dollar Gold Trust
+    │   └── 📝 PARAGRAPH: SPDR ® Long Dollar Gold Trust
+    ├── 📑 SECTION: 0.33
+    │   ├── 📊 TABLE: SPDR ® Gold MiniShares Trust
+    │   └── 📝 PARAGRAPH: SPDR ® Gold MiniShares Trust
+    └── 📑 SECTION: 0.XX
+        ├── ✍️ SIGNATURE: IN WITNESS WHEREOF, the parties hereto have caused this A...
+        ├── ✍️ SIGNATURE: World Gold Trust By: Delaware Trust Company, its Trustee ...
+        ├── 📊 TABLE: World Gold Trust
+        ├── ✍️ SIGNATURE: By: Delaware Trust Company, its Trustee
+        ├── ✍️ SIGNATURE: By: ________________________________
+        ├── ✍️ SIGNATURE: Name: ______________________________
+        ├── ✍️ SIGNATURE: Title: ______________________________
+        ├── 📊 TABLE: WGC USA Asset Management Company, LLC
+        ├── ✍️ SIGNATURE: By: ________________________________
+        ├── 📊 TABLE: Name: ______________________________
+        └── 📊 TABLE: Title:

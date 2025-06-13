@@ -5,7 +5,7 @@ from bs4 import NavigableString
 from sec_parser.processing_engine.html_tag import EmptyNavigableStringError, HtmlTag
 
 
-def test_init_with_non_empty_navigable_string():
+def test_init_with_non_empty_navigable_string() -> None:
     # Arrange
     nav_string = NavigableString("Hello")
 
@@ -19,7 +19,7 @@ def test_init_with_non_empty_navigable_string():
     assert tag.string == "Hello"
 
 
-def test_init_with_empty_navigable_string():
+def test_init_with_empty_navigable_string() -> None:
     # Arrange
     nav_string = NavigableString("")
 
@@ -28,7 +28,7 @@ def test_init_with_empty_navigable_string():
         HtmlTag(nav_string)
 
 
-def test_init_with_unsupported_type():
+def test_init_with_unsupported_type() -> None:
     # Arrange
     unsupported_element = 42  # an integer
 
@@ -37,10 +37,10 @@ def test_init_with_unsupported_type():
         HtmlTag(unsupported_element)
 
 
-def test_without_tags():
+def test_without_tags() -> None:
     # Arrange
     soup = bs4.BeautifulSoup(
-        "<div><p>Text <b>inside</b> a paragraph</p></div>", "html.parser"
+        "<div><p>Text <b>inside</b> a paragraph</p></div>", "html.parser",
     )
     div_tag = soup.find("div")
     html_tag = HtmlTag(div_tag)
@@ -77,7 +77,7 @@ def test_without_tags():
     ],
     ids=[v[0] for v in values],
 )
-def test_to_dict(name, tag_string, expected):
+def test_to_dict(name, tag_string, expected) -> None:
     # Arrange
     tag = next(bs4.BeautifulSoup(tag_string, "lxml").html.body.children)
     assert isinstance(tag, bs4.Tag)
@@ -100,7 +100,7 @@ def test_to_dict(name, tag_string, expected):
     ],
     ids=[v[0] for v in values],
 )
-def test_is_unary_tree(name, html_string, expected):
+def test_is_unary_tree(name, html_string, expected) -> None:
     # Arrange
     soup = bs4.BeautifulSoup(html_string, "html.parser")
     div_tag = soup.find("div")
@@ -114,7 +114,7 @@ def test_is_unary_tree(name, html_string, expected):
     assert actual == expected
 
 
-def test_get_pretty_source_code():
+def test_get_pretty_source_code() -> None:
     # Arrange
     tag = bs4.Tag(name="div")
     tag.string = "Hello, world!"
@@ -127,14 +127,12 @@ def test_get_pretty_source_code():
     assert pretty_source_code == "<div>\n Hello, world!\n</div>\n"
 
 
-def test_wrap_tags_in_new_parent():
+def test_wrap_tags_in_new_parent() -> None:
     # Arrange
-    span = list(
-        bs4.BeautifulSoup(
+    span = next(iter(bs4.BeautifulSoup(
             """<span><p>This is the first paragraph.</p><p>This is the second paragraph.</p></span>""",
             "lxml",
-        ).html.body.children
-    )[0]
+        ).html.body.children))
     p_tags = list(span.children)
     p_tag1 = HtmlTag(p_tags[0])
     p_tag2 = HtmlTag(p_tags[1])
