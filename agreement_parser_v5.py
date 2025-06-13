@@ -233,6 +233,7 @@ class ImprovedMetadataRemover(AbstractElementwiseProcessingStep):
             (r"^\[\s*\d+\s*\]$", 10),
             (r"^Page\s+\d+$", 10),
             (r"^\d+\s+of\s+\d+$", 10),
+            (r"^\d+\s*\|\s*\d+$", 10),  # Page X | Y
         ]
         for pattern, max_len in page_patterns:
             if re.match(pattern, text_stripped, re.IGNORECASE):
@@ -263,6 +264,10 @@ class ImprovedMetadataRemover(AbstractElementwiseProcessingStep):
         # Table of contents
         if text_lower in ["table of contents", "contents", "index", "toc"]:
             return ("toc", MetadataElement)
+
+        # Inline TOC alignment dots
+        if re.match(r"^\.{5,}\d+$", text_stripped):
+            return ("inline_toc_dots", MetadataElement) # Using MetadataElement as a generic class for this new type
 
         return None
 

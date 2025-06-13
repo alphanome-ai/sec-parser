@@ -8,19 +8,20 @@
 import re
 from collections import defaultdict
 from typing import Callable, Optional
+import itertools
 
 # Import all element classes from V5
 from agreement_parser_v5 import (
     AgreementTitleElement,
-    ArticleElement,
-    ClauseElement,
+    # ArticleElement, # Moved into this file
+    # ClauseElement, # Moved into this file
     ContentClassifierV4,
-    EnhancedClauseClassifier,
+    EnhancedClauseClassifier, # This is V5's, ensure V6 uses its own if defined or V5's if intended
     HeadingClassifierV4,
     ImprovedMetadataRemover,
     LegalContentClassifierV4,
     MetadataElement,
-    SectionElement,
+    # SectionElement, # Moved into this file
     SignatureBlockElement,
 )
 from sec_parser.processing_engine.core import AbstractSemanticElementParser
@@ -49,6 +50,91 @@ from sec_parser.semantic_elements.semantic_elements import (
     TextElement,
 )
 from sec_parser.semantic_elements.table_element.table_element import TableElement
+
+
+class HierarchicalElement(AbstractSemanticElement):
+    """
+    Any element that can have children (Article, Section, Clause, etc.).
+    Adds:
+        - parent_id: id of the immediate container
+        - children: list of child element ids
+        - level: numeric depth (1 = article, 2 = section ...)
+    """
+    _auto_id = itertools.count(1)
+
+    def __init__(self, html_tag: HtmlTag, level: int, **kwargs):
+        super().__init__(html_tag, **kwargs)
+        self.id = next(self._auto_id)
+        self.parent_id: int | None = None
+        self.children: list[int] = []
+        self.level: int = level
+
+    def to_dict(self, *, include_previews: bool = False, include_contents: bool = False) -> dict[str, any]:
+        data = super().to_dict(include_previews=include_previews, include_contents=include_contents)
+        data.update({
+            "id": self.id,
+            "parent_id": self.parent_id,
+            "children_count": len(self.children),
+            "children_ids": self.children,
+            "level": self.level,
+        })
+        return data
+
+
+class ArticleElement(HierarchicalElement):
+    """Article-level sections."""
+
+    def __init__(self, html_tag: HtmlTag, article_number: str = "", article_title: str = "", **kwargs) -> None:
+        super().__init__(html_tag, level=1, **kwargs)
+        self.article_number = article_number
+        self.article_title = article_title
+        # self.level is handled by HierarchicalElement
+
+
+class SectionElement(HierarchicalElement):
+    """Numbered sections with normalized format."""
+
+    def __init__(self, html_tag: HtmlTag, section_number: str = "", section_title: str = "", level: int = 1, **kwargs) -> None:
+        super().__init__(html_tag, level=level, **kwargs)
+        self.section_number = self._normalize_section_number(section_number)
+        self.section_title = section_title
+        # self.level is handled by HierarchicalElement
+
+    def _normalize_section_number(self, number: str) -> str:
+        """Normalize section numbers to consistent format."""
+        # If it's just a number, add "Section" prefix
+        if re.match(r"^\d+(?:\.\d+)*$", number.strip()):
+            return f"Section {number}"
+        return number
+
+
+class ClauseElement(HierarchicalElement):
+    """Clauses with enhanced detection."""
+
+    def __init__(self, html_tag: HtmlTag, clause_id: str = "", clause_text: str = "", level: int = 2, **kwargs) -> None:
+        super().__init__(html_tag, level=level, **kwargs)
+        self.clause_id = clause_id
+        self.clause_text = clause_text
+        # self.level is handled by HierarchicalElement
+
+
+class HierarchyBuilderStep(AbstractProcessingStep):
+    """Convert the flat list into a tree using .level."""
+    def __init__(self) -> None:
+        super().__init__()
+
+    def process(self, elements: list[AbstractSemanticElement], context=None) -> list[AbstractSemanticElement]:
+        stack: list[HierarchicalElement] = []
+        for el in elements:
+            if not isinstance(el, HierarchicalElement):
+                continue
+            while stack and stack[-1].level >= el.level:
+                stack.pop()
+            if stack:
+                el.parent_id = stack[-1].id
+                stack[-1].children.append(el.id)
+            stack.append(el)
+        return elements
 
 
 class ImprovedMainTitleClassifier(AbstractElementwiseProcessingStep):
@@ -344,7 +430,7 @@ class EnhancedSectionClassifier(AbstractElementwiseProcessingStep):
 
 
 class AgreementParserV6(AbstractSemanticElementParser):
-    """Legal Agreement Parser V6 - Targeted improvements
+    """Legal Agreement Parser V6 - Fresh instances for each document
     - HTML attribute-aware title detection
     - Underlined header detection
     - Better early title recognition.
@@ -390,7 +476,7 @@ class AgreementParserV6(AbstractSemanticElementParser):
         return []
 
 
-def test_v6_improvements() -> None:
+def comprehensive_test_v6() -> None:
     """Test V6 improvements on specific problematic agreements."""
     from pathlib import Path
 
@@ -467,4 +553,4 @@ def test_v6_improvements() -> None:
 
 
 if __name__ == "__main__":
-    test_v6_improvements()
+    comprehensive_test_v6()
