@@ -1,703 +1,596 @@
 # Comprehensive Review of sec-parser
 
-## Table of Contents
-- [Executive Summary](#executive-summary)
-- [Part 1: Core Features](#part-1-core-features)
-- [Part 2: Ancillary Features](#part-2-ancillary-features)
-- [Part 3: Function Usefulness Ranking for Your Use Case](#part-3-function-usefulness-ranking)
-- [Part 4: Major and Minor Flaws](#part-4-major-and-minor-flaws)
-- [Part 5: Suggested Improvements](#part-5-suggested-improvements)
+**Scope:** US-listed entities, English-only filings, 2015+ (inline CSS era), 10-K and 10-Q initially.
+**XBRL assumption:** Tagged facts handled separately by edgartools. sec-parser is responsible for structural parsing only.
 
 ---
 
-## Executive Summary
+## Revised Goals
 
-**sec-parser** is an MIT-licensed Python library that parses SEC EDGAR HTML filings (10-K, 10-Q) into a hierarchical semantic tree of classified elements. It uses a pipeline architecture with 14 sequential processing steps, BeautifulSoup4/lxml for HTML parsing, and pandas for table extraction.
+| # | Goal | Description |
+|---|------|-------------|
+| G1 | **Segment-Addressed Text Extraction** | Extract all text from a filing with a stable, hierarchical segment header ID attached to each element. Every piece of text must know which section it belongs to. |
+| G2 | **Smart TOC Navigation** | Build a structured Table of Contents that powers an interactive floating pill UI (Intersection Observer, idle/scroll/hover states, section-jump). Requires: unique section IDs, hierarchy levels, section boundaries, and active-section tracking data. |
+| G3 | **Complete Table Inventory** | Identify and catalogue every table in the filing. Classify each by purpose (financial statement, footnote, layout, TOC, schedule). For tables not XBRL-tagged, capture surrounding prose as context where useful. |
+| G4 | **Prose-Table Relationship** | For each table, determine whether the surrounding prose is substantive context (keep it) or a stub reference like "refer to the table below" (discard the prose, present only the table). |
+| G5 | **Diff-Ready Output** | Produce normalized, segment-addressed text and table output suitable for downstream text-diffing (prose changes across periods) and number-diffing (financial figure changes across periods). |
 
-**Bottom line for your use case:** This library provides a solid ~60% foundation for what you need. It handles document segmentation, title hierarchy, and table detection well. However, it has significant gaps in table content extraction, no segment header ID system, no prose-vs-stub classification, and no diff-ready output. Forking and enhancing is the right approach.
+**Non-goals for this phase:** Pre-2015 filing compatibility, non-English filings, XBRL fact extraction (handled by edgartools), non-10-K/10-Q form types.
 
 ---
 
 ## Part 1: Core Features
 
-### 1.1 HTML Parsing Engine (`processing_engine/`)
+### 1.1 HTML Parsing Engine
 
-**What it does:** Parses raw HTML into a flat list of top-level tags, then wraps each in an `HtmlTag` object (a cached wrapper around BeautifulSoup4 `Tag`).
+**Files:** `processing_engine/html_tag_parser.py`, `processing_engine/html_tag.py`
 
-**Key assumption:** SEC filings have *flat HTML structure* where each top-level `<div>`, `<p>`, or `<table>` typically maps to one semantic element. This is mostly true for EDGAR filings.
+The `HtmlTagParser` extracts top-level HTML elements from `<body>`, producing a flat list. Each is wrapped in `HtmlTag`, a cached abstraction over BeautifulSoup4 `Tag` objects.
 
-**Files:**
-- `processing_engine/html_tag_parser.py` - Extracts top-level tags from `<body>`
-- `processing_engine/html_tag.py` - `HtmlTag` wrapper with extensive caching (text, styles, metrics, markdown, source code)
+`HtmlTag` provides:
+- `text` - recursive text extraction (cached)
+- `get_source_code()` - raw or prettified HTML (cached)
+- `contains_tag()` - descendant tag search (cached)
+- `get_text_styles_metrics()` - CSS style percentage distribution (cached)
+- `get_approx_table_metrics()` - row/number counts for tables (cached)
+- `table_to_markdown()` - markdown conversion via `TableToMarkdown` (cached)
+- `is_table_of_content()` - TOC detection heuristic
+- `get_children()`, `has_tag_children()`, `is_unary_tree()` - structural queries
+- `without_tags()`, `count_tags()`, `has_text_outside_tags()` - filtering helpers
+- `to_dict()` - hash + preview for debugging
 
-**Verdict:** Well-designed. The caching strategy is appropriate given HTML immutability. The bs4 abstraction layer makes it easy to swap parsing backends later.
-
----
-
-### 1.2 14-Step Processing Pipeline (`processing_engine/core.py`)
-
-The core pipeline transforms `NotYetClassifiedElement` instances through these steps:
-
-| # | Step | Purpose | Quality |
-|---|------|---------|---------|
-| 1 | `IndividualSemanticElementExtractor` | Splits multi-element containers (XBRL wrappers, text+table combos) into `CompositeSemanticElement` | Good |
-| 2 | `ImageClassifier` | Tags elements containing `<img>` | Simple, correct |
-| 3 | `EmptyElementClassifier` | Tags elements without alphanumeric content as `EmptyElement` (IrrelevantElement) | Simple, correct |
-| 4 | `TableClassifier` | Tags elements containing `<table>` with >1 row as `TableElement` | Functional but basic |
-| 5 | `TableOfContentsClassifier` | Identifies tables that are TOCs (contain "page" text) | Very basic heuristic |
-| 6 | `TopSectionManager` (10Q/10K) | Two-pass: collects section title candidates, then selects best match per section type | Core value-add |
-| 7 | `IntroductorySectionElementClassifier` | Tags content before first `TopSectionTitle` as introductory | Simple, correct |
-| 8 | `TextClassifier` | Catch-all: any remaining element with alphanumeric text becomes `TextElement` | Simple, correct |
-| 9 | `HighlightedTextClassifier` | Analyzes CSS styles to detect bold/italic/centered/uppercase/underline text | Good intermediate step |
-| 10 | `SupplementaryTextClassifier` | Identifies parenthetical notes, italic disclaimers, financial statement references | Narrow rules |
-| 11 | `PageHeaderClassifier` | Two-pass: finds short text appearing >= 5 times, marks as `PageHeaderElement` | Clever heuristic |
-| 12 | `PageNumberClassifier` | Two-pass: finds short numeric patterns appearing >= 5 times, marks as `PageNumberElement` | Clever heuristic |
-| 13 | `TitleClassifier` | Converts `HighlightedTextElement` to `TitleElement` with hierarchy level based on style order | Core value-add but fragile |
-| 14 | `TextElementMerger` | Merges adjacent `TextElement` instances (fixes XBRL-split text) | Important for XBRL filings |
-
-**Verdict:** The pipeline is well-structured and extensible. Steps 6, 11, 12, and 13 are the most valuable. Step 10 (supplementary text) is too narrow. Step 4 (table classification) is too simplistic for serious table work.
+**Verdict for our goals:** Strong foundation. The caching strategy is correct for immutable HTML. The `HtmlTag` abstraction isolates us from bs4 internals. Key gap: no positional/offset information (needed for G2 Intersection Observer mapping).
 
 ---
 
-### 1.3 Semantic Element Type System (`semantic_elements/`)
+### 1.2 Processing Pipeline
+
+**File:** `processing_engine/core.py`
+
+Both `Edgar10QParser` and `Edgar10KParser` inherit from `AbstractSemanticElementParser` and define a 14-step pipeline. Every element starts as `NotYetClassifiedElement` and is progressively reclassified.
+
+The pipeline is configured via `get_default_steps()` and `get_default_single_element_checks()`. Custom steps can be injected or replaced via the `get_steps` callable parameter.
+
+**The 14 steps, reviewed against our goals:**
+
+| # | Step Class | What It Does | Quality | Our Goals |
+|---|-----------|--------------|---------|-----------|
+| 1 | `IndividualSemanticElementExtractor` | Splits containers with mixed content (text + table, multiple tables) into `CompositeSemanticElement`. Uses `TableCheck`, `XbrlTagCheck`, `ImageCheck`, `TopSectionTitleCheck`. | Good | G3, G4 |
+| 2 | `ImageClassifier` | Detects `<img>` tags, reclassifies to `ImageElement` | Fine as-is | - |
+| 3 | `EmptyElementClassifier` | Tags content-free elements as `EmptyElement` (subclass of `IrrelevantElement`, filtered from output) | Fine as-is | G1 |
+| 4 | `TableClassifier` | Tags elements containing `<table>` with >1 row as `TableElement`. Uses `get_approx_table_metrics()` for row counting. Threshold is hardcoded at 1 row. | Functional but needs enhancement | G3 |
+| 5 | `TableOfContentsClassifier` | Reclassifies `TableElement` to `TableOfContentsElement` if any `<td>` contains "page"/"page no."/"page number" | Too simplistic | G2, G3 |
+| 6 | `TopSectionManagerFor10Q` / `TopSectionManagerFor10K` | Two-pass: regex-matches "Part [I-IV]" and "Item [N]" against element text, groups candidates by section type, selects best match per section with monotonic ordering. | Core value-add, some brittleness | G1, G2 |
+| 7 | `IntroductorySectionElementClassifier` | Two-pass: marks everything before "Part 1" as `IntroductorySectionElement` (an `IrrelevantElement` subclass, filtered out) | Fine as-is | G1 |
+| 8 | `TextClassifier` | Catch-all: remaining elements with alphanumeric content become `TextElement` | Fine as-is | G1 |
+| 9 | `HighlightedTextClassifier` | Analyzes inline CSS via `get_text_styles_metrics()` to produce a `TextStyle` (bold, italic, centered, uppercase, underline). Promotes `TextElement` to `HighlightedTextElement`. | Good for 2015+ filings | G2 |
+| 10 | `SupplementaryTextClassifier` | Reclassifies text matching narrow patterns: parenthetical text `(...)`, italic text ending in `.`, or text mentioning "notes" + "financial statements". | Too narrow for G4 | G4 |
+| 11 | `PageHeaderClassifier` | Two-pass statistical: short text (<100 chars) appearing 5+ times becomes `PageHeaderElement` (irrelevant). Considers both text content and style. | Clever, effective | G1 |
+| 12 | `PageNumberClassifier` | Two-pass statistical: short text with digits, non-digit pattern appearing 5+ times becomes `PageNumberElement` (irrelevant). | Clever, effective | G1 |
+| 13 | `TitleClassifier` | Converts every `HighlightedTextElement` to `TitleElement` with a hierarchy level based on the order each unique `TextStyle` first appears. | Fragile - core concern | G1, G2 |
+| 14 | `TextElementMerger` | Merges adjacent `TextElement` instances separated only by `IrrelevantElement` gaps, wrapping them in a synthetic `<sec-parser-merged-text>` tag. | Important for XBRL-era text | G1, G5 |
+
+**Key architectural properties:**
+- `AbstractElementwiseProcessingStep._process_recursively()` handles `CompositeSemanticElement` children automatically
+- `_NUM_ITERATIONS` on each step controls multi-pass behavior (used by steps 6, 7, 11, 12)
+- `types_to_process` and `types_to_exclude` filter which elements each step touches
+- Errors caught per-element via `ErrorWhileProcessingElement` wrapping
+- `parse()` accepts `unwrap_elements`, `include_containers`, `include_irrelevant_elements` flags
+
+---
+
+### 1.3 Semantic Element Type System
+
+**Files:** `semantic_elements/abstract_semantic_element.py`, `semantic_elements/semantic_elements.py`, and subclass files
 
 ```
 AbstractSemanticElement
-├── NotYetClassifiedElement          (starting point)
-├── ErrorWhileProcessingElement      (error wrapper)
-├── IrrelevantElement (base)
-│   ├── PageNumberElement
-│   ├── PageHeaderElement
-│   ├── EmptyElement
-│   └── IntroductorySectionElement
-├── TextElement                      (standard prose)
-├── SupplementaryText                (parenthetical notes)
-├── ImageElement
-├── HighlightedTextElement           (intermediate: styled text)
-├── TitleElement (AbstractLevelElement) (with hierarchy level)
-├── TableElement
-│   └── TableOfContentsElement
-├── CompositeSemanticElement         (container for multi-element wrappers)
-├── TopSectionTitle                  (Part I, Item 1, etc.)
-└── TopSectionStartMarker
+ ├── NotYetClassifiedElement
+ ├── ErrorWhileProcessingElement
+ ├── IrrelevantElement
+ │   ├── EmptyElement
+ │   ├── PageNumberElement
+ │   ├── PageHeaderElement
+ │   └── IntroductorySectionElement
+ ├── TextElement (with DictTextContentMixin)
+ ├── SupplementaryText (with DictTextContentMixin)
+ ├── ImageElement
+ ├── HighlightedTextElement (carries TextStyle)
+ ├── TitleElement (AbstractLevelElement, with level: int)
+ ├── TopSectionStartMarker (AbstractLevelElement, with section_type: TopSectionInFiling)
+ │   └── TopSectionTitle (also has DictTextContentMixin)
+ ├── TableElement
+ │   └── TableOfContentsElement
+ └── CompositeSemanticElement (container with inner_elements tuple)
 ```
 
-**Verdict:** The hierarchy is reasonable but missing several element types you'll need (see improvements section).
+Every element exposes:
+- `.text` - plain text content
+- `.html_tag` - underlying `HtmlTag`
+- `.get_source_code()` - raw HTML
+- `.get_summary()` - human-readable summary (overridden by `TableElement`)
+- `.to_dict()` - serialization with optional previews/contents
+- `.processing_log` - full audit trail of classification decisions
+- `.contains_words()` - has alphanumeric content
+- `.create_from_element()` - type-conversion factory that preserves the processing log
+
+`AbstractLevelElement` adds `.level: int` (used by `TitleElement` and `TopSectionStartMarker`).
+`TopSectionStartMarker` adds `.section_type: TopSectionInFiling` (identifier, title, order, level).
 
 ---
 
-### 1.4 Semantic Tree Builder (`semantic_tree/`)
+### 1.4 Tree Builder
 
-**What it does:** Converts the flat element list into a hierarchical tree using stack-based nesting with configurable rules.
+**Files:** `semantic_tree/tree_builder.py`, `semantic_tree/nesting_rules.py`, `semantic_tree/semantic_tree.py`, `semantic_tree/tree_node.py`
 
-**Default nesting rules (in order):**
-1. `AlwaysNestAsParentRule(TopSectionStartMarker)` - Top sections parent everything except other top sections
-2. `AlwaysNestAsParentRule(TitleElement, exclude_children={TopSectionStartMarker})` - Titles parent non-titles
-3. `NestSameTypeDependingOnLevelRule()` - Same-type elements nest by level (e.g., Title[L0] > Title[L1])
+`TreeBuilder.build()` converts a flat element list into a `SemanticTree` of `TreeNode` objects using a stack-based algorithm with three default nesting rules:
 
-**Algorithm:** Stack-based. For each new element, walk the stack backward looking for a valid parent. If found, nest under it. If not, add as root.
+1. `AlwaysNestAsParentRule(TopSectionStartMarker)` - Part/Item sections parent everything
+2. `AlwaysNestAsParentRule(TitleElement, exclude_children={TopSectionStartMarker})` - Titles parent non-title content
+3. `NestSameTypeDependingOnLevelRule()` - Same-type elements with lower `.level` parent those with higher `.level`
 
-**Verdict:** The tree builder is the library's strongest feature. The rule system is composable and extensible. The stack-based approach is correct for the document model.
+`SemanticTree` provides:
+- `__iter__()` - iterate root nodes
+- `.nodes` - generator yielding all nodes (depth-first)
+- `.render()` / `.print()` - ASCII tree visualization
 
----
+`TreeNode` provides:
+- `.semantic_element` - the wrapped element
+- `.parent` / `.children` - tree navigation (parent setter auto-updates both sides)
+- `.get_descendants()` - recursive depth-first traversal
+- `.text` / `.get_source_code()` - pass-throughs to the semantic element
 
-### 1.5 Section Recognition (`top_section_manager.py`, `top_section_title_types.py`)
-
-**10-Q sections defined:** 12 (Part I Items 1-4, Part II Items 1-6, plus Part headings)
-**10-K sections defined:** 27 (Part I-IV with all sub-items including 1c Cybersecurity)
-
-**Algorithm:** Two-pass.
-- Pass 1: Regex-match "Part [I-IV]" and "Item [N]" patterns against element text
-- Pass 2: Group candidates by section type, select best (prefer non-table elements), enforce monotonic ordering
-
-**Verdict:** Handles standard section formats well. Brittle against non-standard formatting (e.g., "ITEM 1A:" with no space, merged Part+Item lines, tabular TOC entries matching the pattern). The ordering enforcement (`_last_order_number`) is a useful guard against false positives.
+**Verdict for our goals:** This is the library's strongest feature and the foundation for G2. The rule system is composable. However, the tree lacks: section boundary information (start/end indices or byte offsets), serialization to a TOC data structure, and query/filter APIs.
 
 ---
 
-## Part 2: Ancillary Features
+### 1.5 Section Definitions
 
-### 2.1 Table Extraction (`table_element/table_parser.py`)
+**File:** `semantic_elements/top_section_title_types.py`
 
-**What it does:** Wraps `pandas.read_html()` with post-processing:
-1. Parse HTML table via pandas/lxml
-2. Drop all-NA rows and columns
-3. Treat first row as headers
-4. Remove blank duplicate columns
-5. Merge `$` and `%` marker columns back into data columns
-6. Re-index columns numerically
+`TopSectionInFiling` dataclass: `identifier`, `title`, `order`, `level`.
+`FilingSections` dataclass: maps identifiers to sections.
 
-**Verdict:** This is the weakest part of the library for your use case. It only parses the *first* table found, loses structural information (merged cells, row spans), and the `$`/`%` marker merging is fragile. The `table_to_markdown()` method is more useful than `parse_as_df()` for downstream processing.
+10-Q: 12 sections (Part I Items 1-4, Part II Items 1-6, plus Part headings).
+10-K: 27 sections (Part I-IV, Items 1-16 including 1c Cybersecurity).
+
+`TopSectionManager` uses `match_part()` (regex for "Part [I-IV]") and `match_item()` (regex for "Item [N]") with a roman numeral map limited to `{"i": "1", "ii": "2", "iii": "3", "iv": "4"}`.
 
 ---
 
-### 2.2 Text Style Analysis (`highlighted_text_element.py`, `bs4_/text_styles_metrics.py`)
+### 1.6 Table Features
 
-**TextStyle** tracks 5 properties:
-- `is_all_uppercase` (>= 80% caps in text)
-- `bold_with_font_weight` (font-weight >= 600 or "bold", affecting >= 80% of text)
-- `italic` (font-style: italic, >= 80%)
-- `centered` (text-align: center, >= 80%)
-- `underline` (text-decoration: underline, >= 80%)
-
-**Limitation:** Only reads inline `style` attributes. Does **not** read `<b>`, `<i>`, `<u>`, `<strong>`, `<em>` HTML tags directly, nor `<style>` blocks or class-based CSS. The 80% threshold is hard-coded and non-configurable.
-
-**Verdict:** Sufficient for most EDGAR filings (which use inline styles heavily), but will miss formatting in older filings that use HTML tags for styling.
+**Detection:** `TableClassifier` + `TableCheck` (in `IndividualSemanticElementExtractor`)
+**Metrics:** `get_approx_table_metrics()` returns `ApproxTableMetrics(rows, numbers)`
+**Markdown:** `TableToMarkdown.convert()` - unmerges `colspan` cells, parses via `pd.read_html`, outputs markdown
+**DataFrame:** `TableParser.parse_as_df()` - parses first table, drops NAs, merges `$`/`%` marker columns
+**TOC detection:** `check_table_contains_text_page()` checks `<td>` text against "page"/"page no."/"page number"
+**Summary:** `TableElement.get_summary()` returns row/number counts (has a bug - see flaws)
 
 ---
 
-### 2.3 Tree Rendering (`render_.py`)
+### 1.7 Text Style Analysis
 
-**What it does:** Produces ASCII tree visualizations with ANSI color codes:
-```
-TopSectionTitle: Part I - Financial Information
-├── TitleElement: Financial Statements
-│   ├── TextElement: The accompanying notes...
-│   └── TableElement: Table with ~45 rows, ~12 numbers...
-└── TitleElement: MD&A
-    └── TextElement: Management believes...
-```
+**File:** `semantic_elements/highlighted_text_element.py`
 
-**Verdict:** Useful for debugging. Not designed for production output. The `char_display_limit=65` truncation is too aggressive for real analysis.
+`TextStyle` frozen dataclass tracks five boolean properties derived from inline CSS style percentages:
+- `is_all_uppercase` - text-level check (>= 80% capitalized via `exceeds_capitalization_threshold()`)
+- `bold_with_font_weight` - CSS `font-weight` >= 600 or "bold" (>= 80% of text length)
+- `italic` - CSS `font-style: italic` (>= 80%)
+- `centered` - CSS `text-align: center` (>= 80%)
+- `underline` - CSS `text-decoration: underline` (>= 80%)
 
----
+`TextStyle.__bool__()` returns `True` if any property is set.
+`TextStyle.from_style_and_text()` is the factory that computes styles from metrics + text.
 
-### 2.4 Processing Log (`processing_log.py`)
-
-Each semantic element carries a `ProcessingLog` recording every classification decision:
-```
-"Identified as candidate: part1item2"
-"this.order=2 last_order_number=1"
-"Contains single element: False"
-```
-
-**Verdict:** Excellent for debugging and understanding classification decisions. No performance concern since it's append-only.
+**Verdict for our goals:** Adequate for 2015+ filings which overwhelmingly use inline CSS. The 80% threshold and 600 bold weight are reasonable defaults but should be configurable.
 
 ---
 
-### 2.5 XBRL Handling (`xbrl_tag_check.py`, `text_element_merger.py`)
+### 1.8 Ancillary Features
 
-**What it does:** Detects `<ix:*>` XBRL inline tags that wrap multiple visual elements. Splits these into `CompositeSemanticElement` with children. Later, `TextElementMerger` recombines adjacent text fragments that were split by XBRL tagging.
+**Rendering** (`semantic_tree/render_.py`): `render()` produces ASCII trees with ANSI colors. Supports `pretty`, `verbose` (shows levels), `char_display_limit`, and `ignored_types` parameters. Useful for debugging only.
 
-**Verdict:** This is important for modern EDGAR filings (post-2020) which are heavily XBRL-tagged. The splitting and re-merging approach is correct. However, the XBRL tag metadata (concept names, context references) is **completely discarded** - a major loss for your financial analysis use case.
+**Processing Log** (`processing_engine/processing_log.py`): Append-only log on every element recording each classification decision. Invaluable for debugging why an element was classified a certain way.
 
----
+**Composite Element Unwrapping** (`CompositeSemanticElement.unwrap_elements()`): Recursively flattens `CompositeSemanticElement` containers. The `include_containers` flag preserves the wrapper for document reconstruction.
 
-### 2.6 Composite Element System (`composite_semantic_element.py`)
+**ParsingOptions** (`processing_engine/types.py`): Currently contains only `html_integrity_checks: bool = False`. Underutilized.
 
-**What it does:** Wraps elements that contain multiple semantic children (e.g., a `<div>` containing both prose and a table). Supports recursive unwrapping via `unwrap_elements()`.
-
-**Verdict:** Architecturally sound. Correctly preserves the original HTML structure while allowing flat iteration. The `include_containers` option is useful for document reconstruction.
+**Dashboard** (`dev_utils/dashboard_app/`): Streamlit-based visual debugger. Not production-relevant.
 
 ---
 
-### 2.7 Dashboard App (`dev_utils/dashboard_app/`)
+## Part 2: Function-by-Function Assessment
 
-A Streamlit-based debugging dashboard for visualizing parsed filings. Not part of the core library.
+### Tier 1: Critical for Our Goals (use and enhance)
 
-**Verdict:** Useful for development/debugging only. Not relevant to your production use case.
+| Function / Class | File | Relevance | Status |
+|-----------------|------|-----------|--------|
+| `TreeBuilder.build()` | `tree_builder.py` | Produces the hierarchy that G2's TOC pill navigates. Every section, subsection, and content block nests here. | **Needs enhancement:** no section boundary data, no serializable TOC output, stack-popping bug (see M6). |
+| `TopSectionManager._process_element()` (and its 10K/10Q subclasses) | `top_section_manager.py` | Identifies Part/Item boundaries - the top-level segments for G1's IDs and G2's TOC. | **Needs enhancement:** regex brittleness, no tolerance for formatting variants, dead code at EOF. |
+| `TopSectionTitle` + `TopSectionStartMarker` | `top_section_title.py`, `top_section_start_marker.py` | Carry `.section_type.identifier` (e.g., "part2item7") - the natural segment address root for G1. | **Usable as-is.** `.section_type.identifier` is already a decent segment address prefix. |
+| `TitleClassifier._process_element()` | `title_classifier.py` | Assigns hierarchy levels to sub-section headings. These levels drive G2's TOC depth. | **Needs fix:** order-of-first-occurrence level assignment is fragile (see M1). |
+| `TitleElement` | `title_element.py` | Carries `.level` for nesting depth. G2 needs this to render the mini-TOC list correctly. | **Usable as-is** once TitleClassifier is fixed. |
+| `TableClassifier._process_element()` | `table_classifier.py` | Identifies all tables - the starting point for G3's complete inventory. | **Needs enhancement:** no table type classification, no context about surrounding prose. |
+| `IndividualSemanticElementExtractor._create_composite_element()` | `individual_semantic_element_extractor.py` | Splits mixed containers (prose + table in one tag) into separate elements. Critical for G4's prose-table relationship detection. | **Good as-is.** `TableCheck.contains_single_element()` correctly handles multi-table and text-outside-table cases. |
+| `AbstractSemanticElement.text` / `.get_source_code()` | `abstract_semantic_element.py` | Primary text extraction for G1 and G5. | **Usable as-is.** Need to add normalized text output for G5 diffing. |
+| `SemanticTree.nodes` | `semantic_tree.py` | Depth-first iterator over all nodes - needed to walk the tree for G2 TOC generation and G1 segment ID assignment. | **Usable as-is.** |
+| `CompositeSemanticElement.unwrap_elements()` | `composite_semantic_element.py` | Flattens nested containers for G1's flat text extraction while `include_containers=True` preserves structure for G4. | **Usable as-is.** |
 
----
+### Tier 2: Important Supporting Features (use with minor modifications)
 
-## Part 3: Function Usefulness Ranking
+| Function / Class | File | Relevance | Status |
+|-----------------|------|-----------|--------|
+| `HighlightedTextClassifier._process_element()` | `highlighted_text_classifier.py` | Intermediate step feeding `TitleClassifier`. Quality of style detection directly impacts G2's TOC accuracy. | **Good for 2015+ filings.** Inline CSS detection works. |
+| `TextStyle.from_style_and_text()` | `highlighted_text_element.py` | Produces the style fingerprint used for title level assignment. | **Good.** Consider making thresholds configurable. |
+| `PageHeaderClassifier._process_element()` | `page_header_classifier.py` | Removes repeated page headers (company name, section name) that would pollute G1's text extraction and G5's diffs. | **Good.** Statistical approach (5+ occurrences of identical short text + style) is robust. |
+| `PageNumberClassifier._process_element()` | `page_number_classifier.py` | Removes page numbers that would pollute G1/G5. | **Good.** Same statistical approach. |
+| `TextElementMerger._process_elements()` | `text_element_merger.py` | Merges XBRL-split text fragments into coherent paragraphs. Without this, G1 produces fragmented text and G5's diffs are noisy. | **Important.** Works correctly for the common XBRL split case. |
+| `SupplementaryTextClassifier._process_element()` | `supplementary_text_classifier.py` | Partial implementation of G4 - identifies parenthetical unit qualifiers and "accompanying notes" references. | **Needs enhancement:** too narrow for general stub detection. |
+| `EmptyElementClassifier` | `empty_element_classifier.py` | Filters whitespace-only elements from output. Keeps G1 clean. | **Fine as-is.** |
+| `IntroductorySectionElementClassifier._process_element()` | `introductory_section_classifier.py` | Removes cover pages and disclaimers before Part 1. | **Fine as-is.** |
+| `HtmlTag` (entire class) | `html_tag.py` | Caching wrapper providing all low-level operations. Performance-critical for large 10-Ks. | **Good.** Would benefit from exposing byte offset / character offset for G2 position tracking. |
+| `render()` | `render_.py` | Debugging visualization during development. | **Fine as-is** for development use. |
 
-Ranked by relevance to your 5 stated goals:
+### Tier 3: Usable but Low Priority
 
-### Tier 1: Essential (use directly, enhance in fork)
+| Function / Class | File | Relevance | Status |
+|-----------------|------|-----------|--------|
+| `ImageClassifier` | `image_classifier.py` | Tags images for filtering. Not central to any goal. | Fine as-is. |
+| `TableElement.table_to_markdown()` / `TableToMarkdown.convert()` | `table_element.py`, `table_to_markdown.py` | Useful for G5 text-diffing of tables. Handles `colspan` unmerging. | Usable. Better than `parse_as_df()` for our purposes. |
+| `TableOfContentsClassifier._process_element()` | `table_of_contents_classifier.py` | Detects TOC tables, which G2 could use as a fallback for section enumeration. | Too simplistic to rely on (see m8). |
+| Processing log system | `processing_log.py` | Development/debugging aid. | Fine as-is. |
+| `AbstractSemanticElement.to_dict()` | `abstract_semantic_element.py` | Serialization helper. Building block for G5 output. | Usable. |
+| Nesting rules (`AlwaysNestAsParentRule`, `AlwaysNestAsChildRule`, `NestSameTypeDependingOnLevelRule`) | `nesting_rules.py` | Composable rules that let us customize tree building for G2. | Good design. We can add custom rules for our TOC needs. |
 
-| Component | Why Essential | Your Goal |
-|-----------|--------------|-----------|
-| `TreeBuilder.build()` | Creates the hierarchical document structure you need for TOC navigation | Goal 2 (TOC navigation) |
-| `TopSectionManager` + `FilingSectionsIn10K/10Q` | Identifies Part/Item sections - your top-level segment headers | Goals 1, 2 |
-| `TitleClassifier` + `TitleElement` | Provides the sub-section heading hierarchy within each Part/Item | Goals 1, 2 |
-| `TableClassifier` + `TableElement` | Identifies all tables in the document | Goal 3 |
-| `IndividualSemanticElementExtractor` + `TableCheck` | Separates tables from surrounding prose (critical for Goal 4) | Goals 3, 4 |
-| `AbstractSemanticElement.text` / `.get_source_code()` | Your primary text extraction mechanism | Goal 1 |
-| `HtmlTag` caching layer | Performance-critical for large filings (10-Ks can be 500+ pages) | All goals |
+### Tier 4: Low Value / Needs Replacement
 
-### Tier 2: Very Useful (use with minor modifications)
-
-| Component | Why Useful | Your Goal |
-|-----------|-----------|-----------|
-| `HighlightedTextClassifier` + `TextStyle` | Identifies styled text (headings, emphasis) for hierarchy detection | Goal 2 |
-| `PageNumberClassifier` + `PageHeaderClassifier` | Removes noise from your text extraction | Goal 1 |
-| `TextElementMerger` | Fixes XBRL-split text (critical for clean text extraction) | Goals 1, 5 |
-| `EmptyElementClassifier` | Removes whitespace-only elements from output | Goal 1 |
-| `CompositeSemanticElement` | Preserves table-with-prose relationships (critical for Goal 4) | Goal 4 |
-| Nesting rules system | Extensible - add custom rules for your TOC builder | Goal 2 |
-| `SupplementaryTextClassifier` | Identifies the "stub prose" you want to discard around tables (Goal 4) | Goal 4 |
-| `TableElement.table_to_markdown()` | Quick text representation of tables for diffing | Goal 5 |
-
-### Tier 3: Useful As-Is (no modification needed)
-
-| Component | Why Useful | Your Goal |
-|-----------|-----------|-----------|
-| `IntroductorySectionElementClassifier` | Correctly skips cover pages and disclaimers | Goal 1 |
-| `ImageClassifier` | Identifies and classifies images you can filter out | Goal 1 |
-| Pipeline architecture (step injection/replacement) | Your enhancement strategy - add/replace steps without rewriting | All goals |
-| Processing logs | Debugging aid during enhancement | All goals |
-| `render()` | Quick visual verification of parse results | Debugging |
-
-### Tier 4: Low Value for Your Use Case
-
-| Component | Why Low Value |
-|-----------|--------------|
-| `TableParser.parse_as_df()` | Too lossy - you need better table extraction |
-| `TableOfContentsClassifier` | Detects TOC tables but doesn't parse them - you need actual TOC extraction |
-| Dashboard app | Development tool, not production |
-| `get_approx_table_metrics()` | Rough estimates, not useful for serious table analysis |
+| Function / Class | File | Why Low Value |
+|-----------------|------|---------------|
+| `TableParser.parse_as_df()` | `table_parser.py` | Parses only first table, naive headers, `$`/`%` merging is fragile, loses structure. Not useful for G3 or G5. |
+| `get_approx_table_metrics()` | `approx_table_metrics.py` | Only provides rough row/number counts. Not granular enough for G3's table classification. |
+| `check_table_contains_text_page()` | `table_check_data_cell.py` | Checks only exact matches of "page"/"page no."/"page number" in `<td>` cells. Misses common variants, false-positives possible. |
+| `ParsingOptions` | `types.py` | Contains only `html_integrity_checks: bool`. Severely underutilized. |
+| Dashboard app | `dev_utils/` | Development tool, not production. |
 
 ---
 
-## Part 4: Major and Minor Flaws
+## Part 3: Flaws
 
-### MAJOR FLAWS
+### Major Flaws
 
-#### M1. Title Hierarchy Detection is Fragile (`title_classifier.py:45-66`)
+#### M1. Title Hierarchy Levels Are Assigned by Order of First Occurrence
 
-**The problem:** Title levels are assigned based on *order of first style occurrence* in the document. The first unique `TextStyle` seen becomes Level 0, second becomes Level 1, etc.
+`TitleClassifier` maintains `_unique_styles_by_order`, a tuple of `TextStyle` objects. The first unique style encountered in the document gets level 0, the second gets level 1, etc.
 
-**Why this is major:** This assumes the document presents styles in hierarchical order (broadest heading first). Many 10-Ks start with a centered bold title, then use bold for items and italic-bold for sub-items. If the first styled text in the document happens to be an italic disclaimer, the entire hierarchy gets shifted.
+This assumes the document presents heading styles top-down. If a styled disclaimer or note appears before the first real heading, all levels shift. For 2015+ filings, the `SupplementaryTextClassifier` catches some of these cases (parenthetical text, italic notes), but edge cases remain: a bold legal notice before Part I, a centered company name that wasn't caught by `PageHeaderClassifier`, or a styled exhibit reference.
 
-**Example failure:**
-```
-<p style="font-style:italic">See accompanying notes</p>  ← Style A = Level 0 (wrong!)
-<p style="font-weight:bold">PART I</p>                    ← Style B = Level 1 (should be 0)
-<p style="font-weight:bold;font-style:italic">Item 1</p>  ← Style C = Level 2 (should be 1)
-```
+**Impact:** G2's TOC mini-list will show incorrect nesting. G1's segment hierarchy will be unreliable for sub-section granularity.
 
-**Impact on your goals:** Incorrect title hierarchy will break your TOC navigation (Goal 2) and segment header identification (Goal 1).
-
-**Note:** The `SupplementaryTextClassifier` runs *before* `TitleClassifier` and would catch the italic disclaimer in this specific example - but many edge cases remain where a non-title styled element appears first.
+**Fix:** Replace insertion-order level assignment with a style-scoring approach. Score each `TextStyle` by its visual weight (bold > centered > uppercase > underline > italic), rank all unique styles, assign levels by rank. This requires changing `TitleClassifier` from single-pass to two-pass (`_NUM_ITERATIONS = 2`): first pass collects all styles, second pass assigns levels by score rank.
 
 ---
 
-#### M2. No Element-Level Identifier System
+#### M2. No Stable Element Identifier System
 
-**The problem:** Semantic elements have no stable identifier (no ID, no index, no hash-based reference). Elements are identified only by their Python object identity or position in the list.
+Elements have no `id`, `index`, or content-hash-based identifier. `AbstractSemanticElement` is identified only by Python object identity. `to_dict()` produces an `html_hash` via xxhash but it's on `HtmlTag`, not propagated as a stable element ID.
 
-**Why this is major:** You need "segment header IDs" (Goal 1) and "table identification" (Goal 3). Currently there's no way to reference a specific element across parses or between versions of a filing (critical for Goal 5: text-diffing).
+**Impact:** G1 cannot assign segment header IDs. G2 cannot produce TOC entries with stable anchor links. G5 cannot align elements across filing periods for diffing.
 
----
-
-#### M3. XBRL Metadata is Completely Discarded
-
-**The problem:** XBRL inline tags (`<ix:nonnumeric>`, `<ix:nonFraction>`) contain rich metadata:
-- `name="us-gaap:Revenue"` - the GAAP concept
-- `contextref="c-1"` - time period/entity context
-- `unitref="usd"` - currency/unit
-- `id="f-123"` - unique identifier
-
-The library strips all of this during the XBRL handling step (`xbrl_tag_check.py`), keeping only the visual text.
-
-**Why this is major:** For Goal 3 (identifying non-XBRL-tagged tables), you first need to know *which* tables ARE XBRL-tagged. And the discarded XBRL metadata is extremely valuable for table identification and number-diffing (Goal 5).
+**Fix:** Add a post-tree-building step that assigns hierarchical IDs. For `TopSectionTitle`, use `.section_type.identifier` (already exists: "part2item7"). For `TitleElement`, derive from parent section + normalized title text. For content elements, use parent ID + sequential index.
 
 ---
 
-#### M4. Table Content Extraction is Inadequate (`table_parser.py`)
+#### M3. Table Detection Has No Type Classification
 
-**The problem:**
-1. `parse_as_df()` only extracts the *first* `<table>` found via `pd.read_html()`
-2. Header detection is naive (assumes first row = header)
-3. Merged cells (`colspan`, `rowspan`) are not handled
-4. The `$`/`%` marker merging logic modifies DataFrames in place during iteration - can produce incorrect results with certain column arrangements
-5. No metadata about table type (financial statement, schedule, footnote table, etc.)
+`TableClassifier` produces a single `TableElement` type for all tables. There is no distinction between financial statement tables, footnote tables, layout/formatting tables, TOC tables, exhibit lists, or schedule tables.
 
-**Why this is major:** Table extraction is central to Goals 3, 4, and 5. The current implementation loses too much structural information for financial analysis.
+**Impact:** G3 requires a complete inventory classified by purpose. G4's prose-stub logic depends on knowing whether a table is a data table or a layout artifact.
+
+**Fix:** Add a `TableTypeClassifier` step after `TableClassifier` that assigns a `table_type` attribute. Heuristics: financial statement tables have `$` markers, numeric columns, proximity to financial statement section titles; footnote tables are smaller and inside footnote sections; layout tables have single columns or mostly text; TOC tables match section title patterns.
 
 ---
 
-#### M5. Style Detection Ignores HTML Tags (`highlighted_text_element.py:80-143`)
+#### M4. No Prose-Table Context Relationship Tracking
 
-**The problem:** `TextStyle.from_style_and_text()` only analyzes CSS `style` attributes. It does not detect:
-- `<b>`, `<strong>` - bold
-- `<i>`, `<em>` - italic
-- `<u>` - underline
-- `<h1>`-`<h6>` - heading tags
-- Class-based styles from `<style>` blocks
+The pipeline classifies elements individually. There is no step that examines the relationship between a `TextElement` and an adjacent `TableElement`. `SupplementaryTextClassifier` catches a few specific patterns (parenthetical text, "accompanying notes") but does not detect generic stub references like "the following table presents..." or "refer to the table below."
 
-**Why this is major:** Older EDGAR filings (pre-2015) and some filers use HTML tags rather than inline CSS for formatting. These filings will have **zero title detection**, causing a flat tree with no hierarchy.
+**Impact:** G4 cannot distinguish substantive prose from stub references without manual post-processing.
+
+**Fix:** Add a `TableContextClassifier` step that runs after `TextElementMerger`. For each `TableElement`, examine the preceding and following `TextElement`. Classify the relationship as: standalone (no relevant surrounding text), substantive-context (preceding prose adds value), stub-reference (preceding prose only points to the table), or continuation (table spans multiple elements).
 
 ---
 
-#### M6. `FilingSections` Definitions Have No Validation Against SEC Standards
+#### M5. Tree Has No Section Boundary or Position Data
 
-**The problem:** The `FilingSectionsIn10K` and `FilingSectionsIn10Q` definitions in `top_section_title_types.py` are hardcoded. There's no mechanism to validate that these match current SEC Regulation S-K requirements or to handle historical filing format changes.
+`TreeNode` carries only the `semantic_element` reference, `parent`, and `children`. There is no information about where a section starts and ends in the document (element index range, character offset, byte offset, or percentage through the document).
 
-**Example:** The 10-K definition includes `part1item1c` (Cybersecurity) which was added by SEC rule in Dec 2023. Filings before that date won't have this section, yet the code doesn't handle its absence gracefully.
+**Impact:** G2's Intersection Observer needs to map scroll position to the current section. Without positional data from the parser, the frontend must re-walk the DOM to compute section boundaries, duplicating work and risking desynchronization with the parse tree.
 
----
-
-### MINOR FLAWS
-
-#### m1. Bug in `TableElement.get_summary()` (line 23)
-
-```python
-return "Table with {len(self.text)} characters."  # Missing f-string prefix!
-```
-
-This returns the literal string `"Table with {len(self.text)} characters."` instead of the actual character count. Should be:
-```python
-return f"Table with {len(self.text)} characters."
-```
+**Fix:** Add `start_index`, `end_index`, and optionally `char_offset` to `TreeNode` during tree construction. Compute from element positions in the flat list. Expose a `tree.get_section_map()` method returning a list of `(section_id, start_offset, end_offset)` tuples.
 
 ---
 
-#### m2. `TopSectionManager` Contains Dead/Debugging Code (`top_section_manager.py:347-379`)
+#### M6. `_find_parent_node` Destructively Pops the Stack
 
-The file ends with two large multi-line docstrings that appear to be algorithm notes and a "ChatGPT improved version" of the algorithm description. These are dead code sitting at module level and suggest the code was written with AI assistance and not cleaned up.
+In `TreeBuilder._find_parent_node()`, the `while stack` loop pops elements that don't match as parents. This is destructive: if element N can't find a parent, it pops context that element N+1 might have needed.
 
----
+**Impact:** After a standalone table or image that doesn't nest under any title, all accumulated title context is lost. Subsequent text elements become root nodes instead of nesting under their section. This produces a broken tree for G2 and incorrect segment addresses for G1.
 
-#### m3. Hard-Coded Thresholds Throughout
-
-- `TextStyle.PERCENTAGE_THRESHOLD = 80` - style detection threshold
-- `TextStyle.BOLD_THRESHOLD = 600` - font-weight for bold
-- `PageNumberCandidate.TEXT_LENGTH_THRESHOLD = 100` - max length for page number candidates
-- `PageNumberCandidate.OCCURRENCE_THRESHOLD = 5` - min occurrences to qualify
-- `PageHeaderCandidate.OCCURRENCE_THRESHOLD = 5`
-- `TableClassifier._row_count_threshold = 1`
-
-None of these are configurable via `ParsingOptions` or constructor parameters (except `_row_count_threshold` which is set in `__init__` but not exposed).
+**Fix:** Use a non-destructive search (iterate backward without popping), only trimming the stack after finding a match or determining root status.
 
 ---
 
-#### m4. `_find_parent_node` Destructively Pops the Stack (`tree_builder.py:91-104`)
+### Minor Flaws
 
-```python
-def _find_parent_node(self, new_node, stack, rules):
-    while stack:
-        potential_parent = stack[-1]
-        if self._should_nest_under(new_node, potential_parent, rules):
-            return potential_parent
-        stack.pop()  # <-- Destructive! Removes elements that could be parents for LATER nodes
-    return None
-```
+#### m1. Bug: Missing f-string in `TableElement.get_summary()`
 
-This means if a sequence of elements doesn't nest properly, earlier context is permanently lost. For example, after a table that doesn't nest under any title, all accumulated title context is popped off the stack.
+`table_element.py:23` reads `return "Table with {len(self.text)} characters."` - the `f` prefix is missing. Returns a literal string instead of the actual character count.
 
 ---
 
-#### m5. No Error Recovery in Pipeline
+#### m2. Dead Code in `TopSectionManager`
 
-If a processing step throws an exception for one element, `ErrorWhileProcessingElement` wraps it - but the pipeline continues. There's no mechanism to:
-- Retry with different parameters
-- Fall back to a simpler classification
-- Report aggregate error statistics
+`top_section_manager.py:347-379` contains two module-level docstrings with algorithm descriptions and a "ChatGPT improved version." These are unreachable dead code.
 
 ---
 
-#### m6. `render_` Has Incorrect Prefix Accumulation (`render_.py:98`)
+#### m3. Hard-Coded Thresholds Not Configurable
 
-```python
-_prefix=_prefix + (_prefix if _is_root else new_prefix),
-```
+| Threshold | Location | Value |
+|-----------|----------|-------|
+| Style percentage | `TextStyle.PERCENTAGE_THRESHOLD` | 80 |
+| Bold font-weight | `TextStyle.BOLD_THRESHOLD` | 600 |
+| Page number text length | `PageNumberCandidate.TEXT_LENGTH_THRESHOLD` | 100 |
+| Page number min occurrences | `PageNumberCandidate.OCCURRENCE_THRESHOLD` | 5 |
+| Page header min occurrences | `PageHeaderCandidate.OCCURRENCE_THRESHOLD` | 5 |
+| Table min rows | `TableClassifier._row_count_threshold` | 1 |
 
-When rendering the first level of children under a root, this doubles the prefix string unnecessarily. The visual output is still correct in most cases due to the empty initial prefix, but the string grows quadratically for deep trees.
-
----
-
-#### m7. Page Header/Number Detection Requires 5+ Occurrences
-
-The `OCCURRENCE_THRESHOLD = 5` means filings shorter than ~5 pages won't have their page numbers or headers detected. This is fine for typical 10-Ks (50-300 pages) but may fail for short 10-Qs or amendment filings.
-
----
-
-#### m8. `TopSectionManager.match_part()` Only Handles Parts I-IV
-
-```python
-roman_map = {"i": "1", "ii": "2", "iii": "3", "iv": "4"}
-```
-
-No Part V+ handling. While SEC filings don't currently have Part V, this is a needless limitation if you expand to other filing types.
+None are exposed via `ParsingOptions` or constructor parameters. `ParsingOptions` itself has only a single `html_integrity_checks` field.
 
 ---
 
-#### m9. Single-Pass Pipeline Cannot Reclassify
+#### m4. `TopSectionManager.match_part()` Limited to Parts I-IV
 
-Once an element is classified (e.g., as `TextElement`), later steps cannot reclassify it unless the step explicitly processes that type. This means:
-- A `TextElement` that should be `SupplementaryText` but doesn't match the narrow rules stays as `TextElement`
-- A `HighlightedTextElement` that's actually a table header (not a document title) gets promoted to `TitleElement`
+The roman numeral map is `{"i": "1", "ii": "2", "iii": "3", "iv": "4"}`. Sufficient for 10-K/10-Q but will need extension for other filing types. Low priority given our current scope.
 
 ---
 
-#### m10. `TableOfContentsClassifier` is Extremely Simplistic
+#### m5. Page Header/Number Detection Requires 5+ Occurrences
 
-The TOC detection (`is_table_of_content()`) simply checks if the table contains the text "page" via `check_table_contains_text_page()`. This will:
-- Miss TOCs that use "Pg." or "Page No." or have no page column
-- False-positive on tables that mention "page" in their data (e.g., "as described on page 45")
+`OCCURRENCE_THRESHOLD = 5` means very short filings (under ~5 pages) won't have page noise removed. This is fine for typical 10-Ks/10-Qs but may affect short amendment filings.
 
 ---
 
-## Part 5: Suggested Improvements
+#### m6. `render_()` Has Quadratic Prefix Growth
 
-### Aligned to Goal 1: Extract All Text with Segment Header ID
-
-#### I1. Add a Stable Element Identifier System
-
-**What:** Add a `segment_id` property to `AbstractSemanticElement` that encodes the element's position in the document hierarchy.
-
-**Format suggestion:** `{filing_type}:{section}:{subsection}:{element_index}` e.g., `10-K:part2item7:mda_overview:p3`
-
-**How it helps:** Enables referencing specific segments across parses, between filing versions, and in downstream databases. Critical for your diff pipeline (Goal 5).
-
-**Implementation approach:**
-- Add `element_index: int` to `AbstractSemanticElement.__init__` (assigned during parsing)
-- Add a post-processing step that generates hierarchical IDs from the tree structure
-- IDs should be deterministic given the same input HTML
+`render_.py:98` doubles the prefix string for root-level children. Not a correctness issue (root prefix is empty) but causes O(n^2) string growth in deeply nested trees.
 
 ---
 
-#### I2. Preserve XBRL Tag Metadata
+#### m7. Single-Pass Pipeline Cannot Reclassify Elements
 
-**What:** Instead of stripping `<ix:*>` tags, extract their attributes into a metadata dict on the element.
-
-**How it helps:**
-- Identifies which text/numbers are XBRL-tagged (Goal 3: finding non-tagged tables)
-- Provides GAAP concept names for downstream financial analysis
-- Gives you unique IDs from the filing itself (`id="f-123"`)
-
-**Implementation approach:**
-- Modify `XbrlTagCheck` to store `{name, contextref, unitref, id, format, scale}`
-- Add `xbrl_metadata: dict | None` to `AbstractSemanticElement`
-- Propagate through `CompositeSemanticElement` to children
+Once an element is typed (e.g., `TextElement`), later steps can only reclassify it if they explicitly include that type in `types_to_process`. A `HighlightedTextElement` near a table header that looks like a section title will be promoted to `TitleElement` by `TitleClassifier` even if it's clearly a table caption.
 
 ---
 
-### Aligned to Goal 2: Intelligent Table of Contents Navigation
+#### m8. `TableOfContentsClassifier` Heuristic is Too Weak
 
-#### I3. Build a Proper TOC Data Structure
-
-**What:** Create a `DocumentTableOfContents` class that the `TreeBuilder` output can populate, with:
-- Section title text
-- Section type (Part/Item/subsection)
-- Hierarchy level
-- Element count per section
-- Contains-tables flag
-- Byte offset range in source HTML
-
-**How it helps:** Directly serves your TOC navigation feature. The current tree has the structure but lacks the metadata and query interface.
-
-**Implementation approach:**
-- New post-processing step: `TocBuilder` that walks the `SemanticTree`
-- Each `TocEntry` contains: `id`, `title`, `level`, `parent_id`, `element_range`, `has_tables`, `has_financial_data`
-- Add `tree.get_toc()` convenience method
+`check_table_contains_text_page()` only matches exact cell text in `{"page", "page no.", "page number"}`. Misses "Pg.", "PAGE", cells with additional whitespace, and tables where the page column has a different label. Also false-positives on any data table mentioning "page" in a cell.
 
 ---
 
-#### I4. Fix Title Hierarchy Detection
+#### m9. `CompositeSemanticElement` Loses Ordering Context
 
-**What:** Replace the order-of-first-occurrence approach with a scoring system:
-
-```
-Score = (is_uppercase * 4) + (is_bold * 3) + (is_centered * 2) + (is_underline * 1) - (is_italic * 0.5)
-Higher score = higher-level heading
-```
-
-**How it helps:** Produces correct title levels regardless of which styled element appears first in the document. Critical for accurate TOC.
-
-**Implementation approach:**
-- Modify `TitleClassifier` to collect all `HighlightedTextElement` styles in pass 1
-- Score and rank styles in pass 2
-- Assign levels based on score rank rather than insertion order
+When `unwrap_elements()` flattens composites, the original container-level context (what XBRL tag wrapped these elements, what the parent `<div>` attributes were) is discarded unless `include_containers=True`. For G4 (prose-table relationship), we need to know that a text and table were siblings inside the same container.
 
 ---
 
-### Aligned to Goal 3: Identify All Tables (Including Non-XBRL)
+## Part 4: Improvement Recommendations
 
-#### I5. Enhanced Table Classification
+### Priority 0 - Do First
 
-**What:** Add a `TableType` enum and classifier that categorizes tables:
+#### I1. Stable Hierarchical Element IDs
 
-```python
-class TableType(Enum):
-    FINANCIAL_STATEMENT = "financial_statement"  # Balance sheet, income statement, etc.
-    FOOTNOTE_TABLE = "footnote_table"            # Tables within footnotes
-    SCHEDULE = "schedule"                         # Supporting schedules
-    PROSE_TABLE = "prose_table"                   # Tables used for text layout (not real data)
-    TOC_TABLE = "toc_table"                       # Table of contents
-    EXHIBIT_TABLE = "exhibit_table"               # Exhibit lists
-    UNKNOWN = "unknown"
-```
+Add a post-tree-building step that assigns a deterministic `segment_id` to every element. Format: `{section_identifier}:{title_slug}:{element_type}_{index}`.
 
-**How it helps:** Lets you filter tables by purpose. Financial statement tables need different handling than prose layout tables.
+Example: `part2item7:revenue_recognition:text_3`, `part1item1:financial_statements:table_1`.
 
-**Classification heuristics:**
-- FINANCIAL_STATEMENT: Contains `$` markers, has numeric columns, near financial statement section titles
-- FOOTNOTE_TABLE: Inside a footnote section, smaller than financial statements
-- PROSE_TABLE: Single column or mostly text cells, used for formatting
-- TOC_TABLE: Contains "page" column, matches section title patterns
+For `TopSectionTitle`, use the existing `.section_type.identifier`. For `TitleElement`, slugify the title text. For content elements, use parent's ID + type + index.
+
+Enables: G1 (segment-addressed text), G2 (TOC anchor IDs), G5 (cross-period element alignment).
 
 ---
 
-#### I6. XBRL Coverage Annotation
+#### I2. Fix Title Level Assignment in `TitleClassifier`
 
-**What:** For each `TableElement`, add a property `xbrl_coverage: float` indicating what percentage of the table's numeric cells are XBRL-tagged.
+Convert to two-pass (`_NUM_ITERATIONS = 2`). Pass 1: collect all unique `TextStyle` instances from `HighlightedTextElement` across the document. Score each style by visual weight. Pass 2: assign levels based on score rank.
 
-**How it helps:** Tables with 0% XBRL coverage are your non-tagged tables (Goal 3). Tables with partial coverage may have important un-tagged supplemental data.
+Scoring suggestion: `(bold * 3) + (uppercase * 2) + (centered * 2) + (underline * 1) - (italic * 1)`. Higher score = higher-level heading = lower level number.
 
----
-
-### Aligned to Goal 4: Prose Stub Detection and Table-Prose Relationship
-
-#### I7. Table Context Classifier
-
-**What:** A new processing step that examines the text elements immediately before and after each table, classifying the relationship:
-
-```python
-class TableContext(Enum):
-    STANDALONE = "standalone"           # Table needs no surrounding prose
-    PROSE_INTRODUCES = "prose_intro"    # Preceding prose explains the table
-    STUB_REFERENCE = "stub_reference"   # "See table below" type stub (discard)
-    CONTINUATION = "continuation"       # Table continues from previous
-```
-
-**How it helps:** Directly implements Goal 4 - discard stub prose, keep useful surrounding context.
-
-**Heuristics for stub detection:**
-- Text < 100 characters AND contains "table below", "following table", "refer to", "as follows"
-- Text immediately followed by table with no intervening content
-- No independent information beyond pointing to the table
-
-**Implementation approach:**
-- New step: `TableContextClassifier` runs after `TextElementMerger`
-- Adds `context: TableContext` metadata to `TableElement`
-- Optionally links the related `TextElement` to the `TableElement` as `context_text`
+Enables: G2 (correct TOC hierarchy), G1 (correct segment nesting).
 
 ---
 
-### Aligned to Goal 5: Downstream Processing for Text-Diffing and Number-Diffing
+#### I3. Fix f-string Bug in `TableElement.get_summary()`
 
-#### I8. Serialization to Diff-Ready Format
-
-**What:** Add export methods that produce structured output suitable for diffing:
-
-```python
-# Text diffing
-element.to_diff_text() -> str
-# Returns: "{segment_id}\t{element_type}\t{normalized_text}"
-
-# Number diffing for tables
-table_element.to_diff_numbers() -> list[dict]
-# Returns: [{"segment_id": "...", "row": 0, "col": "Revenue", "value": "1234.56", "xbrl_concept": "us-gaap:Revenue"}]
-
-# Full document
-tree.to_diff_document() -> str
-# Returns line-per-element format for standard diff tools
-```
-
-**How it helps:** Enables `diff`/`git diff` workflows between filing periods. The segment IDs make alignment across periods trivial.
+Add the `f` prefix to the fallback return string. Trivial fix.
 
 ---
 
-#### I9. Numeric Value Extraction from Tables
+### Priority 1 - Do Soon
 
-**What:** Add a `TableElement.extract_numbers()` method that returns structured numeric data:
+#### I4. Section Boundary Data on Tree Nodes
 
-```python
-@dataclass
-class ExtractedNumber:
-    value: Decimal
-    raw_text: str          # "(1,234.56)"
-    row_label: str         # "Total Revenue"
-    column_label: str      # "2024"
-    is_negative: bool      # True (parenthetical)
-    unit: str | None       # "$" or "%" or None
-    xbrl_concept: str | None  # "us-gaap:Revenue"
-    scale: int             # 6 for "in millions"
-```
+During `TreeBuilder.build()`, track `start_index` and `end_index` (position in the flat element list) on each `TreeNode`. After building, compute cumulative character offsets for each node.
 
-**How it helps:** Critical for number-diffing (Goal 5). Current `parse_as_df()` returns strings, losing numeric semantics.
+Expose `SemanticTree.get_section_boundaries()` returning a list of `(segment_id, start_element_index, end_element_index, char_start, char_end)`.
+
+Enables: G2 (Intersection Observer can map scroll position to active section, the pill UI can show "Note 5 - 42%" progress within a section).
 
 ---
 
-### General Architecture Improvements
+#### I5. Table Type Classification Step
+
+Add `TableTypeClassifier` as a new step after `TableOfContentsClassifier`. Assign `table_type` to each `TableElement`:
+- `FINANCIAL_STATEMENT` - `$` markers or numeric-heavy, near financial statement section
+- `FOOTNOTE` - smaller table inside a footnote section
+- `LAYOUT` - single-column or predominantly text cells
+- `TOC` - already classified by `TableOfContentsClassifier`
+- `SCHEDULE` - supporting schedule format
+- `OTHER` - default
+
+Enables: G3 (complete classified table inventory).
+
+---
+
+#### I6. Table-Prose Context Classifier
+
+Add `TableContextClassifier` step after `TextElementMerger`. For each `TableElement`, examine the immediately preceding `TextElement` (or `SupplementaryText`):
+
+- **Stub patterns:** text length < 120 chars AND matches phrases like "following table", "table below", "set forth below", "as follows", "presented below", "summarized below"
+- **Substantive context:** preceding text > 120 chars, or contains analytical/explanatory content beyond a pointer
+- **Standalone:** no preceding text element, or preceding element is another table/title
+
+Store the classification and optionally link the related prose element to the table.
+
+Enables: G4 (discard stubs, keep context).
+
+---
+
+#### I7. Expand `SupplementaryTextClassifier` Rules
+
+Broaden the current narrow patterns to catch more stub prose. Add detection for:
+- "Refer to [Note/table/section]..." patterns
+- "The following [table/chart/graph]..." patterns
+- Single-sentence paragraphs that end with a colon (often introduce a table)
+- Parenthetical references like "(see table X)"
+
+Keep the existing parenthetical and "accompanying notes" patterns. Mark the new detections differently so G4 can distinguish unit qualifiers from table-reference stubs.
+
+Enables: G4.
+
+---
+
+### Priority 2 - Important
+
+#### I8. TOC Data Structure Generation
+
+Add `SemanticTree.to_toc()` method that walks the tree and produces a serializable TOC.
+
+Each entry should contain: `segment_id`, `title` (text content), `level` (hierarchy depth), `element_type` (TopSectionTitle, TitleElement), `parent_id`, `child_count`, `has_tables` (boolean), `content_length` (total text characters in section). This structure directly feeds G2's expandable mini-TOC list.
+
+Enables: G2 (the pill UI's hover-expand TOC list needs exactly this data).
+
+---
+
+#### I9. Diff-Ready Serialization
+
+Add export methods to `SemanticTree`:
+- `to_diff_text()` - one line per element: `{segment_id}\t{element_type}\t{normalized_text}`
+- Normalize text: collapse whitespace, strip page artifacts, normalize quotes/dashes
+
+For tables, `TableElement.table_to_markdown()` already produces diff-friendly output. Pair it with the segment ID.
+
+Enables: G5 (text-diffing and number-diffing across periods).
+
+---
 
 #### I10. Make Thresholds Configurable
 
-**What:** Consolidate all thresholds into a `ParsingConfig` dataclass passed through the pipeline:
+Expand `ParsingOptions` (or create a new `ParsingConfig`) to expose all hardcoded thresholds. Pass through the pipeline so each step reads from config rather than class constants.
 
-```python
-@dataclass
-class ParsingConfig:
-    style_percentage_threshold: float = 80.0
-    bold_font_weight_threshold: int = 600
-    page_number_occurrence_threshold: int = 5
-    page_header_occurrence_threshold: int = 5
-    table_min_rows: int = 1
-    page_element_text_length_max: int = 100
-    capitalize_threshold: float = 80.0
-```
-
-**How it helps:** Different filings/filers may need different thresholds. Hardcoded values force fork users to modify library internals.
+Enables: Tuning for different filer styles without modifying library internals.
 
 ---
 
-#### I11. Add HTML Tag-Based Style Detection
+### Priority 3 - Nice to Have
 
-**What:** Extend `TextStyle.from_style_and_text()` to also check for `<b>`, `<strong>`, `<i>`, `<em>`, `<u>`, `<h1>`-`<h6>` tags.
+#### I11. Non-Destructive Stack in `TreeBuilder._find_parent_node()`
 
-**How it helps:** Fixes Major Flaw M5. Enables correct title detection for older filings and non-CSS-styled documents.
+Replace the destructive `stack.pop()` loop with a backward index scan. Only trim the stack after finding a match or determining root status.
 
-**Implementation:** In `compute_text_styles_metrics()`, traverse the tag hierarchy and add synthetic style entries for formatting tags:
-- `<b>`, `<strong>` → `("font-weight", "bold")`
-- `<i>`, `<em>` → `("font-style", "italic")`
-- `<u>` → `("text-decoration", "underline")`
-- `<h1>`-`<h6>` → `("font-weight", "bold")` + custom heading level metadata
+Enables: More robust tree building, fewer orphaned elements.
 
 ---
 
-#### I12. Fix the f-string Bug
+#### I12. Clean Up Dead Code
 
-**What:** In `table_element.py:23`, change:
-```python
-return "Table with {len(self.text)} characters."
-```
-to:
-```python
-return f"Table with {len(self.text)} characters."
-```
+Remove the module-level algorithm description docstrings at the end of `top_section_manager.py`.
+
+---
+
+#### I13. Improve `TableOfContentsClassifier`
+
+Expand `is_page_data_cell()` to handle case-insensitive matching, "Pg.", "PAGE", and cells with surrounding whitespace. Add a second heuristic: if a table has 5+ rows where one column contains section-title-like text and another column contains numbers, it's likely a TOC.
+
+Enables: G2 (filing's own TOC can serve as ground truth for section enumeration).
 
 ---
 
 ### Improvement Priority Matrix
 
-For your fork focusing on 10-K/10-Q with the 5 stated goals:
-
-| Priority | Improvement | Effort | Impact |
-|----------|------------|--------|--------|
-| **P0 - Do First** | I2 (Preserve XBRL metadata) | Medium | Unlocks Goals 3, 5 |
-| **P0 - Do First** | I1 (Stable element IDs) | Medium | Unlocks Goals 1, 5 |
-| **P0 - Do First** | I12 (Fix f-string bug) | Trivial | Bug fix |
-| **P1 - Do Soon** | I4 (Fix title hierarchy) | Medium | Fixes Goal 2 reliability |
-| **P1 - Do Soon** | I11 (HTML tag style detection) | Medium | Fixes title detection for older filings |
-| **P1 - Do Soon** | I7 (Table context classifier) | Medium | Enables Goal 4 |
-| **P1 - Do Soon** | I5 (Enhanced table classification) | Medium | Enables Goal 3 |
-| **P2 - Important** | I3 (TOC data structure) | Medium | Enables Goal 2 |
-| **P2 - Important** | I8 (Diff-ready serialization) | Medium | Enables Goal 5 |
-| **P2 - Important** | I10 (Configurable thresholds) | Low | Improves maintainability |
-| **P3 - Nice to Have** | I9 (Numeric extraction) | High | Enhances Goal 5 |
-| **P3 - Nice to Have** | I6 (XBRL coverage annotation) | Low | Enhances Goal 3 |
+| Priority | ID | Improvement | Effort | Primary Goal |
+|----------|----|------------|--------|-------------|
+| **P0** | I1 | Stable hierarchical element IDs | Medium | G1, G2, G5 |
+| **P0** | I2 | Fix title level assignment scoring | Medium | G1, G2 |
+| **P0** | I3 | Fix f-string bug | Trivial | Bug fix |
+| **P1** | I4 | Section boundary data on tree nodes | Medium | G2 |
+| **P1** | I5 | Table type classification | Medium | G3 |
+| **P1** | I6 | Table-prose context classifier | Medium | G4 |
+| **P1** | I7 | Expand supplementary text rules | Low | G4 |
+| **P2** | I8 | TOC data structure generation | Medium | G2 |
+| **P2** | I9 | Diff-ready serialization | Medium | G5 |
+| **P2** | I10 | Configurable thresholds | Low | All |
+| **P3** | I11 | Non-destructive tree builder stack | Low | G1, G2 |
+| **P3** | I12 | Clean up dead code | Trivial | Maintenance |
+| **P3** | I13 | Improve TOC classifier heuristic | Low | G2 |
 
 ---
 
-## Appendix: Key File Locations
+## Appendix: File Map
 
 | Component | File |
 |-----------|------|
-| Main parser entry | `sec_parser/processing_engine/core.py` |
+| Public API | `sec_parser/__init__.py` |
+| Parser entry point | `sec_parser/processing_engine/core.py` |
 | HTML tag wrapper | `sec_parser/processing_engine/html_tag.py` |
-| All element types | `sec_parser/semantic_elements/semantic_elements.py` |
-| Title classification | `sec_parser/processing_steps/title_classifier.py` |
-| Table classification | `sec_parser/processing_steps/table_classifier.py` |
-| Table parsing | `sec_parser/semantic_elements/table_element/table_parser.py` |
-| Section recognition | `sec_parser/processing_steps/top_section_manager.py` |
+| HTML tag parser | `sec_parser/processing_engine/html_tag_parser.py` |
+| Parsing options | `sec_parser/processing_engine/types.py` |
+| Processing step base | `sec_parser/processing_steps/abstract_classes/abstract_elementwise_processing_step.py` |
+| Batch step base | `sec_parser/processing_steps/abstract_classes/abstract_element_batch_processing_step.py` |
+| Element extractor | `sec_parser/processing_steps/individual_semantic_element_extractor/individual_semantic_element_extractor.py` |
+| Table check | `sec_parser/processing_steps/individual_semantic_element_extractor/single_element_checks/table_check.py` |
+| XBRL check | `sec_parser/processing_steps/individual_semantic_element_extractor/single_element_checks/xbrl_tag_check.py` |
+| Image classifier | `sec_parser/processing_steps/image_classifier.py` |
+| Empty classifier | `sec_parser/processing_steps/empty_element_classifier.py` |
+| Table classifier | `sec_parser/processing_steps/table_classifier.py` |
+| TOC classifier | `sec_parser/processing_steps/table_of_contents_classifier.py` |
+| Section manager | `sec_parser/processing_steps/top_section_manager.py` |
+| Intro classifier | `sec_parser/processing_steps/introductory_section_classifier.py` |
+| Text classifier | `sec_parser/processing_steps/text_classifier.py` |
+| Highlighted text | `sec_parser/processing_steps/highlighted_text_classifier.py` |
+| Supplementary text | `sec_parser/processing_steps/supplementary_text_classifier.py` |
+| Page header | `sec_parser/processing_steps/page_header_classifier.py` |
+| Page number | `sec_parser/processing_steps/page_number_classifier.py` |
+| Title classifier | `sec_parser/processing_steps/title_classifier.py` |
+| Text merger | `sec_parser/processing_steps/text_element_merger.py` |
+| Base element | `sec_parser/semantic_elements/abstract_semantic_element.py` |
+| Element types | `sec_parser/semantic_elements/semantic_elements.py` |
+| Highlighted element | `sec_parser/semantic_elements/highlighted_text_element.py` |
+| Title element | `sec_parser/semantic_elements/title_element.py` |
+| Top section title | `sec_parser/semantic_elements/top_section_title.py` |
+| Top section marker | `sec_parser/semantic_elements/top_section_start_marker.py` |
 | Section definitions | `sec_parser/semantic_elements/top_section_title_types.py` |
+| Table element | `sec_parser/semantic_elements/table_element/table_element.py` |
+| Table parser | `sec_parser/semantic_elements/table_element/table_parser.py` |
+| Table to markdown | `sec_parser/utils/bs4_/table_to_markdown.py` |
+| TOC check | `sec_parser/utils/bs4_/table_check_data_cell.py` |
+| Table metrics | `sec_parser/utils/bs4_/approx_table_metrics.py` |
+| Composite element | `sec_parser/semantic_elements/composite_semantic_element.py` |
 | Tree builder | `sec_parser/semantic_tree/tree_builder.py` |
 | Nesting rules | `sec_parser/semantic_tree/nesting_rules.py` |
-| Style detection | `sec_parser/semantic_elements/highlighted_text_element.py` |
-| Supplementary text | `sec_parser/processing_steps/supplementary_text_classifier.py` |
-| XBRL handling | `sec_parser/processing_steps/individual_semantic_element_extractor/single_element_checks/xbrl_tag_check.py` |
-| TOC detection | `sec_parser/processing_steps/table_of_contents_classifier.py` |
-| Page number detection | `sec_parser/processing_steps/page_number_classifier.py` |
-| Text merging | `sec_parser/processing_steps/text_element_merger.py` |
-| Rendering | `sec_parser/semantic_tree/render_.py` |
+| Semantic tree | `sec_parser/semantic_tree/semantic_tree.py` |
+| Tree node | `sec_parser/semantic_tree/tree_node.py` |
+| Render | `sec_parser/semantic_tree/render_.py` |
