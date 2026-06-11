@@ -19,8 +19,39 @@ def _is_match_part_or_item(text: str) -> bool:
     return TopSectionManagerFor10Q.is_match_part_or_item(text)
 
 
+_INLINE_TEXT_TAG_NAMES = frozenset(
+    {
+        "a",
+        "b",
+        "em",
+        "font",
+        "i",
+        "ix:nonnumeric",
+        "span",
+        "strong",
+        "u",
+    },
+)
+
+
+def _normalize_text(text: str) -> str:
+    return " ".join(text.split())
+
+
+def _is_inline_text_container(element: AbstractSemanticElement) -> bool:
+    children = element.html_tag.get_children()
+    return bool(children) and all(
+        child.name in _INLINE_TEXT_TAG_NAMES for child in children
+    )
+
+
 class TopSectionTitleCheck(AbstractSingleElementCheck):
     def contains_single_element(self, element: AbstractSemanticElement) -> bool | None:
+        if _is_match_part_or_item(_normalize_text(element.text)) and (
+            _is_inline_text_container(element)
+        ):
+            return True
+
         match_count = element.html_tag.count_text_matches_in_descendants(
             _is_match_part_or_item,
             exclude_links=True,

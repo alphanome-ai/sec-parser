@@ -24,6 +24,28 @@ class SemanticElement(AbstractSemanticElement):
             False,
         ),
         (
+            "MSFT/0000950170-23-014423 inline top section title fragments",
+            """
+                <div>
+                    <span>PART I. FINANCI</span>
+                    <span>AL INFORMATION</span>
+                </div>
+            """,
+            "div",
+            True,
+        ),
+        (
+            "block container with top section and body",
+            """
+                <div>
+                    <p>PART I. FINANCIAL INFORMATION</p>
+                    <p>Condensed consolidated financial statements follow.</p>
+                </div>
+            """,
+            "div",
+            False,
+        ),
+        (
             "AMC/0001411579-23-000057",
             """
                 <div style="clear:both;max-width:100%;position:relative;">
