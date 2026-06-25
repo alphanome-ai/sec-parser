@@ -1,6 +1,10 @@
 <p align="center">&nbsp;</p>
 <p align="center">
-  <h1 align="center"><b>sec-parser</b></h1>
+  <h1 align="center"><b>This repository is no longer maintained.</b></h1>
+
+<p align="center">&nbsp;</p>
+<p align="center">
+  <h1 align="center"><b>SEC-parser</b></h1>
 </p>
 
 <p align="left">
