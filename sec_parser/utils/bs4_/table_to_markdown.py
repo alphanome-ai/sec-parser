@@ -39,7 +39,21 @@ class TableToMarkdown:
         )
         markdown_lines = pandas_table.to_markdown(index=False).split("\n")
         if all_headers_are_digits:
-            markdown_lines = markdown_lines[2:]
+            # Strip the auto-generated integer column header row and its separator.
+            # When a table has no semantic headers, pandas assigns integer column
+            # names (0, 1, 2, ...).  The first data row is the real visual header
+            # of the SEC filing table, so promote it and add a divider beneath it
+            # to produce a valid Markdown table.
+            data_lines = markdown_lines[2:]
+            if data_lines:
+                first_row = data_lines[0]
+                parts = first_row.split("|")
+                divider = "|" + "|".join(
+                    "-" * max(1, len(p)) for p in parts[1:-1]
+                ) + "|"
+                markdown_lines = [first_row, divider] + data_lines[1:]
+            else:
+                markdown_lines = data_lines
         elif "---" in markdown_lines[1]:
             markdown_lines[1] = re.sub(r":?---+:?", "---", markdown_lines[1])
         return re.sub(
