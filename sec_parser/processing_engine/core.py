@@ -43,6 +43,7 @@ from sec_parser.processing_steps.table_of_contents_classifier import (
 from sec_parser.processing_steps.text_classifier import TextClassifier
 from sec_parser.processing_steps.text_element_merger import TextElementMerger
 from sec_parser.processing_steps.title_classifier import TitleClassifier
+from sec_parser.processing_steps.title_element_merger import TitleElementMerger
 from sec_parser.processing_steps.top_section_manager import (
     TopSectionManagerFor10K,
     TopSectionManagerFor10Q,
@@ -199,6 +200,7 @@ class Edgar10QParser(AbstractSemanticElementParser):
                 types_to_process={TextElement, HighlightedTextElement},
             ),
             TitleClassifier(types_to_process={HighlightedTextElement}),
+            TitleElementMerger(),
             TextElementMerger(),
         ]
 
@@ -244,6 +246,7 @@ class Edgar10KParser(AbstractSemanticElementParser):
                 types_to_process={TextElement, HighlightedTextElement},
             ),
             TitleClassifier(types_to_process={HighlightedTextElement}),
+            TitleElementMerger(),
             TextElementMerger(),
         ]
 
