@@ -58,6 +58,28 @@ from tests.unit.processing_steps._utils import parse_initial_semantic_elements
                 {"type": NotYetClassifiedElement, "tag": "p"},
             ],
         ),
+        (
+            "bold via <b> tag",
+            """
+                <p><b>Bold text using b tag</b></p>
+                <p>Regular text without bold</p>
+            """,
+            [
+                {"type": TitleElement, "tag": "p"},
+                {"type": TextElement, "tag": "p"},
+            ],
+        ),
+        (
+            "bold via <strong> tag",
+            """
+                <p><strong>Bold text using strong tag</strong></p>
+                <p>Regular text without bold</p>
+            """,
+            [
+                {"type": TitleElement, "tag": "p"},
+                {"type": TextElement, "tag": "p"},
+            ],
+        ),
     ],
     ids=[v[0] for v in values],
 )
